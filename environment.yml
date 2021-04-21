@@ -6,3 +6,4 @@ dependencies:
   - pyaml
   - uproot
   - awkward
+  - rich
