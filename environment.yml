@@ -5,5 +5,10 @@ dependencies:
   - python>=3.6
   - pyaml
   - uproot
-  - awkward
+  - awkward>=1.2
+  - numba
+  - pyarrow
+  - pandas
   - rich
+  - matplotlib
+  - vector

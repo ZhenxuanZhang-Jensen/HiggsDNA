@@ -14,7 +14,13 @@ def get_dependencies(env_yaml_file):
 
 setuptools.setup(
     name="higgs_dna",
-    packages=["higgs_dna"],
+    packages=[
+        "higgs_dna",
+        "higgs_dna/taggers",
+        "higgs_dna/selections",
+        "higgs_dna/systematics",
+        "higgs_dna/utils"
+    ],
     scripts=["scripts/run_taggers.py"],
     install_requires=get_dependencies("environment.yml"),
     python_requires=">=3.6",

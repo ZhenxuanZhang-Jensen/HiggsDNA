@@ -2,6 +2,7 @@ import logging
 from rich.logging import RichHandler
 from rich.console import Console
 
+LOGGER_NAME = "higgs_dna"
 
 def setup_logger(level="INFO", logfile=None):
     """Setup a logger that uses RichHandler to write the same message both in stdout
@@ -13,7 +14,7 @@ def setup_logger(level="INFO", logfile=None):
     :param logfile: file where information are stored
     :type logfile: str
     """
-    logger = logging.getLogger()
+    logger = logging.getLogger(LOGGER_NAME) # need to give it a name, otherwise *way* too much info gets printed out from e.g. numba
 
     # Set up level of information
     possible_levels = ["INFO", "DEBUG"]
@@ -40,3 +41,4 @@ def setup_logger(level="INFO", logfile=None):
         logger.addHandler(file_handler)
 
     return logger
+
