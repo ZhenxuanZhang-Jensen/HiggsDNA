@@ -1,3 +1,4 @@
+import sys
 import awkward
 
 import logging
@@ -6,9 +7,7 @@ logger = logging.getLogger(__name__)
 from inspect import signature
 
 from higgs_dna.utils import awkward_utils
-from higgs_dna.systematics import photon_systematics
-
-CENTRAL_WEIGHT = "weight_central"
+from higgs_dna.constants import CENTRAL_WEIGHT, NOMINAL_TAG
 
 class Systematic():
     """
@@ -38,12 +37,20 @@ class Systematic():
     :type branches: dict (, optional)
     :param function: function to use to calculate the central/up/down variations for this syst. Provided in the form of { "module" : <module under higgs_dna.systematics, "name" : <name of function within module> }, defaults to None
     :type function: dict (, optional)
+    :param sample: Sample object for this Systematic
+    :type sample: higgs_dna.samples.sample.Sample
     """
-    def __init__(self, name, method, branches = None, function = None):
+    def __init__(self, name, method, branches = None, function = None, sample = None):
         self.name = name
         self.method = method
         self.branches = branches
         self.function = function
+        self.sample = sample
+        if sample is not None:
+            self.process = sample.process
+            self.is_data = sample.is_data
+            self.year = sample.year
+
 
         if not (self.method == "from_branch" or self.method == "from_function"):
             message = "[Systematic : __init__] Systematic: %s, supported methods for constructing a Systematic are 'from_branch' and 'from_function', not '%s' as you passed." % (self.name, self.method)
@@ -67,10 +74,23 @@ class Systematic():
                 logger.exception(message)
                 raise ValueError(message)
 
-            if not hasattr(self.function["module"], self.function["name"]): 
-                message = "[Systematic : __init__] Systematic: %s, method was selected as 'from_function' but function '%s' was not found in module %s. We checked the following submodules: %s" % (self.name, self.function["name"], self.function["module"])
+            if not isinstance(self.function["module_name"], str):
+                message = "[Systematic : __init__] Systematic: %s, when specifying 'from_function', the module containing the function should be given as a string, e.g. 'higgs_dna.systematics.lepton_systematics', not type '%s' as you have given" % (self.name, str(type(self.function["module_name"])))
+                logger.exception(message)
+                raise TypeError(message)
+
+            if self.function["module_name"] not in sys.modules:
+                message = "[Systematic : __init__] Systematic: %s, method was selected as 'from_function' with module '%s', but the module has not been imported! Add an import statement to your analysis script." % (self.name, self.function["module_name"])
+                logger.exception(message)
+                raise ImportError(message)
+            else:
+                self.function["module"] = sys.modules[self.function["module_name"]]
+
+            if not hasattr(self.function["module"], self.function["name"]):
+                message = "[Systematic : __init__] Systematic: %s, method was selected as 'from_function' but function '%s' was not found in module %s." % (self.name, self.function["name"], self.function["module"])
                 logger.exception(message)
                 raise NotImplementedError(message)
+ 
 
         self.is_produced = False
 
@@ -156,10 +176,13 @@ class WeightSystematic(Systematic):
 
     :param modify_central_weight: whether to multiply the central event weight by the central weight for this systematic
     :type modify_central_weight: bool
+    :param requires_branches: branch(es) that are required to compute this systematic
+    :type requires_branches: list of str, defaults to None
     """
-    def __init__(self, name, method, modify_central_weight, branches = None, function = None):
-        super(WeightSystematic, self).__init__(name, method, branches, function)
+    def __init__(self, name, method, modify_central_weight, branches = None, requires_branches = None, function = None, sample = None):
+        super(WeightSystematic, self).__init__(name, method, branches, function, sample)
         self.modify_central_weight = modify_central_weight
+        self.requires_branches = requires_branches
 
         self.is_applied = {} # a weight will often be applied to multiple different sets of events (corresponding to different independent collections)
     
@@ -185,11 +208,12 @@ class WeightSystematic(Systematic):
             for variation, values in variations.items():
                 if isinstance(variation, str): # plain field in array, e.g. events.weight_syst1_up
                     name = "weight" + "_" + self.name + "_" + variation
+                    self.branches[variation] = name
                 elif isinstance(variation, tuple): # nested field in array, e.g. events.Photon.weight_syst1_up
                     name = tuple((variation[0], "weight" + "_" + self.name + "_" + variation[1])) 
+                    self.branches[variation[1]] = name
                 logger.debug("[WeightSystematic : produce] WeightSystematic: %s, adding field %s to events array" % (self.name, name))
                 awkward_utils.add_field(events, name, values)
-                self.branches[variation[1]] = name
 
         for variation, branch in self.branches.items():
             if central_only and not variation == "central":
@@ -235,7 +259,7 @@ class WeightSystematic(Systematic):
 
         return variations
 
-    def apply(self, events, syst_tag = "nominal", central_only = False, mask = None):
+    def apply(self, events, syst_tag = NOMINAL_TAG, central_only = False, mask = None, add_fields = False):
         """
         Apply this weight systematic to the events array.
         Applying consists of two steps:
@@ -250,6 +274,8 @@ class WeightSystematic(Systematic):
         :type central_only: bool
         :param mask: boolean array indicating which events to modify the central weight for. If no mask is provided, will modify the central weight for all events, defaults to None
         :type mask: awkward.highlevel.Array (, optional)
+        :param add_fields: whether to add this weight variation as an additional field in the events array, defaults to False
+        :type add_fields: bool (, optional)
         :return: events for the current systematic variation with the per-event variations added as fields in the array (if applicable) and the central weight modified (if applicable)
         :rtype: awkward.highlevel.Array
         """
@@ -276,8 +302,9 @@ class WeightSystematic(Systematic):
                     "std" : std 
             }
             logger.debug("[WeightSystematic : apply] WeightSystematic: %s, variation: %s, independent collection: %s per-event weight has mean %.4f and std. dev. %.4f" % (self.name, variation, syst_tag, mean, std))
-                    
-            awkward_utils.add_field(events, self.name + "_" + variation, values)
+
+            if add_fields:
+                awkward_utils.add_field(events, self.name + "_" + variation, values)
 
         if self.modify_central_weight:
             if not ("central" in weights.keys()):
@@ -345,8 +372,8 @@ class ObjectWeightSystematic(WeightSystematic):
     :param target_collection: name of record that contains the objects for translating the per-object weights into per-event weights. May be passed as a string, e.g. "SelectedElectron" or as a tuple, in the case of nested records, e.g. ("Diphoton", "LeadPhoton")
     :type target_collection: str or tuple
     """
-    def __init__(self, name, method, modify_central_weight, input_collection, branches = None, function = None, target_collection = None):
-        super(ObjectWeightSystematic, self).__init__(name, method, modify_central_weight, branches = branches, function = function)
+    def __init__(self, name, method, modify_central_weight, input_collection, branches = None, function = None, sample = None, target_collection = None):
+        super(ObjectWeightSystematic, self).__init__(name, method, modify_central_weight, branches = branches, function = function, sample = sample)
 
         self.input_collection = input_collection
         if target_collection is None:
@@ -400,6 +427,9 @@ class ObjectWeightSystematic(WeightSystematic):
 
         return weights
 
+    def apply(self, events, syst_tag = NOMINAL_TAG, central_only = False, mask = None, add_fields = True):
+        return super(ObjectWeightSystematic, self).apply(events, syst_tag, central_only, mask, add_fields = add_fields)
+
 
 class EventWeightSystematic(WeightSystematic):
     """
@@ -416,6 +446,9 @@ class EventWeightSystematic(WeightSystematic):
 
         return weights
 
+    def apply(self, events, syst_tag = NOMINAL_TAG, central_only = False, mask = None, add_fields = False):
+        return super(EventWeightSystematic, self).apply(events, syst_tag, central_only, mask, add_fields = add_fields) 
+
 
 class SystematicWithIndependentCollection(Systematic):
     """
@@ -424,12 +457,20 @@ class SystematicWithIndependentCollection(Systematic):
 
     :param branch_modified: the field in the events array which will be modified by the up/down variations of this systematic
     :type branch_modified: str or tuple
+    :param modify_nominal: whether to modify the nominal value of <branch_modified> 
+    :type modify_nominal: bool 
+    :param nominal_only: whether to calculate only the nominal correction (and not up/down variations)
+    :type nominal_only: bool
+    :param additive: for ICs from branches, whether the branches with variations should be added to the nominal branch
+    :type additive: bool, defaults to False 
     """
-    def __init__(self, name, method, branch_modified, branches = None, function = None):
-        super(SystematicWithIndependentCollection, self).__init__(name, method, branches, function)
+    def __init__(self, name, method, branch_modified, modify_nominal = True, nominal_only = False, branches = None, function = None, sample = None, additive = False):
+        super(SystematicWithIndependentCollection, self).__init__(name, method, branches, function, sample)
 
         self.branch_modified = branch_modified
-
+        self.modify_nominal = modify_nominal
+        self.nominal_only = nominal_only
+        self.additive = additive
 
     def produce(self, events):
         """
@@ -492,10 +533,18 @@ class SystematicWithIndependentCollection(Systematic):
         """
         independent_collections = {}
         for variation, branch in self.branches.items():
+            if variation == "nominal" and not self.modify_nominal:
+                continue
+            if not variation == "nominal" and self.nominal_only:
+                continue
             name = self.name + "_" + variation
+            if self.additive:
+                new_branch_content = events[self.branch_modified] + events[branch]
+            else:
+                new_branch_content = events[branch]
             independent_collections[variation] = awkward.with_field(
                     events,
-                    events[branch],
+                    new_branch_content,
                     self.branch_modified
             )
 
@@ -519,6 +568,10 @@ class SystematicWithIndependentCollection(Systematic):
         )(**kwargs)
 
         for variation, branch in variations.items():
+            if variation == "nominal" and not self.modify_nominal:
+                continue
+            if not variation == "nominal" and self.nominal_only:
+                continue 
             name = self.name + "_" + variation
             independent_collections[variation] = awkward.with_field(
                     events,

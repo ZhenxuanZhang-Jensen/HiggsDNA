@@ -34,6 +34,11 @@ pip install -e .
 ```  
 this prevents the need to run the installation step every time a change is performed.
 
+If you notice issues with the ```conda pack``` command for creating the tarball, try updating and cleaning your environment with (after running ```conda activate higgs-dna```):
+```
+conda env update --file environment.yml --prune
+```
+
 ## Development Guidelines and Contribution
 Here we summarize some general guidelines for developers and contributors.
 

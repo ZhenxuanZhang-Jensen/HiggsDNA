@@ -61,8 +61,7 @@ class TTHTagger(Tagger):
         n_leptons = awkward.num(electrons) + awkward.num(muons)
         n_jets = awkward.num(jets)
 
-        dipho_pt_requirement = syst_events.Diphoton.pt > 100
-        dipho_pt_cut = awkward.num(syst_events.Diphoton[dipho_pt_requirement]) >= 1
+        dipho_pt_cut = syst_events.Diphoton.pt > 100
 
         tth_leptonic_presel = (n_leptons >= 1) & (n_jets >= 2)
         tth_hadronic_presel = (n_leptons == 0) & (n_jets >= 4)

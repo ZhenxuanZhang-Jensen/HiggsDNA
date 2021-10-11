@@ -2,16 +2,18 @@
 #   1. Decide how we want to handle events with more than one diphoton candidate.
 #       - see description in diphoton_tagger.py
 
-
+import sys
 import numpy
 import json
 import awkward
 import os
+import importlib
 
 import logging
 logger = logging.getLogger(__name__)
 
-from higgs_dna.taggers.tagger import Tagger, NOMINAL_TAG
+from higgs_dna.constants import NOMINAL_TAG
+from higgs_dna.taggers.tagger import Tagger
 from higgs_dna.utils import awkward_utils
 
 class TagSequence():
@@ -22,45 +24,57 @@ class TagSequence():
     :type events: dict or awkward.Array
     :param weight_variations: list of weight_variations to save for nominal set of events
     :type weight_variations: list
-    :param tag_list: list of lists of :class:`higgs-dna.taggers.tagger.Tagger` objects
+    :param tag_list: list of lists of higgs_dna.taggers.tagger.Tagger objects or list of lists of dicts 
     :type tag_list: list
     :param ext: string to identify the output files from this :class:`higgs-dna.taggers.tag_sequence.TagSequence` object
     :type ext: str, optional
     """
-    def __init__(self, tag_list):
-        self.tag_list = tag_list
+    def __init__(self, tag_list, name = "default", sample = None):
+        self.name = name
+        self.sample = sample
+
+        self.tag_list = []
         self.selections = {}
         self.summary = {}
+
             
-        logger.info("Creating tag sequence with the following tags and priority:")
+        logger.info("[TagSequence : __init__] Creating tag sequence with the following tags and priority:")
+        for i, tag_set in enumerate(tag_list):
+            m_tag_set = []
+            if not isinstance(tag_set, list): # if not already given as a list, cast as a list of one tagger
+                tag_set = [tag_set]
+            # Make sure we only have >1 taggers if it is the last step in tag sequence
+            if len(tag_set) > 1:
+                if i != len(tag_list) - 1:
+                    logger.exception("[TagSequence : __init__] A list of tags should only be given as the very last step of the tag sequence.")
+                    raise ValueError()
 
-        # Enforce that the tag_list is a list where each entry is either a Tagger object or list of Tagger objects
-        for i, tag_set in enumerate(self.tag_list):
-            if isinstance(tag_set, list):
-                if len(tag_set) > 1:
-                    if i != len(self.tag_list) - 1:
-                        # It only makes sense to have a list of multiple tags with possible overlap in the very last step.
-                        message = "A list of tags should only be given as the very last step of the tag sequence."
-                        logger.exception(message)
-                        raise TypeError(message)
-                    for idx, tagger in enumerate(tag_set):
-                        if not isinstance(tagger, Tagger):
-                            message = "tag_list must be a list where each entry is either a Tagger object or list of Tagger objects"
-                            logger.exception(message)
-                            raise TypeError(message)
-                        logger.info("\tTagger: %s, priority: %d" % (tagger.name, idx))
+            for j, tagger in enumerate(tag_set):
+                if isinstance(tagger, dict):
+                    m_tagger = self.create_tagger(tagger)
+                elif isinstance(tagger, Tagger):
+                    m_tagger = tagger
                 else:
-                    tagger = tag_set[0]
-                    logger.info("\tTagger: %s (common to all subsequent tags)" % (tagger.name, idx))
+                    logger.exception("[TagSequence : __init__] Each entry in a tag set must either be a dict (from which we construct a Tagger) or a Tagger instance, not '%s' as you have provided for the %d-th tagger in the %d-th tag set." % (str(type(tagger)), j, i))
+                    raise TypeError()
+                m_tag_set.append(m_tagger)
 
-            elif isinstance(tag_set, Tagger):
-                self.tag_list[i] = [tag_set] # make this a list of 1 tagger (for consistency later on)
-                logger.info("\tTagger: %s (common to all subsequent tags)" % (tag_set.name))
+            self.tag_list.append(m_tag_set)
+            logger.info("[TagSequence : __init__] The %d-th tag set has taggers %s (listed in order priority will be given)." % (i, str([t.name for t in m_tag_set])))
 
-            else:
-                message = "tag_list must be a list where each entry is either a Tagger object or list of Tagger objects"
-                logger.exception(message)
-                raise TypeError(message)
+
+    def create_tagger(self, config):
+        module = importlib.import_module(config["module_name"])
+        
+        if "kwargs" not in config.keys():
+            config["kwargs"] = { "name" : "my_" + config["tagger"] }
+        
+        tagger = getattr(
+            module,
+            config["tagger"]
+        )(**config["kwargs"])
+
+        return tagger
 
 
     def run(self, events):
@@ -111,6 +125,7 @@ class TagSequence():
         for idx, tagger in enumerate(tag_list):
             self.selections[tagger.name], self.selected_events = tagger.run(self.selected_events)
             self.summary[tagger.name] = { "priority" : idx }
+
             for name in self.selections[tagger.name].keys():
                 self.summary[tagger.name][name] = { 
                             "n_events_pre_overlap_removal" : int(awkward.sum(self.selections[tagger.name][name]))
@@ -156,7 +171,7 @@ class TagSequence():
         self.tag_idx_map = {}
         for idx, tagger in enumerate(tag_list):
             self.tag_idx_map[tagger.name] = idx
-        
+
         for syst_tag, syst_events in self.selected_events.items(): 
             tag_idx = numpy.ones_like(awkward.to_numpy(syst_events.run)) * -1
             for tagger_name, idx in self.tag_idx_map.items():

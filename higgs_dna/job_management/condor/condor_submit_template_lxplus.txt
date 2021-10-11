@@ -1,0 +1,16 @@
+should_transfer_files = Yes
+transfer_input_files    = CONDA_TARFILE, GRID_PROXY
+executable = EXECUTABLE
+output = OUTPUT
+error = ERROR
+log = LOG
+
+RequestMemory = 4096
+RequestDisk = 10000
+RequestCpus = 1
+
+JobBatchName = BATCH_NAME
++JobFlavour = "espresso"
++OnExitHold   = ExitStatus != 0
+getenv        = True
+queue 1

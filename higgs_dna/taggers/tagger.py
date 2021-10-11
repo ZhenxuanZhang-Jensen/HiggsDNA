@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 from higgs_dna.utils import misc_utils
 
-NOMINAL_TAG = "nominal"
+from higgs_dna.constants import NOMINAL_TAG
 
 class Tagger():
     """
@@ -18,9 +18,13 @@ class Tagger():
     :param logger: logger to print out various levels of diagnostic info 
     :type logger: logging.getLogger() 
     """
-    def __init__(self, name, options):
+    def __init__(self, name, options = {}, sample = None):
         self.name = name
         self.options = options
+        self.sample = sample
+        if self.sample is not None:
+            self.is_data = sample.is_data
+            self.year = sample.year
 
         self.selection = {}
         self.events = {}
@@ -47,7 +51,7 @@ class Tagger():
             self.selection[syst_tag] = selection
             self.events[syst_tag] = syst_events_updated
 
-            logger.debug("[Tagger] %s : event set : %s : %d (%d) events before (after) selection" % (self.name, syst_tag, len(syst_events), len(syst_events[self.selection[syst_tag]])))
+            logger.debug("[Tagger] %s : event set : %s : %d (%d) events before (after) selection" % (self.name, syst_tag, len(syst_events), len(syst_events_updated[self.selection[syst_tag]])))
 
         return self.selection, self.events
 

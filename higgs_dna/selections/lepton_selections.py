@@ -15,16 +15,15 @@ def select_electrons(electrons, diphotons, options, tagger = None):
     eta_cut = abs(electrons.eta) < 2.4
     id_cut = electrons.mvaFall17V2Iso_WP90 == True
 
-    dr_lead_pho_cut = object_selections.delta_R(electrons, diphotons.LeadPhoton, 0.2)
-    dr_sublead_pho_cut = object_selections.delta_R(electrons, diphotons.SubleadPhoton, 0.2)
+    dr_pho_cut = object_selections.delta_R(electrons, diphotons.Photon, 0.2)
 
-    electron_cut = pt_cut & eta_cut & id_cut & dr_lead_pho_cut & dr_sublead_pho_cut
+    electron_cut = pt_cut & eta_cut & id_cut & dr_pho_cut
 
     # For diagnostic info
     if tagger is not None:
         tagger.register_cuts(
-                names = ["pt", "eta", "id", "dr_lead_photon", "dr_sublead_photon", "all"],
-                results = [pt_cut, eta_cut, id_cut, dr_lead_pho_cut, dr_sublead_pho_cut, electron_cut],
+                names = ["pt", "eta", "id", "dr_photons", "all"],
+                results = [pt_cut, eta_cut, id_cut, dr_pho_cut, electron_cut],
                 cut_type = "electron"
         )
 
@@ -39,15 +38,14 @@ def select_muons(muons, diphotons, options, tagger = None):
     eta_cut = abs(muons.eta) < 2.4
     id_cut = muons.mediumId == True
 
-    dr_lead_pho_cut = object_selections.delta_R(muons, diphotons.LeadPhoton, 0.2)
-    dr_sublead_pho_cut = object_selections.delta_R(muons, diphotons.SubleadPhoton, 0.2)
+    dr_pho_cut = object_selections.delta_R(muons, diphotons.Photon, 0.2)
 
-    muon_cut = pt_cut & eta_cut & id_cut & dr_lead_pho_cut & dr_sublead_pho_cut
+    muon_cut = pt_cut & eta_cut & id_cut & dr_pho_cut
 
     if tagger is not None:
         tagger.register_cuts(
-                names = ["pt", "eta", "id", "dr_lead_photon", "dr_sublead_photon", "all"],
-                results = [pt_cut, eta_cut, id_cut, dr_lead_pho_cut, dr_sublead_pho_cut, muon_cut],
+                names = ["pt", "eta", "id", "dr_photons", "all"],
+                results = [pt_cut, eta_cut, id_cut, dr_pho_cut, muon_cut],
                 cut_type = "muon"
         )
 

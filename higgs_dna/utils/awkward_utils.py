@@ -20,10 +20,12 @@ def missing_fields(array, fields):
 
     missing_fields = []
 
-    for field in fields:
+    for field in fields: 
         if isinstance(field, str):
             if field not in array.fields:
                 missing_fields.append(field)
+        elif isinstance(field, list):
+            field = tuple(field)
         elif isinstance(field, tuple):
             sub_array = array
             for sub_field in field:
@@ -94,6 +96,55 @@ def add_field(events, name, data, overwrite = False):
         logger.exception(message)
         raise TypeError(message)
     
+
+def add_object_fields(events, name, objects, n_objects, dummy_value = -999., fields = "all", overwrite = False):
+    """
+    For a collection of jagged-length objects (e.g. jets or leptons),
+    add fixed-length flat fields to the events array, storing information for each of the
+    first n_objects objects in each event, and filling missing events with dummy_value.
+
+    For example add_object_fields(events, "jet", selected_jets, 4) will add every field belonging to the 
+    selected_jets record as individual entries for each of the first four jets:
+    events.jet_1_pt
+    events.jet_1_eta
+    ...
+    events.jet_4_phi
+    where events with less than 4 jets will receive values of the dummy_value, -999.
+
+    :param events: base events array which you want to add a field to
+    :type events: awkward.highlevel.Array
+    :param name: prefix to give the flattended arrays made from the original jagged record
+    :type name: str
+    :param objects: jagged array or record
+    :type objects: awkward.highlevel.Array
+    :param n_objects: number of objects to store for each event
+    :type n_objects: int
+    :param dummy_value: dummy value to give for events with less than n_objects objects
+    :type dummy_value: float, defaults to -999
+    :param fields: which fields in the <objects> record to add to the events array
+    :type fields: str, list, defaults to "all"
+    :param overwrite: whether to overwrite this field in events (only applicable if it already exists)
+    :type overwrite: bool
+    """
+
+    padded_objects = awkward.pad_none(objects, n_objects, clip=True)
+    if isinstance(fields, str):
+        if fields == "all":
+            fields = objects.fields
+    elif not isinstance(fields, list):
+        message = "[awkward_utils.py : add_object_fields] argument <fields> should either be a string 'all' to save all fields in the original record, or a list of fields which is a subset of the fields in the original record, not '%s' as you have passed." % (str(type(fields)))
+        logger.exception(message)
+        raise TypeError(message)
+
+    for field in fields:
+        for i in range(n_objects):
+            add_field(
+                events = events,
+                name = "%s_%d_%s" % (name, i+1, field),
+                data = awkward.fill_none(padded_objects[field][:,i], dummy_value),
+                overwrite = overwrite
+            )
+
 
 def create_record(events, name, data, overwrite):
     """
