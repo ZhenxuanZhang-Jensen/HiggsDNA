@@ -21,7 +21,6 @@ setuptools.setup(
         "higgs_dna/systematics",
         "higgs_dna/utils"
     ],
-    scripts=["scripts/run_taggers.py"],
     install_requires=get_dependencies("environment.yml"),
     python_requires=">=3.6",
 )

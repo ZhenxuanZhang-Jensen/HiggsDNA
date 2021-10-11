@@ -126,3 +126,4 @@ dmypy.json
 
 # tagger output files
 examples/output/
+scripts/output/
