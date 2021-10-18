@@ -331,7 +331,7 @@ class AnalysisManager():
                 for idx, x in enumerate(task_save_branches):
                     if isinstance(x, list):
                         for y in x:
-                            if "weight" in y or "gen" in y or "Gen" in y:
+                            if "weight" in y or "gen" in y or "Gen" in y or "hadronFlavour" in y:
                                 task_save_branches.remove(x)
             else:
                 task_branches = [x for x in self.branches if not ("HLT" in x)]
