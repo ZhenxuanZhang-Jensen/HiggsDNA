@@ -7,7 +7,7 @@ The installation procedure consists in the following steps:
   
 **1. Clone this repository**  
 ```  
-git clone https://gitlab.cern.ch/HiggsDNA-project/HiggsDNA  
+git clone --recursive https://gitlab.cern.ch/HiggsDNA-project/HiggsDNA  
 cd HiggsDNA  
 ```  
 **2. Install dependencies**  
@@ -18,6 +18,12 @@ ge-environments.html) by running:
 conda env create -f environment.yml  
 ```  
 Please note that the field ```python>=3.6``` will create an environment with the most recent stable version of Python. Change it to suite your needs (but still matching the requirement of Python>=3.6).  
+
+One additional package, `correctionlib`, must be installed via `pip`, rather than `conda`. Run
+```
+setup.sh
+```
+to install this script.
   
 **3. Install ```higgs_dna```**  
   
