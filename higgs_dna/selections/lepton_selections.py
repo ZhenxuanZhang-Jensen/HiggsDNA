@@ -5,50 +5,92 @@
 
 import awkward
 
+import logging
+logger = logging.getLogger(__name__)
+
 from higgs_dna.selections import object_selections
+from higgs_dna.utils import misc_utils
 
-def select_electrons(electrons, diphotons, options, tagger = None):
+DEFAULT_ELECTRONS = {
+        "pt" : 10.0,
+        "eta" : 2.4,
+        "dxy" : 0.045,
+        "dz" : 0.2,
+        "id" : "WP90",
+        "dr_photons" : 0.2
+}
+
+def select_electrons(electrons, options, clean, name = "none", tagger = None):
     """
-    TODO
+
     """
-    pt_cut = electrons.pt > options["pt"]
-    eta_cut = abs(electrons.eta) < 2.4
-    id_cut = electrons.mvaFall17V2Iso_WP90 == True
+    options = misc_utils.update_dict(
+        original = DEFAULT_ELECTRONS,
+        new = options
+    )
 
-    dr_pho_cut = object_selections.delta_R(electrons, diphotons.Photon, 0.2)
+    tagger_name = "none" if tagger is None else tagger.name
 
-    electron_cut = pt_cut & eta_cut & id_cut & dr_pho_cut
+    standard_cuts = object_selections.select_objects(electrons, options, clean, name, tagger)
 
-    # For diagnostic info
+    if options["id"] == "WP90":
+        id_cut = (electrons.mvaFall17V2Iso_WP90 == True) | ((electrons.mvaFall17V2noIso_WP90 == True) & (electrons.pfRelIso03_all < 0.3)) 
+    elif not options["id"] or options["id"].lower() == "none":
+        id_cut = electrons.pt > 0.
+    else:
+        logger.warning("[select_electrons] : Tagger '%s', id cut '%s' not recognized, not applying an ID cut." % (str(tagger), options["id"]))
+        id_cut = electrons.pt > 0. 
+
+    all_cuts = standard_cuts & id_cut
+
     if tagger is not None:
         tagger.register_cuts(
-                names = ["pt", "eta", "id", "dr_photons", "all"],
-                results = [pt_cut, eta_cut, id_cut, dr_pho_cut, electron_cut],
-                cut_type = "electron"
+                names = ["standard object cuts", "id cut", "all cuts"],
+                results = [standard_cuts, id_cut, all_cuts],
+                cut_type = name
         )
 
-    return electron_cut
+    return all_cuts
 
 
-def select_muons(muons, diphotons, options, tagger = None):
+DEFAULT_MUONS = {
+        "pt" : 5.0,
+        "eta" : 2.5,
+        "dxy" : 0.045,
+        "dz" : 0.2,
+        "id" : "medium",       
+        "rel_iso" : 0.3,
+        "dr_photons" : 0.2
+}
+
+def select_muons(muons, options, clean, name = "none", tagger = None):
     """
-    TODO
+
     """
-    pt_cut = muons.pt > 25
-    eta_cut = abs(muons.eta) < 2.4
-    id_cut = muons.mediumId == True
+    options = misc_utils.update_dict(
+        original = DEFAULT_MUONS,
+        new = options
+    )
+    
+    tagger_name = "none" if tagger is None else tagger.name
 
-    dr_pho_cut = object_selections.delta_R(muons, diphotons.Photon, 0.2)
+    standard_cuts = object_selections.select_objects(muons, options, clean, name, tagger)
 
-    muon_cut = pt_cut & eta_cut & id_cut & dr_pho_cut
+    if options["id"] == "medium":
+        id_cut = muons.mediumId == True
+    elif not options["id"] or options["id"].lower() == "none":
+        id_cut = muons.pt > 0.
+    else:
+        logger.warning("[select_muons] : Tagger '%s', id cut '%s' not recognized, not applying an ID cut." % (str(tagger), options["id"]))
+        id_cut = muons.pt > 0.
+
+    all_cuts = standard_cuts & id_cut
 
     if tagger is not None:
         tagger.register_cuts(
-                names = ["pt", "eta", "id", "dr_photons", "all"],
-                results = [pt_cut, eta_cut, id_cut, dr_pho_cut, muon_cut],
-                cut_type = "muon"
+                names = ["standard object cuts", "id cut", "all cuts"],
+                results = [standard_cuts, id_cut, all_cuts],
+                cut_type = name
         )
 
-    return muon_cut
-
-
+    return all_cuts

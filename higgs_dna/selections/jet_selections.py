@@ -5,24 +5,39 @@
 
 import awkward
 
+import logging
+logger = logging.getLogger(__name__)
+
 from higgs_dna.selections import object_selections
+from higgs_dna.utils import misc_utils
 
-def select_jets(jets, diphotons, muons, electrons, options, tagger = None):
-    pt_cut = jets.pt > 25
-    eta_cut = abs(jets.eta) < 2.4
+DEFAULT_JETS = {
+    "pt" : 25.0,
+    "eta" : 2.4
+}
 
-    dr_pho_cut = object_selections.delta_R(jets, diphotons.Photon, 0.4)
+def select_jets(jets, options, clean, name = "none", tagger = None):
+    """
 
-    dr_electrons_cut = object_selections.delta_R(jets, electrons, 0.4)
-    dr_muons_cut = object_selections.delta_R(jets, muons, 0.4)
+    """
+    options = misc_utils.update_dict(
+        original = DEFAULT_JETS,
+        new = options
+    )
 
-    jet_cut = pt_cut & eta_cut & dr_pho_cut & dr_electrons_cut & dr_muons_cut
+    tagger_name = "none" if tagger is None else tagger.name 
+
+    standard_cuts = object_selections.select_objects(jets, options, clean, name, tagger)
+
+    # TODO: jet ID
+
+    all_cuts = standard_cuts
 
     if tagger is not None:
         tagger.register_cuts(
-                names = ["pt", "eta", "dr_photons", "dr_electrons", "dr_muons", "all"],
-                results = [pt_cut, eta_cut, dr_pho_cut, dr_electrons_cut, dr_muons_cut, jet_cut],
-                cut_type = "jet"
-        ) 
+            names = ["all cuts"],
+            results = [all_cuts],
+            cut_type = name
+        )
 
-    return jet_cut
+    return all_cuts 
