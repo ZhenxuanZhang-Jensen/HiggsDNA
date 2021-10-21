@@ -177,7 +177,7 @@ class LocalManager(JobsManager):
     def __init__(self, **kwargs):
         super(LocalManager, self).__init__()
 
-        self.n_cores = kwargs.get("n_cores", 6)
+        self.n_cores = kwargs.get("n_cores", 18)
         self.n_running_jobs = 0
         self.job_type = LocalJob
 

@@ -357,11 +357,15 @@ class AnalysisManager():
             function = copy.deepcopy(self.config["function"])
 
             # 6. Job Details
+            if "Data" in name or "HHggTauTau" in name:
+                fpo = 25
+            else:
+                fpo = 10
             task = Task(
                     name = name,
                     output_dir = output_dir,
                     batch_output_dir = batch_output_dir,
-                    n_files_per_job = 10 if "Data" in name else 3, # TODO: assign files per job in more intelligent way 
+                    n_files_per_job = fpo, 
                     files = sample.files,
                     config = {
                         "sample" : task_sample,
