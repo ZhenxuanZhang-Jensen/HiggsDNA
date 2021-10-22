@@ -144,7 +144,7 @@ class Systematic():
                 if hasattr(self, arg):
                     kwargs[arg] = getattr(self, arg)
                 else:
-                    message = "[Systematic : get_function_kwargs] Systematic: %s, for function '%s' from module <%s>, we found an argument %s that is not present as an attribute of this class and we did not know how to otherwise set this argument. This may lead to unintended behavior or crashes!" % (self.name, self.function["name"], self.function["module"], arg)
+                    message = "[Systematic : get_function_kwargs] Systematic: %s, for function '%s' from module <%s>, we found an argument '%s' that is not present as an attribute of this class and we did not know how to otherwise set this argument. This may lead to unintended behavior or crashes!" % (self.name, self.function["name"], self.function["module"], arg)
                     logger.warning(message)
 
         logger.debug("[Systematic : get_function_kwargs] Systematic: %s, for function '%s' from module <%s>, we are passing arguments as:" % (self.name, self.function["name"], self.function["module"]))
