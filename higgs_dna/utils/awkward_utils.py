@@ -97,7 +97,7 @@ def add_field(events, name, data, overwrite = False):
         raise TypeError(message)
     
 
-def add_object_fields(events, name, objects, n_objects, dummy_value = -999., fields = "all", overwrite = False):
+def add_object_fields(events, name, objects, n_objects, dummy_value = -999., fields = "all", weights = False, overwrite = False):
     """
     For a collection of jagged-length objects (e.g. jets or leptons),
     add fixed-length flat fields to the events array, storing information for each of the
@@ -123,6 +123,8 @@ def add_object_fields(events, name, objects, n_objects, dummy_value = -999., fie
     :type dummy_value: float, defaults to -999
     :param fields: which fields in the <objects> record to add to the events array
     :type fields: str, list, defaults to "all"
+    :param weights: store fields containing 'weight'. Set to false by default to avoid cloning long lists of up/down SF variations
+    :type weights: bool
     :param overwrite: whether to overwrite this field in events (only applicable if it already exists)
     :type overwrite: bool
     """
@@ -137,6 +139,8 @@ def add_object_fields(events, name, objects, n_objects, dummy_value = -999., fie
         raise TypeError(message)
 
     for field in fields:
+        if "weight" in field and not weights:
+            continue
         for i in range(n_objects):
             add_field(
                 events = events,
