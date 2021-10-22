@@ -21,9 +21,26 @@ DEEPJET_RESHAPE_SF = {
     "2018" : "deepJet_106XUL18SF_shape"
 }
 
-DEEPJET_VARIATIONS = [
-    "up_jes", "down_jes"
-]
+DEEPJET_VARIATIONS = { 
+    "up_jes" : [0, 2], # applicable to b (0) and light (2) jets, but not charm (1)
+    "up_lf" : [0],
+    "up_hfstats1" : [0],
+    "up_hfstats2" : [0],
+    "up_cferr1" : [1],
+    "up_cferr2" : [1],
+    "up_hf" : [2],
+    "up_lfstats1" : [2],
+    "up_lfstats2" : [2],
+    "down_jes" : [0, 2], # applicable to b (0) and light (2) jets, but not charm (1)
+    "down_lf" : [0],
+    "down_hfstats1" : [0],
+    "down_hfstats2" : [0],
+    "down_cferr1" : [1],
+    "down_cferr2" : [1],
+    "down_hf" : [2],
+    "down_lfstats1" : [2],
+    "down_lfstats2" : [2],
+}
 
 def btag_deepjet_reshape_sf(events, year, central_only, input_collection):
     """
@@ -54,19 +71,11 @@ def btag_deepjet_reshape_sf(events, year, central_only, input_collection):
     ) 
 
     # Flatten jets then convert to numpy for compatibility with correctionlib
-    n_jets = awkward.num(jets) 
+    n_jets = awkward.num(jets) # save n_jets to convert back to jagged format at the end 
     jets_flattened = awkward.flatten(jets)
     
     jet_flavor = awkward.to_numpy(jets_flattened["flavor"])
 
-    # Jet central SFs are identically 1 for c-jets and undefined for the systematic variations
-    # so we create a new array with no values of 1 so that calling the correctionlib evaluator does not crash
-    # TODO: follow up with BTV experts on this
-    jet_flavor_no_c = numpy.where(
-            jet_flavor == 1,
-            numpy.zeros_like(jet_flavor),
-            jet_flavor
-    )
     jet_abs_eta = numpy.clip(
         awkward.to_numpy(abs(jets_flattened.eta)),
         0.0,
@@ -81,22 +90,39 @@ def btag_deepjet_reshape_sf(events, year, central_only, input_collection):
 
     variations_list = ["central"]
     if not central_only:
-        variations_list += DEEPJET_VARIATIONS
+        variations_list += DEEPJET_VARIATIONS.keys()
 
     variations = {}
+
+    central_sf = evaluator[DEEPJET_RESHAPE_SF[year]].evalv(
+            "central",
+            jet_flavor,
+            jet_abs_eta,
+            jet_pt,
+            jet_disc
+    )
+
+    variations["central"] = awkward.unflatten(central_sf, n_jets)
+
     for var in variations_list:
-        variations[var] = numpy.where(
-            jet_flavor == 1, # SFs seem to be identically 1 for c-jets
-            numpy.ones_like(jet_flavor),
-            evaluator[DEEPJET_RESHAPE_SF[year]].evalv(
+        if var == "central":
+            continue
+        applicable_flavors = DEEPJET_VARIATIONS[var] # the up/down variations are only applicable to specific flavors of jet
+        var_sf = central_sf 
+        for f in applicable_flavors:
+            var_sf = numpy.where(
+                jet_flavor == f,
+                evaluator[DEEPJET_RESHAPE_SF[year]].evalv(
                     var,
-                    jet_flavor_no_c,
+                    numpy.ones_like(jet_flavor) * f,
                     jet_abs_eta,
                     jet_pt,
                     jet_disc
+                ),
+                var_sf
             )
-        )
-        variations[var] = awkward.unflatten(variations[var], n_jets)
+
+        variations[var] = awkward.unflatten(var_sf, n_jets) # make jagged again
 
     return variations
 
