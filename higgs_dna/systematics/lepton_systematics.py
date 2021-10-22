@@ -1,11 +1,88 @@
 import awkward
 import numpy
 
+from correctionlib import _core
+
 import logging
 logger = logging.getLogger(__name__)
 
-from higgs_dna.utils import awkward_utils
+from higgs_dna.utils import awkward_utils, misc_utils
 from higgs_dna.systematics.utils import systematic_from_bins
+
+ELECTRON_ID_SF_FILE = {
+    "2016" : "jsonpog-integration/POG/EGM/2016postVFP_UL/electron.json",
+    "2017" : "jsonpog-integration/POG/EGM/2017_UL/electron.json",
+    "2018" : "jsonpog-integration/POG/EGM/2018_UL/electron.json"
+}
+
+ELECTRON_ID_SF = {
+    "2016" : "2016postVFP_UL",
+    "2017" : "2017",
+    "2018" : "2018"
+}
+
+def electron_id_sf(events, year, central_only, input_collection, working_point = "none"):
+    """
+    See:
+        - https://cms-nanoaod-integration.web.cern.ch/commonJSONSFs/EGM_electron_Run2_UL/EGM_electron_2017_UL.html
+        - https://gitlab.cern.ch/cms-nanoAOD/jsonpog-integration/-/blob/master/examples/electronExample.py
+    """
+
+    required_fields = [
+        (input_collection, "eta"), (input_collection, "pt")
+    ]
+
+    missing_fields = awkward_utils.missing_fields(events, required_fields)
+
+    evaluator = _core.CorrectionSet.from_file(misc_utils.expand_path(ELECTRON_ID_SF_FILE[year]))
+
+    electrons = events[input_collection]
+
+    # Flatten electrons then convert to numpy for compatibility with correctionlib
+    n_electrons = awkward.num(electrons)
+    electrons_flattened = awkward.flatten(electrons)
+
+    ele_eta = numpy.clip(
+        awkward.to_numpy(electrons_flattened.eta),
+        -2.49999,
+        2.49999 # SFs only valid up to eta 2.5
+    )
+
+    ele_pt = numpy.clip(
+        awkward.to_numpy(electrons_flattened.pt),
+        10.0, # SFs only valid for pT >= 10.0
+        499.999 # and pT < 500.
+    )
+
+    # Calculate SF and syst
+    variations = {}
+    sf = evaluator["UL-Electron-ID-SF"].evalv(
+            ELECTRON_ID_SF[year],
+            "sf",
+            working_point,
+            ele_eta,
+            ele_pt
+    )
+    variations["central"] = awkward.unflatten(sf, n_electrons)
+
+    if not central_only:
+        syst = evaluator["UL-Electron-ID-SF"].evalv(
+                ELECTRON_ID_SF[year],
+                "syst",
+                working_point,
+                ele_eta,
+                ele_pt
+        )
+        variations["up"] = variations["central"] + awkward.unflatten(syst, n_electrons)
+        variations["down"] = variations["central"] - awkward.unflatten(syst, n_electrons)
+
+
+    return variations
+
+
+
+
+
 
 DUMMY_LEPTON_SFs = {
     "variables" : ["lepton_pt", "lepton_eta"],
