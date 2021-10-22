@@ -150,6 +150,9 @@ class SystematicsProducer():
                                 weight_syst.modifies_taggers = syst_info["modifies_taggers"][target_collection]
                             elif isinstance(syst_info["modifies_taggers"], list): # you gave a list of taggers
                                 weight_syst.modifies_taggers = syst_info["modifies_taggers"]
+                        if "kwargs" in syst_info.keys():
+                            for kwarg, val in syst_info["kwargs"].items():
+                                setattr(weight_syst, kwarg, val)
 
                         self.weights[syst].append(weight_syst)           
 
@@ -174,6 +177,10 @@ class SystematicsProducer():
 
                     if "modifies_taggers" in syst_info.keys():
                         weight_syst.modifies_taggers = syst_info["modifies_taggers"]
+
+                    if "kwargs" in syst_info.keys():
+                        for kwarg, val in syst_info["kwargs"].items():
+                            setattr(weight_syst, kwarg, val) 
 
                     self.weights[syst].append(weight_syst)
 
