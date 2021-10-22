@@ -102,7 +102,7 @@
     ],
     "samples" : {
         "catalog" : "metadata/samples/hhggtautau.json",
-        "sample_list" : ["HHggTauTau", "ttH_M125"],
+        "sample_list" : ["HHggTauTau", "ttH_M125", "Data", "HH_ggbb", "VH_M125", "VBFH_M125", "ggH_M125"],
         "years" : ["2016", "2017", "2018"] 
     }
 }
