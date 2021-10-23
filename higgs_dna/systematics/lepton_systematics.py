@@ -16,7 +16,7 @@ ELECTRON_ID_SF_FILE = {
 }
 
 ELECTRON_ID_SF = {
-    "2016" : "2016postVFP_UL",
+    "2016" : "2016postVFP",
     "2017" : "2017",
     "2018" : "2018"
 }
