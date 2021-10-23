@@ -326,7 +326,7 @@ class AnalysisManager():
 
             # 1. Branches to load/save
             if sample.is_data:
-                task_branches = [x for x in self.branches if not ("gen" in x or "Gen" in x)]
+                task_branches = [x for x in self.branches if not ("gen" in x or "Gen" in x or "hadronFlavour" in x)]
                 task_save_branches = [x for x in self.save_branches if not ("weight" in x or "gen" in x or "Gen" in x)]
                 for idx, x in enumerate(task_save_branches):
                     if isinstance(x, list):
