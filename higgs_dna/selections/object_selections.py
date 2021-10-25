@@ -32,10 +32,10 @@ def select_objects(objects, cuts = {}, clean = {}, name = "none", tagger = None)
         if cut == "pt":
             cut_ = objects.pt > value
             cut_names.append("pt > %.4f" % value)
-        if cut == "eta":
-            cut_ = abs(objects.eta) < value
+        if cut in ["eta", "dxy", "dz"]:
+            cut_ = abs(objects[cut]) < value
             cut_names.append("|eta| < %.4f" % value)
-        if cut in ["mini_rel_iso", "ch_rel_iso", "dxy", "dz"]:
+        if cut in ["mini_rel_iso", "ch_rel_iso"]:
             cut_ = objects[cut] < value
             cut_names.append("%s < %.4f" % (cut, value))
 
@@ -126,7 +126,7 @@ def compute_delta_R(objects1, n_objects1, objects2, n_objects2, min_dr):
                         pt = objects2[i][k].pt,
                         eta = objects2[i][k].eta,
                         phi = objects2[i][k].phi,
-                        mass = objects2[i][k].mass
+                        mass = objects2[i][k].mass 
                 )
                 dR = obj1.deltaR(obj2)
                 if dR < min_dr:
