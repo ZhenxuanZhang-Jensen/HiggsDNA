@@ -326,7 +326,11 @@ class WeightSystematic(Systematic):
                 awkward.ones_like(weight)
             )
 
-            self.summary[syst_tag]["central"]["frac"] = float(awkward.sum(mask)) / float(len(weight))
+            if len(weight) > 0:
+                self.summary[syst_tag]["central"]["frac"] = float(awkward.sum(mask)) / float(len(weight))
+            else:
+                self.summary[syst_tag]["central"]["frac"] = 0.
+
             if self.summary[syst_tag]["central"]["frac"] < 1.:
                 logger.debug("[WeightSystematic : apply] WeightSystematic: %s, independent collection: %s, per-event weight is applied to %.2f percent of events." % (self.name, syst_tag, self.summary[syst_tag]["central"]["frac"] * 100.))
 
