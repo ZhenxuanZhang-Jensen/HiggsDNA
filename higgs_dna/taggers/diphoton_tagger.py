@@ -246,7 +246,7 @@ class DiphotonTagger(Tagger):
         if options["select_highest_pt_sum"]:
             logger.info("[DiphotonTagger : produce_and_select_diphotons] %s, selecting the highest pt_sum diphoton pair from each event." % (self.name))
             # Sort diphotons by sum_pt
-            events = events[awkward.argsort(events.Diphoton.sumPt, ascending=False)]
+            events = events[awkward.argsort(events.Diphoton.sumPt, ascending=False, axis=1)]
             # Take the highest sum_pt diphoton for each event
             diphotons = awkward.firsts(events) 
             # Remove events with no diphotons
