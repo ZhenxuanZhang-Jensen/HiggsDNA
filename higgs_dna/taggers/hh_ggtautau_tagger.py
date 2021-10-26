@@ -16,7 +16,6 @@ DEFAULT_OPTIONS = {
         "dxy" : 0.045,
         "dz" : 0.2,
         "id" : "WP90",
-        "rel_iso" : 0.3,
         "dr_photons" : 0.2,
         "veto_transition" : True
     },
@@ -26,7 +25,7 @@ DEFAULT_OPTIONS = {
         "dxy" : 0.045,
         "dz" : 0.2,
         "id" : None,
-        "rel_iso" : 0.3,
+        "pfRelIso03_all" : 0.3,
         "dr_photons" : 0.2
     },
     "taus" : {
@@ -265,13 +264,13 @@ class HHggTauTauTagger(Tagger):
 
         # Categories
         cat_1 = n_taus >= 2
-        cat_2 = (n_taus >= 1) & (n_muons >= 1)
-        cat_3 = (n_taus >= 1) & (n_electrons >= 1)
-        cat_4 = (n_muons >= 1) & (n_electrons >= 1)
-        cat_5 = (n_muons >= 2)
-        cat_6 = (n_electrons >= 2)
-        cat_7 = (n_taus >= 1) & (n_iso_tracks == 1)
-        cat_8 = (n_taus >= 1)
+        cat_2 = (n_taus == 1) & (n_muons >= 1)
+        cat_3 = (n_taus == 1) & (n_electrons >= 1)
+        cat_4 = (n_muons >= 1) & (n_electrons >= 1) & (n_taus == 0)
+        cat_5 = (n_muons >= 2) & (n_taus == 0)
+        cat_6 = (n_electrons >= 2) & (n_taus == 0)
+        cat_7 = (n_taus == 1) & (n_iso_tracks >= 1)
+        cat_8 = (n_taus == 1) & (n_muons == 0) & (n_electrons == 0) & (n_iso_tracks == 0)
 
         # Tau candidates
         syst_events = awkward.with_field(

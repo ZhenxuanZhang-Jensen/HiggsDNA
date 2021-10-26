@@ -64,8 +64,9 @@ DEFAULT_MUONS = {
         "dxy" : 0.045,
         "dz" : 0.2,
         "id" : "medium",       
-        "rel_iso" : 0.3,
-        "dr_photons" : 0.2
+        "pfRelIso03_all" : 0.3,
+        "dr_photons" : 0.2,
+        "global" : True
 }
 
 def select_muons(muons, options, clean, name = "none", tagger = None):
@@ -89,12 +90,17 @@ def select_muons(muons, options, clean, name = "none", tagger = None):
         logger.warning("[select_muons] : Tagger '%s', id cut '%s' not recognized, not applying an ID cut." % (str(tagger), options["id"]))
         id_cut = muons.pt > 0.
 
-    all_cuts = standard_cuts & id_cut
+    if options["global"]:
+        global_cut = muons.isGlobal == True
+    else:
+        global_cut = muons.pt > 0
+
+    all_cuts = standard_cuts & id_cut & global_cut
 
     if tagger is not None:
         tagger.register_cuts(
-                names = ["standard object cuts", "id cut", "all cuts"],
-                results = [standard_cuts, id_cut, all_cuts],
+                names = ["standard object cuts", "id cut", "global_muon cut", "all cuts"],
+                results = [standard_cuts, id_cut, global_cut, all_cuts],
                 cut_type = name
         )
 
