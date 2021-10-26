@@ -15,7 +15,8 @@ DEFAULT_TAUS = {
     "deep_tau_vs_jet" : 8,
     "dr_photons" : 0.2,
     "dr_electrons" : 0.2,
-    "dr_muons" : 0.2
+    "dr_muons" : 0.2,
+    "decay_mode" : True
 }
 
 def select_taus(taus, options, clean, name = "none", tagger = None):
@@ -34,13 +35,18 @@ def select_taus(taus, options, clean, name = "none", tagger = None):
     deep_tau_vs_ele_cut = taus.idDeepTau2017v2p1VSe >= options["deep_tau_vs_ele"]
     deep_tau_vs_mu_cut = taus.idDeepTau2017v2p1VSmu >= options["deep_tau_vs_mu"]
     deep_tau_vs_jet_cut = taus.idDeepTau2017v2p1VSjet >= options["deep_tau_vs_jet"]
-    
-    all_cuts = standard_cuts & deep_tau_vs_ele_cut & deep_tau_vs_mu_cut & deep_tau_vs_jet_cut
+ 
+    if options["decay_mode"]:
+        decay_mode_cut = taus.idDecayModeNewDMs == True
+    else:
+        decay_mode_cut = taus.pt > 0
+
+    all_cuts = standard_cuts & deep_tau_vs_ele_cut & deep_tau_vs_mu_cut & deep_tau_vs_jet_cut & decay_mode_cut
 
     if tagger is not None:
         tagger.register_cuts(
-            names = ["standard object cuts", "id_vs_ele", "id_vs_mu", "id_vs_jet", "all cuts"],
-            results = [standard_cuts, deep_tau_vs_ele_cut, deep_tau_vs_mu_cut, deep_tau_vs_jet_cut],
+            names = ["standard object cuts", "id_vs_ele", "id_vs_mu", "id_vs_jet", "decay mode cut", "all cuts"],
+            results = [standard_cuts, deep_tau_vs_ele_cut, deep_tau_vs_mu_cut, deep_tau_vs_jet_cut, decay_mode_cut, all_cuts],
             cut_type = name
         )
 

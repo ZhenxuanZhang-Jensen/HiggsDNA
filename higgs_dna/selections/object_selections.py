@@ -32,10 +32,10 @@ def select_objects(objects, cuts = {}, clean = {}, name = "none", tagger = None)
         if cut == "pt":
             cut_ = objects.pt > value
             cut_names.append("pt > %.4f" % value)
-        if cut == "eta":
-            cut_ = abs(objects.eta) < value
-            cut_names.append("|eta| < %.4f" % value)
-        if cut in ["mini_rel_iso", "ch_rel_iso", "dxy", "dz"]:
+        if cut in ["eta", "dxy", "dz"]:
+            cut_ = abs(objects[cut]) < value
+            cut_names.append("|%s| < %.4f" % (cut, value))
+        if cut in ["pfRelIso03_all", "pfRelIso03_chg"]:
             cut_ = objects[cut] < value
             cut_names.append("%s < %.4f" % (cut, value))
 
