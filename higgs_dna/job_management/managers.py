@@ -4,6 +4,7 @@ import time
 import awkward
 import numpy
 import json
+import glob
 
 import logging
 logger = logging.getLogger(__name__)
@@ -93,7 +94,6 @@ class JobsManager():
                 status_str = status_set[0] if len(status_set) == 1 else "/".join(status_set)
                 message += "\t%d/%d (%.2f percent) jobs %s\n" % (n_jobs, task_info["all"], frac * 100., status_str)
 
-            message += "\n"
             logger.info(message)
 
 
@@ -177,7 +177,7 @@ class LocalManager(JobsManager):
     def __init__(self, **kwargs):
         super(LocalManager, self).__init__()
 
-        self.n_cores = kwargs.get("n_cores", 18)
+        self.n_cores = kwargs.get("n_cores", 8)
         self.n_running_jobs = 0
         self.job_type = LocalJob
 
@@ -237,6 +237,7 @@ class CondorManager(JobsManager):
 
         self.job_type = CondorJob
         self.output_dir = kwargs.get("output_dir")
+        self.batch_output_dir = kwargs.get("batch_output_dir")
         self.submit_all_file = self.output_dir + "/submit_all.txt"
 
         host = do_cmd("hostname")
@@ -365,7 +366,7 @@ class CondorManager(JobsManager):
             logger.info("[CondorManager : prepare_inputs] Making conda pack '%s' with command '%s'" % (self.conda_tarfile, conda_pack_command))
             os.system(conda_pack_command)
 
-            tar_command = "XZ_OPT='-1e -T12' tar -Jc %s -f %s -C %s higgs_dna" % (self.tar_options, self.analysis_tarfile, self.higgs_dna_path)
+            tar_command = "XZ_OPT='-1e -T12' tar -Jc %s -f %s -C %s higgs_dna jsonpog-integration" % (self.tar_options, self.analysis_tarfile, self.higgs_dna_path)
             logger.info("[CondorManager : prepare_inputs] Making analysis tarfile '%s' with command '%s'." % (self.conda_tarfile, tar_command))
 
             t_start_tar = time.time()
@@ -374,6 +375,19 @@ class CondorManager(JobsManager):
             
             tarfile_size = os.path.getsize(self.analysis_tarfile) * (1. / 1024.)**3
             logger.debug("[CondorManager : prepare_inputs] Made tarfile '%s' of size %.3f GB in %.1f s" % (self.analysis_tarfile, tarfile_size, t_elapsed_tar))
+
+        if self.host in ["UCSD"]:
+            self.conda_tarfile_batch = self.batch_output_dir + "/" + "higgs-dna.tar.gz"
+            self.analysis_tarfile_batch = self.batch_output_dir + "/" + "higgs_dna.tar.gz"
+
+            logger.debug("[CondorManager : prepare_inputs] Transferring tarfiles to hadoop directory '%s' so they may be copied with xrd to reduce I/O load on local cluster." % self.batch_output_dir)
+            os.system("cp %s %s" % (self.conda_tarfile, self.conda_tarfile_batch))
+            os.system("cp %s %s" % (self.analysis_tarfile, self.analysis_tarfile_batch))
+
+            logger.debug("[CondorManager : prepare_inputs] Setting replication factor to 30 to increase transfer speed.")
+            os.system("hadoop fs -setrep -R 30 %s" % (self.conda_tarfile_batch.replace("/hadoop","")))
+            os.system("hadoop fs -setrep -R 30 %s" % (self.analysis_tarfile_batch.replace("/hadoop","")))
+ 
 
         # Check grid proxy
         self.proxy = check_proxy()
