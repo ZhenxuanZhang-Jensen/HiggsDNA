@@ -64,6 +64,8 @@ def expand_path(relative_path):
 
     base_path = ""
     for subdir in subdirs:
+        if subdir == "higgs_dna":
+            break
         base_path += subdir + "/"
         if subdir == "HiggsDNA":
             break

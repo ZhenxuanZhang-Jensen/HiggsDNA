@@ -21,6 +21,7 @@ class Job():
         self.name_full = self.name + "_" + str(self.idx)
         self.output_dir = output_dir
         self.batch_output_dir = batch_output_dir
+        self.batch_output_base_dir = "/".join(batch_output_dir.split("/")[:-2]) # remove last subdir to get the base dir
         self.job_batch_output_dir = self.batch_output_dir
 
         self.basepath = do_cmd("pwd").split("HiggsDNA")[0]
@@ -187,7 +188,7 @@ class LocalJob(Job):
 
 
 from higgs_dna.utils.misc_utils import expand_path
-from higgs_dna.constants import CONDOR_EXE_TEMPLATE, CONDOR_SUB_TEMPLATE, CONDOR_STATUS_FLAGS, CONDOR_EXE_TEMPLATE_LXPLUS, CONDOR_SUB_TEMPLATE_LXPLUS
+from higgs_dna.constants import CONDOR_EXE_TEMPLATE, CONDOR_SUB_TEMPLATE, CONDOR_STATUS_FLAGS, CONDOR_EXE_TEMPLATE_LXPLUS, CONDOR_SUB_TEMPLATE_LXPLUS, XRD_REDIRECTOR, GFAL_REDIRECTOR
 
 class CondorJob(Job):
     """
@@ -215,7 +216,7 @@ class CondorJob(Job):
             self.job_python_file = self.python_file.split("/")[-1]
 
             if self.host in ["UCSD"]:
-                self.job_batch_output_dir = self.batch_output_dir.replace("/hadoop/cms/", "davs://redirector.t2.ucsd.edu:1094//")
+                self.job_batch_output_dir = self.batch_output_dir.replace("/hadoop/cms/", GFAL_REDIRECTOR[self.host])
             else:
                 self.job_batch_output_dir = self.batch_output_dir
 
@@ -230,6 +231,8 @@ class CondorJob(Job):
             lines = lines.replace("CONFIG_FILE", self.job_config_file)
             lines = lines.replace("SUMMARY_FILE", self.job_summary_file)
             lines = lines.replace("BATCH_OUTPUT_DIR", self.job_batch_output_dir)
+            lines = lines.replace("XRD_CONDA_TARFILE", self.batch_output_base_dir.replace("/hadoop/cms/", XRD_REDIRECTOR[self.host]) + "/" + self.conda_tarfile.split("/")[-1])
+            lines = lines.replace("XRD_ANALYSIS_TARFILE", self.batch_output_base_dir.replace("/hadoop/cms/", XRD_REDIRECTOR[self.host]) + "/" + self.analysis_tarfile.split("/")[-1])
 
         with open(self.executable, "w") as f_out:
             f_out.write(lines)

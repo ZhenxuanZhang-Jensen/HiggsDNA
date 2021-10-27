@@ -38,6 +38,8 @@ echo "[wrapper] ls-ing files (before running)"
 ls -altrh
 
 # Untar
+xrdcp XRD_CONDA_TARFILE .
+xrdcp XRD_ANALYSIS_TARFILE .
 mkdir higgs-dna
 cd higgs-dna
 mv ../higgs-dna.tar.gz .
