@@ -207,7 +207,7 @@ class AnalysisManager():
             if self.batch_system == "local":
                 self.jobs_manager = LocalManager()
             elif self.batch_system == "HTCondor" or self.batch_system == "condor":
-                self.jobs_manager = CondorManager(output_dir = self.output_dir)
+                self.jobs_manager = CondorManager(output_dir = self.output_dir, batch_output_dir = self.batch_output_dir)
 
             # Create samples manager
             self.sample_manager = SampleManager(**self.config["samples"])

@@ -211,7 +211,10 @@ class Task():
                     self.outputs[syst_tag] = []
                 if job_info["config"]["remote_job"]:
                     output = job_info["config"]["output_dir"] + output
-                self.outputs[syst_tag].append(output)
+                if not job_info["n_events_selected"][syst_tag] > 0: # skip empty parquet files to avoid errors
+                    continue
+                else:
+                    self.outputs[syst_tag].append(output)
 
             performance["time"] += job_info["time"]
             for portion in ["load", "syst", "taggers"]:
