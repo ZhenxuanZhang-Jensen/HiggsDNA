@@ -58,7 +58,7 @@ DEFAULT_ISO_TRACKS = {
     "eta" : 2.5,
     "isPFCandidate" : True,
     "fromPV" : True,
-    "non_lepton" : True
+    "non_lepton" : False
 }
 
 def select_iso_tracks(iso_tracks, options, clean, name = "none", tagger = None):
