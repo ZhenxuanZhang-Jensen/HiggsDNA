@@ -177,7 +177,7 @@ class LocalManager(JobsManager):
     def __init__(self, **kwargs):
         super(LocalManager, self).__init__()
 
-        self.n_cores = kwargs.get("n_cores", 8)
+        self.n_cores = kwargs.get("n_cores", 12)
         self.n_running_jobs = 0
         self.job_type = LocalJob
 
@@ -285,10 +285,7 @@ class CondorManager(JobsManager):
         jobs_to_submit = []
         for task in self.tasks:
             task.process(job_map = self.job_map)
-            jobs_to_submit += [job for job in task.jobs if (job.status == "waiting" or job.status == "failed")]
-
-        for job in jobs_to_submit:
-            job.submit(dry_run = True)
+            jobs_to_submit += [job for job in task.jobs if ((job.status == "waiting" or job.status == "failed") and job.submit(dry_run = True))]
 
         # merge all individual submit files into a single one
         if jobs_to_submit: 
