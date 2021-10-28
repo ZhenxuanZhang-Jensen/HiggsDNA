@@ -125,9 +125,6 @@ class Job():
         if not self.made_executable:
             self.create_executable()
 
-        if dry_run:
-            return False
-
         if self.status == "retired":
             return False
 
@@ -135,6 +132,9 @@ class Job():
             logger.info("[Job : submit] Job '%s_%d' has been submitted %d times, permanently retiring job." % (self.name, self.idx, self.n_attempts))
             self.status = "retired"
             return False
+
+        if dry_run:
+            return True
 
         self.submit_to_batch()
 
