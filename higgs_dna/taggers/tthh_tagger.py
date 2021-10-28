@@ -17,16 +17,16 @@ DEFAULT_OPTIONS = {
         "dxy" : 0.045,
         "dz" : 0.2,
         "id" : "WP90",
-        "rel_iso" : 0.3,
-        "dr_photons" : 0.2
+        "dr_photons" : 0.2,
+        "veto_transition" : True
     },
     "muons" : {
         "pt" : 5.0,
-        "eta" : 2.5,
+        "eta" : 2.4,
         "dxy" : 0.045,
         "dz" : 0.2,
         "id" : "medium",
-        "rel_iso" : 0.3,
+        "pfRelIso03_all" : 0.3,
         "dr_photons" : 0.2
     },
     "taus" : {
@@ -44,8 +44,6 @@ DEFAULT_OPTIONS = {
         "pt" : 10.0,
         "dxy" : 0.2,
         "dz" : 0.1,
-        "ch_iso" : 5.0,
-        "ch_rel_iso" : 0.2,
         "dr_photons" : 0.2,
         "dr_electrons" : 0.2,
         "dr_muons" : 0.2,
