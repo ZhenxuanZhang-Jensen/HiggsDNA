@@ -11,25 +11,25 @@
     "ttHH_ggbb" : {
         "xs" : 2.055e-06,
         "files" : {
-            "2016" : "/home/users/smay/ttHH/ttHH_HHToBBGG_5f_LO_2017_NANO_14May2021/", 
-            "2017" : "/home/users/smay/ttHH/ttHH_HHToBBGG_5f_LO_2017_NANO_14May2021/", 
-            "2018" : "/home/users/smay/ttHH/ttHH_HHToBBGG_5f_LO_2017_NANO_14May2021/"
+            "2016" : "/hadoop/cms/store/user/smay/nanoaod_runII/ttHH_HHToBBGG_5f_LO_2017_NANO_14May2021/", 
+            "2017" : "/hadoop/cms/store/user/smay/nanoaod_runII/ttHH_HHToBBGG_5f_LO_2017_NANO_14May2021/", 
+            "2018" : "/hadoop/cms/store/user/smay/nanoaod_runII/ttHH_HHToBBGG_5f_LO_2017_NANO_14May2021/"
         }
     },
     "ttHH_ggWW" : {
         "xs" : 7.53e-07,
         "files" : {
-            "2016" : "/home/users/smay/ttHH/ttHH_HHToWWGG_5f_LO_2017_NANO_14May2021/",
-            "2017" : "/home/users/smay/ttHH/ttHH_HHToWWGG_5f_LO_2017_NANO_14May2021/",
-            "2018" : "/home/users/smay/ttHH/ttHH_HHToWWGG_5f_LO_2017_NANO_14May2021/" 
+            "2016" : "/hadoop/cms/store/user/smay/nanoaod_runII/ttHH_HHToWWGG_5f_LO_2017_NANO_14May2021/",
+            "2017" : "/hadoop/cms/store/user/smay/nanoaod_runII/ttHH_HHToWWGG_5f_LO_2017_NANO_14May2021/",
+            "2018" : "/hadoop/cms/store/user/smay/nanoaod_runII/ttHH_HHToWWGG_5f_LO_2017_NANO_14May2021/" 
         }
     },
     "ttHH_ggTauTau" : {
         "xs" : 2.21e-07,
         "files" : {
-            "2016" : "/home/users/smay/ttHH/ttHH_HHToTauTauGG_5f_LO_2017_NANO_14May2021/",
-            "2017" : "/home/users/smay/ttHH/ttHH_HHToTauTauGG_5f_LO_2017_NANO_14May2021/",
-            "2018" : "/home/users/smay/ttHH/ttHH_HHToTauTauGG_5f_LO_2017_NANO_14May2021/" 
+            "2016" : "/hadoop/cms/store/user/smay/nanoaod_runII/ttHH_HHToTauTauGG_5f_LO_2017_NANO_14May2021/",
+            "2017" : "/hadoop/cms/store/user/smay/nanoaod_runII/ttHH_HHToTauTauGG_5f_LO_2017_NANO_14May2021/",
+            "2018" : "/hadoop/cms/store/user/smay/nanoaod_runII/ttHH_HHToTauTauGG_5f_LO_2017_NANO_14May2021/" 
         }
     },
     "GJets_HT-40To100" : {
