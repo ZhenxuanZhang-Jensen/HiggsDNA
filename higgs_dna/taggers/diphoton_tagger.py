@@ -144,8 +144,8 @@ def produce_diphotons(photons, n_photons, lead_pt_cut, lead_pt_mgg_cut, sublead_
 # NOTE: implementation still in progress.
 # TODO: sync diphoton preselection with flashgg
 class DiphotonTagger(Tagger):
-    def __init__(self, name, options = {}, sample = None):
-        super(DiphotonTagger, self).__init__(name, options, sample)
+    def __init__(self, name, options = {}, is_data = None, year = None):
+        super(DiphotonTagger, self).__init__(name, options, is_data, year)
 
         if not options:
             self.options = DEFAULT_OPTIONS
