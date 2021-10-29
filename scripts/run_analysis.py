@@ -56,6 +56,12 @@ def parse_arguments():
         action="store_true",
         help="resubmit jobs that failed more than the max number of tries and were retired. Only applicable if you are re-running an existing analysis and you had jobs that failed multiple times (presumably due to corruptions/transient xrootd errors).")
 
+    parser.add_argument(
+        "--short",
+        required=False,
+        action="store_true",
+        help="just run 1 job for each sample/year to test workflow")
+
     return parser.parse_args()
 
 
@@ -68,7 +74,10 @@ def main(args):
     logger.debug("Running HiggsDNA analysis with config:")
 
     analysis = AnalysisManager(**vars(args))
-    analysis.run()
+    if args.short:
+        analysis.run(max_jobs = 1)
+    else:
+        analysis.run()
 
 
 if __name__ == "__main__":

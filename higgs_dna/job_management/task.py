@@ -33,7 +33,9 @@ class Task():
 
         self.min_completion_frac = kwargs.get("min_completion_frac", 1.0)
         self.n_files_per_job = kwargs.get("n_files_per_job", 3)
-        self.max_jobs = kwargs.get("max_jobs", -1) 
+        self.max_jobs = kwargs.get("max_jobs", None) 
+        if self.max_jobs is None:
+            self.max_jobs = -1
 
         for key, val in kwargs.items():
             setattr(self, key, val)
@@ -242,6 +244,9 @@ class Task():
         """
         self.merged_outputs = {}
         for syst_tag, outputs in self.outputs.items():
+            if not outputs:
+                continue
+            
             merged_output = self.output_dir + "/merged_%s.parquet" % (syst_tag) 
             self.merged_outputs[syst_tag] = merged_output
             merged_events = []
