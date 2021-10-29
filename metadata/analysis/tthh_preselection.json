@@ -129,7 +129,7 @@
                     "module_name" : "higgs_dna.systematics.jet_systematics",
                     "name" : "btag_deepjet_reshape_sf"
                 },
-                "modify_central_weight" : false,
+                "modify_central_weight" : true,
                 "input_collection" : "Jet",
                 "target_collections" : ["SelectedJet"]
             },
@@ -146,6 +146,17 @@
                 "kwargs" : {
                     "working_point" : "wp90iso"
                 }
+            },
+            "L1_prefiring_sf" : {
+                "type" : "event",
+                "method" : "from_branch",
+                "branches" : {
+                    "central" : "L1PreFiringWeight_Nom",
+                    "up" : "L1PreFiringWeight_Up",
+                    "down" : "L1PreFiringWeight_Dn"
+                },
+                "modify_central_weight" : true,
+                "years" : ["2016", "2017"]
             } 
         },
         "independent_collections" : {
@@ -165,6 +176,7 @@
             "FatJet_pt", "FatJet_eta", "FatJet_phi", "FatJet_mass",
             "FatJet_deepTagMD_HbbvsQCD", "FatJet_deepTagMD_H4qvsQCD",
             "GenPart_eta", "GenPart_genPartIdxMother", "GenPart_mass", "GenPart_pdgId", "GenPart_phi", "GenPart_pt", "GenPart_status","GenPart_statusFlags",
+            "L1PreFiringWeight_Nom", "L1PreFiringWeight_Up", "L1PreFiringWeight_Dn",
             "genWeight", "run", "event"
     ],
     "samples" : {
