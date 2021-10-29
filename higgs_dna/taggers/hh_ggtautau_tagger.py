@@ -66,8 +66,8 @@ class HHggTauTauTagger(Tagger):
     """
     Tagger for the non-resonant HH->ggTauTau analysis.
     """
-    def __init__(self, name, options = {}, sample = None):
-        super(HHggTauTauTagger, self).__init__(name, options, sample)
+    def __init__(self, name, options = {}, is_data = None, year = None):
+        super(HHggTauTauTagger, self).__init__(name, options, is_data, year)
 
         if not options:
             self.options = DEFAULT_OPTIONS 
