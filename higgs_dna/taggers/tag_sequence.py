@@ -68,7 +68,11 @@ class TagSequence():
         
         if "kwargs" not in config.keys():
             config["kwargs"] = { "name" : "my_" + config["tagger"] }
-        
+
+        if self.sample is not None:
+            config["kwargs"]["is_data"] = self.sample.is_data
+            config["kwargs"]["year"] = self.sample.year
+
         tagger = getattr(
             module,
             config["tagger"]
