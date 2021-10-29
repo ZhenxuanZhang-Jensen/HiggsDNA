@@ -142,7 +142,7 @@ class Tagger():
             results = [results]
 
         for name, result in zip(names, results):
-            if len(result) > 0:
+            if awkward.count(result) > 0:
                 individual_eff = float(awkward.sum(result)) / float(awkward.count(result))
             else:
                 individual_eff = 0.
