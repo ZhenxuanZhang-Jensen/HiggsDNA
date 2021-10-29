@@ -18,13 +18,11 @@ class Tagger():
     :param logger: logger to print out various levels of diagnostic info 
     :type logger: logging.getLogger() 
     """
-    def __init__(self, name, options = {}, sample = None):
+    def __init__(self, name, options = {}, is_data = None, year = None):
         self.name = name
         self.options = options
-        self.sample = sample
-        if self.sample is not None:
-            self.is_data = sample.is_data
-            self.year = sample.year
+        self.is_data = is_data
+        self.year = year
 
         self.selection = {}
         self.events = {}
@@ -144,7 +142,10 @@ class Tagger():
             results = [results]
 
         for name, result in zip(names, results):
-            individual_eff = float(awkward.sum(result)) / float(awkward.count(result))
+            if len(result) > 0:
+                individual_eff = float(awkward.sum(result)) / float(awkward.count(result))
+            else:
+                individual_eff = 0.
             self.cut_summary[cut_type][name] = {
                     "individual_eff" : float(individual_eff) 
                     #TODO: add eff as N-1 cut
