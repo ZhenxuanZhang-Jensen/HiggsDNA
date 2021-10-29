@@ -259,7 +259,7 @@ class AnalysisManager():
         self.samples = self.sample_manager.get_samples()
 
         if not self.prepared_analysis:
-            self.prepare_analysis()
+            self.prepare_analysis(max_jobs)
 
         n_input_files = 0
         n_tasks = 0
@@ -315,7 +315,7 @@ class AnalysisManager():
         self.summarize()
 
 
-    def prepare_analysis(self):
+    def prepare_analysis(self, max_jobs):
         idx = 0
         for sample in self.samples:
             file_splits = self.create_chunks(sample.files, self.n_files_per_job)
@@ -326,7 +326,7 @@ class AnalysisManager():
 
             # 1. Branches to load/save
             if sample.is_data:
-                task_branches = [x for x in self.branches if not ("gen" in x or "Gen" in x or "hadronFlavour" in x)]
+                task_branches = [x for x in self.branches if not ("gen" in x or "Gen" in x or "hadronFlavour" in x or "L1PreFiringWeight" in x)]
                 task_save_branches = [x for x in self.save_branches if not ("weight" in x or "gen" in x or "Gen" in x)]
                 for idx, x in enumerate(task_save_branches):
                     if isinstance(x, list):
@@ -335,7 +335,11 @@ class AnalysisManager():
                                 task_save_branches.remove(x)
             else:
                 task_branches = [x for x in self.branches if not ("HLT" in x)]
+                if sample.year == "2018":
+                    task_branches = [x for x in task_branches if not ("L1PreFiringWeight" in x)]
                 task_save_branches = self.save_branches
+
+            
 
             # 2. Sample details
             task_sample = copy.deepcopy(sample)
@@ -367,6 +371,7 @@ class AnalysisManager():
                     batch_output_dir = batch_output_dir,
                     n_files_per_job = fpo, 
                     files = sample.files,
+                    max_jobs = max_jobs,
                     config = {
                         "sample" : task_sample,
                         "systematics" : task_systematics,
