@@ -64,9 +64,10 @@ class Task():
         file_splits = create_chunks(self.files, self.n_files_per_job)
         
         for idx, file_split in enumerate(tqdm(file_splits)):
-            if self.max_jobs >= 0:
-                if idx >= self.max_jobs:
-                    continue
+            if self.max_jobs:
+                if self.max_jobs >= 0:
+                    if idx >= self.max_jobs:
+                        continue
             job_config = copy.deepcopy(self.job_config)
 
             job = Job(
