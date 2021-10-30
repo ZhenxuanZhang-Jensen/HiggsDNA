@@ -268,24 +268,27 @@ def make_tables(events, process_map, signals):
     for unc in ["stat_unc", "syst_unc_up", "syst_unc_down"]:
         yields["total_bkg"][unc] = yields["total_bkg"][unc] ** (0.5)
 
-    
+   
+    sort_idx = awkward.argsort([yields[x]["n"] for x in signals], ascending = True)
+    signals = numpy.array(signals)[sort_idx] 
     for proc in signals:
         table += table_line(proc, yields[proc], yields["total_bkg"]["n"])
 
     table += "\t \t \\hline \n"
-
-    for proc, result in yields.items():
-        if proc in ["Data", "total_bkg"]:
-            continue
+    
+    bkgs = [x for x in yields.keys() if (x not in signals and x not in ["Data", "total_bkg"])]
+    sort_idx = awkward.argsort([yields[x]["n"] for x in bkgs], ascending = True)
+    bkgs = numpy.array(bkgs)[sort_idx]
+    for proc in bkgs:
         table += table_line(proc, yields[proc], yields["total_bkg"]["n"])
 
     table += "\t \t \\hline \n"
-    if "Data" in yields.keys():
-        table += table_line("Data", yields["Data"], yields["total_bkg"]["n"])
+    table += table_line("total_bkg", yields["total_bkg"], yields["total_bkg"]["n"])
 
     table += "\t \t \\hline \n"
-
-    table += table_line("total_bkg", yields["total_bkg"], yields["total_bkg"]["n"])
+        
+    if "Data" in yields.keys():
+        table += table_line("Data", yields["Data"], yields["total_bkg"]["n"])
 
     table += "\t \t \\hline \\hline \n"
 
@@ -663,12 +666,22 @@ def plot_weights(systs, process_map, output_dir):
                 m2sigma.append(info[proc]["m2sigma"])
 
         
+        sort_idx = awkward.argsort(means, ascending = False)
+
+        means = numpy.array(means)[sort_idx]
+        labels = numpy.array(labels)[sort_idx]
+        p1sigma = numpy.array(p1sigma)[sort_idx]
+        p2sigma = numpy.array(p2sigma)[sort_idx]
+        m1sigma = numpy.array(m1sigma)[sort_idx]
+        m2sigma = numpy.array(m2sigma)[sort_idx]
 
         fig, ax = plt.subplots()
+        ax.set_xscale("log", base=10)
 
         plt.plot(means, numpy.arange(len(labels)), marker="o", color = "black", linewidth=0)
-        x_min = 0.5
-        x_max = 2.0
+        x_min = 1. / 3.
+        x_max = 3.0
+        assert (1. / x_min) == (x_max / 1.) # need to have symmetric axes for the plotting to work
         x_range = x_max - x_min
         for i in range(len(means)):
             ax.axvspan(m2sigma[i], p2sigma[i], (i + 0.25) / float(len(means)), (i + 0.75) / float(len(means)), color = "yellow")
@@ -680,9 +693,9 @@ def plot_weights(systs, process_map, output_dir):
         plt.xlim([x_min, x_max])
         plt.ylim([-0.5, len(means) - 0.5])
         plt.gca().xaxis.grid(True)
-        ax.set_xscale("log")
-        ax.set_xticks(numpy.logspace(math.log10(x_min), math.log10(x_max), 5))
-        ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())
+        ax.set_xticks(numpy.logspace(math.log(x_min, 10), math.log(x_max, 10), 7))
+        ax.get_xaxis().set_major_formatter(ticker.FormatStrFormatter("%.2f"))
+        ax.tick_params(axis='x',which='minor',bottom=False,top=False,labelbottom=False)
         plt.yticks(numpy.arange(len(labels)), labels, fontsize = 10)
 
         plt.tight_layout()
