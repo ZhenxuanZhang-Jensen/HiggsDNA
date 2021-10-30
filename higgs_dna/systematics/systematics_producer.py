@@ -10,7 +10,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 from higgs_dna.systematics.systematic import EventWeightSystematic, ObjectWeightSystematic, SystematicWithIndependentCollection
-from higgs_dna.systematics import photon_systematics, lepton_systematics, jet_systematics
+from higgs_dna.systematics import photon_systematics, lepton_systematics, jet_systematics, pileup_systematics
 from higgs_dna.utils import awkward_utils, misc_utils
 from higgs_dna.constants import NOMINAL_TAG
 
