@@ -157,18 +157,25 @@
                 },
                 "modify_central_weight" : true,
                 "years" : ["2016", "2017"]
-            },
-            "pileup_reweight_sf" : {
-                "type" : "event",
-                "method" : "from_function",
-                "function" : {
-                    "module_name" : "higgs_dna.systematics.pileup_systematics",
-                    "name" : "pu_reweight_sf"
-                },
-                "modify_central_weight" : true
             }
         },
         "independent_collections" : {
+            "fnuf" : {
+                "method" : "from_function",
+                "branch_modified" : ["Photon", "pt"],
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "fnuf_unc"
+                }
+            },
+            "material" : {
+                "method" : "from_function",
+                "branch_modified" : ["Photon", "pt"],
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "material_unc"
+                }
+            }
         }
     },
     "branches" : [
