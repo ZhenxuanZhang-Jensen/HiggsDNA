@@ -80,7 +80,7 @@ def select_iso_tracks(iso_tracks, options, clean, name = "none", tagger = None):
         pf_cand_cut = iso_tracks.pt > 0
 
     if options["fromPV"]:
-        pv_cut = iso_tracks.fromPV == True
+        pv_cut = iso_tracks.fromPV > 0
     else:
         pv_cut = iso_tracks.pt > 0
 

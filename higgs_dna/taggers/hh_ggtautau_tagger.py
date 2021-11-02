@@ -43,6 +43,7 @@ DEFAULT_OPTIONS = {
     },
     "iso_tracks" : {
         "pt" : 5.0,
+        "eta" : 2.5,
         "dr_photons" : 0.2,
         "dr_electrons" : 0.2,
         "dr_muons" : 0.2,
@@ -66,8 +67,8 @@ class HHggTauTauTagger(Tagger):
     """
     Tagger for the non-resonant HH->ggTauTau analysis.
     """
-    def __init__(self, name, options = {}, sample = None):
-        super(HHggTauTauTagger, self).__init__(name, options, sample)
+    def __init__(self, name, options = {}, is_data = None, year = None):
+        super(HHggTauTauTagger, self).__init__(name, options, is_data, year)
 
         if not options:
             self.options = DEFAULT_OPTIONS 
@@ -311,7 +312,15 @@ class HHggTauTauTagger(Tagger):
             axis = 1
         )
         tau_candidates = tau_candidates[awkward.argsort(tau_candidates.pt, ascending = False, axis = 1)] 
-        
+
+        awkward_utils.add_object_fields(
+                events = syst_events,
+                name = "tau_candidate",
+                objects = tau_candidates,
+                n_objects = 3,
+                dummy_value = DUMMY_VALUE
+        ) 
+
         # Create ditau candidates: all possible pairs of two objects, with objects = {taus, electrons, muons, iso_tracks}
         tau_candidate_pairs = awkward.combinations(tau_candidates, 2, fields = ["LeadTauCand", "SubleadTauCand"])
 
@@ -389,7 +398,6 @@ class HHggTauTauTagger(Tagger):
                 awkward.fill_none(tau_candidate_pairs.ditau.dR, DUMMY_VALUE)
         )
  
-
 
         # Now assign the selected tau candidate pair in each event to a category integer
         category_map = {
