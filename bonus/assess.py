@@ -659,13 +659,13 @@ def plot_weights(systs, process_map, output_dir):
         for weight, vars in systs["weights"].items():
             for var, info in vars.items():
                 means.append(info[proc]["mean"])
-                labels.append(weight + "_" + var)
+                labels.append(weight + "_" + var + " [mu = %.3f]" % info[proc]["mean"])
                 p1sigma.append(info[proc]["p1sigma"])
                 p2sigma.append(info[proc]["p2sigma"])
                 m1sigma.append(info[proc]["m1sigma"])
                 m2sigma.append(info[proc]["m2sigma"])
 
-        
+
         sort_idx = awkward.argsort(means, ascending = False)
 
         means = numpy.array(means)[sort_idx]
