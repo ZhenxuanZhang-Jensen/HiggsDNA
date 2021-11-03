@@ -43,7 +43,7 @@ DEFAULT_OPTIONS = {
     },
     "iso_tracks" : {
         "pt" : 5.0,
-        "eta" : 2.5,
+        "eta" : 5.0,
         "dr_photons" : 0.2,
         "dr_electrons" : 0.2,
         "dr_muons" : 0.2,
@@ -371,7 +371,8 @@ class HHggTauTauTagger(Tagger):
 
         tau_candidate_pairs["ditau"] = ditau_candidates
 
-        tau_candidate_pairs = tau_candidate_pairs[awkward.argsort(abs(tau_candidate_pairs.ditau.mass - 125), axis = 1)]
+        if awkward.any(awkward.num(tau_candidate_pairs) >= 2): # are there any events still with more than one ditau candidate?
+            tau_candidate_pairs = tau_candidate_pairs[awkward.argsort(abs(tau_candidate_pairs.ditau.mass - 125), axis = 1)] # if so, take the one with m_vis closest to mH
         tau_candidate_pairs = awkward.firsts(tau_candidate_pairs)
 
         # Add ditau-related fields to array
