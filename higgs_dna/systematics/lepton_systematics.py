@@ -77,6 +77,14 @@ def electron_id_sf(events, year, central_only, input_collection, working_point =
         variations["down"] = variations["central"] - awkward.unflatten(syst, n_electrons)
 
 
+    for var in variations.keys():
+        # Set SFs = 1 for leptons which are not applicable
+        variations[var] = awkward.where(
+                (electrons.pt < 10.0) | (electrons.pt >= 500.0) | (abs(electrons.eta) >= 2.5),
+                awkward.ones_like(variations[var]),
+                variations[var]
+        )
+
     return variations
 
 

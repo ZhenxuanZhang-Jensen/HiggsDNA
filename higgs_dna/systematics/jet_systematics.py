@@ -11,8 +11,8 @@ from higgs_dna.utils import misc_utils, awkward_utils
 
 BTAG_RESHAPE_SF_FILE = {
     "2016" : "jsonpog-integration/POG/BTV/2017_UL/bjets.json", # FIXME: 2016 not implemented in jsonpog-integration at time of writing
-    "2017" : "jsonpog-integration/POG/BTV/2017_UL/bjets.json",
-    "2018" : "jsonpog-integration/POG/BTV/2018_UL/bjets.json"
+    "2017" : "jsonpog-integration/POG/BTV/2017_UL/btagging.json",
+    "2018" : "jsonpog-integration/POG/BTV/2018_UL/btagging.json"
 }
 
 DEEPJET_RESHAPE_SF = {
@@ -70,12 +70,12 @@ def btag_deepjet_reshape_sf(events, year, central_only, input_collection):
         jets["flavor"]
     ) 
 
+
     # Flatten jets then convert to numpy for compatibility with correctionlib
     n_jets = awkward.num(jets) # save n_jets to convert back to jagged format at the end 
     jets_flattened = awkward.flatten(jets)
-    
-    jet_flavor = awkward.to_numpy(jets_flattened["flavor"])
 
+    jet_flavor = awkward.to_numpy(jets_flattened["flavor"])
     jet_abs_eta = numpy.clip(
         awkward.to_numpy(abs(jets_flattened.eta)),
         0.0,
@@ -123,6 +123,14 @@ def btag_deepjet_reshape_sf(events, year, central_only, input_collection):
             )
 
         variations[var] = awkward.unflatten(var_sf, n_jets) # make jagged again
+
+    for var in variations.keys():
+        # Set SFs = 1 for jets which are not applicable (pt <= 20 or |eta| >= 2.5)
+        variations[var] = awkward.where(
+                (jets.pt <= 20.0) | (abs(jets.eta) >= 2.5),
+                awkward.ones_like(variations[var]),
+                variations[var]
+        )
 
     return variations
 
