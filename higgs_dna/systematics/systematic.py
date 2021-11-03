@@ -185,7 +185,8 @@ class WeightSystematic(Systematic):
         self.requires_branches = requires_branches
 
         self.is_applied = {} # a weight will often be applied to multiple different sets of events (corresponding to different independent collections)
-    
+        self.is_applied_all = False # will be set to true if the weight is applied directly on the nominal events (i.e. before producing the independent collections) to avoid duplicate application on systematics with independent collections
+
     def produce(self, events, central_only = False):
         """
         Calculate the central/up/down variations for this WeightSystematic and add these as fields to the events array.

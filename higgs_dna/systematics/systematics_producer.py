@@ -276,7 +276,12 @@ class SystematicsProducer():
                     missing_fields = awkward_utils.missing_fields(events, [weight_syst.target_collection])
                     if not missing_fields:
                         events = weight_syst.apply(events)
-            
+
+                if NOMINAL_TAG in weight_syst.is_applied.keys(): 
+                    if weight_syst.is_applied[NOMINAL_TAG]: # if we already apply the weight syst before creating ICs, mark it as applied for all ICs (to avoid double-applying later on)
+                        weight_syst.is_applied_all = True
+
+
         for name, ic_syst in self.independent_collections.items():
             ics = ic_syst.produce(events)
             if NOMINAL_TAG in ics.keys():
@@ -305,6 +310,8 @@ class SystematicsProducer():
         for name, syst_events in events_with_syst.items():
             for weight_name, weight_systs in self.weights.items():
                 for weight_syst in weight_systs:
+                    if weight_syst.is_applied_all:
+                        continue
                     if name in weight_syst.is_applied.keys():
                         if weight_syst.is_applied[name]:
                             continue
