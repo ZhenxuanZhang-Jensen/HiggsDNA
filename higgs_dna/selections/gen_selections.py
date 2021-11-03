@@ -7,39 +7,40 @@ vector.register_awkward()
 
 from higgs_dna.utils import awkward_utils
 
-def select_x_to_yy(gen_particles, x_pdgId, y_pdgId):
+def select_x_to_yz(gen_part, x_pdgId, y_pdgId, z_pdgId):
     """
-    Find the x -> yy decay in the event.
-    For now, assumes there is at most 1 x->yy, can be generalized to >1 in the future.
+    Return all x->yy decays, sorted by x_pt
     """
-    gen_x_from_y = gen_particles[(abs(gen_particles.pdgId) == x_pdgId) & (abs(gen_particles.pdgId[gen_particles.genPartIdxMother]) == y_pdgId)]
-    gen_x = gen_particles[gen_x_from_y.genPartIdxMother]
 
-    gen_x_from_y = gen_x_from_y[awkward.argsort(gen_x_from_y.pt, ascending = False, axis = 1)]
-    gen_x_to_yy = awkward.combinations(gen_x_from_y, 2, fields = ["LeadGenY", "SubleadGenY"])
 
-    gen_x_to_yy["GenX"] = gen_particles[gen_x_to_yy.LeadGenY.genPartIdxMother]
+    gen_yz_from_x = gen_part[((abs(gen_part.pdgId) == y_pdgId) | (abs(gen_part.pdgId) == z_pdgId)) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == x_pdgId)]
+    gen_yz_from_x = gen_yz_from_x[awkward.argsort(gen_yz_from_x.pt, ascending = False, axis = 1)]
+
+    # Make all pairs of y's and z's that decay from x
+    gen_child_pairs = awkward.combinations(gen_yz_from_x, 2, fields = ["LeadGenChild", "SubleadGenChild"])
+    # Keep only the pairs where the y and the z decay from the same x
+    gen_child_pairs = gen_child_pairs[gen_child_pairs.LeadGenChild.genPartIdxMother == gen_child_pairs.SubleadGenChild.genPartIdxMother] 
     
-    lead_gen_y_p4 = vector.awk({
-        "pt" : gen_x_to_yy.LeadGenY.pt,
-        "eta" : gen_x_to_yy.LeadGenY.eta,
-        "phi" : gen_x_to_yy.LeadGenY.phi,
-        "mass" : gen_x_to_yy.LeadGenY.mass
-    })
-    sublead_gen_y_p4 = vector.awk({
-        "pt" : gen_x_to_yy.SubleadGenY.pt,
-        "eta" : gen_x_to_yy.SubleadGenY.eta,
-        "phi" : gen_x_to_yy.SubleadGenY.phi,
-        "mass" : gen_x_to_yy.SubleadGenY.mass
-    })
-    gen_x_to_yy["dR"] = lead_gen_y_p4.deltaR(sublead_gen_y_p4)
-    gen_x_to_yy["n_GenX"] = awkward.num(gen_x_to_yy.GenX)
+    # Grab the parent x
+    gen_child_pairs["GenParent"] = gen_part[gen_child_pairs.LeadGenChild.genPartIdxMother]
 
-    return gen_x_to_yy
+    lead_gen_child_p4 = vector.awk({
+        "pt" : gen_child_pairs.LeadGenChild.pt,
+        "eta" : gen_child_pairs.LeadGenChild.eta,
+        "phi" : gen_child_pairs.LeadGenChild.phi,
+        "mass" : gen_child_pairs.LeadGenChild.mass
+    })
 
-def select_x(gen_particles, pdgId, status_flags = None):
-    x = gen_particles[(abs(gen_particles.pdgId) == pdgId)]
-    if status_flags is not None:
-        x = x[x.statusFlags == status_flags]
-    x = x[awkward.argsort(x.pt, ascending = False, axis = 1)]
-    return x
+    sublead_gen_child_p4 = vector.awk({
+        "pt" : gen_child_pairs.SubleadGenChild.pt,
+        "eta" : gen_child_pairs.SubleadGenChild.eta,
+        "phi" : gen_child_pairs.SubleadGenChild.phi,
+        "mass" : gen_child_pairs.SubleadGenChild.mass
+    })
+
+    gen_child_pairs[("GenParent", "dR")] = lead_gen_child_p4.deltaR(sublead_gen_child_p4) 
+
+    if awkward.any(awkward.num(gen_child_pairs) >= 2):
+        gen_child_pairs = gen_child_pairs[awkward.argsort(gen_child_pairs.GenParent.pt, ascending = False, axis = 1)] 
+
+    return gen_child_pairs    
