@@ -11,8 +11,8 @@ from higgs_dna.utils import misc_utils, awkward_utils
 
 BTAG_RESHAPE_SF_FILE = {
     "2016" : "jsonpog-integration/POG/BTV/2017_UL/bjets.json", # FIXME: 2016 not implemented in jsonpog-integration at time of writing
-    "2017" : "jsonpog-integration/POG/BTV/2017_UL/btagging.json",
-    "2018" : "jsonpog-integration/POG/BTV/2018_UL/btagging.json"
+    "2017" : "jsonpog-integration/POG/BTV/2017_UL/bjets.json",
+    "2018" : "jsonpog-integration/POG/BTV/2018_UL/bjets.json"
 }
 
 DEEPJET_RESHAPE_SF = {
@@ -68,14 +68,13 @@ def btag_deepjet_reshape_sf(events, year, central_only, input_collection):
         jets.hadronFlavour == 5,
         awkward.ones_like(jets.hadronFlavour) * 0,
         jets["flavor"]
-    ) 
-
+    )  
 
     # Flatten jets then convert to numpy for compatibility with correctionlib
     n_jets = awkward.num(jets) # save n_jets to convert back to jagged format at the end 
     jets_flattened = awkward.flatten(jets)
 
-    jet_flavor = awkward.to_numpy(jets_flattened["flavor"])
+    jet_flavor = awkward.to_numpy(jets_flattened.flavor)
     jet_abs_eta = numpy.clip(
         awkward.to_numpy(abs(jets_flattened.eta)),
         0.0,
