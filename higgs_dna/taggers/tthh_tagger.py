@@ -68,7 +68,7 @@ DEFAULT_OPTIONS = {
         "dr_muons" : 0.4,
         "dr_taus" : 0.4,
     },
-    "z_veto" : [80., 100.],
+    "z_veto" : [80., 100.]
 }
 
 class TTHHTagger(Tagger):
@@ -221,6 +221,7 @@ class TTHHTagger(Tagger):
                 data = syst_events.Jet[jet_cut]
         )
 
+        bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis = 1, ascending = False)]
 
         ### Z veto ###
         ee_pairs = awkward.combinations(electrons, 2, fields = ["LeadLepton", "SubleadLepton"])
@@ -310,7 +311,8 @@ class TTHHTagger(Tagger):
 
         tau_candidate_pairs["ditau"] = ditau_candidates
 
-        #tau_candidate_pairs = tau_candidate_pairs[awkward.argsort(abs(tau_candidate_pairs.ditau.mass - 125), axis = 1)]
+        if awkward.any(awkward.num(tau_candidate_pairs) >= 2): # are there any events still with more than one ditau candidate?
+            tau_candidate_pairs = tau_candidate_pairs[awkward.argsort(abs(tau_candidate_pairs.ditau.mass - 125), axis = 1)]
         tau_candidate_pairs = awkward.firsts(tau_candidate_pairs)
 
         # Add ditau-related fields to array
@@ -347,6 +349,17 @@ class TTHHTagger(Tagger):
                     dummy_value = DUMMY_VALUE
             )
 
+        awkward_utils.add_object_fields(
+                events = syst_events,
+                name = "bjet",
+                objects = bjets,
+                n_objects = 8,
+                fields = ["btagDeepFlavB"],
+                dummy_value = DUMMY_VALUE
+        )
+
+        
+
         boosted_ww_to_4q_cands = fatjets[awkward.argsort(fatjets.deepTagMD_H4qvsQCD, ascending = False, axis = 1)]
         boosted_h_to_bb_cands = fatjets[awkward.argsort(fatjets.deepTagMD_HbbvsQCD, ascending = False, axis = 1)]
 
@@ -361,17 +374,66 @@ class TTHHTagger(Tagger):
         
         # Gen info
         if not self.is_data:
-            gen_tops = gen_selections.select_x(syst_events.GenPart, 6, status_flags = 10497)
-            gen_higgs = gen_selections.select_x(syst_events.GenPart, 25) 
+            h_to_gg = gen_selections.select_x_to_yz(syst_events.GenPart, 25, 22, 22)   
+            h_to_bb = gen_selections.select_x_to_yz(syst_events.GenPart, 25, 5, 5)
+            t_to_bw = gen_selections.select_x_to_yz(syst_events.GenPart, 6, 5, 24)
 
-            for objects, name in zip([gen_tops, gen_higgs], ["top", "higgs"]):
-                awkward_utils.add_object_fields(
-                        events = syst_events,
-                        name = "gen_%s" % name,
-                        objects = objects,
-                        n_objects = 2,
-                        dummy_value = DUMMY_VALUE
-                )
+            awkward_utils.add_object_fields(
+                    events = syst_events,
+                    name = "gen_hbb_h",
+                    objects = h_to_bb.GenParent,
+                    n_objects = 1,
+                    dummy_value = DUMMY_VALUE
+            )
+
+            awkward_utils.add_object_fields(
+                    events = syst_events,
+                    name = "gen_hbb_lead_b",
+                    objects = h_to_bb.LeadGenChild,
+                    n_objects = 1,
+                    dummy_value = DUMMY_VALUE
+            )
+
+            awkward_utils.add_object_fields(
+                    events = syst_events,
+                    name = "gen_hbb_sublead_b",
+                    objects = h_to_bb.SubleadGenChild,
+                    n_objects = 1,
+                    dummy_value = DUMMY_VALUE
+            )
+
+            awkward_utils.add_object_fields(
+                    events = syst_events,
+                    name = "gen_hgg_h",
+                    objects = h_to_bb.GenParent,
+                    n_objects = 1,
+                    dummy_value = DUMMY_VALUE
+            )
+
+            awkward_utils.add_object_fields(
+                    events = syst_events,
+                    name = "gen_hgg_lead_g",
+                    objects = h_to_bb.LeadGenChild,
+                    n_objects = 1,
+                    dummy_value = DUMMY_VALUE
+            )
+
+            awkward_utils.add_object_fields(
+                    events = syst_events,
+                    name = "gen_hgg_sublead_g",
+                    objects = h_to_bb.SubleadGenChild,
+                    n_objects = 1,
+                    dummy_value = DUMMY_VALUE
+            )
+            
+            awkward_utils.add_object_fields(
+                    events = syst_events,
+                    name = "gen_top",
+                    objects = t_to_bw.GenParent,
+                    n_objects = 2,
+                    dummy_value = DUMMY_VALUE
+            )
+
 
         # Preselection
         n_electrons = awkward.num(electrons)

@@ -16,6 +16,7 @@
         "jet_6_pt", "jet_6_eta", "jet_6_phi", "jet_6_mass", "jet_6_btagDeepFlavB",
         "jet_7_pt", "jet_7_eta", "jet_7_phi", "jet_7_mass", "jet_7_btagDeepFlavB",
         "jet_8_pt", "jet_8_eta", "jet_8_phi", "jet_8_mass", "jet_8_btagDeepFlavB",
+        "bjet_1_btagDeepFlavB", "bjet_2_btagDeepFlavB", "bjet_3_btagDeepFlavB", "bjet_4_btagDeepFlavB", "bjet_5_btagDeepFlavB", "bjet_6_btagDeepFlavB", "bjet_7_btagDeepFlavB", "bjet_8_btagDeepFlavB",
         "lepton_1_pt", "lepton_1_eta", "lepton_1_phi", "lepton_1_mass", "lepton_1_charge", "lepton_1_id",
         "lepton_2_pt", "lepton_2_eta", "lepton_2_phi", "lepton_2_mass", "lepton_2_charge", "lepton_2_id",
         "lepton_3_pt", "lepton_3_eta", "lepton_3_phi", "lepton_3_mass", "lepton_3_charge", "lepton_3_id",
@@ -33,8 +34,8 @@
         "ditau_sublead_lepton_id", "ditau_sublead_lepton_charge", 
         "gen_top_1_pt", "gen_top_1_eta", "gen_top_1_phi", "gen_top_1_mass",
         "gen_top_2_pt", "gen_top_2_eta", "gen_top_2_phi", "gen_top_2_mass",
-        "gen_higgs_1_pt", "gen_higgs_1_eta", "gen_higgs_1_phi", "gen_higgs_1_mass",
-        "gen_higgs_2_pt", "gen_higgs_2_eta", "gen_higgs_2_phi", "gen_higgs_2_mass", 
+        "gen_hbb_h_1_pt", "gen_hbb_h_1_eta", "gen_hbb_h_1_phi", "gen_hbb_h_1_mass", "gen_hbb_h_1_dR",
+        "gen_hgg_h_1_pt", "gen_hgg_h_1_eta", "gen_hgg_h_1_phi", "gen_hgg_h_1_mass", "gen_hgg_h_1_dR",
         "weight_central", 
         "event"
     ],
