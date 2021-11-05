@@ -8,6 +8,7 @@
         ["Diphoton", "mass"], ["Diphoton", "pt"], ["Diphoton", "eta"], ["Diphoton", "phi"],
         ["LeadPhoton", "pt"], ["LeadPhoton", "eta"], ["LeadPhoton", "phi"], ["LeadPhoton", "mass"], ["LeadPhoton", "mvaID"], ["LeadPhoton", "genPartFlav"], ["LeadPhoton", "pixelSeed"],
         ["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"], ["SubleadPhoton", "genPartFlav"], ["SubleadPhoton", "pixelSeed"],
+        "MET_pt", "MET_phi", "MET_covXX", "MET_covXY", "MET_covYY",
         "jet_1_pt", "jet_1_eta", "jet_1_phi", "jet_1_mass", "jet_1_btagDeepFlavB",
         "jet_2_pt", "jet_2_eta", "jet_2_phi", "jet_2_mass", "jet_2_btagDeepFlavB",
         "jet_3_pt", "jet_3_eta", "jet_3_phi", "jet_3_mass", "jet_3_btagDeepFlavB",
@@ -26,7 +27,7 @@
         "fatjet_3_pt", "fatjet_3_eta", "fatjet_3_phi", "fatjet_3_mass", "fatjet_3_deepTagMD_H4qvsQCD", "fatjet_3_deepTagMD_HbbvsQCD",
         "h_bb_boosted_cand_1_pt", "h_bb_boosted_cand_1_eta", "h_bb_boosted_cand_1_phi", "h_bb_boosted_cand_1_mass", "h_bb_boosted_cand_1_deepTagMD_H4qvsQCD", "h_bb_boosted_cand_1_deepTagMD_HbbvsQCD",
         "h_ww_4q_boosted_cand_1_pt", "h_ww_4q_boosted_cand_1_eta", "h_ww_4q_boosted_cand_1_phi", "h_ww_4q_boosted_cand_1_mass", "h_ww_4q_boosted_cand_1_deepTagMD_H4qvsQCD", "h_ww_4q_boosted_cand_1_deepTagMD_HbbvsQCD",
-        "n_jets", "n_leptons", "n_electrons", "n_muons", "n_taus",
+        "n_jets", "n_leptons", "n_electrons", "n_muons", "n_taus", "n_fatjets", "n_lep_tau",
         "ditau_pt", "ditau_eta", "ditau_phi", "ditau_mass", "ditau_dR",
         "ditau_lead_lepton_pt", "ditau_lead_lepton_eta", "ditau_lead_lepton_phi", "ditau_lead_lepton_mass",
         "ditau_lead_lepton_id", "ditau_lead_lepton_charge",
@@ -34,8 +35,12 @@
         "ditau_sublead_lepton_id", "ditau_sublead_lepton_charge", 
         "gen_top_1_pt", "gen_top_1_eta", "gen_top_1_phi", "gen_top_1_mass",
         "gen_top_2_pt", "gen_top_2_eta", "gen_top_2_phi", "gen_top_2_mass",
-        "gen_hbb_h_1_pt", "gen_hbb_h_1_eta", "gen_hbb_h_1_phi", "gen_hbb_h_1_mass", "gen_hbb_h_1_dR",
-        "gen_hgg_h_1_pt", "gen_hgg_h_1_eta", "gen_hgg_h_1_phi", "gen_hgg_h_1_mass", "gen_hgg_h_1_dR",
+        "gen_higgs_1_pt", "gen_higgs_1_eta", "gen_higgs_1_phi", "gen_higgs_1_mass", "gen_higgs_1_dR", "gen_higgs_1_pdgId",
+        "gen_higgs_2_pt", "gen_higgs_2_eta", "gen_higgs_2_phi", "gen_higgs_2_mass", "gen_higgs_2_dR", "gen_higgs_2_pdgId",
+        "gen_higgs_lead_child_1_pt", "gen_higgs_lead_child_1_eta", "gen_higgs_lead_child_1_phi", "gen_higgs_lead_child_1_mass", "gen_higgs_lead_child_1_pdgId",
+        "gen_higgs_lead_child_2_pt", "gen_higgs_lead_child_2_eta", "gen_higgs_lead_child_2_phi", "gen_higgs_lead_child_2_mass", "gen_higgs_lead_child_2_pdgId",
+        "gen_higgs_sublead_child_1_pt", "gen_higgs_sublead_child_1_eta", "gen_higgs_sublead_child_1_phi", "gen_higgs_sublead_child_1_mass", "gen_higgs_sublead_child_1_pdgId",
+        "gen_higgs_sublead_child_2_pt", "gen_higgs_sublead_child_2_eta", "gen_higgs_sublead_child_2_phi", "gen_higgs_sublead_child_2_mass", "gen_higgs_sublead_child_2_pdgId", 
         "weight_central", 
         "event"
     ],
@@ -192,6 +197,7 @@
             "Electron_pt", "Electron_eta", "Electron_phi", "Electron_mass", "Electron_charge", "Electron_mvaFall17V2Iso_WP90", "Electron_mvaFall17V2noIso_WP90", "Electron_pfRelIso03_all", "Electron_dxy", "Electron_dz", "Electron_mvaFall17V2Iso_WP80",
             "FatJet_pt", "FatJet_eta", "FatJet_phi", "FatJet_mass",
             "FatJet_deepTagMD_HbbvsQCD", "FatJet_deepTagMD_H4qvsQCD",
+            "MET_pt", "MET_phi", "MET_covXX", "MET_covXY", "MET_covYY",
             "GenPart_eta", "GenPart_genPartIdxMother", "GenPart_mass", "GenPart_pdgId", "GenPart_phi", "GenPart_pt", "GenPart_status","GenPart_statusFlags",
             "L1PreFiringWeight_Nom", "L1PreFiringWeight_Up", "L1PreFiringWeight_Dn",
             "Pileup_nTrueInt",
@@ -199,7 +205,7 @@
     ],
     "samples" : {
         "catalog" : "metadata/samples/tthh.json",
-        "sample_list" : ["Diphoton", "HH_ggbb", "TTGamma", "TTGG", "WGamma", "ZGamma", "ggH_M125", "VBFH_M125", "VH_M125", "ttH_M125", "ttHH_ggbb", "ttHH_ggWW", "ttHH_ggTauTau", "Data", "GJets_HT-40To100", "GJets_HT-100To200", "GJets_HT-200To400", "GJets_HT-400To600", "GJets_HT-600ToInf", "TTJets"],
+        "sample_list" : ["Diphoton", "HH_ggbb", "HHggTauTau", "TTGamma", "TTGG", "WGamma", "ZGamma", "ggH_M125", "VBFH_M125", "VH_M125", "ttH_M125", "ttHH_ggbb", "ttHH_ggWW", "ttHH_ggTauTau", "Data", "GJets_HT-40To100", "GJets_HT-100To200", "GJets_HT-200To400", "GJets_HT-400To600", "GJets_HT-600ToInf", "TTJets"],
         "years" : ["2016", "2017", "2018"] 
     }
 }

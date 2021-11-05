@@ -193,6 +193,15 @@
             "2018" : "/hadoop/cms/store/user/hmei/nanoaod_runII/HHggtautau/GluGluToHHTo2B2G_node_SM_TuneCP5_PSWeights_13TeV-madgraph-pythia8_RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1_MINIAODSIM_v0.6_20210219/"
          }
     },
+    "HHggTauTau" : {
+        "xs" : 0.03105,
+        "bf" : 0.000284658,
+        "files" : {
+            "2016" : "/hadoop/cms/store/user/hmei/nanoaod_runII/HHggtautau/HHggtautau_Era2016_private_v0.1_20201117/",
+            "2017" : "/hadoop/cms/store/user/hmei/nanoaod_runII/HHggtautau/HHggtautau_Era2017_private_v0.1_20201117/",
+            "2018" : "/hadoop/cms/store/user/hmei/nanoaod_runII/HHggtautau/HHggtautau_Era2018_private_v2_20201005/"
+        }
+    },
     "Data" : {
         "files" : {
             "2016" : [

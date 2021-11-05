@@ -339,7 +339,6 @@ class TTHHTagger(Tagger):
                 awkward.fill_none(tau_candidate_pairs.ditau.dR, DUMMY_VALUE)
         )
 
-
         for objects, name in zip([leptons, jets, fatjets], ["lepton", "jet", "fatjet"]):
             awkward_utils.add_object_fields(
                     events = syst_events,
@@ -376,56 +375,40 @@ class TTHHTagger(Tagger):
         if not self.is_data:
             h_to_gg = gen_selections.select_x_to_yz(syst_events.GenPart, 25, 22, 22)   
             h_to_bb = gen_selections.select_x_to_yz(syst_events.GenPart, 25, 5, 5)
+            h_to_ww = gen_selections.select_x_to_yz(syst_events.GenPart, 25, 24, 24)
+            h_to_tautau = gen_selections.select_x_to_yz(syst_events.GenPart, 25, 15, 15)
+
+            h_to_xx = awkward.concatenate([h_to_gg, h_to_bb, h_to_ww, h_to_tautau], axis = 1)
+            if awkward.any(awkward.num(h_to_xx) >= 2):
+                h_to_xx = h_to_xx[awkward.argsort(h_to_xx.GenParent.pt, ascending = False, axis = 1)]
+
             t_to_bw = gen_selections.select_x_to_yz(syst_events.GenPart, 6, 5, 24)
 
             awkward_utils.add_object_fields(
                     events = syst_events,
-                    name = "gen_hbb_h",
-                    objects = h_to_bb.GenParent,
-                    n_objects = 1,
+                    name = "gen_higgs",
+                    objects = h_to_xx.GenParent,
+                    n_objects = 2,
                     dummy_value = DUMMY_VALUE
             )
 
             awkward_utils.add_object_fields(
                     events = syst_events,
-                    name = "gen_hbb_lead_b",
-                    objects = h_to_bb.LeadGenChild,
-                    n_objects = 1,
+                    name = "gen_higgs_lead_child",
+                    objects = h_to_xx.LeadGenChild,
+                    n_objects = 2,
                     dummy_value = DUMMY_VALUE
             )
 
             awkward_utils.add_object_fields(
                     events = syst_events,
-                    name = "gen_hbb_sublead_b",
-                    objects = h_to_bb.SubleadGenChild,
-                    n_objects = 1,
+                    name = "gen_higgs_sublead_child",
+                    objects = h_to_xx.SubleadGenChild,
+                    n_objects = 2,
                     dummy_value = DUMMY_VALUE
             )
 
-            awkward_utils.add_object_fields(
-                    events = syst_events,
-                    name = "gen_hgg_h",
-                    objects = h_to_bb.GenParent,
-                    n_objects = 1,
-                    dummy_value = DUMMY_VALUE
-            )
 
-            awkward_utils.add_object_fields(
-                    events = syst_events,
-                    name = "gen_hgg_lead_g",
-                    objects = h_to_bb.LeadGenChild,
-                    n_objects = 1,
-                    dummy_value = DUMMY_VALUE
-            )
-
-            awkward_utils.add_object_fields(
-                    events = syst_events,
-                    name = "gen_hgg_sublead_g",
-                    objects = h_to_bb.SubleadGenChild,
-                    n_objects = 1,
-                    dummy_value = DUMMY_VALUE
-            )
-            
             awkward_utils.add_object_fields(
                     events = syst_events,
                     name = "gen_top",
@@ -449,21 +432,28 @@ class TTHHTagger(Tagger):
         awkward_utils.add_field(syst_events, "n_taus", n_taus)
 
         n_lep_tau = n_leptons + n_taus
+        awkward_utils.add_field(syst_events, "n_lep_tau", n_lep_tau)
 
         n_jets = awkward.num(jets)
         awkward_utils.add_field(syst_events, "n_jets", n_jets)
 
-        hadronic = (n_jets >= 4) & (n_leptons == 0) & (n_taus == 0)
+        n_fatjets = awkward.num(fatjets)
+        awkward_utils.add_field(syst_events, "n_fatjets", n_fatjets)
+
+        boosted = (n_fatjets >= 1) 
+        hadronic = (n_jets >= 2) & (n_leptons == 0) & (n_taus == 0)
         semi_lep = (n_jets >= 2) & (n_leptons == 1) & (n_taus == 0)
         semi_tau = (n_jets >= 2) & (n_leptons == 0) & (n_taus == 1)
         dilepton = (n_jets >= 1) & (n_lep_tau == 2)
         multilep = (n_jets >= 1) & (n_lep_tau >= 3)
 
-        presel_cut = (hadronic | semi_lep | semi_tau | dilepton | multilep) & z_veto
+        pho_idmva_cut = (syst_events.LeadPhoton.mvaID > -0.7) & (syst_events.SubleadPhoton.mvaID > -0.7)
+
+        presel_cut = (boosted | hadronic | semi_lep | semi_tau | dilepton | multilep) & z_veto & pho_idmva_cut
 
         self.register_cuts(
-            names = ["hadronic", "semi_lep", "semi_tau", "dilepton", "multilepton", "z_veto", "inclusive"],
-            results = [hadronic, semi_lep, semi_tau, dilepton, multilep, z_veto, presel_cut]
+            names = ["boosted", "hadronic", "semi_lep", "semi_tau", "dilepton", "multilepton", "z_veto", "pho_idmva_cut", "inclusive"],
+            results = [boosted, hadronic, semi_lep, semi_tau, dilepton, multilep, z_veto, pho_idmva_cut, presel_cut]
         )
 
         return presel_cut, syst_events
