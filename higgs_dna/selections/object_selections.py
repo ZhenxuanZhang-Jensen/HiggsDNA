@@ -126,7 +126,7 @@ def compute_delta_R(objects1, n_objects1, objects2, n_objects2, min_dr):
                         pt = objects2[i][k].pt,
                         eta = objects2[i][k].eta,
                         phi = objects2[i][k].phi,
-                        mass = objects2[i][k].mass
+                        mass = objects2[i][k].mass 
                 )
                 dR = obj1.deltaR(obj2)
                 if dR < min_dr:

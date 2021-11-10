@@ -43,6 +43,7 @@ DEFAULT_OPTIONS = {
     },
     "iso_tracks" : {
         "pt" : 5.0,
+        "eta" : 5.0,
         "dr_photons" : 0.2,
         "dr_electrons" : 0.2,
         "dr_muons" : 0.2,
@@ -233,6 +234,16 @@ class HHggTauTauTagger(Tagger):
                 data = syst_events.Jet[jet_cut]
         )
 
+        bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis = 1, ascending = False)]
+        awkward_utils.add_object_fields(
+                events = syst_events,
+                name = "b_jet",
+                objects = bjets,
+                n_objects = 2,
+                fields = ["btagDeepFlavB"],
+                dummy_value = DUMMY_VALUE
+        )
+
         # Add object fields to events array
         for objects, name in zip([electrons, muons, taus, jets], ["electron", "muon", "tau", "jet"]):
             awkward_utils.add_object_fields(
@@ -311,7 +322,15 @@ class HHggTauTauTagger(Tagger):
             axis = 1
         )
         tau_candidates = tau_candidates[awkward.argsort(tau_candidates.pt, ascending = False, axis = 1)] 
-        
+
+        awkward_utils.add_object_fields(
+                events = syst_events,
+                name = "tau_candidate",
+                objects = tau_candidates,
+                n_objects = 3,
+                dummy_value = DUMMY_VALUE
+        ) 
+
         # Create ditau candidates: all possible pairs of two objects, with objects = {taus, electrons, muons, iso_tracks}
         tau_candidate_pairs = awkward.combinations(tau_candidates, 2, fields = ["LeadTauCand", "SubleadTauCand"])
 
@@ -362,7 +381,8 @@ class HHggTauTauTagger(Tagger):
 
         tau_candidate_pairs["ditau"] = ditau_candidates
 
-        tau_candidate_pairs = tau_candidate_pairs[awkward.argsort(abs(tau_candidate_pairs.ditau.mass - 125), axis = 1)]
+        if awkward.any(awkward.num(tau_candidate_pairs) >= 2): # are there any events still with more than one ditau candidate?
+            tau_candidate_pairs = tau_candidate_pairs[awkward.argsort(abs(tau_candidate_pairs.ditau.mass - 125), axis = 1)] # if so, take the one with m_vis closest to mH
         tau_candidate_pairs = awkward.firsts(tau_candidate_pairs)
 
         # Add ditau-related fields to array
@@ -389,7 +409,6 @@ class HHggTauTauTagger(Tagger):
                 awkward.fill_none(tau_candidate_pairs.ditau.dR, DUMMY_VALUE)
         )
  
-
 
         # Now assign the selected tau candidate pair in each event to a category integer
         category_map = {

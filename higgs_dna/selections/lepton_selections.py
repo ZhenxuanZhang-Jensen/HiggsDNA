@@ -17,7 +17,8 @@ DEFAULT_ELECTRONS = {
         "dxy" : 0.045,
         "dz" : 0.2,
         "id" : "WP90",
-        "dr_photons" : 0.2
+        "dr_photons" : 0.2,
+        "veto_transition" : True
 }
 
 def select_electrons(electrons, options, clean, name = "none", tagger = None):
@@ -41,12 +42,16 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
         logger.warning("[select_electrons] : Tagger '%s', id cut '%s' not recognized, not applying an ID cut." % (str(tagger), options["id"]))
         id_cut = electrons.pt > 0. 
 
-    all_cuts = standard_cuts & id_cut
+    if options["veto_transition"]:
+        transition_cut = (abs(electrons.eta) < 1.4442) | (abs(electrons.eta) > 1.566)
+
+
+    all_cuts = standard_cuts & id_cut & transition_cut
 
     if tagger is not None:
         tagger.register_cuts(
-                names = ["standard object cuts", "id cut", "all cuts"],
-                results = [standard_cuts, id_cut, all_cuts],
+                names = ["standard object cuts", "id cut", "ee-eb transition", "all cuts"],
+                results = [standard_cuts, id_cut, transition_cut, all_cuts],
                 cut_type = name
         )
 

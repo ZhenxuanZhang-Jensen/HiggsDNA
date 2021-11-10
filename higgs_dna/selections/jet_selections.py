@@ -40,4 +40,4 @@ def select_jets(jets, options, clean, name = "none", tagger = None):
             cut_type = name
         )
 
-    return all_cuts 
+    return all_cuts

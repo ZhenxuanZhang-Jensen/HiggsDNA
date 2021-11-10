@@ -10,15 +10,19 @@
         ["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"], ["SubleadPhoton", "genPartFlav"], ["SubleadPhoton", "pixelSeed"],
         "jet_1_pt", "jet_1_eta", "jet_1_phi", "jet_1_mass", "jet_1_btagDeepFlavB",
         "jet_2_pt", "jet_2_eta", "jet_2_phi", "jet_2_mass", "jet_2_btagDeepFlavB",
-        "electron_1_pt", "electron_1_eta", "electron_1_phi", "electron_1_mass", "electron_1_charge",
-        "electron_2_pt", "electron_2_eta", "electron_2_phi", "electron_2_mass", "electron_2_charge",
-        "muon_1_pt", "muon_1_eta", "muon_1_phi", "muon_1_mass", "muon_1_charge",
-        "muon_2_pt", "muon_2_eta", "muon_2_phi", "muon_2_mass", "muon_2_charge",
-        "tau_1_pt", "tau_1_eta", "tau_1_phi", "tau_1_mass", "tau_1_charge",
-        "tau_2_pt", "tau_2_eta", "tau_2_phi", "tau_2_mass", "tau_2_charge", 
-        "n_jets", "n_leptons", "n_electrons", "n_muons", "n_taus",
-        "weight_central", 
-        "event"
+        "b_jet_1_btagDeepFlavB", "b_jet_2_btagDeepFlavB",
+        "tau_candidate_1_pt", "tau_candidate_1_eta", "tau_candidate_1_phi", "tau_candidate_1_mass", "tau_candidate_1_charge", "tau_candidate_1_id",
+        "tau_candidate_2_pt", "tau_candidate_2_eta", "tau_candidate_2_phi", "tau_candidate_2_mass", "tau_candidate_2_charge", "tau_candidate_2_id",
+        "tau_candidate_3_pt", "tau_candidate_3_eta", "tau_candidate_3_phi", "tau_candidate_3_mass", "tau_candidate_3_charge", "tau_candidate_3_id", 
+        "n_jets", "n_leptons", "n_electrons", "n_muons", "n_taus", "n_iso_tracks",
+        "ditau_pt", "ditau_eta", "ditau_phi", "ditau_mass", "ditau_dR",
+        "ditau_lead_lepton_pt", "ditau_lead_lepton_eta", "ditau_lead_lepton_phi", "ditau_lead_lepton_mass",
+        "ditau_lead_lepton_id", "ditau_lead_lepton_charge",
+        "ditau_sublead_lepton_pt", "ditau_sublead_lepton_eta", "ditau_sublead_lepton_phi", "ditau_sublead_lepton_mass",
+        "ditau_sublead_lepton_id", "ditau_sublead_lepton_charge",
+        "category",
+        "weight_central",
+        "event" 
     ],
     "tag_sequence" : [
             {   
@@ -128,7 +132,19 @@
                 "kwargs" : {
                     "working_point" : "wp90iso"
                 }
+            },
+            "L1_prefiring_sf" : {
+                "type" : "event",
+                "method" : "from_branch",
+                "branches" : {
+                    "central" : "L1PreFiringWeight_Nom",
+                    "up" : "L1PreFiringWeight_Up",
+                    "down" : "L1PreFiringWeight_Dn"
+                },
+                "modify_central_weight" : true,
+                "years" : ["2016", "2017"]
             }
+ 
         },
         "independent_collections" : {
             "fnuf" : {
@@ -153,18 +169,20 @@
             "Photon_pt", "Photon_eta", "Photon_phi", "Photon_mass",
             "Photon_pixelSeed", "Photon_mvaID", "Photon_electronVeto",
             "Photon_sieie", "Photon_trkSumPtHollowConeDR03", "Photon_photonIso", "Photon_genPartFlav", "Photon_chargedHadronIso",
-            "Photon_r9", "Photon_hoe", "Photon_pfRelIso03_chg", "Photon_pfRelIso03_all", 
+            "Photon_r9", "Photon_hoe", "Photon_pfRelIso03_chg", "Photon_pfRelIso03_all",
             "Photon_isScEtaEB", "Photon_isScEtaEE",
             "Photon_genPartFlav",
             "Tau_pt", "Tau_eta", "Tau_phi", "Tau_mass", "Tau_idDeepTau2017v2p1VSe", "Tau_idDeepTau2017v2p1VSjet", "Tau_idDeepTau2017v2p1VSmu", "Tau_charge", "Tau_dz", "Tau_idDecayModeNewDMs",
-            "Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass", "Muon_charge", "Muon_pfRelIso03_all", "Muon_dxy", "Muon_dz", "Muon_tightId",
+            "Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass", "Muon_charge", "Muon_pfRelIso03_all", "Muon_dxy", "Muon_dz", "Muon_tightId", "Muon_isGlobal",
             "Electron_pt", "Electron_eta", "Electron_phi", "Electron_mass", "Electron_charge", "Electron_mvaFall17V2Iso_WP90", "Electron_mvaFall17V2noIso_WP90", "Electron_pfRelIso03_all", "Electron_dxy", "Electron_dz", "Electron_mvaFall17V2Iso_WP80",
             "Jet_pt", "Jet_eta", "Jet_phi", "Jet_mass", "Jet_btagDeepFlavB", "Jet_jetId", "Jet_hadronFlavour",
+            "IsoTrack_pt", "IsoTrack_eta", "IsoTrack_phi", "IsoTrack_fromPV", "IsoTrack_isPFcand", "IsoTrack_pdgId",
+            "L1PreFiringWeight_Nom", "L1PreFiringWeight_Up", "L1PreFiringWeight_Dn",
             "genWeight", "run", "event", "fixedGridRhoAll"
     ],
     "samples" : {
         "catalog" : "metadata/samples/hhggtautau.json",
-        "sample_list" : ["Data", "HHggTauTau", "ttH_M125", "HH_ggbb", "VH_M125", "VBFH_M125", "ggH_M125", "Diphoton", "GJets_HT-40To100", "GJets_HT-100To200", "GJets_HT-200To400", "GJets_HT-400To600", "GJets_HT-600ToInf", "TTJets", "TTGamma", "TTGG", "WGamma", "ZGamma"],
-        "years" : ["2016","2017","2018"] 
+        "sample_list" : ["GJets_HT-40To100", "Data", "HHggTauTau", "ttH_M125", "HH_ggbb", "VH_M125", "VBFH_M125", "ggH_M125", "Diphoton", "GJets_HT-100To200", "GJets_HT-200To400", "GJets_HT-400To600", "GJets_HT-600ToInf", "TTJets", "TTGamma", "TTGG", "WGamma", "ZGamma"],
+        "years" : ["2016", "2017", "2018"] 
     }
 }
