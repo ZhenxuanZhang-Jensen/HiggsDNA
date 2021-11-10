@@ -155,7 +155,6 @@ class Job():
 
 
 import subprocess
-from psutil import pid_exists
 class LocalJob(Job):
     """
 
