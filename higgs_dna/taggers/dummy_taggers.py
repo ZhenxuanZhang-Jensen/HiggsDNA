@@ -8,6 +8,8 @@ from higgs_dna.taggers.tagger import Tagger, NOMINAL_TAG
 from higgs_dna.selections import lepton_selections, jet_selections
 from higgs_dna.utils import awkward_utils
 
+DUMMY_VALUE = -999.
+
 class TTHTagger(Tagger):
     """
     Dummy tth tagger
@@ -57,11 +59,27 @@ class TTHTagger(Tagger):
                 data = syst_events.Jet[jet_cut]
         )
 
+        for objects, name in zip([electrons, muons, jets], ["electron", "muon", "jet"]):
+            awkward_utils.add_object_fields(
+                    events = syst_events,
+                    name = name,
+                    objects = objects,
+                    n_objects = 6 if name == "jet" else 2,
+                    dummy_value = DUMMY_VALUE
+            )
+
         # Preselection
-        n_leptons = awkward.num(electrons) + awkward.num(muons)
+        n_electrons = awkward.num(electrons)
+        n_muons = awkward.num(muons)
+        n_leptons = n_electrons + n_muons 
         n_jets = awkward.num(jets)
 
-        dipho_pt_cut = syst_events.Diphoton.pt > 100
+        awkward_utils.add_field(syst_events, "n_electrons", n_electrons)
+        awkward_utils.add_field(syst_events, "n_muons", n_muons)
+        awkward_utils.add_field(syst_events, "n_leptons", n_leptons)
+        awkward_utils.add_field(syst_events, "n_jets", n_jets)
+
+        dipho_pt_cut = syst_events.Diphoton.pt > 0.
 
         tth_leptonic_presel = (n_leptons >= 1) & (n_jets >= 2)
         tth_hadronic_presel = (n_leptons == 0) & (n_jets >= 4)
