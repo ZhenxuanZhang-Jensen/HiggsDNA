@@ -17,6 +17,12 @@ ge-environments.html) by running:
 ```  
 conda env create -f environment.yml  
 ```  
+
+If you are running on `lxplus` you may run into permission errors, which can be fixed with:
+```
+chmod 755 -R /afs/cern.ch/user/<your_username_first_initial>/<your_username>/.conda
+```
+
 Please note that the field ```python>=3.6``` will create an environment with the most recent stable version of Python. Change it to suite your needs (but still matching the requirement of Python>=3.6).  
 
 One additional package, `correctionlib`, must be installed via `pip`, rather than `conda`. Run
