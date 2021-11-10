@@ -155,6 +155,7 @@ class Job():
 
 
 import subprocess
+from psutil import pid_exists
 class LocalJob(Job):
     """
 
@@ -173,7 +174,6 @@ class LocalJob(Job):
     def monitor(self):
         #p_status = self.p.poll()
         if not os.path.exists("/proc/%s" % self.pid):
-        #if p_status is not None:
             if os.path.exists(self.summary_file):
                 self.status = "completed"
             else:
