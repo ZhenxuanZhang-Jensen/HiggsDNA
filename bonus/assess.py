@@ -445,8 +445,8 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
         ax2.axhspan(mc_ratio_stat_err_down[i], mc_ratio_stat_err_up[i], float(i) / float(h_data.nbins), float(i+1) / float(h_data.nbins), color = "black", alpha = 0.25, linewidth = 0.)
         if h_bkg_syst:
             # Stat \oplus syst error
-            ax2.axhspan(h_bkg_total.counts[i] + mc_stat_err_up[i], h_bkg_total.counts[i] + mc_stat_syst_err_up[i], float(i) / float(h_data.nbins), float(i+1) / float(h_data.nbins), color = "red", alpha = 0.25, linewidth = 0.) 
-            ax2.axhspan(h_bkg_total.counts[i] - mc_stat_syst_err_down[i], h_bkg_total.counts[i] - mc_stat_err_down[i], float(i) / float(h_data.nbins), float(i+1) / float(h_data.nbins), color = "red", alpha = 0.25, linewidth = 0.) 
+            ax1.axhspan(h_bkg_total.counts[i] + mc_stat_err_up[i], h_bkg_total.counts[i] + mc_stat_syst_err_up[i], float(i) / float(h_data.nbins), float(i+1) / float(h_data.nbins), color = "red", alpha = 0.25, linewidth = 0.) 
+            ax1.axhspan(h_bkg_total.counts[i] - mc_stat_syst_err_down[i], h_bkg_total.counts[i] - mc_stat_err_down[i], float(i) / float(h_data.nbins), float(i+1) / float(h_data.nbins), color = "red", alpha = 0.25, linewidth = 0.) 
             # Stat \oplus syst error ratio pad
             ax2.axhspan(mc_ratio_stat_err_up[i], mc_ratio_stat_syst_err_up[i], float(i) / float(h_data.nbins), float(i+1) / float(h_data.nbins), color = "red", alpha = 0.25, linewidth = 0.)
             ax2.axhspan(mc_ratio_stat_syst_err_down[i], mc_ratio_stat_err_down[i], float(i) / float(h_data.nbins), float(i+1) / float(h_data.nbins), color = "red", alpha = 0.25, linewidth = 0.)
@@ -455,16 +455,16 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
     plt.clf()
 
 
-def make_shape_comparisons(plot_config, output_dir, events, process_map):
+def make_shape_comparisons(plot_config, output_dir, events, process_map, signals):
     for field, info in plot_config.items():
         data = events_with_ids(events["ics"]["nominal"]["events"], process_map["Data"])[field]
 
-        arrays = [data]
-        weights = [awkward.ones_like(data)]
-        names = ["Data"]
+        arrays = []
+        weights = []
+        names = []
 
         for proc, ids in process_map.items():
-            if proc == "Data":
+            if proc not in signals:
                 continue
             evts = events_with_ids(events["ics"]["nominal"]["events"], ids)
             arrays.append(evts[field])
@@ -659,7 +659,7 @@ def plot_weights(systs, process_map, output_dir):
         for weight, vars in systs["weights"].items():
             for var, info in vars.items():
                 means.append(info[proc]["mean"])
-                labels.append(weight + "_" + var)
+                labels.append(weight + "_" + var + " [mu = %.3f]" % info[proc]["mean"])
                 p1sigma.append(info[proc]["p1sigma"])
                 p2sigma.append(info[proc]["p2sigma"])
                 m1sigma.append(info[proc]["m1sigma"])
@@ -750,7 +750,7 @@ def main(args):
             
         make_plots(plot_config, args.output_dir, events, process_map, signals, bkgs)
         logger.debug("[HiggsDNABonusTool] Making shape comparisons (no systematics).")
-        make_shape_comparisons(plot_config, args.output_dir, events, process_map)
+        make_shape_comparisons(plot_config, args.output_dir, events, process_map, signals)
 
     if args.assess_systematics:
         logger.debug("[HiggsDNABonusTool] Summarizing weight systematics.")
