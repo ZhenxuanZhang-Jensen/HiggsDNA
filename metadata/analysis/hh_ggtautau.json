@@ -10,6 +10,7 @@
         ["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"], ["SubleadPhoton", "genPartFlav"], ["SubleadPhoton", "pixelSeed"],
         "jet_1_pt", "jet_1_eta", "jet_1_phi", "jet_1_mass", "jet_1_btagDeepFlavB",
         "jet_2_pt", "jet_2_eta", "jet_2_phi", "jet_2_mass", "jet_2_btagDeepFlavB",
+        "b_jet_1_btagDeepFlavB", "b_jet_2_btagDeepFlavB",
         "tau_candidate_1_pt", "tau_candidate_1_eta", "tau_candidate_1_phi", "tau_candidate_1_mass", "tau_candidate_1_charge", "tau_candidate_1_id",
         "tau_candidate_2_pt", "tau_candidate_2_eta", "tau_candidate_2_phi", "tau_candidate_2_mass", "tau_candidate_2_charge", "tau_candidate_2_id",
         "tau_candidate_3_pt", "tau_candidate_3_eta", "tau_candidate_3_phi", "tau_candidate_3_mass", "tau_candidate_3_charge", "tau_candidate_3_id", 

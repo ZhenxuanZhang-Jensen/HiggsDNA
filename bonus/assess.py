@@ -665,7 +665,7 @@ def plot_weights(systs, process_map, output_dir):
                 m1sigma.append(info[proc]["m1sigma"])
                 m2sigma.append(info[proc]["m2sigma"])
 
-        
+
         sort_idx = awkward.argsort(means, ascending = False)
 
         means = numpy.array(means)[sort_idx]

@@ -234,6 +234,16 @@ class HHggTauTauTagger(Tagger):
                 data = syst_events.Jet[jet_cut]
         )
 
+        bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis = 1, ascending = False)]
+        awkward_utils.add_object_fields(
+                events = syst_events,
+                name = "b_jet",
+                objects = bjets,
+                n_objects = 2,
+                fields = ["btagDeepFlavB"],
+                dummy_value = DUMMY_VALUE
+        )
+
         # Add object fields to events array
         for objects, name in zip([electrons, muons, taus, jets], ["electron", "muon", "tau", "jet"]):
             awkward_utils.add_object_fields(
