@@ -106,27 +106,27 @@ def infer_systematics(inputs, cuts):
     }
     for x in inputs:
         if "merged_nominal" in x:
-            systs["ics"]["nominal"] = { "input" : x , "events" : awkward.from_parquet(x)}
+            systs["ics"]["nominal"] = { "input" : x , "events" : awkward.from_parquet(x, lazy=True)}
 
         else:
             syst = x.split("/")[-1].replace("merged_", "").replace(".parquet", "").replace("_down", "").replace("_up", "")
             var = "up" if "up" in x else "down"
             if syst not in systs["ics"].keys():
                 systs["ics"][syst] = {}
-            systs["ics"][syst][var] = { "input" : x , "events" : awkward.from_parquet(x)}
+            systs["ics"][syst][var] = { "input" : x , "events" : awkward.from_parquet(x, lazy=True)}
 
     if cuts is not None:
         for syst, info in systs["ics"].items():
             if syst == "nominal":
                 x = info["events"]
-                for field, range in cuts:
-                    x = do_cut(x, field, range)
+                for field, cut_range in cuts:
+                    x = do_cut(x, field, cut_range)
                 systs["ics"][syst]["events"] = x
                 continue
             for var, var_info in info.items():
                 x = var_info["events"]
-                for field, range in cuts:
-                    x = do_cut(x, field, range)
+                for field, cut_range in cuts:
+                    x = do_cut(x, field, cut_range)
 
                 systs["ics"][syst][var]["events"] = x
     
@@ -161,8 +161,8 @@ def events_with_ids(events, ids):
     return events[cut]
 
 
-def do_cut(events, field, range):
-    cut = (events[field] >= range[0]) & (events[field] <= range[1])
+def do_cut(events, field, cut_range):
+    cut = (events[field] >= cut_range[0]) & (events[field] <= cut_range[1])
     return events[cut]
 
 
@@ -175,8 +175,8 @@ def parse_cuts(cuts):
     cuts = cuts.split("|")
     for cut in cuts:   
         field = cut.split(":")[0]
-        range = [float(x.replace("[","").replace("]","")) for x in cut.split(":")[1].split(",")]
-        cuts_parsed.append((field, range))
+        cut_range = [float(x.replace("[","").replace("]","")) for x in cut.split(":")[1].split(",")]
+        cuts_parsed.append((field, cut_range))
 
     return cuts_parsed 
 
@@ -457,8 +457,6 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
 
 def make_shape_comparisons(plot_config, output_dir, events, process_map, signals):
     for field, info in plot_config.items():
-        data = events_with_ids(events["ics"]["nominal"]["events"], process_map["Data"])[field]
-
         arrays = []
         weights = []
         names = []
@@ -475,6 +473,9 @@ def make_shape_comparisons(plot_config, output_dir, events, process_map, signals
 
 
 def make_plots(plot_config, output_dir, events, process_map, signals, bkgs):
+    if "Data" not in process_map.keys():
+        return
+
     for field, info in plot_config.items():
         data = events_with_ids(events["ics"]["nominal"]["events"], process_map["Data"])[field]
         bkg = {}
