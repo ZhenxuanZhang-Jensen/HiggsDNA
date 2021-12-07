@@ -372,7 +372,7 @@ class AnalysisManager():
             function = copy.deepcopy(self.config["function"])
 
             # 6. Job Details
-            if "Data" in name or "HHggTauTau" in name:
+            if "Data" in name:
                 fpo = 10
             else:
                 fpo = 3
