@@ -5,6 +5,7 @@ import numpy
 import logging
 logger = logging.getLogger(__name__)
 
+vector.register_awkward()
 
 def missing_fields(array, fields):
     """
@@ -83,14 +84,14 @@ def add_field(events, name, data, overwrite = False):
 
     already_present = len(missing_fields(events, [name])) == 0
     if already_present and not overwrite:
-        logger.warning("[awkward_utils.py : add_field] You tried to write the field %s, but it is already present and overwrite option was not selected. Not overwriting existing field." % name)
+        logger.warning("[awkward_utils.py : add_field] You tried to write the field %s, but it is already present and overwrite option was not selected. Not overwriting existing field." % str(name))
         return events[name]
 
     if isinstance(data, awkward.highlevel.Array) or isinstance(data, numpy.ndarray):
         events[name] = data
         return events[name]
     elif isinstance(data, dict):
-        return create_record(events, name, data, overwrite)
+        return create_record(events, name, data)
     else:
         message = "[awkward_utils.py : add_field] argument <data> should be either an awkward.highlevel.Array (in the case of adding a single field) or a dictionary (in the case of creating a record), not %s as you have passed." % (str(type(data)))
         logger.exception(message)
@@ -105,11 +106,13 @@ def add_object_fields(events, name, objects, n_objects, dummy_value = -999., fie
 
     For example add_object_fields(events, "jet", selected_jets, 4) will add every field belonging to the 
     selected_jets record as individual entries for each of the first four jets:
-    events.jet_1_pt
-    events.jet_1_eta
-    ...
-    events.jet_4_phi
+        events.jet_1_pt
+        events.jet_1_eta
+        ...
+        events.jet_4_phi
     where events with less than 4 jets will receive values of the dummy_value, -999.
+
+    If `n_objects = 1`, fields will be named as events.jet_pt, rather than events_jet_1_pt.
 
     :param events: base events array which you want to add a field to
     :type events: awkward.highlevel.Array
@@ -141,16 +144,25 @@ def add_object_fields(events, name, objects, n_objects, dummy_value = -999., fie
     for field in fields:
         if "weight" in field and not weights:
             continue
-        for i in range(n_objects):
+        if n_objects == 1:
             add_field(
                 events = events,
-                name = "%s_%d_%s" % (name, i+1, field),
-                data = awkward.fill_none(padded_objects[field][:,i], dummy_value),
+                name = "%s_%s" % (name, field),
+                data = awkward.fill_none(padded_objects[field][:,0], dummy_value),
                 overwrite = overwrite
             )
+        else:
+            for i in range(n_objects):
+                add_field(
+                    events = events,
+                    name = "%s_%d_%s" % (name, i+1, field),
+                    data = awkward.fill_none(padded_objects[field][:,i], dummy_value),
+                    overwrite = overwrite
+                )
 
 
-def create_record(events, name, data, overwrite):
+
+def create_record(events, name, data):
     """
     Adds a nested record to events array.
     If there are any fields containing "p4", this is assumed to be an array of <vector> objects and the pt/eta/phi/mass will be added as top-level fields in the record for easier access. 
@@ -159,8 +171,6 @@ def create_record(events, name, data, overwrite):
     :type name: str or tuple
     :param data: dictionary of subfields : awkward array 
     :type data: dict
-    :param overwrite: whether to overwrite this field in events (only applicable if it already exists)
-    :type overwrite: bool
     :return: events array with record added
     :rtype: awkward.highlevel.Array 
     """
@@ -183,9 +193,14 @@ def create_record(events, name, data, overwrite):
     return events[name]
 
 
+
 def create_four_vectors(events, offsets, contents):
     """
-    Zip four vectors as record in awkard array.
+    Zip four vectors as record in awkward array from numpy arrays of the offsets and contents of a jagged array.
+    For most cases of creating four vectors, you probably want to use:
+        objs = awkward.Array(objs, with_name = "Momentum4D")
+    instead.
+
     Record these as `Momentum4D` vector objects so all typical
     four vector properties and methods can be called on them.
     The contents must be given as a numpy array with 4 indicies in the last

@@ -62,6 +62,20 @@ def parse_arguments():
         action="store_true",
         help="just run 1 job for each sample/year to test workflow")
 
+    parser.add_argument(
+        "--years",
+        required=False,
+        default=None,
+        type=str,
+        help="csv list of years to process (overrides setting in config json")
+
+    parser.add_argument(
+        "--sample_list",
+        required=False,
+        default=None,
+        type=str,
+        help="csv list of samples to process (overrides setting in config json")
+
     return parser.parse_args()
 
 
