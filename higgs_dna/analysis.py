@@ -4,6 +4,7 @@ import datetime
 import copy
 import json
 import pickle
+import dill
 import numpy
 
 import uproot
@@ -149,7 +150,7 @@ class AnalysisManager():
             logger.info("[AnalysisManager : __init__] Found previous pickle file '%s' for this analysis, loading previous state and progress." % (self.pickle_file))
             logger.warning("[AnalysisManager : __init__] We are loading a saved pickle file '%s' -- please be sure this behavior is inteneded. If you want to run a completely new analysis, please specify a new output directory or run with the option TODO" % (self.pickle_file))
             with open(self.pickle_file, "rb") as f_in:
-                saved_analysis_manager = pickle.load(f_in)
+                saved_analysis_manager = dill.load(f_in)
 
             for attr, value in saved_analysis_manager.__dict__.items(): 
                 logger.debug("[AnalysisManager : __init__] attribute '%s' : %s" % (attr, str(value)))
@@ -173,16 +174,26 @@ class AnalysisManager():
         # Otherwise, run normal constructor
         else:
             # First, check if the config passes these options
-            fields = ["name", "function", "variables_of_interest", "tag_sequence", "systematics", "branches", "samples"]
+            fields = ["name", "function", "variables_of_interest", "tag_sequence", "systematics", "samples", "branches"]
             for field in fields:
                 if field in self.config.keys():
                     setattr(self, field, self.config[field])
 
             # Second, check if they were provided manually.
             # If provided both through the config and explicitly, we take the explicitly provided argument.
-            args = [name, function, variables_of_interest, samples, tag_sequence, systematics]
+            args = [name, function, variables_of_interest, tag_sequence, systematics, samples]
             for field, arg in zip(fields, args):
-                if arg is not None:
+                if field == "samples":
+                    for x in ["sample_list", "years"]:
+                        sample_arg = kwargs.get(x, None)
+                        if sample_arg is not None:
+                            sample_arg = sample_arg.split(",")
+                            logger.warning("[AnalysisManager : __init__] Samples argument '%s' was provided both through the config json and explicitly in the constructor. We will take the version provided by the constructor." % x)
+                            self.samples[x] = sample_arg
+                            self.config["samples"][x] = sample_arg
+
+
+                elif arg is not None:
                     if hasattr(self, field):
                         logger.warning("[AnalysisManager : __init__] Argument '%s' was provided both through the config json and explicitly in constructor. We will take the version provided by the constructor." % field)
                     setattr(self, field, arg)
@@ -389,7 +400,7 @@ class AnalysisManager():
 
     def save(self):
         with open(self.pickle_file.replace(".pkl", "_temp.pkl"), "wb") as f_out:
-            pickle.dump(self, f_out)
+            dill.dump(self, f_out)
 
         os.system("mv %s %s" % (self.pickle_file.replace(".pkl", "_temp.pkl"), self.pickle_file))
 
