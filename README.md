@@ -17,11 +17,25 @@ ge-environments.html) by running:
 ```  
 conda env create -f environment.yml  
 ```  
+the conda env can become pretty large (multiple GB), so you may want to specify an installation location in the above step with
+```
+conda env create -f environment.yml -p <path to install conda env>
+```
+then activate the environment with
+```
+conda activate higgs-dna
+```
+If you specified an installation path, your activation command will instead be:
+```
+conda activate <path to install conda env>/higgs-dna
+```
 
+** lxplus-specific notes **
 If you are running on `lxplus` you may run into permission errors, which can be fixed with:
 ```
 chmod 755 -R /afs/cern.ch/user/<your_username_first_initial>/<your_username>/.conda
 ```
+You may also want to increase your disk quota at [this link](https://resources.web.cern.ch/resources/Manage/EOS/Default.aspx), otherwise you may run out of space while installing your `conda` environment.
 
 Please note that the field ```python>=3.6``` will create an environment with the most recent stable version of Python. Change it to suite your needs (but still matching the requirement of Python>=3.6).  
 
