@@ -87,7 +87,12 @@ class Task():
 
         """
         if self.complete:
-            return
+            done = True
+            for syst_tag, output in self.merged_outputs.items():
+                if not os.path.exists(output):
+                    done = False # double check that no outputs were deleted
+            if done:
+                return
         
         # Check status of all jobs
         for job in self.jobs:
@@ -253,7 +258,7 @@ class Task():
             merged_events = []
 
             for output in outputs:
-                merged_events.append(awkward.from_parquet(output))
+                merged_events.append(awkward.from_parquet(output, lazy=True))
 
             logger.debug("[Task : merge_outputs] Task '%s' : merging %d outputs into file '%s'." % (self.name, len(outputs), merged_output))
 
@@ -266,7 +271,7 @@ class Task():
 
         """
         for syst_tag, merged_output in self.merged_outputs.items():
-            events = awkward.from_parquet(merged_output)
+            events = awkward.from_parquet(merged_output, lazy=True)
 
             for field in events.fields:
                 # only apply scale1fb and lumi to central weight so variations are standalone
@@ -294,7 +299,11 @@ class Task():
             return
 
         for syst_tag, merged_output in self.merged_outputs.items():
-            events = awkward.from_parquet(merged_output)
+            events = awkward.from_parquet(merged_output, lazy=True)
+
+            if "process_id" in events.fields:
+                return
+
             logger.debug("[Task : add_process_id] Task '%s' : adding field 'process_id' with value %d in output file '%s'" % (self.name, self.process_id, merged_output))
             awkward_utils.add_field(
                     events = events,
@@ -317,7 +326,11 @@ class Task():
         self.year = int(self.config["sample"]["year"])
 
         for syst_tag, merged_output in self.merged_outputs.items():
-            events = awkward.from_parquet(merged_output)
+            events = awkward.from_parquet(merged_output, lazy=True)
+
+            if "year" in events.fields:
+                return
+
             logger.debug("[Task : add_process_id] Task '%s' : adding field 'year' with value %d in output file '%s'." % (self.name, self.year, merged_output))
             
             awkward_utils.add_field(

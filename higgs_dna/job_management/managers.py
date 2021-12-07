@@ -5,6 +5,7 @@ import awkward
 import numpy
 import json
 import glob
+import pyarrow
 
 import logging
 logger = logging.getLogger(__name__)
@@ -44,23 +45,6 @@ class JobsManager():
         self.customize_jobs()
 
         self.submit_to_batch()
-
-        """
-        for task in self.tasks:
-            task.process()
-
-            jobs_to_submit = [job for job in task.jobs if (job.status == "waiting" or job.status == "failed")]
-            for job in jobs_to_submit:
-                if self.can_submit(job):
-                    submitted = job.submit()
-                    if submitted:
-                        logger.info("[JobsManager : submit_jobs] : %s submitted job '%s_%d' (for the %s time)" % (str(type(self)), job.name, job.idx, num_to_ordinal_string(job.n_attempts)))
-                        os.system("sleep 0.1s")
-
-            task.process()
-
-            self.summary[task.name] = task.summary 
-        """
 
         self.complete = all([task.complete for task in self.tasks])
         if summarize:
@@ -122,7 +106,7 @@ class JobsManager():
 
             merged_events = []
             for output in outputs:
-                merged_events.append(awkward.from_parquet(output))
+                merged_events.append(awkward.from_parquet(output, lazy=True))
             
             # Add dummy values for missing fields (usually weight branches in data)
             branches = []
@@ -140,9 +124,9 @@ class JobsManager():
                     )
 
             logger.info("[JobsManager : merge_outputs] For syst_tag '%s' merging %d files into merged file '%s'." % (syst_tag, len(outputs), merged_file))
-            for f in outputs:
-                logger.debug("\t %s" % f)
+
             merged_events = awkward.concatenate(merged_events)
+            
             logger.debug("\t merging %d events" % len(merged_events))
             awkward.to_parquet(merged_events, merged_file)
 
@@ -177,7 +161,7 @@ class LocalManager(JobsManager):
     def __init__(self, **kwargs):
         super(LocalManager, self).__init__()
 
-        self.n_cores = kwargs.get("n_cores", 4)
+        self.n_cores = kwargs.get("n_cores", 6)
         self.n_running_jobs = 0
         self.job_type = LocalJob
 
@@ -332,13 +316,18 @@ class CondorManager(JobsManager):
 
         """
         self.job_map = {}
-        monitor_results = do_cmd("condor_q --json")
+        monitor_results = do_cmd("condor_q --json -attributes ClusterId,JobStatus")
 
         if not monitor_results: # no condor jobs were found
             return
 
-        else:
-            monitor_results = json.loads(monitor_results)
+        success = False
+        while not success:
+            try:
+                monitor_results = json.loads(monitor_results)
+                success = True
+            except: # sometimes condor_q just intermittently fails, just try again later if this happens
+                monitor_results = do_cmd("condor_q --json -attributes ClusterId,JobStatus")
 
         for x in monitor_results:
             self.job_map[str(x["ClusterId"])] = CONDOR_STATUS_FLAGS[x["JobStatus"]]
@@ -357,7 +346,7 @@ class CondorManager(JobsManager):
             analysis_tarfile_size = os.path.getsize(self.analysis_tarfile) * (1. / 1024.)**3
             logger.warning("[CondorManager : prepare_inputs] conda pack '%s' of size %.3f GB and analysis tarfile '%s' of size %.3f GB already exists, not remaking." % (self.conda_tarfile, tarfile_size, self.analysis_tarfile, analysis_tarfile_size))
 
-        else:
+        elif not self.host == "lxplus":
             if not os.path.exists(self.conda_tarfile):
                 conda_pack_command = "conda pack -n higgs-dna --ignore-editable-packages -o %s --compress-level 5 --n-threads 12" % self.conda_tarfile # compression level of 5 seems like a good balance of speed and size reduction: compression of 1 gives a tarfile of size 463MB, while 5 gives 413MB in 30s, while 9 gives 409MB in 91s 
                 logger.info("[CondorManager : prepare_inputs] Making conda pack '%s' with command '%s'" % (self.conda_tarfile, conda_pack_command))
@@ -365,7 +354,7 @@ class CondorManager(JobsManager):
 
             if not os.path.exists(self.analysis_tarfile):
                 tar_command = "XZ_OPT='-1e -T12' tar -Jc %s -f %s -C %s higgs_dna jsonpog-integration" % (self.tar_options, self.analysis_tarfile, self.higgs_dna_path)
-                logger.info("[CondorManager : prepare_inputs] Making analysis tarfile '%s' with command '%s'." % (self.conda_tarfile, tar_command))
+                logger.info("[CondorManager : prepare_inputs] Making analysis tarfile '%s' with command '%s'." % (self.analysis_tarfile, tar_command))
 
                 t_start_tar = time.time()
                 os.system(tar_command)
@@ -379,7 +368,6 @@ class CondorManager(JobsManager):
             self.conda_tarfile_batch = self.batch_output_dir + "/" + "higgs-dna.tar.gz"
             self.analysis_tarfile_batch = self.batch_output_dir + "/" + "higgs_dna.tar.gz"
 
-            #if not (os.path.exists(self.conda_tarfile_batch) or os.path.exists(self.analysis_tarfile_batch)):
             logger.debug("[CondorManager : prepare_inputs] Transferring tarfiles to hadoop directory '%s' so they may be copied with xrd to reduce I/O load on local cluster." % self.batch_output_dir)
             os.system("cp %s %s" % (self.conda_tarfile, self.conda_tarfile_batch))
             os.system("cp %s %s" % (self.analysis_tarfile, self.analysis_tarfile_batch))
@@ -388,7 +376,6 @@ class CondorManager(JobsManager):
             os.system("hadoop fs -setrep -R 30 %s" % (self.conda_tarfile_batch.replace("/hadoop","")))
             os.system("hadoop fs -setrep -R 30 %s" % (self.analysis_tarfile_batch.replace("/hadoop","")))
  
-
         # Check grid proxy
         self.proxy = check_proxy()
         if self.proxy is None:
