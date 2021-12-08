@@ -25,7 +25,7 @@ class Job():
         for dir in [self.output_dir, self.batch_output_dir]:
             os.system("mkdir -p %s" % dir)
         
-        self.batch_output_base_dir = "/".join(self.batch_output_dir.split("/")[:-2]) # remove last subdir to get the base dir
+        self.batch_output_base_dir = "/".join(self.batch_output_dir.split("/")[:-4]) # remove last two subdir to get the base dir
         self.job_batch_output_dir = self.batch_output_dir
 
         if "/eos" in self.output_dir: # on lxplus, cannot write logs to /eos, only /afs 
