@@ -106,7 +106,7 @@ class JobsManager():
 
             merged_events = []
             for output in outputs:
-                merged_events.append(awkward.from_parquet(output, lazy=True))
+                merged_events.append(awkward.from_parquet(output))
             
             # Add dummy values for missing fields (usually weight branches in data)
             branches = []

@@ -266,7 +266,7 @@ class Task():
             merged_events = []
 
             for output in outputs:
-                merged_events.append(awkward.from_parquet(output, lazy=True))
+                merged_events.append(awkward.from_parquet(output))
 
             logger.debug("[Task : merge_outputs] Task '%s' : merging %d outputs into file '%s'." % (self.name, len(outputs), merged_output))
 
@@ -307,7 +307,7 @@ class Task():
             return
 
         for syst_tag, merged_output in self.merged_outputs.items():
-            events = awkward.from_parquet(merged_output, lazy=True)
+            events = awkward.from_parquet(merged_output, lazy = True)
 
             if "process_id" in events.fields:
                 return
@@ -334,7 +334,7 @@ class Task():
         self.year = int(self.config["sample"]["year"])
 
         for syst_tag, merged_output in self.merged_outputs.items():
-            events = awkward.from_parquet(merged_output, lazy=True)
+            events = awkward.from_parquet(merged_output, lazy = True)
 
             if "year" in events.fields:
                 return
