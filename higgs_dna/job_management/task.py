@@ -201,9 +201,17 @@ class Task():
 
         completed_jobs = [job for job in self.jobs if job.status == "completed"]
         for job in completed_jobs:
-            with open(job.summary_file, "r") as f_in:
-                job_info = json.load(f_in)
-         
+            # Try to open json summary file for the job
+            # Wrapped in a try-except to avoid errors where the file exists but has not finished copying from the remote job
+            copied = False
+            while not copied:
+                try:
+                    with open(job.summary_file, "r") as f_in:
+                        job_info = json.load(f_in)
+                        copied = True
+                except:
+                    os.system("sleep 3s")
+
             phys_summary["n_events_initial"] += job_info["n_events"]
             if not self.config["sample"]["is_data"]:
                 phys_summary["sum_weights"] += job_info["sum_weights"]
