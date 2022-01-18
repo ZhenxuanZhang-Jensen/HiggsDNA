@@ -28,7 +28,12 @@ DEFAULT_OPTIONS = {
         "dr_electrons" : 0.4,
         "dr_muons" : 0.4,
     },
-    "photon_id" : 0.0
+    "photon_id" : 0.0,
+    "btag_wp" : {
+        "2016" : 0.3093,
+        "2017" : 0.3040,
+        "2018" : 0.2783
+    }
 }   
 
 class TTHPreselTagger(Tagger):
@@ -116,6 +121,7 @@ class TTHPreselTagger(Tagger):
         )
 
         bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis = 1, ascending = False)]
+        bjets = bjets[bjets.btagDeepFlavB > self.options["btag_wp"][self.year]] 
 
         # Z-veto
         # Register as `vector.Momentum4D` objects so we can do four-vector operations with them
@@ -152,11 +158,12 @@ class TTHPreselTagger(Tagger):
         n_leptons = n_electrons + n_muons
 
         n_jets = awkward.num(jets)
+        n_bjets = awkward.num(bjets)
 
         photon_id_cut = (syst_events.LeadPhoton.mvaID > self.options["photon_id"]) & (syst_events.SubleadPhoton.mvaID > self.options["photon_id"]) 
 
         # Hadronic presel
-        hadronic = (n_leptons == 0) & (n_jets >= 4)
+        hadronic = (n_leptons == 0) & (n_jets >= 4) & (n_bjets >= 1) 
 
         # Leptonic presel
         leptonic = (n_leptons >= 1) & (n_jets >= 2)
