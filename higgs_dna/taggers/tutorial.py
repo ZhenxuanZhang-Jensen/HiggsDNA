@@ -27,7 +27,8 @@ DEFAULT_OPTIONS = {
         "dr_photons" : 0.4,
         "dr_electrons" : 0.4,
         "dr_muons" : 0.4,
-    }
+    },
+    "photon_id" : 0.0
 }   
 
 class TTHPreselTagger(Tagger):
@@ -152,16 +153,18 @@ class TTHPreselTagger(Tagger):
 
         n_jets = awkward.num(jets)
 
+        photon_id_cut = (syst_events.LeadPhoton.mvaID > self.options["photon_id"]) & (syst_events.SubleadPhoton.mvaID > self.options["photon_id"]) 
+
         # Hadronic presel
         hadronic = (n_leptons == 0) & (n_jets >= 4)
 
         # Leptonic presel
         leptonic = (n_leptons >= 1) & (n_jets >= 2)
 
-        presel_cut = (hadronic | leptonic) & (z_veto)
+        presel_cut = (hadronic | leptonic) & z_veto & photon_id_cut
         self.register_cuts(
-            names = ["hadronic presel", "leptonic presel", "z veto", "all"],
-            results = [hadronic, leptonic, z_veto, presel_cut]
+            names = ["hadronic presel", "leptonic presel", "z veto", "photon ID cut", "all"],
+            results = [hadronic, leptonic, z_veto, photon_id_cut, presel_cut]
         )
 
         return presel_cut, syst_events
