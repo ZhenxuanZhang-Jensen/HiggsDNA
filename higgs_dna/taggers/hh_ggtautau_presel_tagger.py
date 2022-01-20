@@ -283,6 +283,11 @@ class HHggTauTauPreselTagger(Tagger):
 
 
         ### Presel step 2: Z veto ###
+        # 2.1 Register objects as 4 vectors for appropriate overloading of operators
+        electrons = awkward.Array(electrons, with_name = "Momentum4D")
+        muons = awkward.Array(muons, with_name = "Momentum4D")
+
+        # 2.2 Create all SF dilep pairs
         ee_pairs = awkward.combinations(electrons, 2, fields = ["LeadLepton", "SubleadLepton"])
         mumu_pairs = awkward.combinations(muons, 2, fields = ["LeadLepton", "SubleadLepton"])
         dilep_pairs = awkward.concatenate(
@@ -290,26 +295,21 @@ class HHggTauTauPreselTagger(Tagger):
                 axis = 1
         )
 
-        lead_lep_p4 = vector.awk({
-            "pt" : dilep_pairs.LeadLepton.pt,
-            "eta" : dilep_pairs.LeadLepton.eta,
-            "phi" : dilep_pairs.LeadLepton.phi,
-            "mass" : dilep_pairs.LeadLepton.mass
-        })
-        sublead_lep_p4 = vector.awk({
-            "pt" : dilep_pairs.SubleadLepton.pt,
-            "eta" : dilep_pairs.SubleadLepton.eta,
-            "phi" : dilep_pairs.SubleadLepton.phi,
-            "mass" : dilep_pairs.SubleadLepton.mass
-        })
-        z_candidates = lead_lep_p4 + sublead_lep_p4 
+        # 2.3 Make z candidates
+        dilep_pairs["z_candidate"] = dilep_pairs.LeadLepton + dilep_pairs.SubleadLepton
 
-        os_cut = dilep_pairs["LeadLepton"].charge * dilep_pairs["SubleadLepton"].charge == -1
-        z_mass_cut = (z_candidates.mass > self.options["z_veto"][0]) & (z_candidates.mass < self.options["z_veto"][1])
+        # 2.4 Keep only OS cands in the specified mass range
+        os_cut = dilep_pairs.LeadLepton.charge * dilep_pairs.SubleadLepton.charge == -1
+        z_mass_cut = (dilep_pairs.z_candidate.mass >= self.options["z_veto"][0]) & (dilep_pairs.z_candidate.mass <= self.options["z_veto"][1])
 
-        z_veto = ~(os_cut & z_mass_cut) # z-veto on individual z candidates (in principle, can be more than 1 per event)
-        z_veto = (awkward.num(z_candidates) == 0) | (awkward.any(z_veto, axis = 1)) # if any z candidate in an event fails the veto, the event is vetoed. If the event does not have any z candidates, we do not veto
-        
+        z_cut = os_cut & z_mass_cut
+        dilep_pairs = dilep_pairs[z_cut]
+
+        # 2.5 Event level cut
+        has_z_cand = awkward.num(dilep_pairs) >= 1 # veto any event that has a Z candidate
+        ee_event = awkward.num(electrons) >= 2
+        mm_event = awkward.num(muons) >= 2
+        z_veto = ~(has_z_cand & (ee_event | mm_event))
 
         ### Presel step 3: construct di-tau candidates and assign to category ###
         taus = awkward.with_field(taus, awkward.ones_like(taus.pt) * 15, "id")
