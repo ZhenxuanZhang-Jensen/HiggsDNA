@@ -312,6 +312,7 @@ class HHggTauTauPreselTagger(Tagger):
         z_veto = ~(has_z_cand & (ee_event | mm_event))
 
         ### Presel step 3: construct di-tau candidates and assign to category ###
+        # 3.1 Merge all taus, electrons, muons, and iso tracks
         taus = awkward.with_field(taus, awkward.ones_like(taus.pt) * 15, "id")
         electrons = awkward.with_field(electrons, awkward.ones_like(electrons.pt) * 11, "id")
         muons = awkward.with_field(muons, awkward.ones_like(muons.pt) * 13, "id")
@@ -323,6 +324,7 @@ class HHggTauTauPreselTagger(Tagger):
             axis = 1
         )
         tau_candidates = tau_candidates[awkward.argsort(tau_candidates.pt, ascending = False, axis = 1)] 
+        tau_candidates = awkward.Array(tau_candidates, with_name = "Momentum4D")
 
         awkward_utils.add_object_fields(
                 events = syst_events,
@@ -332,59 +334,45 @@ class HHggTauTauPreselTagger(Tagger):
                 dummy_value = DUMMY_VALUE
         ) 
 
-        # Create ditau candidates: all possible pairs of two objects, with objects = {taus, electrons, muons, iso_tracks}
-        tau_candidate_pairs = awkward.combinations(tau_candidates, 2, fields = ["LeadTauCand", "SubleadTauCand"])
+        # 3.2 Create ditau candidates: all possible pairs of two objects, with objects = {taus, electrons, muons, iso_tracks}
+        ditau_pairs = awkward.combinations(tau_candidates, 2, fields = ["LeadTauCand", "SubleadTauCand"])
 
-        # Trim same-sign ditau candidates
-        os_cut = tau_candidate_pairs.LeadTauCand.charge * tau_candidate_pairs.SubleadTauCand.charge == -1
-        tau_candidate_pairs = tau_candidate_pairs[os_cut]
+        # 3.3 Keep only OS ditau pairs 
+        os_cut = ditau_pairs.LeadTauCand.charge * ditau_pairs.SubleadTauCand.charge == -1
+        ditau_pairs = ditau_pairs[os_cut]
 
+        # 3.4 Assign priority to ditau pairs by lepton flavor
         # If there is more than one ditau candidate in an event, we first give preference by lepton flavor:
         # from highest to lowest priority : tau/tau, tau/mu, tau/ele, mu/ele, mu/mu, ele/ele, tau/iso_track 
-        tau_candidate_pairs = awkward.with_field(tau_candidate_pairs, tau_candidate_pairs["LeadTauCand"].id * tau_candidate_pairs["SubleadTauCand"].id, "ProdID")
-        tau_candidate_pairs = awkward.with_field(tau_candidate_pairs, awkward.ones_like(tau_candidate_pairs.LeadTauCand.pt) * -999, "priority")
+        ditau_pairs = awkward.with_field(ditau_pairs, ditau_pairs.LeadTauCand.id * ditau_pairs.SubleadTauCand.id, "ProdID")
+        ditau_pairs = awkward.with_field(ditau_pairs, awkward.ones_like(ditau_pairs.LeadTauCand.pt) * -999, "priority")
 
         # NOTE from sam: when you add a field like "priority" and you want to modify its value, you MUST do events["priority"] = blah and NOT events.priority = blah. The latter is very bad and will not work, I am not sure why.
         # tau_h / tau_h : 15 * 15 = 225
-        tau_candidate_pairs["priority"] = awkward.where(tau_candidate_pairs.ProdID == 225, awkward.ones_like(tau_candidate_pairs["priority"]) * 1, tau_candidate_pairs["priority"])
+        ditau_pairs["priority"] = awkward.where(ditau_pairs.ProdID == 225, awkward.ones_like(ditau_pairs["priority"]) * 1, ditau_pairs["priority"])
         # tau_h / mu : 15 * 13 = 195
-        tau_candidate_pairs["priority"] = awkward.where(tau_candidate_pairs.ProdID == 195, awkward.ones_like(tau_candidate_pairs["priority"]) * 2, tau_candidate_pairs["priority"])
+        ditau_pairs["priority"] = awkward.where(ditau_pairs.ProdID == 195, awkward.ones_like(ditau_pairs["priority"]) * 2, ditau_pairs["priority"])
         # tau_h / ele : 15 * 11 = 165
-        tau_candidate_pairs["priority"] = awkward.where(tau_candidate_pairs.ProdID == 165, awkward.ones_like(tau_candidate_pairs["priority"]) * 3, tau_candidate_pairs["priority"])
+        ditau_pairs["priority"] = awkward.where(ditau_pairs.ProdID == 165, awkward.ones_like(ditau_pairs["priority"]) * 3, ditau_pairs["priority"])
         # mu / ele : 13 * 11 = 143
-        tau_candidate_pairs["priority"] = awkward.where(tau_candidate_pairs.ProdID == 143, awkward.ones_like(tau_candidate_pairs["priority"]) * 4, tau_candidate_pairs["priority"])
+        ditau_pairs["priority"] = awkward.where(ditau_pairs.ProdID == 143, awkward.ones_like(ditau_pairs["priority"]) * 4, ditau_pairs["priority"])
         # mu / mu : 13 * 13 = 169
-        tau_candidate_pairs["priority"] = awkward.where(tau_candidate_pairs.ProdID == 169, awkward.ones_like(tau_candidate_pairs["priority"]) * 5, tau_candidate_pairs["priority"])
+        ditau_pairs["priority"] = awkward.where(ditau_pairs.ProdID == 169, awkward.ones_like(ditau_pairs["priority"]) * 5, ditau_pairs["priority"])
         # ele / ele : 11 * 11 = 121
-        tau_candidate_pairs["priority"] = awkward.where(tau_candidate_pairs.ProdID == 121, awkward.ones_like(tau_candidate_pairs["priority"]) * 6, tau_candidate_pairs["priority"])
+        ditau_pairs["priority"] = awkward.where(ditau_pairs.ProdID == 121, awkward.ones_like(ditau_pairs["priority"]) * 6, ditau_pairs["priority"])
         # tau / iso track : 15 * 1 = 15
-        tau_candidate_pairs["priority"] = awkward.where(tau_candidate_pairs.ProdID == 15, awkward.ones_like(tau_candidate_pairs["priority"]) * 7, tau_candidate_pairs["priority"])
+        ditau_pairs["priority"] = awkward.where(ditau_pairs.ProdID == 15, awkward.ones_like(ditau_pairs["priority"]) * 7, ditau_pairs["priority"])
 
-        # Select only the highest priority di-tau candidate(s) in each event
-        tau_candidate_pairs = tau_candidate_pairs[tau_candidate_pairs.priority == awkward.min(abs(tau_candidate_pairs.priority), axis = 1)]
+        # 3.5 Select only the highest priority di-tau candidate(s) in each event
+        ditau_pairs = ditau_pairs[ditau_pairs.priority == awkward.min(abs(ditau_pairs.priority), axis = 1)]
 
-        # If still more than one ditau candidate in an event, take the one with m_vis closest to mH = 125 GeV
-        tau_candidates_lead_lepton_p4 = vector.awk({
-            "pt" : tau_candidate_pairs.LeadTauCand.pt,
-            "eta" : tau_candidate_pairs.LeadTauCand.eta,
-            "phi" : tau_candidate_pairs.LeadTauCand.phi,
-            "mass" : tau_candidate_pairs.LeadTauCand.mass
-        })
-        tau_candidates_sublead_lepton_p4 = vector.awk({
-            "pt" : tau_candidate_pairs.SubleadTauCand.pt,
-            "eta" : tau_candidate_pairs.SubleadTauCand.eta,
-            "phi" : tau_candidate_pairs.SubleadTauCand.phi,
-            "mass" : tau_candidate_pairs.SubleadTauCand.mass
-        })
+        # 3.6 If still more than one ditau candidate in an event, take the one with m_vis closest to mH = 125 GeV
+        ditau_pairs["ditau"] = ditau_pairs.LeadTauCand + ditau_pairs.SubleadTauCand
+        ditau_pairs["ditau", "dR"] = ditau_pairs.LeadTauCand.deltaR(ditau_pairs.SubleadTauCand)
 
-        ditau_candidates = tau_candidates_lead_lepton_p4 + tau_candidates_sublead_lepton_p4
-        ditau_candidates["dR"] = tau_candidates_lead_lepton_p4.deltaR(tau_candidates_sublead_lepton_p4)
-
-        tau_candidate_pairs["ditau"] = ditau_candidates
-
-        if awkward.any(awkward.num(tau_candidate_pairs) >= 2): # are there any events still with more than one ditau candidate?
-            tau_candidate_pairs = tau_candidate_pairs[awkward.argsort(abs(tau_candidate_pairs.ditau.mass - 125), axis = 1)] # if so, take the one with m_vis closest to mH
-        tau_candidate_pairs = awkward.firsts(tau_candidate_pairs)
+        if awkward.any(awkward.num(ditau_pairs) >= 2):
+            ditau_pairs = ditau_pairs[awkward.argsort(abs(ditau_pairs.ditau.mass - 125), axis = 1)] # if so, take the one with m_vis closest to mH
+        ditau_pairs = awkward.firsts(ditau_pairs)
 
         # Add ditau-related fields to array
         for field in ["pt", "eta", "phi", "mass", "charge", "id"]:
@@ -392,24 +380,23 @@ class HHggTauTauPreselTagger(Tagger):
                 awkward_utils.add_field(
                         syst_events,
                         "ditau_%s" % field,
-                        awkward.fill_none(getattr(tau_candidate_pairs.ditau, field), DUMMY_VALUE)
+                        awkward.fill_none(getattr(ditau_pairs.ditau, field), DUMMY_VALUE)
                 )
             awkward_utils.add_field(
                     syst_events,
                     "ditau_lead_lepton_%s" % field,
-                    awkward.fill_none(tau_candidate_pairs.LeadTauCand[field], DUMMY_VALUE)
+                    awkward.fill_none(ditau_pairs.LeadTauCand[field], DUMMY_VALUE)
             )
             awkward_utils.add_field(
                     syst_events,
                     "ditau_sublead_lepton_%s" % field,
-                    awkward.fill_none(tau_candidate_pairs.SubleadTauCand[field], DUMMY_VALUE)
+                    awkward.fill_none(ditau_pairs.SubleadTauCand[field], DUMMY_VALUE)
             )
         awkward_utils.add_field(
                 syst_events,
                 "ditau_dR",
-                awkward.fill_none(tau_candidate_pairs.ditau.dR, DUMMY_VALUE)
+                awkward.fill_none(ditau_pairs.ditau.dR, DUMMY_VALUE)
         )
- 
 
         # Now assign the selected tau candidate pair in each event to a category integer
         category_map = {
@@ -425,7 +412,7 @@ class HHggTauTauPreselTagger(Tagger):
         category = awkward.zeros_like(n_jets)
 
         for prod_id, category_number in category_map.items():
-            category = awkward.where(tau_candidate_pairs.ProdID == prod_id, awkward.ones_like(category) * category_number, category)
+            category = awkward.where(ditau_pairs.ProdID == prod_id, awkward.ones_like(category) * category_number, category)
 
         # Now assign 1tau / 0 lep, 0 isotrack events to category 8
         category = awkward.fill_none(category, 0)
