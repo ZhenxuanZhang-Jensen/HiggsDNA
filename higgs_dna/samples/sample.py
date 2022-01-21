@@ -4,7 +4,6 @@ from higgs_dna.samples.file import File
 from higgs_dna.utils import awkward_utils
 from higgs_dna.constants import CENTRAL_WEIGHT, LUMI
 
-
 class Sample():
     """
 

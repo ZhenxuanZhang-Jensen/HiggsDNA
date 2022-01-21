@@ -1,5 +1,8 @@
 import awkward
 import vector
+
+vector.register_awkward()
+
 import numpy
 import numba
 
