@@ -25,7 +25,7 @@ from higgs_dna.utils.metis_utils import do_cmd
 
 def run_analysis(config, summary = {}):
     """
-
+    Function to be run inside each job.
     """
     t_start = time.time()
 
@@ -118,7 +118,7 @@ def run_analysis(config, summary = {}):
 
 class AnalysisManager():
     """
-
+    Manages the running of an entire analysis.
     """
     def __init__(self, config = {}, name = None, function = None, samples = None, tag_sequence = None, systematics = None, variables_of_interest = None, batch_system = "local", n_files_per_job = 10, output_dir = "output", merge_outputs = False, resubmit_retired = False, **kwargs):
         # TODO: check that config dict has all required fields

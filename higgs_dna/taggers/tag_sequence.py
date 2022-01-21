@@ -1,7 +1,3 @@
-# TODO items
-#   1. Decide how we want to handle events with more than one diphoton candidate.
-#       - see description in diphoton_tagger.py
-
 import sys
 import numpy
 import json
