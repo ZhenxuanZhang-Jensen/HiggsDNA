@@ -182,7 +182,7 @@
     ],
     "samples" : {
         "catalog" : "metadata/samples/hhggtautau_rereco_nanoaodv8.json",
-        "sample_list" : ["GJets_HT-40To100", "Data", "HHggTauTau", "ttH_M125", "HH_ggbb", "VH_M125", "VBFH_M125", "ggH_M125", "Diphoton", "GJets_HT-100To200", "GJets_HT-200To400", "GJets_HT-400To600", "GJets_HT-600ToInf", "TTJets", "TTGamma", "TTGG", "WGamma", "ZGamma"],
+        "sample_list" : ["GJets_HT-40To100", "Data", "HHggTauTau", "ttH_M125", "HH_ggbb", "VH_M125", "VBFH_M125", "ggH_M125", "Diphoton", "GJets_HT-100To200", "GJets_HT-200To400", "GJets_HT-400To600", "GJets_HT-600ToInf", "TTJets", "TTGamma", "TTGG", "WGamma", "ZGamma", "radionM300_HHggTauTau", "radionM400_HHggTauTau", "radionM500_HHggTauTau", "radionM800_HHggTauTau", "radionM1000_HHggTauTau"],
         "years" : ["2016", "2017", "2018"] 
     }
 }

@@ -374,7 +374,7 @@ class AnalysisManager():
             # 6. Job Details
             if "Data" in name:
                 fpo = 10
-            elif "HHggTauTau" in name:
+            elif "HHggTauTau" == name:
                 fpo = 20
             else:
                 fpo = 3

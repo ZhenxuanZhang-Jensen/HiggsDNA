@@ -17,6 +17,56 @@
             "2018" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/HHggtautau_Era2018_private_v2_20201005/"
         }
     },
+    "radionM300_HHggTauTau" : {
+        "xs" : 1.0,
+        "comment" : "dummy cross section for now", 
+        "bf" : 1.0,
+        "files" : {
+            "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM300_HHggtautau_Era2017_private_v0.2_20210502/",
+            "2017" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM300_HHggtautau_Era2017_private_v0.2_20210502/",
+            "2018" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM300_HHggtautau_Era2018_private_v0.2_20210502/"
+        } 
+    },
+    "radionM400_HHggTauTau" : {
+        "xs" : 1.0,
+        "comment" : "dummy cross section for now",
+        "bf" : 1.0,
+        "files" : {
+            "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM400_HHggtautau_Era2017_private_v0.2_20210502/",
+            "2017" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM400_HHggtautau_Era2017_private_v0.2_20210502/",
+            "2018" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM400_HHggtautau_Era2018_private_v0.2_20210502/"
+        }
+    },
+    "radionM500_HHggTauTau" : {
+        "xs" : 1.0,
+        "comment" : "dummy cross section for now",
+        "bf" : 1.0,
+        "files" : {
+            "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM500_HHggtautau_Era2017_private_v0.2_20210502/",
+            "2017" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM500_HHggtautau_Era2017_private_v0.2_20210502/",
+            "2018" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM500_HHggtautau_Era2018_private_v0.2_20210502/"
+        }
+    },
+    "radionM800_HHggTauTau" : {
+        "xs" : 1.0,
+        "comment" : "dummy cross section for now",
+        "bf" : 1.0,
+        "files" : {
+            "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM800_HHggtautau_Era2017_private_v0.2_20210502/",
+            "2017" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM800_HHggtautau_Era2017_private_v0.2_20210502/",
+            "2018" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM800_HHggtautau_Era2018_private_v0.2_20210502/"
+        }
+    },
+    "radionM1000_HHggTauTau" : {
+        "xs" : 1.0,
+        "comment" : "dummy cross section for now",
+        "bf" : 1.0,
+        "files" : {
+            "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM1000_HHggtautau_Era2017_private_v0.2_20210502/",
+            "2017" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM1000_HHggtautau_Era2017_private_v0.2_20210502/",
+            "2018" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM1000_HHggtautau_Era2018_private_v0.2_20210502/"
+        }
+    },
     "ggH_M125" : {
         "xs" : 0.1118429,
         "files" : {
