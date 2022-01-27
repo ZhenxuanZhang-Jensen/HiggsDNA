@@ -19,7 +19,7 @@ DEFAULT_OPTIONS = {
         "dz" : 0.2,
         "id" : "WP90",
         "dr_photons" : 0.2,
-        "veto_transition" : True
+        "veto_transition" : True,
     },
     "muons" : {
         "pt" : 15.0,
@@ -60,6 +60,7 @@ DEFAULT_OPTIONS = {
         "dr_iso_tracks" : 0.4
     },
     "z_veto" : [80., 100.],
+    "m_llg_veto" : [86., 96.],
     "photon_mvaID" : 0.0
 }
 
@@ -425,10 +426,26 @@ class HHggTauTauPreselTagger(Tagger):
         # Photon ID cut
         pho_id = (syst_events.LeadPhoton.mvaID > self.options["photon_mvaID"]) & (syst_events.SubleadPhoton.mvaID > self.options["photon_mvaID"])
 
-        presel_cut = category_cut & z_veto & pho_id 
+        # Veto on m_llgamma to reject Z->eeg and Z->mmg events 
+        dilep_lead_photon = ditau_pairs.ditau + syst_events.LeadPhoton
+        dilep_sublead_photon = ditau_pairs.ditau + syst_events.SubleadPhoton
+
+        awkward_utils.add_field(syst_events, "dilep_leadpho_mass", dilep_lead_photon.mass) 
+        awkward_utils.add_field(syst_events, "dilep_subleadpho_mass", dilep_sublead_photon.mass) 
+
+        m_llg_veto_lead = (dilep_lead_photon.mass >= self.options["m_llg_veto"][0]) & (dilep_lead_photon.mass <= self.options["m_llg_veto"][1])
+        m_llg_veto_sublead = (dilep_sublead_photon.mass >= self.options["m_llg_veto"][0]) & (dilep_sublead_photon.mass <= self.options["m_llg_veto"][1])
+        # The m_llg_veto_* cuts will have `None` values for events which do not have a ditau pair. Here we replace `None` values with False (if there is not a ditau pair, there is no llg system, and it cannot have a mass in the veto range)
+        m_llg_veto_lead = awkward.fill_none(m_llg_veto_lead, value = False)
+        m_llg_veto_sublead = awkward.fill_none(m_llg_veto_sublead, value = False)
+
+        # Veto event if there are at least 2 OSSF leptons and they have m_llg (for either lead or sublead photon) in the z mass window
+        m_llg_veto = ~(((n_muons >= 2) | (n_electrons >= 2)) & (m_llg_veto_lead | m_llg_veto_sublead)) 
+
+        presel_cut = category_cut & z_veto & pho_id & m_llg_veto
         self.register_cuts(
-            names = ["category", "z_veto", "photon ID MVA", "all cuts"],
-            results = [category_cut, z_veto, pho_id, presel_cut]
+            names = ["category", "z_veto", "photon ID MVA", "m_llg veto", "all cuts"],
+            results = [category_cut, z_veto, pho_id, m_llg_veto, presel_cut]
         )
 
         return presel_cut, syst_events 

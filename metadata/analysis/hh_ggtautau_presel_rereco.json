@@ -20,6 +20,7 @@
         "ditau_lead_lepton_id", "ditau_lead_lepton_charge",
         "ditau_sublead_lepton_pt", "ditau_sublead_lepton_eta", "ditau_sublead_lepton_phi", "ditau_sublead_lepton_mass",
         "ditau_sublead_lepton_id", "ditau_sublead_lepton_charge",
+        "dilep_leadpho_mass", "dilep_subleadpho_mass",
         "category",
         "weight_central",
         "event" 
