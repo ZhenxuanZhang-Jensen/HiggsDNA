@@ -76,6 +76,20 @@ def parse_arguments():
         type=str,
         help="csv list of samples to process (overrides setting in config json")
 
+    parser.add_argument(
+        "--fpo",
+        required=False,
+        default=None,
+        type=int,
+        help="number of input files per each job. Overrides any fpo specified for individual samples. If rerunning from a partial run of this script, does not override previous fpo.")
+
+    parser.add_argument(
+        "--n_cores",
+        required=False,
+        default=6,
+        type=int,
+        help="number of cores to use for running jobs in parallel. Only applicable if running locally.")
+
     return parser.parse_args()
 
 

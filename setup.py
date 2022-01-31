@@ -19,6 +19,7 @@ setuptools.setup(
         "higgs_dna/taggers",
         "higgs_dna/selections",
         "higgs_dna/systematics",
+        "higgs_dna/samples",
         "higgs_dna/utils"
     ],
     install_requires=get_dependencies("environment.yml"),
