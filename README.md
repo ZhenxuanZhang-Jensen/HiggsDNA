@@ -47,18 +47,10 @@ to install this script.
   
 **3. Install ```higgs_dna```**  
   
-**Users** can install the package by simply running:  
-```  
-python setup.py install  
-```  
-(when a stable version will be available, it will be uploaded to the PyPI and it will be possible to install with just ```pip install higgs_dna``` without the need to clone the repository).  
-  
-  
-For **developers**, the suggested way to install is:  
+Install with:
 ```  
 pip install -e .  
 ```  
-this prevents the need to run the installation step every time a change is performed.
 
 If you notice issues with the ```conda pack``` command for creating the tarball, try updating and cleaning your environment with (after running ```conda activate higgs-dna```):
 ```
