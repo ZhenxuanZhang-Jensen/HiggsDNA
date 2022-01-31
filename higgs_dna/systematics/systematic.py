@@ -144,7 +144,7 @@ class Systematic():
                 if hasattr(self, arg):
                     kwargs[arg] = getattr(self, arg)
                 else:
-                    message = "[Systematic : get_function_kwargs] Systematic: %s, for function '%s' from module <%s>, we found an argument %s that is not present as an attribute of this class and we did not know how to otherwise set this argument. This may lead to unintended behavior or crashes!" % (self.name, self.function["name"], self.function["module"], arg)
+                    message = "[Systematic : get_function_kwargs] Systematic: %s, for function '%s' from module <%s>, we found an argument '%s' that is not present as an attribute of this class and we did not know how to otherwise set this argument. This may lead to unintended behavior or crashes!" % (self.name, self.function["name"], self.function["module"], arg)
                     logger.warning(message)
 
         logger.debug("[Systematic : get_function_kwargs] Systematic: %s, for function '%s' from module <%s>, we are passing arguments as:" % (self.name, self.function["name"], self.function["module"]))
@@ -185,7 +185,8 @@ class WeightSystematic(Systematic):
         self.requires_branches = requires_branches
 
         self.is_applied = {} # a weight will often be applied to multiple different sets of events (corresponding to different independent collections)
-    
+        self.is_applied_all = False # will be set to true if the weight is applied directly on the nominal events (i.e. before producing the independent collections) to avoid duplicate application on systematics with independent collections
+
     def produce(self, events, central_only = False):
         """
         Calculate the central/up/down variations for this WeightSystematic and add these as fields to the events array.
@@ -200,7 +201,14 @@ class WeightSystematic(Systematic):
         if self.method == "from_branch":
             self.check_fields(events)
             for variation, branch in self.branches.items():
-                awkward_utils.add_field(events, self.name + "_" + variation, events[branch])
+                if isinstance(variation, str): # plain field in array, e.g. events.weight_syst1_up
+                    name = "weight" + "_" + self.name + "_" + variation
+                    self.branches[variation] = name
+                elif isinstance(variation, tuple): # nested field in array, e.g. events.Photon.weight_syst1_up
+                    name = tuple((variation[0], "weight" + "_" + self.name + "_" + variation[1]))
+                    self.branches[variation[1]] = name
+                logger.debug("[WeightSystematic : produce] WeightSystematic: %s, adding field %s to events array" % (self.name, name))
+                awkward_utils.add_field(events, name, events[branch])
 
         elif self.method == "from_function":
             self.branches = {}
@@ -326,7 +334,11 @@ class WeightSystematic(Systematic):
                 awkward.ones_like(weight)
             )
 
-            self.summary[syst_tag]["central"]["frac"] = float(awkward.sum(mask)) / float(len(weight))
+            if len(weight) > 0:
+                self.summary[syst_tag]["central"]["frac"] = float(awkward.sum(mask)) / float(len(weight))
+            else:
+                self.summary[syst_tag]["central"]["frac"] = 0.
+
             if self.summary[syst_tag]["central"]["frac"] < 1.:
                 logger.debug("[WeightSystematic : apply] WeightSystematic: %s, independent collection: %s, per-event weight is applied to %.2f percent of events." % (self.name, syst_tag, self.summary[syst_tag]["central"]["frac"] * 100.))
 

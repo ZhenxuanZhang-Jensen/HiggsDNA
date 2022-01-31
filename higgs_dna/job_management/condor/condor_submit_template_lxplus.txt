@@ -1,5 +1,5 @@
 should_transfer_files = Yes
-transfer_input_files    = CONDA_TARFILE, GRID_PROXY
+transfer_input_files    = GRID_PROXY
 executable = EXECUTABLE
 output = OUTPUT
 error = ERROR

@@ -10,7 +10,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 from higgs_dna.systematics.systematic import EventWeightSystematic, ObjectWeightSystematic, SystematicWithIndependentCollection
-from higgs_dna.systematics import photon_systematics, lepton_systematics, jet_systematics
+from higgs_dna.systematics import photon_systematics, lepton_systematics, jet_systematics, pileup_systematics
 from higgs_dna.utils import awkward_utils, misc_utils
 from higgs_dna.constants import NOMINAL_TAG
 
@@ -150,6 +150,9 @@ class SystematicsProducer():
                                 weight_syst.modifies_taggers = syst_info["modifies_taggers"][target_collection]
                             elif isinstance(syst_info["modifies_taggers"], list): # you gave a list of taggers
                                 weight_syst.modifies_taggers = syst_info["modifies_taggers"]
+                        if "kwargs" in syst_info.keys():
+                            for kwarg, val in syst_info["kwargs"].items():
+                                setattr(weight_syst, kwarg, val)
 
                         self.weights[syst].append(weight_syst)           
 
@@ -174,6 +177,10 @@ class SystematicsProducer():
 
                     if "modifies_taggers" in syst_info.keys():
                         weight_syst.modifies_taggers = syst_info["modifies_taggers"]
+
+                    if "kwargs" in syst_info.keys():
+                        for kwarg, val in syst_info["kwargs"].items():
+                            setattr(weight_syst, kwarg, val) 
 
                     self.weights[syst].append(weight_syst)
 
@@ -269,7 +276,12 @@ class SystematicsProducer():
                     missing_fields = awkward_utils.missing_fields(events, [weight_syst.target_collection])
                     if not missing_fields:
                         events = weight_syst.apply(events)
-            
+
+                if NOMINAL_TAG in weight_syst.is_applied.keys(): 
+                    if weight_syst.is_applied[NOMINAL_TAG]: # if we already apply the weight syst before creating ICs, mark it as applied for all ICs (to avoid double-applying later on)
+                        weight_syst.is_applied_all = True
+
+
         for name, ic_syst in self.independent_collections.items():
             ics = ic_syst.produce(events)
             if NOMINAL_TAG in ics.keys():
@@ -298,6 +310,8 @@ class SystematicsProducer():
         for name, syst_events in events_with_syst.items():
             for weight_name, weight_systs in self.weights.items():
                 for weight_syst in weight_systs:
+                    if weight_syst.is_applied_all:
+                        continue
                     if name in weight_syst.is_applied.keys():
                         if weight_syst.is_applied[name]:
                             continue

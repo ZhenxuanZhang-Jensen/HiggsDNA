@@ -19,15 +19,31 @@ class Job():
 
         self.idx = idx
         self.name_full = self.name + "_" + str(self.idx)
-        self.output_dir = output_dir
-        self.batch_output_dir = batch_output_dir
+        self.output_dir = output_dir + "/job_%s/" % (str(self.idx))
+        self.batch_output_dir = batch_output_dir + "/job_%s/" % (str(self.idx))
+
+        for dir in [self.output_dir, self.batch_output_dir]:
+            os.system("mkdir -p %s" % dir)
+        
+        self.batch_output_base_dir = "/".join(self.batch_output_dir.split("/")[:-4]) # remove last two subdir to get the base dir
         self.job_batch_output_dir = self.batch_output_dir
+
+        if "/eos" in self.output_dir: # on lxplus, cannot write logs to /eos, only /afs 
+            pwd = do_cmd("pwd")
+            self.log_output_dir = pwd + "/hdna_log_dump/" + self.output_dir
+            os.system("mkdir -p %s" % self.log_output_dir)
+        else:
+            self.log_output_dir = self.output_dir
 
         self.basepath = do_cmd("pwd").split("HiggsDNA")[0]
 
         self.summary_file = self.batch_output_dir + "/%s_summary_job%d.json" % (self.name, self.idx)
         self.config_file = self.output_dir + "/%s_config_job%d.json" % (self.name, self.idx)
-        self.executable = self.output_dir + "/%s_executable_job%d.sh" % (self.name, self.idx)
+        if "/eos" in self.output_dir:
+            self.executable = self.log_output_dir + "/%s_executable_job%d.sh" % (self.name, self.idx)
+        else:
+            self.executable = self.output_dir + "/%s_executable_job%d.sh" % (self.name, self.idx)
+
         self.python_file = self.executable.replace(".sh", ".py")
         self.batch_submit_file = self.output_dir + "/%s_batch_submit_job%d.txt" % (self.name, self.idx)
 
@@ -124,9 +140,6 @@ class Job():
         if not self.made_executable:
             self.create_executable()
 
-        if dry_run:
-            return False
-
         if self.status == "retired":
             return False
 
@@ -134,6 +147,9 @@ class Job():
             logger.info("[Job : submit] Job '%s_%d' has been submitted %d times, permanently retiring job." % (self.name, self.idx, self.n_attempts))
             self.status = "retired"
             return False
+
+        if dry_run:
+            return True
 
         self.submit_to_batch()
 
@@ -166,13 +182,11 @@ class LocalJob(Job):
 
 
     def submit_to_batch(self):
-        p = subprocess.Popen("python %s" % (self.python_file), shell = True)
-        self.pid = p.pid
+        self.p = subprocess.Popen("python %s" % (self.python_file), shell = True)
+
 
     def monitor(self):
-        #p_status = self.p.poll()
-        if not os.path.exists("/proc/%s" % self.pid):
-        #if p_status is not None:
+        if self.p.poll() is not None:
             if os.path.exists(self.summary_file):
                 self.status = "completed"
             else:
@@ -187,7 +201,7 @@ class LocalJob(Job):
 
 
 from higgs_dna.utils.misc_utils import expand_path
-from higgs_dna.constants import CONDOR_EXE_TEMPLATE, CONDOR_SUB_TEMPLATE, CONDOR_STATUS_FLAGS, CONDOR_EXE_TEMPLATE_LXPLUS, CONDOR_SUB_TEMPLATE_LXPLUS
+from higgs_dna.constants import CONDOR_EXE_TEMPLATE, CONDOR_SUB_TEMPLATE, CONDOR_STATUS_FLAGS, CONDOR_EXE_TEMPLATE_LXPLUS, CONDOR_SUB_TEMPLATE_LXPLUS, XRD_REDIRECTOR, GFAL_REDIRECTOR
 
 class CondorJob(Job):
     """
@@ -208,6 +222,7 @@ class CondorJob(Job):
             lines = lines.replace("HIGGS_DNA_PATH", do_cmd("echo $CONDA_PREFIX"))
             lines = lines.replace("HIGGS_DNA_BASE", do_cmd("pwd").split("HiggsDNA")[0] + "HiggsDNA/")
             lines = lines.replace("GRID_PROXY", self.proxy.split("/")[-1])
+            lines = lines.replace("python", "%s/bin/python" % do_cmd("echo $CONDA_PREFIX"))
 
         else:
             self.job_config_file = self.config_file.split("/")[-1]
@@ -215,7 +230,7 @@ class CondorJob(Job):
             self.job_python_file = self.python_file.split("/")[-1]
 
             if self.host in ["UCSD"]:
-                self.job_batch_output_dir = self.batch_output_dir.replace("/hadoop/cms/", "davs://redirector.t2.ucsd.edu:1094//")
+                self.job_batch_output_dir = self.batch_output_dir.replace("/hadoop/cms/", GFAL_REDIRECTOR[self.host])
             else:
                 self.job_batch_output_dir = self.batch_output_dir
 
@@ -230,6 +245,8 @@ class CondorJob(Job):
             lines = lines.replace("CONFIG_FILE", self.job_config_file)
             lines = lines.replace("SUMMARY_FILE", self.job_summary_file)
             lines = lines.replace("BATCH_OUTPUT_DIR", self.job_batch_output_dir)
+            lines = lines.replace("XRD_CONDA_TARFILE", self.batch_output_base_dir.replace("/hadoop/cms/", XRD_REDIRECTOR[self.host]) + "/" + self.conda_tarfile.split("/")[-1])
+            lines = lines.replace("XRD_ANALYSIS_TARFILE", self.batch_output_base_dir.replace("/hadoop/cms/", XRD_REDIRECTOR[self.host]) + "/" + self.analysis_tarfile.split("/")[-1])
 
         with open(self.executable, "w") as f_out:
             f_out.write(lines)
@@ -254,9 +271,9 @@ class CondorJob(Job):
         lines = lines.replace("CONFIG_FILE", self.config_file)
         lines = lines.replace("BASEPATH", self.basepath)
         lines = lines.replace("EXECUTABLE", self.executable)
-        lines = lines.replace("OUTPUT", self.output_dir + "/$(Cluster).$(Process).out") 
-        lines = lines.replace("ERROR", self.output_dir + "/$(Cluster).$(Process).err")
-        lines = lines.replace("LOG", self.output_dir + "/$(Cluster).$(Process).log")
+        lines = lines.replace("OUTPUT", self.log_output_dir + "/$(Cluster).$(Process).out") 
+        lines = lines.replace("ERROR", self.log_output_dir + "/$(Cluster).$(Process).err")
+        lines = lines.replace("LOG", self.log_output_dir + "/$(Cluster).$(Process).log")
         lines = lines.replace("BATCH_NAME", self.name)
         if self.host == "lxplus":
             lines = lines.replace("GRID_PROXY", do_cmd("pwd").split("HiggsDNA")[0] + "HiggsDNA/" + self.proxy.split("/")[-1])
