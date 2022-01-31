@@ -4,6 +4,7 @@ import datetime
 import copy
 import json
 import pickle
+import dill
 import numpy
 
 import uproot
@@ -19,12 +20,12 @@ from higgs_dna.job_management.task import Task
 from higgs_dna.systematics.systematics_producer import SystematicsProducer
 from higgs_dna.taggers.tag_sequence import TagSequence
 from higgs_dna.utils.misc_utils import load_config, update_dict
-from higgs_dna.constants import NOMINAL_TAG, CENTRAL_WEIGHT
+from higgs_dna.constants import NOMINAL_TAG, CENTRAL_WEIGHT, TRIGGER
 from higgs_dna.utils.metis_utils import do_cmd
 
 def run_analysis(config, summary = {}):
     """
-
+    Function to be run inside each job.
     """
     t_start = time.time()
 
@@ -117,9 +118,9 @@ def run_analysis(config, summary = {}):
 
 class AnalysisManager():
     """
-
+    Manages the running of an entire analysis.
     """
-    def __init__(self, config = {}, name = None, function = None, samples = None, tag_sequence = None, systematics = None, variables_of_interest = None, batch_system = "local", n_files_per_job = 10, output_dir = "output", merge_outputs = False, resubmit_retired = False, **kwargs):
+    def __init__(self, config = {}, name = None, function = None, samples = None, tag_sequence = None, systematics = None, variables_of_interest = None, batch_system = "local", fpo = None, output_dir = "output", merge_outputs = False, resubmit_retired = False, n_cores = 6, **kwargs):
         # TODO: check that config dict has all required fields
         self.config = copy.deepcopy(load_config(config))
 
@@ -149,7 +150,7 @@ class AnalysisManager():
             logger.info("[AnalysisManager : __init__] Found previous pickle file '%s' for this analysis, loading previous state and progress." % (self.pickle_file))
             logger.warning("[AnalysisManager : __init__] We are loading a saved pickle file '%s' -- please be sure this behavior is inteneded. If you want to run a completely new analysis, please specify a new output directory or run with the option TODO" % (self.pickle_file))
             with open(self.pickle_file, "rb") as f_in:
-                saved_analysis_manager = pickle.load(f_in)
+                saved_analysis_manager = dill.load(f_in)
 
             for attr, value in saved_analysis_manager.__dict__.items(): 
                 logger.debug("[AnalysisManager : __init__] attribute '%s' : %s" % (attr, str(value)))
@@ -158,6 +159,10 @@ class AnalysisManager():
             # Overwrite the saved value for these with the values given from command line
             self.merge_outputs = merge_outputs
             self.resubmit_retired = resubmit_retired
+            self.n_cores = n_cores
+            
+            if isinstance(self.jobs_manager, LocalManager):
+                self.jobs_manager.n_cores = n_cores
 
             if self.resubmit_retired:
                 logger.debug("[AnalysisManager : __init__] Unretiring jobs that failed up to the maximum number of retries.")
@@ -173,16 +178,26 @@ class AnalysisManager():
         # Otherwise, run normal constructor
         else:
             # First, check if the config passes these options
-            fields = ["name", "function", "variables_of_interest", "tag_sequence", "systematics", "branches", "samples"]
+            fields = ["name", "function", "variables_of_interest", "tag_sequence", "systematics", "samples", "branches"]
             for field in fields:
                 if field in self.config.keys():
                     setattr(self, field, self.config[field])
 
             # Second, check if they were provided manually.
             # If provided both through the config and explicitly, we take the explicitly provided argument.
-            args = [name, function, variables_of_interest, samples, tag_sequence, systematics]
+            args = [name, function, variables_of_interest, tag_sequence, systematics, samples]
             for field, arg in zip(fields, args):
-                if arg is not None:
+                if field == "samples":
+                    for x in ["sample_list", "years"]:
+                        sample_arg = kwargs.get(x, None)
+                        if sample_arg is not None:
+                            sample_arg = sample_arg.split(",")
+                            logger.warning("[AnalysisManager : __init__] Samples argument '%s' was provided both through the config json and explicitly in the constructor. We will take the version provided by the constructor." % x)
+                            self.samples[x] = sample_arg
+                            self.config["samples"][x] = sample_arg
+
+
+                elif arg is not None:
                     if hasattr(self, field):
                         logger.warning("[AnalysisManager : __init__] Argument '%s' was provided both through the config json and explicitly in constructor. We will take the version provided by the constructor." % field)
                     setattr(self, field, arg)
@@ -190,7 +205,8 @@ class AnalysisManager():
 
 
             self.batch_system = batch_system
-            self.n_files_per_job = n_files_per_job
+            self.fpo = fpo
+            self.n_cores = n_cores
 
             for dir in [self.output_dir, self.batch_output_dir]:
                 os.system("mkdir -p %s" % dir)
@@ -205,9 +221,9 @@ class AnalysisManager():
 
             # Create jobs manager
             if self.batch_system == "local":
-                self.jobs_manager = LocalManager()
+                self.jobs_manager = LocalManager(n_cores = self.n_cores)
             elif self.batch_system == "HTCondor" or self.batch_system == "condor":
-                self.jobs_manager = CondorManager(output_dir = self.output_dir)
+                self.jobs_manager = CondorManager(output_dir = self.output_dir, batch_output_dir = self.batch_output_dir)
 
             # Create samples manager
             self.sample_manager = SampleManager(**self.config["samples"])
@@ -259,7 +275,7 @@ class AnalysisManager():
         self.samples = self.sample_manager.get_samples()
 
         if not self.prepared_analysis:
-            self.prepare_analysis()
+            self.prepare_analysis(max_jobs)
 
         n_input_files = 0
         n_tasks = 0
@@ -315,27 +331,32 @@ class AnalysisManager():
         self.summarize()
 
 
-    def prepare_analysis(self):
+    def prepare_analysis(self, max_jobs):
         idx = 0
         for sample in self.samples:
-            file_splits = self.create_chunks(sample.files, self.n_files_per_job)
-
             name = sample.name
             output_dir = self.output_dir + "/" + name + "/"
             batch_output_dir = self.batch_output_dir + "/" + name + "/"
 
             # 1. Branches to load/save
             if sample.is_data:
-                task_branches = [x for x in self.branches if not ("gen" in x or "Gen" in x)]
+                task_branches = [x for x in self.branches if not ("gen" in x or "Gen" in x or "hadronFlavour" in x or "L1PreFiringWeight" in x or "Pileup_nTrueInt" in x)]
                 task_save_branches = [x for x in self.save_branches if not ("weight" in x or "gen" in x or "Gen" in x)]
                 for idx, x in enumerate(task_save_branches):
                     if isinstance(x, list):
                         for y in x:
-                            if "weight" in y or "gen" in y or "Gen" in y:
+                            if "weight" in y or "gen" in y or "Gen" in y or "hadronFlavour" in y:
                                 task_save_branches.remove(x)
+                task_branches += TRIGGER[sample.year]
+
             else:
                 task_branches = [x for x in self.branches if not ("HLT" in x)]
+
+                if sample.year == "2018":
+                    task_branches = [x for x in task_branches if not ("L1PreFiringWeight" in x)]
                 task_save_branches = self.save_branches
+
+            
 
             # 2. Sample details
             task_sample = copy.deepcopy(sample)
@@ -357,12 +378,20 @@ class AnalysisManager():
             function = copy.deepcopy(self.config["function"])
 
             # 6. Job Details
+            if self.fpo is not None:
+                fpo = self.fpo
+            else:
+                if "Data" in name:
+                    fpo = 10
+                else:
+                    fpo = 3
             task = Task(
                     name = name,
                     output_dir = output_dir,
                     batch_output_dir = batch_output_dir,
-                    n_files_per_job = 10 if "Data" in name else 3, # TODO: assign files per job in more intelligent way 
+                    n_files_per_job = fpo, 
                     files = sample.files,
+                    max_jobs = max_jobs,
                     config = {
                         "sample" : task_sample,
                         "systematics" : task_systematics,
@@ -380,7 +409,7 @@ class AnalysisManager():
 
     def save(self):
         with open(self.pickle_file.replace(".pkl", "_temp.pkl"), "wb") as f_out:
-            pickle.dump(self, f_out)
+            dill.dump(self, f_out)
 
         os.system("mv %s %s" % (self.pickle_file.replace(".pkl", "_temp.pkl"), self.pickle_file))
 

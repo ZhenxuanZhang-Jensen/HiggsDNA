@@ -210,7 +210,8 @@ class SampleManager():
         """
         results = {}
 
-        cmd = "dasgoclient -query 'file dataset={}' -json".format(sample)
+        #cmd = "dasgoclient -query 'file dataset={}' -json".format(sample)
+        cmd = "/cvmfs/cms.cern.ch/common/dasgoclient -query 'file dataset={}' -json".format(sample)
         query = json.loads(
                 metis_utils.do_cmd(cmd)
         )

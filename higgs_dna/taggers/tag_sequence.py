@@ -1,7 +1,3 @@
-# TODO items
-#   1. Decide how we want to handle events with more than one diphoton candidate.
-#       - see description in diphoton_tagger.py
-
 import sys
 import numpy
 import json
@@ -68,7 +64,11 @@ class TagSequence():
         
         if "kwargs" not in config.keys():
             config["kwargs"] = { "name" : "my_" + config["tagger"] }
-        
+
+        if self.sample is not None:
+            config["kwargs"]["is_data"] = self.sample.is_data
+            config["kwargs"]["year"] = self.sample.year
+
         tagger = getattr(
             module,
             config["tagger"]

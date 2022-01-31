@@ -56,6 +56,40 @@ def parse_arguments():
         action="store_true",
         help="resubmit jobs that failed more than the max number of tries and were retired. Only applicable if you are re-running an existing analysis and you had jobs that failed multiple times (presumably due to corruptions/transient xrootd errors).")
 
+    parser.add_argument(
+        "--short",
+        required=False,
+        action="store_true",
+        help="just run 1 job for each sample/year to test workflow")
+
+    parser.add_argument(
+        "--years",
+        required=False,
+        default=None,
+        type=str,
+        help="csv list of years to process (overrides setting in config json")
+
+    parser.add_argument(
+        "--sample_list",
+        required=False,
+        default=None,
+        type=str,
+        help="csv list of samples to process (overrides setting in config json")
+
+    parser.add_argument(
+        "--fpo",
+        required=False,
+        default=None,
+        type=int,
+        help="number of input files per each job. Overrides any fpo specified for individual samples. If rerunning from a partial run of this script, does not override previous fpo.")
+
+    parser.add_argument(
+        "--n_cores",
+        required=False,
+        default=6,
+        type=int,
+        help="number of cores to use for running jobs in parallel. Only applicable if running locally.")
+
     return parser.parse_args()
 
 
@@ -68,7 +102,10 @@ def main(args):
     logger.debug("Running HiggsDNA analysis with config:")
 
     analysis = AnalysisManager(**vars(args))
-    analysis.run()
+    if args.short:
+        analysis.run(max_jobs = 1)
+    else:
+        analysis.run()
 
 
 if __name__ == "__main__":

@@ -33,7 +33,9 @@ class Task():
 
         self.min_completion_frac = kwargs.get("min_completion_frac", 1.0)
         self.n_files_per_job = kwargs.get("n_files_per_job", 3)
-        self.max_jobs = kwargs.get("max_jobs", -1) 
+        self.max_jobs = kwargs.get("max_jobs", None) 
+        if self.max_jobs is None:
+            self.max_jobs = -1
 
         for key, val in kwargs.items():
             setattr(self, key, val)
@@ -62,9 +64,10 @@ class Task():
         file_splits = create_chunks(self.files, self.n_files_per_job)
         
         for idx, file_split in enumerate(tqdm(file_splits)):
-            if self.max_jobs >= 0:
-                if idx >= self.max_jobs:
-                    continue
+            if self.max_jobs:
+                if self.max_jobs >= 0:
+                    if idx >= self.max_jobs:
+                        continue
             job_config = copy.deepcopy(self.job_config)
 
             job = Job(
@@ -84,7 +87,12 @@ class Task():
 
         """
         if self.complete:
-            return
+            done = True
+            for syst_tag, output in self.merged_outputs.items():
+                if not os.path.exists(output):
+                    done = False # double check that no outputs were deleted
+            if done:
+                return
         
         # Check status of all jobs
         for job in self.jobs:
@@ -193,9 +201,17 @@ class Task():
 
         completed_jobs = [job for job in self.jobs if job.status == "completed"]
         for job in completed_jobs:
-            with open(job.summary_file, "r") as f_in:
-                job_info = json.load(f_in)
-         
+            # Try to open json summary file for the job
+            # Wrapped in a try-except to avoid errors where the file exists but has not finished copying from the remote job
+            copied = False
+            while not copied:
+                try:
+                    with open(job.summary_file, "r") as f_in:
+                        job_info = json.load(f_in)
+                        copied = True
+                except:
+                    os.system("sleep 3s")
+
             phys_summary["n_events_initial"] += job_info["n_events"]
             if not self.config["sample"]["is_data"]:
                 phys_summary["sum_weights"] += job_info["sum_weights"]
@@ -211,7 +227,10 @@ class Task():
                     self.outputs[syst_tag] = []
                 if job_info["config"]["remote_job"]:
                     output = job_info["config"]["output_dir"] + output
-                self.outputs[syst_tag].append(output)
+                if not job_info["n_events_selected"][syst_tag] > 0: # skip empty parquet files to avoid errors
+                    continue
+                else:
+                    self.outputs[syst_tag].append(output)
 
             performance["time"] += job_info["time"]
             for portion in ["load", "syst", "taggers"]:
@@ -239,6 +258,9 @@ class Task():
         """
         self.merged_outputs = {}
         for syst_tag, outputs in self.outputs.items():
+            if not outputs:
+                continue
+            
             merged_output = self.output_dir + "/merged_%s.parquet" % (syst_tag) 
             self.merged_outputs[syst_tag] = merged_output
             merged_events = []
@@ -286,6 +308,10 @@ class Task():
 
         for syst_tag, merged_output in self.merged_outputs.items():
             events = awkward.from_parquet(merged_output)
+
+            if "process_id" in events.fields:
+                return
+
             logger.debug("[Task : add_process_id] Task '%s' : adding field 'process_id' with value %d in output file '%s'" % (self.name, self.process_id, merged_output))
             awkward_utils.add_field(
                     events = events,
@@ -308,7 +334,11 @@ class Task():
         self.year = int(self.config["sample"]["year"])
 
         for syst_tag, merged_output in self.merged_outputs.items():
-            events = awkward.from_parquet(merged_output)
+            events = awkward.from_parquet(merged_output, lazy = True)
+
+            if "year" in events.fields:
+                return
+
             logger.debug("[Task : add_process_id] Task '%s' : adding field 'year' with value %d in output file '%s'." % (self.name, self.year, merged_output))
             
             awkward_utils.add_field(

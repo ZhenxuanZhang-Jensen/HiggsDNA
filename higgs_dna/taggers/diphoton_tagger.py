@@ -1,27 +1,17 @@
-# TODO items
-#   1. Sync diphoton preselection with flashgg:
-#       1.1 Calculate level of agreement using custom nanoAOD with necessary branches added.
-#       1.2 Calculate level of agreement using central nanoAOD (which is missing some needed branches).
-#       1.3 Decide how much of diphoton preselection should be configurable and how much should be hard-coded (both to improve readability and ensure consistency, i.e. not allowing users to change things they should not change) 
-#   2. Decide how we want to handle events with more than one diphoton candidate.
-#       - currently we keep all possible diphoton candidates in "awkward" format, meaning we store the diphotons as an events.Diphoton record, with potentially more than one per event
-#       - we could either pick the "best" diphoton candidate per-event here (this makes life easier later down the line)
-#       - OR we could allow taggers to have the option to consider multiple diphoton candidates per event but only pick one.
-#           - if we do this, we need to have TagSequence (or each Tagger) come up with some criteria for picking the "best" diphoton candidate out of the selected ones
-#           - do we want to allow multiple diphoton candidates in an event to be tagged by different taggers? E.g. TTHTagger selects the first diphoton candidate in the event and THQTagger selects the second diphoton candidate in the event?
-
-
 import awkward
 import time
 import numpy
 import numba
 import vector
 
+vector.register_awkward()
+
 import logging
 logger = logging.getLogger(__name__)
 
 from higgs_dna.taggers.tagger import Tagger, NOMINAL_TAG 
-from higgs_dna.utils import awkward_utils
+from higgs_dna.utils import awkward_utils, misc_utils
+from higgs_dna.selections import gen_selections
 
 DEFAULT_OPTIONS = {
     "photons" : {
@@ -65,97 +55,43 @@ DEFAULT_OPTIONS = {
         "sublead_pt" : 25.0,
         "lead_pt_mgg" : 0.33,
         "sublead_pt_mgg" : 0.25,
+        "mass" : [100., 180.],
         "select_highest_pt_sum" : True
-    }
-
+    },
+    "trigger" : {
+        "2016" : ["HLT_Diphoton30_18_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"],
+        "2017" : ["HLT_Diphoton30_22_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"],
+        "2018" : ["HLT_Diphoton30_22_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"]
+    },
+    "gen_info" : {
+        "calculate" : False,
+        "max_dr" : 0.2,
+        "max_pt_diff" : 15.
+    }  
 }
 
-# NOTE: pre-compiled numba functions should be defined outside the class,
-# as numba does not like when a class instance is passed to a function
-@numba.njit
-def produce_diphotons(photons, n_photons, lead_pt_cut, lead_pt_mgg_cut, sublead_pt_mgg_cut):
-    n_events = len(photons)
 
-    diphotons_offsets = numpy.zeros(n_events + 1, numpy.int64)
-    diphotons_contents = []
-    lead_photons_idx = []
-    sublead_photons_idx = []
+# Diphoton preselection below synced with flashgg, see details in:
+#   - https://indico.cern.ch/event/1071721/contributions/4551056/attachments/2320292/3950844/HiggsDNA_DiphotonPreselectionAndSystematics_30Sep2021.pdf
 
-    # Loop through events and select diphoton pairs
-    for i in range(n_events):
-        n_diphotons_event = 0
-        # Enumerate photon pairs
-        if n_photons[i] >= 2: # only try if there are at least 2 photons
-            sum_pt = 0
-            for j in range(n_photons[i]):
-                for k in range(j+1, n_photons[i]):
-                    # Choose who is the leading photon
-                    lead_idx = j if photons[i][j].pt > photons[i][k].pt else k
-                    sublead_idx = k if photons[i][j].pt > photons[i][k].pt else j
-                    lead_photon = photons[i][lead_idx]
-                    sublead_photon = photons[i][sublead_idx]
-
-                    # Lead photon must satisfy lead pt cut
-                    if lead_photon.pt < lead_pt_cut:
-                        continue
-
-                    # Construct four vectors
-                    lead_photon_vec = vector.obj(
-                            pt = lead_photon.pt,
-                            eta = lead_photon.eta,
-                            phi = lead_photon.phi,
-                            mass = lead_photon.mass
-                    )
-                    sublead_photon_vec = vector.obj(
-                            pt = sublead_photon.pt,
-                            eta = sublead_photon.eta,
-                            phi = sublead_photon.phi,
-                            mass = sublead_photon.mass
-                    )
-                    diphoton = vector.obj(px = 0., py = 0., pz = 0., E = 0.) # IMPORTANT NOTE: you need to initialize this to an empty vector first. Otherwise, you will get ZeroDivisionError exceptions for like 1 out of a million events (seemingly only with numba). 
-                    diphoton = diphoton + lead_photon_vec + sublead_photon_vec
-
-                    if (diphoton.mass < 100) | (diphoton.mass > 180):
-                        continue
-
-                    if lead_photon.pt / diphoton.mass < lead_pt_mgg_cut:
-                        continue 
-
-                    if sublead_photon.pt / diphoton.mass < sublead_pt_mgg_cut:
-                        continue
-
-                    # This diphoton candidate passes
-                    n_diphotons_event += 1
-
-                    diphotons_contents.append([
-                        diphoton.pt,
-                        diphoton.eta,
-                        diphoton.phi,
-                        diphoton.mass
-                    ])
-                    
-                    lead_photons_idx.append(lead_idx)
-                    sublead_photons_idx.append(sublead_idx)
-            
-        diphotons_offsets[i+1] = diphotons_offsets[i] + n_diphotons_event 
-
-    return diphotons_offsets, numpy.array(diphotons_contents), numpy.array(lead_photons_idx), numpy.array(sublead_photons_idx)
-
-# NOTE: implementation still in progress.
-# TODO: sync diphoton preselection with flashgg
 class DiphotonTagger(Tagger):
-    def __init__(self, name, options = {}, sample = None):
-        super(DiphotonTagger, self).__init__(name, options, sample)
+    def __init__(self, name, options = {}, is_data = None, year = None):
+        super(DiphotonTagger, self).__init__(name, options, is_data, year)
 
         if not options:
             self.options = DEFAULT_OPTIONS
-    
+        else:
+            self.options = misc_utils.update_dict(
+                    original = DEFAULT_OPTIONS,
+                    new = options
+            )
+
+
     def calculate_selection(self, syst_tag, syst_events):
         """
         Select photons and create diphoton pairs.
         Add a record "Diphoton" to events array with relevant information about each diphoton pair.
         In principle, there can be more than one Diphoton pair per event.
-        TODO: Should we select the "best" diphoton pair here (currently just storing this as an awkward array)? If so, how?
         """
         photon_selection = self.select_photons(
                 photons = syst_events.Photon,
@@ -169,6 +105,9 @@ class DiphotonTagger(Tagger):
                 options = self.options["diphotons"]
         )
 
+        if not self.is_data and self.options["gen_info"]["calculate"]:
+            diphotons = self.calculate_gen_info(diphotons, self.options["gen_info"])
+
         return diphoton_selection, diphotons 
 
 
@@ -177,7 +116,6 @@ class DiphotonTagger(Tagger):
         Perform diphoton preselection.
         For events with more than 2 photons, more than 1 diphoton candidate
         per event is possible.
-        TODO: sync with flashgg
 
         :param events: events array to calculate diphoton candidates from
         :type events: awkward.highlevel.Array
@@ -191,45 +129,37 @@ class DiphotonTagger(Tagger):
 
         start = time.time()
 
-        # Produce diphotons
-        n_photons = awkward.num(photons)
-        lead_pt_cut = options["lead_pt"]
-        diphoton_offsets, diphoton_contents, lead_photon_idx, sublead_photon_idx = produce_diphotons(photons, n_photons, options["lead_pt"], options["lead_pt_mgg"], options["sublead_pt_mgg"]) 
+        # Sort photons by pt
+        photons = photons[awkward.argsort(photons.pt, ascending=False, axis=1)]
 
-        # Zip diphotons into events array as records
-        diphotons = {}
-        diphotons["p4"] = awkward_utils.create_four_vectors(events, diphoton_offsets, diphoton_contents)
+        # Register as `vector.Momentum4D` objects so we can do four-vector operations with them
+        photons = awkward.Array(photons, with_name = "Momentum4D")
 
-        lead_photon_idx = awkward_utils.construct_jagged_array(diphoton_offsets, lead_photon_idx)
-        sublead_photon_idx = awkward_utils.construct_jagged_array(diphoton_offsets, sublead_photon_idx)
+        # Get all combinations of two photons in each event
+        diphotons = awkward.combinations(photons, 2, fields=["LeadPhoton", "SubleadPhoton"])
+        diphotons["Diphoton"] = diphotons.LeadPhoton + diphotons.SubleadPhoton
 
-        # Zip lead/sublead photons into events.Diphoton as sub-records
-        lead_photons = photons[lead_photon_idx]
-        sublead_photons = photons[sublead_photon_idx]
+        # Add sumPt and dR for convenience
+        diphotons[("Diphoton", "sumPt")] = diphotons.LeadPhoton.pt + diphotons.SubleadPhoton.pt
+        diphotons[("Diphoton", "dR")] = diphotons.LeadPhoton.deltaR(diphotons.SubleadPhoton)        
 
-        # Reshape events to have shape [n_events, n_diphotons_per_event]
-        events = awkward.broadcast_arrays(events, lead_photon_idx)[0] # events now has shape [n_events, n_diphotons_per_event]
-
-        # Add photon/diphoton fields
-        awkward_utils.add_field(events, "Diphoton", diphotons)
-        awkward_utils.add_field(events, ("Diphoton", "sumPt"), lead_photons.pt + sublead_photons.pt)
-        awkward_utils.add_field(events, "LeadPhoton", lead_photons)
-        awkward_utils.add_field(events, "SubleadPhoton", sublead_photons)
-
+        # Add lead/sublead photons to additionally be accessible together as diphotons.Diphoton.Photon
+        # This is in principle a bit redundant, but makes many systematics and selections much more convenient to implement.
         # lead/sublead photons have shape [n_events, n_diphotons_per_event], but to merge them we need to give them shape [n_events, n_diphotons_per_event, 1]
         lead_photons = awkward.unflatten(
-                lead_photons,
+                diphotons.LeadPhoton,
                 counts = 1, # new dimension has length 1
                 axis = -1 # add new dimension to innermost axis
         )
+
         sublead_photons = awkward.unflatten(
-                sublead_photons,
+                diphotons.SubleadPhoton,
                 counts = 1,
                 axis = -1
         )
 
         awkward_utils.add_field(
-                events = events,
+                events = diphotons,
                 name = ("Diphoton", "Photon"),
                 data = awkward.concatenate(
                     [lead_photons, sublead_photons],
@@ -237,47 +167,117 @@ class DiphotonTagger(Tagger):
                 )
         )
 
-        n_events = len(events)
+        lead_pt_cut = diphotons.LeadPhoton.pt >= options["lead_pt"]
+        lead_pt_mgg_cut = (diphotons.LeadPhoton.pt / diphotons.Diphoton.mass) >= options["lead_pt_mgg"]
+        sublead_pt_mgg_cut = (diphotons.SubleadPhoton.pt / diphotons.Diphoton.mass) >= options["sublead_pt_mgg"]
+        mass_cut = (diphotons.Diphoton.mass >= options["mass"][0]) & (diphotons.Diphoton.mass <= options["mass"][1])
+        all_cuts = lead_pt_cut & lead_pt_mgg_cut & sublead_pt_mgg_cut & mass_cut
 
-        # NOTE: the default option (following flashgg) is to pick the diphoton pair from each event with the highest sum_pt of the two photons.
-        # For analyses with electrons in the final state, there can be a non-neglible fraction (O(5%)) of events with more than one diphoton pair (usually when the electron is reconstructed as a photon) and you may want to revisit this assumption.
+        self.register_cuts(
+            names = ["lead pt cut", "lead pt mgg cut", "sublead pt mgg cut", "mass cut", "all cuts"],
+            results = [lead_pt_cut, lead_pt_mgg_cut, sublead_pt_mgg_cut, mass_cut, all_cuts],
+            cut_type = "diphoton"
+        )
+
+        diphotons = diphotons[all_cuts]
+
+        # Sort by sumPt
+        diphotons = diphotons[awkward.argsort(diphotons.Diphoton.sumPt, ascending=False, axis=1)]
 
         # Select highest pt sum diphoton
         if options["select_highest_pt_sum"]:
-            logger.info("[DiphotonTagger : produce_and_select_diphotons] %s, selecting the highest pt_sum diphoton pair from each event." % (self.name))
-            # Sort diphotons by sum_pt
-            events = events[awkward.argsort(events.Diphoton.sumPt, ascending=False)]
-            # Take the highest sum_pt diphoton for each event
-            diphotons = awkward.firsts(events) 
-            # Remove events with no diphotons
-            diphotons = diphotons[~awkward.is_none(diphotons)]
+            logger.debug("[DiphotonTagger : produce_and_select_diphotons] %s, selecting the highest pt_sum diphoton pair from each event." % (self.name))
 
-            n_diphotons_total = awkward.sum(awkward.num(events.Diphoton))
-            n_diphotons_selected = len(diphotons)
+            n_diphotons_total = awkward.sum(awkward.num(diphotons))
+            diphotons = awkward.singletons(awkward.firsts(diphotons)) # ak.firsts takes the first diphoton in each event (highest sumpt) and ak.singletons makes it variable length again
+            n_diphotons_selected = awkward.sum(awkward.num(diphotons)) 
 
             logger.debug("[DiphotonTagger : produce_and_select_diphotons] %s, syst variation : %s. Number of total diphoton candidates: %d, number of diphoton candidates after selecting candidate with highest pt sum in each event: %d (%.2f percent of diphoton events removed)." % (self.name, self.current_syst, n_diphotons_total, n_diphotons_selected, 100. * (float(n_diphotons_total - n_diphotons_selected) / float(n_diphotons_total))))
-            
 
-        # Otherwise flatten, so events has shape [n_diphotons]
+        # Otherwise, keep all diphotons
         else:
-            logger.info("[DiphotonTagger : produce_and_select_diphotons] %s, keeping all diphoton candidates in each event." % (self.name))
-            n_events = len(events)
-            diphotons = awkward.flatten(events)
-            n_diphotons = len(diphotons)
-            avg_diphotons = awkward.mean(awkward.num(events.Diphoton[awkward.num(events.Diphoton) >= 1]))
-            logger.debug("[DiphotonTagger : produce_and_select_diphotons] %s, syst variation : %s. Number of events (before flattening): %d. Number of diphotons (after flattening): %d (%.4f diphotons per event for events with at least 1 diphoton)." % (self.name, self.current_syst, n_events, n_diphotons, avg_diphotons)) 
+            logger.debug("[DiphotonTagger : produce_and_select_diphotons] %s, keeping all diphoton candidates in each event." % (self.name))
+            avg_diphotons = awkward.mean(awkward.num(diphotons))
+            logger.debug("[DiphotonTagger : produce_and_select_diphotons] %s, syst variation : %s, %.4f diphotons per event for events with at least 1 diphoton)." % (self.name, self.current_syst, avg_diphotons)) 
 
-        dipho_presel_cut = (diphotons.Diphoton.mass > 100.) & (diphotons.Diphoton.mass < 180.) 
+        # Reshape events to have shape [n_events, n_diphotons_per_event] and then flatten.
+        # This is necessary so event-level variables are properly copied for each diphoton per event
+        dipho_events = awkward.broadcast_arrays(events, diphotons.Diphoton.mass)[0]
+
+        # Add to events
+        for field in ["Diphoton", "LeadPhoton", "SubleadPhoton"]:
+            dipho_events[field] = diphotons[field] 
+            dipho_events[(field, "pt")] = diphotons[field].pt
+            dipho_events[(field, "eta")] = diphotons[field].eta
+            dipho_events[(field, "phi")] = diphotons[field].phi
+            dipho_events[(field, "mass")] = diphotons[field].mass
+
+        dipho_presel_cut = awkward.num(dipho_events.Diphoton) >= 1
+        if self.is_data and self.year is not None:
+            trigger_cut = awkward.num(dipho_events.Diphoton) < 0 # dummy cut, all False
+            for hlt in self.options["trigger"][self.year]: # logical OR of all triggers
+                trigger_cut = (trigger_cut) | (dipho_events[hlt] == True)
+        else:
+            trigger_cut = awkward.num(dipho_events.Diphoton) >= 0 # dummy cut, all True
+
+        presel_cut = dipho_presel_cut & trigger_cut
+
         self.register_cuts(
-                names = "diphoton preselection",
-                results = dipho_presel_cut
+            names = ["At least 1 diphoton pair", "HLT Trigger", "all"],
+            results = [dipho_presel_cut, trigger_cut, presel_cut]
         )
+
+        dipho_events = dipho_events[dipho_presel_cut]
+
+        dipho_events = awkward.flatten(dipho_events)
 
         elapsed_time = time.time() - start
         logger.debug("[DiphotonTagger] %s, syst variation : %s, total time to execute select_diphotons: %.6f s" % (self.name, self.current_syst, elapsed_time))
 
-        return dipho_presel_cut, diphotons 
+        dummy_cut = dipho_events.Diphoton.pt > 0
+        return dummy_cut, dipho_events 
 
+    
+    def calculate_gen_info(self, diphotons, options):
+        """
+        Calculate gen info, adding the following fields to the events array:
+            GenHggHiggs : [pt, eta, phi, mass, dR]
+            GenHggLeadPhoton : [pt, eta, phi, mass, dR, pt_diff]
+            GenHggSubleadPhoton : [pt, eta, phi, mass, dR, pt_diff]
+            LeadPhoton : [gen_dR, gen_pt_diff]
+            SubleadPhoton : [gen_dR, gen_pt_diff]
+
+        Perform both matching of
+            - closest gen photons from Higgs to reco lead/sublead photons from diphoton candidate
+            - closest reco photons to gen photons from Higgs
+
+        If no match is found for a given reco/gen photon, it will be given values of -999. 
+        """
+        gen_hgg = gen_selections.select_x_to_yz(diphotons.GenPart, 25, 22, 22)
+        
+        awkward_utils.add_object_fields(
+                events = diphotons,
+                name = "GenHggHiggs",
+                objects = gen_hgg.GenParent,
+                n_objects = 1
+        )
+
+        awkward_utils.add_object_fields(
+                events = diphotons,
+                name = "GenHggLeadPhoton",
+                objects = gen_hgg.LeadGenChild,
+                n_objects = 1
+        )
+
+        awkward_utils.add_object_fields(
+                events = diphotons,
+                name = "GenHggSubleadPhoton",
+                objects = gen_hgg.SubleadGenChild,
+                n_objects = 1
+        )
+
+        return diphotons 
+        
 
     def select_photons(self, photons, rho, options):
         """
@@ -374,4 +374,78 @@ class DiphotonTagger(Tagger):
                 cut_type = "photon"
         )
 
-        return all_cuts 
+        return all_cuts
+
+# Below is an example of how the diphoton preselection could be performed with an explicit loop (C++ style) 
+# that is compiled with numba for increased performance.
+
+# NOTE: pre-compiled numba functions should be defined outside the class,
+# as numba does not like when a class instance is passed to a function
+@numba.njit
+def produce_diphotons(photons, n_photons, lead_pt_cut, lead_pt_mgg_cut, sublead_pt_mgg_cut):
+    n_events = len(photons)
+
+    diphotons_offsets = numpy.zeros(n_events + 1, numpy.int64)
+    diphotons_contents = []
+    lead_photons_idx = []
+    sublead_photons_idx = []
+
+    # Loop through events and select diphoton pairs
+    for i in range(n_events):
+        n_diphotons_event = 0
+        # Enumerate photon pairs
+        if n_photons[i] >= 2: # only try if there are at least 2 photons
+            sum_pt = 0
+            for j in range(n_photons[i]):
+                for k in range(j+1, n_photons[i]):
+                    # Choose who is the leading photon
+                    lead_idx = j if photons[i][j].pt > photons[i][k].pt else k
+                    sublead_idx = k if photons[i][j].pt > photons[i][k].pt else j
+                    lead_photon = photons[i][lead_idx]
+                    sublead_photon = photons[i][sublead_idx]
+
+                    # Lead photon must satisfy lead pt cut
+                    if lead_photon.pt < lead_pt_cut:
+                        continue
+
+                    # Construct four vectors
+                    lead_photon_vec = vector.obj(
+                            pt = lead_photon.pt,
+                            eta = lead_photon.eta,
+                            phi = lead_photon.phi,
+                            mass = lead_photon.mass
+                    )
+                    sublead_photon_vec = vector.obj(
+                            pt = sublead_photon.pt,
+                            eta = sublead_photon.eta,
+                            phi = sublead_photon.phi,
+                            mass = sublead_photon.mass
+                    )
+                    diphoton = vector.obj(px = 0., py = 0., pz = 0., E = 0.) # IMPORTANT NOTE: you need to initialize this to an empty vector first. Otherwise, you will get ZeroDivisionError exceptions for like 1 out of a million events (seemingly only with numba). 
+                    diphoton = diphoton + lead_photon_vec + sublead_photon_vec
+
+                    if (diphoton.mass < 100) | (diphoton.mass > 180):
+                        continue
+
+                    if lead_photon.pt / diphoton.mass < lead_pt_mgg_cut:
+                        continue
+
+                    if sublead_photon.pt / diphoton.mass < sublead_pt_mgg_cut:
+                        continue
+
+                    # This diphoton candidate passes
+                    n_diphotons_event += 1
+
+                    diphotons_contents.append([
+                        diphoton.pt,
+                        diphoton.eta,
+                        diphoton.phi,
+                        diphoton.mass
+                    ])
+
+                    lead_photons_idx.append(lead_idx)
+                    sublead_photons_idx.append(sublead_idx)
+
+        diphotons_offsets[i+1] = diphotons_offsets[i] + n_diphotons_event
+
+    return diphotons_offsets, numpy.array(diphotons_contents), numpy.array(lead_photons_idx), numpy.array(sublead_photons_idx)

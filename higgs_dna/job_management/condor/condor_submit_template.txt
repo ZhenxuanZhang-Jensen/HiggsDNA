@@ -2,7 +2,7 @@ universe=vanilla
 should_transfer_files = Yes
 when_to_transfer_output = ON_EXIT_OR_EVICT
 Transfer_Executable     = True
-transfer_input_files    = CONDA_TARFILE, ANALYSIS_TARFILE, PYTHON_FILE, CONFIG_FILE, BASEPATH/HiggsDNA/setup.py, BASEPATH/HiggsDNA/environment.yml
+transfer_input_files    = PYTHON_FILE, CONFIG_FILE, BASEPATH/HiggsDNA/setup.py, BASEPATH/HiggsDNA/environment.yml
 transfer_output_files   = ""
 executable              = EXECUTABLE 
 
