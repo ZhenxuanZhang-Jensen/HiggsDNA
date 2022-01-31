@@ -193,7 +193,7 @@ def table_line(proc, results, n_bkg):
 
     if proc == "total_bkg":
         proc = "Total MC bkg"
-    line = "\t \t %s & %.3f & $\\pm \\text{%.3f}$  & $~^{+\\text{%.3f}}_{-\\text{%.3f}}$  & %.4f \\\\ \n" % (proc.replace("_", "-"), results["n"], results["stat_unc"], results["syst_unc_up"], results["syst_unc_down"], bkg_frac)
+    line = "\t \t %s & %.4f & $\\pm \\text{%.4f}$  & $~^{+\\text{%.4f}}_{-\\text{%.4f}}$  & %.4f \\\\ \n" % (proc.replace("_", "-"), results["n"], results["stat_unc"], results["syst_unc_up"], results["syst_unc_down"], bkg_frac)
     return line
 
 def make_tables(events, process_map, signals):
@@ -751,7 +751,10 @@ def main(args):
             
         make_plots(plot_config, args.output_dir, events, process_map, signals, bkgs)
         logger.debug("[HiggsDNABonusTool] Making shape comparisons (no systematics).")
-        make_shape_comparisons(plot_config, args.output_dir, events, process_map, signals)
+        if signals:
+            make_shape_comparisons(plot_config, args.output_dir, events, process_map, signals)
+        else:
+            make_shape_comparisons(plot_config, args.output_dir, events, process_map, bkgs + ["Data"])
 
     if args.assess_systematics:
         logger.debug("[HiggsDNABonusTool] Summarizing weight systematics.")

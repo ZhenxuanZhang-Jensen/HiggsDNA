@@ -279,7 +279,7 @@ class Task():
 
         """
         for syst_tag, merged_output in self.merged_outputs.items():
-            events = awkward.from_parquet(merged_output, lazy=True)
+            events = awkward.from_parquet(merged_output)
 
             for field in events.fields:
                 # only apply scale1fb and lumi to central weight so variations are standalone
@@ -307,7 +307,7 @@ class Task():
             return
 
         for syst_tag, merged_output in self.merged_outputs.items():
-            events = awkward.from_parquet(merged_output, lazy = True)
+            events = awkward.from_parquet(merged_output)
 
             if "process_id" in events.fields:
                 return
