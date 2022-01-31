@@ -23,6 +23,12 @@ LUMI = {
     "2018" : 59.8
 }
 
+TRIGGER = { # list of all triggers loaded by default (data only)
+    "2016" : ["HLT_Diphoton30_18_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"],
+    "2017" : ["HLT_Diphoton30_22_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"],
+    "2018" : ["HLT_Diphoton30_22_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"]
+}
+
 XRD_REDIRECTOR = {
     "UCSD" : "root://redirector.t2.ucsd.edu//"
 }

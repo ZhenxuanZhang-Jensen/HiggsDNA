@@ -58,6 +58,11 @@ DEFAULT_OPTIONS = {
         "mass" : [100., 180.],
         "select_highest_pt_sum" : True
     },
+    "trigger" : {
+        "2016" : ["HLT_Diphoton30_18_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"],
+        "2017" : ["HLT_Diphoton30_22_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"],
+        "2018" : ["HLT_Diphoton30_22_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"]
+    },
     "gen_info" : {
         "calculate" : False,
         "max_dr" : 0.2,
@@ -208,9 +213,18 @@ class DiphotonTagger(Tagger):
             dipho_events[(field, "mass")] = diphotons[field].mass
 
         dipho_presel_cut = awkward.num(dipho_events.Diphoton) >= 1
+        if self.is_data and self.year is not None:
+            trigger_cut = awkward.num(dipho_events.Diphoton) < 0 # dummy cut, all False
+            for hlt in self.options["trigger"][self.year]: # logical OR of all triggers
+                trigger_cut = (trigger_cut) | (dipho_events[hlt] == True)
+        else:
+            trigger_cut = awkward.num(dipho_events.Diphoton) >= 0 # dummy cut, all True
+
+        presel_cut = dipho_presel_cut & trigger_cut
+
         self.register_cuts(
-            names = ["At least 1 diphoton pair"],
-            results = dipho_presel_cut
+            names = ["At least 1 diphoton pair", "HLT Trigger", "all"],
+            results = [dipho_presel_cut, trigger_cut, presel_cut]
         )
 
         dipho_events = dipho_events[dipho_presel_cut]
