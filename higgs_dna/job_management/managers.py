@@ -151,9 +151,8 @@ class JobsManager():
         """
         return True
 
-
+    
 from higgs_dna.job_management.jobs import LocalJob
-
 class LocalManager(JobsManager):
     """
 

@@ -91,6 +91,7 @@ class Task():
             for syst_tag, output in self.merged_outputs.items():
                 if not os.path.exists(output):
                     done = False # double check that no outputs were deleted
+                    logger.warning("[Task : process] A file may have been deleted. Task '%s' was marked as complete, but output '%s' is not present." % (self.name, output))
             if done:
                 return
         
@@ -121,9 +122,20 @@ class Task():
             logger.info("[Task : process] Task '%s' COMPLETED : %d/%d (%.2f percent) of jobs completed, which is >= the minimum job completion fraction for this task (%.2f percent)." % (self.name, self.n_completed_jobs, len(self.jobs), 100. * self.completion_frac, 100. * self.min_completion_frac))
             self.complete = True # Done
 
+        # Otherwise, did the user select to retire all remaining jobs and finish this task?
+        #elif self.retire_jobs:
+        #    if self.n_completed_jobs == 0:
+        #        #if not self.gave_retirement_warning: # only print the warning once
+        #        logger.warning("[Task : process] Task '%s' : NONE of the %d jobs for this task completed, but the `--retire_jobs` option was selected. To avoid undesired behavior, we will NOT RETIRE jobs for this task." % (self.name, len(self.jobs)))
+        #            #self.gave_retirement_warning = True
+        #        self.summarize()
+        #        return
+        #    else:
+        #        logger.info("[Task : process] Task '%s' COMPLETED : %d/%d (%.2f percent) of jobs completed, and the `--retire_jobs` option was selected. All remaining jobs will be killed." % (self.name, self.n_completed_jobs, len(self.jobs), 100. * self.completion_frac))
+
         # Otherwise, are the uncompleted jobs "retired" (meaning they failed up to the maximum number of retries)?
         # If so, we will mark this as done but give you a warning about the retired jobs.
-        # You can resubmit these jobs with the option --resubmit_retired in run_analysis.py
+        # You can resubmit these jobs with the option --unretire_jobs in run_analysis.py
         elif self.completion_or_retired_frac >= self.min_completion_frac:
             logger.info("[Task : process] Task '%s' COMPLETED : %d/%d (%.2f percent) of jobs completed/retired which is >= the minimum job completion fraction for this task (%.2f percent)." % (self.name, self.n_completed_jobs + self.n_retired_jobs, len(self.jobs), 100. * self.completion_or_retired_frac, 100. * self.min_completion_frac))
             retired_jobs = [job for job in self.jobs if job.status == "retired"]
@@ -131,7 +143,7 @@ class Task():
                 logger.warning("[Task : process] WARNING: Task '%s' had to retire job '%s' since it ran unsuccessfully for %d straight times. If this is an MC sample, this will just reduce your statistics. If this is a data job, you have processed less events than you intended!" % (self.name, job.name_full, job.n_attempts))
             self.complete = True
 
-        # If neither of the first two, we are not done yet
+        # If neither of the first three, we are not done yet
         else:
             self.summarize()
             return
@@ -142,6 +154,12 @@ class Task():
         for job in jobs_to_kill:
             logger.debug("[Task : process] Task '%s' : since Task is COMPLETED, we are killing job '%s' with status '%s'" % (self.name, job.name_full, job.status))
             job.kill()
+            job.status = "retired"
+
+        jobs_to_retire = [job for job in self.jobs if not job.status == "completed"]
+        for job in jobs_to_retire:
+            job.force_retirement = True
+
         if n_killed > 0:
             logger.info("[Task : process] Task '%s' : since Task is COMPLETED, we killed all idle and running jobs (%d jobs killed)" % (self.name, n_killed))
         self.complete = True
@@ -157,16 +175,32 @@ class Task():
         if len(retired_jobs) == 0:
             return False
 
-        logger.info("[Task : unretire_jobs] Task '%s' : since you are re-running with option --resubmit_retired, we are resubmitting %d jobs which were previously retired (meaning they repeatedly failed up to the number of max attempts)." % (self.name, len(retired_jobs)))
+        logger.info("[Task : unretire_jobs] Task '%s' : since you are re-running with option --unretire_jobs, we are resubmitting %d jobs which were previously retired (meaning they repeatedly failed up to the number of max attempts)." % (self.name, len(retired_jobs)))
         for job in retired_jobs:
             logger.debug("[Task : unretire_jobs] Task '%s' : resubmitting job '%s' with status '%s' and %d previously failed attempts." % (self.name, job.name_full, job.status, job.n_attempts))
             job.n_attempts = 0
+            job.force_retirement = False
             job.status = "waiting"
     
         self.complete = False
         self.wrote_years = False
         self.wrote_process_ids = False
+        self.min_completion_frac = 1.0
         return True
+
+    
+    def retire_jobs(self):
+        """
+
+        """
+        self.process() 
+        if self.n_completed_jobs > 0:
+            logger.info("[Task : process] Task '%s' : `--retire_jobs` option was selected. %d/%d (%.2f percent) of jobs completed for this task and all others will be retired." % (self.name, self.n_completed_jobs, len(self.jobs), 100. * self.completion_frac)) 
+            for job in self.jobs:
+                job.force_retirement = True
+        else:
+            logger.info("[Task : process] Task '%s' : `--retire_jobs` option was selected, but no jobs have completed yet for this task. Will set the minimum completion fraction to 0.000001, which will effectively retire all jobs once at least 1 finishes." % (self.name))
+            self.min_completion_frac = 0.000001
 
 
     def summarize(self):
