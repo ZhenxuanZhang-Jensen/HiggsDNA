@@ -334,7 +334,9 @@ class CondorManager(JobsManager):
 
     def prepare_inputs(self):
         self.conda_path = do_cmd("echo $CONDA_PREFIX").replace("/higgs-dna", "")
-        self.higgs_dna_path = do_cmd("pwd").split("HiggsDNA")[0] + "HiggsDNA/"
+        pwd = do_cmd("pwd")
+        self.higgs_dna_path = pwd[:pwd.rfind("HiggsDNA")] + "HiggsDNA/"
+        logger.info("[CondorManager : prepare_inputs] Based on your current directory '%s', determined your HiggsDNA base directory to be '%s'. Please ensure this is correct." % (pwd, self.higgs_dna_path))
 
         self.conda_tarfile = self.output_dir + "/" + "higgs-dna.tar.gz"
         self.analysis_tarfile = self.output_dir + "/" + "higgs_dna.tar.gz"
