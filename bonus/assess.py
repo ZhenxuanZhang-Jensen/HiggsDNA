@@ -79,6 +79,12 @@ def parse_arguments():
         action="store_true",
         help="make a nicely browsable web page")
 
+    parser.add_argument(
+        "--blind",
+        required=False,
+        action="store_true",
+        help="blind data and background MC in the Diphoton_mass [120, 130] GeV range.")
+
     return parser.parse_args()
 
 
@@ -736,6 +742,33 @@ def main(args):
 
     cuts = parse_cuts(args.cuts)
     events = infer_systematics(inputs, cuts)
+
+    if args.blind:
+        blind_procs = ["Data"] + bkgs
+        logger.debug("[HiggsDNABonusTool] --blind option was selected, we will blind the following processes in the Diphoton_mass [120, 130] GeV window:")
+        for p in blind_procs:
+            logger.debug("\t%s" % p)
+
+        for syst, info in events["ics"].items():
+            if syst == "nominal":
+                x = info["events"]
+                process_cut = x.process_id == -999 # dummy all False
+                mass_cut = (x.Diphoton_mass >= 120) & (x.Diphoton_mass <= 130)
+                for proc, ids in process_map.items():
+                    if proc in blind_procs:
+                        for id in ids:
+                            process_cut = (process_cut) | (x.process_id == id)
+                events["ics"][syst]["events"] = x[~(process_cut & mass_cut)]
+                continue
+            for var, var_info in info.items():
+                x = var_info["events"]
+                process_cut = x.process_id == -999 # dummy all False
+                mass_cut = (x.Diphoton_mass >= 120) & (x.Diphoton_mass <= 130)
+                for proc, ids in process_map.items():
+                    if proc in blind_procs:
+                        for id in ids:
+                            process_cut = (process_cut) | (x.process_id == id)
+                events["ics"][syst][var]["events"] = x[~(process_cut & mass_cut)] 
 
     if args.make_tables:        
         logger.debug("[HiggsDNABonusTool] Making data/MC yield tables.")
