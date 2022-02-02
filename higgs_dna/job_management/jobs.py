@@ -56,6 +56,7 @@ class Job():
         self.can_submit = True
 
         self.n_attempts = 0
+        self.force_retirement = False
 
         if os.path.exists(self.summary_file): # user may have ctrl+c-ed during the last run. This way we also prevent unintended overwriting of files.
             self.status = "completed"
@@ -143,8 +144,8 @@ class Job():
         if self.status == "retired":
             return False
 
-        if self.n_attempts >= 5:
-            logger.info("[Job : submit] Job '%s_%d' has been submitted %d times, permanently retiring job." % (self.name, self.idx, self.n_attempts))
+        if self.n_attempts >= 5 or self.force_retirement:
+            logger.info("[Job : submit] Job '%s_%d' has been submitted %d times, retiring job. Jobs can be unretired with run_analysis.py through the `--unretire_jobs` option." % (self.name, self.idx, self.n_attempts))
             self.status = "retired"
             return False
 
@@ -182,7 +183,10 @@ class LocalJob(Job):
 
 
     def submit_to_batch(self):
-        self.p = subprocess.Popen("python %s" % (self.python_file), shell = True)
+        self.p = subprocess.Popen(
+                "python %s" % (self.python_file),
+                shell = True
+        )
 
 
     def monitor(self):

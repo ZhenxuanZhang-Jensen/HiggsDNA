@@ -51,10 +51,16 @@ def parse_arguments():
         help="merge output files all into a single file")
 
     parser.add_argument(
-        "--resubmit_retired",
+        "--unretire_jobs",
         required=False,
         action="store_true",
         help="resubmit jobs that failed more than the max number of tries and were retired. Only applicable if you are re-running an existing analysis and you had jobs that failed multiple times (presumably due to corruptions/transient xrootd errors).")
+
+    parser.add_argument(
+        "--retire_jobs",
+        required=False,
+        action="store_true",
+        help="retire all unfinished jobs and allow HiggsDNA to finish: calculate and apply scale1fb (for MC), merge outputs (if selected) and write summary json.")
 
     parser.add_argument(
         "--short",
@@ -102,6 +108,7 @@ def main(args):
     logger.debug("Running HiggsDNA analysis with config:")
 
     analysis = AnalysisManager(**vars(args))
+
     if args.short:
         analysis.run(max_jobs = 1)
     else:

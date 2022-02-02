@@ -120,7 +120,7 @@ class AnalysisManager():
     """
     Manages the running of an entire analysis.
     """
-    def __init__(self, config = {}, name = None, function = None, samples = None, tag_sequence = None, systematics = None, variables_of_interest = None, batch_system = "local", fpo = None, output_dir = "output", merge_outputs = False, resubmit_retired = False, n_cores = 6, **kwargs):
+    def __init__(self, config = {}, name = None, function = None, samples = None, tag_sequence = None, systematics = None, variables_of_interest = None, batch_system = "local", fpo = None, output_dir = "output", merge_outputs = False, unretire_jobs = False, retire_jobs = False, n_cores = 6, **kwargs):
         # TODO: check that config dict has all required fields
         self.config = copy.deepcopy(load_config(config))
 
@@ -140,7 +140,12 @@ class AnalysisManager():
             self.batch_output_dir = os.path.abspath(kwargs.get("batch_output_dir", self.output_dir))
 
         self.merge_outputs = merge_outputs
-        self.resubmit_retired = resubmit_retired
+        self.unretire_jobs = unretire_jobs
+        self.retire_jobs = retire_jobs
+
+        if self.unretire_jobs and self.retire_jobs:
+            logger.exception("[AnalysisManager : __init__] Both of `--unretire_jobs` and `--retire_jobs` were specified. Please select only 1!")
+            raise RuntimeError()
 
         # Check if a pkl file for this analysis manager is present and load previous progress if so
         self.summary_file = self.output_dir + "/summary.json"
@@ -158,13 +163,14 @@ class AnalysisManager():
 
             # Overwrite the saved value for these with the values given from command line
             self.merge_outputs = merge_outputs
-            self.resubmit_retired = resubmit_retired
+            self.unretire_jobs = unretire_jobs
+            self.retire_jobs = retire_jobs
             self.n_cores = n_cores
             
             if isinstance(self.jobs_manager, LocalManager):
                 self.jobs_manager.n_cores = n_cores
 
-            if self.resubmit_retired:
+            if self.unretire_jobs:
                 logger.debug("[AnalysisManager : __init__] Unretiring jobs that failed up to the maximum number of retries.")
                 remerge = False
                 for task in self.jobs_manager.tasks:
@@ -173,7 +179,14 @@ class AnalysisManager():
 
                 if remerge: # if at any point we unretired jobs, we should remerge outputs
                     self.jobs_manager.remerge = True # however, we only want to update if we need to remerge
-                    # This prevents the scenario of user ctrl+c-ing after running with --resubmit_retired, running again without that option, and us mistakenly thinking that we no longer need to remerge.
+                    # This prevents the scenario of user ctrl+c-ing after running with --unretire_jobs, running again without that option, and us mistakenly thinking that we no longer need to remerge.
+
+            if self.retire_jobs:
+                logger.debug("[AnalysisManager : __init__] Retiring all unfinished jobs.")
+                for task in self.jobs_manager.tasks:
+                    task.retire_jobs()
+
+
 
         # Otherwise, run normal constructor
         else:
