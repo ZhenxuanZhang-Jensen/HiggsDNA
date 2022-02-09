@@ -16,3 +16,4 @@ dependencies:
   - conda-pack
   - tqdm
   - dill
+  - enlighten

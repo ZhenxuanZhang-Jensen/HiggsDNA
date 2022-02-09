@@ -5,9 +5,9 @@ output = OUTPUT
 error = ERROR
 log = LOG
 
-RequestMemory = 4096
-RequestDisk = 10000
-RequestCpus = 1
+RequestMemory = REQ_MEMORY
+RequestDisk = REQ_DISK
+RequestCpus = REQ_NCPUS
 
 JobBatchName = BATCH_NAME
 +JobFlavour = "espresso"

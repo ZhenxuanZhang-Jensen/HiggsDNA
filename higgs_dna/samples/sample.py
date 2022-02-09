@@ -4,26 +4,27 @@ from higgs_dna.samples.file import File
 from higgs_dna.utils import awkward_utils
 from higgs_dna.constants import CENTRAL_WEIGHT, LUMI
 
+# FIXME need to add option for specifying campaign (e.g. Prompt, UL, etc)
+
 class Sample():
     """
 
     """
-    def __init__(self, process, year, files, is_data = None, xs = None, bf = None, systematics = None, process_id = None, **kwargs):
+    def __init__(self, process, year, files, is_data = None, xs = None, bf = None, systematics = None, process_id = None, fpo = None, **kwargs):
         self.process = process
         self.year = year
         self.name = process + "_" + year
         self.files = files
-
         self.xs = xs
         self.bf = bf
+        self.fpo = fpo
+        self.systematics = systematics
+        self.process_id = process_id
 
         if is_data is None:
             self.is_data = self.xs is None and self.bf is None
         else:
             self.is_data = is_data
-
-        self.systematics = systematics
-        self.process_id = process_id
 
         # Normalization factor including cross section and BF (if provided)
         self.norm_factor = 1

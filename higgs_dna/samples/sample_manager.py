@@ -157,6 +157,12 @@ class SampleManager():
                 if systematics is not None:
                     self.samples[sample][year]["systematics"] = systematics
 
+                # Check if fpo is specified
+                if "fpo" in info.keys():
+                    fpo = info["fpo"]
+                else:
+                    fpo = None
+
                 samples.append(
                         Sample(
                             process = sample,
@@ -165,6 +171,7 @@ class SampleManager():
                             xs = xs,
                             bf = bf,
                             process_id = s_idx,
+                            fpo = fpo,
                             systematics = systematics
                         )
                 )

@@ -6,6 +6,8 @@ import copy
 import logging
 logger = logging.getLogger(__name__)
 
+from higgs_dna.utils.metis_utils import do_cmd
+
 def load_config(config):
     """
     Load a dictionary or path to json file into a dictionary.
@@ -23,8 +25,7 @@ def load_config(config):
             logger.warning("[load_config] : You specified a string, meaning we load config options from a json file, but %s does not look like a json file!" % config)
 
         with open(expand_path(config), "r") as f_in:
-            options = json.load(f_in)
-            return options
+            return json.load(f_in)
 
     else:
         message = "[load_config] : You tried to load a config file with '%s' which has type <%s>, but only loading from json file (<str>) or <dict> are supported." % (str(config), str(type(config)))
@@ -47,6 +48,42 @@ def get_module(module_name):
         raise ImportError()
         
     return sys.modules[module_name]
+
+
+def get_HiggsDNA_base():
+    """
+    Find the path up to and including /HiggsDNA.
+    Assumes that you are at least somewhere under /HiggsDNA
+    """
+    pwd = os.path.abspath(do_cmd("pwd"))
+    subdirs = pwd.split("/")
+
+    hdna_path = ""
+    for subdir in subdirs:
+        hdna_path += subdir + "/"
+        if subdir == "HiggsDNA":
+            break
+ 
+    return os.path.abspath(hdna_path)
+
+
+def get_HiggsDNA_conda():
+    """
+    Find the absolute path to higgs-dna conda env.
+    """
+    return os.path.abspath(do_cmd("echo $CONDA_PREFIX"))
+
+
+def get_conda():
+    """
+    Find the absolute path to conda
+    """
+    conda, hdna = os.path.split(
+            os.path.abspath(
+                do_cmd("echo $CONDA_PREFIX")
+            )
+    )
+    return conda
 
 
 def expand_path(relative_path):
@@ -99,7 +136,6 @@ def update_dict(original, new):
 
     return updated
 
-from higgs_dna.utils.metis_utils import do_cmd
 def check_proxy():
     """
     Check if a valid grid proxy exists.
@@ -128,4 +164,24 @@ def check_proxy():
         return None
 
     else:
-        return proxy
+        return os.path.abspath(proxy)
+
+
+def create_chunks(lst, n):
+    """Yield successive n-sized chunks from lst."""
+    chunks = []
+    for i in range(0, len(lst), n):
+        chunks.append(lst[i:i+n])
+    return chunks
+
+
+def is_json_serializable(x):
+    """
+    Returns True if `x` is json serializable, False if not
+    """
+    try:
+        json.dumps(x)
+        return True
+    except:
+        return False
+
