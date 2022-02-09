@@ -77,7 +77,7 @@ ls -altrh
 
 for x in `ls *.parquet`
 do
-    stageout "file://`pwd`/$x" BATCH_OUTPUT_DIR/"$x"
+    stageout "file://`pwd`/$x" GFAL_BATCH_OUTPUT_DIR/"$x"
 done
 
-stageout "file://`pwd`/SUMMARY_FILE" BATCH_OUTPUT_DIR/SUMMARY_FILE
+stageout "file://`pwd`/SUMMARY_FILE" GFAL_BATCH_OUTPUT_DIR/SUMMARY_FILE

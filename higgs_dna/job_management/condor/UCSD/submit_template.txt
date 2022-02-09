@@ -2,19 +2,19 @@ universe=vanilla
 should_transfer_files = Yes
 when_to_transfer_output = ON_EXIT_OR_EVICT
 Transfer_Executable     = True
-transfer_input_files    = PYTHON_FILE, CONFIG_FILE, BASEPATH/HiggsDNA/setup.py, BASEPATH/HiggsDNA/environment.yml
+transfer_input_files    = PYTHON_FILE, CONFIG_FILE, HIGGS_DNA_BASE/setup.py, HIGGS_DNA_BASE/environment.yml
 transfer_output_files   = ""
 executable              = EXECUTABLE 
 
-+DESIRED_Sites="T2_US_UCSD"
++DESIRED_Sites="TARGET_SITES"
 
 output                  = OUTPUT
 error                   = ERROR
 log                     = LOG
 
-RequestMemory = 4096
-RequestDisk = 10000
-RequestCpus = 1
+RequestMemory = REQ_MEMORY
+RequestDisk = REQ_DISK
+RequestCpus = REQ_NCPUS
 
 x509userproxy=GRID_PROXY
 

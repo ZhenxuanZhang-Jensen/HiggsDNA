@@ -17,6 +17,4 @@ else
 fi
 unset __conda_setup
 
-cd OUTPUT_DIR
-
 python PYTHON_FILE
