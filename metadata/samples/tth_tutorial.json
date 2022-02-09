@@ -64,6 +64,7 @@
         }
     },
     "TTJets" : {
+        "fpo" : 5,
         "xs" : 831.76,
         "files" : {
             "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/TTJets_TuneCUETP8M2T4_13TeV-amcatnloFXFX-pythia8_RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2_MINIAODSIM_v0.6_20201117/",
@@ -162,6 +163,7 @@
         }
     },
     "Data" : {
+        "fpo" : 10,
         "files" : {
             "2016" : [
                 "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2016B-17Jul2018_ver1-v1_MINIAOD_v0.6_20201021/",

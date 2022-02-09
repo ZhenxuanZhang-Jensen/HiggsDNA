@@ -25,6 +25,28 @@ def do_cmd(cmd, returnStatus=False, dryRun=False):
     else:
         return out
 
+def do_cmd_timeout(cmd, timeout, loop = False):
+    """
+    Run a command ``cmd`` and kill the process if it does not finish before timeout.
+
+    :param loop: whether to indefinitely loop through this until it finishes under the timeout
+    :type loop: bool
+    :returns: True if completed, False if timed out
+    :rtype: bool
+    """
+    logger.debug("[misc_utils : do_cmd_timeout] Running command '%s' with timeout of %.0f seconds with indefinite looping until completion set to '%s'." % (cmd, timeout, loop))
+
+    p = subprocess.Popen(cmd.split(" "))
+    try:
+        p.wait(timeout)
+        return True
+    except:
+        p.kill()
+        if loop:
+            return do_cmd_timeout(cmd, timeout, loop)
+        else:
+            return False
+
 def get_proxy_file():
     return "/tmp/x509up_u{0}".format(os.getuid())
 
