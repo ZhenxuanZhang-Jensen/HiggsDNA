@@ -15,8 +15,10 @@ class Tagger():
     :type name: str
     :param options: options with selection info
     :type options: str, dict
-    :param logger: logger to print out various levels of diagnostic info 
-    :type logger: logging.getLogger() 
+    :param is_data: whether this tagger is being run on data
+    :type is_data: bool
+    :param year: which year this tagger is being run on
+    :type year: str
     """
     def __init__(self, name, options = {}, is_data = None, year = None):
         self.name = name
@@ -31,6 +33,20 @@ class Tagger():
         self.options = misc_utils.load_config(options)
 
 
+    def select(self, events):
+        """
+        Convenience function for running tagger in standalone contexts.
+
+        :param events: awkward array of events
+        :type events: awkward.Array
+        :returns: awkward array of selected events
+        :rtype: awkward.Array
+        """
+        self.current_syst = NOMINAL_TAG
+        selection, events_updated = self.get_selection(NOMINAL_TAG, events)
+        return events_updated[selection]
+
+
     def run(self, events): 
         """
         Return dictionary of boolean arrays of events to be selected
@@ -40,7 +56,7 @@ class Tagger():
         :param events: sets of events to perform selection for (nominal + any independent collections for syst variations
         :type events: dict
         :return: boolean arrays of events to be selected by this tagger for each systematic variation, events dict with added fields computed by this tagger
-        :rtype: dict, dict
+        :rtype: dict, dict 
         """
 
         for syst_tag, syst_events in events.items():
@@ -50,6 +66,7 @@ class Tagger():
             self.events[syst_tag] = syst_events_updated
 
             logger.debug("[Tagger] %s : event set : %s : %d (%d) events before (after) selection" % (self.name, syst_tag, len(syst_events), len(syst_events_updated[self.selection[syst_tag]])))
+
 
         return self.selection, self.events
 
@@ -80,10 +97,10 @@ class Tagger():
             return self.selection[syst_tag], self.events[syst_tag] 
 
         else:
-            return self.calculate_selection(syst_tag, syst_events) 
+            return self.calculate_selection(syst_events) 
 
         
-    def calculate_selection(self, syst_tag, syst_events): 
+    def calculate_selection(self, events): 
         """
         Abstract function that should be reimplemented for each tagger.
         """

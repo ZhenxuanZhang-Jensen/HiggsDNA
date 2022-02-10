@@ -87,21 +87,21 @@ class DiphotonTagger(Tagger):
             )
 
 
-    def calculate_selection(self, syst_tag, syst_events):
+    def calculate_selection(self, events):
         """
         Select photons and create diphoton pairs.
         Add a record "Diphoton" to events array with relevant information about each diphoton pair.
         In principle, there can be more than one Diphoton pair per event.
         """
         photon_selection = self.select_photons(
-                photons = syst_events.Photon,
-                rho = syst_events.fixedGridRhoAll if not self.options["photons"]["use_central_nano"] else awkward.ones_like(syst_events.Photon), # FIXME: to be deleted once fixedGridRhoAll is added to central nanoAOD
+                photons = events.Photon,
+                rho = events.fixedGridRhoAll if not self.options["photons"]["use_central_nano"] else awkward.ones_like(events.Photon), # FIXME: to be deleted once fixedGridRhoAll is added to central nanoAOD
                 options = self.options["photons"]
         )
 
         diphoton_selection, diphotons = self.produce_and_select_diphotons(
-                events = syst_events,
-                photons = syst_events.Photon[photon_selection],
+                events = events,
+                photons = events.Photon[photon_selection],
                 options = self.options["diphotons"]
         )
 
