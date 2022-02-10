@@ -51,14 +51,14 @@ class TTHPreselTagger(Tagger):
                     new = options
             )
 
-    def calculate_selection(self, syst_tag, syst_events):
+    def calculate_selection(self, events):
         # Electrons
         electron_cut = lepton_selections.select_electrons(
-                electrons = syst_events.Electron,
+                electrons = events.Electron,
                 options = self.options["electrons"],
                 clean = {
                     "photons" : {
-                        "objects" : syst_events.Diphoton.Photon,
+                        "objects" : events.Diphoton.Photon,
                         "min_dr" : self.options["electrons"]["dr_photons"]
                     }
                 },
@@ -67,18 +67,18 @@ class TTHPreselTagger(Tagger):
         )
 
         electrons = awkward_utils.add_field(
-                events = syst_events,
+                events = events,
                 name = "SelectedElectron",
-                data = syst_events.Electron[electron_cut]
+                data = events.Electron[electron_cut]
         )
 
         # Muons
         muon_cut = lepton_selections.select_muons(
-                muons = syst_events.Muon,
+                muons = events.Muon,
                 options = self.options["muons"],
                 clean = {
                     "photons" : {
-                        "objects" : syst_events.Diphoton.Photon,
+                        "objects" : events.Diphoton.Photon,
                         "min_dr" : self.options["muons"]["dr_photons"]
                     }
                 },
@@ -87,26 +87,26 @@ class TTHPreselTagger(Tagger):
         )
 
         muons = awkward_utils.add_field(
-                events = syst_events,
+                events = events,
                 name = "SelectedMuon",
-                data = syst_events.Muon[muon_cut]
+                data = events.Muon[muon_cut]
         )
 
         # Jets
         jet_cut = jet_selections.select_jets(
-                jets = syst_events.Jet,
+                jets = events.Jet,
                 options = self.options["jets"],
                 clean = {
                     "photons" : {
-                        "objects" : syst_events.Diphoton.Photon,
+                        "objects" : events.Diphoton.Photon,
                         "min_dr" : self.options["jets"]["dr_photons"]
                     },
                     "electrons" : {
-                        "objects" : syst_events.SelectedElectron,
+                        "objects" : events.SelectedElectron,
                         "min_dr" : self.options["jets"]["dr_electrons"]
                     },
                     "muons" : {
-                        "objects" : syst_events.SelectedMuon,
+                        "objects" : events.SelectedMuon,
                         "min_dr" : self.options["jets"]["dr_muons"]
                     }
                 },
@@ -115,9 +115,9 @@ class TTHPreselTagger(Tagger):
         )
 
         jets = awkward_utils.add_field(
-                events = syst_events,
+                events = events,
                 name = "SelectedJet",
-                data = syst_events.Jet[jet_cut]
+                data = events.Jet[jet_cut]
         )
 
         bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis = 1, ascending = False)]
@@ -160,7 +160,7 @@ class TTHPreselTagger(Tagger):
         n_jets = awkward.num(jets)
         n_bjets = awkward.num(bjets)
 
-        photon_id_cut = (syst_events.LeadPhoton.mvaID > self.options["photon_id"]) & (syst_events.SubleadPhoton.mvaID > self.options["photon_id"]) 
+        photon_id_cut = (events.LeadPhoton.mvaID > self.options["photon_id"]) & (events.SubleadPhoton.mvaID > self.options["photon_id"]) 
 
         # Hadronic presel
         hadronic = (n_leptons == 0) & (n_jets >= 4) & (n_bjets >= 1) 
@@ -174,5 +174,5 @@ class TTHPreselTagger(Tagger):
             results = [hadronic, leptonic, z_veto, photon_id_cut, presel_cut]
         )
 
-        return presel_cut, syst_events
+        return presel_cut, events
     
