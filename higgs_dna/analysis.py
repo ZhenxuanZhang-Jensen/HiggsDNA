@@ -505,7 +505,7 @@ class AnalysisManager():
                 else:
                     present = branch in syst_events.fields
                 if not present:
-                    logger.warning("[AnalysisManager : write_events] Branch '%s' was not found in events array. This may be expected (e.g. gen info for a data file), but please ensure this makes sense to you." % branch)
+                    logger.warning("[AnalysisManager : write_events] Branch '%s' was not found in events array. This may be expected (e.g. gen info for a data file), but please ensure this makes sense to you." % str(branch))
                     continue
                 save_map[save_name] = syst_events[branch]
 
