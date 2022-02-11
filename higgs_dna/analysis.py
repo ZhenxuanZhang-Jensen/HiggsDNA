@@ -500,8 +500,12 @@ class AnalysisManager():
                         branch = tuple(branch)
                 else:
                     save_name = branch
-                if branch not in syst_events.fields:
-                    logger.warning("[AnalysisManager : write_events] Branch '%s' was not found in events array. This may be expected (e.g. gen info for a data file), but please ensure this makes sense to you.")
+                if isinstance(branch, tuple):
+                    present = branch[1] in syst_events[branch[0]].fields
+                else:
+                    present = branch in syst_events.fields
+                if not present:
+                    logger.warning("[AnalysisManager : write_events] Branch '%s' was not found in events array. This may be expected (e.g. gen info for a data file), but please ensure this makes sense to you." % branch)
                     continue
                 save_map[save_name] = syst_events[branch]
 
