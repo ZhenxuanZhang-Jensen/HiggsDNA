@@ -545,9 +545,9 @@ class SystematicWithIndependentCollection(Systematic):
         """
         independent_collections = {}
         for variation, branch in self.branches.items():
-            if variation == "nominal" and not self.modify_nominal:
+            if variation == NOMINAL_TAG and not self.modify_nominal:
                 continue
-            if not variation == "nominal" and self.nominal_only:
+            if not variation == NOMINAL_TAG and self.nominal_only:
                 continue
             name = self.name + "_" + variation
             if self.additive:
@@ -580,9 +580,9 @@ class SystematicWithIndependentCollection(Systematic):
         )(**kwargs)
 
         for variation, branch in variations.items():
-            if variation == "nominal" and not self.modify_nominal:
+            if variation == NOMINAL_TAG and not self.modify_nominal:
                 continue
-            if not variation == "nominal" and self.nominal_only:
+            if not variation == NOMINAL_TAG and self.nominal_only:
                 continue 
             name = self.name + "_" + variation
             independent_collections[variation] = awkward.with_field(
