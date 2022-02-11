@@ -20,7 +20,7 @@ class Tagger():
     :param year: which year this tagger is being run on
     :type year: str
     """
-    def __init__(self, name, options = {}, is_data = None, year = None):
+    def __init__(self, name = "tagger", options = {}, is_data = None, year = None):
         self.name = name
         self.options = options
         self.is_data = is_data
