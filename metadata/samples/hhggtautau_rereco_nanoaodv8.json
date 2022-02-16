@@ -11,6 +11,7 @@
     "HHggTauTau" : {
         "xs" : 0.03105,
         "bf" : 0.000284658,
+        "fpo" : 10,
         "files" : {
             "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/HHggtautau_Era2016_private_v0.1_20201117/",
             "2017" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/HHggtautau_Era2017_private_v0.1_20201117/",
@@ -21,6 +22,7 @@
         "xs" : 1.0,
         "comment" : "dummy cross section for now", 
         "bf" : 1.0,
+        "fpo" : 5,
         "files" : {
             "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM300_HHggtautau_Era2017_private_v0.2_20210502/",
             "2017" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM300_HHggtautau_Era2017_private_v0.2_20210502/",
@@ -31,6 +33,7 @@
         "xs" : 1.0,
         "comment" : "dummy cross section for now",
         "bf" : 1.0,
+        "fpo" : 5,
         "files" : {
             "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM400_HHggtautau_Era2017_private_v0.2_20210502/",
             "2017" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM400_HHggtautau_Era2017_private_v0.2_20210502/",
@@ -41,6 +44,7 @@
         "xs" : 1.0,
         "comment" : "dummy cross section for now",
         "bf" : 1.0,
+        "fpo" : 10,
         "files" : {
             "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM500_HHggtautau_Era2017_private_v0.2_20210502/",
             "2017" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM500_HHggtautau_Era2017_private_v0.2_20210502/",
@@ -51,6 +55,7 @@
         "xs" : 1.0,
         "comment" : "dummy cross section for now",
         "bf" : 1.0,
+        "fpo" : 5,
         "files" : {
             "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM800_HHggtautau_Era2017_private_v0.2_20210502/",
             "2017" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM800_HHggtautau_Era2017_private_v0.2_20210502/",
@@ -61,6 +66,7 @@
         "xs" : 1.0,
         "comment" : "dummy cross section for now",
         "bf" : 1.0,
+        "fpo" : 5,
         "files" : {
             "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM1000_HHggtautau_Era2017_private_v0.2_20210502/",
             "2017" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/radionM1000_HHggtautau_Era2017_private_v0.2_20210502/",
@@ -68,6 +74,7 @@
         }
     },
     "ggH_M125" : {
+        "fpo" : 3,
         "xs" : 0.1118429,
         "files" : {
             "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/GluGluHToGG_M125_13TeV_amcatnloFXFX_pythia8_RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext2-v2_MINIAODSIM_v0.6_20201117/",
@@ -76,6 +83,7 @@
         }
     },
     "VBFH_M125" : {
+        "fpo" : 3,
         "xs" : 0.00858514,
         "files" : {
             "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/VBFHToGG_M125_13TeV_amcatnlo_pythia8_RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext2-v2_MINIAODSIM_v0.6_20201117/",
@@ -84,6 +92,7 @@
         }
     },
     "VH_M125" : {
+        "fpo" : 3,
         "xs" : 0.00512,
         "files" : {
             "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/VHToGG_M125_13TeV_amcatnloFXFX_madspin_pythia8_RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2_MINIAODSIM_v0.6_20201117/",
@@ -92,6 +101,7 @@
         }
     },
     "HH_ggbb" : {
+        "fpo" : 3,
         "xs" : 8.2325e-05,
         "files" : {
             "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/GluGluToHHTo2B2G_node_SM_13TeV-madgraph_RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2_MINIAODSIM_v0.6_20210219/",
@@ -100,6 +110,7 @@
          }
     },
     "GJets_HT-40To100" : {
+        "fpo" : 3,
         "xs" : 23100.0,
         "files" : {
             "2016" : [
@@ -111,6 +122,7 @@
          }
     },
     "GJets_HT-100To200" : {
+        "fpo" : 3,
         "xs" : 8631.0,
         "files" : {
             "2016" : [
@@ -122,6 +134,7 @@
         }
     },
     "GJets_HT-200To400" : {
+        "fpo" : 3,
         "xs" : 2280.0,
         "files" : {
             "2016" : [
@@ -133,6 +146,7 @@
         }
     },
     "GJets_HT-400To600" : {
+        "fpo" : 3,
         "xs" : 273.0,
         "files" : {
             "2016" : [
@@ -155,6 +169,7 @@
         }
     },
     "TTJets" : {
+        "fpo" : 3,
         "xs" : 831.76,
         "files" : {
             "2016" : "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/TTJets_TuneCUETP8M2T4_13TeV-amcatnloFXFX-pythia8_RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2_MINIAODSIM_v0.6_20201117/",
@@ -163,6 +178,7 @@
         }
     },
     "TTGamma" : {
+        "fpo" : 3,
         "xs" : {
             "2016" : 3.819,
             "2017" : 4.078,
@@ -181,6 +197,7 @@
        }
     },
     "TTGG" : {
+        "fpo" : 3,
         "xs" : {
             "2016" : 0.01731,
             "2017" : 0.01687,
@@ -193,6 +210,7 @@
         }
     },
     "WGamma" : {
+        "fpo" : 3,
         "xs" : {
             "2016" : 510.6,
             "2017" : 191.4,
@@ -209,6 +227,7 @@
         }
     },
     "ZGamma" : {
+        "fpo" : 3,
         "xs" : {
             "2016" : 123.8,
             "2017" : 55.6,
@@ -229,6 +248,7 @@
         }
     }, 
     "Data" : {
+        "fpo" : 10,
         "files" : {
             "2016" : [
                 "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2016B-17Jul2018_ver1-v1_MINIAOD_v0.6_20201021/",
