@@ -61,14 +61,14 @@ DEFAULT_OPTIONS = {
     },
     "z_veto" : [80., 100.],
     "m_llg_veto" : [86., 96.],
-    "photon_mvaID" : 0.0
+    "photon_mvaID" : -0.7
 }
 
 class HHggTauTauPreselTagger(Tagger):
     """
     Preselection Tagger for the HH->ggTauTau analysis.
     """
-    def __init__(self, name, options = {}, is_data = None, year = None):
+    def __init__(self, name = "hh_ggtautau_tagger", options = {}, is_data = None, year = None):
         super(HHggTauTauPreselTagger, self).__init__(name, options, is_data, year)
 
         if not options:
@@ -80,7 +80,7 @@ class HHggTauTauPreselTagger(Tagger):
             )
 
 
-    def calculate_selection(self, syst_tag, syst_events):
+    def calculate_selection(self, events):
         #################################
         ### HH->ggTauTau Preselection ###
         #################################
@@ -89,11 +89,11 @@ class HHggTauTauPreselTagger(Tagger):
         
         # Electrons
         electron_cut = lepton_selections.select_electrons(
-                electrons = syst_events.Electron,
+                electrons = events.Electron,
                 options = self.options["electrons"],
                 clean = {
                     "photons" : {
-                        "objects" : syst_events.Diphoton.Photon,
+                        "objects" : events.Diphoton.Photon,
                         "min_dr" : self.options["electrons"]["dr_photons"]
                     }
                 },
@@ -102,18 +102,18 @@ class HHggTauTauPreselTagger(Tagger):
         )
 
         electrons = awkward_utils.add_field(
-                events = syst_events,
+                events = events,
                 name = "SelectedElectron",
-                data = syst_events.Electron[electron_cut]
+                data = events.Electron[electron_cut]
         )
 
         # Muons
         muon_cut = lepton_selections.select_muons(
-                muons = syst_events.Muon,
+                muons = events.Muon,
                 options = self.options["muons"],
                 clean = {
                     "photons" : {
-                        "objects" : syst_events.Diphoton.Photon,
+                        "objects" : events.Diphoton.Photon,
                         "min_dr" : self.options["muons"]["dr_photons"]
                     }
                 },
@@ -122,26 +122,26 @@ class HHggTauTauPreselTagger(Tagger):
         )
 
         muons = awkward_utils.add_field(
-                events = syst_events,
+                events = events,
                 name = "SelectedMuon",
-                data = syst_events.Muon[muon_cut]
+                data = events.Muon[muon_cut]
         )
 
         # Taus
         tau_cut = tau_selections.select_taus(
-                taus = syst_events.Tau,
+                taus = events.Tau,
                 options = self.options["taus"],
                 clean = {
                     "photons" : {
-                        "objects" : syst_events.Diphoton.Photon,
+                        "objects" : events.Diphoton.Photon,
                         "min_dr" : self.options["taus"]["dr_photons"]
                     },
                     "electrons" : {
-                        "objects" : syst_events.SelectedElectron,
+                        "objects" : events.SelectedElectron,
                         "min_dr" : self.options["taus"]["dr_electrons"]
                     },
                     "muons" : {
-                        "objects" : syst_events.SelectedMuon,
+                        "objects" : events.SelectedMuon,
                         "min_dr" : self.options["taus"]["dr_muons"]
                     }
                 },
@@ -150,43 +150,43 @@ class HHggTauTauPreselTagger(Tagger):
         )
 
         taus = awkward_utils.add_field(
-                events = syst_events,
+                events = events,
                 name = "AnalysisTau",
-                data = syst_events.Tau[tau_cut]
+                data = events.Tau[tau_cut]
         )
 
         # IsoTrack
         # Add missing iso track fields
-        syst_events = awkward.with_field(
-                base = syst_events,
-                what = awkward.zeros_like(syst_events.IsoTrack.pt),
+        events = awkward.with_field(
+                base = events,
+                what = awkward.zeros_like(events.IsoTrack.pt),
                 where = ("IsoTrack", "mass")
         )
-        syst_events = awkward.with_field(
-                base = syst_events,
-                what = awkward.nan_to_num(syst_events.IsoTrack.pdgId / abs(syst_events.IsoTrack.pdgId)),
+        events = awkward.with_field(
+                base = events,
+                what = awkward.nan_to_num(events.IsoTrack.pdgId / abs(events.IsoTrack.pdgId)),
                 where = ("IsoTrack", "charge")
         )
 
         
         iso_track_cut = tau_selections.select_iso_tracks(
-                iso_tracks = syst_events.IsoTrack,
+                iso_tracks = events.IsoTrack,
                 options = self.options["iso_tracks"],
                 clean = {
                     "photons" : {
-                        "objects" : syst_events.Diphoton.Photon,
+                        "objects" : events.Diphoton.Photon,
                         "min_dr" : self.options["iso_tracks"]["dr_photons"]
                     },
                     "electrons" : {
-                        "objects" : syst_events.SelectedElectron,
+                        "objects" : events.SelectedElectron,
                         "min_dr" : self.options["iso_tracks"]["dr_electrons"]
                     },
                     "muons" : {
-                        "objects" : syst_events.SelectedMuon,
+                        "objects" : events.SelectedMuon,
                         "min_dr" : self.options["iso_tracks"]["dr_muons"]
                     },
                     "taus" : {
-                        "objects" : syst_events.AnalysisTau,
+                        "objects" : events.AnalysisTau,
                         "min_dr" : self.options["iso_tracks"]["dr_taus"]
                     }
                 },
@@ -195,34 +195,34 @@ class HHggTauTauPreselTagger(Tagger):
         )
 
         iso_tracks = awkward_utils.add_field(
-                events = syst_events,
+                events = events,
                 name = "SelectedIsoTrack",
-                data = syst_events.IsoTrack[iso_track_cut]
+                data = events.IsoTrack[iso_track_cut]
         )
 
         # Jets
         jet_cut = jet_selections.select_jets(
-                jets = syst_events.Jet,
+                jets = events.Jet,
                 options = self.options["jets"],
                 clean = {
                     "photons" : {
-                        "objects" : syst_events.Diphoton.Photon,
+                        "objects" : events.Diphoton.Photon,
                         "min_dr" : self.options["jets"]["dr_photons"]
                     },
                     "electrons" : {
-                        "objects" : syst_events.SelectedElectron,
+                        "objects" : events.SelectedElectron,
                         "min_dr" : self.options["jets"]["dr_electrons"]
                     },
                     "muons" : {
-                        "objects" : syst_events.SelectedMuon,
+                        "objects" : events.SelectedMuon,
                         "min_dr" : self.options["jets"]["dr_muons"]
                     },
                     "taus" : {
-                        "objects" : syst_events.AnalysisTau,
+                        "objects" : events.AnalysisTau,
                         "min_dr" : self.options["jets"]["dr_taus"]
                     },
                     "iso_tracks" : {
-                        "objects" : syst_events.SelectedIsoTrack,
+                        "objects" : events.SelectedIsoTrack,
                         "min_dr" : self.options["jets"]["dr_iso_tracks"]
                     }
                 },
@@ -231,14 +231,14 @@ class HHggTauTauPreselTagger(Tagger):
         )
 
         jets = awkward_utils.add_field(
-                events = syst_events,
+                events = events,
                 name = "SelectedJet",
-                data = syst_events.Jet[jet_cut]
+                data = events.Jet[jet_cut]
         )
 
         bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis = 1, ascending = False)]
         awkward_utils.add_object_fields(
-                events = syst_events,
+                events = events,
                 name = "b_jet",
                 objects = bjets,
                 n_objects = 2,
@@ -249,7 +249,7 @@ class HHggTauTauPreselTagger(Tagger):
         # Add object fields to events array
         for objects, name in zip([electrons, muons, taus, jets], ["electron", "muon", "tau", "jet"]):
             awkward_utils.add_object_fields(
-                    events = syst_events,
+                    events = events,
                     name = name,
                     objects = objects,
                     n_objects = 2,
@@ -257,7 +257,7 @@ class HHggTauTauPreselTagger(Tagger):
             )
 
         awkward_utils.add_object_fields(
-                events = syst_events,
+                events = events,
                 name = "iso_track",
                 objects = iso_tracks,
                 n_objects = 1,
@@ -265,22 +265,22 @@ class HHggTauTauPreselTagger(Tagger):
         )
 
         n_electrons = awkward.num(electrons)
-        awkward_utils.add_field(syst_events, "n_electrons", n_electrons)
+        awkward_utils.add_field(events, "n_electrons", n_electrons)
         
         n_muons = awkward.num(muons)
-        awkward_utils.add_field(syst_events, "n_muons", n_muons)
+        awkward_utils.add_field(events, "n_muons", n_muons)
         
         n_leptons = n_electrons + n_muons
-        awkward_utils.add_field(syst_events, "n_leptons", n_leptons)
+        awkward_utils.add_field(events, "n_leptons", n_leptons)
         
         n_taus = awkward.num(taus)
-        awkward_utils.add_field(syst_events, "n_taus", n_taus)
+        awkward_utils.add_field(events, "n_taus", n_taus)
         
         n_iso_tracks = awkward.num(iso_tracks)
-        awkward_utils.add_field(syst_events, "n_iso_tracks", n_iso_tracks)
+        awkward_utils.add_field(events, "n_iso_tracks", n_iso_tracks)
 
         n_jets = awkward.num(jets)
-        awkward_utils.add_field(syst_events, "n_jets", n_jets)
+        awkward_utils.add_field(events, "n_jets", n_jets)
 
 
         ### Presel step 2: Z veto ###
@@ -328,7 +328,7 @@ class HHggTauTauPreselTagger(Tagger):
         tau_candidates = awkward.Array(tau_candidates, with_name = "Momentum4D")
 
         awkward_utils.add_object_fields(
-                events = syst_events,
+                events = events,
                 name = "tau_candidate",
                 objects = tau_candidates,
                 n_objects = 3,
@@ -379,22 +379,22 @@ class HHggTauTauPreselTagger(Tagger):
         for field in ["pt", "eta", "phi", "mass", "charge", "id"]:
             if not field in ["charge", "id"]:
                 awkward_utils.add_field(
-                        syst_events,
+                        events,
                         "ditau_%s" % field,
                         awkward.fill_none(getattr(ditau_pairs.ditau, field), DUMMY_VALUE)
                 )
             awkward_utils.add_field(
-                    syst_events,
+                    events,
                     "ditau_lead_lepton_%s" % field,
                     awkward.fill_none(ditau_pairs.LeadTauCand[field], DUMMY_VALUE)
             )
             awkward_utils.add_field(
-                    syst_events,
+                    events,
                     "ditau_sublead_lepton_%s" % field,
                     awkward.fill_none(ditau_pairs.SubleadTauCand[field], DUMMY_VALUE)
             )
         awkward_utils.add_field(
-                syst_events,
+                events,
                 "ditau_dR",
                 awkward.fill_none(ditau_pairs.ditau.dR, DUMMY_VALUE)
         )
@@ -418,20 +418,20 @@ class HHggTauTauPreselTagger(Tagger):
         # Now assign 1tau / 0 lep, 0 isotrack events to category 8
         category = awkward.fill_none(category, 0)
         category = awkward.where((category == 0) & (n_taus >= 1), awkward.ones_like(category) * 8, category)
-        awkward_utils.add_field(syst_events, "category", category) 
+        awkward_utils.add_field(events, "category", category) 
 
         # Events must fall into one of 8 categories
         category_cut = category > 0
 
         # Photon ID cut
-        pho_id = (syst_events.LeadPhoton.mvaID > self.options["photon_mvaID"]) & (syst_events.SubleadPhoton.mvaID > self.options["photon_mvaID"])
+        pho_id = (events.LeadPhoton.mvaID > self.options["photon_mvaID"]) & (events.SubleadPhoton.mvaID > self.options["photon_mvaID"])
 
         # Veto on m_llgamma to reject Z->eeg and Z->mmg events 
-        dilep_lead_photon = ditau_pairs.ditau + syst_events.LeadPhoton
-        dilep_sublead_photon = ditau_pairs.ditau + syst_events.SubleadPhoton
+        dilep_lead_photon = ditau_pairs.ditau + events.LeadPhoton
+        dilep_sublead_photon = ditau_pairs.ditau + events.SubleadPhoton
 
-        awkward_utils.add_field(syst_events, "dilep_leadpho_mass", dilep_lead_photon.mass) 
-        awkward_utils.add_field(syst_events, "dilep_subleadpho_mass", dilep_sublead_photon.mass) 
+        awkward_utils.add_field(events, "dilep_leadpho_mass", dilep_lead_photon.mass) 
+        awkward_utils.add_field(events, "dilep_subleadpho_mass", dilep_sublead_photon.mass) 
 
         m_llg_veto_lead = (dilep_lead_photon.mass >= self.options["m_llg_veto"][0]) & (dilep_lead_photon.mass <= self.options["m_llg_veto"][1])
         m_llg_veto_sublead = (dilep_sublead_photon.mass >= self.options["m_llg_veto"][0]) & (dilep_sublead_photon.mass <= self.options["m_llg_veto"][1])
@@ -448,4 +448,4 @@ class HHggTauTauPreselTagger(Tagger):
             results = [category_cut, z_veto, pho_id, m_llg_veto, presel_cut]
         )
 
-        return presel_cut, syst_events 
+        return presel_cut, events 
