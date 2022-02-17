@@ -1,5 +1,3 @@
-
-
 class ProgressBar():
     """
     """
@@ -11,6 +9,7 @@ class ProgressBar():
         self.name = "[Task : %s]" % name
         self.bar = ""
 
+
     def update(self, counts, performance, phys_summary):
         self.bar = self.TEMPLATE.format(
                 self.name,
@@ -19,7 +18,7 @@ class ProgressBar():
                 0 if performance["time"] == 0 else 0.001 * (phys_summary["n_events_initial"] / performance["time"]),
                 0 if phys_summary["n_events_initial"] == 0 else 100. * (phys_summary["n_events_selected"]["nominal"] / phys_summary["n_events_initial"])
         )
-
+        
 
     def get_bar(self, counts):
         return "{0:>4d}/{1:<4d} done, {2:>4d} running.".format(counts["completed"], counts["all"], counts["running"])
