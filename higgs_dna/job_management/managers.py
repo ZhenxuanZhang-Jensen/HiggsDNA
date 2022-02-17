@@ -7,7 +7,8 @@ import json
 import glob
 import pyarrow
 import datetime
-import sys 
+import sys
+from tqdm import tqdm
 
 import logging
 logger = logging.getLogger(__name__)
@@ -125,13 +126,32 @@ class JobsManager():
 
         """
 
+        columns, lines = os.get_terminal_size()
+
+        if len(self.tasks) > int(lines/2): # don't take up more than half the terminal window
+            scrolling = True
+            self.scroll_idx = 0
+        else:
+            scrolling = False
+
         if not self.dashboard:
             for idx, task in enumerate(self.tasks):
+                if idx >= int(lines/2):
+                    continue
                 self.dashboard.append(en_manager.status_bar(position = idx+1))
 
-        for idx, task in enumerate(self.tasks):
-            self.dashboard[idx].update(task.pbar.bar)
+        if scrolling:
+            task_sets = create_chunks(self.tasks, int(lines/2))
+            tasks = task_sets[self.scroll_idx]
+            self.scroll_idx = (self.scroll_idx + 1) % len(task_sets)
+        else:
+            tasks = self.tasks
 
+        for idx, task in enumerate(tasks):
+            bar = task.pbar.bar
+            if len(bar) > columns:
+                bar = bar[:columns]
+            self.dashboard[idx].update(bar)
 
 
     def merge_outputs(self, dir):
@@ -225,11 +245,13 @@ class LocalManager(JobsManager):
         """
 
         """
-        for task in self.tasks:
-            for job in task.jobs:
-                job.__class__ = self.job_type
-                job.output_dir = job.dir
-                job.set_files() # update the locations for the various files associated with this job
+        with tqdm(total = sum([len(task.jobs) for task in self.tasks])) as prog:
+            for task in self.tasks:
+                for job in task.jobs:
+                    job.__class__ = self.job_type
+                    job.output_dir = job.dir
+                    job.set_files() # update the locations for the various files associated with this job
+                    prog.update(1)
         self.customized_jobs = True
 
 
@@ -329,25 +351,27 @@ class CondorManager(JobsManager):
         """
 
         """
-        for task in self.tasks:
-            for job in task.jobs:
-                job.__class__ = self.job_type
-                job.conda_tarfile = self.conda_tarfile
-                job.analysis_tarfile = self.analysis_tarfile
-                job.proxy = self.proxy    
-                job.host = self.host
-                job.host_params = self.host_params
-                job.set_output_dir(base = self.batch_output_dir)
+        with tqdm(total = sum([len(task.jobs) for task in self.tasks])) as prog:
+            for task in self.tasks:
+                for job in task.jobs:
+                    job.__class__ = self.job_type
+                    job.conda_tarfile = self.conda_tarfile
+                    job.analysis_tarfile = self.analysis_tarfile
+                    job.proxy = self.proxy    
+                    job.host = self.host
+                    job.host_params = self.host_params
+                    job.set_output_dir(base = self.batch_output_dir)
 
-                if hasattr(self, "log_output_dir"):
-                    job.set_log_output_dir(base = self.log_output_dir)
+                    if hasattr(self, "log_output_dir"):
+                        job.set_log_output_dir(base = self.log_output_dir)
 
-                # If we are copying tarfiles via xrd, pass these paths to the jobs
-                if self.host_params["needs_tar"] and "xrd_redirector" in self.host_params.keys():
-                    job.xrd_conda_tarfile = self.xrd_conda_tarfile
-                    job.xrd_analysis_tarfile = self.xrd_analysis_tarfile
-                job.set_files() # update the locations for the various files associated with this job
-                self.customized_jobs = True
+                    # If we are copying tarfiles via xrd, pass these paths to the jobs
+                    if self.host_params["needs_tar"] and "xrd_redirector" in self.host_params.keys():
+                        job.xrd_conda_tarfile = self.xrd_conda_tarfile
+                        job.xrd_analysis_tarfile = self.xrd_analysis_tarfile
+                    job.set_files() # update the locations for the various files associated with this job
+                    prog.update(1)
+        self.customized_jobs = True
 
 
     def submit_to_batch(self, dry_run = False):
