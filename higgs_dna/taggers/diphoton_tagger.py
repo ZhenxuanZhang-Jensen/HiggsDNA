@@ -227,7 +227,7 @@ class DiphotonTagger(Tagger):
             results = [dipho_presel_cut, trigger_cut, presel_cut]
         )
 
-        dipho_events = dipho_events[dipho_presel_cut]
+        dipho_events = dipho_events[presel_cut]
 
         dipho_events = awkward.flatten(dipho_events)
 
