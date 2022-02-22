@@ -359,10 +359,14 @@ class AnalysisManager():
             logger.debug("\n[AnalysisManager : run] Task '%s', PERFORMANCE summary" % (task))
             logger.debug("\t [PERFORMANCE : %s] Processed %d total events in %s (hours:minutes:seconds) of total runtime (%.2f Hz)." % (task, info["physics"]["n_events_initial"], str(datetime.timedelta(seconds = info["performance"]["time"])), float(info["physics"]["n_events_initial"]) / info["performance"]["time"] ))
             for portion in ["load", "syst", "taggers"]:
+                if not info["performance"]["time"] > 0:
+                    continue
                 logger.debug("\t [PERFORMANCE : %s] Fraction of runtime spent on %s: %.2f percent" % (task, portion, (100. * info["performance"]["time_%s" % portion]) / info["performance"]["time"]))
 
             logger.debug("[AnalysisManager : run] Task '%s', PHYSICS summary" % (task)) 
             for syst_tag, n_events in info["physics"]["n_events_selected"].items():
+                if not info["physics"]["n_events_initial"] > 0:
+                    continue
                 logger.debug("\t [PHYSICS : %s] events set '%s' has eff. of %.2f percent (all taggers)" % (task, syst_tag, (float(n_events) * 100.) / float(info["physics"]["n_events_initial"])))
             if "scale1fb" in info["physics"].keys():
                 logger.debug("\t [PHYSICS : %s] With a cross section times BF of %.9f pb and a sum of weights of %.9f, scale1fb for this sample is %.9f" % (task, info["physics"]["norm_factor"], info["physics"]["sum_weights"], info["physics"]["scale1fb"]))
