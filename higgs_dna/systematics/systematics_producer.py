@@ -118,8 +118,11 @@ class SystematicsProducer():
                 self.weights[syst] = [] # a single weight syst in the config can result in multiple systematics if it has multiple target collections
 
                 if syst_info["type"] == "object": 
-                    if "input_collection" in syst_info.keys():
+                    if syst_info["method"] == "from_function":
                         syst_info["branches"] = None
+                    elif syst_info["method"] == "from_branch":
+                        syst_info["function"] = None
+                    if "input_collection" in syst_info.keys():
                         if not "target_collections" in syst_info.keys():
                             logger.debug("[SystematicsProducer : add_systematics] No target collections specified for syst '%s', using the input collection '%s' as the target" % (syst, syst_info["input_collection"]))
                             syst_info["target_collections"] = [syst_info["input_collection"]]
