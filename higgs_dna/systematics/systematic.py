@@ -200,15 +200,6 @@ class WeightSystematic(Systematic):
         """
         if self.method == "from_branch":
             self.check_fields(events)
-            for variation, branch in self.branches.items():
-                if isinstance(variation, str): # plain field in array, e.g. events.weight_syst1_up
-                    name = "weight" + "_" + self.name + "_" + variation
-                    self.branches[variation] = name
-                elif isinstance(variation, tuple): # nested field in array, e.g. events.Photon.weight_syst1_up
-                    name = tuple((variation[0], "weight" + "_" + self.name + "_" + variation[1]))
-                    self.branches[variation[1]] = name
-                logger.debug("[WeightSystematic : produce] WeightSystematic: %s, adding field %s to events array" % (self.name, name))
-                awkward_utils.add_field(events, name, events[branch])
 
         elif self.method == "from_function":
             self.branches = {}
@@ -428,7 +419,10 @@ class ObjectWeightSystematic(WeightSystematic):
             if self.input_collection == self.target_collection:
                 target_branch = branch
             elif isinstance(self.target_collection, tuple):
-                target_branch = self.target_collection + branch[1:]
+                if isinstance(branch, tuple):
+                    target_branch = self.target_collection + branch[1:]
+                else:
+                    target_branch = self.target_collection + (branch)
             else:
                 target_branch = (self.target_collection,) + branch[1:]
 
