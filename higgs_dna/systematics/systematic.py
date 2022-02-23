@@ -435,7 +435,7 @@ class ObjectWeightSystematic(WeightSystematic):
             weights[variation] = awkward.prod(events[target_branch], axis = 1)
 
             name = "weight_" + self.name + "_" + variation
-            awkward_utils.add_field(events, name, weights[variation])
+            awkward_utils.add_field(events, name, weights[variation], overwrite = True)
 
         return weights
 
