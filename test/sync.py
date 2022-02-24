@@ -10,6 +10,19 @@ COMMAND = 'python scripts/run_analysis.py --config "metadata/analysis/sync_syst.
 os.system("rm -rf sync/")
 os.system(COMMAND)
 
+"""
+The numbers below are based on the following validations with flashgg:
+    - Diphoton preselection : https://indico.cern.ch/event/1071721/contributions/4551056/attachments/2320292/3950844/HiggsDNA_DiphotonPreselectionAndSystematics_30Sep2021.pdf
+    - Systematics with independent collections ("VARIATIONS"):
+        - Photon FNUF : https://indico.cern.ch/event/1071724/contributions/4580497/attachments/2332453/3975163/HiggsDNA_SystematicsValidation_20Oct2021.pdf
+        - Photon Material : https://indico.cern.ch/event/1071724/contributions/4580497/attachments/2332453/3975163/HiggsDNA_SystematicsValidation_20Oct2021.pdf
+        - Photon MC Smearings : to be presented
+        - Photon Scales : TODO
+    - Weight systematics ("WEIGHTS")
+        - Electron veto SF : https://indico.cern.ch/event/1071724/contributions/4580497/attachments/2332453/3975163/HiggsDNA_SystematicsValidation_20Oct2021.pdf
+        - Trigger SF : https://indico.cern.ch/event/1071724/contributions/4580497/attachments/2332453/3975163/HiggsDNA_SystematicsValidation_20Oct2021.pdf
+"""
+
 VARIATIONS = {
         "nominal" : {
             "n_events" : 238529,
@@ -96,7 +109,7 @@ for variation, sync_info in VARIATIONS.items():
 
     pass_current_variation = True
     for x,y in result.items():
-        if not math.isclose(y, sync_info[x]):
+        if not math.isclose(y, sync_info[x], rel_tol = 1e-06):
             logger.warning("[sync.py] Variation '%s' has target of %.3g for field '%s' but sync exercise found value of %.3g." % (variation, sync_info[x], x, y))
             pass_current_variation = False
             pass_variations = False
