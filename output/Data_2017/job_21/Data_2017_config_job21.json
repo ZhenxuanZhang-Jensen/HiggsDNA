@@ -1,0 +1,176 @@
+{
+    "branches": [
+        "Photon_pt",
+        "Photon_eta",
+        "Photon_phi",
+        "Photon_mass",
+        "Photon_pixelSeed",
+        "Photon_mvaID",
+        "Photon_electronVeto",
+        "Photon_sieie",
+        "Photon_r9",
+        "Photon_hoe",
+        "Photon_pfRelIso03_chg",
+        "Photon_pfRelIso03_all",
+        "Photon_isScEtaEB",
+        "Photon_isScEtaEE",
+        "Photon_trkSumPtHollowConeDR03",
+        "Photon_photonIso",
+        "Photon_chargedHadronIso",
+        "Photon_genPartFlav",
+        "GenPart_eta",
+        "GenPart_genPartIdxMother",
+        "GenPart_mass",
+        "GenPart_pdgId",
+        "GenPart_phi",
+        "GenPart_pt",
+        "GenPart_status",
+        "GenPart_statusFlags",
+        "genWeight",
+        "run",
+        "event",
+        "fixedGridRhoAll",
+        "HLT_Diphoton30_18_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90",
+        "HLT_Diphoton30_22_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"
+    ],
+    "dir": "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/output/Data_2017/job_21",
+    "files": [
+        "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2017B-31Mar2018-v1_MINIAOD_v0.6_20201021//test_nanoaod_28.root",
+        "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2017B-31Mar2018-v1_MINIAOD_v0.6_20201021//test_nanoaod_280.root",
+        "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2017B-31Mar2018-v1_MINIAOD_v0.6_20201021//test_nanoaod_281.root",
+        "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2017B-31Mar2018-v1_MINIAOD_v0.6_20201021//test_nanoaod_282.root",
+        "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2017B-31Mar2018-v1_MINIAOD_v0.6_20201021//test_nanoaod_283.root",
+        "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2017B-31Mar2018-v1_MINIAOD_v0.6_20201021//test_nanoaod_284.root",
+        "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2017B-31Mar2018-v1_MINIAOD_v0.6_20201021//test_nanoaod_285.root",
+        "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2017B-31Mar2018-v1_MINIAOD_v0.6_20201021//test_nanoaod_286.root",
+        "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2017B-31Mar2018-v1_MINIAOD_v0.6_20201021//test_nanoaod_287.root",
+        "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2017B-31Mar2018-v1_MINIAOD_v0.6_20201021//test_nanoaod_288.root"
+    ],
+    "function": {
+        "function_name": "run_analysis",
+        "module_name": "higgs_dna.analysis"
+    },
+    "job_id": 21,
+    "name": "Data_2017_21",
+    "output_dir": "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/output/Data_2017/job_21",
+    "output_name": "output_job_21",
+    "sample": {
+        "bf": null,
+        "files": null,
+        "fpo": 10,
+        "is_data": true,
+        "is_prepped": false,
+        "lumi": 41.5,
+        "name": "Data_2017",
+        "norm_factor": 1,
+        "process": "Data",
+        "process_id": 0,
+        "systematics": null,
+        "xs": null,
+        "year": "2017"
+    },
+    "summary_file": "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/output/Data_2017/job_21/Data_2017_summary_job21.json",
+    "systematics": {
+        "independent_collections": {},
+        "weights": {}
+    },
+    "tag_sequence": [
+        {
+            "kwargs": {
+                "name": "diphoton_tagger",
+                "options": {
+                    "gen_info": {
+                        "calculate": true
+                    }
+                }
+            },
+            "module_name": "higgs_dna.taggers.diphoton_tagger",
+            "tagger": "DiphotonTagger"
+        }
+    ],
+    "variables_of_interest": [
+        [
+            "Diphoton",
+            "mass"
+        ],
+        [
+            "Diphoton",
+            "pt"
+        ],
+        [
+            "Diphoton",
+            "eta"
+        ],
+        [
+            "Diphoton",
+            "phi"
+        ],
+        [
+            "Diphoton",
+            "dR"
+        ],
+        [
+            "LeadPhoton",
+            "pt"
+        ],
+        [
+            "LeadPhoton",
+            "eta"
+        ],
+        [
+            "LeadPhoton",
+            "phi"
+        ],
+        [
+            "LeadPhoton",
+            "mass"
+        ],
+        [
+            "LeadPhoton",
+            "mvaID"
+        ],
+        [
+            "LeadPhoton",
+            "genPartFlav"
+        ],
+        [
+            "LeadPhoton",
+            "pixelSeed"
+        ],
+        [
+            "SubleadPhoton",
+            "pt"
+        ],
+        [
+            "SubleadPhoton",
+            "eta"
+        ],
+        [
+            "SubleadPhoton",
+            "phi"
+        ],
+        [
+            "SubleadPhoton",
+            "mass"
+        ],
+        [
+            "SubleadPhoton",
+            "mvaID"
+        ],
+        [
+            "SubleadPhoton",
+            "genPartFlav"
+        ],
+        [
+            "SubleadPhoton",
+            "pixelSeed"
+        ],
+        "GenHggHiggs_pt",
+        "GenHggHiggs_eta",
+        "GenHggHiggs_phi",
+        "GenHggHiggs_mass",
+        "GenHggHiggs_dR",
+        "weight_central",
+        "event"
+    ]
+}

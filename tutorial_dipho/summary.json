@@ -1,0 +1,174 @@
+{
+    "batch_system": "local",
+    "config": {
+        "branches": [
+            "Photon_pt",
+            "Photon_eta",
+            "Photon_phi",
+            "Photon_mass",
+            "Photon_pixelSeed",
+            "Photon_mvaID",
+            "Photon_electronVeto",
+            "Photon_sieie",
+            "Photon_r9",
+            "Photon_hoe",
+            "Photon_pfRelIso03_chg",
+            "Photon_pfRelIso03_all",
+            "Photon_isScEtaEB",
+            "Photon_isScEtaEE",
+            "Photon_trkSumPtHollowConeDR03",
+            "Photon_photonIso",
+            "Photon_chargedHadronIso",
+            "Photon_genPartFlav",
+            "GenPart_eta",
+            "GenPart_genPartIdxMother",
+            "GenPart_mass",
+            "GenPart_pdgId",
+            "GenPart_phi",
+            "GenPart_pt",
+            "GenPart_status",
+            "GenPart_statusFlags",
+            "genWeight",
+            "run",
+            "event",
+            "fixedGridRhoAll"
+        ],
+        "function": {
+            "function_name": "run_analysis",
+            "module_name": "higgs_dna.analysis"
+        },
+        "name": "diphoton_preselection",
+        "samples": {
+            "catalog": "metadata/samples/tth_tutorial.json",
+            "sample_list": [
+                "Data",
+                "ttH_M125",
+                "ggH_M125"
+            ],
+            "years": [
+                "2016",
+                "2017",
+                "2018"
+            ]
+        },
+        "systematics": {
+            "independent_collections": {},
+            "weights": {}
+        },
+        "tag_sequence": [
+            {
+                "kwargs": {
+                    "name": "diphoton_tagger",
+                    "options": {
+                        "gen_info": {
+                            "calculate": true
+                        }
+                    }
+                },
+                "module_name": "higgs_dna.taggers.diphoton_tagger",
+                "tagger": "DiphotonTagger"
+            }
+        ],
+        "variables_of_interest": [
+            [
+                "Diphoton",
+                "mass"
+            ],
+            [
+                "Diphoton",
+                "pt"
+            ],
+            [
+                "Diphoton",
+                "eta"
+            ],
+            [
+                "Diphoton",
+                "phi"
+            ],
+            [
+                "Diphoton",
+                "dR"
+            ],
+            [
+                "LeadPhoton",
+                "pt"
+            ],
+            [
+                "LeadPhoton",
+                "eta"
+            ],
+            [
+                "LeadPhoton",
+                "phi"
+            ],
+            [
+                "LeadPhoton",
+                "mass"
+            ],
+            [
+                "LeadPhoton",
+                "mvaID"
+            ],
+            [
+                "LeadPhoton",
+                "genPartFlav"
+            ],
+            [
+                "LeadPhoton",
+                "pixelSeed"
+            ],
+            [
+                "SubleadPhoton",
+                "pt"
+            ],
+            [
+                "SubleadPhoton",
+                "eta"
+            ],
+            [
+                "SubleadPhoton",
+                "phi"
+            ],
+            [
+                "SubleadPhoton",
+                "mass"
+            ],
+            [
+                "SubleadPhoton",
+                "mvaID"
+            ],
+            [
+                "SubleadPhoton",
+                "genPartFlav"
+            ],
+            [
+                "SubleadPhoton",
+                "pixelSeed"
+            ],
+            "GenHggHiggs_pt",
+            "GenHggHiggs_eta",
+            "GenHggHiggs_phi",
+            "GenHggHiggs_mass",
+            "GenHggHiggs_dR",
+            "weight_central",
+            "event"
+        ]
+    },
+    "fpo": null,
+    "log_level": "DEBUG",
+    "merge_outputs": true,
+    "n_cores": 6,
+    "output_dir": "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/tutorial_dipho",
+    "pickle_file": "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/tutorial_dipho/analysis_manager.pkl",
+    "prepared_analysis": true,
+    "reconfigure_jobs": false,
+    "retire_jobs": false,
+    "sample_id_map": {
+        "ttH_M125": 0
+    },
+    "sample_list": "ttH_M125",
+    "short": true,
+    "summary_file": "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/tutorial_dipho/summary.json",
+    "unretire_jobs": false
+}

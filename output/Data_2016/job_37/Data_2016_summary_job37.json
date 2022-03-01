@@ -1,0 +1,193 @@
+{
+    "config": {
+        "branches": [
+            "Photon_pt",
+            "Photon_eta",
+            "Photon_phi",
+            "Photon_mass",
+            "Photon_pixelSeed",
+            "Photon_mvaID",
+            "Photon_electronVeto",
+            "Photon_sieie",
+            "Photon_r9",
+            "Photon_hoe",
+            "Photon_pfRelIso03_chg",
+            "Photon_pfRelIso03_all",
+            "Photon_isScEtaEB",
+            "Photon_isScEtaEE",
+            "Photon_trkSumPtHollowConeDR03",
+            "Photon_photonIso",
+            "Photon_chargedHadronIso",
+            "Photon_genPartFlav",
+            "GenPart_eta",
+            "GenPart_genPartIdxMother",
+            "GenPart_mass",
+            "GenPart_pdgId",
+            "GenPart_phi",
+            "GenPart_pt",
+            "GenPart_status",
+            "GenPart_statusFlags",
+            "genWeight",
+            "run",
+            "event",
+            "fixedGridRhoAll",
+            "HLT_Diphoton30_18_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"
+        ],
+        "dir": "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/output/Data_2016/job_37",
+        "files": [
+            "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2016B-17Jul2018_ver2-v1_MINIAOD_v0.6_20201021//test_nanoaod_39.root",
+            "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2016B-17Jul2018_ver2-v1_MINIAOD_v0.6_20201021//test_nanoaod_390.root",
+            "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2016B-17Jul2018_ver2-v1_MINIAOD_v0.6_20201021//test_nanoaod_391.root",
+            "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2016B-17Jul2018_ver2-v1_MINIAOD_v0.6_20201021//test_nanoaod_392.root",
+            "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2016B-17Jul2018_ver2-v1_MINIAOD_v0.6_20201021//test_nanoaod_393.root",
+            "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2016B-17Jul2018_ver2-v1_MINIAOD_v0.6_20201021//test_nanoaod_394.root",
+            "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2016B-17Jul2018_ver2-v1_MINIAOD_v0.6_20201021//test_nanoaod_395.root",
+            "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2016B-17Jul2018_ver2-v1_MINIAOD_v0.6_20201021//test_nanoaod_396.root",
+            "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2016B-17Jul2018_ver2-v1_MINIAOD_v0.6_20201021//test_nanoaod_397.root",
+            "root://redirector.t2.ucsd.edu//store/user/hmei/nanoaod_runII/HHggtautau/DoubleEG_Run2016B-17Jul2018_ver2-v1_MINIAOD_v0.6_20201021//test_nanoaod_398.root"
+        ],
+        "function": {
+            "function_name": "run_analysis",
+            "module_name": "higgs_dna.analysis"
+        },
+        "job_id": 37,
+        "name": "Data_2016_37",
+        "output_dir": "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/output/Data_2016/job_37",
+        "output_name": "output_job_37",
+        "sample": {
+            "bf": null,
+            "files": null,
+            "fpo": 10,
+            "is_data": true,
+            "is_prepped": false,
+            "lumi": 35.9,
+            "name": "Data_2016",
+            "norm_factor": 1,
+            "process": "Data",
+            "process_id": 0,
+            "systematics": null,
+            "xs": null,
+            "year": "2016"
+        },
+        "summary_file": "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/output/Data_2016/job_37/Data_2016_summary_job37.json",
+        "systematics": {
+            "independent_collections": {},
+            "weights": {}
+        },
+        "tag_sequence": [
+            {
+                "kwargs": {
+                    "is_data": true,
+                    "name": "diphoton_tagger",
+                    "options": {
+                        "gen_info": {
+                            "calculate": true
+                        }
+                    },
+                    "year": "2016"
+                },
+                "module_name": "higgs_dna.taggers.diphoton_tagger",
+                "tagger": "DiphotonTagger"
+            }
+        ],
+        "variables_of_interest": [
+            [
+                "Diphoton",
+                "mass"
+            ],
+            [
+                "Diphoton",
+                "pt"
+            ],
+            [
+                "Diphoton",
+                "eta"
+            ],
+            [
+                "Diphoton",
+                "phi"
+            ],
+            [
+                "Diphoton",
+                "dR"
+            ],
+            [
+                "LeadPhoton",
+                "pt"
+            ],
+            [
+                "LeadPhoton",
+                "eta"
+            ],
+            [
+                "LeadPhoton",
+                "phi"
+            ],
+            [
+                "LeadPhoton",
+                "mass"
+            ],
+            [
+                "LeadPhoton",
+                "mvaID"
+            ],
+            [
+                "LeadPhoton",
+                "genPartFlav"
+            ],
+            [
+                "LeadPhoton",
+                "pixelSeed"
+            ],
+            [
+                "SubleadPhoton",
+                "pt"
+            ],
+            [
+                "SubleadPhoton",
+                "eta"
+            ],
+            [
+                "SubleadPhoton",
+                "phi"
+            ],
+            [
+                "SubleadPhoton",
+                "mass"
+            ],
+            [
+                "SubleadPhoton",
+                "mvaID"
+            ],
+            [
+                "SubleadPhoton",
+                "genPartFlav"
+            ],
+            [
+                "SubleadPhoton",
+                "pixelSeed"
+            ],
+            "GenHggHiggs_pt",
+            "GenHggHiggs_eta",
+            "GenHggHiggs_phi",
+            "GenHggHiggs_mass",
+            "GenHggHiggs_dR",
+            "weight_central",
+            "event"
+        ]
+    },
+    "n_events": 1630604,
+    "n_events_selected": {
+        "nominal": 14344
+    },
+    "outputs": {
+        "nominal": "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/output/Data_2016/job_37/output_job_37_nominal.parquet"
+    },
+    "successful": true,
+    "sum_weights": 0,
+    "time": 101.11116480827332,
+    "time_frac_load": 0.9134926202141214,
+    "time_frac_samples": 3.26203602692661e-05,
+    "time_frac_syst": 7.993568115715779e-07,
+    "time_frac_taggers": 0.08388616854351598
+}

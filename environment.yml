@@ -1,4 +1,4 @@
-name: higgs-dna
+name: higgs_dna
 channels:
   - conda-forge
 dependencies:
