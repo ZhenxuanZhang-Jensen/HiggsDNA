@@ -78,8 +78,10 @@ def mass_veto(objects1, objects2, mass_range):
     :return: boolean array of objects in objects1 which pass mass veto requirement
     :rtype: awkward.highlevel.Array
     """
-    if awkward.count(objects1) == 0 or awkward.count(objects2) == 0:
-        return objects1.pt < 0. 
+    if awkward.count(objects1) == 0: # if no objects1 are present, return all False
+        return objects1.pt < 0.
+    if awkward.count(objects2) == 0: # if no objects2 are present, every object in objects1 passes by default
+        return objects1.pt >= 0.
 
     if not isinstance(objects1, vector.Vector4D):
         objects1 = awkward.Array(objects1, with_name = "Momentum4D")
@@ -108,9 +110,10 @@ def delta_R(objects1, objects2, min_dr):
     :return: boolean array of objects in objects1 which pass delta_R requirement
     :rtype: awkward.highlevel.Array
     """
-
-    if awkward.count(objects1) == 0 or awkward.count(objects2) == 0:
-        return objects1.pt < 0. 
+    if awkward.count(objects1) == 0: # if no objects1 are present, return all False
+        return objects1.pt < 0.
+    if awkward.count(objects2) == 0: # if no objects2 are present, every object in objects1 passes by default
+        return objects1.pt >= 0.
 
     if not isinstance(objects1, vector.Vector4D):
         objects1 = awkward.Array(objects1, with_name = "Momentum4D")
