@@ -176,7 +176,7 @@
             "Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass", "Muon_charge", "Muon_pfRelIso03_all", "Muon_dxy", "Muon_dz", "Muon_tightId", "Muon_isGlobal",
             "Electron_pt", "Electron_eta", "Electron_phi", "Electron_mass", "Electron_charge", "Electron_mvaFall17V2Iso_WP90", "Electron_mvaFall17V2noIso_WP90", "Electron_pfRelIso03_all", "Electron_dxy", "Electron_dz", "Electron_mvaFall17V2Iso_WP80",
             "Jet_pt", "Jet_eta", "Jet_phi", "Jet_mass", "Jet_btagDeepFlavB", "Jet_jetId", "Jet_hadronFlavour",
-            "IsoTrack_pt", "IsoTrack_eta", "IsoTrack_phi", "IsoTrack_fromPV", "IsoTrack_isPFcand", "IsoTrack_pdgId",
+            "IsoTrack_pt", "IsoTrack_dxy", "IsoTrack_dz", "IsoTrack_eta", "IsoTrack_phi", "IsoTrack_fromPV", "IsoTrack_isPFcand", "IsoTrack_pdgId",
             "L1PreFiringWeight_Nom", "L1PreFiringWeight_Up", "L1PreFiringWeight_Dn",
             "genWeight", "run", "event", "fixedGridRhoAll"
     ],
