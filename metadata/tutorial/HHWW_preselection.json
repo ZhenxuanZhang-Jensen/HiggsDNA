@@ -1,0 +1,70 @@
+{
+    "name": "diphoton_preselection",
+    "function": {
+        "module_name": "higgs_dna.analysis",
+        "function_name": "run_analysis"
+    },
+    "tag_sequence": [
+        {
+            "module_name": "higgs_dna.taggers.diphoton_tagger",
+            "tagger": "DiphotonTagger",
+            "kwargs": {
+                "name": "diphoton_tagger",
+                "options": {
+                    "gen_info": {
+                        "calculate": true
+                    }
+                }
+            }
+        },
+        {
+            "module_name": "higgs_dna.taggers.HHWW_Tagger",
+            "tagger": "HHWW_Preselection"
+        }
+    ],
+    "systematics": {
+        "weights": {},
+        "independent_collections": {}
+    },
+    "samples": {
+        "catalog": "metadata/samples/hhww.json",
+        "sample_list": [
+            "GluGluToRadionToHHTo2G4Q_M300"
+        ],
+        "years": [
+            "2017"
+        ]
+    },
+    "variables_of_interest" : [
+        ["Diphoton", "mass"], ["Diphoton", "pt"], ["Diphoton", "eta"], ["Diphoton", "phi"], ["Diphoton", "dR"],
+        ["LeadPhoton", "pt"], ["LeadPhoton", "eta"], ["LeadPhoton", "phi"], ["LeadPhoton", "mass"], ["LeadPhoton", "mvaID"], ["LeadPhoton", "genPartFlav"], ["LeadPhoton", "pixelSeed"],
+        ["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"], ["SubleadPhoton", "genPartFlav"], ["SubleadPhoton", "pixelSeed"],
+        ["SelectedJet", "mass"], ["SelectedJet", "pt"], ["SelectedJet", "eta"], ["SelectedJet", "phi"],
+        ["SelectedFatJet", "mass"], ["SelectedFatJet", "pt"], ["SelectedFatJet", "eta"], ["SelectedFatJet", "phi"],
+        "jet_1_pt","jet_1_eta","jet_1_phi","jet_1_mass",
+        "jet_2_pt","jet_2_eta","jet_2_phi","jet_2_mass",
+        "jet_3_pt","jet_3_eta","jet_3_phi","jet_3_mass",
+        "jet_4_pt","jet_4_eta","jet_4_phi","jet_4_mass",
+        "jet_5_pt","jet_5_eta","jet_5_phi","jet_5_mass",
+        "jet_6_pt","jet_6_eta","jet_6_phi","jet_6_mass",
+        "GenHggHiggs_pt", "GenHggHiggs_eta", "GenHggHiggs_phi", "GenHggHiggs_mass", "GenHggHiggs_dR",
+        "weight_central",
+        "event"
+
+    ],
+    "branches": [
+        "Photon_pt", "Photon_eta", "Photon_phi", "Photon_mass",
+        "Photon_pixelSeed", "Photon_mvaID", "Photon_electronVeto",
+        "Photon_sieie",
+        "Photon_r9", "Photon_hoe", "Photon_pfRelIso03_chg", "Photon_pfRelIso03_all",
+        "Photon_isScEtaEB", "Photon_isScEtaEE",
+        "Photon_trkSumPtHollowConeDR03", "Photon_photonIso", "Photon_chargedHadronIso",
+        "Photon_genPartFlav",
+        "GenPart_eta", "GenPart_genPartIdxMother", "GenPart_mass", "GenPart_pdgId", "GenPart_phi", "GenPart_pt", "GenPart_status","GenPart_statusFlags",
+        "Jet_pt", "Jet_eta", "Jet_phi", "Jet_mass", "Jet_btagDeepFlavB", "Jet_jetId", "Jet_hadronFlavour",
+        "FatJet_pt", "FatJet_eta", "FatJet_phi", "FatJet_mass",
+        "Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass", "Muon_charge", "Muon_pfRelIso03_all", "Muon_dxy", "Muon_dz", "Muon_tightId", "Muon_isGlobal", "Muon_mediumId",
+        "Electron_pt", "Electron_eta", "Electron_phi", "Electron_mass", "Electron_charge", "Electron_mvaFall17V2Iso_WP90", "Electron_mvaFall17V2noIso_WP90", "Electron_pfRelIso03_all", "Electron_dxy", "Electron_dz", "Electron_mvaFall17V2Iso_WP80",
+        "L1PreFiringWeight_Nom", "L1PreFiringWeight_Up", "L1PreFiringWeight_Dn",
+        "genWeight", "run", "event", "fixedGridRhoAll"    ]
+}
