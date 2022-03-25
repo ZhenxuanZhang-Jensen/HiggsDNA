@@ -101,6 +101,8 @@ class HHWW_Preselection(Tagger):
             name="SelectedMuon",
             data=events.Muon[muon_cut]
         )
+        # --------------------- if fatjet branches are not empty --------------------- #
+        # if len(events.FatJet.pt > 0 ):
         # Fat jets
         fatjet_cut = fatjet_selections.select_fatjets(
             fatjets = events.FatJet,
