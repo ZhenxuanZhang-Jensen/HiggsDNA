@@ -13,7 +13,7 @@ from higgs_dna.utils import awkward_utils, misc_utils
 DUMMY_VALUE = -999.
 DEFAULT_OPTIONS = {
     "electrons" : {
-        "pt" : 15.0,
+        "pt" : 7.0,
         "eta" : 2.5,
         "dxy" : 0.045,
         "dz" : 0.2,
@@ -22,7 +22,7 @@ DEFAULT_OPTIONS = {
         "veto_transition" : True,
     },
     "muons" : {
-        "pt" : 15.0,
+        "pt" : 5.0,
         "eta" : 2.4,
         "dxy" : 0.045,
         "dz" : 0.2,
@@ -44,6 +44,8 @@ DEFAULT_OPTIONS = {
     "iso_tracks" : {
         "pt" : 5.0,
         "eta" : 5.0,
+        "dxy" : 0.2,
+        "dz" : 0.1,
         "dr_photons" : 0.2,
         "dr_electrons" : 0.2,
         "dr_muons" : 0.2,
@@ -60,7 +62,7 @@ DEFAULT_OPTIONS = {
         "dr_iso_tracks" : 0.4
     },
     "z_veto" : [80., 100.],
-    "m_llg_veto" : [86., 96.],
+    "m_llg_veto" : [66., 116.],
     "photon_mvaID" : -0.7
 }
 

@@ -56,6 +56,8 @@ def select_taus(taus, options, clean, name = "none", tagger = None):
 DEFAULT_ISO_TRACKS = {
     "pt" : 5.,
     "eta" : 2.5,
+    "dxy": 0.2,
+    "dz" : 0.1,
     "isPFCandidate" : True,
     "fromPV" : True,
     "non_lepton" : False
