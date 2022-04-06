@@ -29,7 +29,8 @@
     "samples": {
         "catalog": "metadata/samples/hhww.json",
         "sample_list": [
-            "GluGluToRadionToHHTo2G4Q_M300"
+            "GluGluToRadionToHHTo2G4Q_M300",
+            "GluGluToRadionToHHTo2G4Q_M1000"
         ],
         "years": [
             "2017"
@@ -40,7 +41,10 @@
         ["LeadPhoton", "pt"], ["LeadPhoton", "eta"], ["LeadPhoton", "phi"], ["LeadPhoton", "mass"], ["LeadPhoton", "mvaID"], ["LeadPhoton", "genPartFlav"], ["LeadPhoton", "pixelSeed"],
         ["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"], ["SubleadPhoton", "genPartFlav"], ["SubleadPhoton", "pixelSeed"],
         ["SelectedJet", "mass"], ["SelectedJet", "pt"], ["SelectedJet", "eta"], ["SelectedJet", "phi"],
-        ["SelectedFatJet", "mass"], ["SelectedFatJet", "pt"], ["SelectedFatJet", "eta"], ["SelectedFatJet", "phi"],
+        "fatjet_1_pt","fatjet_1_eta","fatjet_1_phi","fatjet_1_mass",
+        "fatjet_2_pt","fatjet_2_eta","fatjet_2_phi","fatjet_2_mass",
+        "fatjet_3_pt","fatjet_3_eta","fatjet_3_phi","fatjet_3_mass",
+        "fatjet_1_pt","fatjet_1_eta","fatjet_1_phi","fatjet_1_mass",
         "jet_1_pt","jet_1_eta","jet_1_phi","jet_1_mass",
         "jet_2_pt","jet_2_eta","jet_2_phi","jet_2_mass",
         "jet_3_pt","jet_3_eta","jet_3_phi","jet_3_mass",

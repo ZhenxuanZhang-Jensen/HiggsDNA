@@ -16,12 +16,13 @@ from higgs_dna.selections import gen_selections
 DEFAULT_OPTIONS = {
     "photons" : {
         "use_central_nano" : True,
-        "pt" : 25.0,
+        "pt" : 10.0,
         "eta" : [
             [0.0, 1.4442],
             [1.566, 2.5]
         ],
-        "e_veto" : 0.5,
+        "e_veto" : 1,
+        "pixelSeed" : 0,
         "hoe" : 0.08,
         "r9" : 0.8,
         "charged_iso" : 20.0,
@@ -302,10 +303,11 @@ class DiphotonTagger(Tagger):
         eta_cut = (photons.isScEtaEB | photons.isScEtaEE)
 
         # electron veto
-        e_veto_cut = photons.electronVeto > options["e_veto"]
+        e_veto_cut = photons.electronVeto == options["e_veto"]
 
         use_central_nano = options["use_central_nano"] # indicates whether we are using central nanoAOD (with some branches that are necessary for full diphoton preselection missing) or custom nanoAOD (with these branches added)
-
+        # pixelSeed cut
+        pixelSeed_cut = photons.pixelSeed == options["pixelSeed"]
         # r9/isolation cut
         r9_cut = photons.r9 > options["r9"]
 
@@ -366,7 +368,7 @@ class DiphotonTagger(Tagger):
         hlt_cut = hlt_cut | photons_ee_high_r9
         hlt_cut = hlt_cut | (photons_ee_low_r9 & ee_low_r9_track_pt_cut & ee_low_r9_sigma_ieie_cut & ee_low_r9_pho_iso_cut)
 
-        all_cuts = pt_cut & eta_cut & e_veto_cut & r9_iso_cut & hoe_cut & hlt_cut
+        all_cuts = pt_cut & eta_cut & e_veto_cut & pixelSeed_cut & r9_iso_cut & hoe_cut & hlt_cut
 
         self.register_cuts(
                 names = ["pt", "eta", "e_veto", "r9", "hoe", "hlt", "all"],

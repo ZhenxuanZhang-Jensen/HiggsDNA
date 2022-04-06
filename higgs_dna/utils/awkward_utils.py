@@ -132,10 +132,11 @@ def add_object_fields(events, name, objects, n_objects, dummy_value = -999., fie
     :type overwrite: bool
     """
 
-    padded_objects = awkward.pad_none(objects, n_objects, clip=True)
+    padded_objects = awkward.pad_none(objects, n_objects, clip=True)  #attention:after pad_none it would be the array with the same len
     if isinstance(fields, str):
         if fields == "all":
             fields = objects.fields
+                
     elif not isinstance(fields, list):
         message = "[awkward_utils.py : add_object_fields] argument <fields> should either be a string 'all' to save all fields in the original record, or a list of fields which is a subset of the fields in the original record, not '%s' as you have passed." % (str(type(fields)))
         logger.exception(message)

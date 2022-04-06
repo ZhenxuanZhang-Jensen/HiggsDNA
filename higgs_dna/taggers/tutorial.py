@@ -113,7 +113,7 @@ class TTHPreselTagger(Tagger):
                 name = "SelectedJet",
                 tagger = self
         )
-
+        
         jets = awkward_utils.add_field(
                 events = events,
                 name = "SelectedJet",

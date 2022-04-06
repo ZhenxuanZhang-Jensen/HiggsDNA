@@ -1,10 +1,12 @@
-from higgs_dna.utils import awkward_utils, misc_utils
-from higgs_dna.selections import lepton_selections, jet_selections, fatjet_selections
-from higgs_dna.taggers.tagger import Tagger, NOMINAL_TAG
 import logging
+
 import awkward
-from matplotlib.pyplot import jet
 import vector
+from higgs_dna.selections import (fatjet_selections, jet_selections,
+                                  lepton_selections)
+from higgs_dna.taggers.tagger import NOMINAL_TAG, Tagger
+from higgs_dna.utils import awkward_utils, misc_utils
+from matplotlib.pyplot import jet
 
 vector.register_awkward()
 
@@ -23,20 +25,22 @@ DEFAULT_OPTIONS = {
         "dr_photons": 0.2
     },
     "jets": {
-        "pt": 25.0,
+        "pt": 20.0, # attention this is the one exact same as old framework, make this 20 GeV(loose) for further analysis, we all know the higgs-like ak4 jets pt can be very small
         "eta": 2.4,
         "dr_photons": 0.4,
         "dr_electrons": 0.4,
         "dr_muons": 0.4,
+        "dr_jets": 0.4,
     },
     "fatjets": {
-        "pt": 250.0,
+        "pt": 200.0,
         "eta": 2.4,
-        "dr_photons": 0.4,
-        "dr_electrons": 0.4,
-        "dr_muons": 0.4,
+        "dr_photons": 0.8,
+        "dr_electrons": 0.8,
+        "dr_muons": 0.8,
+        "dr_jets":0.8
     },
-    "photon_id": 0.0,
+    "photon_id": -0.9,
     "btag_wp": {
         "2016": 0.3093,
         "2017": 0.3040,
@@ -127,8 +131,15 @@ class HHWW_Preselection(Tagger):
         fatjets = awkward_utils.add_field(
             events = events,
             name = "SelectedFatJet",
-            data = awkward.Array(events.FatJet[fatjet_cut], with_name = "Momentum4D")
+            data = events.FatJet[fatjet_cut]
         )   
+        awkward_utils.add_object_fields(
+        events=events,
+        name="fatjet",
+        objects=fatjets,
+        n_objects=3,
+        dummy_value=-999
+        )
         # Jets
         jet_cut = jet_selections.select_jets(
             jets=events.Jet,
@@ -150,7 +161,6 @@ class HHWW_Preselection(Tagger):
             name="SelectedJet",
             tagger=self
         )
-
         jets = awkward_utils.add_field(
             events=events,
             name="SelectedJet",
@@ -182,16 +192,29 @@ class HHWW_Preselection(Tagger):
         # Preselection
         n_electrons = awkward.num(electrons)
         n_muons = awkward.num(muons)
+        n_photons = awkward.num(events.Photon)
         n_leptons = n_electrons + n_muons
-
+        n_diphotons = awkward.num(events.Diphoton)
+        # logger.debug(" the N_diphoton : %f" % (n_diphotons))
         n_jets = awkward.num(jets)
+        n_fatjets = awkward.num(fatjets)
         # n_bjets = awkward.num(bjets)
 
         photon_id_cut = (events.LeadPhoton.mvaID > self.options["photon_id"]) & (
             events.SubleadPhoton.mvaID > self.options["photon_id"])
+        # diphoton_pt_cut = (events.LeadPhoton.pt > self.options["photon_id"]) & (
+        #     events.SubleadPhoton.pt > self.options["photon_id"])
+        # photon_pixelseed_cut = (events.Photon.pixelSeed==0)
+        Photon_Selection = (n_photons==2) & (photon_id_cut)
 
         # Hadronic presel
-        hadronic = (n_leptons == 0) & (n_jets >= 4)
+        # oneJet_category = (n_jets >= 4) & (n_fatjets == 0)
+        # TwoJet_category = (n_jets >= 4) & (n_fatjets == 0)
+        # ThreeJet_category = (n_jets >= 4) & (n_fatjets == 0)
+        # FourJet_category = (n_leptons == 0) & (n_jets >= 4) & (n_fatjets == 0)
+        OnlyFourJet_category = (n_leptons == 0) & (n_jets >= 4)
+        Lepton_Selection = (n_leptons==0) & Photon_Selection 
+        # Photon_Selection = (n_photons==2)
 
         # Semi-Leptonic presel
         # Semileptonic = (n_leptons == 1) & (n_jets >= 2)
@@ -200,10 +223,11 @@ class HHWW_Preselection(Tagger):
         # FulllyLeptonic = (n_leptons >= 2)
 
         # presel_cut = (hadronic | Semileptonic | FulllyLeptonic)  & photon_id_cut
-        presel_cut = (hadronic) & photon_id_cut
+        presel_FourJet_category = (OnlyFourJet_category) & (Photon_Selection)
+        presel_cut = presel_FourJet_category
 
         self.register_cuts(
-            names=["hadronic presel", "photon ID cut", "all"],
-            results=[hadronic, photon_id_cut, presel_cut]
+            names=["Photon Selection","Lepton Selection","OnlyFourJet_category"],
+            results=[Photon_Selection,Lepton_Selection,presel_FourJet_category]
         )
         return presel_cut, events
