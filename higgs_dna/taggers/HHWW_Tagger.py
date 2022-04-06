@@ -194,7 +194,7 @@ class HHWW_Preselection(Tagger):
         n_muons = awkward.num(muons)
         n_photons = awkward.num(events.Photon)
         n_leptons = n_electrons + n_muons
-        n_diphotons = awkward.num(events.Diphoton)
+        # n_diphotons = awkward.num(events.Diphoton)
         # logger.debug(" the N_diphoton : %f" % (n_diphotons))
         n_jets = awkward.num(jets)
         n_fatjets = awkward.num(fatjets)
@@ -205,7 +205,6 @@ class HHWW_Preselection(Tagger):
         # diphoton_pt_cut = (events.LeadPhoton.pt > self.options["photon_id"]) & (
         #     events.SubleadPhoton.pt > self.options["photon_id"])
         # photon_pixelseed_cut = (events.Photon.pixelSeed==0)
-        Photon_Selection = (n_photons==2) & (photon_id_cut)
 
         # Hadronic presel
         # oneJet_category = (n_jets >= 4) & (n_fatjets == 0)
@@ -213,8 +212,8 @@ class HHWW_Preselection(Tagger):
         # ThreeJet_category = (n_jets >= 4) & (n_fatjets == 0)
         # FourJet_category = (n_leptons == 0) & (n_jets >= 4) & (n_fatjets == 0)
         OnlyFourJet_category = (n_leptons == 0) & (n_jets >= 4)
-        Lepton_Selection = (n_leptons==0) & Photon_Selection 
-        # Photon_Selection = (n_photons==2)
+        Lepton_Selection = (n_leptons==0) & (photon_id_cut)
+        # photon_id_cut = (n_photons==2)
 
         # Semi-Leptonic presel
         # Semileptonic = (n_leptons == 1) & (n_jets >= 2)
@@ -223,11 +222,11 @@ class HHWW_Preselection(Tagger):
         # FulllyLeptonic = (n_leptons >= 2)
 
         # presel_cut = (hadronic | Semileptonic | FulllyLeptonic)  & photon_id_cut
-        presel_FourJet_category = (OnlyFourJet_category) & (Photon_Selection)
+        presel_FourJet_category = (OnlyFourJet_category) & (photon_id_cut)
         presel_cut = presel_FourJet_category
 
         self.register_cuts(
             names=["Photon Selection","Lepton Selection","OnlyFourJet_category"],
-            results=[Photon_Selection,Lepton_Selection,presel_FourJet_category]
+            results=[photon_id_cut,Lepton_Selection,presel_FourJet_category]
         )
         return presel_cut, events

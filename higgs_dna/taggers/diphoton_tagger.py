@@ -213,7 +213,7 @@ class DiphotonTagger(Tagger):
             dipho_events[(field, "phi")] = diphotons[field].phi
             dipho_events[(field, "mass")] = diphotons[field].mass
 
-        dipho_presel_cut = awkward.num(dipho_events.Diphoton) >= 1
+        dipho_presel_cut = awkward.num(dipho_events.Diphoton) == 1
         if self.is_data and self.year is not None:
             trigger_cut = awkward.num(dipho_events.Diphoton) < 0 # dummy cut, all False
             for hlt in self.options["trigger"][self.year]: # logical OR of all triggers
