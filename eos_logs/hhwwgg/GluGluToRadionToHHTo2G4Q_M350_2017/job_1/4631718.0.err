@@ -1,0 +1,5 @@
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+ImportError: No module named site
+/eos/user/z/zhenxuan/higgs-dna/bin/python: can't open file '/eos/user/z/zhenxuan/hhwwgg/GluGluToRadionToHHTo2G4Q_M350_2017/job_1/GluGluToRadionToHHTo2G4Q_M350_2017_executable_job1.py': [Errno 2] No such file or directory

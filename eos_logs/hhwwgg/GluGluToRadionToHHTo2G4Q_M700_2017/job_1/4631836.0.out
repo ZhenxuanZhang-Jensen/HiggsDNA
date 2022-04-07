@@ -1,0 +1,234 @@
+DEBUG    [AnalysisManager : load_events] Loaded 11897 events     analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/mc/RunI                
+         IFall17NanoAODv7/GluGluToRadionToHHTo2G4Q_M-700_narrow_                
+         TuneCP5_PSWeights_13TeV-madgraph-pythia8/NANOAODSIM/PU2                
+         017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1                
+         /120000/8A11C81E-1031-3641-8C5B-7E2DF34F979D.root'.                    
+INFO     [TagSequence : __init__] Creating tag sequence with  tag_sequence.py:37
+         the following tags and priority:                                       
+INFO     [TagSequence : __init__] The 0-th tag set has        tag_sequence.py:59
+         taggers ['diphoton_tagger'] (listed in order                           
+         priority will be given).                                               
+INFO     [TagSequence : __init__] The 1-th tag set has        tag_sequence.py:59
+         taggers ['my_HHWW_Preselection'] (listed in order                      
+         priority will be given).                                               
+INFO     For all tags, performing selection on the following  tag_sequence.py:94
+         sets of events, each corresponding to a separate                       
+         independent collection.                                                
+INFO             nominal                                      tag_sequence.py:96
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : pt, efficiency : 0.9990                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : eta, efficiency : 0.9462                          
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : e_veto, efficiency : 0.9017                       
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : r9, efficiency : 0.8934                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : hoe, efficiency : 0.7191                          
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : hlt, efficiency : 1.0000                          
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : all, efficiency : 0.5625                          
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : diphoton, cut : lead pt cut, efficiency : 0.9737                
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : diphoton, cut : lead pt mgg cut, efficiency :                   
+         0.9960                                                                 
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : diphoton, cut : sublead pt mgg cut, efficiency :                
+         0.7331                                                                 
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : diphoton, cut : mass cut, efficiency : 0.8347                   
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : diphoton, cut : all cuts, efficiency : 0.6438                   
+DEBUG    [DiphotonTagger : produce_and_select_diphotons]  diphoton_tagger.py:190
+         diphoton_tagger, selecting the highest pt_sum                          
+         diphoton pair from each event.                                         
+DEBUG    [DiphotonTagger : produce_and_select_diphotons]  diphoton_tagger.py:196
+         diphoton_tagger, syst variation : nominal.                             
+         Number of total diphoton candidates: 5996,                             
+         number of diphoton candidates after selecting                          
+         candidate with highest pt sum in each event:                           
+         5885 (1.85 percent of diphoton events removed).                        
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : event, cut : At least 1 diphoton pair, efficiency               
+         : 0.4947                                                               
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : event, cut : HLT Trigger, efficiency : 1.0000                   
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : event, cut : all, efficiency : 0.4947                           
+DEBUG    [DiphotonTagger] diphoton_tagger, syst variation diphoton_tagger.py:236
+         : nominal, total time to execute                                       
+         select_diphotons: 2.721177 s                                           
+DEBUG    [Tagger] diphoton_tagger : event set : nominal : 11897     tagger.py:68
+         (5885) events before (after) selection                                 
+DEBUG    [select_objects] : Tagger                       object_selections.py:22
+         'my_HHWW_Preselection', selecting objects                              
+         'SelectedElectron', with the following                                 
+         requirements:                                                          
+DEBUG             'pt' : 20.0                            object_selections.py:24
+DEBUG             'eta' : 2.4                            object_selections.py:24
+DEBUG             'dxy' : 0.045                          object_selections.py:24
+DEBUG             'dz' : 0.2                             object_selections.py:24
+DEBUG             'id' : WP90                            object_selections.py:24
+DEBUG             'dr_photons' : 0.2                     object_selections.py:24
+DEBUG             'veto_transition' : True               object_selections.py:24
+DEBUG    [select_objects] : Tagger                       object_selections.py:27
+         'my_HHWW_Preselection', cross-cleaning objects                         
+         'SelectedElectron' with respect to the                                 
+         following sets of objects:                                             
+DEBUG             'photons', dR > 0.20                   object_selections.py:29
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : pt > 20.0000,              
+         efficiency : 0.3906                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : |eta| <                    
+         2.4000, efficiency : 0.9842                                            
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : |dxy| <                    
+         0.0450, efficiency : 0.8593                                            
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : |dz| <                     
+         0.2000, efficiency : 0.8187                                            
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : dR with                    
+         'photons' > 0.20, efficiency : 0.9227                                  
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : standard                   
+         object cuts, efficiency : 0.2873                                       
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : id cut,                    
+         efficiency : 0.0165                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : ee-eb                      
+         transition, efficiency : 0.9684                                        
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : all cuts,                  
+         efficiency : 0.0015                                                    
+DEBUG    [select_objects] : Tagger                       object_selections.py:22
+         'my_HHWW_Preselection', selecting objects                              
+         'SelectedMuon', with the following                                     
+         requirements:                                                          
+DEBUG             'pt' : 21.0                            object_selections.py:24
+DEBUG             'eta' : 2.5                            object_selections.py:24
+DEBUG             'dxy' : 0.045                          object_selections.py:24
+DEBUG             'dz' : 0.2                             object_selections.py:24
+DEBUG             'id' : medium                          object_selections.py:24
+DEBUG             'pfRelIso03_all' : 0.3                 object_selections.py:24
+DEBUG             'dr_photons' : 0.2                     object_selections.py:24
+DEBUG             'global' : True                        object_selections.py:24
+DEBUG    [select_objects] : Tagger                       object_selections.py:27
+         'my_HHWW_Preselection', cross-cleaning objects                         
+         'SelectedMuon' with respect to the following                           
+         sets of objects:                                                       
+DEBUG             'photons', dR > 0.20                   object_selections.py:29
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : pt > 21.0000,                  
+         efficiency : 0.0943                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : |eta| < 2.5000,                
+         efficiency : 1.0000                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : |dxy| < 0.0450,                
+         efficiency : 0.8882                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : |dz| < 0.2000,                 
+         efficiency : 0.6736                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : pfRelIso03_all <               
+         0.3000, efficiency : 0.2326                                            
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : dR with 'photons'              
+         > 0.20, efficiency : 0.9931                                            
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : standard object                
+         cuts, efficiency : 0.0037                                              
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : id cut,                        
+         efficiency : 0.4229                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : global_muon cut,               
+         efficiency : 0.5623                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : all cuts,                      
+         efficiency : 0.0032                                                    
+DEBUG    [select_objects] : Tagger                       object_selections.py:22
+         'my_HHWW_Preselection', selecting objects                              
+         'SelectedFatJet', with the following                                   
+         requirements:                                                          
+DEBUG             'pt' : 200.0                           object_selections.py:24
+DEBUG             'eta' : 2.4                            object_selections.py:24
+DEBUG    [select_objects] : Tagger                       object_selections.py:27
+         'my_HHWW_Preselection', cross-cleaning objects                         
+         'SelectedFatJet' with respect to the following                         
+         sets of objects:                                                       
+DEBUG             'photons', dR > 0.40                   object_selections.py:29
+DEBUG             'electrons', dR > 0.40                 object_selections.py:29
+DEBUG             'muons', dR > 0.40                     object_selections.py:29
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedFatJet, cut : pt > 200.0000,               
+         efficiency : 0.8987                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedFatJet, cut : |eta| < 2.4000,              
+         efficiency : 0.9851                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedFatJet, cut : dR with                      
+         'photons' > 0.40, efficiency : 0.5872                                  
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedFatJet, cut : dR with                      
+         'electrons' > 0.40, efficiency : 0.9997                                
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedFatJet, cut : dR with 'muons'              
+         > 0.40, efficiency : 0.9996                                            
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedFatJet, cut : all cuts,                    
+         efficiency : 0.5178                                                    
+DEBUG    [select_objects] : Tagger                       object_selections.py:22
+         'my_HHWW_Preselection', selecting objects                              
+         'SelectedJet', with the following requirements:                        
+DEBUG             'pt' : 20.0                            object_selections.py:24
+DEBUG             'eta' : 2.4                            object_selections.py:24
+DEBUG    [select_objects] : Tagger                       object_selections.py:27
+         'my_HHWW_Preselection', cross-cleaning objects                         
+         'SelectedJet' with respect to the following                            
+         sets of objects:                                                       
+DEBUG             'photons', dR > 0.40                   object_selections.py:29
+DEBUG             'electrons', dR > 0.40                 object_selections.py:29
+DEBUG             'muons', dR > 0.40                     object_selections.py:29
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedJet, cut : pt > 20.0000,                   
+         efficiency : 0.7599                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedJet, cut : |eta| < 2.4000,                 
+         efficiency : 0.7612                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedJet, cut : dR with 'photons'               
+         > 0.40, efficiency : 0.7810                                            
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedJet, cut : dR with                         
+         'electrons' > 0.40, efficiency : 0.9999                                
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedJet, cut : dR with 'muons' >               
+         0.40, efficiency : 0.9999                                              
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedJet, cut : all cuts,                       
+         efficiency : 0.4271                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : event, cut : Photon Selection,                     
+         efficiency : 0.9886                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : event, cut : Lepton Selection,                     
+         efficiency : 0.9873                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : event, cut : OnlyFourJet_category,                 
+         efficiency : 0.5541                                                    
+DEBUG    [Tagger] my_HHWW_Preselection : event set : nominal : 5885 tagger.py:68
+         (3261) events before (after) selection                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         '('SelectedJet', 'nJet')' was not found in events                      
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+DEBUG    [AnalysisManager : write_events] Writing output file '/ analysis.py:523
+         eos/user/z/zhenxuan/hhwwgg/GluGluToRadionToHHTo2G4Q_M70                
+         0_2017/job_1/output_job_1_nominal.parquet'.                            
