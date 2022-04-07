@@ -1,5 +1,5 @@
 ,cpp framework N,cpp framework eff(%),higgsdna framework N,higgsdna framework eff(%)
-all Events,288160.0,100.0%,288160.0,100.0%
-Photon selection,112840.0,39.16%,108593.0,37.68%
-Lepton Selection,112409.0,39.01%,108490.0,37.65%
-Only ak4 jets slection,44101.0,15.3%,43028.0,14.93%
+all Events,288160.0,100.0%,12874.0,100.0%
+Photon selection,112840.0,39.16%,4995.0,38.8%
+Lepton Selection,112694.0,39.11%,4987.0,38.74%
+Only ak4 jets slection,44214.0,15.34%,2178.0,16.92%

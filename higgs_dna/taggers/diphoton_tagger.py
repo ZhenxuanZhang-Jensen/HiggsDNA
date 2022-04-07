@@ -367,7 +367,7 @@ class DiphotonTagger(Tagger):
         hlt_cut = hlt_cut | (photons_eb_low_r9 & eb_low_r9_track_pt_cut & eb_low_r9_sigma_ieie_cut & eb_low_r9_pho_iso_cut)
         hlt_cut = hlt_cut | photons_ee_high_r9
         hlt_cut = hlt_cut | (photons_ee_low_r9 & ee_low_r9_track_pt_cut & ee_low_r9_sigma_ieie_cut & ee_low_r9_pho_iso_cut)
-
+        hlt_cut = hlt_cut | (photons.pt > 0) # attention: only for debug, all true
         all_cuts = pt_cut & eta_cut & e_veto_cut & pixelSeed_cut & r9_iso_cut & hoe_cut & hlt_cut
 
         self.register_cuts(

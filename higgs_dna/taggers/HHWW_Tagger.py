@@ -213,7 +213,6 @@ class HHWW_Preselection(Tagger):
         # FourJet_category = (n_leptons == 0) & (n_jets >= 4) & (n_fatjets == 0)
         OnlyFourJet_category = (n_leptons == 0) & (n_jets >= 4)
         Lepton_Selection = (n_leptons==0) & (photon_id_cut)
-        # photon_id_cut = (n_photons==2)
 
         # Semi-Leptonic presel
         # Semileptonic = (n_leptons == 1) & (n_jets >= 2)
