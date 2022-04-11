@@ -66,6 +66,66 @@ class HHWW_Preselection(Tagger):
             )
 
     def calculate_selection(self, events):
+        # Gen jet
+        awkward_utils.add_field(
+            events = events,
+            name = "GenJet",
+            data = events.GenJet
+        )   
+        # MET
+        awkward_utils.add_field(
+            events = events,
+            name = "MET_MetUnclustEnUpDeltaX",
+            data = events.MET_MetUnclustEnUpDeltaX
+        )   
+        awkward_utils.add_field(
+            events = events,
+            name = "MET_MetUnclustEnUpDeltaY",
+            data = events.MET_MetUnclustEnUpDeltaY
+        )   
+        awkward_utils.add_field(
+            events = events,
+            name = "MET_covXX",
+            data = events.MET_covXX
+        )   
+        awkward_utils.add_field(
+            events = events,
+            name = "MET_MetUnclustEnUpDeltaX",
+            data = events.MET_MetUnclustEnUpDeltaX
+        )   
+        awkward_utils.add_field(
+            events = events,
+            name = "MET_MetUnclustEnUpDeltaX",
+            data = events.MET_MetUnclustEnUpDeltaX
+        )   
+        awkward_utils.add_field(
+            events = events,
+            name = "MET_MetUnclustEnUpDeltaX",
+            data = events.MET_MetUnclustEnUpDeltaX
+        )   
+        awkward_utils.add_field(
+            events = events,
+            name = "MET_MetUnclustEnUpDeltaX",
+            data = events.MET_MetUnclustEnUpDeltaX
+        )   
+        # # PuppiMET
+        awkward_utils.add_field(
+            events = events,
+            name = "PuppiMET_phi",
+            data = events.PuppiMET_phi
+        )   
+        # # chsMET
+        # awkward_utils.add_field(
+        #     events = events,
+        #     name = "chsMET",
+        #     data = events.chsMET
+        # )   
+        # SubJet
+        SubJet = awkward_utils.add_field(
+            events = events,
+            name = "SubJet",
+            data = events.SubJet
+        )   
         # Electrons
         electron_cut = lepton_selections.select_electrons(
             electrons=events.Electron,
@@ -166,6 +226,7 @@ class HHWW_Preselection(Tagger):
             name="SelectedJet",
             data=events.Jet[jet_cut]
         )
+        
         # jets_7WithEachEvent = awkward.pad_none(jets, 7, clip=True)
         # FIXME: I have no other method, but just loop event by event to sort 2jets combined with 4 jets mass and get the W1 and W2 mass.
         # for i in range(len(jets_7WithEachEvent)):
