@@ -347,6 +347,8 @@ class Task():
             merged_events = awkward.concatenate(merged_events)
             if not self.config["sample"]["is_data"]:
                 logger.debug("[Task : merge_outputs] Task '%s' : Applying scale1fb and lumi. Scaling central weight branch '%s' in output file '%s' by scale1fb (%.9f) times lumi (%.2f). Adding branch '%s' in output file which has no lumi scaling applied." % (self.name, CENTRAL_WEIGHT, merged_output, self.scale1fb, self.lumi, CENTRAL_WEIGHT + "_no_lumi"))
+                logger.debug(f"[Task : sumWeight is {self.phys_summary['sum_weights']}]")
+                logger.debug(f"[Task : typical central weight is {merged_events['weight_central']}]")
 
                 central_weight = merged_events[CENTRAL_WEIGHT] * self.scale1fb * self.lumi
                 central_weight_no_lumi = merged_events[CENTRAL_WEIGHT] * self.scale1fb
@@ -413,7 +415,7 @@ class Task():
         if self.wrote_years:
             return
 
-        self.year = int(self.config["sample"]["year"])
+        self.year = self.config["sample"]["year"]
 
         for syst_tag, merged_output in self.merged_outputs.items():
             events = awkward.from_parquet(merged_output, lazy = True)
@@ -421,12 +423,14 @@ class Task():
             if "year" in events.fields:
                 return
 
-            logger.debug("[Task : add_process_id] Task '%s' : adding field 'year' with value %d in output file '%s'." % (self.name, self.year, merged_output))
-            
+            logger.debug("[Task : add_process_id] Task '%s' : adding field 'year' with value '%s' in output file '%s'." % (self.name, self.year, merged_output))
+
+            year_array = numpy.empty(len(events), dtype="S10")
+            year_array[:] = self.year
             awkward_utils.add_field(
                     events = events,
                     name = "year",
-                    data = numpy.ones(len(events)) * self.year
+                    data = year_array 
             )
 
             awkward.to_parquet(events, merged_output)

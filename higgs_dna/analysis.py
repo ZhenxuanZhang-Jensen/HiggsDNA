@@ -51,6 +51,21 @@ def run_analysis(config):
     t_start_load = time.time()
     events, sum_weights = AnalysisManager.load_events(config["files"], config["branches"])
 
+    # Optional branch mapping in case you have different naming schemes, e.g. you want MET_T1smear_pt to be recast as MET_pt
+    # Can be separate for data and MC
+    if "branch_map" in config.keys():
+        if config["sample"]["is_data"]:
+            branch_map = config["branch_map"]["data"]
+        else:
+            branch_map = config["branch_map"]["mc"]
+
+        if branch_map:
+            for x in branch_map:
+                if isinstance(x[0], list):
+                    events[tuple(x[0])] = events[tuple(x[1])]
+                else:
+                    events[x[0]] = events[x[1]]
+
     # Record n_events and sum_weights for scale1fb calculation
     job_summary["n_events"] = len(events)
     job_summary["sum_weights"] = sum_weights

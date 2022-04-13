@@ -1,0 +1,195 @@
+{
+    "ttH_M125" : {
+        "xs" : 0.5071,
+        "bf" : 0.00227,
+        "fpo": 1,
+        "files" : {
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/ttH/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/ttH/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/ttH/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/ttH/*2018*.root" 
+        }
+    },
+    "HHggTauTau" : {
+        "xs" : 0.03105,
+        "bf" : 0.000284658,
+        "fpo" : 1,
+        "files" : {
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/HH_ggTauTau/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/HH_ggTauTau/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/HH_ggTauTau/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/HH_ggTauTau/*2018*.root"
+        }
+    },
+    "HHggWW_dileptonic" : {
+        "xs" : 3.031e-06,
+        "fpo" : 1,
+        "files" : {
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/HH_ggWW_dileptonic/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/HH_ggWW_dileptonic/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/HH_ggWW_dileptonic/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/HH_ggWW_dileptonic/*2018*.root"
+        }
+    },
+    "HHggWW_semileptonic" : {
+        "xs" : 0.000013063,
+        "fpo" : 1,
+        "files" : {
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/HH_ggWW_semileptonic/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/HH_ggWW_semileptonic/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/HH_ggWW_semileptonic/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/HH_ggWW_semileptonic/*2018*.root"
+        }
+    },
+    "ggH_M125" : {
+        "fpo" : 1,
+        "xs" : 0.1118429,
+        "files" : {
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/ggH/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/ggH/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/ggH/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/ggH/*2018*.root"
+        }
+    },
+    "VBFH_M125" : {
+        "fpo" : 1,
+        "xs" : 0.00858514,
+        "files" : {
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/VBFH/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/VBFH/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/VBFH/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/VBFH/*2018*.root"
+        }
+    },
+    "VH_M125" : {
+        "fpo" : 1,
+        "xs" : 0.00512,
+        "files" : {
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/VH/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/VH/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/VH/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/VH/*2018*.root"
+        }
+    },
+    "GJets_HT-40To100" : {
+        "fpo" : 1,
+        "xs" : 23100.0,
+        "files" : {
+            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT40To100_2016/",
+            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT40To100_2017/",
+            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT40To100_2018/"
+         }
+    },
+    "GJets_HT-100To200" : {
+        "fpo" : 1,
+        "xs" : 8631.0,
+        "files" : {
+            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-100To200_2016/",
+            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-100To200_2017/",
+            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-100To200_2018/"
+        }
+    },
+    "GJets_HT-200To400" : {
+        "fpo" : 1,
+        "xs" : 2280.0,
+        "files" : {
+            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-200To400_2016/",
+            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-200To400_2017/",
+            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-200To400_2018/"
+        }
+    },
+    "GJets_HT-400To600" : {
+        "fpo" : 1,
+        "xs" : 273.0,
+        "files" : {
+            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-400To600_2016/",
+            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-400To600_2017/",
+            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-400To600_2018/"
+        }
+    },
+    "GJets_HT-600ToInf" : {
+        "xs" : 1,
+        "files" : {
+            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-600ToInf_2016/",
+            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-600ToInf_2017/",
+            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-600ToInf_2018/"
+        }
+    },
+    "TTJets" : {
+        "fpo" : 1,
+        "xs" : 831.76,
+        "files" : {
+            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/TTbar_2016/",
+            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/TTbar_2017/",
+            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/TTbar_2018/"
+        }
+    },
+    "TTGamma" : {
+        "fpo" : 1,
+        "xs" : {
+            "2016" : 3.819,
+            "2017" : 4.078,
+            "2018" : 4.078
+        },
+        "files" : {
+           "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/added/TTGamma_2016/",
+           "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/hadded/TTGamma_2017/",
+           "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/hadded/TTGamma_2018/"
+       }
+    },
+    "TTGG" : {
+        "fpo" : 1,
+        "xs" : {
+            "2016" : 0.01731,
+            "2017" : 0.01687,
+            "2018" : 0.01687
+        },
+        "files" : {
+            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/TTGG_2016/",
+            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/TTGG_2017/",
+            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/TTGG_2018/"
+        }
+    },
+    "WGamma" : {
+        "fpo" : 1,
+        "xs" : {
+            "2016" : 191.4,
+            "2017" : 191.4,
+            "2018" : 191.4
+        },
+        "files" : {
+            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/WGamma_2016/",
+            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/WGamma_2017/",
+            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/WGamma_2018/"
+        }
+    },
+    "ZGamma" : {
+        "fpo" : 1,
+        "xs" : {
+            "2016" : 55.6,
+            "2017" : 55.6,
+            "2018" : 55.6
+        },
+        "files" : {
+            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/ZGamma_2016/",
+            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/ZGamma_2017/",
+            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/ZGamma_2018/"
+       }
+    },
+    "DiPhoton" : {
+        "xs" : 1,
+        "files" : {
+            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/DiPhoton_2016/",
+            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/DiPhoton_2017/",
+            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/DiPhoton_2018/"
+        }
+    }, 
+    "Data" : {
+        "fpo" : 10,
+        "files" : {
+            "2016" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/Data/*2016*.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/Data/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/Data/*2018*.root"
+        }
+    }
+}

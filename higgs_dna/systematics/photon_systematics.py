@@ -13,6 +13,8 @@ from higgs_dna.systematics.utils import systematic_from_bins, ic_systematic_from
 from higgs_dna.systematics.data.electron_veto_sf import PHOTON_ELECTRON_VETO_SF_2016, PHOTON_ELECTRON_VETO_SF_2017, PHOTON_ELECTRON_VETO_SF_2018
 photon_electron_veto_sf_bins = {
     "2016" : PHOTON_ELECTRON_VETO_SF_2016,
+    "2016UL_preVFP" : PHOTON_ELECTRON_VETO_SF_2016,
+    "2016UL_postVFP" : PHOTON_ELECTRON_VETO_SF_2016,
     "2017" : PHOTON_ELECTRON_VETO_SF_2017,
     "2018" : PHOTON_ELECTRON_VETO_SF_2018
 }
@@ -50,11 +52,15 @@ def photon_electron_veto_sf(events, central_only, year):
 from higgs_dna.systematics.data.trigger_sf import LEAD_TRIGGER_SF_2016, SUBLEAD_TRIGGER_SF_2016, LEAD_TRIGGER_SF_2017, SUBLEAD_TRIGGER_SF_2017, LEAD_TRIGGER_SF_2018, SUBLEAD_TRIGGER_SF_2018 
 lead_trigger_sf_bins = {
     "2016" : LEAD_TRIGGER_SF_2016,
+    "2016UL_preVFP" : LEAD_TRIGGER_SF_2016,
+    "2016UL_postVFP" : LEAD_TRIGGER_SF_2016,
     "2017" : LEAD_TRIGGER_SF_2017,
     "2018" : LEAD_TRIGGER_SF_2018
 }
 sublead_trigger_sf_bins = {
     "2016" : SUBLEAD_TRIGGER_SF_2016,
+    "2016UL_preVFP" : SUBLEAD_TRIGGER_SF_2016,
+    "2016UL_postVFP" : SUBLEAD_TRIGGER_SF_2016,
     "2017" : SUBLEAD_TRIGGER_SF_2017,
     "2018" : SUBLEAD_TRIGGER_SF_2018 
 }
@@ -106,6 +112,8 @@ def trigger_sf(events, central_only, year):
 from higgs_dna.systematics.data.fnuf import FNUF_2016, FNUF_2017, FNUF_2018
 fnuf_bins = {
     "2016" : FNUF_2016,
+    "2016UL_preVFP" : FNUF_2016,
+    "2016UL_postVFP" : FNUF_2016,
     "2017" : FNUF_2017,
     "2018" : FNUF_2018
 }
@@ -155,6 +163,8 @@ def fnuf_unc(events, year, nominal_only, modify_nominal, loc = "all"):
 from higgs_dna.systematics.data.material import MATERIAL_2016, MATERIAL_2017, MATERIAL_2018
 material_bins = {
     "2016" : MATERIAL_2016,
+    "2016UL_preVFP" : MATERIAL_2016,
+    "2016UL_postVFP" : MATERIAL_2016,
     "2017" : MATERIAL_2017,
     "2018" : MATERIAL_2018
 }

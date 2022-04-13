@@ -13,7 +13,7 @@ from higgs_dna.utils import awkward_utils, misc_utils
 DUMMY_VALUE = -999.
 DEFAULT_OPTIONS = {
     "electrons" : {
-        "pt" : 15.0,
+        "pt" : 7.0,
         "eta" : 2.5,
         "dxy" : 0.045,
         "dz" : 0.2,
@@ -22,7 +22,7 @@ DEFAULT_OPTIONS = {
         "veto_transition" : True,
     },
     "muons" : {
-        "pt" : 15.0,
+        "pt" : 5.0,
         "eta" : 2.4,
         "dxy" : 0.045,
         "dz" : 0.2,
@@ -44,6 +44,8 @@ DEFAULT_OPTIONS = {
     "iso_tracks" : {
         "pt" : 5.0,
         "eta" : 5.0,
+        "dxy" : 0.2,
+        "dz" : 0.1,
         "dr_photons" : 0.2,
         "dr_electrons" : 0.2,
         "dr_muons" : 0.2,
@@ -60,7 +62,7 @@ DEFAULT_OPTIONS = {
         "dr_iso_tracks" : 0.4
     },
     "z_veto" : [80., 100.],
-    "m_llg_veto" : [86., 96.],
+    "m_llg_veto_window" : 25,
     "photon_mvaID" : -0.7
 }
 
@@ -433,8 +435,8 @@ class HHggTauTauPreselTagger(Tagger):
         awkward_utils.add_field(events, "dilep_leadpho_mass", dilep_lead_photon.mass) 
         awkward_utils.add_field(events, "dilep_subleadpho_mass", dilep_sublead_photon.mass) 
 
-        m_llg_veto_lead = (dilep_lead_photon.mass >= self.options["m_llg_veto"][0]) & (dilep_lead_photon.mass <= self.options["m_llg_veto"][1])
-        m_llg_veto_sublead = (dilep_sublead_photon.mass >= self.options["m_llg_veto"][0]) & (dilep_sublead_photon.mass <= self.options["m_llg_veto"][1])
+        m_llg_veto_lead = abs(dilep_lead_photon.mass - 91.18) < self.options["m_llg_veto_window"]
+        m_llg_veto_sublead = abs(dilep_sublead_photon.mass - 91.18) < self.options["m_llg_veto_window"]
         # The m_llg_veto_* cuts will have `None` values for events which do not have a ditau pair. Here we replace `None` values with False (if there is not a ditau pair, there is no llg system, and it cannot have a mass in the veto range)
         m_llg_veto_lead = awkward.fill_none(m_llg_veto_lead, value = False)
         m_llg_veto_sublead = awkward.fill_none(m_llg_veto_sublead, value = False)
