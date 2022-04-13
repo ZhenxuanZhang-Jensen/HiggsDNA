@@ -239,7 +239,7 @@
             },
             "MET_JER" : {
                 "method" : "from_branch",
-                "branch_modified" : "MET_T1Smear_pt",
+                "branch_modified" : "MET_pt",
                 "branches" : {
                     "up" : "MET_T1Smear_pt_jerUp",
                     "down" : "MET_T1Smear_pt_jerDown"
@@ -247,7 +247,7 @@
             },
             "MET_JES" : {
                 "method" : "from_branch",
-                "branch_modified" : "MET_T1Smear_pt",
+                "branch_modified" : "MET_pt",
                 "branches" : {
                     "up" : "MET_T1Smear_pt_jesTotalUp",
                     "down" : "MET_T1Smear_pt_jesTotalDown"
@@ -255,7 +255,7 @@
             },
             "MET_Unclustered" : {
                 "method" : "from_branch",
-                "branch_modified" : "MET_T1Smear_pt",
+                "branch_modified" : "MET_pt",
                 "branches" : {
                     "up" : "MET_T1Smear_pt_unclustEnUp",
                     "down" : "MET_T1Smear_pt_unclustEnDown"
