@@ -61,10 +61,14 @@ def run_analysis(config):
 
         if branch_map:
             for x in branch_map:
+                logger.debug("[run_analysis] Replacing %s with %s." % (str(x[0]), str(x[1])))
                 if isinstance(x[0], list):
                     events[tuple(x[0])] = events[tuple(x[1])]
                 else:
                     events[x[0]] = events[x[1]]
+
+    else:
+        logger.debug("[run_analysis] No branch map.")
 
     # Record n_events and sum_weights for scale1fb calculation
     job_summary["n_events"] = len(events)
@@ -418,7 +422,10 @@ class AnalysisManager():
             }
             for x in ["systematics", "tag_sequence", "function", "variables_of_interest"]:
                 config[x] = copy.deepcopy(getattr(self, x))
-                    
+
+            if "branch_map" in self.config.keys():
+                config["branch_map"] = copy.deepcopy(self.config["branch_map"])
+
             self.jobs_manager.add_task(
                     Task(
                         name = sample.name,
