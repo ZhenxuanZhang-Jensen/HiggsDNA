@@ -187,7 +187,8 @@
     "Data" : {
         "fpo" : 10,
         "files" : {
-            "2016" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/Data/*2016*.root",
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/Data/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/Data/*2016.root",
             "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/Data/*2017*.root",
             "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/Data/*2018*.root"
         }
