@@ -6,7 +6,7 @@ class ProgressBar():
         """
 
         """
-        self.name = "[Task : %s]" % name
+        self.name = "[%s]" % name
         self.bar = ""
 
 

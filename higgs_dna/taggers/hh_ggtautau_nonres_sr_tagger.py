@@ -12,13 +12,18 @@ from higgs_dna.taggers.tagger import Tagger, NOMINAL_TAG
 from higgs_dna.utils import awkward_utils, misc_utils
 
 DEFAULT_OPTIONS = {
-    "bdt_file" : "/path/to/some/bdt.xgb", # if running on condor, this file needs to be placed somewhere under higgs_dna/ so that it is included in the tar file. We probably want to think of a better long term solution for this.
+    "bdt_file" : "/home/users/hmei/myWorkspace/HiggsDNA/metadata/BDTs/20UL_30Mar2022_fixIsoTrk.xgb", # if running on condor, this file needs to be placed somewhere under higgs_dna/ so that it is included in the tar file. We probably want to think of a better long term solution for this.
     "bdt_features" : [
-        ("Diphoton", "eta"),
-        ["LeadPhoton", "eta"], ["LeadPhoton", "mvaID"],
-        "ditau_pt", "ditau_eta", "ditau_phi", "ditau_mass", "ditau_dR",
+        "n_electrons", "n_muons", "n_taus", "n_isoTrks", "n_jets", "n_bjets",
+        "MET_pt", "MET_gg_dPhi", "MET_ll_dPhi", "dPhi_MET_l", "lep12_dphi", "lep12_deta_bdt", "lep12_dr",
+        "g1_ptmgg", "g1_eta_bdt", "g1_idmva", "g1_pixVeto", "g2_ptmgg", "g2_eta_bdt", "g2_idmva", "g2_pixVeto", "max_g_ptmgg", "min_g_ptmgg", "max_g_idmva", "min_g_idmva",
+        "gg_ptmgg", "gg_eta", "gg_dR", "gg_dPhi", "gg_hel", "gg_tt_CS", "gg_tt_hel", "tt_hel",
+        "tau_candidate_1_pt", "lep1_eta_bdt", "lep1_tightID", "tau_candidate_2_pt", "lep2_eta_bdt", "lep2_tightID", "max_lep_pt", "min_lep_pt",
+        "Category", "jet_1_pt", "jet1_eta_bdt", "jet1_bTag", "jet_2_pt", "jet2_eta_bdt", "jet2_bTag", "max_bTag",
+        "pt_tautau_SVFit", "eta_tautau_SVFit_bdt", "m_tautau_SVFit", "dR_tautau_SVFit", "dR_ggtautau_SVFit", "dPhi_tautau_SVFit", "dPhi_ggtautau_SVFit", "m_tautau_vis", "pt_tautau_vis", "eta_tautau_vis_bdt",
+        "mX","m_llg_lead", "m_llg_subl"
     ],
-    "bdt_cuts" : [0.99, 0.98]
+    "bdt_cuts" : [0.9910, 0.972815]
 }
 
 class HHggTauTauNonResSRTagger(Tagger):
@@ -64,7 +69,7 @@ class HHggTauTauNonResSRTagger(Tagger):
         sr_cuts = []
         for i in range(n_signal_regions):
             cut_sr = events.bdt_score >= self.options["bdt_cuts"][i]
-            for j in range(sr_cuts):
+            for j in range(len(sr_cuts)):
                 cut_sr = cut_sr & ~(sr_cuts[j])
 
             # record which SR each event enters

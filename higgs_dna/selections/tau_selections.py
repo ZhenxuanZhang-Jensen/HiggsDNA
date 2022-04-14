@@ -16,7 +16,7 @@ DEFAULT_TAUS = {
     "dr_photons" : 0.2,
     "dr_electrons" : 0.2,
     "dr_muons" : 0.2,
-    "decay_mode" : True
+    "decay_mode" : False 
 }
 
 def select_taus(taus, options, clean, name = "none", tagger = None):

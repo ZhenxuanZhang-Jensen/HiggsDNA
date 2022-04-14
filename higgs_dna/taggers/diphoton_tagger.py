@@ -60,6 +60,8 @@ DEFAULT_OPTIONS = {
     },
     "trigger" : {
         "2016" : ["HLT_Diphoton30_18_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"],
+        "2016UL_preVFP" : ["HLT_Diphoton30_18_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"],
+        "2016UL_postVFP" : ["HLT_Diphoton30_18_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"],
         "2017" : ["HLT_Diphoton30_22_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"],
         "2018" : ["HLT_Diphoton30_22_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"]
     },
@@ -93,9 +95,22 @@ class DiphotonTagger(Tagger):
         Add a record "Diphoton" to events array with relevant information about each diphoton pair.
         In principle, there can be more than one Diphoton pair per event.
         """
+        
+        # Determine what type of rho variable is available in nanoAOD
+        # To be deleted once a standard rho variable is added to central nanoAOD
+        if not self.options["photons"]["use_central_nano"]:
+            if "fixedGridRhoAll" in events.fields:
+                rho = events.fixedGridRhoAll
+            elif "fixedGridRhoFastjetAll" in events.fields:
+                rho = events.fixedGridRhoFastjetAll
+            elif "Rho_fixedGridRhoAll" in events.fields:
+                rho = events.Rho_fixedGridRhoAll
+        else:
+            rho = awkward.ones_like(events.Photon)
+
         photon_selection = self.select_photons(
                 photons = events.Photon,
-                rho = events.fixedGridRhoAll if not self.options["photons"]["use_central_nano"] else awkward.ones_like(events.Photon), # FIXME: to be deleted once fixedGridRhoAll is added to central nanoAOD
+                rho = rho,
                 options = self.options["photons"]
         )
 
@@ -214,9 +229,10 @@ class DiphotonTagger(Tagger):
 
         dipho_presel_cut = awkward.num(dipho_events.Diphoton) >= 1
         if self.is_data and self.year is not None:
-            trigger_cut = awkward.num(dipho_events.Diphoton) < 0 # dummy cut, all False
-            for hlt in self.options["trigger"][self.year]: # logical OR of all triggers
-                trigger_cut = (trigger_cut) | (dipho_events[hlt] == True)
+            #trigger_cut = awkward.num(dipho_events.Diphoton) < 0 # dummy cut, all False
+            trigger_cut = awkward.num(dipho_events.Diphoton) > 0 # dummy cut, all True 
+            #for hlt in self.options["trigger"][self.year]: # logical OR of all triggers
+            #    trigger_cut = (trigger_cut) | (dipho_events[hlt] == True)
         else:
             trigger_cut = awkward.num(dipho_events.Diphoton) >= 0 # dummy cut, all True
 
@@ -342,9 +358,19 @@ class DiphotonTagger(Tagger):
 
         low_eta = abs(photons.eta) < options["hlt"]["eta_rho_corr"]
 
+        # Check which type of photonIso name is present in these nanoAODs
+        if not use_central_nano: # FIXME: to be deleted once Photon.photonIso is added to central nanoAOD
+            if "pfPhoIso03" in photons.fields:
+                photon_iso = photons.pfPhoIso03
+            elif "photonIso" in photons.fields:
+                photon_iso = photons.photonIso
+            else:
+                logger.warning("[DiphotonTagger : select_photons] Did not find an appropriate photon isolation variable in events array.")
+
         if not use_central_nano:
-            eb_low_r9_pho_iso_low_eta_cut = low_eta & (photons.photonIso - rho * options["hlt"]["low_eta_rho_corr"] < options["hlt"]["eb_low_r9"]["pho_iso"]) 
-            eb_low_r9_pho_iso_high_eta_cut = ~low_eta & (photons.photonIso - rho * options["hlt"]["high_eta_rho_corr"] < options["hlt"]["eb_low_r9"]["pho_iso"]) 
+            
+            eb_low_r9_pho_iso_low_eta_cut = low_eta & (photon_iso - rho * options["hlt"]["low_eta_rho_corr"] < options["hlt"]["eb_low_r9"]["pho_iso"]) 
+            eb_low_r9_pho_iso_high_eta_cut = ~low_eta & (photon_iso - rho * options["hlt"]["high_eta_rho_corr"] < options["hlt"]["eb_low_r9"]["pho_iso"]) 
         else: # FIXME: to be deleted once Photon.photonIso is added to central nanoAOD
             eb_low_r9_pho_iso_low_eta_cut = low_eta & ((photons.pfRelIso03_all * photons.pt * options["hlt"]["low_eta_rho_corr"]) < options["hlt"]["eb_low_r9"]["pho_iso"])
             eb_low_r9_pho_iso_high_eta_cut = ~low_eta & ((photons.pfRelIso03_all * photons.pt * options["hlt"]["high_eta_rho_corr"]) < options["hlt"]["eb_low_r9"]["pho_iso"])
@@ -352,8 +378,8 @@ class DiphotonTagger(Tagger):
         eb_low_r9_pho_iso_cut = eb_low_r9_pho_iso_low_eta_cut | eb_low_r9_pho_iso_high_eta_cut
 
         if not use_central_nano:
-            ee_low_r9_pho_iso_low_eta_cut = low_eta & (photons.photonIso - rho * options["hlt"]["low_eta_rho_corr"] < options["hlt"]["ee_low_r9"]["pho_iso"]) 
-            ee_low_r9_pho_iso_high_eta_cut = ~low_eta & (photons.photonIso - rho * options["hlt"]["high_eta_rho_corr"] < options["hlt"]["ee_low_r9"]["pho_iso"]) 
+            ee_low_r9_pho_iso_low_eta_cut = low_eta & (photon_iso - rho * options["hlt"]["low_eta_rho_corr"] < options["hlt"]["ee_low_r9"]["pho_iso"]) 
+            ee_low_r9_pho_iso_high_eta_cut = ~low_eta & (photon_iso - rho * options["hlt"]["high_eta_rho_corr"] < options["hlt"]["ee_low_r9"]["pho_iso"]) 
         else: # FIXME: to be deleted once Photon.photonIso is added to central nanoAOD
             ee_low_r9_pho_iso_low_eta_cut = low_eta & ((photons.pfRelIso03_all * photons.pt * options["hlt"]["low_eta_rho_corr"]) < options["hlt"]["ee_low_r9"]["pho_iso"])
             ee_low_r9_pho_iso_high_eta_cut = ~low_eta & ((photons.pfRelIso03_all * photons.pt * options["hlt"]["high_eta_rho_corr"]) < options["hlt"]["ee_low_r9"]["pho_iso"])

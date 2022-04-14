@@ -10,36 +10,40 @@ from higgs_dna.utils import misc_utils, awkward_utils
 ###################################
 
 BTAG_RESHAPE_SF_FILE = {
-    "2016" : "jsonpog-integration/POG/BTV/2017_UL/bjets.json", # FIXME: 2016 not implemented in jsonpog-integration at time of writing
-    "2017" : "jsonpog-integration/POG/BTV/2017_UL/bjets.json",
-    "2018" : "jsonpog-integration/POG/BTV/2018_UL/bjets.json"
+    "2016" : "jsonpog-integration/POG/BTV/2016postVFP_UL/btagging.json", 
+    "2016UL_preVFP" : "jsonpog-integration/POG/BTV/2016preVFP_UL/btagging.json", 
+    "2016UL_postVFP" : "jsonpog-integration/POG/BTV/2016postVFP_UL/btagging.json", 
+    "2017" : "jsonpog-integration/POG/BTV/2017_UL/btagging.json",
+    "2018" : "jsonpog-integration/POG/BTV/2018_UL/btagging.json"
 }
 
 DEEPJET_RESHAPE_SF = {
-    "2016" : "deepJet_106XUL17SF_shape", # FIXME: 2016 not implemented in jsonpog-integration at time of writing
-    "2017" : "deepJet_106XUL17SF_shape",
-    "2018" : "deepJet_106XUL18SF_shape"
+    "2016" : "deepJet_shape", 
+    "2016UL_preVFP" : "deepJet_shape",
+    "2016UL_postVFP" : "deepJet_shape",
+    "2017" : "deepJet_shape",
+    "2018" : "deepJet_shape"
 }
 
 DEEPJET_VARIATIONS = { 
-    "up_jes" : [0, 2], # applicable to b (0) and light (2) jets, but not charm (1)
-    "up_lf" : [0],
-    "up_hfstats1" : [0],
-    "up_hfstats2" : [0],
-    "up_cferr1" : [1],
-    "up_cferr2" : [1],
-    "up_hf" : [2],
-    "up_lfstats1" : [2],
-    "up_lfstats2" : [2],
-    "down_jes" : [0, 2], # applicable to b (0) and light (2) jets, but not charm (1)
-    "down_lf" : [0],
-    "down_hfstats1" : [0],
-    "down_hfstats2" : [0],
-    "down_cferr1" : [1],
-    "down_cferr2" : [1],
-    "down_hf" : [2],
-    "down_lfstats1" : [2],
-    "down_lfstats2" : [2],
+    "up_jes" : [5, 0], # applicable to b (5) and light (0) jets, but not charm (4)
+    "up_lf" : [5],
+    "up_hfstats1" : [5],
+    "up_hfstats2" : [5],
+    "up_cferr1" : [4],
+    "up_cferr2" : [4],
+    "up_hf" : [0],
+    "up_lfstats1" : [0],
+    "up_lfstats2" : [0],
+    "down_jes" : [5, 0], # applicable to b (5) and light (0) jets, but not charm(4)
+    "down_lf" : [5],
+    "down_hfstats1" : [5],
+    "down_hfstats2" : [5],
+    "down_cferr1" : [4],
+    "down_cferr2" : [4],
+    "down_hf" : [0],
+    "down_lfstats1" : [0],
+    "down_lfstats2" : [0],
 }
 
 def btag_deepjet_reshape_sf(events, year, central_only, input_collection):
@@ -60,17 +64,18 @@ def btag_deepjet_reshape_sf(events, year, central_only, input_collection):
     jets = events[input_collection]
 
     # Transform jet flavor from pdgID -> BTV flavor definition: 0=b, 1=c, 2=udsg 
-    jets["flavor"] = awkward.ones_like(jets.hadronFlavour) * 2
-    jets["flavor"] = awkward.where(
-        jets.hadronFlavour == 4,
-        awkward.ones_like(jets.hadronFlavour) * 1,
-        jets["flavor"]
-    )
-    jets["flavor"] = awkward.where(
-        jets.hadronFlavour == 5,
-        awkward.ones_like(jets.hadronFlavour) * 0,
-        jets["flavor"]
-    )  
+    #jets["flavor"] = awkward.ones_like(jets.hadronFlavour) * 2
+    #jets["flavor"] = awkward.where(
+    #    jets.hadronFlavour == 4,
+    #    awkward.ones_like(jets.hadronFlavour) * 1,
+    #    jets["flavor"]
+    #)
+    #jets["flavor"] = awkward.where(
+    #    jets.hadronFlavour == 5,
+    #    awkward.ones_like(jets.hadronFlavour) * 0,
+    #    jets["flavor"]
+    #)  
+    jets["flavor"] = jets.hadronFlavour
 
     # Flatten jets then convert to numpy for compatibility with correctionlib
     n_jets = awkward.num(jets) # save n_jets to convert back to jagged format at the end 

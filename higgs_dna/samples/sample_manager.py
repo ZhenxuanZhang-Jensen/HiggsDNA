@@ -84,7 +84,8 @@ class SampleManager():
 
                 self.samples[sample][year] = {}
 
-                # Three ways the user can specify files:
+                # Multiple ways the user can specify files:
+                #   0. Directory with wildcards
                 #   1. Hard-coded list (local or xrd format)
                 #   2a. Single directory (local or xrd format)
                 #   2b. List of directories (local or xrd format)
@@ -92,8 +93,12 @@ class SampleManager():
 
                 grabbed_files = False
 
+                if isinstance(info["files"][year], str) and "*" in info["files"][year]: # directory with wildcards
+                    files = self.get_files_from_wildcard(info["files"][year], is_data)
+                    grabbed_files = True
+
                 # Is this a list? Could be a list of hard-coded files (Option 1) or list of dirs (Option 2b) 
-                if isinstance(info["files"][year], list):
+                elif isinstance(info["files"][year], list):
                     if info["files"][year][0].endswith(".root"): # Option 1
                         logger.debug("[SampleManager : get_samples] For sample '%s', year '%s', getting files from hard-coded list." % (sample, year))
                         files = [File(name = x, is_data = is_data) for x in info["files"][year]]
@@ -232,6 +237,29 @@ class SampleManager():
                         is_data = is_data,
                         n_events = f["nevents"],
                         size_gb = round(f["size"]*1e-9,2) 
+                    )
+            )
+
+        return files
+
+
+    def get_files_from_wildcard(self, path, is_data):
+        """
+
+        """
+        files_dir = glob.glob(path)
+        logger.debug("[SampleManager : get_files_from_wildcard] Found %d files from specified wildcard '%s'." % (len(files_dir), path))
+        files = []
+        for f in files_dir:
+            if ".root" not in f:
+                logger.debug("[SampleManager : get_files_from_wildcard] File '%s' was grabbed under your specified wildcard '%s' but is not a .root file, so we are skipping it." % (f, path))
+                continue
+
+            files.append(
+                    File(
+                        name = f,
+                        is_data = is_data,
+                        size_gb = round(os.path.getsize(f)*1e-9,2)
                     )
             )
 
