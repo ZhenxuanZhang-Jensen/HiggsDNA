@@ -4,9 +4,11 @@
 *.parquet
 # Vagrant
 .vagrant/
+eos_logs/
+*.sh
 
 # Mac/OSX
-.DS_Store
+.DS_Stor
 
 # Windows
 Thumbs.db
