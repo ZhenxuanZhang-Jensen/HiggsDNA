@@ -3,7 +3,7 @@ import logging
 import awkward
 import vector
 from higgs_dna.selections import (fatjet_selections, jet_selections,
-                                  lepton_selections)
+                                  lepton_selections,gen_selections)
 from higgs_dna.taggers.tagger import NOMINAL_TAG, Tagger
 from higgs_dna.utils import awkward_utils, misc_utils
 from matplotlib.pyplot import jet
@@ -66,66 +66,36 @@ class HHWW_Preselection(Tagger):
             )
 
     def calculate_selection(self, events):
-        # Gen jet
-        awkward_utils.add_field(
-            events = events,
-            name = "GenJet",
-            data = events.GenJet
-        )   
-        # MET
-        awkward_utils.add_field(
-            events = events,
-            name = "MET_MetUnclustEnUpDeltaX",
-            data = events.MET_MetUnclustEnUpDeltaX
-        )   
-        awkward_utils.add_field(
-            events = events,
-            name = "MET_MetUnclustEnUpDeltaY",
-            data = events.MET_MetUnclustEnUpDeltaY
-        )   
-        awkward_utils.add_field(
-            events = events,
-            name = "MET_covXX",
-            data = events.MET_covXX
-        )   
-        awkward_utils.add_field(
-            events = events,
-            name = "MET_MetUnclustEnUpDeltaX",
-            data = events.MET_MetUnclustEnUpDeltaX
-        )   
-        awkward_utils.add_field(
-            events = events,
-            name = "MET_MetUnclustEnUpDeltaX",
-            data = events.MET_MetUnclustEnUpDeltaX
-        )   
-        awkward_utils.add_field(
-            events = events,
-            name = "MET_MetUnclustEnUpDeltaX",
-            data = events.MET_MetUnclustEnUpDeltaX
-        )   
-        awkward_utils.add_field(
-            events = events,
-            name = "MET_MetUnclustEnUpDeltaX",
-            data = events.MET_MetUnclustEnUpDeltaX
-        )   
-        # # PuppiMET
-        awkward_utils.add_field(
-            events = events,
-            name = "PuppiMET_phi",
-            data = events.PuppiMET_phi
-        )   
-        # # chsMET
-        # awkward_utils.add_field(
-        #     events = events,
-        #     name = "chsMET",
-        #     data = events.chsMET
-        # )   
-        # SubJet
-        SubJet = awkward_utils.add_field(
-            events = events,
-            name = "SubJet",
-            data = events.SubJet
-        )   
+        # data will not select gen level infos
+        # Gen selection
+        # if not self.is_data:            
+        #     W1_candi,W2_candi,H_candi = gen_selections.select_ww_to_qqqq(events.GenPart)
+        #     awkward_utils.add_field(
+        #     events=events,
+        #     name="GenW1_qq",
+        #     data=awkward.Array(W1_candi)
+        #     )
+        #     awkward_utils.add_field(
+        #     events=events,
+        #     name="GenW2_qq",
+        #     data=awkward.Array(W1_candi)
+        #     )
+        #     awkward_utils.add_field(
+        #     events=events,
+        #     name="GenHWW_qqqq_Higgs",
+        #     data=awkward.Array(W1_candi)
+        #     )
+
+        # # H->gg
+        # gen_hgg = gen_selections.select_x_to_yz(events.GenPart, 25, 24, 24)
+        # awkward_utils.add_object_fields(
+        #         events = diphotons,
+        #         name = "GenHggHiggs",
+        #         objects = gen_hgg.GenParent,
+        #         n_objects = 1
+        # )
+        # WW-> JJJJ
+        
         # Electrons
         electron_cut = lepton_selections.select_electrons(
             electrons=events.Electron,

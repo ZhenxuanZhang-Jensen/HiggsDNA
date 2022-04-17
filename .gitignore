@@ -4,7 +4,9 @@
 *.parquet
 # Vagrant
 .vagrant/
-
+analysis_jupyter/
+*.sh
+eos_logs/
 # Mac/OSX
 .DS_Store
 
@@ -68,6 +70,8 @@ coverage.xml
 
 # Django stuff:
 *.log
+*.out
+*.err
 local_settings.py
 db.sqlite3
 
