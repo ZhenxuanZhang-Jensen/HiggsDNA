@@ -1,1 +1,0 @@
-rm /eos/user/z/zhenxuan/hhwwgg_shortSignal -rf
