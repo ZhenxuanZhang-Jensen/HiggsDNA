@@ -1,0 +1,22 @@
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+ImportError: No module named site
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/QCD_HT50to100_2017/job_7/QCD_HT50to100_2017_executable_job7.py", line 13, in <module>
+    run_analysis(config)
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/analysis.py", line 82, in run_analysis
+    events, tag_idx_map = tag_sequence.run(events)
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/taggers/tag_sequence.py", line 106, in run
+    self.run_taggers(tag_set)
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/taggers/tag_sequence.py", line 126, in run_taggers
+    self.selections[tagger.name], self.selected_events = tagger.run(self.selected_events)
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/taggers/tagger.py", line 64, in run
+    selection, syst_events_updated = self.get_selection(syst_tag, syst_events)
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/taggers/tagger.py", line 100, in get_selection
+    return self.calculate_selection(syst_events) 
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/taggers/diphoton_tagger.py", line 103, in calculate_selection
+    diphoton_selection, diphotons = self.produce_and_select_diphotons(
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/taggers/diphoton_tagger.py", line 196, in produce_and_select_diphotons
+    logger.debug("[DiphotonTagger : produce_and_select_diphotons] %s, syst variation : %s. Number of total diphoton candidates: %d, number of diphoton candidates after selecting candidate with highest pt sum in each event: %d (%.2f percent of diphoton events removed)." % (self.name, self.current_syst, n_diphotons_total, n_diphotons_selected, 100. * (float(n_diphotons_total - n_diphotons_selected) / float(n_diphotons_total))))
+ZeroDivisionError: float division by zero

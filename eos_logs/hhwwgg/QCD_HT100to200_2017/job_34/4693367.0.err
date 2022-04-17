@@ -1,0 +1,38 @@
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/QCD_HT100to200_2017/job_34/QCD_HT100to200_2017_executable_job34.py", line 13, in <module>
+    run_analysis(config)
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/analysis.py", line 77, in run_analysis
+    tag_sequence = TagSequence(
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/taggers/tag_sequence.py", line 50, in __init__
+    m_tagger = self.create_tagger(tagger)
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/taggers/tag_sequence.py", line 63, in create_tagger
+    module = importlib.import_module(config["module_name"])
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/taggers/diphoton_tagger.py", line 4, in <module>
+    import numba
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/numba/__init__.py", line 38, in <module>
+    from numba.core.decorators import (cfunc, generated_jit, jit, njit, stencil,
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/numba/core/decorators.py", line 12, in <module>
+    from numba.stencils.stencil import stencil
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/numba/stencils/stencil.py", line 11, in <module>
+    from numba.core import types, typing, utils, ir, config, ir_utils, registry
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/numba/core/registry.py", line 4, in <module>
+    from numba.core import utils, typing, dispatcher, cpu
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/numba/core/dispatcher.py", line 13, in <module>
+    from numba.core import (
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/numba/core/compiler.py", line 6, in <module>
+    from numba.core import (utils, errors, typing, interpreter, bytecode, postproc,
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1016, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_data
+OSError: [Errno 5] Input/output error

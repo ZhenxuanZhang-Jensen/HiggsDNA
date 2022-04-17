@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/QCD_HT100to200_2017/job_6/QCD_HT100to200_2017_executable_job6.py", line 4, in <module>
+    from higgs_dna.analysis import run_analysis
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/analysis.py", line 8, in <module>
+    import numpy
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/numpy/__init__.py", line 150, in <module>
+    from . import core
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/numpy/core/__init__.py", line 22, in <module>
+    from . import multiarray
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/numpy/core/multiarray.py", line 12, in <module>
+    from . import overrides
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/numpy/core/overrides.py", line 7, in <module>
+    from numpy.core._multiarray_umath import (
+AttributeError: module 'datetime' has no attribute 'datetime_CAPI'

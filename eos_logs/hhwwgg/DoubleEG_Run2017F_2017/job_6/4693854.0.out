@@ -1,0 +1,493 @@
+DEBUG    [AnalysisManager : load_events] Loaded 1538747 events   analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/B0B9BC44-EA5                
+         E-2146-9386-30B486F351CA.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 538712 events    analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/B619C6EF-929                
+         7-4142-87BB-84EE18F2ABB6.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 735692 events    analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/BEAC6254-136                
+         3-3A4A-BBE8-92CFE07BFCC7.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 895291 events    analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/C4DB570F-E6F                
+         1-3644-9976-8E074F531FBB.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 1635051 events   analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/C965754C-0CA                
+         9-814A-9F08-45469CF259BA.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 1114592 events   analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/CAAAF410-71A                
+         C-2A4A-A2D2-05BEB5F468F3.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 876538 events    analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/D356E2AC-3A3                
+         C-454C-A859-98A3D60E121E.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 526585 events    analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/D43992A4-915                
+         4-DF4D-8E5D-48E418BA4FD7.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 547510 events    analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/D6C9A019-03F                
+         F-C143-A4B1-96B84AC75676.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 570414 events    analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/D71884C8-B33                
+         4-EB4C-9BF7-48F85A5C9BA4.root'.                                        
+INFO     [TagSequence : __init__] Creating tag sequence with  tag_sequence.py:37
+         the following tags and priority:                                       
+INFO     [TagSequence : __init__] The 0-th tag set has        tag_sequence.py:59
+         taggers ['diphoton_tagger'] (listed in order                           
+         priority will be given).                                               
+INFO     [TagSequence : __init__] The 1-th tag set has        tag_sequence.py:59
+         taggers ['my_HHWW_Preselection'] (listed in order                      
+         priority will be given).                                               
+INFO     For all tags, performing selection on the following  tag_sequence.py:94
+         sets of events, each corresponding to a separate                       
+         independent collection.                                                
+INFO             nominal                                      tag_sequence.py:96
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : pt, efficiency : 0.9998                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : eta, efficiency : 0.9140                          
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : e_veto, efficiency : 0.6773                       
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : r9, efficiency : 0.9512                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : hoe, efficiency : 0.7791                          
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : hlt, efficiency : 1.0000                          
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : all, efficiency : 0.3470                          
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : diphoton, cut : lead pt cut, efficiency : 0.7633                
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : diphoton, cut : lead pt mgg cut, efficiency :                   
+         0.9402                                                                 
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : diphoton, cut : sublead pt mgg cut, efficiency :                
+         0.8157                                                                 
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : diphoton, cut : mass cut, efficiency : 0.2276                   
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : diphoton, cut : all cuts, efficiency : 0.1296                   
+DEBUG    [DiphotonTagger : produce_and_select_diphotons]  diphoton_tagger.py:190
+         diphoton_tagger, selecting the highest pt_sum                          
+         diphoton pair from each event.                                         
+DEBUG    [DiphotonTagger : produce_and_select_diphotons]  diphoton_tagger.py:196
+         diphoton_tagger, syst variation : nominal.                             
+         Number of total diphoton candidates: 316654,                           
+         number of diphoton candidates after selecting                          
+         candidate with highest pt sum in each event:                           
+         306497 (3.21 percent of diphoton events                                
+         removed).                                                              
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : event, cut : At least 1 diphoton pair, efficiency               
+         : 0.0341                                                               
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : event, cut : HLT Trigger, efficiency : 0.7363                   
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : event, cut : all, efficiency : 0.7363                           
+DEBUG    [DiphotonTagger] diphoton_tagger, syst variation diphoton_tagger.py:236
+         : nominal, total time to execute                                       
+         select_diphotons: 129.848496 s                                         
+DEBUG    [Tagger] diphoton_tagger : event set : nominal : 8979132   tagger.py:68
+         (225684) events before (after) selection                               
+DEBUG    [select_objects] : Tagger                       object_selections.py:22
+         'my_HHWW_Preselection', selecting objects                              
+         'SelectedElectron', with the following                                 
+         requirements:                                                          
+DEBUG             'pt' : 20.0                            object_selections.py:24
+DEBUG             'eta' : 2.4                            object_selections.py:24
+DEBUG             'dxy' : 0.045                          object_selections.py:24
+DEBUG             'dz' : 0.2                             object_selections.py:24
+DEBUG             'id' : WP90                            object_selections.py:24
+DEBUG             'dr_photons' : 0.2                     object_selections.py:24
+DEBUG             'veto_transition' : True               object_selections.py:24
+DEBUG    [select_objects] : Tagger                       object_selections.py:27
+         'my_HHWW_Preselection', cross-cleaning objects                         
+         'SelectedElectron' with respect to the                                 
+         following sets of objects:                                             
+DEBUG             'photons', dR > 0.20                   object_selections.py:29
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : pt > 20.0000,              
+         efficiency : 0.3092                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : |eta| <                    
+         2.4000, efficiency : 0.9679                                            
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : |dxy| <                    
+         0.0450, efficiency : 0.7141                                            
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : |dz| <                     
+         0.2000, efficiency : 0.6163                                            
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : dR with                    
+         'photons' > 0.20, efficiency : 0.5737                                  
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : standard                   
+         object cuts, efficiency : 0.0507                                       
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : id cut,                    
+         efficiency : 0.0271                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : ee-eb                      
+         transition, efficiency : 0.9789                                        
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedElectron, cut : all cuts,                  
+         efficiency : 0.0029                                                    
+DEBUG    [select_objects] : Tagger                       object_selections.py:22
+         'my_HHWW_Preselection', selecting objects                              
+         'SelectedMuon', with the following                                     
+         requirements:                                                          
+DEBUG             'pt' : 21.0                            object_selections.py:24
+DEBUG             'eta' : 2.5                            object_selections.py:24
+DEBUG             'dxy' : 0.045                          object_selections.py:24
+DEBUG             'dz' : 0.2                             object_selections.py:24
+DEBUG             'id' : medium                          object_selections.py:24
+DEBUG             'pfRelIso03_all' : 0.3                 object_selections.py:24
+DEBUG             'dr_photons' : 0.2                     object_selections.py:24
+DEBUG             'global' : True                        object_selections.py:24
+DEBUG    [select_objects] : Tagger                       object_selections.py:27
+         'my_HHWW_Preselection', cross-cleaning objects                         
+         'SelectedMuon' with respect to the following                           
+         sets of objects:                                                       
+DEBUG             'photons', dR > 0.20                   object_selections.py:29
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : pt > 21.0000,                  
+         efficiency : 0.0202                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : |eta| < 2.5000,                
+         efficiency : 0.9987                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : |dxy| < 0.0450,                
+         efficiency : 0.8857                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : |dz| < 0.2000,                 
+         efficiency : 0.4119                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : pfRelIso03_all <               
+         0.3000, efficiency : 0.4425                                            
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : dR with 'photons'              
+         > 0.20, efficiency : 0.8670                                            
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : standard object                
+         cuts, efficiency : 0.0025                                              
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : id cut,                        
+         efficiency : 0.3985                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : global_muon cut,               
+         efficiency : 0.4877                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedMuon, cut : all cuts,                      
+         efficiency : 0.0017                                                    
+DEBUG    [select_objects] : Tagger                       object_selections.py:22
+         'my_HHWW_Preselection', selecting objects                              
+         'SelectedFatJet', with the following                                   
+         requirements:                                                          
+DEBUG             'pt' : 200.0                           object_selections.py:24
+DEBUG             'eta' : 2.4                            object_selections.py:24
+DEBUG    [select_objects] : Tagger                       object_selections.py:27
+         'my_HHWW_Preselection', cross-cleaning objects                         
+         'SelectedFatJet' with respect to the following                         
+         sets of objects:                                                       
+DEBUG             'photons', dR > 0.40                   object_selections.py:29
+DEBUG             'electrons', dR > 0.40                 object_selections.py:29
+DEBUG             'muons', dR > 0.40                     object_selections.py:29
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedFatJet, cut : pt > 200.0000,               
+         efficiency : 0.4473                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedFatJet, cut : |eta| < 2.4000,              
+         efficiency : 0.9662                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedFatJet, cut : dR with                      
+         'photons' > 0.40, efficiency : 0.3471                                  
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedFatJet, cut : dR with                      
+         'electrons' > 0.40, efficiency : 0.9990                                
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedFatJet, cut : dR with 'muons'              
+         > 0.40, efficiency : 0.9996                                            
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedFatJet, cut : all cuts,                    
+         efficiency : 0.1880                                                    
+DEBUG    [select_objects] : Tagger                       object_selections.py:22
+         'my_HHWW_Preselection', selecting objects                              
+         'SelectedJet', with the following requirements:                        
+DEBUG             'pt' : 20.0                            object_selections.py:24
+DEBUG             'eta' : 2.4                            object_selections.py:24
+DEBUG    [select_objects] : Tagger                       object_selections.py:27
+         'my_HHWW_Preselection', cross-cleaning objects                         
+         'SelectedJet' with respect to the following                            
+         sets of objects:                                                       
+DEBUG             'photons', dR > 0.40                   object_selections.py:29
+DEBUG             'electrons', dR > 0.40                 object_selections.py:29
+DEBUG             'muons', dR > 0.40                     object_selections.py:29
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedJet, cut : pt > 20.0000,                   
+         efficiency : 0.6174                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedJet, cut : |eta| < 2.4000,                 
+         efficiency : 0.6162                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedJet, cut : dR with 'photons'               
+         > 0.40, efficiency : 0.7390                                            
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedJet, cut : dR with                         
+         'electrons' > 0.40, efficiency : 0.9999                                
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedJet, cut : dR with 'muons' >               
+         0.40, efficiency : 1.0000                                              
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : SelectedJet, cut : all cuts,                       
+         efficiency : 0.1706                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : event, cut : Photon Selection,                     
+         efficiency : 0.2852                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : event, cut : Lepton Selection,                     
+         efficiency : 0.2848                                                    
+DEBUG    [Tagger] : my_HHWW_Preselection, syst variation :         tagger.py:171
+         nominal, cut type : event, cut : OnlyFourJet_category,                 
+         efficiency : 0.0197                                                    
+DEBUG    [Tagger] my_HHWW_Preselection : event set : nominal :      tagger.py:68
+         225684 (4454) events before (after) selection                          
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'MET_fiducialGenPhi' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'MET_fiducialGenPt' was not found in events array. This                
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch '('LeadPhoton', analysis.py:512
+         'genPartFlav')' was not found in events array. This may                
+         be expected (e.g. gen info for a data file), but please                
+         ensure this makes sense to you.                                        
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         '('SubleadPhoton', 'genPartFlav')' was not found in                    
+         events array. This may be expected (e.g. gen info for a                
+         data file), but please ensure this makes sense to you.                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         '('SelectedJet', 'genJetIdx')' was not found in events                 
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         '('SelectedJet', 'hadronFlavour')' was not found in                    
+         events array. This may be expected (e.g. gen info for a                
+         data file), but please ensure this makes sense to you.                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         '('SelectedJet', 'partonFlavour')' was not found in                    
+         events array. This may be expected (e.g. gen info for a                
+         data file), but please ensure this makes sense to you.                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_1_genJetAK8Idx' was not found in events array.                 
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_1_hadronFlavour' was not found in events array.                
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_1_nBHadrons' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_1_nCHadrons' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_1_particleNetMD_QCD' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_1_particleNetMD_Xbb' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_1_particleNetMD_Xcc' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_1_particleNetMD_Xqq' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_1_particleNet_H4qvsQCD' was not found in events                
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_1_particleNet_HbbvsQCD' was not found in events                
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_1_particleNet_HccvsQCD' was not found in events                
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_1_particleNet_QCD' was not found in events                     
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_1_particleNet_TvsQCD' was not found in events                  
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_1_particleNet_WvsQCD' was not found in events                  
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_1_particleNet_ZvsQCD' was not found in events                  
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_2_genJetAK8Idx' was not found in events array.                 
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_2_hadronFlavour' was not found in events array.                
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_2_nBHadrons' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_2_nCHadrons' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_2_particleNetMD_QCD' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_2_particleNetMD_Xbb' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_2_particleNetMD_Xcc' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_2_particleNetMD_Xqq' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_2_particleNet_H4qvsQCD' was not found in events                
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_2_particleNet_HbbvsQCD' was not found in events                
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_2_particleNet_HccvsQCD' was not found in events                
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_2_particleNet_QCD' was not found in events                     
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_2_particleNet_TvsQCD' was not found in events                  
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_2_particleNet_WvsQCD' was not found in events                  
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_2_particleNet_ZvsQCD' was not found in events                  
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_3_genJetAK8Idx' was not found in events array.                 
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_3_hadronFlavour' was not found in events array.                
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_3_nBHadrons' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_3_nCHadrons' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_3_particleNetMD_QCD' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_3_particleNetMD_Xbb' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_3_particleNetMD_Xcc' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_3_particleNetMD_Xqq' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_3_particleNet_H4qvsQCD' was not found in events                
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_3_particleNet_HbbvsQCD' was not found in events                
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_3_particleNet_HccvsQCD' was not found in events                
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_3_particleNet_QCD' was not found in events                     
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_3_particleNet_TvsQCD' was not found in events                  
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_3_particleNet_WvsQCD' was not found in events                  
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'fatjet_3_particleNet_ZvsQCD' was not found in events                  
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'GenHggHiggs_pt' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'GenHggHiggs_eta' was not found in events array. This                  
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'GenHggHiggs_phi' was not found in events array. This                  
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'GenHggHiggs_mass' was not found in events array. This                 
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:512
+         'GenHggHiggs_dR' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+DEBUG    [AnalysisManager : write_events] Writing output file '/ analysis.py:523
+         eos/user/z/zhenxuan/hhwwgg/DoubleEG_Run2017F_2017/job_6                
+         /output_job_6_nominal.parquet'.                                        

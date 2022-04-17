@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/GluGluToRadionToHHTo2B2G_M-260_2017/job_11/GluGluToRadionToHHTo2B2G_M-260_2017_executable_job11.py", line 4, in <module>
+    from higgs_dna.analysis import run_analysis
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/analysis.py", line 18, in <module>
+    from higgs_dna.job_management.managers import LocalManager, CondorManager
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/job_management/managers.py", line 8, in <module>
+    import pyarrow
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/pyarrow/__init__.py", line 65, in <module>
+    import pyarrow.lib as _lib
+ImportError: /eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/pyarrow/../../.././libaws-cpp-sdk-identity-management.so: cannot read file data: Input/output error

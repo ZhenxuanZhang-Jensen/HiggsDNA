@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/GluGluToRadionToHHTo2G4Q_M1000_2017/job_2/GluGluToRadionToHHTo2G4Q_M1000_2017_executable_job2.py", line 4, in <module>
+    from higgs_dna.analysis import run_analysis
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/analysis.py", line 16, in <module>
+    from higgs_dna.samples.sample_manager import SampleManager
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/samples/sample_manager.py", line 10, in <module>
+    from higgs_dna.samples.sample import Sample
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/samples/sample.py", line 4, in <module>
+    from higgs_dna.utils import awkward_utils
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/utils/awkward_utils.py", line 2, in <module>
+    import vector
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/vector/__init__.py", line 77, in <module>
+    _import_awkward()
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/vector/__init__.py", line 66, in _import_awkward
+    awk_version = packaging.version.Version(importlib_metadata.version("awkward"))
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/importlib/metadata/__init__.py", line 984, in version
+    return distribution(distribution_name).version
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/importlib/metadata/__init__.py", line 627, in version
+    return self.metadata['Version']
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/importlib/metadata/__init__.py", line 605, in metadata
+    self.read_text('METADATA')
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/importlib/metadata/__init__.py", line 927, in read_text
+    return self._path.joinpath(filename).read_text(encoding='utf-8')
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/pathlib.py", line 1133, in read_text
+    return f.read()
+OSError: [Errno 5] Input/output error

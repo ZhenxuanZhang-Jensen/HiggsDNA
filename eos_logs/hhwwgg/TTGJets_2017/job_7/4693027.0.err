@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/TTGJets_2017/job_7/TTGJets_2017_executable_job7.py", line 4, in <module>
+    from higgs_dna.analysis import run_analysis
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/analysis.py", line 8, in <module>
+    import numpy
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/numpy/__init__.py", line 150, in <module>
+    from . import core
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/numpy/core/__init__.py", line 98, in <module>
+    from . import _add_newdocs
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/numpy/core/_add_newdocs.py", line 4697, in <module>
+    add_newdoc('numpy.core._multiarray_tests', 'format_float_OSprintf_g',
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/numpy/core/function_base.py", line 521, in add_newdoc
+    new = getattr(__import__(place, globals(), {}, [obj]), obj)
+ImportError: /eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/numpy/core/_multiarray_tests.cpython-310-x86_64-linux-gnu.so: cannot read file data: Input/output error

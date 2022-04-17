@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/DiPhotonJetsBox_MGG_2017/job_6/DiPhotonJetsBox_MGG_2017_executable_job6.py", line 4, in <module>
+    from higgs_dna.analysis import run_analysis
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/analysis.py", line 20, in <module>
+    from higgs_dna.systematics.systematics_producer import SystematicsProducer
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/systematics/systematics_producer.py", line 13, in <module>
+    from higgs_dna.systematics import photon_systematics, lepton_systematics, jet_systematics, pileup_systematics
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/systematics/lepton_systematics.py", line 4, in <module>
+    from correctionlib import _core
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/correctionlib/__init__.py", line 17, in <module>
+    from .highlevel import Correction, CorrectionSet
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/correctionlib/highlevel.py", line 10, in <module>
+    import correctionlib._core
+ImportError: /eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/correctionlib/lib/libcorrectionlib.so: cannot read file data: Input/output error

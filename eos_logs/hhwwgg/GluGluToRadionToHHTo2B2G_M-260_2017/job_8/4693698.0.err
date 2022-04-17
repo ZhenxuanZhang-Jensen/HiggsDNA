@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/GluGluToRadionToHHTo2B2G_M-260_2017/job_8/GluGluToRadionToHHTo2B2G_M-260_2017_executable_job8.py", line 4, in <module>
+    from higgs_dna.analysis import run_analysis
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/analysis.py", line 11, in <module>
+    import awkward
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/awkward/__init__.py", line 9, in <module>
+    import awkward.layout
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/awkward/layout.py", line 10, in <module>
+ImportError: /eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/awkward/../../../libstdc++.so.6: cannot read file data: Input/output error

@@ -1,0 +1,32 @@
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/TTGJets_2017/job_28/TTGJets_2017_executable_job28.py", line 13, in <module>
+    run_analysis(config)
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/analysis.py", line 77, in run_analysis
+    tag_sequence = TagSequence(
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/taggers/tag_sequence.py", line 50, in __init__
+    m_tagger = self.create_tagger(tagger)
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/taggers/tag_sequence.py", line 63, in create_tagger
+    module = importlib.import_module(config["module_name"])
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/taggers/HHWW_Tagger.py", line 9, in <module>
+    from matplotlib.pyplot import jet
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/matplotlib/pyplot.py", line 52, in <module>
+    from matplotlib import rcsetup, style
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/matplotlib/style/__init__.py", line 1, in <module>
+    from .core import use, context, available, library, reload_library
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/matplotlib/style/core.py", line 221, in <module>
+    _base_library = read_style_directory(BASE_LIBRARY_PATH)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/matplotlib/style/core.py", line 198, in read_style_directory
+    styles[path.stem] = rc_params_from_file(
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/matplotlib/__init__.py", line 852, in rc_params_from_file
+    config_from_file = _rc_params_in_file(fname, fail_on_error=fail_on_error)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/matplotlib/__init__.py", line 780, in _rc_params_in_file
+    for line_no, line in enumerate(fd, 1):
+OSError: [Errno 5] Input/output error

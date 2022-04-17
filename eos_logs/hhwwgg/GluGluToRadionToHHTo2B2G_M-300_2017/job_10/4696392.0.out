@@ -1,0 +1,65 @@
+DEBUG    [AnalysisManager : load_events] Loaded 16000 events     analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/mc/RunI                
+         IFall17NanoAODv7/GluGluToRadionToHHTo2B2G_M-300_narrow_                
+         13TeV-madgraph_correctedcfg/NANOAODSIM/PU2017_12Apr2018                
+         _Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/9680FC                
+         E2-C067-BA4D-9E08-418087C9B65D.root'.                                  
+INFO     [TagSequence : __init__] Creating tag sequence with  tag_sequence.py:37
+         the following tags and priority:                                       
+INFO     [TagSequence : __init__] The 0-th tag set has        tag_sequence.py:59
+         taggers ['diphoton_tagger'] (listed in order                           
+         priority will be given).                                               
+INFO     [TagSequence : __init__] The 1-th tag set has        tag_sequence.py:59
+         taggers ['my_HHWW_Preselection'] (listed in order                      
+         priority will be given).                                               
+INFO     For all tags, performing selection on the following  tag_sequence.py:94
+         sets of events, each corresponding to a separate                       
+         independent collection.                                                
+INFO             nominal                                      tag_sequence.py:96
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : pt, efficiency : 0.9989                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : eta, efficiency : 0.9278                          
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : e_veto, efficiency : 0.8973                       
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : r9, efficiency : 0.9463                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : hoe, efficiency : 0.7962                          
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : hlt, efficiency : 1.0000                          
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : photon, cut : all, efficiency : 0.5976                          
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : diphoton, cut : lead pt cut, efficiency : 0.9586                
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : diphoton, cut : lead pt mgg cut, efficiency :                   
+         0.9868                                                                 
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : diphoton, cut : sublead pt mgg cut, efficiency :                
+         0.7754                                                                 
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : diphoton, cut : mass cut, efficiency : 0.8019                   
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : diphoton, cut : all cuts, efficiency : 0.6308                   
+DEBUG    [DiphotonTagger : produce_and_select_diphotons]  diphoton_tagger.py:190
+         diphoton_tagger, selecting the highest pt_sum                          
+         diphoton pair from each event.                                         
+DEBUG    [DiphotonTagger : produce_and_select_diphotons]  diphoton_tagger.py:196
+         diphoton_tagger, syst variation : nominal.                             
+         Number of total diphoton candidates: 6472,                             
+         number of diphoton candidates after selecting                          
+         candidate with highest pt sum in each event:                           
+         6348 (1.92 percent of diphoton events removed).                        
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : event, cut : At least 1 diphoton pair, efficiency               
+         : 0.3967                                                               
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : event, cut : HLT Trigger, efficiency : 1.0000                   
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:171
+         type : event, cut : all, efficiency : 0.3967                           
+DEBUG    [DiphotonTagger] diphoton_tagger, syst variation diphoton_tagger.py:236
+         : nominal, total time to execute                                       
+         select_diphotons: 2.992706 s                                           
+DEBUG    [Tagger] diphoton_tagger : event set : nominal : 16000     tagger.py:68
+         (6348) events before (after) selection                                 

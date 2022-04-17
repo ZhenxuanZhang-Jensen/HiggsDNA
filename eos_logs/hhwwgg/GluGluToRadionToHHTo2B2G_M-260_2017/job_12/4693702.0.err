@@ -1,0 +1,31 @@
+Python path configuration:
+  PYTHONHOME = (not set)
+  PYTHONPATH = (not set)
+  program name = '/eos/user/z/zhenxuan/higgs-dna/bin/python'
+  isolated = 0
+  environment = 1
+  user site = 1
+  import site = 1
+  sys._base_executable = '/eos/user/z/zhenxuan/higgs-dna/bin/python'
+  sys.base_prefix = '/eos/user/z/zhenxuan/higgs-dna'
+  sys.base_exec_prefix = '/eos/user/z/zhenxuan/higgs-dna'
+  sys.platlibdir = 'lib'
+  sys.executable = '/eos/user/z/zhenxuan/higgs-dna/bin/python'
+  sys.prefix = '/eos/user/z/zhenxuan/higgs-dna'
+  sys.exec_prefix = '/eos/user/z/zhenxuan/higgs-dna'
+  sys.path = [
+    '/eos/user/z/zhenxuan/higgs-dna/lib/python310.zip',
+    '/eos/user/z/zhenxuan/higgs-dna/lib/python3.10',
+    '/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/lib-dynload',
+  ]
+Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding
+Python runtime state: core initialized
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/encodings/__init__.py", line 31, in <module>
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1016, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_data
+OSError: [Errno 5] Input/output error

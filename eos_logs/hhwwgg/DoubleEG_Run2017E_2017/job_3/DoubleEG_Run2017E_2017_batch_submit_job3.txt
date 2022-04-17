@@ -1,0 +1,16 @@
+should_transfer_files = Yes
+transfer_input_files    = /afs/cern.ch/user/z/zhenxuan/HiggsDNA/x509up_u134033
+executable = /afs/cern.ch/user/z/zhenxuan/HiggsDNA/eos_logs/hhwwgg/DoubleEG_Run2017E_2017/job_3/DoubleEG_Run2017E_2017_executable_job3.sh
+output = /afs/cern.ch/user/z/zhenxuan/HiggsDNA/eos_logs/hhwwgg/DoubleEG_Run2017E_2017/job_3/$(Cluster).$(Process).out
+error = /afs/cern.ch/user/z/zhenxuan/HiggsDNA/eos_logs/hhwwgg/DoubleEG_Run2017E_2017/job_3/$(Cluster).$(Process).err
+log = /afs/cern.ch/user/z/zhenxuan/HiggsDNA/eos_logs/hhwwgg/DoubleEG_Run2017E_2017/job_3/$(Cluster).$(Process).log
+
+RequestMemory = 4096
+RequestDisk = 10000
+RequestCpus = 1
+
+JobBatchName = DoubleEG_Run2017E_2017
++JobFlavour = "workday"
++OnExitHold   = ExitStatus != 0
+getenv        = True
+queue 1

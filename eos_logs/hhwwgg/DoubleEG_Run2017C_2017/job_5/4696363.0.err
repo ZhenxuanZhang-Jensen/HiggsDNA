@@ -1,0 +1,47 @@
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+ImportError: No module named site
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/DoubleEG_Run2017C_2017/job_5/DoubleEG_Run2017C_2017_executable_job5.py", line 13, in <module>
+    run_analysis(config)
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/analysis.py", line 52, in run_analysis
+    events, sum_weights = AnalysisManager.load_events(config["files"], config["branches"])
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/analysis.py", line 473, in load_events
+    events_file = tree.arrays(trimmed_branches, library = "ak", how = "zip")
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/behaviors/TBranch.py", line 1125, in arrays
+    _ranges_or_baskets_to_arrays(
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/behaviors/TBranch.py", line 3502, in _ranges_or_baskets_to_arrays
+    uproot.source.futures.delayed_raise(*obj)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/futures.py", line 36, in delayed_raise
+    raise exception_value.with_traceback(traceback)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/behaviors/TBranch.py", line 3423, in chunk_to_basket
+    basket = uproot.models.TBasket.Model_TBasket.read(
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/model.py", line 805, in read
+    self.read_members(chunk, cursor, context, file)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/models/TBasket.py", line 223, in read_members
+    ) = cursor.fields(chunk, _tbasket_format1, context)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/cursor.py", line 197, in fields
+    return format.unpack(chunk.get(start, stop, self, context))
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/chunk.py", line 419, in get
+    self.wait(insist=stop)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/chunk.py", line 356, in wait
+    self._raw_data = numpy.frombuffer(self._future.result(), dtype=self._dtype)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/futures.py", line 116, in result
+    delayed_raise(*self._excinfo)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/futures.py", line 36, in delayed_raise
+    raise exception_value.with_traceback(traceback)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/futures.py", line 278, in _run
+    self._result = self._task(resource)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/xrootd.py", line 218, in task
+    return partfutures[0].result()
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/futures.py", line 116, in result
+    delayed_raise(*self._excinfo)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/futures.py", line 36, in delayed_raise
+    raise exception_value.with_traceback(traceback)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/xrootd.py", line 236, in callback
+    self._xrd_error(status)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/xrootd.py", line 118, in _xrd_error
+    raise OSError(
+OSError: XRootD error: [ERROR] Operation expired
+in file root://cms-xrd-global.cern.ch//store/data/Run2017C/DoubleEG/NANOAOD/02Apr2020-v1/40000/3D08B609-58E2-FD49-BFC9-EA6AF4FDFA48.root

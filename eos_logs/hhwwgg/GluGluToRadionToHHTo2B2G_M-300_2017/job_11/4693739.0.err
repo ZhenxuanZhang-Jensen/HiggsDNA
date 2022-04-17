@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/GluGluToRadionToHHTo2B2G_M-300_2017/job_11/GluGluToRadionToHHTo2B2G_M-300_2017_executable_job11.py", line 3, in <module>
+    from higgs_dna.utils.logger_utils import setup_logger
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/utils/logger_utils.py", line 2, in <module>
+    from rich.logging import RichHandler
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/rich/logging.py", line 13, in <module>
+    from .traceback import Traceback
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/rich/traceback.py", line 25, in <module>
+    from .syntax import Syntax
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/rich/syntax.py", line 7, in <module>
+    from pygments.lexer import Lexer
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/pygments/lexer.py", line 15, in <module>
+    from pygments.filter import apply_filters, Filter
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1016, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_data
+OSError: [Errno 5] Input/output error

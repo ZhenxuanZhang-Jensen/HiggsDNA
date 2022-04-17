@@ -1,0 +1,8 @@
+DEBUG    [AnalysisManager : load_events] Loaded 1026118 events   analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/mc/RunI                
+         IFall17NanoAODv7/QCD_HT500to700_TuneCP5_13TeV-madgraph-                
+         pythia8/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_                
+         mc2017_realistic_v8-v1/60000/8ACAB8AD-091C-384E-A47B-5E                
+         F615AB3898.root'.                                                      
+INFO     [TagSequence : __init__] Creating tag sequence with  tag_sequence.py:37
+         the following tags and priority:                                       

@@ -1,0 +1,2 @@
+/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/awkward/_connect/_numpy.py:195: RuntimeWarning: divide by zero encountered in true_divide
+  result = getattr(ufunc, method)(

@@ -1,0 +1,16 @@
+should_transfer_files = Yes
+transfer_input_files    = /afs/cern.ch/user/z/zhenxuan/HiggsDNA/x509up_u134033
+executable = /afs/cern.ch/user/z/zhenxuan/HiggsDNA/eos_logs/hhwwgg/GluGluToRadionToHHTo2B2G_M-3000_2017/job_4/GluGluToRadionToHHTo2B2G_M-3000_2017_executable_job4.sh
+output = /afs/cern.ch/user/z/zhenxuan/HiggsDNA/eos_logs/hhwwgg/GluGluToRadionToHHTo2B2G_M-3000_2017/job_4/$(Cluster).$(Process).out
+error = /afs/cern.ch/user/z/zhenxuan/HiggsDNA/eos_logs/hhwwgg/GluGluToRadionToHHTo2B2G_M-3000_2017/job_4/$(Cluster).$(Process).err
+log = /afs/cern.ch/user/z/zhenxuan/HiggsDNA/eos_logs/hhwwgg/GluGluToRadionToHHTo2B2G_M-3000_2017/job_4/$(Cluster).$(Process).log
+
+RequestMemory = 4096
+RequestDisk = 10000
+RequestCpus = 1
+
+JobBatchName = GluGluToRadionToHHTo2B2G_M-3000_2017
++JobFlavour = "workday"
++OnExitHold   = ExitStatus != 0
+getenv        = True
+queue 1

@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/GluGluToRadionToHHTo2G4Q_M650_2017/job_7/GluGluToRadionToHHTo2G4Q_M650_2017_executable_job7.py", line 4, in <module>
+    from higgs_dna.analysis import run_analysis
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/analysis.py", line 7, in <module>
+    import dill
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/dill/__init__.py", line 25, in <module>
+    from ._dill import dump, dumps, load, loads, dump_session, load_session, \
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/dill/_dill.py", line 231, in <module>
+    from socket import socket as SocketType
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/socket.py", line 51, in <module>
+    import _socket
+ImportError: /eos/user/z/zhenxuan/higgs-dna/lib/python3.10/lib-dynload/_socket.cpython-310-x86_64-linux-gnu.so: cannot read file data: Input/output error

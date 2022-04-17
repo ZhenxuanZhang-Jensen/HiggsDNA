@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/QCD_HT200to300_2017/job_12/QCD_HT200to300_2017_executable_job12.py", line 3, in <module>
+    from higgs_dna.utils.logger_utils import setup_logger
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/utils/logger_utils.py", line 2, in <module>
+    from rich.logging import RichHandler
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/rich/logging.py", line 10, in <module>
+    from .console import Console, ConsoleRenderable
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/rich/console.py", line 55, in <module>
+    from .pretty import Pretty, is_expandable
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/rich/pretty.py", line 7, in <module>
+    from array import array
+ImportError: /eos/user/z/zhenxuan/higgs-dna/lib/python3.10/lib-dynload/array.cpython-310-x86_64-linux-gnu.so: cannot read file data: Input/output error

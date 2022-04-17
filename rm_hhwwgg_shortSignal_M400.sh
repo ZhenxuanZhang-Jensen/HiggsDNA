@@ -1,0 +1,1 @@
+rm /eos/user/z/zhenxuan/hhwwgg_shortSignal_M400 -rf

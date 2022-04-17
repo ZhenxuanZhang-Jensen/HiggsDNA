@@ -1,0 +1,64 @@
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/QCD_HT700to1000_2017/job_11/QCD_HT700to1000_2017_executable_job11.py", line 13, in <module>
+    run_analysis(config)
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/analysis.py", line 52, in run_analysis
+    events, sum_weights = AnalysisManager.load_events(config["files"], config["branches"])
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/analysis.py", line 473, in load_events
+    events_file = tree.arrays(trimmed_branches, library = "ak", how = "zip")
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/behaviors/TBranch.py", line 1125, in arrays
+    _ranges_or_baskets_to_arrays(
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/behaviors/TBranch.py", line 3502, in _ranges_or_baskets_to_arrays
+    uproot.source.futures.delayed_raise(*obj)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/futures.py", line 36, in delayed_raise
+    raise exception_value.with_traceback(traceback)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/behaviors/TBranch.py", line 3423, in chunk_to_basket
+    basket = uproot.models.TBasket.Model_TBasket.read(
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/model.py", line 805, in read
+    self.read_members(chunk, cursor, context, file)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/models/TBasket.py", line 223, in read_members
+    ) = cursor.fields(chunk, _tbasket_format1, context)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/cursor.py", line 197, in fields
+    return format.unpack(chunk.get(start, stop, self, context))
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/chunk.py", line 419, in get
+    self.wait(insist=stop)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/chunk.py", line 356, in wait
+    self._raw_data = numpy.frombuffer(self._future.result(), dtype=self._dtype)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/futures.py", line 116, in result
+    delayed_raise(*self._excinfo)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/futures.py", line 36, in delayed_raise
+    raise exception_value.with_traceback(traceback)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/futures.py", line 278, in _run
+    self._result = self._task(resource)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/xrootd.py", line 218, in task
+    return partfutures[0].result()
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/futures.py", line 116, in result
+    delayed_raise(*self._excinfo)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/futures.py", line 36, in delayed_raise
+    raise exception_value.with_traceback(traceback)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/xrootd.py", line 236, in callback
+    self._xrd_error(status)
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/uproot/source/xrootd.py", line 115, in _xrd_error
+    raise uproot._util._file_not_found(self._file_path, status.message)
+FileNotFoundError: file not found ([ERROR] Server responded with an error: [3002] Single readv transfer is too large.
+)
+
+    'root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/QCD_HT700to1000_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_new_pmx_102X_mc2017_realistic_v8-v1/70000/392A94D2-C499-2E40-AFFD-3A996C1EC9CD.root'
+
+Files may be specified as:
+   * str/bytes: relative or absolute filesystem path or URL, without any colons
+         other than Windows drive letter or URL schema.
+         Examples: "rel/file.root", "C:\abs\file.root", "http://where/what.root"
+   * str/bytes: same with an object-within-ROOT path, separated by a colon.
+         Example: "rel/file.root:tdirectory/ttree"
+   * pathlib.Path: always interpreted as a filesystem path or URL only (no
+         object-within-ROOT path), regardless of whether there are any colons.
+         Examples: Path("rel:/file.root"), Path("/abs/path:stuff.root")
+
+Functions that accept many files (uproot.iterate, etc.) also allow:
+   * glob syntax in str/bytes and pathlib.Path.
+         Examples: Path("rel/*.root"), "/abs/*.root:tdirectory/ttree"
+   * dict: keys are filesystem paths, values are objects-within-ROOT paths.
+         Example: {"/data_v1/*.root": "ttree_v1", "/data_v2/*.root": "ttree_v2"}
+   * already-open TTree objects.
+   * iterables of the above.
+

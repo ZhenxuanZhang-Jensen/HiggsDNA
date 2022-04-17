@@ -1,0 +1,42 @@
+DEBUG    [AnalysisManager : load_events] Loaded 1249731 events   analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/7FB522A2-801                
+         9-7046-BA45-F50FD34F7EE1.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 1001746 events   analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/8B1F7929-37A                
+         8-7D43-A9DB-97B41464A676.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 1105238 events   analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/9040F4A4-DDD                
+         B-994A-BA97-73039DE73811.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 7494 events from analysis.py:476
+         file 'root://cms-xrd-global.cern.ch//store/data/Run2017                
+         F/DoubleEG/NANOAOD/02Apr2020-v1/50000/921E1077-07F9-5A4                
+         A-839C-6EE63E218D58.root'.                                             
+DEBUG    [AnalysisManager : load_events] Loaded 810116 events    analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/92661288-85A                
+         B-5748-BCA1-89B268BAF80A.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 2137267 events   analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/97F04377-6C7                
+         5-3243-85EB-6FE9B84D5EBF.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 695222 events    analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/9BE29F0A-81D                
+         4-D040-B4C9-EEB456E9AD5D.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 1687337 events   analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/9C818A71-5EC                
+         6-954C-9F54-04B72BC71D1F.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 1496220 events   analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/A63A590F-E39                
+         8-A04E-A183-EC5B8DE5327F.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 1163500 events   analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/AAA13D54-C65                
+         C-7847-B855-52FDA406D717.root'.                                        
+INFO     [TagSequence : __init__] Creating tag sequence with  tag_sequence.py:37
+         the following tags and priority:                                       

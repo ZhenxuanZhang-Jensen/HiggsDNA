@@ -1,0 +1,12 @@
+DEBUG    [AnalysisManager : load_events] Loaded 1337250 events   analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017C/DoubleEG/NANOAOD/02Apr2020-v1/40000/CA369727-79B                
+         A-4740-945B-F06989F9E131.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 954656 events    analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017C/DoubleEG/NANOAOD/02Apr2020-v1/40000/CF2174A6-418                
+         5-7D46-A1C2-E712BF77AE9C.root'.                                        
+DEBUG    [AnalysisManager : load_events] Loaded 1209463 events   analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/data/Ru                
+         n2017C/DoubleEG/NANOAOD/02Apr2020-v1/40000/D524B5BF-A37                
+         B-F647-B89C-C0C8DFA3444F.root'.                                        

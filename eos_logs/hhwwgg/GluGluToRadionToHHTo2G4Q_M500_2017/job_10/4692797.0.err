@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/GluGluToRadionToHHTo2G4Q_M500_2017/job_10/GluGluToRadionToHHTo2G4Q_M500_2017_executable_job10.py", line 4, in <module>
+    from higgs_dna.analysis import run_analysis
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/analysis.py", line 16, in <module>
+    from higgs_dna.samples.sample_manager import SampleManager
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/samples/sample_manager.py", line 5, in <module>
+    from tqdm import tqdm 
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/tqdm/__init__.py", line 3, in <module>
+    from .cli import main  # TODO: remove in v5.0.0
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/tqdm/cli.py", line 9, in <module>
+    from .std import TqdmKeyError, TqdmTypeError, tqdm
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1016, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_data
+OSError: [Errno 5] Input/output error

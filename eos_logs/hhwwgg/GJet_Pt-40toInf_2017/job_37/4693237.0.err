@@ -1,0 +1,33 @@
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/subprocess.py", line 69, in <module>
+    import msvcrt
+ModuleNotFoundError: No module named 'msvcrt'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/eos/user/z/zhenxuan/hhwwgg/GJet_Pt-40toInf_2017/job_37/GJet_Pt-40toInf_2017_executable_job37.py", line 3, in <module>
+    from higgs_dna.utils.logger_utils import setup_logger
+  File "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/higgs_dna/utils/logger_utils.py", line 2, in <module>
+    from rich.logging import RichHandler
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/rich/logging.py", line 9, in <module>
+    from ._log_render import LogRender, FormatTimeCallable
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/rich/_log_render.py", line 5, in <module>
+    from .text import Text, TextType
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/rich/text.py", line 5, in <module>
+    from rich.emoji import EmojiVariant
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/rich/emoji.py", line 4, in <module>
+    from .jupyter import JupyterMixin
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/rich/jupyter.py", line 4, in <module>
+    from .segment import Segment
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/rich/segment.py", line 28, in <module>
+    from .style import Style
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/rich/style.py", line 8, in <module>
+    from .color import Color, ColorParseError, ColorSystem, blend_rgb
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/site-packages/rich/color.py", line 1, in <module>
+    import platform
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/platform.py", line 119, in <module>
+    import subprocess
+  File "/eos/user/z/zhenxuan/higgs-dna/lib/python3.10/subprocess.py", line 74, in <module>
+    import _posixsubprocess
+ImportError: /eos/user/z/zhenxuan/higgs-dna/lib/python3.10/lib-dynload/_posixsubprocess.cpython-310-x86_64-linux-gnu.so: cannot read file data: Input/output error

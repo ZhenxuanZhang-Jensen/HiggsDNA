@@ -1,0 +1,11 @@
+DEBUG    [AnalysisManager : load_events] Loaded 20794 events     analysis.py:476
+         from file 'root://cms-xrd-global.cern.ch//store/mc/RunI                
+         IFall17NanoAODv7/GluGluToRadionToHHTo2G4Q_M-3000_narrow                
+         _TuneCP5_PSWeights_13TeV-madgraph-pythia8/NANOAODSIM/PU                
+         2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v                
+         1/250000/3D5EDDAD-C47F-644B-B80D-D6EBDF3EF7F8.root'.                   
+INFO     [TagSequence : __init__] Creating tag sequence with  tag_sequence.py:37
+         the following tags and priority:                                       
+INFO     [TagSequence : __init__] The 0-th tag set has        tag_sequence.py:59
+         taggers ['diphoton_tagger'] (listed in order                           
+         priority will be given).                                               
