@@ -107,6 +107,9 @@
         ]
     },
     "variables_of_interest" : [
+        "GenW1_qq_pt","GenW1_qq_eta","GenW1_qq_phi","GenW1_qq_mass",
+        "GenW2_qq_pt","GenW2_qq_eta","GenW2_qq_phi","GenW2_qq_mass",
+        "GenHWW_qqqq_Higgs_pt","GenHWW_qqqq_Higgs_eta","GenHWW_qqqq_Higgs_phi","GenHWW_qqqq_Higgs_mass",
         "MET_MetUnclustEnUpDeltaX",	"MET_MetUnclustEnUpDeltaY","MET_covXX","MET_covXY","MET_covYY","MET_fiducialGenPhi","MET_fiducialGenPt","MET_phi","MET_pt","MET_significance",	"MET_sumEt",	"MET_sumPtUnclustered",
         "PuppiMET_phi","PuppiMET_phiJERUp","PuppiMET_phiJESUp",	"PuppiMET_pt","PuppiMET_sumEt",
         "ChsMET_phi","ChsMET_pt","ChsMET_sumEt",

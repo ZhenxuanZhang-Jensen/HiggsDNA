@@ -1,6 +1,7 @@
 import logging
 
 import awkward
+import numpy
 import vector
 from higgs_dna.selections import (fatjet_selections, jet_selections,
                                   lepton_selections,gen_selections)
@@ -68,24 +69,74 @@ class HHWW_Preselection(Tagger):
     def calculate_selection(self, events):
         # data will not select gen level infos
         # Gen selection
-        # if not self.is_data:            
-        #     W1_candi,W2_candi,H_candi = gen_selections.select_ww_to_qqqq(events.GenPart)
-        #     awkward_utils.add_field(
-        #     events=events,
-        #     name="GenW1_qq",
-        #     data=awkward.Array(W1_candi)
-        #     )
-        #     awkward_utils.add_field(
-        #     events=events,
-        #     name="GenW2_qq",
-        #     data=awkward.Array(W1_candi)
-        #     )
-        #     awkward_utils.add_field(
-        #     events=events,
-        #     name="GenHWW_qqqq_Higgs",
-        #     data=awkward.Array(W1_candi)
-        #     )
-
+        # if not self.is_data:    
+        gen_part = awkward.Array(events.GenPart,with_name="Momentum4D")
+        logger.debug(" debug before gen selection :")        
+        W1_candi,W2_candi,H_candi = gen_selections.select_ww_to_qqqq(gen_part)
+        logger.debug(" debug after gen selection :")        
+        # logger.debug(" the type of the W1candi is %s :"%type(W1_candi))        
+        # logger.debug(" W1candi:",W1_candi)        
+        W1_candi4D = awkward.zip(
+            {
+            "pt": numpy.array(W1_candi)[:,0],
+            "eta": numpy.array(W1_candi)[:,1],
+            "phi": numpy.array(W1_candi)[:,2],
+            "mass": numpy.array(W1_candi)[:,3],
+            }, 
+        with_name="Momentum4D")
+        W2_candi4D = awkward.zip(
+            {
+            "pt": numpy.array(W2_candi)[:,0],
+            "eta": numpy.array(W2_candi)[:,1],
+            "phi": numpy.array(W2_candi)[:,2],
+            "mass": numpy.array(W2_candi)[:,3],
+            }, 
+        with_name="Momentum4D")
+        H_candi4D = awkward.zip(
+            {
+            "pt": numpy.array(H_candi)[:,0],
+            "eta": numpy.array(H_candi)[:,1],
+            "phi": numpy.array(H_candi)[:,2],
+            "mass": numpy.array(H_candi)[:,3],
+            }, 
+        with_name="Momentum4D")
+        unflatten_W1_candi4D = awkward.unflatten(W1_candi4D,1)
+        unflatten_W2_candi4D = awkward.unflatten(W2_candi4D,1)
+        unflatten_H_candi4D = awkward.unflatten(H_candi4D,1)
+        # awkward_utils.add_field(
+        # events=events,
+        # name="GenW1_qq",
+        # data=unflatten_W1_candi4D
+        # )
+        # awkward_utils.add_field(
+        # events=events,
+        # name="GenW2_qq",
+        # data=unflatten_W2_candi4D
+        # )
+        # awkward_utils.add_field(
+        # events=events,
+        # name="GenHWW_qqqq_Higgs",
+        # data=unflatten_H_candi4D
+        # )
+# -------------------------------- add object -------------------------------- #
+        # awkward_utils.add_object_fields(
+        #         events = events,
+        #         name = "GenW1_qq",
+        #         objects = unflatten_W1_candi4D,
+        #         n_objects = 1
+        # )
+        # awkward_utils.add_object_fields(
+        #         events = events,
+        #         name = "GenW2_qq",
+        #         objects = unflatten_W2_candi4D,
+        #         n_objects = 1
+        # )
+        # awkward_utils.add_object_fields(
+        #         events = events,
+        #         name = "GenHWW_qqqq_Higgs",
+        #         objects = unflatten_H_candi4D,
+        #         n_objects = 1
+        # )
         # # H->gg
         # gen_hgg = gen_selections.select_x_to_yz(events.GenPart, 25, 24, 24)
         # awkward_utils.add_object_fields(

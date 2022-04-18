@@ -1,6 +1,6 @@
 import awkward
 import vector
-
+import numba
 vector.register_awkward()
 
 from higgs_dna.utils import awkward_utils
@@ -45,3 +45,70 @@ def select_x_to_yz(gen_part, x_pdgId, y_pdgId, z_pdgId):
         gen_child_pairs = gen_child_pairs[awkward.argsort(gen_child_pairs.GenParent.pt, ascending = False, axis = 1)] 
 
     return gen_child_pairs   
+@numba.njit
+def select_ww_to_qqqq(gen_part):
+    """test for numba njit to improve the speed of loop in python"""
+    # print(gen_part[0][1] + gen_part[0][2])
+    #event loop
+    W1_content = []
+    W2_content = []
+    H_content = []
+    for i in range(len(gen_part)):
+    # for i in range(1):
+        list_quark_candidate = []
+        #object loop
+        for j in range(len(gen_part[i])):
+            cut_Wplus = (abs(gen_part.pdgId[i][j]) <= 6 and (abs(gen_part.pdgId[i][gen_part.genPartIdxMother[i][j]]) == 24))
+            if(cut_Wplus):
+                # a = 1
+                list_quark_candidate.append(gen_part[i][j])
+        W1_candi = list_quark_candidate[0]+list_quark_candidate[1]
+        W2_candi = list_quark_candidate[2]+list_quark_candidate[3]
+        if(W1_candi.mass > W2_candi.mass):
+            W1_candi = vector.obj(
+                pt = (list_quark_candidate[0]+list_quark_candidate[1]).pt,
+                eta = (list_quark_candidate[0]+list_quark_candidate[1]).eta,
+                phi = (list_quark_candidate[0]+list_quark_candidate[1]).phi,
+                mass = (list_quark_candidate[0]+list_quark_candidate[1]).mass
+            )
+            W2_candi = vector.obj(
+                pt = (list_quark_candidate[2]+list_quark_candidate[3]).pt,
+                eta = (list_quark_candidate[2]+list_quark_candidate[3]).eta,
+                phi = (list_quark_candidate[2]+list_quark_candidate[3]).phi,
+                mass = (list_quark_candidate[2]+list_quark_candidate[3]).mass
+            )
+        else:
+            W2_candi = vector.obj(
+                pt = (list_quark_candidate[0]+list_quark_candidate[1]).pt,
+                eta = (list_quark_candidate[0]+list_quark_candidate[1]).eta,
+                phi = (list_quark_candidate[0]+list_quark_candidate[1]).phi,
+                mass = (list_quark_candidate[0]+list_quark_candidate[1]).mass
+            )
+            W1_candi = vector.obj(
+                pt = (list_quark_candidate[2]+list_quark_candidate[3]).pt,
+                eta = (list_quark_candidate[2]+list_quark_candidate[3]).eta,
+                phi = (list_quark_candidate[2]+list_quark_candidate[3]).phi,
+                mass = (list_quark_candidate[2]+list_quark_candidate[3]).mass
+            )
+        H_candi = vector.obj(px = 0., py = 0., pz = 0., E = 0.) # IMPORTANT NOTE: you need to initialize this to an empty vector first. Otherwise, you will get ZeroDivisionError exceptions for like 1 out of a million events (seemingly only with numba). 
+        H_candi = H_candi + W1_candi + W2_candi
+        W1_content.append([
+            W1_candi.pt,
+            W1_candi.eta,
+            W1_candi.phi,
+            W1_candi.mass,
+        ])
+        W2_content.append([
+            W2_candi.pt,
+            W2_candi.eta,
+            W2_candi.phi,
+            W2_candi.mass,
+        ])
+        H_content.append([
+            H_candi.pt,
+            H_candi.eta,
+            H_candi.phi,
+            H_candi.mass,
+        ])
+
+    return W1_content,W2_content,H_content
