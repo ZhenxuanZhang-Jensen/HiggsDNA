@@ -90,19 +90,28 @@
         ]
     },
     "variables_of_interest" : [
-        "GEN_q1_pt","GEN_q1_eta","GEN_q1_phi","GEN_q1_mass",
-        "GEN_q2_pt","GEN_q2_eta","GEN_q2_phi","GEN_q2_mass",
-        "GEN_q3_pt","GEN_q3_eta","GEN_q3_phi","GEN_q3_mass",
-        "GEN_q4_pt","GEN_q4_eta","GEN_q4_phi","GEN_q4_mass",
-        "GEN_pho1_pt","GEN_pho1_eta","GEN_pho1_phi","GEN_q4_mass",
-        "GEN_pho2_pt","GEN_pho2_eta","GEN_pho2_phi","GEN_pho2_mass",
-        "GenW1_qq_pt","GenW1_qq_eta","GenW1_qq_phi","GenW1_qq_mass",
-        "GenW2_qq_pt","GenW2_qq_eta","GenW2_qq_phi","GenW2_qq_mass",
-        "GenHWW_qqqq_Higgs_pt","GenHWW_qqqq_Higgs_eta","GenHWW_qqqq_Higgs_phi","GenHWW_qqqq_Higgs_mass"
+        ["GEN_q1","pt"],["GEN_q1","eta"],["GEN_q1","phi"],["GEN_q1","mass"],
+        ["GEN_q2","pt"],["GEN_q2","eta"],["GEN_q2","phi"],["GEN_q2","mass"],
+        ["GEN_q3","pt"],["GEN_q3","eta"],["GEN_q3","phi"],["GEN_q3","mass"],
+        ["GEN_q4","pt"],["GEN_q4","eta"],["GEN_q4","phi"],["GEN_q4","mass"],
+        ["GEN_pho1","pt"],["GEN_pho1","eta"],["GEN_pho1","phi"],["GEN_pho1","mass"],
+        ["GEN_pho2","pt"],["GEN_pho2","eta"],["GEN_pho2","phi"],["GEN_pho2","mass"],
+        ["GenW1_qq","pt"],["GenW1_qq","eta"],["GenW1_qq","phi"],["GenW1_qq","mass"],
+        ["GenW2_qq","pt"],["GenW2_qq","eta"],["GenW2_qq","phi"],["GenW2_qq","mass"],
+        ["GenHWW_qqqq_Higgs","pt"],["GenHWW_qqqq_Higgs","eta"],["GenHWW_qqqq_Higgs","phi"],["GenHWW_qqqq_Higgs","mass"]
+
 
     ],
     "branches": [
         "GenPart_eta", "GenPart_genPartIdxMother", "GenPart_mass", "GenPart_pdgId", "GenPart_phi", "GenPart_pt", "GenPart_status","GenPart_statusFlags",
+        "Photon_pt", "Photon_eta", "Photon_phi", "Photon_mass",
+        "Photon_pixelSeed", "Photon_mvaID", "Photon_electronVeto",
+        "Photon_sieie",
+        "Photon_r9", "Photon_hoe", "Photon_pfRelIso03_chg", "Photon_pfRelIso03_all",
+        "Photon_isScEtaEB", "Photon_isScEtaEE",
+        "Photon_trkSumPtHollowConeDR03", "Photon_photonIso", "Photon_chargedHadronIso",
+        "Photon_genPartFlav",
+        "L1PreFiringWeight_Nom", "L1PreFiringWeight_Up", "L1PreFiringWeight_Dn",
         "genWeight", "run", "event", "fixedGridRhoAll"
         ]
 }

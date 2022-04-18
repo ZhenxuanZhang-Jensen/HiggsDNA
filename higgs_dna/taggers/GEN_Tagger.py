@@ -42,6 +42,46 @@ class GEN_Preselection(Tagger):
         # Gen selection
         # if not self.is_data:    
         gen_part = awkward.Array(events.GenPart,with_name="Momentum4D")
+        gen_qqqq = gen_part[(abs(gen_part.pdgId)<= 6) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24) ]
+        gen_gg = gen_part[(abs(gen_part.pdgId) == 22) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 25) ]
+        unflatten_gen_q1 = awkward.unflatten(gen_qqqq[:,0],1)
+        unflatten_gen_q2 = awkward.unflatten(gen_qqqq[:,1],1)
+        unflatten_gen_q3 = awkward.unflatten(gen_qqqq[:,2],1)
+        unflatten_gen_q4 = awkward.unflatten(gen_qqqq[:,3],1)
+        unflatten_gen_pho1 = awkward.unflatten(gen_gg[:,0],1)
+        unflatten_gen_pho2 = awkward.unflatten(gen_gg[:,1],1)
+        logger.debug(unflatten_gen_q1)
+        awkward_utils.add_field(
+        events = events,
+        name = "GEN_q1",
+        data = unflatten_gen_q1
+        )
+        awkward_utils.add_field(
+        events = events,
+        name = "GEN_q2",
+        data = unflatten_gen_q2
+        )
+        awkward_utils.add_field(
+        events = events,
+        name = "GEN_q3",
+        data = unflatten_gen_q3
+        )
+        awkward_utils.add_field(
+        events = events,
+        name = "GEN_q4",
+        data = unflatten_gen_q4
+        )
+        awkward_utils.add_field(
+        events = events,
+        name = "GEN_pho1",
+        data = unflatten_gen_pho1
+        )
+        awkward_utils.add_field(
+        events = events,
+        name = "GEN_pho2",
+        data = unflatten_gen_pho2
+        )
+
         logger.debug(" debug before gen selection :")        
         W1_candi,W2_candi,H_candi = gen_selections.select_ww_to_qqqq(gen_part)
         logger.debug(" debug after gen selection :")        
@@ -74,7 +114,25 @@ class GEN_Preselection(Tagger):
         unflatten_W1_candi4D = awkward.unflatten(W1_candi4D,1)
         unflatten_W2_candi4D = awkward.unflatten(W2_candi4D,1)
         unflatten_H_candi4D = awkward.unflatten(H_candi4D,1)
-
+        awkward_utils.add_field(
+        events=events,
+        name="GenW1_qq",
+        data=unflatten_W1_candi4D
+        )
+        awkward_utils.add_field(
+        events=events,
+        name="GenW2_qq",
+        data=unflatten_W2_candi4D
+        )
+        awkward_utils.add_field(
+        events=events,
+        name="GenHWW_qqqq_Higgs",
+        data=unflatten_H_candi4D
+        )
+        logger.debug(" debug before bug :")        
+        n_photons = awkward.num(events.Photon)
+        cuts = (n_photons>-1)
+        logger.debug(" debug after bug :")        
 
         
-        return events
+        return cuts,events
