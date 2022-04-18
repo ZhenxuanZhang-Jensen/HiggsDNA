@@ -89,7 +89,10 @@
                 "module_name" : "higgs_dna.taggers.hh_ggtautau_nonres_sr_tagger",
                 "tagger" : "HHggTauTauNonResSRTagger",
                 "kwargs" : {
-                    "name" : "HHggTauTauNonResSignalRegionTagger"
+                    "name" : "HHggTauTauNonResSignalRegionTagger",
+                    "options" : {
+                        "bdt_cuts" : [0.0,0.0]
+                    }
                 }
             }
     ],
@@ -338,7 +341,7 @@
     },
     "samples" : {
         "catalog" : "metadata/samples/hhggtautau_ul_nanoaodv9.json",
-        "sample_list" : ["Data","ttH_M125","HHggTauTau","HHggWW_dileptonic","HHggWW_semileptonic","ggH_M125","VBFH_M125","VH_M125","GJets_HT-40To100","GJets_HT-100To200","GJets_HT-200To400","GJets_HT-400To600","GJets_HT-600ToInf","TTJets","TTGamma","TTGG","WGamma","ZGamma","DiPhoton"],
+        "sample_list" : ["Data","ttH_M125","HHggTauTau","HHggWW_dileptonic","HHggWW_semileptonic","ggH_M125","VBFH_M125","VH_M125","GJets_HT-40To100","GJets_HT-100To200","GJets_HT-200To400","GJets_HT-400To600","GJets_HT-600ToInf","TTJets","TTGamma","TTGG","WGamma","ZGamma","DiPhoton"], 
         "years" : ["2016UL_preVFP", "2016UL_postVFP", "2017", "2018"] 
     }
 }

@@ -72,116 +72,133 @@
         }
     },
     "GJets_HT-40To100" : {
-        "fpo" : 1,
+        "fpo" : 10,
         "xs" : 23100.0,
         "files" : {
-            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT40To100_2016/",
-            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT40To100_2017/",
-            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT40To100_2018/"
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT40To100/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT40To100/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT40To100/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT40To100/*2018*.root"
          }
     },
     "GJets_HT-100To200" : {
-        "fpo" : 1,
+        "fpo" : 10,
         "xs" : 8631.0,
         "files" : {
-            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-100To200_2016/",
-            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-100To200_2017/",
-            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-100To200_2018/"
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-100To200/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-100To200/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-100To200/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-100To200/*2018*.root"
         }
     },
     "GJets_HT-200To400" : {
-        "fpo" : 1,
+        "fpo" : 10,
         "xs" : 2280.0,
         "files" : {
-            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-200To400_2016/",
-            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-200To400_2017/",
-            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-200To400_2018/"
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-200To400/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-200To400/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-200To400/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-200To400/*2018*.root"
         }
     },
     "GJets_HT-400To600" : {
-        "fpo" : 1,
+        "fpo" : 10,
         "xs" : 273.0,
         "files" : {
-            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-400To600_2016/",
-            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-400To600_2017/",
-            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-400To600_2018/"
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-400To600/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-400To600/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-400To600/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-400To600/*2018*.root"
         }
     },
     "GJets_HT-600ToInf" : {
+        "fpo" : 10,
         "xs" : 1,
         "files" : {
-            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-600ToInf_2016/",
-            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-600ToInf_2017/",
-            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/GJets_HT-600ToInf_2018/"
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-600ToInf/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-600ToInf/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-600ToInf/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/GJets_HT-600ToInf/*2018*.root"
         }
     },
     "TTJets" : {
-        "fpo" : 1,
+        "fpo" : 10,
         "xs" : 831.76,
         "files" : {
-            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/TTbar_2016/",
-            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/TTbar_2017/",
-            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/TTbar_2018/"
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/TTbar/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/TTbar/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/TTbar/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/TTbar/*2018*.root"
         }
     },
     "TTGamma" : {
-        "fpo" : 1,
+        "fpo" : 3,
         "xs" : {
-            "2016" : 3.819,
+            "2016UL_preVFP" : 3.819,
+            "2016UL_postVFP" : 3.819,
             "2017" : 4.078,
             "2018" : 4.078
         },
         "files" : {
-           "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/added/TTGamma_2016/",
-           "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/hadded/TTGamma_2017/",
-           "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/hadded/TTGamma_2018/"
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/TTGamma/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/TTGamma/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/TTGamma/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/TTGamma/*2018*.root"
        }
     },
     "TTGG" : {
         "fpo" : 1,
         "xs" : {
-            "2016" : 0.01731,
+            "2016UL_preVFP" : 0.01731,
+            "2016UL_postVFP" : 0.01731,
             "2017" : 0.01687,
             "2018" : 0.01687
         },
         "files" : {
-            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/TTGG_2016/",
-            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/TTGG_2017/",
-            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/TTGG_2018/"
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/TTGG/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/TTGG/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/TTGG/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/TTGG/*2018*.root"
         }
     },
     "WGamma" : {
-        "fpo" : 1,
+        "fpo" : 5,
         "xs" : {
-            "2016" : 191.4,
+            "2016UL_preVFP" : 191.4,
+            "2016UL_postVFP" : 191.4,
             "2017" : 191.4,
             "2018" : 191.4
         },
         "files" : {
-            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/WGamma_2016/",
-            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/WGamma_2017/",
-            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/WGamma_2018/"
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/WGamma/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/WGamma/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/WGamma/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/WGamma/*2018*.root"
         }
     },
     "ZGamma" : {
-        "fpo" : 1,
+        "fpo" : 5,
         "xs" : {
-            "2016" : 55.6,
+            "2016UL_preVFP" : 55.6,
+            "2016UL_postVFP" : 55.6,
             "2017" : 55.6,
             "2018" : 55.6
         },
         "files" : {
-            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/ZGamma_2016/",
-            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/ZGamma_2017/",
-            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/ZGamma_2018/"
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/ZGamma/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/ZGamma/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/ZGamma/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/ZGamma/*2018*.root"
        }
     },
     "DiPhoton" : {
+        "fpo" : 1,
         "xs" : 1,
         "files" : {
-            "2016" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/DiPhoton_2016/",
-            "2017" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/DiPhoton_2017/",
-            "2018" : "/ceph/cms/store/user/hmei/ggtautau/ggtautau_20220316/DiPhoton_2018/"
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/DiPhoton/*2016_APV.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/DiPhoton/*2016.root",
+            "2017" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/DiPhoton/*2017*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/DiPhoton/*2018*.root" 
         }
     }, 
     "Data" : {
