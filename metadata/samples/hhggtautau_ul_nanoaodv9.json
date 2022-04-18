@@ -193,7 +193,7 @@
     },
     "DiPhoton" : {
         "fpo" : 1,
-        "xs" : 1,
+        "xs" : 84.4,
         "files" : {
             "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/DiPhoton/*2016_APV.root",
             "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/DiPhoton/*2016.root",
