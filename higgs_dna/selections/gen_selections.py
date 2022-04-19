@@ -48,7 +48,6 @@ def select_x_to_yz(gen_part, x_pdgId, y_pdgId, z_pdgId):
 @numba.njit
 def select_ww_to_qqqq(gen_part):
     """test for numba njit to improve the speed of loop in python"""
-    # print(gen_part[0][1] + gen_part[0][2])
     #event loop
     W1_content = []
     W2_content = []
