@@ -347,8 +347,8 @@ class Task():
             merged_events = awkward.concatenate(merged_events)
             if not self.config["sample"]["is_data"]:
                 logger.debug("[Task : merge_outputs] Task '%s' : Applying scale1fb and lumi. Scaling central weight branch '%s' in output file '%s' by scale1fb (%.9f) times lumi (%.2f). Adding branch '%s' in output file which has no lumi scaling applied." % (self.name, CENTRAL_WEIGHT, merged_output, self.scale1fb, self.lumi, CENTRAL_WEIGHT + "_no_lumi"))
-                logger.debug(f"[Task : sumWeight is {self.phys_summary['sum_weights']}]")
-                logger.debug(f"[Task : typical central weight is {merged_events['weight_central']}]")
+                #logger.debug(f"[Task : sumWeight is {self.phys_summary['sum_weights']}]")
+                #logger.debug(f"[Task : typical central weight is {merged_events['weight_central']}]")
 
                 central_weight = merged_events[CENTRAL_WEIGHT] * self.scale1fb * self.lumi
                 central_weight_no_lumi = merged_events[CENTRAL_WEIGHT] * self.scale1fb

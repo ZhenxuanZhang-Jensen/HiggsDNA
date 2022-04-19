@@ -122,6 +122,10 @@ class SystematicsProducer():
                         syst_info["branches"] = None
                     elif syst_info["method"] == "from_branch":
                         syst_info["function"] = None
+
+                    if "normalization_factors" not in syst_info.keys():
+                        syst_info["normalization_factors"] = None
+
                     if "input_collection" in syst_info.keys():
                         if not "target_collections" in syst_info.keys():
                             logger.debug("[SystematicsProducer : add_systematics] No target collections specified for syst '%s', using the input collection '%s' as the target" % (syst, syst_info["input_collection"]))
@@ -145,6 +149,7 @@ class SystematicsProducer():
                                 function = syst_info["function"],
                                 input_collection = syst_info["input_collection"],
                                 target_collection = target_collection,
+                                normalization_factors = syst_info["normalization_factors"],
                                 sample = self.sample
                         )
 

@@ -62,19 +62,6 @@ def btag_deepjet_reshape_sf(events, year, central_only, input_collection):
     evaluator = _core.CorrectionSet.from_file(misc_utils.expand_path(BTAG_RESHAPE_SF_FILE[year]))
    
     jets = events[input_collection]
-
-    # Transform jet flavor from pdgID -> BTV flavor definition: 0=b, 1=c, 2=udsg 
-    #jets["flavor"] = awkward.ones_like(jets.hadronFlavour) * 2
-    #jets["flavor"] = awkward.where(
-    #    jets.hadronFlavour == 4,
-    #    awkward.ones_like(jets.hadronFlavour) * 1,
-    #    jets["flavor"]
-    #)
-    #jets["flavor"] = awkward.where(
-    #    jets.hadronFlavour == 5,
-    #    awkward.ones_like(jets.hadronFlavour) * 0,
-    #    jets["flavor"]
-    #)  
     jets["flavor"] = jets.hadronFlavour
 
     # Flatten jets then convert to numpy for compatibility with correctionlib
