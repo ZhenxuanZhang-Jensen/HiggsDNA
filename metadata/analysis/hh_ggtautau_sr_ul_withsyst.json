@@ -233,6 +233,15 @@
                     "down" : ["Photon", "pt_ScaleDown"]
                 }
             },
+            "smear" : {
+                "method" : "from_branch",
+                "branch_modified" : ["Photon", "pt"],
+                "branches" : {
+                    "up" : ["Photon", "dEsigmaUp"],
+                    "down" : ["Photon", "dEsigmaDown"]
+                },
+                "additive" : true
+            }, 
             "JER" : {
                 "method" : "from_branch",
                 "branch_modified" : ["Jet", "pt"],
@@ -298,6 +307,7 @@
             "Photon_r9", "Photon_hoe", "Photon_pfRelIso03_chg", "Photon_pfRelIso03_all",
             "Photon_isScEtaEB", "Photon_isScEtaEE",
             "Photon_genPartFlav",
+            "Photon_dEsigmaUp", "Photon_dEsigmaDown",
             "Tau_pt", "Tau_eta", "Tau_phi", "Tau_mass", "Tau_idDeepTau2017v2p1VSe", "Tau_idDeepTau2017v2p1VSjet", "Tau_idDeepTau2017v2p1VSmu", "Tau_charge", "Tau_dz", "Tau_idDecayModeNewDMs",
             "Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass", "Muon_charge", "Muon_pfRelIso03_all", "Muon_dxy", "Muon_dz", "Muon_tightId", "Muon_isGlobal",
             "Muon_ISO_SF", "Muon_ISO_SFstat", "Muon_ISO_SFsyst",
