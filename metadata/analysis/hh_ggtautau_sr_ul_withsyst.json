@@ -348,7 +348,7 @@
     },
     "samples" : {
         "catalog" : "metadata/samples/hhggtautau_ul_nanoaodv9.json",
-        "sample_list" : ["Data","ttH_M125","HHggTauTau","HHggWW_dileptonic","HHggWW_semileptonic","ggH_M125","VBFH_M125","VH_M125","GJets_HT-40To100","GJets_HT-100To200","GJets_HT-200To400","GJets_HT-400To600","GJets_HT-600ToInf","TTJets","TTGamma","TTGG","WGamma","ZGamma","DiPhoton"],
+        "sample_list" : ["Data","ttH_M125","HHggTauTau","HHggWW_dileptonic","HHggWW_semileptonic","ggH_M125","VBFH_M125","VH_M125","GJets_HT-40To100","GJets_HT-100To200","GJets_HT-200To400","GJets_HT-400To600","GJets_HT-600ToInf","TTJets","TTGamma","TTGG","WGamma","ZGamma","DiPhoton","HH_ggTauTau_EFT_node_1","HH_ggTauTau_EFT_node_2","HH_ggTauTau_EFT_node_3","HH_ggTauTau_EFT_node_4","HH_ggTauTau_EFT_node_5","HH_ggTauTau_EFT_node_6","HH_ggTauTau_EFT_node_7","HH_ggTauTau_EFT_node_8","HH_ggTauTau_EFT_node_9","HH_ggTauTau_EFT_node_10","HH_ggTauTau_EFT_node_11","HH_ggTauTau_EFT_node_12","HHggTauTau_kl0","HHggTauTau_kl2p45","HHggTauTau_kl5","HHggWW_dileptonic_kl0","HHggWW_dileptonic_kl2p45","HHggWW_dileptonic_kl5","HHggWW_semileptonic_kl0","HHggWW_semileptonic_kl2p45","HHggWW_semileptonic_kl5"],
         "years" : ["2016UL_preVFP", "2016UL_postVFP", "2017", "2018"] 
     }
 }
