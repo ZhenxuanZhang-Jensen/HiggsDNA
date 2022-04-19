@@ -23,7 +23,7 @@ DEFAULT_OPTIONS = {
         "pt_tautau_SVFit", "eta_tautau_SVFit_bdt", "m_tautau_SVFit", "dR_tautau_SVFit", "dR_ggtautau_SVFit", "dPhi_tautau_SVFit", "dPhi_ggtautau_SVFit", "m_tautau_vis", "pt_tautau_vis", "eta_tautau_vis_bdt",
         "mX","m_llg_lead", "m_llg_subl"
     ],
-    "bdt_cuts" : [0.9910, 0.972815]
+    "bdt_cuts" : [0.9928, 0.971078]
 }
 
 class HHggTauTauNonResSRTagger(Tagger):
