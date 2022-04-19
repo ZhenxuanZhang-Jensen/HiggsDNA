@@ -79,8 +79,8 @@ class SampleManager():
                 # Get input files
                 files = []
                 if year not in info["files"].keys():
-                    logger.exception("[SampleManager : get_samples] Could not find any information about 'files' in samples catalog for sample '%s', year '%s'." % (sample, year))
-                    raise ValueError()
+                    logger.warning("[SampleManager : get_samples] Could not find any information about 'files' in samples catalog for sample '%s', year '%s'." % (sample, year))
+                    continue
 
                 self.samples[sample][year] = {}
 
