@@ -10,6 +10,36 @@
             "2018" : "/ceph/cms/store/user/fsetti/c++_looper_ul_output/23Mar2022/ttH/*2018*.root" 
         }
     },
+    "ttHH_ggbb" : {
+        "xs" : 2.055e-06,
+        "fpo" : 1,
+        "files" : {
+            "2016UL_preVFP" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/ttHH_HHToBBGG_5f_LO_2016_APV_220322/*/*/*/*.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/ttHH_HHToBBGG_5f_LO_2016_220322/*/*/*/*.root",
+            "2017" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/ttHH_HHToBBGG_5f_LO_2017_100322/*/*/*/*.root",
+            "2018" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/ttHH_HHToBBGG_5f_LO_2018_100322/*/*/*/*.root"
+        }
+    },
+    "ttHH_ggTauTau" : {
+        "xs" : 2.21e-07,
+        "fpo" : 1,
+        "files" : {
+            "2016UL_preVFP" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/ttHH_HHToTAUTAUGG_5f_LO_2016_APV_220322/*/*/*/*.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/ttHH_HHToTAUTAUGG_5f_LO_2016_220322/*/*/*/*.root",
+            "2017" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/ttHH_HHToTAUTAUGG_5f_LO_2017_100322/*/*/*/*.root",
+            "2018" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/ttHH_HHToTAUTAUGG_5f_LO_2018_100322/*/*/*/*.root"
+        }
+    },
+    "ttHH_ggWW" : {
+        "xs" : 7.53e-07,
+        "fpo" : 1,
+        "files" : {
+            "2016UL_preVFP" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/ttHH_HHToWWGG_5f_LO_2016_APV_220322/*/*/*/*.root",
+            "2016UL_postVFP" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/ttHH_HHToWWGG_5f_LO_2016_220322/*/*/*/*.root",
+            "2017" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/ttHH_HHToWWGG_5f_LO_2017_100322/*/*/*/*.root",
+            "2018" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/ttHH_HHToWWGG_5f_LO_2018_100322/*/*/*/*.root"
+        }
+    },
     "HH_ggTauTau_EFT_node_1" : {
         "xs" : 4.4195e-05,
         "fpo" : 1,

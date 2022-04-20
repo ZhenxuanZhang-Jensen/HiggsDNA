@@ -37,6 +37,7 @@ class JobsManager():
         self.copied_tars = False
         self.first_submit = True
         self.dashboard = []
+        self.scroll_idx = 0
 
         # Determine host and user
         self.user = do_cmd("whoami")
@@ -130,7 +131,6 @@ class JobsManager():
 
         if len(self.tasks) > int(lines/2): # don't take up more than half the terminal window
             scrolling = True
-            self.scroll_idx = 0
         else:
             scrolling = False
 
