@@ -267,22 +267,22 @@ class HHggTauTauPreselTagger(Tagger):
         )
 
         n_electrons = awkward.num(electrons)
-        awkward_utils.add_field(events, "n_electrons", n_electrons)
+        awkward_utils.add_field(events, "n_electrons", n_electrons, overwrite=True)
         
         n_muons = awkward.num(muons)
-        awkward_utils.add_field(events, "n_muons", n_muons)
+        awkward_utils.add_field(events, "n_muons", n_muons, overwrite=True)
         
         n_leptons = n_electrons + n_muons
-        awkward_utils.add_field(events, "n_leptons", n_leptons)
+        awkward_utils.add_field(events, "n_leptons", n_leptons, overwrite=True)
         
         n_taus = awkward.num(taus)
-        awkward_utils.add_field(events, "n_taus", n_taus)
+        awkward_utils.add_field(events, "n_taus", n_taus, overwrite=True)
         
         n_iso_tracks = awkward.num(iso_tracks)
-        awkward_utils.add_field(events, "n_iso_tracks", n_iso_tracks)
+        awkward_utils.add_field(events, "n_iso_tracks", n_iso_tracks, overwrite=True)
 
         n_jets = awkward.num(jets)
-        awkward_utils.add_field(events, "n_jets", n_jets)
+        awkward_utils.add_field(events, "n_jets", n_jets, overwrite=True)
 
 
         ### Presel step 2: Z veto ###
