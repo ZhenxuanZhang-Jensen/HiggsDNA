@@ -13,7 +13,7 @@ from higgs_dna.utils import awkward_utils, misc_utils
 DUMMY_VALUE = -999.
 DEFAULT_OPTIONS = {
     "electrons" : {
-        "pt" : 7.0,
+        "pt" : 10.0,
         "eta" : 2.5,
         "dxy" : 0.045,
         "dz" : 0.2,
@@ -22,7 +22,7 @@ DEFAULT_OPTIONS = {
         "veto_transition" : True,
     },
     "muons" : {
-        "pt" : 5.0,
+        "pt" : 15.0,
         "eta" : 2.4,
         "dxy" : 0.045,
         "dz" : 0.2,
