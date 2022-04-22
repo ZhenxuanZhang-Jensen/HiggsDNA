@@ -31,7 +31,7 @@ BRANCHES = {
         "2018" : [
             "HLT_Diphoton30_22_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90",
         ],
-        "any" : []
+        "any" : ["event", "run", "luminosityBlock"]
     },
     "mc" : {
         "2016APV" : [],
@@ -40,6 +40,6 @@ BRANCHES = {
         "2016UL_postVFP" : [],
         "2017" : [],
         "2018" : [],
-        "any" : []
+        "any" : ["event", "run", "luminosityBlock"]
     }
 }

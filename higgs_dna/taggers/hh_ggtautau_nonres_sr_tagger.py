@@ -14,7 +14,7 @@ from higgs_dna.utils import awkward_utils, misc_utils
 DEFAULT_OPTIONS = {
     "bdt_file" : "/home/users/hmei/myWorkspace/HiggsDNA/metadata/BDTs/20UL_30Mar2022_fixIsoTrk.xgb", # if running on condor, this file needs to be placed somewhere under higgs_dna/ so that it is included in the tar file. We probably want to think of a better long term solution for this.
     "bdt_features" : [
-        "n_electrons", "n_muons", "n_taus", "n_isoTrks", "n_jets", "n_bjets",
+        "n_electrons", "n_muons", "n_taus", "n_iso_tracks", "n_jets", "n_bjets",
         "MET_pt", "MET_gg_dPhi", "MET_ll_dPhi", "dPhi_MET_l", "lep12_dphi", "lep12_deta_bdt", "lep12_dr",
         "g1_ptmgg", "g1_eta_bdt", "g1_idmva", "g1_pixVeto", "g2_ptmgg", "g2_eta_bdt", "g2_idmva", "g2_pixVeto", "max_g_ptmgg", "min_g_ptmgg", "max_g_idmva", "min_g_idmva",
         "gg_ptmgg", "gg_eta", "gg_dR", "gg_dPhi", "gg_hel", "gg_tt_CS", "gg_tt_hel", "tt_hel",

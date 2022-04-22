@@ -30,7 +30,9 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
     standard_cuts = object_selections.select_objects(electrons, options, clean, name, tagger)
 
     if options["id"] == "WP90":
-        id_cut = (electrons.mvaFall17V2Iso_WP90 == True) | ((electrons.mvaFall17V2noIso_WP90 == True) & (electrons.pfRelIso03_all < 0.3)) 
+        id_cut = electrons.mvaFall17V2Iso_WP90 == True 
+    elif options["id"] == "WP80":
+        id_cut = electrons.mvaFall17V2Iso_WP80 == True
     elif not options["id"] or options["id"].lower() == "none":
         id_cut = electrons.pt > 0.
     else:
@@ -54,7 +56,7 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
 
 
 DEFAULT_MUONS = {
-        "pt" : 5.0,
+        "pt" : 15.0,
         "eta" : 2.5,
         "dxy" : 0.045,
         "dz" : 0.2,

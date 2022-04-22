@@ -460,6 +460,8 @@ class EventWeightSystematic(WeightSystematic):
             if central_only and not variation == "central":
                 continue
             weights[variation] = events[branch]
+            name = "weight_" + self.name + "_" + variation
+            awkward_utils.add_field(events, name, weights[variation], overwrite = True)
 
         return weights
 
