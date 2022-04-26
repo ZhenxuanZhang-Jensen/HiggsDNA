@@ -462,7 +462,7 @@ class AnalysisManager():
         events = []
         sum_weights = 0
         for file in files:
-            with uproot.open(file, timeout = 500) as f:
+            with uproot.open(file, timeout = 1800) as f:
                 runs = f["Runs"]
                 if "genEventCount" in runs.keys() and "genEventSumw" in runs.keys():
                     sum_weights += numpy.sum(runs["genEventSumw"].array())
