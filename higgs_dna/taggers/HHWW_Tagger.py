@@ -183,8 +183,8 @@ class HHWW_Preselection(Tagger):
             n_objects=7,
             dummy_value=-999
         )
-        bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis=1, ascending=False)]
-        bjets = bjets[bjets.btagDeepFlavB > self.options["btag_wp"][self.year]]
+        # bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis=1, ascending=False)]
+        # bjets = bjets[bjets.btagDeepFlavB > self.options["btag_wp"][self.year]]
 
         # Register as `vector.Momentum4D` objects so we can do four-vector operations with them
         electrons = awkward.Array(electrons, with_name="Momentum4D")
