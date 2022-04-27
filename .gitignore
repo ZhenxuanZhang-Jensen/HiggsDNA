@@ -6,7 +6,8 @@
 .vagrant/
 eos_logs/
 *.sh
-
+analysis_jupyter/
+output/
 # Mac/OSX
 .DS_Stor
 

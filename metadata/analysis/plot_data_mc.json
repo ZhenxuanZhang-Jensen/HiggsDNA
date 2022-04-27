@@ -1,0 +1,6 @@
+{
+    "GenHggHiggs_pt" : {
+        "bins" : "100, 0, 100.0",
+        "x_label" : "Lead gamma MVA ID"
+    }
+}
