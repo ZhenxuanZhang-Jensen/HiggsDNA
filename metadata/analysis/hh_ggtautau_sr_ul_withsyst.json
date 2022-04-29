@@ -5,7 +5,7 @@
         "function_name" : "run_analysis"
     },
     "variables_of_interest" : [
-        ["Diphoton", "mass"], ["Diphoton", "pt"], ["Diphoton", "eta"], ["Diphoton", "phi"],
+        ["Diphoton", "mass"], ["Diphoton", "pt"], ["Diphoton", "eta"], ["Diphoton", "phi"], ["Diphoton", "helicity"],
         ["LeadPhoton", "pt"], ["LeadPhoton", "eta"], ["LeadPhoton", "phi"], ["LeadPhoton", "mass"], ["LeadPhoton", "mvaID"], ["LeadPhoton", "genPartFlav"], ["LeadPhoton", "pixelSeed"],
         ["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"], ["SubleadPhoton", "genPartFlav"], ["SubleadPhoton", "pixelSeed"],
         "jet_1_pt", "jet_1_eta", "jet_1_phi", "jet_1_mass", "jet_1_btagDeepFlavB",
@@ -309,7 +309,7 @@
             "Photon_genPartFlav",
             "Photon_dEsigmaUp", "Photon_dEsigmaDown",
             "Tau_pt", "Tau_eta", "Tau_phi", "Tau_mass", "Tau_idDeepTau2017v2p1VSe", "Tau_idDeepTau2017v2p1VSjet", "Tau_idDeepTau2017v2p1VSmu", "Tau_charge", "Tau_dz", "Tau_idDecayModeNewDMs",
-            "Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass", "Muon_charge", "Muon_pfRelIso03_all", "Muon_dxy", "Muon_dz", "Muon_tightId", "Muon_isGlobal",
+            "Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass", "Muon_charge", "Muon_pfRelIso03_all", "Muon_dxy", "Muon_dz", "Muon_tightId", "Muon_isGlobal", "Muon_mediumId",
             "Muon_ISO_SF", "Muon_ISO_SFstat", "Muon_ISO_SFsyst",
             "Electron_pt", "Electron_eta", "Electron_phi", "Electron_mass", "Electron_charge", "Electron_mvaFall17V2Iso_WP90", "Electron_mvaFall17V2noIso_WP90", "Electron_pfRelIso03_all", "Electron_dxy", "Electron_dz", "Electron_mvaFall17V2Iso_WP80",
             "Jet_pt", "Jet_eta", "Jet_phi", "Jet_mass", "Jet_btagDeepFlavB", "Jet_jetId", "Jet_hadronFlavour",
@@ -317,7 +317,8 @@
             "L1PreFiringWeight_Nom", "L1PreFiringWeight_Up", "L1PreFiringWeight_Dn",
             "genWeight", "run", "event", "fixedGridRhoFastjetAll",
             "n_electrons", "n_muons", "n_taus", "n_isoTrks", "n_jets", "n_bjets",
-            "MET_pt", "MET_gg_dPhi", "MET_ll_dPhi", "dPhi_MET_l", "lep12_dphi", "lep12_deta_bdt", "lep12_dr",
+            "MET_pt", "MET_phi", "MET_gg_dPhi", "MET_ll_dPhi", "dPhi_MET_l", "lep12_dphi", "lep12_deta_bdt", "lep12_dr",
+            "MET_covXX", "MET_covXY", "MET_covYY", 
             "g1_ptmgg", "g1_eta_bdt", "g1_idmva", "g1_pixVeto", "g2_ptmgg", "g2_eta_bdt", "g2_idmva", "g2_pixVeto", "max_g_ptmgg", "min_g_ptmgg", "max_g_idmva", "min_g_idmva",
             "gg_ptmgg", "gg_eta", "gg_dR", "gg_dPhi", "gg_hel", "gg_tt_CS", "gg_tt_hel", "tt_hel",
             "lep1_pt", "lep1_eta_bdt", "lep1_tightID", "lep2_pt", "lep2_eta_bdt", "lep2_tightID", "max_lep_pt", "min_lep_pt",
