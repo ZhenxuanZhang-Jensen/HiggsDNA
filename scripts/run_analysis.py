@@ -104,6 +104,13 @@ def parse_arguments():
         type=int,
         help="number of cores to use for running jobs in parallel. Only applicable if running locally.")
 
+    parser.add_argument(
+        "--use_xrdcp",
+        required=False,
+        default=False,
+        type=bool,
+        help="use xrdcp to copy to nanoAOD file to local or not ")
+
     return parser.parse_args()
 
 

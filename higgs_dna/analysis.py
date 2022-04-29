@@ -154,6 +154,7 @@ class AnalysisManager():
             "batch_system" : "local",
             "fpo" : None, # number of input files per output file (i.e. per job)
             "n_cores" : 4, # number of cores for local running
+            "use_xrdcp" : False, # xrdcp to local or not
             "merge_outputs" : False,
             "unretire_jobs" : False,
             "retire_jobs" : False,
@@ -447,7 +448,7 @@ class AnalysisManager():
 
 
     @staticmethod
-    def load_events(files, branches):
+    def load_events(self,files, branches):
         """
         Load all branches in ``branches`` from "Events" tree from all nanoAODs in ``files`` into a single zipped ``awkward.Array``.
         Also calculates and returns the sum of weights from nanoAOD "Runs" tree.        
@@ -462,6 +463,11 @@ class AnalysisManager():
         events = []
         sum_weights = 0
         for file in files:
+            if self.use_xrdcp:
+                local_file_name = file.replace("/","_")
+                os.system("xrdcp %s %s" % (file, local_file_name))
+                file = local_file_name
+                logger.debug("cp file to local")
             with uproot.open(file, timeout = 1800) as f:
                 runs = f["Runs"]
                 if "genEventCount" in runs.keys() and "genEventSumw" in runs.keys():
@@ -474,6 +480,11 @@ class AnalysisManager():
                 events.append(events_file)
 
                 logger.debug("[AnalysisManager : load_events] Loaded %d events from file '%s'." % (len(events_file), file))
+            if self.use_xrdcp:
+                os.system("rm %s" % file)
+                logger.debug("remove the local cp file")
+
+
 
         events = awkward.concatenate(events)
         return events, sum_weights

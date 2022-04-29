@@ -10,7 +10,8 @@ eos_logs/
 *output/
 # Mac/OSX
 .DS_Stor
-
+*tutorial_tth*
+*tutorial_dipho*
 # Windows
 Thumbs.db
 
