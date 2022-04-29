@@ -12,7 +12,7 @@ dependencies:
   - pandas
   - rich
   - matplotlib
-  - vector
+  - vector>=0.8.5
   - conda-pack
   - tqdm
   - dill
