@@ -31,12 +31,12 @@ DEFAULT_OPTIONS = {
         "dr_photons" : 0.2
     },
     "taus" : {
-        "pt" : 18.0,
+        "pt" : 20.0,
         "eta" : 2.3,
         "dz" : 0.2,
-        "deep_tau_vs_ele" : 1,
-        "deep_tau_vs_mu" : 0,
-        "deep_tau_vs_jet" : 7,
+        "deep_tau_vs_ele" : 2,
+        "deep_tau_vs_mu" : 1,
+        "deep_tau_vs_jet" : 8,
         "dr_photons" : 0.2,
         "dr_electrons" : 0.2,
         "dr_muons" : 0.2
@@ -62,7 +62,7 @@ DEFAULT_OPTIONS = {
         "dr_iso_tracks" : 0.4
     },
     "z_veto" : [80., 100.],
-    "m_llg_veto_window" : 25,
+    "m_llg_veto_window" : 10,
     "photon_mvaID" : -0.7
 }
 
