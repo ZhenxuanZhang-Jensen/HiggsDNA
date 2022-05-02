@@ -184,13 +184,15 @@ class TTHHPreselTagger(Tagger):
                 dummy_value = DUMMY_VALUE
         )
 
-        bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis = 1, ascending = False)]
+        bjet_sort_idx = awkward.argsort(jets.btagDeepFlavB, axis = 1, ascending = False)
+        bjets = jets[bjet_sort_idx]
+        bjets["jet_idx"] = bjet_sort_idx
         awkward_utils.add_object_fields(
                 events = events,
                 name = "b_jet",
                 objects = bjets,
                 n_objects = 4,
-                fields = ["btagDeepFlavB"],
+                fields = ["btagDeepFlavB", "jet_idx"],
                 dummy_value = DUMMY_VALUE
         )
 
@@ -277,7 +279,11 @@ class TTHHPreselTagger(Tagger):
         ditau_pairs["ditau"] = ditau_pairs.LeadTauCand + ditau_pairs.SubleadTauCand
         ditau_pairs[("ditau", "dR")] = ditau_pairs.LeadTauCand.deltaR(ditau_pairs.SubleadTauCand)
         ditau_pairs[("ditau", "helicity")] = physics_utils.abs_cos_theta_parentCM(ditau_pairs.LeadTauCand, ditau_pairs.SubleadTauCand)
-
+        # Make sure the pt/eta/phi/mass are explicitly calculated by vector so they will be saved in outputs
+        ditau_pairs[("ditau", "pt")] = ditau_pairs.ditau.pt
+        ditau_pairs[("ditau", "eta")] = ditau_pairs.ditau.eta
+        ditau_pairs[("ditau", "phi")] = ditau_pairs.ditau.phi
+        ditau_pairs[("ditau", "mass")] = ditau_pairs.ditau.mass
         awkward_utils.add_object_fields(
             events = events,
             name = "ditau",
