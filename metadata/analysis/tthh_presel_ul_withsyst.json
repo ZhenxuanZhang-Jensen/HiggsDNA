@@ -5,7 +5,7 @@
         "function_name" : "run_analysis"
     },
     "variables_of_interest" : [
-        ["Diphoton", "mass"], ["Diphoton", "pt"], ["Diphoton", "eta"], ["Diphoton", "phi"], ["Diphoton", "dR"], ["Diphoton", "pt_mgg"], 
+        ["Diphoton", "mass"], ["Diphoton", "pt"], ["Diphoton", "eta"], ["Diphoton", "phi"], ["Diphoton", "dR"], ["Diphoton", "pt_mgg"], ["Diphoton", "dPhi"], ["Diphoton", "helicity"], 
         ["LeadPhoton", "pt"], ["LeadPhoton", "eta"], ["LeadPhoton", "phi"], ["LeadPhoton", "mass"], ["LeadPhoton", "mvaID"], ["LeadPhoton", "genPartFlav"], ["LeadPhoton", "pixelSeed"], ["LeadPhoton", "pt_mgg"],
         ["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"], ["SubleadPhoton", "genPartFlav"], ["SubleadPhoton", "pixelSeed"], ["SubleadPhoton", "pt_mgg"],
         "jet_1_pt", "jet_1_eta", "jet_1_phi", "jet_1_mass", "jet_1_btagDeepFlavB",
@@ -17,6 +17,8 @@
         "b_jet_1_btagDeepFlavB", "b_jet_2_btagDeepFlavB", "b_jet_3_btagDeepFlavB", "b_jet_4_btagDeepFlavB",
         "lepton_1_pt", "lepton_1_eta", "lepton_1_phi", "lepton_1_mass", "lepton_1_charge", "lepton_1_id",
         "lepton_2_pt", "lepton_2_eta", "lepton_2_phi", "lepton_2_mass", "lepton_2_charge", "lepton_2_id",
+        "lepton_3_pt", "lepton_3_eta", "lepton_3_phi", "lepton_3_mass", "lepton_3_charge", "lepton_3_id",
+        "ditau_pt", "ditau_eta", "ditau_phi", "ditau_mass", "ditau_dR", "ditau_helicity",
         "n_jets", "n_leptons", "n_electrons", "n_muons", "n_taus",
         "MET_pt",
         "weight_central",
@@ -224,12 +226,7 @@
             "Muon_corrected_pt","Muon_correctedUp_pt","Muon_correctedDown_pt","Muon_ID_SF","Muon_ID_SFstat","Muon_ID_SFsyst","Muon_ISO_SF","Muon_ISO_SFstat","Muon_ISO_SFsyst",
             "puWeight","puWeightDown","puWeightUp",
             "PrefireWeight", "PrefireWeight_Up", "PrefireWeight_Down",
-            "Tau_pt_corr","Tau_pt_corrUp","Tau_pt_corrDown",
-            "Tau_sfDeepTau2017v2p1VSe_Tight","Tau_sfDeepTau2017v2p1VSe_TightUp","Tau_sfDeepTau2017v2p1VSe_TightDown",
-            "Tau_sfDeepTau2017v2p1VSe_VVLoose","Tau_sfDeepTau2017v2p1VSe_VVLooseUp","Tau_sfDeepTau2017v2p1VSe_VVLooseDown",
-            "Tau_sfDeepTau2017v2p1VSjet_Loose","Tau_sfDeepTau2017v2p1VSjet_LooseUp","Tau_sfDeepTau2017v2p1VSjet_LooseDown",
-            "Tau_sfDeepTau2017v2p1VSmu_VLoose","Tau_sfDeepTau2017v2p1VSmu_VLooseUp","Tau_sfDeepTau2017v2p1VSmu_VLooseDown"
-
+            "Tau_pt_corr","Tau_pt_corrUp","Tau_pt_corrDown"
     ],
     "branch_map" : {
         "mc" : [

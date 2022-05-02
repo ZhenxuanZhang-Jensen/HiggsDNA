@@ -7,7 +7,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 from higgs_dna.taggers.tagger import Tagger, NOMINAL_TAG
-from higgs_dna.selections import object_selections, lepton_selections, jet_selections, tau_selections
+from higgs_dna.selections import object_selections, lepton_selections, jet_selections, tau_selections, physics_utils
 from higgs_dna.utils import awkward_utils, misc_utils
 
 DUMMY_VALUE = -999.
@@ -210,12 +210,12 @@ class TTHHPreselTagger(Tagger):
         leptons = leptons[awkward.argsort(leptons.pt, ascending=False, axis=1)]
         leptons = awkward.Array(leptons, with_name = "Momentum4D")
 
-        # Add leading 2 lepton fields to events array
+        # Add leading 3 lepton fields to events array
         awkward_utils.add_object_fields(
             events = events,
             name = "lepton",
             objects = leptons,
-            n_objects = 2,
+            n_objects = 3,
             dummy_value = DUMMY_VALUE
         )
 
@@ -239,13 +239,64 @@ class TTHHPreselTagger(Tagger):
         events[("Diphoton", "pt_mgg")] = events.Diphoton.pt / events.Diphoton.mass
         events[("LeadPhoton", "pt_mgg")] = events.LeadPhoton.pt / events.Diphoton.mass
         events[("SubleadPhoton", "pt_mgg")] = events.SubleadPhoton.pt / events.Diphoton.mass
+        events[("Diphoton", "dPhi")] = events.LeadPhoton.deltaphi(events.SubleadPhoton)
+        events[("Diphoton", "helicity")] = physics_utils.abs_cos_theta_parentCM(events.LeadPhoton, events.SubleadPhoton)
+
+        ### Ditau candidate reconstruction ###
+        # 1. Create ditau candidates: all possible pairs of two leptons, with leptons = {taus, electrons, muons}
+        ditau_pairs = awkward.combinations(leptons, 2, fields = ["LeadTauCand", "SubleadTauCand"])
+
+        # 2. Keep only OS ditau pairs 
+        os_cut = ditau_pairs.LeadTauCand.charge * ditau_pairs.SubleadTauCand.charge == -1
+        ditau_pairs = ditau_pairs[os_cut]
+
+        # 3. Assign priority to ditau pairs by lepton flavor
+        # If there is more than one ditau candidate in an event, we first give preference by lepton flavor:
+        # from highest to lowest priority : tau/tau, tau/mu, tau/ele, mu/ele, mu/mu, ele/ele 
+        ditau_pairs = awkward.with_field(ditau_pairs, ditau_pairs.LeadTauCand.id * ditau_pairs.SubleadTauCand.id, "ProdID")
+        ditau_pairs = awkward.with_field(ditau_pairs, awkward.ones_like(ditau_pairs.LeadTauCand.pt) * DUMMY_VALUE, "priority") 
+
+        # tau_h / tau_h : 15 * 15 = 225
+        ditau_pairs["priority"] = awkward.where(ditau_pairs.ProdID == 225, awkward.ones_like(ditau_pairs["priority"]) * 1, ditau_pairs["priority"])
+        # tau_h / mu : 15 * 13 = 195
+        ditau_pairs["priority"] = awkward.where(ditau_pairs.ProdID == 195, awkward.ones_like(ditau_pairs["priority"]) * 2, ditau_pairs["priority"])
+        # tau_h / ele : 15 * 11 = 165
+        ditau_pairs["priority"] = awkward.where(ditau_pairs.ProdID == 165, awkward.ones_like(ditau_pairs["priority"]) * 3, ditau_pairs["priority"])
+        # mu / ele : 13 * 11 = 143
+        ditau_pairs["priority"] = awkward.where(ditau_pairs.ProdID == 143, awkward.ones_like(ditau_pairs["priority"]) * 4, ditau_pairs["priority"])
+        # mu / mu : 13 * 13 = 169
+        ditau_pairs["priority"] = awkward.where(ditau_pairs.ProdID == 169, awkward.ones_like(ditau_pairs["priority"]) * 5, ditau_pairs["priority"])
+        # ele / ele : 11 * 11 = 121
+        ditau_pairs["priority"] = awkward.where(ditau_pairs.ProdID == 121, awkward.ones_like(ditau_pairs["priority"]) * 6, ditau_pairs["priority"])
+        # tau / iso track : 15 * 1 = 15
+        ditau_pairs["priority"] = awkward.where(ditau_pairs.ProdID == 15, awkward.ones_like(ditau_pairs["priority"]) * 7, ditau_pairs["priority"])
+
+        # 4. Select only the highest priority di-tau candidate(s) in each event
+        ditau_pairs = ditau_pairs[ditau_pairs.priority == awkward.min(abs(ditau_pairs.priority), axis = 1)]
+
+        # 5. If still more than one ditau candidate in an event, take the one with m_vis closest to mH = 125 GeV
+        ditau_pairs["ditau"] = ditau_pairs.LeadTauCand + ditau_pairs.SubleadTauCand
+        ditau_pairs[("ditau", "dR")] = ditau_pairs.LeadTauCand.deltaR(ditau_pairs.SubleadTauCand)
+        ditau_pairs[("ditau", "helicity")] = physics_utils.abs_cos_theta_parentCM(ditau_pairs.LeadTauCand, ditau_pairs.SubleadTauCand)
+
+        awkward_utils.add_object_fields(
+            events = events,
+            name = "ditau",
+            objects = ditau_pairs.ditau,
+            n_objects = 1,
+            dummy_value = DUMMY_VALUE
+        )
+
+        if awkward.any(awkward.num(ditau_pairs) >= 2):
+            ditau_pairs = ditau_pairs[awkward.argsort(abs(ditau_pairs.ditau.mass - 125), axis = 1)] # if so, take the one with m_vis closest to mH
+        ditau_pairs = awkward.firsts(ditau_pairs)
 
         # Preselection cuts
         pho_id = (events.LeadPhoton.mvaID > self.options["photon_mvaID"]) & (events.SubleadPhoton.mvaID > self.options["photon_mvaID"])
 
         hadronic_cut = (n_leptons == 0) & (n_jets >= 4)
-        semilep_cut  = (n_leptons == 1) & (n_jets >= 3)
-        dilep_cut    = (n_leptons >= 2) & (n_jets >= 2)
+        semilep_cut  = (n_leptons == 1) & (n_jets >= 2)
+        dilep_cut    = (n_leptons >= 2) & (n_jets >= 0)
 
         presel_cut = pho_id & (hadronic_cut | semilep_cut | dilep_cut) 
         self.register_cuts(
