@@ -15,13 +15,13 @@ DEFAULT_OPTIONS = {
     "bdt_file" : "/home/users/hmei/myWorkspace/HiggsDNA/metadata/BDTs/20UL_30Mar2022_fixIsoTrk.xgb", # if running on condor, this file needs to be placed somewhere under higgs_dna/ so that it is included in the tar file. We probably want to think of a better long term solution for this.
     "bdt_features" : [
         "n_electrons", "n_muons", "n_taus", "n_iso_tracks", "n_jets", "n_bjets",
-        "MET_pt", "MET_gg_dPhi", "MET_ll_dPhi", "dPhi_MET_l", "lep12_dphi", "lep12_deta_bdt", "lep12_dr",
-        "g1_ptmgg", "g1_eta_bdt", "g1_idmva", "g1_pixVeto", "g2_ptmgg", "g2_eta_bdt", "g2_idmva", "g2_pixVeto", "max_g_ptmgg", "min_g_ptmgg", "max_g_idmva", "min_g_idmva",
-        "gg_ptmgg", "gg_eta", "gg_dR", "gg_dPhi", "gg_hel", "gg_tt_CS", "gg_tt_hel", "tt_hel",
-        "tau_candidate_1_pt", "lep1_eta_bdt", "lep1_tightID", "tau_candidate_2_pt", "lep2_eta_bdt", "lep2_tightID", "max_lep_pt", "min_lep_pt",
-        "Category", "jet_1_pt", "jet1_eta_bdt", "jet1_bTag", "jet_2_pt", "jet2_eta_bdt", "jet2_bTag", "max_bTag",
-        "pt_tautau_SVFit", "eta_tautau_SVFit_bdt", "m_tautau_SVFit", "dR_tautau_SVFit", "dR_ggtautau_SVFit", "dPhi_tautau_SVFit", "dPhi_ggtautau_SVFit", "m_tautau_vis", "pt_tautau_vis", "eta_tautau_vis_bdt",
-        "mX","m_llg_lead", "m_llg_subl"
+        "MET_pt", "diphoton_met_dPhi", "MET_ll_dPhi", "dPhi_MET_l", "lep12_dphi", "lep12_deta_bdt", "lep12_dr",
+        ("LeadPhoton", "pt_mgg"), ("LeadPhoton", "eta"), ("LeadPhoton", "mvaID"), ("LeadPhoton", "pixelSeed"), ("SubleadPhoton", "pt_mgg"), ("SubleadPhoton", "eta"), ("SubleadPhoton", "mvaID"), ("SubleadPhoton", "pixelSeed"), ("Diphoton", "max_pt_mgg"), ("Diphoton", "min_pt_mgg"), ("Diphoton", "max_mvaID"), ("Diphoton", "min_mvaID"),
+        ("Diphoton", "pt_mgg"), ("Diphoton", "eta"), ("Diphoton", "dR"), ("Diphoton", "dPhi"), ("Diphoton", "helicity"), "gg_tt_CS", "gg_tt_hel", "tt_hel",
+        "tau_candidate_1_pt", "tau_candidate_1_eta", "lep1_tightID", "tau_candidate_2_pt", "tau_candidate_2_eta", "lep2_tightID", "ditau_lead_lepton_pt", "ditau_sublead_lepton_pt",
+        "category", "jet_1_pt", "jet_1_eta", "jet_1_btagDeepFlavB", "jet_2_pt", "jet_2_eta", "jet_2_btagDeepFlavB", "b_jet_1_btagDeepFlavB",
+        "pt_tautau_SVFit", "eta_tautau_SVFit_bdt", "m_tautau_SVFit", "dR_tautau_SVFit", "dR_ggtautau_SVFit", "dPhi_tautau_SVFit", "dPhi_ggtautau_SVFit", "ditau_mass", "ditau_pt", "ditau_eta",
+        "mX","dilep_leadpho_mass", "dilep_subleadpho_mass"
     ],
     "bdt_cuts" : [0.9928, 0.971078]
 }
@@ -53,8 +53,25 @@ class HHggTauTauNonResSRTagger(Tagger):
 
         # Convert events to proper format for xgb
         events_bdt = awkward.values_astype(events, numpy.float64)
+
+        bdt_features = []
+        for x in self.options["bdt_features"]:
+            if isinstance(x, tuple):
+                name_flat = "_".join(x)
+                events_bdt[name_flat] = events_bdt[x]
+                bdt_features.append(name_flat)
+            else:
+                bdt_features.append(x)
+ 
+            if bdt_features[-1] in ["LeadPhoton_eta", "SubleadPhoton_eta", "ditau_eta", "jet_1_eta", "jet_2_eta", "tau_candidate_1_eta", "tau_candidate_2_eta"]:
+                events_bdt[bdt_features[-1]] = awkward.where(
+                        events.Diphoton.eta < 0,
+                        events_bdt[bdt_features[-1]] * -1,
+                        events_bdt[bdt_features[-1]]
+                )
+
         features_bdt = awkward.to_numpy(
-                events_bdt[self.options["bdt_features"]]
+                events_bdt[bdt_features]
         )
         features_bdt = xgboost.DMatrix(
                 features_bdt.view((float, len(features_bdt.dtype.names)))

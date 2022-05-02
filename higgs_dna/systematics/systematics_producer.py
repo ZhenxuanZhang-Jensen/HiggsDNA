@@ -31,6 +31,11 @@ class SystematicsProducer():
 
         self.weights = {}
         self.independent_collections = {}
+        self.do_variations = True
+        if "no_systematics" in self.options.keys():
+            if self.options["no_systematics"]: # the --no_systematics option for run_analysis.py allows user to run a SystematicsProducer that modifies the central weight for weight systematics but does not calculate up/down variations and does not run over any systematics with independent collections
+                self.do_variations = False
+
         self.add_systematics(self.options)
 
 
@@ -192,7 +197,7 @@ class SystematicsProducer():
 
                     self.weights[syst].append(weight_syst)
 
-        if "independent_collections" in systematics.keys():
+        if "independent_collections" in systematics.keys() and self.do_variations:
             for syst, syst_info in systematics["independent_collections"].items():
                 if syst in self.independent_collections.keys(): # check if it has already been added
                     continue
@@ -291,6 +296,8 @@ class SystematicsProducer():
 
 
         for name, ic_syst in self.independent_collections.items():
+            if not self.do_variations:
+                continue
             ics = ic_syst.produce(events)
             if NOMINAL_TAG in ics.keys():
                 events = ics[NOMINAL_TAG]
@@ -325,9 +332,13 @@ class SystematicsProducer():
                             continue
 
                     reset = False
+                    if name == NOMINAL_TAG:
+                        central_only = not self.do_variations
+                    else:
+                        central_only = True
                     if not weight_syst.is_produced:
                         reset = True
-                        syst_events = weight_syst.produce(syst_events, central_only = name != NOMINAL_TAG)
+                        syst_events = weight_syst.produce(syst_events, central_only = central_only) 
 
                     if hasattr(weight_syst, "modifies_taggers"):
                         mask = syst_events.tag_idx < 0 # initialize to all False
@@ -344,7 +355,7 @@ class SystematicsProducer():
                     syst_events = weight_syst.apply(
                             events = syst_events,
                             syst_tag = name,
-                            central_only = name != NOMINAL_TAG,
+                            central_only = central_only, 
                             mask = mask
                     )
 

@@ -7,10 +7,10 @@ import logging
 logger = logging.getLogger(__name__)
 
 from higgs_dna.taggers.tagger import Tagger, NOMINAL_TAG
-from higgs_dna.selections import object_selections, lepton_selections, jet_selections, tau_selections
+from higgs_dna.selections import object_selections, lepton_selections, jet_selections, tau_selections, physics_utils
 from higgs_dna.utils import awkward_utils, misc_utils
 
-DUMMY_VALUE = -999.
+DUMMY_VALUE = -9.
 DEFAULT_OPTIONS = {
     "electrons" : {
         "pt" : 10.0,
@@ -26,7 +26,7 @@ DEFAULT_OPTIONS = {
         "eta" : 2.4,
         "dxy" : 0.045,
         "dz" : 0.2,
-        "id" : None,
+        "id" : "medium",
         "pfRelIso03_all" : 0.3,
         "dr_photons" : 0.2
     },
@@ -371,7 +371,7 @@ class HHggTauTauPreselTagger(Tagger):
 
         # 3.6 If still more than one ditau candidate in an event, take the one with m_vis closest to mH = 125 GeV
         ditau_pairs["ditau"] = ditau_pairs.LeadTauCand + ditau_pairs.SubleadTauCand
-        ditau_pairs["ditau", "dR"] = ditau_pairs.LeadTauCand.deltaR(ditau_pairs.SubleadTauCand)
+        ditau_pairs[("ditau", "dR")] = ditau_pairs.LeadTauCand.deltaR(ditau_pairs.SubleadTauCand)
 
         if awkward.any(awkward.num(ditau_pairs) >= 2):
             ditau_pairs = ditau_pairs[awkward.argsort(abs(ditau_pairs.ditau.mass - 125), axis = 1)] # if so, take the one with m_vis closest to mH
@@ -432,8 +432,8 @@ class HHggTauTauPreselTagger(Tagger):
         dilep_lead_photon = ditau_pairs.ditau + events.LeadPhoton
         dilep_sublead_photon = ditau_pairs.ditau + events.SubleadPhoton
 
-        awkward_utils.add_field(events, "dilep_leadpho_mass", dilep_lead_photon.mass) 
-        awkward_utils.add_field(events, "dilep_subleadpho_mass", dilep_sublead_photon.mass) 
+        awkward_utils.add_field(events, "dilep_leadpho_mass", awkward.fill_none(dilep_lead_photon.mass, DUMMY_VALUE)) 
+        awkward_utils.add_field(events, "dilep_subleadpho_mass", awkward.fill_none(dilep_sublead_photon.mass, DUMMY_VALUE)) 
 
         m_llg_veto_lead = abs(dilep_lead_photon.mass - 91.18) < self.options["m_llg_veto_window"]
         m_llg_veto_sublead = abs(dilep_sublead_photon.mass - 91.18) < self.options["m_llg_veto_window"]
@@ -443,6 +443,38 @@ class HHggTauTauPreselTagger(Tagger):
 
         # Veto event if there are at least 2 OSSF leptons and they have m_llg (for either lead or sublead photon) in the z mass window
         m_llg_veto = ~(((n_muons >= 2) | (n_electrons >= 2)) & (m_llg_veto_lead | m_llg_veto_sublead)) 
+
+        # Add pho/dipho variables
+        events[("Diphoton", "pt_mgg")] = events.Diphoton.pt / events.Diphoton.mass
+        events[("LeadPhoton", "pt_mgg")] = events.LeadPhoton.pt / events.Diphoton.mass
+        events[("SubleadPhoton", "pt_mgg")] = events.SubleadPhoton.pt / events.Diphoton.mass 
+        events[("Diphoton", "max_mvaID")] = awkward.where(
+                events.LeadPhoton.mvaID > events.SubleadPhoton.mvaID,
+                events.LeadPhoton.mvaID,
+                events.SubleadPhoton.mvaID
+        )
+        events[("Diphoton", "min_mvaID")] = awkward.where(
+                events.LeadPhoton.mvaID > events.SubleadPhoton.mvaID,
+                events.SubleadPhoton.mvaID,
+                events.LeadPhoton.mvaID
+        )
+        events[("Diphoton", "dPhi")] = events.LeadPhoton.deltaphi(events.SubleadPhoton)
+        events[("Diphoton", "max_pt_mgg")] = events.LeadPhoton.pt_mgg
+        events[("Diphoton", "min_pt_mgg")] = events.SubleadPhoton.pt_mgg
+        events[("Diphoton", "helicity")] = physics_utils.abs_cos_theta_parentCM(events.LeadPhoton, events.SubleadPhoton)
+
+        met_p4 = vector.awk({
+            "pt" : events.MET_pt,
+            "eta" : awkward.zeros_like(events.MET_pt),
+            "phi" : events.MET_phi,
+            "mass" : awkward.zeros_like(events.MET_pt)
+        })
+
+        awkward_utils.add_field(
+                events,
+                "diphoton_met_dPhi",
+                events.Diphoton.deltaphi(met_p4)
+        )
 
         presel_cut = category_cut & z_veto & pho_id & m_llg_veto
         self.register_cuts(
