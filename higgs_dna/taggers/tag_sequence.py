@@ -10,6 +10,7 @@ logger = logging.getLogger(__name__)
 
 from higgs_dna.constants import NOMINAL_TAG
 from higgs_dna.taggers.tagger import Tagger
+from higgs_dna.taggers.golden_json_tagger import GoldenJsonTagger
 from higgs_dna.utils import awkward_utils
 
 class TagSequence():
@@ -57,6 +58,14 @@ class TagSequence():
 
             self.tag_list.append(m_tag_set)
             logger.info("[TagSequence : __init__] The %d-th tag set has taggers %s (listed in order priority will be given)." % (i, str([t.name for t in m_tag_set])))
+
+        # If this is data, insert a golden json tagger at the beginning of the tag sequence
+        if self.tag_list[0][0].is_data:
+            logger.info("[TagSequence : __init__] Inserting a golden json tagger at beginning of tag sequence since this is data.")
+            self.tag_list.insert(
+                    0,
+                    [GoldenJsonTagger(is_data=True, year=m_tag_set[0].year)]
+            )
 
 
     def create_tagger(self, config):

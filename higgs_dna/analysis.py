@@ -251,6 +251,10 @@ class AnalysisManager():
             elif self.batch_system.lower() == "local":
                 self.jobs_manager = LocalManager(output_dir = self.output_dir, n_cores = self.n_cores)
 
+            # Check if --no_systematics option was given
+            if self.no_systematics:
+                self.systematics["no_systematics"] = True
+
             # Create samples manager
             self.sample_manager = SampleManager(**self.samples)
 

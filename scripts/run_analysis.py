@@ -104,6 +104,12 @@ def parse_arguments():
         type=int,
         help="number of cores to use for running jobs in parallel. Only applicable if running locally.")
 
+    parser.add_argument(
+        "--no_systematics",
+        required=False,
+        action="store_true",
+        help="Run without calculating systematic variations, overriding the systematics provided through the config json. Any weight systematics which modify the central event weight will still be calculated (but not their up/down variations).") 
+
     return parser.parse_args()
 
 
