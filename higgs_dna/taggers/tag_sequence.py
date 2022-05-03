@@ -183,8 +183,10 @@ class TagSequence():
 
         for syst_tag, syst_events in self.selected_events.items(): 
             tag_idx = numpy.ones_like(awkward.to_numpy(syst_events.run)) * -1
-            for tagger_name, idx in self.tag_idx_map.items():
-                tag_idx[self.selections[tagger_name][syst_tag]] = idx    
+
+            if len(syst_events) >= 1:
+                for tagger_name, idx in self.tag_idx_map.items():
+                    tag_idx[self.selections[tagger_name][syst_tag]] = idx    
             awkward_utils.add_field(syst_events, "tag_idx", tag_idx, overwrite = True)
 
             # Keep only selected events

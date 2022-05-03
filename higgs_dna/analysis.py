@@ -522,6 +522,8 @@ class AnalysisManager():
         outputs = {}
 
         for syst_tag, syst_events in events.items():
+            if not len(syst_events) >= 1:
+                continue
             save_map = {}
             for branch in save_branches:
                 if isinstance(branch, tuple) or isinstance(branch, list):
