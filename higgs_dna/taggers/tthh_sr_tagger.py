@@ -12,10 +12,11 @@ from higgs_dna.taggers.tagger import Tagger, NOMINAL_TAG
 from higgs_dna.utils import awkward_utils, misc_utils
 
 DEFAULT_OPTIONS = {
-    "bdt_file" : "/home/users/iareed/HggAnalysisDev/MVAs/output/Flash_gg_sync.xgb",
+    "bdt_file" : "/home/users/iareed/HggAnalysisDev/MVAs/output/Flash_gg_sync_2.xgb",
     "bdt_features" : [
-        ("Diphoton", "eta"), ("Diphoton", "pt_mgg"), ("Diphoton", "dR"),
+        ("Diphoton", "eta"), ("Diphoton", "pt_mgg"), ("Diphoton", "dR"), ("Diphoton", "helicity"),
         ("LeadPhoton", "mvaID"), ("SubleadPhoton", "mvaID"), ("LeadPhoton", "eta"), ("SubleadPhoton", "eta"), ("LeadPhoton", "pixelSeed"), ("SubleadPhoton", "pixelSeed"), ("LeadPhoton", "pt_mgg"), ("SubleadPhoton", "pt_mgg"),
+        "ditau_pt", "ditau_eta", "ditau_mass", "ditau_dR", "ditau_helicity",
         "MET_pt",
         "n_jets", "n_leptons", "n_electrons", "n_muons", "n_taus",
         "jet_1_pt", "jet_1_eta", "jet_1_btagDeepFlavB",
@@ -23,10 +24,11 @@ DEFAULT_OPTIONS = {
         "jet_3_pt", "jet_3_eta", "jet_3_btagDeepFlavB",
         "jet_4_pt", "jet_4_eta", "jet_4_btagDeepFlavB",
         "jet_5_pt", "jet_5_eta", "jet_5_btagDeepFlavB",
+        "b_jet_1_btagDeepFlavB", "b_jet_2_btagDeepFlavB", "b_jet_3_btagDeepFlavB", "b_jet_4_btagDeepFlavB",
         "lepton_1_pt", "lepton_1_eta", "lepton_1_mass", "lepton_1_charge", "lepton_1_id",
         "lepton_2_pt", "lepton_2_eta", "lepton_2_mass", "lepton_2_charge", "lepton_2_id" 
     ],
-    "bdt_cuts" : [0.9883, 0.969307]
+    "bdt_cuts" : [0.9937, 0.975174]
 }
 
 class TTHHSRTagger(Tagger):
