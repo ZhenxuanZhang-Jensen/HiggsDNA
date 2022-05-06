@@ -49,7 +49,7 @@ def run_analysis(config):
 
     ### 1. Load events ###
     t_start_load = time.time()
-    events, sum_weights = AnalysisManager.load_events(config["files"], config["branches"])
+    events, sum_weights = AnalysisManager.load_events(True, config["files"], config["branches"])
 
     # Record n_events and sum_weights for scale1fb calculation
     job_summary["n_events"] = len(events)
@@ -448,7 +448,7 @@ class AnalysisManager():
 
 
     @staticmethod
-    def load_events(self,files, branches):
+    def load_events(use_xrdcp, files, branches):
         """
         Load all branches in ``branches`` from "Events" tree from all nanoAODs in ``files`` into a single zipped ``awkward.Array``.
         Also calculates and returns the sum of weights from nanoAOD "Runs" tree.        
@@ -463,10 +463,12 @@ class AnalysisManager():
         events = []
         sum_weights = 0
         for file in files:
-            if self.use_xrdcp:
-                local_file_name = file.replace("/","_")
+            if use_xrdcp:
+                local_file_name = file.split("/")[-1]
+                # local_file_name = file.replace("/","_")
                 os.system("xrdcp %s %s" % (file, local_file_name))
                 file = local_file_name
+                logger.debug("local file name: %s" %local_file_name )
                 logger.debug("cp file to local")
             with uproot.open(file, timeout = 1800) as f:
                 runs = f["Runs"]
@@ -480,7 +482,7 @@ class AnalysisManager():
                 events.append(events_file)
 
                 logger.debug("[AnalysisManager : load_events] Loaded %d events from file '%s'." % (len(events_file), file))
-            if self.use_xrdcp:
+            if use_xrdcp:
                 os.system("rm %s" % file)
                 logger.debug("remove the local cp file")
 
@@ -528,7 +530,7 @@ class AnalysisManager():
                 if "weight_" in field and not field in save_map.keys():
                     save_map[field] = syst_events[field]
 
-            syst_events = awkward.zip(save_map) #attention
+            syst_events = awkward.zip(save_map,depth_limit=1) #attention
             out_name = "%s_%s.parquet" % (name, syst_tag)
 
             logger.debug("[AnalysisManager : write_events] Writing output file '%s'." % (out_name))

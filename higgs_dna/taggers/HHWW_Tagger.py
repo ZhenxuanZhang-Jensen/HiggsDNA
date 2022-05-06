@@ -156,20 +156,41 @@ class HHWW_Preselection(Tagger):
             unflatten_W1_candi4D = awkward.unflatten(W1_candi4D,1)
             unflatten_W2_candi4D = awkward.unflatten(W2_candi4D,1)
             unflatten_H_candi4D = awkward.unflatten(H_candi4D,1)
-            awkward_utils.add_field(
+            genW1_qq = awkward_utils.add_field(
             events=events,
-            name="GENW1_qq",
+            name="genW1_qq",
             data=unflatten_W1_candi4D
             )
-            awkward_utils.add_field(
+            genW2_qq = awkward_utils.add_field(
+            events=events,
+            name="genW2_qq",
+            data=unflatten_W2_candi4D 
+            )
+            genHWW_qqqq = awkward_utils.add_field(
+            events=events,
+            name="genHWW_qqqq",
+            data=unflatten_H_candi4D
+            )
+            awkward_utils.add_object_fields(
+            events=events,
+            name="GENW1_qq",
+            objects=genW1_qq,
+            n_objects=1,
+            dummy_value=-999
+            )
+            awkward_utils.add_object_fields(
             events=events,
             name="GENW2_qq",
-            data=unflatten_W2_candi4D
+            objects=genW2_qq,
+            n_objects=1,
+            dummy_value=-999
             )
-            awkward_utils.add_field(
+            awkward_utils.add_object_fields(
             events=events,
             name="GENHWW_qqqq",
-            data=unflatten_H_candi4D
+            objects=genHWW_qqqq,
+            n_objects=1,
+            dummy_value=-999
             )
         # Electrons
         electron_cut = lepton_selections.select_electrons(
@@ -303,6 +324,7 @@ class HHWW_Preselection(Tagger):
         # n_diphotons = awkward.num(events.Diphoton)
         # logger.debug(" the N_diphoton : %f" % (n_diphotons))
         n_jets = awkward.num(jets)
+        awkward_utils.add_field(events,"nGoodAK4jets",n_jets)
         n_fatjets = awkward.num(fatjets)
         # n_bjets = awkward.num(bjets)
 
