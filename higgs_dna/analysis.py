@@ -437,6 +437,7 @@ class AnalysisManager():
                         files = sample.files,
                         config = config,
                         fpo = self.fpo if self.fpo is not None else sample.fpo, 
+                        scale1fb = sample.scale1fb,
                         max_jobs = 1 if self.short else -1
                     )
             )
@@ -522,6 +523,8 @@ class AnalysisManager():
         outputs = {}
 
         for syst_tag, syst_events in events.items():
+            if not len(syst_events) >= 1:
+                continue
             save_map = {}
             for branch in save_branches:
                 if isinstance(branch, tuple) or isinstance(branch, list):

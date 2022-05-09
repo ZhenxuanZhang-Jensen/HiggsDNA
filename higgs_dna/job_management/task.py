@@ -60,7 +60,15 @@ class Task():
                     self.fpo = config["sample"]["fpo"]
         if self.fpo is None:
             self.fpo = 1
-  
+ 
+        self.scale1fb = config["sample"]["scale1fb"] # will be None if not hard-coded 
+        if self.scale1fb is None:
+            self.manual_scale1fb = False
+        elif isinstance(self.scale1fb, float) and self.scale1fb > 0:
+            self.manual_scale1fb = True
+            self.min_completion_frac = 1.0 # require that all jobs finish for this scale1fb to be valid
+        else:
+            logger.exception("[Task : __init] Task '%s'. It looks like a manually provided scale1fb was given, but could not interpret this as a float: type: '%s', value: '%s'." % (self.name, str(type(self.scale1fb)), str(self.scale1fb)))
 
         os.system("mkdir -p %s" % self.output_dir)
 
@@ -313,7 +321,12 @@ class Task():
             else:
                 self.phys_summary["scale1fb"] = 0.
             self.lumi = self.config["sample"]["lumi"]
-            self.scale1fb = self.phys_summary["scale1fb"]
+            if not self.manual_scale1fb: # only use the on-the-fly scale1fb if a manually calculated one was not provided
+                self.scale1fb = self.phys_summary["scale1fb"] 
+            else:
+                self.phys_summary["scale1fb"] = self.scale1fb # reset this to the manually provided one for proper printouts
+                if self.complete:
+                    logger.warning("[Task : summarize] Task '%s'. It appears a manually-provided scale1fb of %.9f was provided for this sample. We will use this instead of the scale1fb as calculated by HiggsDNA. For proper normalization, please ensure that you are running over the same set of files that was used when deriving this manually provided scale1fb." % (self.name, self.scale1fb)) 
         self.summary["physics"] = self.phys_summary
         self.summary["performance"] = self.performance
         self.pbar.update(job_summary, self.performance, self.phys_summary)

@@ -1,29 +1,27 @@
 {
-    "name" : "hh_ggtautau_sr",
+    "name" : "tthh_preselection",
     "function" : { 
         "module_name" : "higgs_dna.analysis",
         "function_name" : "run_analysis"
     },
     "variables_of_interest" : [
-        ["Diphoton", "mass"], ["Diphoton", "pt"], ["Diphoton", "eta"], ["Diphoton", "phi"], ["Diphoton", "helicity"],
-        ["LeadPhoton", "pt"], ["LeadPhoton", "eta"], ["LeadPhoton", "phi"], ["LeadPhoton", "mass"], ["LeadPhoton", "mvaID"], ["LeadPhoton", "genPartFlav"], ["LeadPhoton", "pixelSeed"],
-        ["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"], ["SubleadPhoton", "genPartFlav"], ["SubleadPhoton", "pixelSeed"],
+        ["Diphoton", "mass"], ["Diphoton", "pt"], ["Diphoton", "eta"], ["Diphoton", "phi"], ["Diphoton", "dR"], ["Diphoton", "pt_mgg"], 
+        ["LeadPhoton", "pt"], ["LeadPhoton", "eta"], ["LeadPhoton", "phi"], ["LeadPhoton", "mass"], ["LeadPhoton", "mvaID"], ["LeadPhoton", "genPartFlav"], ["LeadPhoton", "pixelSeed"], ["LeadPhoton", "pt_mgg"],
+        ["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"], ["SubleadPhoton", "genPartFlav"], ["SubleadPhoton", "pixelSeed"], ["SubleadPhoton", "pt_mgg"],
         "jet_1_pt", "jet_1_eta", "jet_1_phi", "jet_1_mass", "jet_1_btagDeepFlavB",
         "jet_2_pt", "jet_2_eta", "jet_2_phi", "jet_2_mass", "jet_2_btagDeepFlavB",
-        "b_jet_1_btagDeepFlavB", "b_jet_2_btagDeepFlavB",
-        "tau_candidate_1_pt", "tau_candidate_1_eta", "tau_candidate_1_phi", "tau_candidate_1_mass", "tau_candidate_1_charge", "tau_candidate_1_id",
-        "tau_candidate_2_pt", "tau_candidate_2_eta", "tau_candidate_2_phi", "tau_candidate_2_mass", "tau_candidate_2_charge", "tau_candidate_2_id",
-        "tau_candidate_3_pt", "tau_candidate_3_eta", "tau_candidate_3_phi", "tau_candidate_3_mass", "tau_candidate_3_charge", "tau_candidate_3_id", 
-        "n_jets", "n_leptons", "n_electrons", "n_muons", "n_taus", "n_iso_tracks",
-        "ditau_pt", "ditau_eta", "ditau_phi", "ditau_mass", "ditau_dR",
-        "ditau_lead_lepton_pt", "ditau_lead_lepton_eta", "ditau_lead_lepton_phi", "ditau_lead_lepton_mass",
-        "ditau_lead_lepton_id", "ditau_lead_lepton_charge",
-        "ditau_sublead_lepton_pt", "ditau_sublead_lepton_eta", "ditau_sublead_lepton_phi", "ditau_sublead_lepton_mass",
-        "ditau_sublead_lepton_id", "ditau_sublead_lepton_charge",
-        "dilep_leadpho_mass", "dilep_subleadpho_mass",
-        "category", "MET_T1Smear_pt",
-        "weight_central", "bdt_score",
-        "event", "pass_sr_0", "pass_sr_1"
+        "jet_3_pt", "jet_3_eta", "jet_3_phi", "jet_3_mass", "jet_3_btagDeepFlavB",
+        "jet_4_pt", "jet_4_eta", "jet_4_phi", "jet_4_mass", "jet_4_btagDeepFlavB",
+        "jet_5_pt", "jet_5_eta", "jet_5_phi", "jet_5_mass", "jet_5_btagDeepFlavB",
+        "jet_6_pt", "jet_6_eta", "jet_6_phi", "jet_6_mass", "jet_6_btagDeepFlavB",
+        "b_jet_1_btagDeepFlavB", "b_jet_2_btagDeepFlavB", "b_jet_3_btagDeepFlavB", "b_jet_4_btagDeepFlavB",
+        "lepton_1_pt", "lepton_1_eta", "lepton_1_phi", "lepton_1_mass", "lepton_1_charge", "lepton_1_id",
+        "lepton_2_pt", "lepton_2_eta", "lepton_2_phi", "lepton_2_mass", "lepton_2_charge", "lepton_2_id",
+        "n_jets", "n_leptons", "n_electrons", "n_muons", "n_taus",
+        "MET_pt",
+        "pass_sr_0", "pass_sr_1", "bdt_score",
+        "weight_central",
+        "event"
     ],
     "tag_sequence" : [
             {   
@@ -79,17 +77,17 @@
                 }
             },
             {
-                "module_name" : "higgs_dna.taggers.hh_ggtautau_presel_tagger",
-                "tagger" : "HHggTauTauPreselTagger",
+                "module_name" : "higgs_dna.taggers.tthh_presel_tagger",
+                "tagger" : "TTHHPreselTagger",
                 "kwargs" : {
-                    "name" : "HHggTauTauPreselectionTagger"
+                    "name" : "TTHHPreselectionTagger"
                 }
             },
             {
-                "module_name" : "higgs_dna.taggers.hh_ggtautau_nonres_sr_tagger",
-                "tagger" : "HHggTauTauNonResSRTagger",
+                "module_name" : "higgs_dna.taggers.tthh_sr_tagger",
+                "tagger" : "TTHHSRTagger",
                 "kwargs" : {
-                    "name" : "HHggTauTauNonResSignalRegionTagger"
+                    "name" : "TTHHSignalRegionTagger"
                 }
             }
     ],
@@ -116,7 +114,7 @@
                 "modify_central_weight" : true,
                 "input_collection" : "Jet",
                 "target_collections" : ["SelectedJet"],
-                "normalization_factors" : "metadata/systematics/ggtautau_deepjet_nf.json"
+                "normalization_factors" : "metadata/systematics/tthh_deepjet_nf.json"
             }, 
             "trigger_sf" : {
                 "type" : "event",
@@ -186,42 +184,6 @@
                 "input_collection" : "Muon",
                 "target_collections" : ["SelectedMuon"]
             },
-            "tau_idDeepTauVSjet_sf" : {
-                "type" : "object",
-                "method" : "from_branch",
-                "branches" : {
-                    "central" : "sfDeepTau2017v2p1VSjet_Loose",
-                    "up" : "sfDeepTau2017v2p1VSjet_LooseUp",
-                    "down" : "sfDeepTau2017v2p1VSjet_LooseDown"
-                },
-                "modify_central_weight" : true,
-                "input_collection" : "Tau",
-                "target_collections" : ["AnalysisTau"]
-            },
-            "tau_idDeepTauVSmu_sf" : {
-                "type" : "object",
-                "method" : "from_branch",
-                "branches" : {
-                    "central" : "sfDeepTau2017v2p1VSmu_VLoose",
-                    "up" : "sfDeepTau2017v2p1VSmu_VLooseUp",
-                    "down" : "sfDeepTau2017v2p1VSmu_VLooseDown"
-                },
-                "modify_central_weight" : true,
-                "input_collection" : "Tau",
-                "target_collections" : ["AnalysisTau"]
-            },
-            "tau_idDeepTauVSe_sf" : {
-                "type" : "object",
-                "method" : "from_branch",
-                "branches" : {
-                    "central" : "sfDeepTau2017v2p1VSe_VVLoose",
-                    "up" : "sfDeepTau2017v2p1VSe_VVLooseUp",
-                    "down" : "sfDeepTau2017v2p1VSe_VVLooseDown"
-                },
-                "modify_central_weight" : true,
-                "input_collection" : "Tau",
-                "target_collections" : ["AnalysisTau"]
-            }, 
             "L1_prefiring_sf" : {
                 "type" : "event",
                 "method" : "from_branch",
@@ -277,7 +239,7 @@
                     "down" : ["Photon", "dEsigmaDown"]
                 },
                 "additive" : true
-            }, 
+            },
             "JER" : {
                 "method" : "from_branch",
                 "branch_modified" : ["Jet", "pt"],
@@ -333,7 +295,7 @@
                     "up" : ["Tau", "pt_corrUp"],
                     "down" : ["Tau", "pt_corrDown"]
                 }
-            }
+            } 
         }
     },
     "branches" : [
@@ -342,36 +304,24 @@
             "Photon_sieie", "Photon_trkSumPtHollowConeDR03", "Photon_pfPhoIso03", "Photon_genPartFlav", "Photon_chargedHadronIso",
             "Photon_r9", "Photon_hoe", "Photon_pfRelIso03_chg", "Photon_pfRelIso03_all",
             "Photon_isScEtaEB", "Photon_isScEtaEE",
-            "Photon_genPartFlav",
             "Photon_dEsigmaUp", "Photon_dEsigmaDown",
+            "Photon_genPartFlav",
             "Tau_pt", "Tau_eta", "Tau_phi", "Tau_mass", "Tau_idDeepTau2017v2p1VSe", "Tau_idDeepTau2017v2p1VSjet", "Tau_idDeepTau2017v2p1VSmu", "Tau_charge", "Tau_dz", "Tau_idDecayModeNewDMs",
             "Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass", "Muon_charge", "Muon_pfRelIso03_all", "Muon_dxy", "Muon_dz", "Muon_tightId", "Muon_isGlobal", "Muon_mediumId",
             "Muon_ISO_SF", "Muon_ISO_SFstat", "Muon_ISO_SFsyst",
             "Electron_pt", "Electron_eta", "Electron_phi", "Electron_mass", "Electron_charge", "Electron_mvaFall17V2Iso_WP90", "Electron_mvaFall17V2noIso_WP90", "Electron_pfRelIso03_all", "Electron_dxy", "Electron_dz", "Electron_mvaFall17V2Iso_WP80",
-            "Jet_pt", "Jet_eta", "Jet_phi", "Jet_mass", "Jet_btagDeepFlavB", "Jet_jetId", "Jet_hadronFlavour",
+            "Jet_pt", "Jet_eta", "Jet_phi", "Jet_mass", "Jet_btagDeepFlavB", "Jet_jetId", "Jet_hadronFlavour", "Jet_bRegCorr", "Jet_bRegRes",
             "IsoTrack_pt", "IsoTrack_eta", "IsoTrack_dxy", "IsoTrack_dz", "IsoTrack_phi", "IsoTrack_fromPV", "IsoTrack_isPFcand", "IsoTrack_pdgId",
             "L1PreFiringWeight_Nom", "L1PreFiringWeight_Up", "L1PreFiringWeight_Dn",
-            "genWeight", "run", "event", "fixedGridRhoFastjetAll",
-            "n_electrons", "n_muons", "n_taus", "n_isoTrks", "n_jets", "n_bjets",
-            "MET_pt", "MET_phi", "MET_gg_dPhi", "MET_ll_dPhi", "dPhi_MET_l", "lep12_dphi", "lep12_deta_bdt", "lep12_dr",
-            "MET_covXX", "MET_covXY", "MET_covYY", 
-            "g1_ptmgg", "g1_eta_bdt", "g1_idmva", "g1_pixVeto", "g2_ptmgg", "g2_eta_bdt", "g2_idmva", "g2_pixVeto", "max_g_ptmgg", "min_g_ptmgg", "max_g_idmva", "min_g_idmva",
-            "gg_ptmgg", "gg_eta", "gg_dR", "gg_dPhi", "gg_hel", "gg_tt_CS", "gg_tt_hel", "tt_hel",
-            "lep1_pt", "lep1_eta_bdt", "lep1_tightID", "lep2_pt", "lep2_eta_bdt", "lep2_tightID", "max_lep_pt", "min_lep_pt",
-            "Category", "jet1_pt", "jet1_eta_bdt", "jet1_bTag", "jet2_pt", "jet2_eta_bdt", "jet2_bTag", "max_bTag",
-            "pt_tautau_SVFit", "eta_tautau_SVFit_bdt", "m_tautau_SVFit", "dR_tautau_SVFit", "dR_ggtautau_SVFit", "dPhi_tautau_SVFit", "dPhi_ggtautau_SVFit", "m_tautau_vis", "pt_tautau_vis", "eta_tautau_vis_bdt",
-            "mX","m_llg_lead", "m_llg_subl",
+            "genWeight", "run", "event", "fixedGridRhoFastjetAll", "Rho_fixedGridRhoAll",
+            "MET_pt", 
             "Photon_pt_ScaleUp","Photon_pt_ScaleDown",
             "Jet_pt_nom", "Jet_pt_jerUp", "Jet_pt_jerDown", "Jet_pt_jesTotalUp", "Jet_pt_jesTotalDown",
             "MET_T1Smear_pt","MET_T1Smear_pt_jerUp","MET_T1Smear_pt_jerDown","MET_T1Smear_pt_jesTotalUp","MET_T1Smear_pt_jesTotalDown","MET_T1Smear_pt_unclustEnUp","MET_T1Smear_pt_unclustEnDown",
             "Muon_corrected_pt","Muon_correctedUp_pt","Muon_correctedDown_pt","Muon_ID_SF","Muon_ID_SFstat","Muon_ID_SFsyst","Muon_ISO_SF","Muon_ISO_SFstat","Muon_ISO_SFsyst",
             "puWeight","puWeightDown","puWeightUp",
             "PrefireWeight", "PrefireWeight_Up", "PrefireWeight_Down",
-            "Tau_pt_corr","Tau_pt_corrUp","Tau_pt_corrDown",
-            "Tau_sfDeepTau2017v2p1VSjet_Loose", "Tau_sfDeepTau2017v2p1VSjet_LooseUp", "Tau_sfDeepTau2017v2p1VSjet_LooseDown",
-            "Tau_sfDeepTau2017v2p1VSmu_VLoose", "Tau_sfDeepTau2017v2p1VSmu_VLooseUp", "Tau_sfDeepTau2017v2p1VSmu_VLooseDown",
-            "Tau_sfDeepTau2017v2p1VSe_VVLoose", "Tau_sfDeepTau2017v2p1VSe_VVLooseUp", "Tau_sfDeepTau2017v2p1VSe_VVLooseDown"
-
+            "Tau_pt_corr","Tau_pt_corrUp","Tau_pt_corrDown"
     ],
     "branch_map" : {
         "mc" : [
@@ -383,8 +333,8 @@
         "data" : []
     },
     "samples" : {
-        "catalog" : "metadata/samples/hhggtautau_ul_nanoaodv9.json",
-        "sample_list" : ["Data","ttH_M125","HHggTauTau","HHggWW_dileptonic","HHggWW_semileptonic","ggH_M125","VBFH_M125","VH_M125","GJets_HT-40To100","GJets_HT-100To200","GJets_HT-200To400","GJets_HT-400To600","GJets_HT-600ToInf","TTJets","TTGamma","TTGG","WGamma","ZGamma","DiPhoton","HHggTauTau_kl0","HHggTauTau_kl2p45","HHggTauTau_kl5","HHggWW_dileptonic_kl0","HHggWW_dileptonic_kl2p45","HHggWW_dileptonic_kl5","HHggWW_semileptonic_kl0","HHggWW_semileptonic_kl2p45","HHggWW_semileptonic_kl5"],
+        "catalog" : "metadata/samples/tthh_ul_nanoaodv9.json",
+        "sample_list" : ["Data","ttH_M125","ttHH_ggbb","ttHH_ggWW","ttHH_ggTauTau","ggH_M125","VBFH_M125","VH_M125","GJets_HT-40To100","GJets_HT-100To200","GJets_HT-200To400","GJets_HT-400To600","GJets_HT-600ToInf","TTJets","TTGamma","TTGG","WGamma","ZGamma","DiPhoton"], 
         "years" : ["2016UL_preVFP", "2016UL_postVFP", "2017", "2018"] 
     }
 }

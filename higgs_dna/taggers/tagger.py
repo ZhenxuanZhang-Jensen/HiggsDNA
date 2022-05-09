@@ -61,11 +61,17 @@ class Tagger():
 
         for syst_tag, syst_events in events.items():
             self.current_syst = syst_tag
-            selection, syst_events_updated = self.get_selection(syst_tag, syst_events)
-            self.selection[syst_tag] = selection
-            self.events[syst_tag] = syst_events_updated
+   
+            if not len(syst_events) >= 1:
+                logger.debug("[Tagger] %s : event set : %s : 0 events passed to tagger, skipping running this tagger." % (self.name, syst_tag))
+                self.selection[syst_tag] = awkward.ones_like(syst_events, dtype=bool)
+                self.events[syst_tag] = syst_events
 
-            logger.debug("[Tagger] %s : event set : %s : %d (%d) events before (after) selection" % (self.name, syst_tag, len(syst_events), len(syst_events_updated[self.selection[syst_tag]])))
+            else:
+                selection, syst_events_updated = self.get_selection(syst_tag, syst_events)
+                self.selection[syst_tag] = selection
+                self.events[syst_tag] = syst_events_updated
+                logger.debug("[Tagger] %s : event set : %s : %d (%d) events before (after) selection" % (self.name, syst_tag, len(syst_events), len(syst_events_updated[self.selection[syst_tag]])))
 
 
         return self.selection, self.events

@@ -32,11 +32,8 @@ class GoldenJsonTagger(Tagger):
             with open(self.json_file, "r") as f_in:
                 self.golden_json = json.load(f_in)
 
-        logger.info("Created golden json tagger")
     
     def calculate_selection(self, events):
-        logger.info("Running golden json tagger")
-        
         # If no valid golden json file, return all True
         if self.json_file is None:
             cut = awkward.ones_like(events.run, dtype=bool)#abs(events.run) >= 0
@@ -46,7 +43,6 @@ class GoldenJsonTagger(Tagger):
  
             # Find all runs present in events
             runs = numpy.unique(awkward.to_numpy(events.run))
-            logger.info("Runs: %s" % str(runs))
 
             # Loop through each run x lumi pair
             for run in runs:
