@@ -34,9 +34,9 @@ DEFAULT_OPTIONS = {
         "pt" : 20.0,
         "eta" : 2.3,
         "dz" : 0.2,
-        "deep_tau_vs_ele" : 2,
-        "deep_tau_vs_mu" : 1,
-        "deep_tau_vs_jet" : 8,
+        "deep_tau_vs_ele" : 1,
+        "deep_tau_vs_mu" : 0,
+        "deep_tau_vs_jet" : 7,
         "dr_photons" : 0.2,
         "dr_electrons" : 0.2,
         "dr_muons" : 0.2
@@ -59,7 +59,13 @@ DEFAULT_OPTIONS = {
         "dr_electrons" : 0.4,
         "dr_muons" : 0.4,
         "dr_taus" : 0.4,
-        "dr_iso_tracks" : 0.4
+        "dr_iso_tracks" : 0.4,
+        "bjet_thresh" : {
+            "2016UL_postVFP" : 0.3093,
+            "2016UL_preVFP": 0.3093,
+            "2017" : 0.3033,
+            "2018" : 0.2770
+        }
     },
     "z_veto" : [80., 100.],
     "m_llg_veto_window" : 10,
@@ -284,6 +290,8 @@ class HHggTauTauPreselTagger(Tagger):
         n_jets = awkward.num(jets)
         awkward_utils.add_field(events, "n_jets", n_jets, overwrite=True)
 
+        n_bjets = awkward.num(bjets[bjets.btagDeepFlavB > self.options["jets"]["bjet_thresh"][self.year]]) 
+        awkward_utils.add_field(events, "n_bjets", n_bjets, overwrite=True)
 
         ### Presel step 2: Z veto ###
         # 2.1 Register objects as 4 vectors for appropriate overloading of operators
@@ -400,6 +408,17 @@ class HHggTauTauPreselTagger(Tagger):
                 "ditau_dR",
                 awkward.fill_none(ditau_pairs.ditau.dR, DUMMY_VALUE)
         )
+        awkward_utils.add_field(
+                events,
+                "ditau_dphi",
+                awkward.fill_none(ditau_pairs.LeadTauCand.deltaphi(ditau_pairs.SubleadTauCand), DUMMY_VALUE)
+        )
+        awkward_utils.add_field(
+                events,
+                "ditau_deta",
+                awkward.fill_none(ditau_pairs.LeadTauCand.deltaeta(ditau_pairs.SubleadTauCand), DUMMY_VALUE)
+        )
+ 
 
         # Now assign the selected tau candidate pair in each event to a category integer
         category_map = {
@@ -474,6 +493,12 @@ class HHggTauTauPreselTagger(Tagger):
                 events,
                 "diphoton_met_dPhi",
                 events.Diphoton.deltaphi(met_p4)
+        )
+
+        awkward_utils.add_field(
+                events,
+                "lead_lepton_met_dphi",
+                awkward.fill_none(awkward.firsts(tau_candidates).deltaphi(met_p4), DUMMY_VALUE)
         )
 
         presel_cut = category_cut & z_veto & pho_id & m_llg_veto
