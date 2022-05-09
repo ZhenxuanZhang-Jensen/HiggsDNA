@@ -34,9 +34,9 @@ DEFAULT_OPTIONS = {
         "pt" : 20.0,
         "eta" : 2.3,
         "dz" : 0.2,
-        "deep_tau_vs_ele" : 1,
-        "deep_tau_vs_mu" : 0,
-        "deep_tau_vs_jet" : 7,
+        "deep_tau_vs_ele" : 2,
+        "deep_tau_vs_mu" : 1,
+        "deep_tau_vs_jet" : 8,
         "dr_photons" : 0.2,
         "dr_electrons" : 0.2,
         "dr_muons" : 0.2
