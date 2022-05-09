@@ -437,6 +437,7 @@ class AnalysisManager():
                         files = sample.files,
                         config = config,
                         fpo = self.fpo if self.fpo is not None else sample.fpo, 
+                        scale1fb = sample.scale1fb,
                         max_jobs = 1 if self.short else -1
                     )
             )

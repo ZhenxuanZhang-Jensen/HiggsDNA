@@ -168,6 +168,12 @@ class SampleManager():
                 else:
                     fpo = None
 
+                # Check if scale1fb is specified
+                if "scale1fb" in info.keys():
+                    scale1fb = info["scale1fb"][year]
+                else:
+                    scale1fb = None
+
                 samples.append(
                         Sample(
                             process = sample,
@@ -177,6 +183,7 @@ class SampleManager():
                             bf = bf,
                             process_id = s_idx,
                             fpo = fpo,
+                            scale1fb = scale1fb,
                             systematics = systematics
                         )
                 )

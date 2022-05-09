@@ -10,7 +10,7 @@ class Sample():
     """
 
     """
-    def __init__(self, process, year, files, is_data = None, xs = None, bf = None, systematics = None, process_id = None, fpo = None, **kwargs):
+    def __init__(self, process, year, files, is_data = None, xs = None, bf = None, systematics = None, process_id = None, fpo = None, scale1fb = None,  **kwargs):
         self.process = process
         self.year = year
         self.name = process + "_" + year
@@ -20,6 +20,7 @@ class Sample():
         self.fpo = fpo
         self.systematics = systematics
         self.process_id = process_id
+        self.scale1fb = scale1fb
 
         if is_data is None:
             self.is_data = self.xs is None and self.bf is None
