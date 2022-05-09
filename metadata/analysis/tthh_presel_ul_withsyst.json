@@ -22,6 +22,7 @@
         "ditau_pt", "ditau_eta", "ditau_phi", "ditau_mass", "ditau_dR", "ditau_helicity",
         "n_jets", "n_leptons", "n_electrons", "n_muons", "n_taus",
         "MET_pt",
+        "bdt_score",
         "weight_central",
         "event" 
     ],
@@ -84,7 +85,17 @@
                 "kwargs" : {
                     "name" : "TTHHPreselectionTagger"
                 }
-            }
+            },
+            {
+                "module_name" : "higgs_dna.taggers.tthh_sr_tagger",
+                "tagger" : "TTHHSRTagger",
+                "kwargs" : {
+                    "name" : "TTHHSignalRegionTagger",
+                    "options" : {
+                        "bdt_cuts" : [0.0,0.0]
+                    }
+                }
+            } 
     ],
     "systematics" : {
         "weights" : {

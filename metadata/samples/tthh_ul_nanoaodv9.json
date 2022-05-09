@@ -204,9 +204,48 @@
         "fpo" : 10,
         "files" : {
             "2016UL_preVFP" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2016*HIPM_UL2016_MiniAODv2-v1_MINIAOD_fix_HIPM_v3/*/*/*/*.root",
-            "2016UL_postVFP" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2016*-UL2016*final/*/*/*/*.root",
-            "2017" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017*final/*/*/*/*.root",
-            "2018" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/EGamma_Run2018*UL2018*final/*/*/*/*.root"
+            "2016UL_postVFP" : [
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2016G-UL2016_MiniAODv2-v1_MINIAOD_final_local_data_v2/skimNano-TestUL_DoubleEG_Run2016G-UL2016_MiniAODv2-v1_MINIAOD_final_local_data_v2_TESTS/220330_010845/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2016H-UL2016_MiniAODv2-v1_MINIAOD_final_local_data_v2/skimNano-TestUL_DoubleEG_Run2016H-UL2016_MiniAODv2-v1_MINIAOD_final_local_data_v2_TESTS/220330_010950/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2016F-UL2016_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_DoubleEG_Run2016F-UL2016_MiniAODv2-v1_MINIAOD_final_TESTS/220330_222420/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2016G-UL2016_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_DoubleEG_Run2016G-UL2016_MiniAODv2-v1_MINIAOD_final_TESTS/220330_222526/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2016G-UL2016_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_DoubleEG_Run2016G-UL2016_MiniAODv2-v1_MINIAOD_final_TESTS/220403_111237/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2016H-UL2016_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_DoubleEG_Run2016H-UL2016_MiniAODv2-v1_MINIAOD_final_TESTS/220330_222632/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2016H-UL2016_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_DoubleEG_Run2016H-UL2016_MiniAODv2-v1_MINIAOD_final_TESTS/220403_111341/0000"
+            ], 
+            "2017" : [
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017B-UL2017_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_DoubleEG_Run2017B-UL2017_MiniAODv2-v1_MINIAOD_final_TESTS/220330_222736/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017B-UL2017_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_DoubleEG_Run2017B-UL2017_MiniAODv2-v1_MINIAOD_final_TESTS/220403_111445/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017C-UL2017_MiniAODv2-v2_MINIAOD_final/skimNano-TestUL_DoubleEG_Run2017C-UL2017_MiniAODv2-v2_MINIAOD_final_TESTS/220330_222842/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017C-UL2017_MiniAODv2-v2_MINIAOD_final/skimNano-TestUL_DoubleEG_Run2017C-UL2017_MiniAODv2-v2_MINIAOD_final_TESTS/220403_111551/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017D-UL2017_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_DoubleEG_Run2017D-UL2017_MiniAODv2-v1_MINIAOD_final_TESTS/220330_222948/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017D-UL2017_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_DoubleEG_Run2017D-UL2017_MiniAODv2-v1_MINIAOD_final_TESTS/220403_111657/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017E-UL2017_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_DoubleEG_Run2017E-UL2017_MiniAODv2-v1_MINIAOD_final_TESTS/220330_223054/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017E-UL2017_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_DoubleEG_Run2017E-UL2017_MiniAODv2-v1_MINIAOD_final_TESTS/220403_111801/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017F-UL2017_MiniAODv2-v2_MINIAOD_final/skimNano-TestUL_DoubleEG_Run2017F-UL2017_MiniAODv2-v2_MINIAOD_final_TESTS/220330_223158/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017F-UL2017_MiniAODv2-v2_MINIAOD_final/skimNano-TestUL_DoubleEG_Run2017F-UL2017_MiniAODv2-v2_MINIAOD_final_TESTS/220403_111905/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017B-UL2017_MiniAODv2-v1_MINIAOD_final_local_data_v2/skimNano-TestUL_DoubleEG_Run2017B-UL2017_MiniAODv2-v1_MINIAOD_final_local_data_v2_TESTS/220330_011056/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017C-UL2017_MiniAODv2-v2_MINIAOD_final_local_data_v2/skimNano-TestUL_DoubleEG_Run2017C-UL2017_MiniAODv2-v2_MINIAOD_final_local_data_v2_TESTS/220330_011200/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017D-UL2017_MiniAODv2-v1_MINIAOD_final_local_data_v2/skimNano-TestUL_DoubleEG_Run2017D-UL2017_MiniAODv2-v1_MINIAOD_final_local_data_v2_TESTS/220330_011305/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017E-UL2017_MiniAODv2-v1_MINIAOD_final_local_data_v2/skimNano-TestUL_DoubleEG_Run2017E-UL2017_MiniAODv2-v1_MINIAOD_final_local_data_v2_TESTS/220330_011410/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/DoubleEG_Run2017F-UL2017_MiniAODv2-v2_MINIAOD_final_local_data_v2/skimNano-TestUL_DoubleEG_Run2017F-UL2017_MiniAODv2-v2_MINIAOD_final_local_data_v2_TESTS/220330_011515/0000"
+            ],
+            "2018" : [
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/EGamma_Run2018A-UL2018_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_EGamma_Run2018A-UL2018_MiniAODv2-v1_MINIAOD_final_TESTS/220330_223303/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/EGamma_Run2018A-UL2018_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_EGamma_Run2018A-UL2018_MiniAODv2-v1_MINIAOD_final_TESTS/220330_223303/0001",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/EGamma_Run2018A-UL2018_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_EGamma_Run2018A-UL2018_MiniAODv2-v1_MINIAOD_final_TESTS/220403_112010/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/EGamma_Run2018B-UL2018_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_EGamma_Run2018B-UL2018_MiniAODv2-v1_MINIAOD_final_TESTS/220330_223407/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/EGamma_Run2018B-UL2018_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_EGamma_Run2018B-UL2018_MiniAODv2-v1_MINIAOD_final_TESTS/220403_112116/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/EGamma_Run2018C-UL2018_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_EGamma_Run2018C-UL2018_MiniAODv2-v1_MINIAOD_final_TESTS/220330_223512/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/EGamma_Run2018C-UL2018_MiniAODv2-v1_MINIAOD_final/skimNano-TestUL_EGamma_Run2018C-UL2018_MiniAODv2-v1_MINIAOD_final_TESTS/220403_112220/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/EGamma_Run2018D-UL2018_MiniAODv2-v2_MINIAOD_final/skimNano-TestUL_EGamma_Run2018D-UL2018_MiniAODv2-v2_MINIAOD_final_TESTS/220330_223617/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/EGamma_Run2018D-UL2018_MiniAODv2-v2_MINIAOD_final/skimNano-TestUL_EGamma_Run2018D-UL2018_MiniAODv2-v2_MINIAOD_final_TESTS/220330_223617/0001",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/EGamma_Run2018D-UL2018_MiniAODv2-v2_MINIAOD_final/skimNano-TestUL_EGamma_Run2018D-UL2018_MiniAODv2-v2_MINIAOD_final_TESTS/220330_223617/0002",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/EGamma_Run2018D-UL2018_MiniAODv2-v2_MINIAOD_final/skimNano-TestUL_EGamma_Run2018D-UL2018_MiniAODv2-v2_MINIAOD_final_TESTS/220403_112326/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/EGamma_Run2018A-UL2018_MiniAODv2-v1_MINIAOD_final_local_data_v2/skimNano-TestUL_EGamma_Run2018A-UL2018_MiniAODv2-v1_MINIAOD_final_local_data_v2_TESTS/220330_011621/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/EGamma_Run2018C-UL2018_MiniAODv2-v1_MINIAOD_final_local_data_v2/skimNano-TestUL_EGamma_Run2018C-UL2018_MiniAODv2-v1_MINIAOD_final_local_data_v2_TESTS/220330_011725/0000",
+                            "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/EGamma_Run2018D-UL2018_MiniAODv2-v2_MINIAOD_final_local_data_v2/skimNano-TestUL_EGamma_Run2018D-UL2018_MiniAODv2-v2_MINIAOD_final_local_data_v2_TESTS/220330_011830/0000"
+            ] 
         }
     }
 }
