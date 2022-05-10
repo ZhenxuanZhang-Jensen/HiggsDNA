@@ -19,6 +19,7 @@ from higgs_dna.job_management.managers import LocalManager, CondorManager
 from higgs_dna.job_management.task import Task
 from higgs_dna.systematics.systematics_producer import SystematicsProducer
 from higgs_dna.taggers.tag_sequence import TagSequence
+from higgs_dna.taggers.golden_json_tagger import GoldenJsonTagger
 from higgs_dna.utils.misc_utils import load_config, update_dict, is_json_serializable
 from higgs_dna.constants import NOMINAL_TAG, CENTRAL_WEIGHT, BRANCHES
 from higgs_dna.utils.metis_utils import do_cmd
@@ -49,7 +50,7 @@ def run_analysis(config):
 
     ### 1. Load events ###
     t_start_load = time.time()
-    events, sum_weights = AnalysisManager.load_events(config["files"], config["branches"])
+    events, sum_weights = AnalysisManager.load_events(config["files"], config["branches"], config["sample"])
 
     # Optional branch mapping in case you have different naming schemes, e.g. you want MET_T1smear_pt to be recast as MET_pt
     # Can be separate for data and MC
@@ -474,7 +475,7 @@ class AnalysisManager():
 
 
     @staticmethod
-    def load_events(files, branches):
+    def load_events(files, branches, sample):
         """
         Load all branches in ``branches`` from "Events" tree from all nanoAODs in ``files`` into a single zipped ``awkward.Array``.
         Also calculates and returns the sum of weights from nanoAOD "Runs" tree.        
@@ -498,6 +499,12 @@ class AnalysisManager():
                 tree = f["Events"]
                 trimmed_branches = [x for x in branches if x in tree.keys()]
                 events_file = tree.arrays(trimmed_branches, library = "ak", how = "zip")
+                if sample["is_data"] and sample["year"] is not None:
+                    golden_json_tagger = GoldenJsonTagger(is_data = sample["is_data"], year = sample["year"])
+                    events_file = golden_json_tagger.select(events_file)
+                    if not len(events_file) > 0:
+                        logger.debug("[AnalysisManager : load_events] File '%s' skipped entirely because no events are in golden json." % (file))
+                        continue
                 events.append(events_file)
 
                 logger.debug("[AnalysisManager : load_events] Loaded %d events from file '%s'." % (len(events_file), file))

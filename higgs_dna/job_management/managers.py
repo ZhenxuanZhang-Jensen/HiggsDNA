@@ -142,6 +142,8 @@ class JobsManager():
 
         if scrolling:
             task_sets = create_chunks(self.tasks, int(lines/2))
+            if self.scroll_idx >= len(task_sets):
+                self.scroll_idx = 0
             tasks = task_sets[self.scroll_idx]
             self.scroll_idx = (self.scroll_idx + 1) % len(task_sets)
         else:
