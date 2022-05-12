@@ -11,6 +11,7 @@ from higgs_dna.selections import object_selections, lepton_selections, jet_selec
 from higgs_dna.utils import awkward_utils, misc_utils
 
 DUMMY_VALUE = -9.
+GEN_WEIGHT_BAD_VAL = -99999.
 DEFAULT_OPTIONS = {
     "electrons" : {
         "pt" : 10.0,
@@ -34,9 +35,9 @@ DEFAULT_OPTIONS = {
         "pt" : 20.0,
         "eta" : 2.3,
         "dz" : 0.2,
-        "deep_tau_vs_ele" : 2,
-        "deep_tau_vs_mu" : 1,
-        "deep_tau_vs_jet" : 8,
+        "deep_tau_vs_ele" : 1,
+        "deep_tau_vs_mu" : 0,
+        "deep_tau_vs_jet" : 7,
         "dr_photons" : 0.2,
         "dr_electrons" : 0.2,
         "dr_muons" : 0.2
@@ -501,10 +502,33 @@ class HHggTauTauPreselTagger(Tagger):
                 awkward.fill_none(awkward.firsts(tau_candidates).deltaphi(met_p4), DUMMY_VALUE)
         )
 
-        presel_cut = category_cut & z_veto & pho_id & m_llg_veto
+        # Fill lead/sublead lepton kinematics as:
+        #    if there is a ditau candidate
+        #        lead/sublead pt/eta = pt/eta of leading/subleading lepton in ditau candidate
+        #    if there is not a ditau candidate
+        #        lead pt/eta = pt/eta of leading lepton in event
+        #        sublead pt/eta = DUMMY_VALUE
+        for field in ["pt", "eta"]:
+            awkward_utils.add_field(events, "lead_lepton_%s" % field, awkward.ones_like(events.weight) * DUMMY_VALUE)
+            awkward_utils.add_field(events, "sublead_lepton_%s" % field, awkward.ones_like(events.weight) * DUMMY_VALUE)
+            events["lead_lepton_%s" % field] = events["tau_candidate_1_%s" % field]
+            events["lead_lepton_%s" % field] = awkward.where(
+                    events["ditau_pt"] > 0,
+                    events["ditau_lead_lepton_%s" % field],
+                    events["lead_lepton_%s" % field]
+            )
+            events["sublead_lepton_%s" % field] = awkward.where(
+                    events["ditau_pt"] > 0,
+                    events["ditau_sublead_lepton_%s" % field],
+                    events["sublead_lepton_%s" % field]
+            )
+
+        gen_weight_cut = events.weight != GEN_WEIGHT_BAD_VAL
+
+        presel_cut = category_cut & z_veto & pho_id & m_llg_veto & gen_weight_cut
         self.register_cuts(
-            names = ["category", "z_veto", "photon ID MVA", "m_llg veto", "all cuts"],
-            results = [category_cut, z_veto, pho_id, m_llg_veto, presel_cut]
+            names = ["category", "z_veto", "photon ID MVA", "m_llg veto", "gen weight cut", "all cuts"],
+            results = [category_cut, z_veto, pho_id, m_llg_veto, gen_weight_cut, presel_cut]
         )
 
         return presel_cut, events 
