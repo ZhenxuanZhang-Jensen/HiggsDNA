@@ -43,11 +43,11 @@ class Tagger():
         :rtype: awkward.Array
         """
         self.current_syst = NOMINAL_TAG
-        selection, events_updated = self.get_selection(NOMINAL_TAG, events)
+        selection, events_updated = self.calculate_selection(events)
         return events_updated[selection]
 
 
-    def run(self, events): 
+    def run(self, events, syst_tag = NOMINAL_TAG): 
         """
         Return dictionary of boolean arrays of events to be selected
         by this tagger for each systematic variation,
@@ -59,53 +59,20 @@ class Tagger():
         :rtype: dict, dict 
         """
 
-        for syst_tag, syst_events in events.items():
-            self.current_syst = syst_tag
+        self.current_syst = syst_tag
    
-            if not len(syst_events) >= 1:
-                logger.debug("[Tagger] %s : event set : %s : 0 events passed to tagger, skipping running this tagger." % (self.name, syst_tag))
-                self.selection[syst_tag] = awkward.ones_like(syst_events, dtype=bool)
-                self.events[syst_tag] = syst_events
-
-            else:
-                selection, syst_events_updated = self.get_selection(syst_tag, syst_events)
-                self.selection[syst_tag] = selection
-                self.events[syst_tag] = syst_events_updated
-                logger.debug("[Tagger] %s : event set : %s : %d (%d) events before (after) selection" % (self.name, syst_tag, len(syst_events), len(syst_events_updated[self.selection[syst_tag]])))
-
-
-        return self.selection, self.events
-
-
-    def set_selection(self, selection):
-        """
-        Update selection (TagSequence will do this to remove overlap
-        with other tags)
-        :param selection: boolean array for each set of events
-        :type selection: dict
-        """
-        for name in selection.keys():
-            self.selection[name] = selection[name]
-
-
-    def get_selection(self, syst_tag, syst_events): 
-        """
-        Return boolean array of events to be selected for a given event set.
-        Checks if the selection has already been calculated and
-        calculates it if not.
-        :param syst_tag: name of current systematic variation with independent collection
-        :type syst_tag: str
-        :param syst_events: events for current systematic variation with independent collection
-        :type syst_events: awkward.Array
-        """
-
-        if syst_tag in self.selection.keys():
-            return self.selection[syst_tag], self.events[syst_tag] 
+        if not len(events) >= 1:
+            logger.debug("[Tagger] %s : event set : %s : 0 events passed to tagger, skipping running this tagger." % (self.name, syst_tag))
+            self.selection[syst_tag] = awkward.ones_like(events, dtype=bool)
 
         else:
-            return self.calculate_selection(syst_events) 
+            selection, events = self.calculate_selection(events)
+            self.selection[syst_tag] = selection
+            logger.debug("[Tagger] %s : event set : %s : %d (%d) events before (after) selection" % (self.name, syst_tag, len(selection), awkward.sum(selection)))
 
-        
+        return selection, events
+
+
     def calculate_selection(self, events): 
         """
         Abstract function that should be reimplemented for each tagger.
