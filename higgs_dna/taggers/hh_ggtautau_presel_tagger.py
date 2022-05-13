@@ -509,8 +509,8 @@ class HHggTauTauPreselTagger(Tagger):
         #        lead pt/eta = pt/eta of leading lepton in event
         #        sublead pt/eta = DUMMY_VALUE
         for field in ["pt", "eta"]:
-            awkward_utils.add_field(events, "lead_lepton_%s" % field, awkward.ones_like(events.weight) * DUMMY_VALUE)
-            awkward_utils.add_field(events, "sublead_lepton_%s" % field, awkward.ones_like(events.weight) * DUMMY_VALUE)
+            awkward_utils.add_field(events, "lead_lepton_%s" % field, awkward.ones_like(events.ditau_pt) * DUMMY_VALUE)
+            awkward_utils.add_field(events, "sublead_lepton_%s" % field, awkward.ones_like(events.ditau_pt) * DUMMY_VALUE)
             events["lead_lepton_%s" % field] = events["tau_candidate_1_%s" % field]
             events["lead_lepton_%s" % field] = awkward.where(
                     events["ditau_pt"] > 0,
@@ -523,6 +523,8 @@ class HHggTauTauPreselTagger(Tagger):
                     events["sublead_lepton_%s" % field]
             )
 
+        if "weight" not in events.fields:
+            events["weight"] = awkward.ones_like(events.ditau_pt)
         gen_weight_cut = events.weight != GEN_WEIGHT_BAD_VAL
 
         presel_cut = category_cut & z_veto & pho_id & m_llg_veto & gen_weight_cut

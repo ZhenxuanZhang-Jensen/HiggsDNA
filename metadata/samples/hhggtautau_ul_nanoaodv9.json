@@ -8,6 +8,34 @@
         },
         "fpo": 10
     },
+    "XToHHggTauTau_M250" : {
+        "files" : {
+            "2016UL_postVFP" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/GluGluToBulkGravitonToHHTo2G2Tau_M-250_Summer20UL16/*/*/*/*.root"
+        },
+        "xs" : 0.001,
+        "fpo" : 1
+    },
+    "XToHHggTauTau_M260" : {
+        "files" : {
+            "2016UL_postVFP" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/GluGluToBulkGravitonToHHTo2G2Tau_M-260_Summer20UL16/*/*/*/*.root"
+        },
+        "xs" : 0.001,
+        "fpo" : 1
+    },
+    "XToHHggTauTau_M280" : {
+        "files" : {
+            "2016UL_postVFP" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/GluGluToBulkGravitonToHHTo2G2Tau_M-280_Summer20UL16/*/*/*/*.root"
+        },
+        "xs" : 0.001,
+        "fpo" : 1
+    },
+    "XToHHggTauTau_M290" : {
+        "files" : {
+            "2016UL_postVFP" : "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/GluGluToBulkGravitonToHHTo2G2Tau_M-290_Summer20UL16/*/*/*/*.root"
+        },
+        "xs" : 0.001,
+        "fpo" : 1
+    },
     "DiPhoton": {
         "files": {
             "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/02May2022/DiPhoton/*2016.root",
