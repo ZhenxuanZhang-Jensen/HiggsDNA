@@ -12,7 +12,7 @@ from higgs_dna.taggers.tagger import Tagger, NOMINAL_TAG
 from higgs_dna.utils import awkward_utils, misc_utils
 
 DEFAULT_OPTIONS = {
-    "bdt_file" : "/home/users/fsetti/HHggTauTau/HggAnalysisDev/MVAs/output/POGsel_04May2022.xgb", # if running on condor, this file needs to be placed somewhere under higgs_dna/ so that it is included in the tar file. We probably want to think of a better long term solution for this.
+    "bdt_file" : "data/POGsel_04May2022.xgb", # if running on condor, this file needs to be placed somewhere under higgs_dna/ so that it is included in the tar file. We probably want to think of a better long term solution for this.
     "bdt_features" : [
         "n_electrons", "n_muons", "n_taus", "n_iso_tracks", "n_jets", "n_bjets",
         "MET_pt", "diphoton_met_dPhi", "MET_ll_dPhi", "lead_lepton_met_dphi", "ditau_dphi", "ditau_deta", "ditau_dR",
@@ -49,7 +49,7 @@ class HHggTauTauNonResSRTagger(Tagger):
 
         # Initialize BDT 
         bdt = xgboost.Booster()
-        bdt.load_model(self.options["bdt_file"])
+        bdt.load_model(misc_utils.expand_path(self.options["bdt_file"]))
 
         # Convert events to proper format for xgb
         events_bdt = awkward.values_astype(events, numpy.float64)
