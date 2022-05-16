@@ -284,8 +284,8 @@ class CondorJob(Job):
 
     """
     REQUESTS = {
-            "REQ_MEMORY" : 4096, # request 4GB of memory
-            "REQ_DISK" : 10000, # request ~10GB of disk
+            "REQ_MEMORY" : 2048, # request 2GB of memory
+            "REQ_DISK" : 5000, # request ~5GB of disk
             "REQ_NCPUS" : 1 # just 1 CPU
     }
 

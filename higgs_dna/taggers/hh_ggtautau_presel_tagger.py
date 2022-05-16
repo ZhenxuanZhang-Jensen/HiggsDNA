@@ -508,7 +508,7 @@ class HHggTauTauPreselTagger(Tagger):
         #    if there is not a ditau candidate
         #        lead pt/eta = pt/eta of leading lepton in event
         #        sublead pt/eta = DUMMY_VALUE
-        for field in ["pt", "eta"]:
+        for field in ["pt", "eta", "phi", "mass", "charge", "id"]:
             awkward_utils.add_field(events, "lead_lepton_%s" % field, awkward.ones_like(events.ditau_pt) * DUMMY_VALUE)
             awkward_utils.add_field(events, "sublead_lepton_%s" % field, awkward.ones_like(events.ditau_pt) * DUMMY_VALUE)
             events["lead_lepton_%s" % field] = events["tau_candidate_1_%s" % field]
