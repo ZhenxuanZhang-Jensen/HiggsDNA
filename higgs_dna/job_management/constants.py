@@ -6,7 +6,7 @@
 HOST_PARAMS = {
         "UCSD" : {
             "xrd_redirector" : ("/ceph/cms/", "/ceph/cms/"),
-            #"xrd_redirector" : ("/ceph/cms/", "root://redirector.t2.ucsd.edu//"),
+            "copy_tar" : "cp",
             "gfal_redirector" : ("/ceph/cms/", "davs://redirector.t2.ucsd.edu:1095//"),
             "condor_base_path" : "/ceph/cms/store/user/USERNAME/HiggsDNA/DIRNAME/",
             "sites" : "T2_US_UCSD",
@@ -15,7 +15,10 @@ HOST_PARAMS = {
             "remote_job" : True # whether the job is unable to directly access the host site when running on condor. This means the job must write its files to relative paths, not absolute ones
         },
         "lxplus" : {
-            "needs_tar" : False,
+            "needs_tar" : True,
+            "copy_tar" : "xrd",
+            "xrd_redirector" : ("/eos/", "root://eosuser.cern.ch//eos/"),
+            "condor_base_path" : "/eos/user/USERNAME_INITIAL/USERNAME/HiggsDNA/DIRNAME/",
             "needs_copy_proxy" : True,
             "remote_job" : False
         }

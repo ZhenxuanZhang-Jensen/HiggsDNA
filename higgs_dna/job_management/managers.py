@@ -329,7 +329,7 @@ class CondorManager(JobsManager):
         # On some host sites, like T2s, condor jobs cannot directly access the local cluster and jobs need to be output to a special area, e.g. /hadoop 
         if "condor_base_path" in self.host_params.keys():
             self.batch_output_dir = os.path.abspath( # always do abspaths to be very safe
-                    self.host_params["condor_base_path"].replace("USERNAME", self.user).replace("DIRNAME", os.path.basename(self.output_dir))
+                    self.host_params["condor_base_path"].replace("USERNAME_INITIAL", self.user[0]).replace("USERNAME", self.user).replace("DIRNAME", os.path.basename(self.output_dir))
             )
             if os.path.exists(self.batch_output_dir):
                 logger.warning("[CondorManager : __init__] Output files from jobs will be written to directory '%s' which appears to already exist. If there are output files from an old run of HiggsDNA here, this may result in unintended behavior! We will assume this is the same analysis and that any output files there should be counted as 'done', rather than overwriting them. If this is not what you want, please delete the old files or specify a new --output_dir." % (self.batch_output_dir))
@@ -500,9 +500,17 @@ class CondorManager(JobsManager):
                         if os.path.exists(x): # delete any old versions before copying, giving priority to the freshly made ones
                             os.system("rm %s" % x)
 
-                    os.system("cp %s %s" % (self.conda_tarfile, self.batch_conda_tarfile))
-                    os.system("cp %s %s" % (self.analysis_tarfile, self.batch_analysis_tarfile))
-                    os.system("chmod 755 %s" % (self.batch_output_dir + "/*.tar.gz"))
+                    if self.host_params["copy_tar"] == "cp":
+                        os.system("cp %s %s" % (self.conda_tarfile, self.batch_conda_tarfile))
+                        os.system("cp %s %s" % (self.analysis_tarfile, self.batch_analysis_tarfile))
+                        os.system("chmod 755 %s" % (self.batch_output_dir + "/*.tar.gz"))
+
+                    elif self.host_params["copy_tar"] == "xrd":
+                        x,y = self.host_params["xrd_redirector"]
+                        os.system("xrdcp %s %s" % (self.conda_tarfile, self.batch_conda_tarfile.replace(x,y)))
+                        os.system("xrdcp %s %s" % (self.analysis_tarfile, self.batch_analysis_tarfile.replace(x,y)))
+
+                    
                     #do_cmd_timeout("hadoop fs -put %s %s" % (self.conda_tarfile, self.batch_conda_tarfile.replace("/hadoop", "")), 30, True)
                     #do_cmd_timeout("hadoop fs -put %s %s" % (self.analysis_tarfile, self.batch_analysis_tarfile.replace("/hadoop", "")), 30, True)
 

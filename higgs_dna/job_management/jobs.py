@@ -359,8 +359,8 @@ class CondorJob(Job):
             replacement_map["GFAL_BATCH_OUTPUT_DIR"] = self.output_dir.replace(to_replace, replace_with)    
 
         # if not a remote job, that means we are not sending a tar of the conda env and setting it up in the node, and we need to update the python path to point to our HiggsDNA version
-        if not self.host_params["remote_job"]:
-            replacement_map["python"] = "%s/bin/python" % (self.hdna_conda)
+        #if not self.host_params["remote_job"]:
+        #    replacement_map["python"] = "%s/bin/python" % (self.hdna_conda)
 
         self.update_file(
                 old = self.condor_exe_template,
