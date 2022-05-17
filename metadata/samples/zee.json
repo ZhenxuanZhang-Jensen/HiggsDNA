@@ -1,0 +1,34 @@
+{
+    "Data": {
+        "files": {
+            "2016UL_preVFP" : [
+                "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DoubleEG_Run2016B-ver1_HIPM_UL2016_MiniAODv2-v1_MINIAOD_fix_HIPM_v3/",
+                "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DoubleEG_Run2016B-ver2_HIPM_UL2016_MiniAODv2-v3_MINIAOD_fix_HIPM_v3/",
+                "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DoubleEG_Run2016C-HIPM_UL2016_MiniAODv2-v1_MINIAOD_fix_HIPM_v3/",
+                "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DoubleEG_Run2016D-HIPM_UL2016_MiniAODv2-v1_MINIAOD_fix_HIPM_v3/",
+                "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DoubleEG_Run2016E-HIPM_UL2016_MiniAODv2-v1_MINIAOD_fix_HIPM_v3/",
+                "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DoubleEG_Run2016F-HIPM_UL2016_MiniAODv2-v1_MINIAOD_fix_HIPM_v3/"
+            ],
+            "2016UL_postVFP" : [
+                "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DoubleEG_Run2016F-UL2016_MiniAODv2-v1_MINIAOD_final/",
+                "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DoubleEG_Run2016G-UL2016_MiniAODv2-v1_MINIAOD_final/",
+                "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DoubleEG_Run2016G-UL2016_MiniAODv2-v1_MINIAOD_final_local_data_v2/",
+                "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DoubleEG_Run2016H-UL2016_MiniAODv2-v1_MINIAOD_final_local_data_v2/",
+                "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DoubleEG_Run2016H-UL2016_MiniAODv2-v1_MINIAOD_final/"
+            ],
+            "2017" : "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DoubleEG_Run2017*final*/*.root",
+            "2018" : "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/EGamma_Run2018*final*/*.root"
+        },
+        "fpo": 10
+    },
+    "DY" : {
+        "xs" : 5765.4,
+        "files" : {
+            "2016UL_postVFP" : "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8_RunIISummer20UL16MiniAODv2-106X_mcRun2_asymptotic_v17-v1_MINIAODSIM_final/",
+            "2016UL_preVFP" : "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8_RunIISummer20UL16MiniAODAPVv2-106X_mcRun2_asymptotic_preVFP_v11-v1_MINIAODSIM_final/",
+            "2017" : "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8_RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2_MINIAODSIM_final/",
+            "2018" : "/ceph/cms/store/user/fsetti/Summer20UL_nanoAODv9/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8_RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v2_MINIAODSIM_final/"
+        },
+        "fpo" : 1
+    }
+}
