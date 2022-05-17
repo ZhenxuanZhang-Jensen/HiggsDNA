@@ -493,7 +493,7 @@ class CondorManager(JobsManager):
                 self.batch_conda_tarfile = self.batch_output_dir + "/" + "higgs-dna.tar.gz"
                 self.batch_analysis_tarfile = self.batch_output_dir + "/" + "higgs_dna.tar.gz"
 
-                if not self.copied_tars:
+                if not self.copied_tars and not self.conda_tarfile == self.batch_conda_tarfile: # the output dir is already the same as the batch output dir
                     logger.debug("[CondorManager : prepare_inputs] Transferring tarfiles to ceph directory '%s'." % self.batch_output_dir)
                     #logger.debug("[CondorManager : prepare_inputs] Transferring tarfiles to hadoop directory '%s' and setting replication factor to 30 so they may be copied with xrd to reduce I/O load on local cluster." % self.batch_output_dir)
                     for x in [self.batch_conda_tarfile, self.batch_analysis_tarfile]:
