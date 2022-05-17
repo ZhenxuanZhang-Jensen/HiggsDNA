@@ -164,12 +164,20 @@ class TnPZeeTagger(Tagger):
         zee_pairs[("Diphoton", "phi")] = zee_pairs.Diphoton.phi
         zee_pairs[("Diphoton", "pt")] = zee_pairs.Diphoton.pt
 
-        for field in ["Diphoton", "TagPhoton", "ProbePhoton"]:
-            events[field] = zee_pairs[zee_cut][field]
-
         # Event level cut
         presel_cut = awkward.num(zee_pairs[zee_cut]) == 1
-       
+
+        zee_pairs = awkward.firsts(zee_pairs[zee_cut])
+
+        for field in ["Diphoton", "TagPhoton", "ProbePhoton"]:
+            events[field] = zee_pairs[field]
+
+        self.register_cuts(
+                names = ["passing tag", "2 photons", "m_ee", "all"],
+                results = [tag_cut, n_pho_cut, mass_cut, presel_cut],
+                cut_type = "event"
+        ) 
+
         return presel_cut, events 
 
 
