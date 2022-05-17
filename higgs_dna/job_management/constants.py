@@ -33,4 +33,6 @@ CONDOR_STATUS_FLAGS = {
     4 : "completed",
     5 : "held",
     6 : "submission_error"
-} 
+}
+
+CONDA_TARFILE = "higgs-dna.tar.gz" # default conda tarfile area (so it doesn't get remade every time you run jobs. If you do install a new python package, simply remove the tarfile and it will be remade)

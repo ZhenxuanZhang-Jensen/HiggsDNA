@@ -16,8 +16,8 @@ logger = logging.getLogger(__name__)
 from higgs_dna.job_management.jobs import Job, LocalJob, CondorJob
 from higgs_dna.utils.metis_utils import num_to_ordinal_string, do_cmd, do_cmd_timeout
 from higgs_dna.utils import awkward_utils
-from higgs_dna.utils.misc_utils import check_proxy, create_chunks, get_HiggsDNA_base, get_conda
-from higgs_dna.job_management.constants import CONDOR_STATUS_FLAGS, HOST_PARAMS 
+from higgs_dna.utils.misc_utils import check_proxy, create_chunks, get_HiggsDNA_base, get_conda, expand_path
+from higgs_dna.job_management.constants import CONDOR_STATUS_FLAGS, HOST_PARAMS, CONDA_TARFILE
 
 import enlighten
 en_manager = enlighten.get_manager() # for job progress status bar
@@ -466,6 +466,10 @@ class CondorManager(JobsManager):
             if not self.needs_conda_tarfile:
                 tar_size = os.path.getsize(self.conda_tarfile) * (1. / 1024.)**3
                 logger.warning("[CondorManager : prepare_inputs] conda pack '%s' of size %.3f GB already exists, not remaking." % (self.conda_tarfile, tar_size))
+            elif os.path.exists(expand_path(CONDA_TARFILE)):
+                self.conda_tarfile = expand_path(CONDA_TARFILE)
+                tar_size = os.path.getsize(self.conda_tarfile) * (1. / 1024.)**3
+                logger.warning("[CondorManager : prepare_inputs] Found old conda pack '%s' of size %.3f GB, will use this one. If you have installed new packages since this was made, you should delete it and rerun (and a new one will be made automatically). If you have only modified code under HiggsDNA/ it is probably not necessary to remake." % (self.conda_tarfile, tar_size))
             else:
                 conda_pack_command = "conda pack -n higgs-dna --ignore-editable-packages --ignore-missing-files -o %s --compress-level 5 --n-threads 12" % self.conda_tarfile # compression level of 5 seems like a good balance of speed and size reduction: compression of 1 gives a tarfile of size 463MB, while 5 gives 413MB in 30s, while 9 gives 409MB in 91s 
                 logger.info("[CondorManager : prepare_inputs] Making conda pack '%s' with command '%s'" % (self.conda_tarfile, conda_pack_command))
