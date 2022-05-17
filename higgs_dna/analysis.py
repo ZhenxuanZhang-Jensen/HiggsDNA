@@ -52,27 +52,8 @@ def run_analysis(config):
     t_start_load = time.time()
     events, sum_weights = AnalysisManager.load_events(config["files"], config["branches"], config["sample"])
 
-    # Optional branch mapping in case you have different naming schemes, e.g. you want MET_T1smear_pt to be recast as MET_pt
-    # Can be separate for data and MC
-    if "branch_map" in config.keys():
-        if config["sample"]["is_data"]:
-            branch_map = config["branch_map"]["data"]
-        else:
-            branch_map = config["branch_map"]["mc"]
-
-        if branch_map:
-            for x in branch_map:
-                logger.debug("[run_analysis] Replacing %s with %s." % (str(x[0]), str(x[1])))
-                if isinstance(x[0], list):
-                    events[tuple(x[0])] = events[tuple(x[1])]
-                else:
-                    events[x[0]] = events[x[1]]
-
-    else:
-        logger.debug("[run_analysis] No branch map.")
 
     # Record n_events and sum_weights for scale1fb calculation
-    job_summary["n_events"] = len(events)
     job_summary["sum_weights"] = sum_weights
     job_summary["outputs"] = {}
     job_summary["n_events_selected"] = {}
@@ -82,67 +63,94 @@ def run_analysis(config):
     # So, check if the relevant directories exist to save outputs in their full path and save them to current dir if not.
     if not os.path.exists(config["dir"]):
         output_dir = ""
-        config["summary_file"] = os.path.split(config["summary_file"])[-1] 
-    else: 
+        config["summary_file"] = os.path.split(config["summary_file"])[-1]
+    else:
         output_dir = os.path.abspath(config["dir"]) + "/"
     output_name = output_dir + config["output_name"]
 
-    ### 2. Add relevant sample metadata to events ###
-    t_start_samples = time.time()
-    sample = Sample(**config["sample"])
-    events = sample.prep(events)
-    t_elapsed_samples = time.time() - t_start_samples
 
-    ### 3. Produce systematics ###
-    systematics_producer = SystematicsProducer(
-        name = config["name"],
-        options = config["systematics"],
-        sample = sample
-    )
-    events = systematics_producer.produce_weights(events)
 
-    tag_sequence = TagSequence(
-        name = config["name"],
-        tag_list = config["tag_sequence"],
-        sample = sample
-    ) 
+    if events is None: # sometimes this happens when we don't have any data events passing golden json
+        job_summary["n_events"] = 0
+        job_summary["n_events_selected"][NOMINAL_TAG] = 0
+        t_elapsed_samples = 0
+        t_elapsed_syst = 0
+        t_elapsed_taggers = 0
 
-    t_elapsed_syst = 0.
-    t_elapsed_taggers = 0.
+    else:
+        job_summary["n_events"] = len(events)
+        # Optional branch mapping in case you have different naming schemes, e.g. you want MET_T1smear_pt to be recast as MET_pt
+        # Can be separate for data and MC
+        if "branch_map" in config.keys():
+            if config["sample"]["is_data"]:
+                branch_map = config["branch_map"]["data"]
+            else:
+                branch_map = config["branch_map"]["mc"]
 
-    # Systematics variations
-    for syst_name, ic_syst in systematics_producer.independent_collections.items():
-        if not systematics_producer.do_variations:
-            continue
-        current_time = time.time()
-        ics = ic_syst.produce(events)
-        t_elapsed_syst += time.time() - current_time        
+            if branch_map:
+                for x in branch_map:
+                    logger.debug("[run_analysis] Replacing %s with %s." % (str(x[0]), str(x[1])))
+                    if isinstance(x[0], list):
+                        events[tuple(x[0])] = events[tuple(x[1])]
+                    else:
+                        events[x[0]] = events[x[1]]
 
-        for ic_name, events_ic in ics.items():
-            # If the IC modifies the nominal value of a branch, update this in the nominal events
-            if ic_name == "nominal":
-                events = events_ic
+        ### 2. Add relevant sample metadata to events ###
+        t_start_samples = time.time()
+        sample = Sample(**config["sample"])
+        events = sample.prep(events)
+        t_elapsed_samples = time.time() - t_start_samples
+
+        ### 3. Produce systematics ###
+        systematics_producer = SystematicsProducer(
+            name = config["name"],
+            options = config["systematics"],
+            sample = sample
+        )
+        events = systematics_producer.produce_weights(events)
+
+        tag_sequence = TagSequence(
+            name = config["name"],
+            tag_list = config["tag_sequence"],
+            sample = sample
+        ) 
+
+        t_elapsed_syst = 0.
+        t_elapsed_taggers = 0.
+
+        # Systematics variations
+        for syst_name, ic_syst in systematics_producer.independent_collections.items():
+            if not systematics_producer.do_variations:
                 continue
-
-            # Otherwise, this is an up/down variation
-            syst_tag = syst_name + "_" + ic_name
-            
             current_time = time.time()
-            events_ic, tag_idx_map = tag_sequence.run(events_ic, syst_tag)
-            t_elapsed_taggers += time.time() - current_time
+            ics = ic_syst.produce(events)
+            t_elapsed_syst += time.time() - current_time        
 
-            current_time = time.time()
-            events_ic = systematics_producer.apply_remaining_weight_systs(events_ic, syst_tag, tag_idx_map)
-            t_elapsed_syst += time.time() - current_time
+            for ic_name, events_ic in ics.items():
+                # If the IC modifies the nominal value of a branch, update this in the nominal events
+                if ic_name == "nominal":
+                    events = events_ic
+                    continue
 
-            job_summary["outputs"][syst_tag] = AnalysisManager.write_events(events_ic, config["variables_of_interest"], output_name, syst_tag)       
-            job_summary["n_events_selected"][syst_tag] = len(events_ic) 
+                # Otherwise, this is an up/down variation
+                syst_tag = syst_name + "_" + ic_name
+                
+                current_time = time.time()
+                events_ic, tag_idx_map = tag_sequence.run(events_ic, syst_tag)
+                t_elapsed_taggers += time.time() - current_time
 
-    # Nominal events
-    events, tag_idx_map = tag_sequence.run(events, NOMINAL_TAG)
-    events = systematics_producer.apply_remaining_weight_systs(events, NOMINAL_TAG, tag_idx_map)
-    job_summary["outputs"][NOMINAL_TAG] = AnalysisManager.write_events(events, config["variables_of_interest"], output_name, NOMINAL_TAG)
-    job_summary["n_events_selected"][NOMINAL_TAG] = len(events)
+                current_time = time.time()
+                events_ic = systematics_producer.apply_remaining_weight_systs(events_ic, syst_tag, tag_idx_map)
+                t_elapsed_syst += time.time() - current_time
+
+                job_summary["outputs"][syst_tag] = AnalysisManager.write_events(events_ic, config["variables_of_interest"], output_name, syst_tag)       
+                job_summary["n_events_selected"][syst_tag] = len(events_ic) 
+
+        # Nominal events
+        events, tag_idx_map = tag_sequence.run(events, NOMINAL_TAG)
+        events = systematics_producer.apply_remaining_weight_systs(events, NOMINAL_TAG, tag_idx_map)
+        job_summary["outputs"][NOMINAL_TAG] = AnalysisManager.write_events(events, config["variables_of_interest"], output_name, NOMINAL_TAG)
+        job_summary["n_events_selected"][NOMINAL_TAG] = len(events)
 
     t_elapsed = time.time() - t_start
 
@@ -152,6 +160,7 @@ def run_analysis(config):
     job_summary["time_frac_samples"] = t_elapsed_samples / t_elapsed
     job_summary["time_frac_syst"] = t_elapsed_syst / t_elapsed
     job_summary["time_frac_taggers"] = t_elapsed_taggers / t_elapsed
+
     job_summary["successful"] = True
 
     # Dump json summary
@@ -528,6 +537,9 @@ class AnalysisManager():
                 events.append(events_file)
 
                 logger.debug("[AnalysisManager : load_events] Loaded %d events from file '%s'." % (len(events_file), file))
+
+        if not len(events) >= 1: 
+            return None, None
 
         events = awkward.concatenate(events)
         return events, sum_weights
