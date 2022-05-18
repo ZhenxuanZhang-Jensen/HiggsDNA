@@ -1,5 +1,5 @@
 should_transfer_files = Yes
-transfer_input_files    = GRID_PROXY
+transfer_input_files    = GRID_PROXY, HIGGS_DNA_BASE/setup.py, HIGGS_DNA_BASE/environment.yml
 executable = EXECUTABLE
 output = OUTPUT
 error = ERROR

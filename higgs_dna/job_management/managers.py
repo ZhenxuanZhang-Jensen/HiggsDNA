@@ -475,6 +475,9 @@ class CondorManager(JobsManager):
                 logger.info("[CondorManager : prepare_inputs] Making conda pack '%s' with command '%s'" % (self.conda_tarfile, conda_pack_command))
                 logger.info("Note: the ``conda pack`` command can sometimes take a long time. If you are getting annoyed with how long it takes, you can always manually copy old tar files to your ``--output_dir`` area and HiggsDNA will not remake them. This will only work if you have not installed new python packages to your conda env.")
                 os.system(conda_pack_command)
+                logger.info("Copying conda tarfile to area '%s' to be reused for future runs. If you install new packages and need to remake the tarfile, simply delete this file and a new conda tarfile will be made for the next run." % (expand_path(CONDA_TARFILE)))
+                os.system("cp %s %s" % (self.conda_tarfile, expand_path(CONDA_TARFILE)))
+
 
             if not self.needs_analysis_tarfile:
                 tar_size = os.path.getsize(self.analysis_tarfile) * (1. / 1024.)**3
@@ -497,30 +500,28 @@ class CondorManager(JobsManager):
                 self.batch_conda_tarfile = self.batch_output_dir + "/" + "higgs-dna.tar.gz"
                 self.batch_analysis_tarfile = self.batch_output_dir + "/" + "higgs_dna.tar.gz"
 
-                if not self.copied_tars and not self.conda_tarfile == self.batch_conda_tarfile: # the output dir is already the same as the batch output dir
-                    logger.debug("[CondorManager : prepare_inputs] Transferring tarfiles to ceph directory '%s'." % self.batch_output_dir)
-                    #logger.debug("[CondorManager : prepare_inputs] Transferring tarfiles to hadoop directory '%s' and setting replication factor to 30 so they may be copied with xrd to reduce I/O load on local cluster." % self.batch_output_dir)
+                if not self.copied_tars: # the output dir is already the same as the batch output dir
+                    logger.debug("[CondorManager : prepare_inputs] Transferring tarfiles to directory '%s'." % self.batch_output_dir)
                     for x in [self.batch_conda_tarfile, self.batch_analysis_tarfile]:
                         if os.path.exists(x): # delete any old versions before copying, giving priority to the freshly made ones
-                            os.system("rm %s" % x)
+                            logger.warning("[CondorManager : prepare_inputs] Found existing tarfile '%s' in batch output directory, will not overwrite this. Manually delete this file if you want it to be overwritten." % (x))
+
+                            #os.system("rm %s" % x)
 
                     if self.host_params["copy_tar"] == "cp":
-                        os.system("cp %s %s" % (self.conda_tarfile, self.batch_conda_tarfile))
-                        os.system("cp %s %s" % (self.analysis_tarfile, self.batch_analysis_tarfile))
+                        if not os.path.exists(self.batch_conda_tarfile):
+                            os.system("cp %s %s" % (self.conda_tarfile, self.batch_conda_tarfile))
+                        if not os.path.exists(self.batch_analysis_tarfile):
+                            os.system("cp %s %s" % (self.analysis_tarfile, self.batch_analysis_tarfile))
                         os.system("chmod 755 %s" % (self.batch_output_dir + "/*.tar.gz"))
 
                     elif self.host_params["copy_tar"] == "xrd":
                         x,y = self.host_params["xrd_redirector"]
-                        os.system("xrdcp %s %s" % (self.conda_tarfile, self.batch_conda_tarfile.replace(x,y)))
-                        os.system("xrdcp %s %s" % (self.analysis_tarfile, self.batch_analysis_tarfile.replace(x,y)))
+                        if not os.path.exists(self.batch_conda_tarfile):
+                            os.system("xrdcp %s %s" % (self.conda_tarfile, self.batch_conda_tarfile.replace(x,y)))
+                        if not os.path.exists(self.batch_analysis_tarfile):
+                            os.system("xrdcp %s %s" % (self.analysis_tarfile, self.batch_analysis_tarfile.replace(x,y)))
 
-                    
-                    #do_cmd_timeout("hadoop fs -put %s %s" % (self.conda_tarfile, self.batch_conda_tarfile.replace("/hadoop", "")), 30, True)
-                    #do_cmd_timeout("hadoop fs -put %s %s" % (self.analysis_tarfile, self.batch_analysis_tarfile.replace("/hadoop", "")), 30, True)
-
-                    #logger.debug("[CondorManager : prepare_inputs] Setting replication factor to 30 to increase transfer speed.")
-                    #os.system("hadoop fs -setrep -R 30 %s" % (self.batch_conda_tarfile.replace("/hadoop","")))
-                    #os.system("hadoop fs -setrep -R 30 %s" % (self.batch_analysis_tarfile.replace("/hadoop","")))
                     self.copied_tars = True
 
                 if "xrd_redirector" in self.host_params.keys():
