@@ -106,6 +106,9 @@ class DiphotonTagger(Tagger):
                 rho = events.fixedGridRhoFastjetAll
             elif "Rho_fixedGridRhoAll" in events.fields:
                 rho = events.Rho_fixedGridRhoAll
+            else:
+                logger.exception("[DiphotonTagger : calculate_selection] Did not find valid 'rho' field.")
+                raise RuntimeError()
         else:
             rho = awkward.ones_like(events.Photon)
 
