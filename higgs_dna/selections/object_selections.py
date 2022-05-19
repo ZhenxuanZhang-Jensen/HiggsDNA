@@ -97,16 +97,16 @@ def mass_veto(objects1, objects2, mass_range):
     return selection
 
 
-def delta_R(objects1, objects2, min_dr):
+def delta_R(objects1, objects2, dr, mode = "min"):
     """
-    Select objects from objects1 which are at least min_dr away from all objects in objects2.
+    Select objects from objects1 which are for mode = 'min' ('max') at least (at most) dr away from all (any) objects in objects2.
 
-    :param objects1: objects which are required to be at least min_dr away from all objects in objects2 
+    :param objects1: objects which are required to be at least dr away from all objects in objects2 
     :type objects1: awkward.highlevel.Array
-    :param objects2: objects which are all objects in objects1 must be at leats min_dr away from
+    :param objects2: objects which are all objects in objects1 must be at leats dr away from
     :type objects2: awkward.highlevel.Array
-    :param min_dr: minimum delta R between objects
-    :type min_dr: float
+    :param dr: minimum delta R between objects
+    :type dr: float
     :return: boolean array of objects in objects1 which pass delta_R requirement
     :rtype: awkward.highlevel.Array
     """
@@ -125,7 +125,14 @@ def delta_R(objects1, objects2, min_dr):
 
     dR = obj1.deltaR(obj2) # shape [n_events, n_obj1, n_obj2]
 
-    selection = awkward.all(dR >= min_dr, axis = -1)
+    if mode == "min":
+        selection = awkward.all(dR >= dr, axis = -1)
+    elif mode == "max":
+        selection = awkward.any(dR <= dr, axis = -1)
+    else:
+        logger.exception("[object_selections : delta_R] mode '%s' not recognized." % (mode))
+        raise ValueError()
+
     return selection
 
 
