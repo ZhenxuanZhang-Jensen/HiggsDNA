@@ -446,6 +446,8 @@ class AnalysisManager():
             else:
                 task_branches += BRANCHES["mc"][sample.year] + BRANCHES["mc"]["any"]
 
+            task_branches = list(set(task_branches))
+
             # Make Sample instance json-able so we can save it in job config files
             jsonable_sample = copy.deepcopy(sample)
             jsonable_sample.files = [x.__dict__ for x in jsonable_sample.files]
