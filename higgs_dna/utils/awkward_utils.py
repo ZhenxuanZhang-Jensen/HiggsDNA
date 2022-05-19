@@ -237,3 +237,29 @@ def create_four_vectors(events, offsets, contents):
 
     return objects_p4
 
+
+def unpackbits(x, num_bits):
+    if numpy.issubdtype(x.dtype, numpy.floating):
+        raise ValueError("numpy data type needs to be int-like")
+    xshape = list(x.shape)
+    x = x.reshape([-1, 1])
+    mask = 2**numpy.arange(num_bits, dtype=x.dtype).reshape([1, num_bits])
+    return (x & mask).astype(bool).astype(int).reshape(xshape + [num_bits])
+
+
+def to_bitlist(array, num_bits):
+    jagged = "var" in str(array.type)
+    if jagged:
+        n = awkward.num(array)
+        array_numpy = awkward.to_numpy(awkward.flatten(array))
+    else:
+        array_numpy = awkward.to_numpy(array)
+
+    bits_numpy = unpackbits(array_numpy,num_bits)
+
+    if jagged:
+        bits = awkward.unflatten(bits_numpy, n)
+    else:
+        bits = awkward.from_numpy(bits_numpy)
+
+    return bits
