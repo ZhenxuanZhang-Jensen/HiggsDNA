@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 from higgs_dna.taggers.tagger import Tagger, NOMINAL_TAG 
 from higgs_dna.utils import awkward_utils, misc_utils
-from higgs_dna.selections import gen_selections
+from higgs_dna.selections import gen_selections, object_selections
 
 DEFAULT_OPTIONS = {
     "photons" : {
@@ -57,6 +57,7 @@ DEFAULT_OPTIONS = {
     "tag" : {
         "pt" : 40.0,
         "id" : "WP80",
+        "trig_obj_dr" : 0.1
     },
     "trigger" : {
         "2016" : ["HLT_Ele27_WPTight_Gsf"],
@@ -105,6 +106,9 @@ class TnPZeeTagger(Tagger):
                 rho = events.fixedGridRhoFastjetAll
             elif "Rho_fixedGridRhoAll" in events.fields:
                 rho = events.Rho_fixedGridRhoAll
+            else:
+                logger.exception("[DiphotonTagger : calculate_selection] Did not find valid 'rho' field.")
+                raise RuntimeError()
         else:
             rho = awkward.ones_like(events.Photon)
 
@@ -142,7 +146,22 @@ class TnPZeeTagger(Tagger):
         else:
             id_cut = awkward.ones_like(photons, dtype=bool) 
 
-        photons["pass_tag"] = ele_cut & pt_cut & id_cut
+        # Require tags to be dR matched to a TrigObj which fired the trigger
+        electron_trig_obj = events.TrigObj[events.TrigObj.id == 11] # require the trig obj to be an electron
+        electron_trig_obj["bitlist"] = awkward_utils.to_bitlist(electron_trig_obj.filterBits, 18)
+        electron_trig_obj = electron_trig_obj[electron_trig_obj.bitlist[:,:,1] == True] # require the trig obj to be matched to the hltEle*WPTight*TrackIsoFilter* bit (bit 2)
+        electron_trig_obj["mass"] = awkward.zeros_like(electron_trig_obj.pt)
+        
+        trig_obj_dr_cut = object_selections.delta_R(photons, electron_trig_obj, self.options["tag"]["trig_obj_dr"], mode = "max") 
+
+        photons["pass_tag"] = ele_cut & pt_cut & id_cut & trig_obj_dr_cut
+       
+        self.register_cuts(
+                names = ["in electron collection", "pt", "ID", "dR matched to trigger object", "all"],
+                results = [ele_cut, pt_cut, id_cut, trig_obj_dr_cut, photons.pass_tag],
+                cut_type = "tag"
+        )
+
         photons = photons[awkward.argsort(photons.pass_tag * photons.pt, ascending=False, axis=1)] # photons that pass tag selection come first, then sorted by pT
 
         zee_pairs = awkward.combinations(photons, 2, fields=["TagPhoton", "ProbePhoton"]) # we will require at least one photon passing the tag and mark the highest pT photon as the tag in events with more than one
@@ -157,7 +176,19 @@ class TnPZeeTagger(Tagger):
 
         # mass on Z peak
         mass_cut = (zee_pairs.Diphoton.mass >= self.options["zee_cands"]["mass"][0]) & (zee_pairs.Diphoton.mass <= self.options["zee_cands"]["mass"][1]) 
-        zee_cut = tag_cut & n_pho_cut & mass_cut
+
+        # trigger
+        if self.year is not None:
+            if len(self.options["trigger"][self.year]) == 0: # no triggers:
+                trigger_cut = awkward.ones_like(events.run, dtype=bool) # dummy cut, all True
+            else:
+                trigger_cut = awkward.zeros_like(events.run, dtype=bool) # dummy cut, all False
+                for hlt in self.options["trigger"][self.year]: # logical OR of all triggers
+                    trigger_cut = (trigger_cut) | (events[hlt] == True)
+        else:
+            trigger_cut = awkward.ones_like(events.run, dtype=bool) # dummy cut, all True
+
+        zee_cut = tag_cut & n_pho_cut & mass_cut & trigger_cut
 
         zee_pairs[("Diphoton", "mass")] = zee_pairs.Diphoton.mass
         zee_pairs[("Diphoton", "eta")] = zee_pairs.Diphoton.eta
@@ -173,8 +204,8 @@ class TnPZeeTagger(Tagger):
             events[field] = zee_pairs[field]
 
         self.register_cuts(
-                names = ["passing tag", "2 photons", "m_ee", "all"],
-                results = [tag_cut, n_pho_cut, mass_cut, presel_cut],
+                names = ["passing tag", "2 photons", "m_ee", "trigger", "all"],
+                results = [tag_cut, n_pho_cut, mass_cut, trigger_cut, presel_cut],
                 cut_type = "event"
         ) 
 
