@@ -150,7 +150,7 @@ class Task():
         # Check status of all jobs
         for job in self.jobs:
             if job_map is not None:
-                if os.path.exists(job.summary_file):
+                if os.path.exists(job.summary_file) or os.path.exists(job.output_dir + "/" + job.summary_file):
                     job.status = "completed"
                 elif job.cluster_id in job_map.keys():
                     if job_map[job.cluster_id] is not None:
@@ -301,6 +301,7 @@ class Task():
                 if not os.path.exists(output):
                     if os.path.exists(job.output_dir + "/" + output):
                         output = job.output_dir + "/" + output
+                        self.outputs[syst_tag].append(output)
                     else:
                         logger.exception("[Task : summarize] Did not find output for job '%s' with dir '%s', output dir '%s', config file '%s', and summary file '%s'." % (job.name, job.dir, job.output_dir, job.config_file, job.summary_file))
                         raise RuntimeError()
