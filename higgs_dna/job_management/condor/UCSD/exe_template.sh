@@ -3,7 +3,7 @@ function stageout {
     COPY_DEST=$2
     retries=0
     COPY_STATUS=1
-    until [ $retries -ge 2 ]
+    until [ $retries -ge 3 ]
     do
         echo "Stageout attempt $((retries+1)): env -i X509_USER_PROXY=${X509_USER_PROXY} gfal-copy -p -f -t 7200 --verbose --checksum ADLER32 ${COPY_SRC} ${COPY_DEST}"
         env -i X509_USER_PROXY=${X509_USER_PROXY} gfal-copy -p -f -t 7200 --verbose --checksum ADLER32 ${COPY_SRC} ${COPY_DEST}
@@ -15,8 +15,8 @@ function stageout {
             break
         fi
         retries=$[$retries+1]
-        echo "Sleeping for 30s"
-        sleep 30s
+        echo "Sleeping for 10s"
+        sleep 10s
     done
     if [ $COPY_STATUS -ne 0 ]; then
         echo "Removing output file because gfal-copy crashed with code $COPY_STATUS"
@@ -27,6 +27,7 @@ function stageout {
             echo "You probably have a corrupt file sitting on hadoop now."
             exit 1
         fi
+        exit 1
     fi
 }
 
