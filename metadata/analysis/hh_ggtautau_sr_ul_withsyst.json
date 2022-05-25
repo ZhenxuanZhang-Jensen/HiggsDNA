@@ -6,8 +6,8 @@
     },
     "variables_of_interest" : [
         ["Diphoton", "mass"], ["Diphoton", "pt"], ["Diphoton", "eta"], ["Diphoton", "phi"], ["Diphoton", "helicity"], ["Diphoton", "pt_mgg"], ["Diphoton", "max_mvaID"], ["Diphoton", "min_mvaID"], ["Diphoton", "dPhi"],
-        ["LeadPhoton", "pt"], ["LeadPhoton", "eta"], ["LeadPhoton", "phi"], ["LeadPhoton", "mass"], ["LeadPhoton", "mvaID"], ["LeadPhoton", "genPartFlav"], ["LeadPhoton", "pixelSeed"],
-        ["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"], ["SubleadPhoton", "genPartFlav"], ["SubleadPhoton", "pixelSeed"],
+        ["LeadPhoton", "pt"], ["LeadPhoton", "eta"], ["LeadPhoton", "phi"], ["LeadPhoton", "mass"], ["LeadPhoton", "mvaID"], ["LeadPhoton", "genPartFlav"], ["LeadPhoton", "pixelSeed"], ["LeadPhoton", "pt_mgg"],
+        ["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"], ["SubleadPhoton", "genPartFlav"], ["SubleadPhoton", "pixelSeed"], ["SubleadPhoton", "pt_mgg"],
         "weight_central", "bdt_score",
         "n_electrons", "n_muons", "n_taus", "n_iso_tracks", "n_jets", "n_bjets",
         "MET_pt", "diphoton_met_dPhi", "MET_ll_dPhi", "lead_lepton_met_dphi", "ditau_dphi", "ditau_deta", "ditau_dR",
