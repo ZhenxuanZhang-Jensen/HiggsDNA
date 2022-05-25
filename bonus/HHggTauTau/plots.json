@@ -1,0 +1,265 @@
+{
+    "bdt_score" : {
+        "bins" : "20, 0, 1",
+        "x_label" : "BDT Score",
+        "log_y" : true,
+        "overflow" : true
+    },
+    "Diphoton_mass" : {
+        "bins" : "16, 100, 180",
+        "x_label" : "Diphoton mass [GeV]",
+        "log_y" : true,
+        "overflow" : true
+    },
+    "n_electrons" : {
+        "bins" : "3, -0.5, 2.5",
+        "x_label" : "N electrons",
+        "overflow" : true
+    },
+    "n_muons" : {
+        "bins" : "3, -0.5, 2.5",
+        "x_label" : "N muons",
+        "overflow" : true
+    },
+    "n_taus" : {
+        "bins" : "3, -0.5, 2.5",
+        "x_label" : "N taus",
+        "overflow" : true
+    },
+    "n_iso_tracks" : {
+        "bins" : "3, -0.5, 2.5",
+        "x_label" : "N iso_tracks",
+        "overflow" : true
+    },
+    "n_jets" : {
+        "bins" : "5, -0.5, 4.5",
+        "x_label" : "N jets",
+        "overflow" : true
+    },
+    "n_bjets" : {
+        "bins" : "3, -0.5, 2.5",
+        "x_label" : "N b-jets (medium)",
+        "overflow" : true
+    },
+    "MET_pt" : {
+        "bins" : "20, 0, 150",
+        "x_label" : "Missing transverse energy [GeV]",
+        "overflow" : true
+    },
+    "diphoton_met_dPhi" : {
+        "bins" : "20, -3.2, 3.2",
+        "x_label" : "Delta Phi(Diphoton, MET)",
+        "overflow" : true
+    },
+    "MET_ll_dPhi" : {
+        "bins" : "20, -3.2, 3.2",
+        "x_label" : "Delta Phi(Ditau, MET)",
+        "overflow" : false
+    },
+    "lead_lepton_met_dphi" : {
+        "bins" : "20, -3.2, 3.2",
+        "x_label" : "Delta Phi(Lead lepton, MET)",
+        "overflow" : false
+    },
+    "ditau_dphi" : {
+        "bins" : "20, -3.2, 3.2",
+        "x_label" : "Visible ditau delta Phi",
+        "overflow" : false
+    },
+    "ditau_deta" : {
+        "bins" : "20, -5, 5",
+        "x_label" : "Visible ditau delta Eta",
+        "overflow" : false
+    },
+    "ditau_dR" : {
+        "bins" : "20, 0, 6",
+        "x_label" : "Visible ditau delta R",
+        "overflow" : false
+    },
+    "ditau_mass" : {
+        "bins" : "20, 0, 200",
+        "x_label" : "Visible ditau mass [GeV]",
+        "overflow" : false
+    },
+    "ditau_pt" : {
+        "bins" : "20, 0, 300",
+        "x_label" : "Visible ditau pT [GeV]",
+        "overflow" : false
+    },
+    "ditau_eta" : {
+        "bins" : "20, -4, 4",
+        "x_label" : "Visible ditau eta",
+        "overflow" : false
+    },
+    "dPhi_tautau_SVFit" : {
+        "bins" : "20, -3.2, 3.2",
+        "x_label" : "SVFit ditau delta Phi",
+        "overflow" : false
+    },
+    "dR_tautau_SVFit" : {
+        "bins" : "20, 0, 6",
+        "x_label" : "SVFit ditau delta R",
+        "overflow" : false
+    },
+    "m_tautau_SVFit" : {
+        "bins" : "20, 0, 200",
+        "x_label" : "SVFit ditau mass [GeV]",
+        "overflow" : false
+    },
+    "pt_tautau_SVFit" : {
+        "bins" : "20, 0, 300",
+        "x_label" : "SVFit ditau pT [GeV]",
+        "overflow" : false
+    },
+    "eta_tautau_SVFit_bdt" : {
+        "bins" : "20, -4, 4",
+        "x_label" : "SVFit ditau eta",
+        "overflow" : false
+    },
+    "LeadPhoton_eta" : {
+        "bins" : "20, -2.5, 2.5",
+        "x_label" : "Lead Photon eta",
+        "overflow" : true
+    },
+    "LeadPhoton_mvaID" : {
+        "bins" : "20, -1.0, 1.0",
+        "x_label" : "Lead Photon mva ID",
+        "overflow" : true
+    },
+    "LeadPhoton_pixelSeed" : {
+        "bins" : "2, -0.5, 1.5",
+        "x_label" : "Lead Photon pixel seed",
+        "overflow" : true
+    },
+    "SubleadPhoton_eta" : {
+        "bins" : "20, -2.5, 2.5",
+        "x_label" : "Sublead Photon eta",
+        "overflow" : true
+    },
+    "SubleadPhoton_mvaID" : {
+        "bins" : "20, -1.0, 1.0",
+        "x_label" : "Sublead Photon mva ID",
+        "overflow" : true
+    },
+    "SubleadPhoton_pixelSeed" : {
+        "bins" : "2, -0.5, 1.5",
+        "x_label" : "Sublead Photon pixel seed",
+        "overflow" : true
+    },
+    "Diphoton_max_mvaID" : {
+        "bins" : "20, -1.0, 1.0",
+        "x_label" : "max Photon mva ID",
+        "overflow" : true
+    },
+    "Diphoton_min_mvaID" : {
+        "bins" : "20, -1.0, 1.0",
+        "x_label" : "min Photon mva ID",
+        "overflow" : true
+    },
+    "Diphoton_pt_mgg" : {
+        "bins" : "20, 0, 3.0",
+        "x_label" : "Diphoton pT / m_gg",
+        "overflow" : true
+    },
+    "Diphoton_eta" : {
+        "bins" : "20, -3, 3",
+        "x_label" : "Diphoton eta",
+        "overflow" : true
+    },
+    "Diphoton_dPhi" : {
+        "bins" : "20, -3.2, 3.2",
+        "x_label" : "Diphoton delta Phi",
+        "overflow" : true
+    },
+    "lead_lepton_pt" : {
+        "bins" : "20, 0, 150",
+        "x_label" : "Lead lepton pT",
+        "overflow" : false
+    },
+    "lead_lepton_eta" : {
+        "bins" : "20, -3, 3",
+        "x_label" : "Lead lepton eta",
+        "overflow" : false
+    },
+    "sublead_lepton_pt" : {
+        "bins" : "20, 0, 150",
+        "x_label" : "Sublead lepton pT",
+        "overflow" : false
+    },
+    "sublead_lepton_eta" : {
+        "bins" : "20, -3, 3",
+        "x_label" : "Sublead lepton eta",
+        "overflow" : false
+    },
+    "category" : {
+        "bins" : "8, 0.5, 8.5",
+        "x_label" : "Category",
+        "overflow" : false
+    },
+    "jet_1_pt" : {
+        "bins" : "20, 0, 200",
+        "x_label" : "Lead jet pT",
+        "overflow" : false
+    },
+    "jet_1_eta" : {
+        "bins" : "20, -2.4, 2.4",
+        "x_label" : "Lead jet eta",
+        "overflow" : false
+    },
+    "jet_1_btagDeepFlavB" : {
+        "bins" : "10, 0, 1",
+        "x_label" : "Lead jet b-tag score",
+        "overflow" : false
+    },
+    "jet_2_pt" : {
+        "bins" : "20, 0, 200",
+        "x_label" : "Sublead jet pT",
+        "overflow" : false
+    },
+    "jet_2_eta" : {
+        "bins" : "20, -2.4, 2.4",
+        "x_label" : "Sublead jet eta",
+        "overflow" : false
+    },
+    "jet_2_btagDeepFlavB" : {
+        "bins" : "10, 0, 1",
+        "x_label" : "Sublead jet b-tag score",
+        "overflow" : false
+    },
+    "b_jet_1_btagDeepFlavB" : {
+        "bins" : "10, 0, 1",
+        "x_label" : "Max b-tag score",
+        "overflow" : false
+    },
+    "dR_ggtautau_SVFit" : {
+        "bins" : "20, 0, 6",
+        "x_label" : "dR(Diphoton, Ditau)",
+        "overflow" : false
+    },
+    "dPhi_ggtautau_SVFit" : {
+        "bins" : "20, -3.2, 3.2",
+        "x_label" : "dPhi(Diphoton, Ditau)",
+        "overflow" : false
+    },
+    "gg_tt_CS" : {
+        "bins" : "20, 0, 1",
+        "x_label" : "CS angle(Diphoton, Ditau)",
+        "overflow" : false
+    },
+    "gg_tt_hel" : {
+        "bins" : "20, 0, 1",
+        "x_label" : "Diphoton+Ditau helicity",
+        "overflow" : false
+    },
+    "tt_hel" : {
+        "bins" : "20, 0, 1",
+        "x_label" : "SVFit Ditau helicity",
+        "overflow" : false
+    }, 
+    "Diphoton_helicity" : {
+        "bins" : "20, 0, 1",
+        "x_label" : "Diphoton abs(cos(helicity))",
+        "log_y" : false,
+        "overflow" : false
+    }
+}

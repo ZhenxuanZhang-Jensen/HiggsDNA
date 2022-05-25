@@ -53,6 +53,13 @@ def parse_arguments():
         help="csv list of signal processes (to be excluded from data/MC comparison)")
 
     parser.add_argument(
+        "--backgrounds",
+        required=False,
+        default=None,
+        type=str,
+        help="csv list of background processes (to be included in data/MC comparison)")
+
+    parser.add_argument(
         "--group_procs",
         required=False,
         default=None,
@@ -202,7 +209,7 @@ def table_line(proc, results, n_bkg):
     line = "\t \t %s & %.4f & $\\pm \\text{%.4f}$  & $~^{+\\text{%.4f}}_{-\\text{%.4f}}$  & %.4f \\\\ \n" % (proc.replace("_", "-"), results["n"], results["stat_unc"], results["syst_unc_up"], results["syst_unc_down"], bkg_frac)
     return line
 
-def make_tables(events, process_map, signals):
+def make_tables(events, process_map, signals, bkgs = None):
     yields = {}
    
     for proc, ids in process_map.items():
@@ -282,7 +289,8 @@ def make_tables(events, process_map, signals):
 
     table += "\t \t \\hline \n"
     
-    bkgs = [x for x in yields.keys() if (x not in signals and x not in ["Data", "total_bkg"])]
+    if bkgs is None:
+        bkgs = [x for x in yields.keys() if (x not in signals and x not in ["Data", "total_bkg"])]
     sort_idx = awkward.argsort([yields[x]["n"] for x in bkgs], ascending = True)
     bkgs = numpy.array(bkgs)[sort_idx]
     for proc in bkgs:
@@ -309,7 +317,7 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
     normalize = kwargs.get("normalize", False)
     x_label = kwargs.get("x_label", None)
     y_label = kwargs.get("y_label", "Events" if not normalize else "Fraction of events")
-    rat_label = kwargs.get("rat_label", "Data/MC")
+    rat_label = kwargs.get("rat_label", "Data / MC")
     title = kwargs.get("title", None)
     y_lim = kwargs.get("y_lim", None)
     x_lim = kwargs.get("x_lim", None)
@@ -368,6 +376,8 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
         h_sig.append(h)
 
     fig, (ax1,ax2) = plt.subplots(2, sharex=True, figsize=(12,9), gridspec_kw=dict(height_ratios=[3, 1]))
+    if log_y:
+        ax1.set_yscale("log") 
     plt.grid()
     h_data.plot(ax=ax1, color = "black", errors = True)
     plt.sca(ax1)
@@ -418,6 +428,8 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
     ratio.metadata["label"] = None
     ratio.plot(ax=ax2, errors=True, color="black")
 
+    
+
     if x_label is not None:
         ax2.set_xlabel(x_label)
 
@@ -433,14 +445,20 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
     if y_lim is not None:
         ax1.set_ylim(y_lim)
 
+    else:
+        y_min, y_max = ax1.get_ylim()
+        if not log_y:
+            y_min = 0.
+            y_max = y_max * (1.5 + (0.1 * len(bkg.keys()))) 
+        else:
+            y_max = y_max * 10**(2 + (0.4 * len(bkg.keys())))
+        ax1.set_ylim([y_min,y_max])
+
     if rat_lim is not None:
         ax2.set_ylim(rat_lim)
 
     if x_lim is not None:
         ax1.set_xlim(x_lim)
-
-    if log_y:
-        ax1.set_yscale("log")
 
     for i in range(h_data.nbins):
         if h_bkg_total.counts[i] == 0:
@@ -520,7 +538,11 @@ def make_plots(plot_config, output_dir, events, process_map, signals, bkgs):
             weights = events_with_ids(events["ics"]["nominal"]["events"], process_map[s])["weight_central"]
             sig[s] = { "array" : array, "weights" : weights, "syst_weights" : [], "syst_arrays" : [] }
 
-        make_data_mc_plot(data, bkg, sig, savename = "%s/%s_dataMC.pdf" % (output_dir, field), **info)
+        info["log_y"] = True
+        make_data_mc_plot(data, bkg, sig, savename = "%s/%s_dataMC_log.pdf" % (output_dir, field), **info)
+        info["log_y"] = False
+        make_data_mc_plot(data, bkg, sig, savename = "%s/%s_dataMC_linear.pdf" % (output_dir, field), **info)
+
 
 
 def get_quantile_range(array, ci):
@@ -728,17 +750,24 @@ def main(args):
     process_map = regroup_processes(process_map, args.group_procs)
     bkgs = [x for x in process_map.keys() if (x not in signals and x != "Data")]
 
+    if args.backgrounds is not None:
+        backgrounds = args.backgrounds.split(",")
+        bkgs = [x for x in bkgs if x in backgrounds]
+
     logger.debug("[HiggsDNABonusTool] Grouping processes by the following proc ids: ")
     for proc, ids in process_map.items():
         if proc == "Data":
             cat = proc
         elif proc in signals:
             cat = "Signal"
-        else:
+        elif proc in bkgs:
             cat = "Background"
+        else:
+            cat = "None"
         logger.debug("\t %s : %s (%s)" % (proc, str(ids), cat)) 
     logger.debug("[HiggsDNABonusTool] Processes marked as 'Signal' will not be included in data/MC comparisons and will be plotted as individual lines.")
     logger.debug("[HiggsDNABonusTool] Processes marked as 'Background' will be summed up to calculate the total background estimate and will be plotted in a stacked histogram in data/MC plots.")
+    logger.debug("[HiggsDNABonusTool] Processes marked as 'None' will not be included in tables or plots.")
 
     cuts = parse_cuts(args.cuts)
     events = infer_systematics(inputs, cuts)
@@ -772,7 +801,7 @@ def main(args):
 
     if args.make_tables:        
         logger.debug("[HiggsDNABonusTool] Making data/MC yield tables.")
-        table = make_tables(events, process_map, signals)
+        table = make_tables(events, process_map, signals, bkgs)
 
         with open(args.output_dir + "/data_mc_yield_table.txt", "w") as f_out:
             f_out.write(table)
