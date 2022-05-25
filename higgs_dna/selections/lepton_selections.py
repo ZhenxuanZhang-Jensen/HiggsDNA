@@ -81,6 +81,8 @@ def select_muons(muons, options, clean, name = "none", tagger = None):
 
     if options["id"] == "medium":
         id_cut = muons.mediumId == True
+    elif options["id"] == "tight":
+        id_cut = muons.tightId == True
     elif not options["id"] or options["id"].lower() == "none":
         id_cut = muons.pt > 0.
     else:
