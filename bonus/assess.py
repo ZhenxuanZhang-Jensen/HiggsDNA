@@ -538,6 +538,8 @@ def make_plots(plot_config, output_dir, events, process_map, signals, bkgs):
             weights = events_with_ids(events["ics"]["nominal"]["events"], process_map[s])["weight_central"]
             sig[s] = { "array" : array, "weights" : weights, "syst_weights" : [], "syst_arrays" : [] }
 
+        if "save_name" in info.keys():
+            field = info["save_name"]
         info["log_y"] = True
         make_data_mc_plot(data, bkg, sig, savename = "%s/%s_dataMC_log.pdf" % (output_dir, field), **info)
         info["log_y"] = False

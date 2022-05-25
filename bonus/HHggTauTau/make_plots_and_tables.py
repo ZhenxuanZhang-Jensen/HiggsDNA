@@ -27,7 +27,10 @@ cuts = [
     ("1tau_1IsoTrack", "category:[7,7]"),
     ("2tau_0lep", "category:[3,3]"),
     ("1tau_1lep", "category:[1,2]"),
-    ("0tau_2lep", "category:[4,6]")
+    ("0tau_2lep", "category:[4,6]"),
+    ("sr1", "pass_sr_0:[1,1]"),
+    ("sr2", "pass_sr_1:[1,1]"),
+    ("sr_inclusive", "bdt_score:[0.882222,1.0]")
 ]
 
 def main(args):
@@ -43,9 +46,8 @@ def main(args):
         if cut is not None:
             command += ' --cuts "%s"' % cut
             tab_command += ' --cuts "%s"' % cut
-            continue
         command_list.append(command)
-        #command_list.append(tab_command)
+        command_list.append(tab_command)
 
     submit_jobs(command_list, 12)
 

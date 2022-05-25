@@ -5,6 +5,12 @@
         "log_y" : true,
         "overflow" : true
     },
+    "bdt_score" : {
+        "bins" : "15, 0.85, 1.0",
+        "x_label" : "BDT Score (zoomed)",
+        "overflow" : false,
+        "save_name" : "bdt_score_zoom"
+    },
     "Diphoton_mass" : {
         "bins" : "16, 100, 180",
         "x_label" : "Diphoton mass [GeV]",
