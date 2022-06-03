@@ -432,7 +432,7 @@ class Task():
         self.year = self.config["sample"]["year"]
 
         for syst_tag, merged_output in self.merged_outputs.items():
-            events = awkward.from_parquet(merged_output, lazy = True)
+            events = awkward.from_parquet(merged_output)
 
             if "year" in events.fields:
                 return

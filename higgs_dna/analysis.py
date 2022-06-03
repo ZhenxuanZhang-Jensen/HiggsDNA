@@ -587,7 +587,7 @@ class AnalysisManager():
             if "weight_" in field and not field in save_map.keys():
                 save_map[field] = events[field]
 
-        events = awkward.zip(save_map)
+        events = awkward.zip(save_map, depth_limit=1)
 
         logger.debug("[AnalysisManager : write_events] Writing output file '%s'." % (out_name))
         awkward.to_parquet(events, out_name) 
