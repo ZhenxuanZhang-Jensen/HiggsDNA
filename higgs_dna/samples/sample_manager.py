@@ -1,5 +1,6 @@
 import os
 import glob
+import fnmatch
 import json
 import copy
 from tqdm import tqdm 
@@ -39,6 +40,19 @@ class SampleManager():
             return self.data
 
         samples = []
+
+        # Expand any wildcards
+        for x in self.sample_list:
+            if "*" in x:
+                matches = fnmatch.filter(list(self.catalog.keys()), x)
+                if len(matches) > 0:
+                    self.sample_list.remove(x)
+                    self.sample_list += matches
+                    logger.info("[SampleManager : get_samples] Matched wildcard expression '%s' to %d samples." % (x, len(matches)))
+                else:
+                    logger.warning("[SampleManager : get_samples] Did not match wildcard expression '%s' to any samples." % (x))
+
+
         # Loop through each sample
         logger.info("[SampleManager : get_samples] Fetching input files for %d samples." % (len(self.sample_list)))
         for s_idx, sample in enumerate(tqdm(self.sample_list)):
