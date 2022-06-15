@@ -45,7 +45,10 @@ DEFAULT_OPTIONS = {
         "2016": 0.3093,
         "2017": 0.3040,
         "2018": 0.2783
-    }
+    },
+    "gen_info" : {
+        "is_Signal" : False, #attention: change in HHWW_preselection.json
+    }  
 }
 
 
@@ -68,130 +71,10 @@ class HHWW_Preselection(Tagger):
     def calculate_selection(self, events):
         # Gen selection
         # data will not select gen level infos 
-        if not self.is_data:    
-            gen_part = awkward.Array(events.GenPart,with_name="Momentum4D")
-            # -------------- gen level 4 signal quarks and 2 signal photons and the Higgs from gg -------------- #
-            gen_qqqq = gen_part[(abs(gen_part.pdgId)<= 6) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24) ]
-            gen_gg = gen_part[(abs(gen_part.pdgId) == 22) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 25) ]
-            unflatten_gen_q1 = awkward.unflatten(gen_qqqq[:,0],1)
-            unflatten_gen_q2 = awkward.unflatten(gen_qqqq[:,1],1)
-            unflatten_gen_q3 = awkward.unflatten(gen_qqqq[:,2],1)
-            unflatten_gen_q4 = awkward.unflatten(gen_qqqq[:,3],1)
-            
-            gen_q1 = awkward_utils.add_field(
-            events = events,
-            name = "gen_q1",
-            data = unflatten_gen_q1
-            )
-            awkward_utils.add_object_fields(
-            events=events,
-            name="GEN_q1",
-            objects=gen_q1,
-            n_objects=1,
-            dummy_value=-999
-            )
-            gen_q2 = awkward_utils.add_field(
-            events = events,
-            name = "gen_q2",
-            data = unflatten_gen_q2
-            )
-            awkward_utils.add_object_fields(
-            events=events,
-            name="GEN_q2",
-            objects=gen_q2,
-            n_objects=1,
-            dummy_value=-999
-            )
-            gen_q3 = awkward_utils.add_field(
-            events = events,
-            name = "gen_q3",
-            data = unflatten_gen_q3
-            )
-            awkward_utils.add_object_fields(
-            events=events,
-            name="GEN_q3",
-            objects=gen_q3,
-            n_objects=1,
-            dummy_value=-999
-            )
-            gen_q4 = awkward_utils.add_field(
-            events = events,
-            name = "gen_q4",
-            data = unflatten_gen_q4
-            )
-            awkward_utils.add_object_fields(
-            events=events,
-            name="GEN_q4",
-            objects=gen_q4,
-            n_objects=1,
-            dummy_value=-999
-            )
-
-            # ------------ gen level two W boson order with mass and the Higgs from WW ------------ #
-            W1_candi,W2_candi,H_candi = gen_selections.select_ww_to_qqqq(gen_part)
-            W1_candi4D = awkward.zip(
-                {
-                "pt": numpy.array(W1_candi)[:,0],
-                "eta": numpy.array(W1_candi)[:,1],
-                "phi": numpy.array(W1_candi)[:,2],
-                "mass": numpy.array(W1_candi)[:,3],
-                }, 
-            with_name="Momentum4D")
-            W2_candi4D = awkward.zip(
-                {
-                "pt": numpy.array(W2_candi)[:,0],
-                "eta": numpy.array(W2_candi)[:,1],
-                "phi": numpy.array(W2_candi)[:,2],
-                "mass": numpy.array(W2_candi)[:,3],
-                }, 
-            with_name="Momentum4D")
-            H_candi4D = awkward.zip(
-                {
-                "pt": numpy.array(H_candi)[:,0],
-                "eta": numpy.array(H_candi)[:,1],
-                "phi": numpy.array(H_candi)[:,2],
-                "mass": numpy.array(H_candi)[:,3],
-                }, 
-            with_name="Momentum4D")
-            unflatten_W1_candi4D = awkward.unflatten(W1_candi4D,1)
-            unflatten_W2_candi4D = awkward.unflatten(W2_candi4D,1)
-            unflatten_H_candi4D = awkward.unflatten(H_candi4D,1)
-            genW1_qq = awkward_utils.add_field(
-            events=events,
-            name="genW1_qq",
-            data=unflatten_W1_candi4D
-            )
-            genW2_qq = awkward_utils.add_field(
-            events=events,
-            name="genW2_qq",
-            data=unflatten_W2_candi4D 
-            )
-            genHWW_qqqq = awkward_utils.add_field(
-            events=events,
-            name="genHWW_qqqq",
-            data=unflatten_H_candi4D
-            )
-            awkward_utils.add_object_fields(
-            events=events,
-            name="GENW1_qq",
-            objects=genW1_qq,
-            n_objects=1,
-            dummy_value=-999
-            )
-            awkward_utils.add_object_fields(
-            events=events,
-            name="GENW2_qq",
-            objects=genW2_qq,
-            n_objects=1,
-            dummy_value=-999
-            )
-            awkward_utils.add_object_fields(
-            events=events,
-            name="GENHWW_qqqq",
-            objects=genHWW_qqqq,
-            n_objects=1,
-            dummy_value=-999
-            )
+        # need to comment when run bkgs
+        logger.debug("Is Signal: %s" %self.options["gen_info"]["is_Signal"])
+        if not self.is_data and self.options["gen_info"]["is_Signal"]:    
+           gen_selections.gen_Hww_4q(events)
         # Electrons
         electron_cut = lepton_selections.select_electrons(
             electrons=events.Electron,
@@ -293,6 +176,7 @@ class HHWW_Preselection(Tagger):
             data=events.Jet[jet_cut]
         )
         
+
         # jets_7WithEachEvent = awkward.pad_none(jets, 7, clip=True)
         # FIXME: I have no other method, but just loop event by event to sort 2jets combined with 4 jets mass and get the W1 and W2 mass.
         # for i in range(len(jets_7WithEachEvent)):
@@ -309,6 +193,7 @@ class HHWW_Preselection(Tagger):
             n_objects=7,
             dummy_value=-999
         )
+        
         # bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis=1, ascending=False)]
         # bjets = bjets[bjets.btagDeepFlavB > self.options["btag_wp"][self.year]]
 

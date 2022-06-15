@@ -106,6 +106,8 @@ class DiphotonTagger(Tagger):
                 options = self.options["diphotons"]
         )
 
+        logger.debug("Is Data:  %s" %self.is_data)
+        logger.debug("With GEN info:  %s" %self.options["gen_info"]["calculate"])
         if not self.is_data and self.options["gen_info"]["calculate"]:
             diphotons = self.calculate_gen_info(diphotons, self.options["gen_info"])
 
@@ -193,7 +195,8 @@ class DiphotonTagger(Tagger):
             diphotons = awkward.singletons(awkward.firsts(diphotons)) # ak.firsts takes the first diphoton in each event (highest sumpt) and ak.singletons makes it variable length again
             n_diphotons_selected = awkward.sum(awkward.num(diphotons)) 
 
-            logger.debug("[DiphotonTagger : produce_and_select_diphotons] %s, syst variation : %s. Number of total diphoton candidates: %d, number of diphoton candidates after selecting candidate with highest pt sum in each event: %d (%.2f percent of diphoton events removed)." % (self.name, self.current_syst, n_diphotons_total, n_diphotons_selected, 100. * (float(n_diphotons_total - n_diphotons_selected) / float(n_diphotons_total))))
+            if(n_diphotons_total>0):
+                logger.debug("[DiphotonTagger : produce_and_select_diphotons] %s, syst variation : %s. Number of total diphoton candidates: %d, number of diphoton candidates after selecting candidate with highest pt sum in each event: %d (%.2f percent of diphoton events removed)." % (self.name, self.current_syst, n_diphotons_total, n_diphotons_selected, 100. * (float(n_diphotons_total - n_diphotons_selected) / float(n_diphotons_total))))
 
         # Otherwise, keep all diphotons
         else:

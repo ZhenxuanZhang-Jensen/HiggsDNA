@@ -1501,12 +1501,13 @@
             ]
         }
     },
-    "DoubleEG_Run2017E" : {
+
+    "DoubleEG_Run2017E_global" : {
         "fpo" : 10,
         "files" : {
             "2017" : [
-                "root://cms-xrd-global.cern.ch//store/data/Run2017E/DoubleEG/NANOAOD/02Apr2020-v1/50000/1B158F9E-3F5F-D249-9C2B-49B671DB7EE4.root",
                 "root://cms-xrd-global.cern.ch//store/data/Run2017E/DoubleEG/NANOAOD/02Apr2020-v1/50000/1586A878-1E2F-674E-8084-C8289269B42B.root",
+                "root://cms-xrd-global.cern.ch//store/data/Run2017E/DoubleEG/NANOAOD/02Apr2020-v1/50000/1B158F9E-3F5F-D249-9C2B-49B671DB7EE4.root",
                 "root://cms-xrd-global.cern.ch//store/data/Run2017E/DoubleEG/NANOAOD/02Apr2020-v1/50000/4AF39EA5-7C17-514B-A570-B0AF06767106.root",
                 "root://cms-xrd-global.cern.ch//store/data/Run2017E/DoubleEG/NANOAOD/02Apr2020-v1/50000/87D7D619-C64F-544A-BAF3-8AE2C0025F2A.root",
                 "root://cms-xrd-global.cern.ch//store/data/Run2017E/DoubleEG/NANOAOD/02Apr2020-v1/50000/29DCBC5B-2CF4-864C-96A2-1C2EB0AF0EE6.root",
@@ -1552,6 +1553,60 @@
                 "root://cms-xrd-global.cern.ch//store/data/Run2017E/DoubleEG/NANOAOD/02Apr2020-v1/50000/F38AD3E8-4093-104F-8693-D553B3C3BC69.root",
                 "root://cms-xrd-global.cern.ch//store/data/Run2017E/DoubleEG/NANOAOD/02Apr2020-v1/50000/D3FB1262-CD80-A348-8A57-6CC6513101BF.root"
                 
+            ]
+        }
+    },
+    "DoubleEG_Run2017E_local" : {
+        "fpo" : 10,
+        "files" : {
+            "2017" : [
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/0.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/1.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/2.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/3.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/4.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/5.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/6.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/7.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/8.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/9.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/10.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/11.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/12.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/13.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/14.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/15.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/16.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/17.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/18.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/19.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/20.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/21.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/22.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/23.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/24.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/25.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/26.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/27.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/28.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/29.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/30.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/31.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/32.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/33.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/34.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/35.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/36.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/37.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/38.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/39.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/40.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/41.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/42.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/43.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/44.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017E/45.root"
+
             ]
         }
     },
@@ -1627,6 +1682,83 @@
                 "root://cms-xrd-global.cern.ch//store/data/Run2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/780121E8-0F20-6A4B-8B9E-2E7B62550F69.root",
                 "root://cms-xrd-global.cern.ch//store/data/Run2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/B0B9BC44-EA5E-2146-9386-30B486F351CA.root",
                 "root://cms-xrd-global.cern.ch//store/data/Run2017F/DoubleEG/NANOAOD/02Apr2020-v1/50000/1C41A44E-EAF9-AE42-97F5-B2F1C3398E33.root"
+                
+            ]
+        }
+    },
+    "DoubleEG_Run2017F_local" : {
+        "fpo" : 10,
+        "files" : {
+            "2017" : [
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/0.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/1.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/2.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/3.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/4.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/5.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/6.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/7.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/8.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/9.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/10.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/11.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/12.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/13.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/14.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/15.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/16.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/17.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/18.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/19.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/20.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/21.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/22.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/23.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/24.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/25.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/26.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/27.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/28.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/29.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/30.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/31.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/32.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/33.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/34.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/35.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/36.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/37.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/38.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/39.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/40.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/41.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/42.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/43.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/44.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/45.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/46.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/47.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/48.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/49.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/50.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/51.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/52.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/53.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/54.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/55.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/56.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/57.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/58.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/59.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/60.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/61.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/62.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/63.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/64.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/65.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/66.root",
+                "/eos/user/z/zhenxuan/root_ForHiggsdna/DoubleEG_Run2017F/67.root"
+
                 
             ]
         }

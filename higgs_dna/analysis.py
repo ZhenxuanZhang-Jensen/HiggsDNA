@@ -466,9 +466,11 @@ class AnalysisManager():
             if use_xrdcp:
                 local_file_name = file.split("/")[-1]
                 # local_file_name = file.replace("/","_")
+                time.sleep(10)
+                logger.debug("sleep 10 secs before xrdcp")
                 os.system("xrdcp %s %s" % (file, local_file_name))
                 file = local_file_name
-                logger.debug("local file name: %s" %local_file_name )
+                logger.debug("local file name: %s" %file )
                 logger.debug("cp file to local")
             with uproot.open(file, timeout = 1800) as f:
                 runs = f["Runs"]
@@ -484,7 +486,7 @@ class AnalysisManager():
                 logger.debug("[AnalysisManager : load_events] Loaded %d events from file '%s'." % (len(events_file), file))
             if use_xrdcp:
                 os.system("rm %s" % file)
-                logger.debug("remove the local cp file")
+                logger.debug("remove the local cp file: %s" %file)
 
 
 
@@ -530,7 +532,7 @@ class AnalysisManager():
                 if "weight_" in field and not field in save_map.keys():
                     save_map[field] = syst_events[field]
 
-            syst_events = awkward.zip(save_map) #attention
+            syst_events = awkward.zip(save_map,depth_limit=1) #attention : change depth_limit to 1
             out_name = "%s_%s.parquet" % (name, syst_tag)
 
             logger.debug("[AnalysisManager : write_events] Writing output file '%s'." % (out_name))

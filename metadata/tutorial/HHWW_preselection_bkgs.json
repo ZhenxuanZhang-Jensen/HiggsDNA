@@ -12,7 +12,7 @@
                 "name": "diphoton_tagger",
                 "options": {
                     "gen_info": {
-                        "calculate": true
+                        "calculate": false
                     }
                 }
             }
@@ -24,7 +24,7 @@
                 "name": "HHWW_tagger",
                 "options": {
                     "gen_info": {
-                        "is_Signal": true
+                        "is_Signal": false
                     }
                 }
             }
