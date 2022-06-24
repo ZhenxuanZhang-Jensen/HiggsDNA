@@ -63,7 +63,8 @@ class Tagger():
    
         if not len(events) >= 1:
             logger.debug("[Tagger] %s : event set : %s : 0 events passed to tagger, skipping running this tagger." % (self.name, syst_tag))
-            self.selection[syst_tag] = awkward.ones_like(events, dtype=bool)
+            selection = awkward.ones_like(events, dtype=bool)
+            self.selection[syst_tag] = selection
 
         else:
             selection, events = self.calculate_selection(events)

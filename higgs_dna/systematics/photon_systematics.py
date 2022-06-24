@@ -105,6 +105,118 @@ def trigger_sf(events, central_only, year):
 
     return variations
 
+##################
+### Low mass trigger SF ###
+##################
+# Note: since the trigger sf applies separate SF for the lead/sublead photons,
+# it's easiest to just cast this as an EventWeightSystematic (rather than ObjectWeightSystematic as we would typically do)
+# and just multiply the lead/sublead variations manually by hand
+
+from higgs_dna.systematics.data.trigger_lowmass_sf import LEAD_TRIGGER_LM_SF_2016, LEAD_TRIGGER_LM_EBhiR9OR_SF_2016, SUBLEAD_TRIGGER_LM_SF_2016, SUBLEAD_TRIGGER_LM_EBhiR9OR_SF_2016, LEAD_TRIGGER_LM_SF_2017, SUBLEAD_TRIGGER_LM_SF_2017, LEAD_TRIGGER_LM_SF_2018, SUBLEAD_TRIGGER_LM_SF_2018 
+lead_trigger_lowmass_sf_bins = {
+    "2016" : LEAD_TRIGGER_LM_SF_2016,
+    "2016UL_preVFP" : LEAD_TRIGGER_LM_SF_2016,
+    "2016UL_postVFP" : LEAD_TRIGGER_LM_SF_2016,
+    "2016_EBhiR9OR" : LEAD_TRIGGER_LM_EBhiR9OR_SF_2016,
+    "2016UL_preVFP_EBhiR9OR" : LEAD_TRIGGER_LM_EBhiR9OR_SF_2016,
+    "2016UL_postVFP_EBhiR9OR" : LEAD_TRIGGER_LM_EBhiR9OR_SF_2016,
+    "2017" : LEAD_TRIGGER_LM_SF_2017,
+    "2018" : LEAD_TRIGGER_LM_SF_2018
+}
+sublead_trigger_lowmass_sf_bins = {
+    "2016" : SUBLEAD_TRIGGER_LM_SF_2016,
+    "2016UL_preVFP" : SUBLEAD_TRIGGER_LM_SF_2016,
+    "2016UL_postVFP" : SUBLEAD_TRIGGER_LM_SF_2016,
+    "2016_EBhiR9OR" : SUBLEAD_TRIGGER_LM_EBhiR9OR_SF_2016,
+    "2016UL_preVFP_EBhiR9OR" : SUBLEAD_TRIGGER_LM_EBhiR9OR_SF_2016,
+    "2016UL_postVFP_EBhiR9OR" : SUBLEAD_TRIGGER_LM_EBhiR9OR_SF_2016,
+    "2017" : SUBLEAD_TRIGGER_LM_SF_2017,
+    "2018" : SUBLEAD_TRIGGER_LM_SF_2018 
+}
+
+def trigger_lowmass_sf(events, central_only, year):
+    required_fields = [
+        ("Photon", "eta"), ("Photon", "r9"), ("Photon", "pt")
+    ]
+
+    missing_fields = awkward_utils.missing_fields(events, required_fields)
+
+    if missing_fields:
+        message = "[photon_systematics : photon_preselection_sf] The events array is missing the following fields: %s which are needed as inputs." % (str(missing_fields))
+        logger.exception(message)
+        raise ValueError(message)
+
+    variations_lead = systematic_from_bins(
+        bins = lead_trigger_lowmass_sf_bins[year], 
+        variables = {
+            "photon_r9" : events.LeadPhoton.r9,
+            "photon_eta" : abs(events.LeadPhoton.eta),
+            "photon_pt" : events.LeadPhoton.pt
+        },
+        central_only = central_only
+    )
+
+    # Special case for 2016: if EB high R9 photon, use OR path efficiencies if other photon is in EB
+    if( "2016" in year ):
+        variations_lead_EBhiR9OR = systematic_from_bins(
+            bins = lead_trigger_lowmass_sf_bins["%s_EBhiR9OR"%year], 
+            variables = {
+                "photon_r9" : events.LeadPhoton.r9,
+                "photon_eta" : abs(events.LeadPhoton.eta),
+                "photon_pt" : events.LeadPhoton.pt
+            },
+            central_only = central_only
+        )
+
+        # Create mask
+        mask = (abs(events.LeadPhoton.eta)>=0)&(abs(events.LeadPhoton.eta)<1.5)&(events.LeadPhoton.r9>=0.85)*(events.LeadPhoton.r9<999.0)&(abs(events.SubleadPhoton.eta)>=0)&(abs(events.SubleadPhoton.eta)<1.5)
+        # Update values of events that satisfy mask according to OR path efficiencies
+        variations_lead['central'] = mask*variations_lead_EBhiR9OR['central'] + ~mask*variations_lead['central']
+        if not central_only:
+            variations_lead['up'] = mask*variations_lead_EBhiR9OR['up'] + ~mask*variations_lead['up']
+            variations_lead['down'] = mask*variations_lead_EBhiR9OR['down'] + ~mask*variations_lead['down']
+       
+
+    variations_sublead = systematic_from_bins(
+        bins = sublead_trigger_lowmass_sf_bins[year],
+        variables = {
+            "photon_r9" : events.SubleadPhoton.r9,
+            "photon_eta" : abs(events.SubleadPhoton.eta),
+            "photon_pt" : events.SubleadPhoton.pt
+        },
+        central_only = central_only
+    )
+
+    # Special case for 2016: if EB high R9 photon, use OR path efficiencies if other photon is in EB
+    if( "2016" in year ):
+        variations_sublead_EBhiR9OR = systematic_from_bins(
+            bins = sublead_trigger_lowmass_sf_bins["%s_EBhiR9OR"%year], 
+            variables = {
+                "photon_r9" : events.SubleadPhoton.r9,
+                "photon_eta" : abs(events.SubleadPhoton.eta),
+                "photon_pt" : events.SubleadPhoton.pt
+            },
+            central_only = central_only
+        )
+
+        # Create mask
+        mask = (abs(events.SubleadPhoton.eta)>=0)&(abs(events.SubleadPhoton.eta)<1.5)&(events.SubleadPhoton.r9>=0.85)*(events.SubleadPhoton.r9<999.0)&(abs(events.LeadPhoton.eta)>=0)&(abs(events.LeadPhoton.eta)<1.5)
+        # Update values of events that satisfy mask according to OR path efficiencies
+        variations_sublead['central'] = mask*variations_sublead_EBhiR9OR['central'] + ~mask*variations_sublead['central']
+        if not central_only:
+            variations_sublead['up'] = mask*variations_sublead_EBhiR9OR['up'] + ~mask*variations_sublead['up']
+            variations_sublead['down'] = mask*variations_sublead_EBhiR9OR['down'] + ~mask*variations_sublead['down']
+
+ 
+    # Multiply up/down/central variations together, following this treatment in flashgg:
+    # https://github.com/cms-analysis/flashgg/blob/1453740b1e4adc7184d5d8aa8a981bdb6b2e5f8e/Systematics/interface/DiPhotonFromSinglePhotonViewBase.h#L85-L87
+    variations = {}
+    for key in variations_lead.keys():
+        variations[key] = variations_lead[key] * variations_sublead[key]
+
+    return variations
+
+
 ############
 ### FNUF ###
 ############

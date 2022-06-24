@@ -530,6 +530,13 @@ class AnalysisManager():
                 tree = f["Events"]
                 trimmed_branches = [x for x in branches if x in tree.keys()]
                 events_file = tree.arrays(trimmed_branches, library = "ak", how = "zip")
+
+                # Fix for 2018 low mass trigger: add missing HLT branch to events at start of 2018 run
+                for x in BRANCHES["data"][sample["year"]]: 
+                    if x not in trimmed_branches:
+                        logger.debug("[AnalysisManager : load_events] Branch %s missing in sample. Adding dummy branch (all equal False)" % x )
+                        events_file[x] = (numpy.zeros(len(events_file))==1)
+
                 if sample["is_data"] and sample["year"] is not None:
                     golden_json_tagger = GoldenJsonTagger(is_data = sample["is_data"], year = sample["year"])
                     events_file = golden_json_tagger.select(events_file)
