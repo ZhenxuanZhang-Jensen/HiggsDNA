@@ -351,3 +351,37 @@ def photon_mc_smear(events, r9, loc):
 
     return variations
 
+
+from higgs_dna.systematics.data.presel_sf import PHOTON_PRESEL_SF_2016preVFP, PHOTON_PRESEL_SF_2016postVFP, PHOTON_PRESEL_SF_2017, PHOTON_PRESEL_SF_2018
+
+ 
+photon_preselection_sf_bins = {
+    "2016UL_preVFP" : PHOTON_PRESEL_SF_2016preVFP,
+    "2016UL_postVFP" : PHOTON_PRESEL_SF_2016postVFP,
+    "2017" : PHOTON_PRESEL_SF_2017,
+    "2018" : PHOTON_PRESEL_SF_2018
+}
+
+def photon_presel_sf(events, central_only, year):
+    required_fields = [
+        ("Photon", "eta"), ("Photon", "r9")
+    ]
+
+    missing_fields = awkward_utils.missing_fields(events, required_fields)
+
+    if missing_fields:
+        message = "[photon_systematics : photon_preselection_sf] The events array is missing the following fields: %s which are needed as inputs." % (str(missing_fields))
+        logger.exception(message)
+        raise ValueError(message)
+
+    variations = systematic_from_bins(
+        bins = photon_electron_veto_sf_bins[year], 
+        variables = {
+            "photon_eta" : abs(events.Photon.eta),
+            "photon_r9" : events.Photon.r9
+        },
+        central_only = central_only
+    )
+
+    return variations
+
