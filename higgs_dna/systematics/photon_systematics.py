@@ -375,7 +375,7 @@ def photon_presel_sf(events, central_only, year):
         raise ValueError(message)
 
     variations = systematic_from_bins(
-        bins = photon_electron_veto_sf_bins[year], 
+        bins = photon_preselection_sf_bins[year], 
         variables = {
             "photon_eta" : abs(events.Photon.eta),
             "photon_r9" : events.Photon.r9
