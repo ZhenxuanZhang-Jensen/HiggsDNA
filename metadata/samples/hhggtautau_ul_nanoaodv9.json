@@ -1357,6 +1357,26 @@
         "fpo": 1,
         "xs": 0.001
     },
+    "NMSSM_XYH_Y_gg_H_tautau_MX_700_MY_300": {
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/NMSSM_XYH_Y_gg_H_tautau_MX_700_MY_300_16MiniAODv2/*/*/*/*.root",
+            "2016UL_preVFP": "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/NMSSM_XYH_Y_gg_H_tautau_MX_700_MY_300_16MiniAODAPVv2/*/*/*/*.root",
+            "2017": "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/NMSSM_XYH_Y_gg_H_tautau_MX_700_MY_300_17MiniAODv2/*/*/*/*.root",
+            "2018": "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/NMSSM_XYH_Y_gg_H_tautau_MX_700_MY_300_18MiniAODv2/*/*/*/*.root"
+        },
+        "fpo": 1,
+        "xs": 0.001
+    }, 
+    "NMSSM_XYH_Y_gg_H_tautau_MX_900_MY_300": {
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/NMSSM_XYH_Y_gg_H_tautau_MX_900_MY_300_16MiniAODv2/*/*/*/*.root",
+            "2016UL_preVFP": "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/NMSSM_XYH_Y_gg_H_tautau_MX_900_MY_300_16MiniAODAPVv2/*/*/*/*.root",
+            "2017": "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/NMSSM_XYH_Y_gg_H_tautau_MX_900_MY_300_17MiniAODv2/*/*/*/*.root",
+            "2018": "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/NMSSM_XYH_Y_gg_H_tautau_MX_900_MY_300_18MiniAODv2/*/*/*/*.root"
+        },
+        "fpo": 1,
+        "xs": 0.001
+    },
     "NMSSM_XYH_Y_gg_H_tautau_MX_700_MY_400": {
         "files": {
             "2016UL_postVFP": "/ceph/cms/store/user/legianni/skimNano-TestUL__TEST-SamplesV9/NMSSM_XYH_Y_gg_H_tautau_MX_700_MY_400_16MiniAODv2/*/*/*/*.root",
