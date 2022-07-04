@@ -70,7 +70,7 @@ DEFAULT_OPTIONS = {
     },
     "z_veto" : [80., 100.],
     "m_llg_veto_window" : 10,
-    "photon_mvaID" : -0.7
+    "photon_mvaID" : "WP90"
 }
 
 class HHggTauTauPreselTagger(Tagger):
@@ -446,7 +446,8 @@ class HHggTauTauPreselTagger(Tagger):
         category_cut = category > 0
 
         # Photon ID cut
-        pho_id = (events.LeadPhoton.mvaID > self.options["photon_mvaID"]) & (events.SubleadPhoton.mvaID > self.options["photon_mvaID"])
+        if self.options["photon_mvaID"] == "WP90":
+            pho_id = (events.LeadPhoton.mvaID_WP90 == True) & (events.SubleadPhoton.mvaID_WP90 == True)
 
         # Veto on m_llgamma to reject Z->eeg and Z->mmg events 
         dilep_lead_photon = ditau_pairs.ditau + events.LeadPhoton
