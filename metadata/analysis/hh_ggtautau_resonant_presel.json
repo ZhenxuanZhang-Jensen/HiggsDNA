@@ -91,6 +91,17 @@
                  "input_collection" : "Photon",
                  "target_collections" : [["Diphoton", "Photon"]]
             },
+            "photon_presel_sf" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "photon_presel_sf"
+                },
+                "modify_central_weight" : true,
+                "input_collection" : "Photon",
+                "target_collections" : [["Diphoton", "Photon"]]
+            },
             "btag_deepjet_sf" : {
                 "type" : "object",
                 "method" : "from_function",
@@ -127,6 +138,20 @@
                     "working_point" : "wp90iso"
                 }
             },           
+            "photon_id_sf" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "photon_mva_id_sf"
+                },
+                "modify_central_weight" : true,
+                "input_collection" : "Photon",
+                "target_collections" : [["Diphoton", "Photon"]],
+                "kwargs" : {
+                    "working_point" : "wp90"
+                }
+            },
             "muon_id_sfSTAT" : {
                 "type" : "object",
                 "method" : "from_function",
@@ -329,6 +354,7 @@
             "Photon_isScEtaEB", "Photon_isScEtaEE",
             "Photon_genPartFlav",
             "Photon_dEsigmaUp", "Photon_dEsigmaDown",
+            "Photon_mvaID_WP80", "Photon_mvaID_WP90",
             "Tau_pt", "Tau_eta", "Tau_phi", "Tau_mass", "Tau_idDeepTau2017v2p1VSe", "Tau_idDeepTau2017v2p1VSjet", "Tau_idDeepTau2017v2p1VSmu", "Tau_charge", "Tau_dz", "Tau_idDecayModeNewDMs",
             "Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass", "Muon_charge", "Muon_pfRelIso03_all", "Muon_dxy", "Muon_dz", "Muon_tightId", "Muon_isGlobal", "Muon_mediumId",
             "Muon_ISO_SF", "Muon_ISO_SFstat", "Muon_ISO_SFsyst",
