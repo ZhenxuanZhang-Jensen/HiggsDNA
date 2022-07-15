@@ -109,6 +109,18 @@
                 "modify_central_weight" : true,
                 "requires_branches" : ["Diphoton", "LeadPhoton", "SubleadPhoton"]
             },
+            "btag_deepjet_sf" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.jet_systematics",
+                    "name" : "btag_deepjet_reshape_sf"
+                },
+                "modify_central_weight" : true,
+                "input_collection" : "Jet",
+                "target_collections" : ["SelectedJet"],
+                "normalization_factors" : "metadata/systematics/ggtautau_deepjet_nf.json"
+            },
             "electron_id_sf" : {
                 "type" : "object",
                 "method" : "from_function",
