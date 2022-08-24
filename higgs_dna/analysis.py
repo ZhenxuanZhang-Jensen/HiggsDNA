@@ -49,7 +49,7 @@ def run_analysis(config):
 
     ### 1. Load events ###
     t_start_load = time.time()
-    events, sum_weights = AnalysisManager.load_events(True, config["files"], config["branches"])
+    events, sum_weights = AnalysisManager.load_events(config["files"], config["branches"])
 
     # Record n_events and sum_weights for scale1fb calculation
     job_summary["n_events"] = len(events)
@@ -358,7 +358,9 @@ class AnalysisManager():
 
         for task, info in summary.items():
             logger.debug("\n[AnalysisManager : run] Task '%s', PERFORMANCE summary" % (task))
-            logger.debug("\t [PERFORMANCE : %s] Processed %d total events in %s (hours:minutes:seconds) of total runtime (%.2f Hz)." % (task, info["physics"]["n_events_initial"], str(datetime.timedelta(seconds = info["performance"]["time"])), float(info["physics"]["n_events_initial"]) / info["performance"]["time"] ))
+            print('info["performance"]["time"]',info["performance"]["time"])
+            if (info["performance"]["time"] != 0):
+                logger.debug("\t [PERFORMANCE : %s] Processed %d total events in %s (hours:minutes:seconds) of total runtime (%.2f Hz)." % (task, info["physics"]["n_events_initial"], str(datetime.timedelta(seconds = info["performance"]["time"])), float(info["physics"]["n_events_initial"]) / info["performance"]["time"] ))
             for portion in ["load", "syst", "taggers"]:
                 if not info["performance"]["time"] > 0:
                     continue
@@ -448,7 +450,7 @@ class AnalysisManager():
 
 
     @staticmethod
-    def load_events(use_xrdcp, files, branches):
+    def load_events(files, branches):
         """
         Load all branches in ``branches`` from "Events" tree from all nanoAODs in ``files`` into a single zipped ``awkward.Array``.
         Also calculates and returns the sum of weights from nanoAOD "Runs" tree.        
@@ -462,6 +464,7 @@ class AnalysisManager():
         """
         events = []
         sum_weights = 0
+        use_xrdcp = False
         for file in files:
             if use_xrdcp:
                 local_file_name = file.split("/")[-1]

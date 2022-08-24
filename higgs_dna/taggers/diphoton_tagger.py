@@ -250,7 +250,7 @@ class DiphotonTagger(Tagger):
             GenHggSubleadPhoton : [pt, eta, phi, mass, dR, pt_diff]
             LeadPhoton : [gen_dR, gen_pt_diff]
             SubleadPhoton : [gen_dR, gen_pt_diff]
-
+            
         Perform both matching of
             - closest gen photons from Higgs to reco lead/sublead photons from diphoton candidate
             - closest reco photons to gen photons from Higgs

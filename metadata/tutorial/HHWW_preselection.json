@@ -35,7 +35,7 @@
         "independent_collections": {}
     },
     "samples": {
-        "catalog": "metadata/samples/hhww.json",
+        "catalog": "metadata/samples/hhww_UL_local.json",
         "sample_list": [
             "GluGluToRadionToHHTo2G4Q_M250",
             "GluGluToRadionToHHTo2G4Q_M260",

@@ -47,7 +47,7 @@ DEFAULT_OPTIONS = {
         "2018": 0.2783
     },
     "gen_info" : {
-        "is_Signal" : False, #attention: change in HHWW_preselection.json
+        "is_Signal" : True, #attention: change in HHWW_preselection.json
     }  
 }
 
@@ -238,7 +238,11 @@ class HHWW_Preselection(Tagger):
         presel_cut = presel_FourJet_category
 
         self.register_cuts(
-            names=["Photon Selection","Lepton Selection","OnlyFourJet_category"],
-            results=[photon_id_cut,Lepton_Selection,presel_FourJet_category]
+            names=["Photon Selection","Lepton Selection"],
+            results=[photon_id_cut,Lepton_Selection]
         )
         return presel_cut, events
+
+
+
+
