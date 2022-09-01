@@ -142,13 +142,42 @@ class HHWW_Preselection(Tagger):
             name = "SelectedFatJet",
             data = events.FatJet[fatjet_cut]
         )   
+        fatjet_H_cut = (fatjets.deepTagMD_HbbvsQCD<0.6) & (fatjets.deepTagMD_H4qvsQCD>0.4) & (fatjets.pt>300)
+
+        fatjets_H = awkward_utils.add_field(
+            events = events,
+            name = "SelectedFatJet_H",
+            data = fatjets[fatjet_H_cut]
+        )   
+
         awkward_utils.add_object_fields(
         events=events,
-        name="fatjet",
-        objects=fatjets,
-        n_objects=3,
+        name="fatjet_H",
+        objects=fatjets[fatjet_H_cut][awkward.argsort(fatjets[fatjet_H_cut].deepTagMD_H4qvsQCD, ascending=False, axis=1)],
+        n_objects=1,
         dummy_value=-999
-        )
+        ) # apply the inverse bb cuts
+
+        fatjet_W_cut = (fatjets.deepTagMD_HbbvsQCD<0.6) & (fatjets.deepTagMD_WvsQCD>0.4) & (fatjets.pt>200)
+
+        fatjets_W = awkward_utils.add_field(
+            events = events,
+            name = "SelectedFatJet_W",
+            data = fatjets[fatjet_W_cut]
+        )   
+        awkward_utils.add_object_fields(
+        events=events,
+        name="fatjet_W",
+        objects=fatjets[fatjet_W_cut][awkward.argsort(fatjets[fatjet_W_cut].deepTagMD_WvsQCD, ascending=False, axis=1)],
+        n_objects=1,
+        dummy_value=-999
+        ) # apply the inverse bb cuts
+
+        # fatjets["Tau4_Tau2"]= (fatjets["tau4"]/fatjets["tau2"])
+        # fatjets["Tau2_Tau1"]= (fatjets["tau2"]/fatjets["tau1"])
+        # fatjets = fatjets[awkward.argsort(fatjets.deepTagMD_HbbvsQCD, ascending=True, axis=1)]
+
+        
         # Jets
         jet_cut = jet_selections.select_jets(
             jets=events.Jet,
@@ -167,7 +196,7 @@ class HHWW_Preselection(Tagger):
                     "min_dr": self.options["jets"]["dr_muons"]
                 }
             },
-            name="SelectedJet",
+            name = "SelectedJet",
             tagger=self
         )
         jets = awkward_utils.add_field(
@@ -175,17 +204,39 @@ class HHWW_Preselection(Tagger):
             name="SelectedJet",
             data=events.Jet[jet_cut]
         )
-        
 
-        # jets_7WithEachEvent = awkward.pad_none(jets, 7, clip=True)
-        # FIXME: I have no other method, but just loop event by event to sort 2jets combined with 4 jets mass and get the W1 and W2 mass.
-        # for i in range(len(jets_7WithEachEvent)):
-        #     for j in range(len(jets_7WithEachEvent)):
-        #         jets_7WithEachEvent[i] + jets_7WithEachEvent[j]
+
 
         # ---------------------------------------------------------------------------- #
         #              TODO try to add order with WinvM jets in output.parquet              #
         # ---------------------------------------------------------------------------- #
+      
+        gen_q1_p4,gen_q2_p4,gen_q3_p4,gen_q4_p4=gen_selections.gen_Hww_4q(events)
+        jet_p4 = vector.awk(
+            {
+                "pt" : jets["pt"],
+                "eta" : jets["eta"],
+                "phi" : jets["phi"],
+                "mass" : jets["mass"]
+            },
+            with_name = "Momentum4D"
+        )
+        # lead_p4 = vector.awk(
+        #     {
+        #         "pt" : events.lead["pt"],
+        #         "eta" : events.lead["eta"],
+        #         "phi" : events.lead["phi"],
+        #         "mass" : events.lead["mass"]
+        #     },
+        #     with_name = "Momentum4D"
+        # )
+        events.Photon.pt
+        jets["deltaR_q1"] = jet_p4.deltaR(gen_q1_p4)
+        jets["deltaR_q2"] = jet_p4.deltaR(gen_q2_p4)
+        jets["deltaR_q3"] = jet_p4.deltaR(gen_q3_p4)
+        jets["deltaR_q4"] = jet_p4.deltaR(gen_q4_p4)
+
+
         awkward_utils.add_object_fields(
             events=events,
             name="jet",
@@ -193,7 +244,6 @@ class HHWW_Preselection(Tagger):
             n_objects=7,
             dummy_value=-999
         )
-        
         # bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis=1, ascending=False)]
         # bjets = bjets[bjets.btagDeepFlavB > self.options["btag_wp"][self.year]]
 
@@ -211,6 +261,9 @@ class HHWW_Preselection(Tagger):
         n_jets = awkward.num(jets)
         awkward_utils.add_field(events,"nGoodAK4jets",n_jets)
         n_fatjets = awkward.num(fatjets)
+        n_fatjets_W = awkward.num(fatjets_W)
+        n_fatjets_H = awkward.num(fatjets_H)
+        awkward_utils.add_field(events,"nGoodAK4jets",n_jets)
         # n_bjets = awkward.num(bjets)
 
         photon_id_cut = (events.LeadPhoton.mvaID > self.options["photon_id"]) & (
@@ -220,12 +273,21 @@ class HHWW_Preselection(Tagger):
         # photon_pixelseed_cut = (events.Photon.pixelSeed==0)
 
         # Hadronic presel
-        # oneJet_category = (n_jets >= 4) & (n_fatjets == 0)
-        # TwoJet_category = (n_jets >= 4) & (n_fatjets == 0)
-        # ThreeJet_category = (n_jets >= 4) & (n_fatjets == 0)
-        # FourJet_category = (n_leptons == 0) & (n_jets >= 4) & (n_fatjets == 0)
-        OnlyFourJet_category = (n_leptons == 0) & (n_jets >= 4)
-        Lepton_Selection = (n_leptons==0) & (photon_id_cut)
+        # use priority to mark different category
+        category_p3 = (n_jets>=4)
+        category_p2 = (n_fatjets_W>=1) & (n_jets>=2)
+        category_p1 = (n_fatjets_H>=1)
+        flatten_n_jets = awkward.num(jets.pt)
+        category = awkward.zeros_like(flatten_n_jets)
+        category = awkward.fill_none(category, 0)
+        category = awkward.where(category_p3, awkward.ones_like(category)*3, category)
+        category = awkward.where(category_p2, awkward.ones_like(category)*2, category)
+        category = awkward.where(category_p1, awkward.ones_like(category)*1, category)
+        awkward_utils.add_field(events, "category", category) 
+        category_cut = category >= 0 # attention category equal to 0 mean don't pass any selection
+
+        # OnlyFourJet_category = (n_leptons == 0) & (n_jets >= 4)
+        Lepton_Selection = (n_leptons==0) 
 
         # Semi-Leptonic presel
         # Semileptonic = (n_leptons == 1) & (n_jets >= 2)
@@ -234,8 +296,8 @@ class HHWW_Preselection(Tagger):
         # FulllyLeptonic = (n_leptons >= 2)
 
         # presel_cut = (hadronic | Semileptonic | FulllyLeptonic)  & photon_id_cut
-        presel_FourJet_category = (OnlyFourJet_category) & (photon_id_cut)
-        presel_cut = presel_FourJet_category
+        # presel_FourJet_category = 
+        presel_cut = (photon_id_cut) & (n_leptons==0) & (category_cut)
 
         self.register_cuts(
             names=["Photon Selection","Lepton Selection"],

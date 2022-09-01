@@ -23,10 +23,10 @@ def select_jets(jets, options, clean, name = "none", tagger = None):
     tagger_name = "none" if tagger is None else tagger.name 
 
     standard_cuts = object_selections.select_objects(jets, options, clean, name, tagger)
-
-    # TODO: jet ID
+    additional_cuts = (jets.jetId >= 3) & (jets.puId>=4)
+    #  & (jets.btagDeepFlavB>=0.3040)
     
-    all_cuts = (standard_cuts) & (jets.jetId >= 2)
+    all_cuts = (standard_cuts) & (additional_cuts)
 
     if tagger is not None:
         tagger.register_cuts(
