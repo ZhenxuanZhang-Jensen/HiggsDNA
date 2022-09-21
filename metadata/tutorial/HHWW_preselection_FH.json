@@ -18,10 +18,10 @@
             }
         },
         {
-            "module_name": "higgs_dna.taggers.HHWW_Tagger",
-            "tagger": "HHWW_Preselection",
+            "module_name": "higgs_dna.taggers.HHWW_Tagger_FH",
+            "tagger": "HHWW_Preselection_FH",
             "kwargs": {
-                "name": "HHWW_tagger",
+                "name": "HHWW_tagger_FH",
                 "options": {
                     "gen_info": {
                         "is_Signal": true
@@ -35,8 +35,14 @@
         "independent_collections": {}
     },
     "samples": {
-        "catalog": "metadata/samples/hhww.json",
+        "catalog": "metadata/samples/hhww_UL_local.json",
         "sample_list": [
+            "GluGluToRadionToHHTo2G2WTo2G4Q_M-500",
+            "GluGluToRadionToHHTo2G2WTo2G4Q_M-700",
+            "GluGluToRadionToHHTo2G2WTo2G4Q_M-1000",
+            "GluGluToRadionToHHTo2G2WTo2G4Q_M-2000",
+            "GluGluToRadionToHHTo2G2WTo2G4Q_M-2600",
+            "GluGluToRadionToHHTo2G2WTo2G4Q_M-3000",
             "GluGluToRadionToHHTo2G4Q_M250",
             "GluGluToRadionToHHTo2G4Q_M260",
             "GluGluToRadionToHHTo2G4Q_M270",
