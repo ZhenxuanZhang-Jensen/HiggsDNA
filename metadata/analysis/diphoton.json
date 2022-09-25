@@ -1,0 +1,98 @@
+{
+    "name" : "diphoton_preselection",
+    "function" : {
+        "module_name" : "higgs_dna.analysis",
+        "function_name" : "run_analysis"
+    },
+    "tag_sequence" : [
+            {
+                "module_name" : "higgs_dna.taggers.diphoton_tagger",
+                "tagger" : "DiphotonTagger",
+		"kwargs" : {
+		    "name" : "diphoton_tagger",
+                    "options" : {
+                        "gen_info" : { "calculate" : true }
+                    }
+		}
+            }
+    ],
+    "systematics" : {
+        "weights" : {
+            "electron_veto_sf" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "photon_electron_veto_sf"
+                 },
+                 "modify_central_weight" : true,
+                 "input_collection" : "Photon",
+                 "target_collections" : [["Diphoton", "Photon"]]
+            },
+            "trigger_sf" : {
+                "type" : "event",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "trigger_sf"
+                },
+                "modify_central_weight" : true,
+                "requires_branches" : ["Diphoton", "LeadPhoton", "SubleadPhoton"]
+            },
+            "L1_prefiring_sf" : {
+                "type" : "event",
+                "method" : "from_branch",
+                "branches" : {
+                    "central" : "L1PreFiringWeight_Nom",
+                    "up" : "L1PreFiringWeight_Up",
+                    "down" : "L1PreFiringWeight_Dn"
+                },
+                "modify_central_weight" : true,
+                "years" : ["2016", "2017"]
+            }
+        },
+        "independent_collections" : {
+            "fnuf" : {
+                "method" : "from_function",
+                "branch_modified" : ["Photon", "pt"],
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "fnuf_unc"
+                }
+            },
+            "material" : {
+                "method" : "from_function",
+                "branch_modified" : ["Photon", "pt"],
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "material_unc"
+                }
+            }
+        }
+    },
+    "samples" : {
+        "catalog" : "metadata/samples/tth_tutorial.json",
+        "sample_list" : ["ttH_M125", "ggH_M125"],
+        "years" : ["2016", "2017", "2018"]
+    },
+    "variables_of_interest" : [
+        ["Diphoton", "mass"], ["Diphoton", "pt"], ["Diphoton", "eta"], ["Diphoton", "phi"], ["Diphoton", "dR"],
+        ["LeadPhoton", "pt"], ["LeadPhoton", "eta"], ["LeadPhoton", "phi"], ["LeadPhoton", "mass"], ["LeadPhoton", "mvaID"], ["LeadPhoton", "genPartFlav"], ["LeadPhoton", "pixelSeed"],
+        ["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"], ["SubleadPhoton", "genPartFlav"], ["SubleadPhoton", "pixelSeed"],
+        "GenHggHiggs_pt", "GenHggHiggs_eta", "GenHggHiggs_phi", "GenHggHiggs_mass", "GenHggHiggs_dR",
+        "weight_central",
+        "event"
+    ],
+    "branches" : [
+            "Photon_pt", "Photon_eta", "Photon_phi", "Photon_mass",
+            "Photon_pixelSeed", "Photon_mvaID", "Photon_electronVeto",
+            "Photon_sieie",
+            "Photon_r9", "Photon_hoe", "Photon_pfRelIso03_chg", "Photon_pfRelIso03_all",
+            "Photon_isScEtaEB", "Photon_isScEtaEE",
+            "Photon_trkSumPtHollowConeDR03", "Photon_photonIso", "Photon_chargedHadronIso",
+            "Photon_genPartFlav",
+            "GenPart_eta", "GenPart_genPartIdxMother", "GenPart_mass", "GenPart_pdgId", "GenPart_phi", "GenPart_pt", "GenPart_status","GenPart_statusFlags",
+            "L1PreFiringWeight_Nom", "L1PreFiringWeight_Up", "L1PreFiringWeight_Dn",
+            "genWeight", "run", "event", "fixedGridRhoAll"
+    ]
+}

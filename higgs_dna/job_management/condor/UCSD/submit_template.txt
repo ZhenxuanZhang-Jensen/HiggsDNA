@@ -1,0 +1,22 @@
+universe=vanilla
+should_transfer_files = Yes
+when_to_transfer_output = ON_EXIT_OR_EVICT
+Transfer_Executable     = True
+transfer_input_files    = PYTHON_FILE, CONFIG_FILE, HIGGS_DNA_BASE/setup.py, HIGGS_DNA_BASE/environment.yml
+transfer_output_files   = ""
+executable              = EXECUTABLE 
+
++DESIRED_Sites="TARGET_SITES"
+
+output                  = OUTPUT
+error                   = ERROR
+log                     = LOG
+
+RequestMemory = REQ_MEMORY
+RequestDisk = REQ_DISK
+RequestCpus = REQ_NCPUS
+
+x509userproxy=GRID_PROXY
+
+JobBatchName = BATCH_NAME
+Queue

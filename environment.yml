@@ -1,0 +1,19 @@
+name: higgs-dna
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.6
+  - pyaml
+  - xrootd
+  - uproot
+  - awkward>=1.5
+  - numba
+  - pyarrow
+  - pandas
+  - rich
+  - matplotlib
+  - vector>=0.8.5
+  - conda-pack
+  - tqdm
+  - dill
+  - enlighten

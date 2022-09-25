@@ -1,0 +1,22 @@
+{
+    "jet_1_pt" : {
+        "bins" : "100, 0, 500.0",
+        "x_label" : "Leading jet pt"
+    },
+    "jet_2_pt" : {
+        "bins" : "100, 0, 500.0",
+        "x_label" : "Subleading jet pt"
+    },
+    "LeadPhoton_pt" : {
+        "bins" : "100, 0, 500.0",
+        "x_label" : "LeadPhoton_pt"
+    },
+    "SubleadPhoton_pt" : {
+        "bins" : "100, 0, 500.0",
+        "x_label" : "SubleadPhoton_pt"
+    },
+    "Diphoton_pt" : {
+        "bins" : "100, 0, 500.0",
+        "x_label" : "Diphoton_pt"
+    }
+}
