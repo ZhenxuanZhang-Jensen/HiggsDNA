@@ -491,7 +491,9 @@ def gen_Hww_2q2l(events):
     n_objects=1,
     dummy_value=-999
     )
+    logger.debug("import select_ww_qqlv W1,W2,Hcandi")
     W1_candi,W2_candi,H_candi = select_ww_to_qqlv(gen_part)
+    logger.debug("W1 Candi%s, num%s"%(W1_candi,len(W1_candi)))
     W1_candi4D = awkward.zip(
     {
     "pt": numpy.array(W1_candi)[:,0],
