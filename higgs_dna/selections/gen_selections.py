@@ -568,7 +568,7 @@ def gen_Hww_2q2l(events):
     return gen_l1_p4, gen_q1_p4,gen_q2_p4
 
 
-@numba.njit
+#@numba.njit
 def select_ww_to_qqlv(gen_part):
     W1_content = []
     W2_content = []
@@ -638,6 +638,7 @@ def select_ww_to_qqlv(gen_part):
             H_candi.phi,
             H_candi.mass,
         ])
+    logger.debug("W1_content%s"%W1_content)
     return W1_content, W2_content, H_content
 
 
