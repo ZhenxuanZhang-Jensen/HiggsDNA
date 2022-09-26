@@ -566,7 +566,7 @@ def gen_Hww_2q2l(events):
     return gen_l1_p4, gen_q1_p4,gen_q2_p4
 
 
-@numba.njit
+#@numba.njit
 def select_ww_to_qqlv(gen_part):
     W1_content = []
     W2_content = []
@@ -586,7 +586,7 @@ def select_ww_to_qqlv(gen_part):
                 list_lepton_candidate.append(gen_part[i][j])
 
         if len(list_lepton_candidate)!=2:
-            W1_candi = vector.obj(
+            W2_candi = vector.obj(
                 pt = -999,
                 eta = -999,
                 phi = -999,
@@ -600,7 +600,7 @@ def select_ww_to_qqlv(gen_part):
                 mass = -999
             )    
 
-        else:
+        if len(list_quark_candidate)==2:
             W1_candi = list_quark_candidate[0]+list_quark_candidate[1]
             W1_candi = vector.obj(
                     pt = (list_quark_candidate[0]+list_quark_candidate[1]).pt,
@@ -608,7 +608,7 @@ def select_ww_to_qqlv(gen_part):
                     phi = (list_quark_candidate[0]+list_quark_candidate[1]).phi,
                     mass = (list_quark_candidate[0]+list_quark_candidate[1]).mass
                 )
-
+        if len(list_lepton_candidate)==2:
             W2_candi = list_lepton_candidate[0]+list_lepton_candidate[1]
             W2_candi = vector.obj(
                     pt = (list_lepton_candidate[0]+list_lepton_candidate[1]).pt,
@@ -616,8 +616,9 @@ def select_ww_to_qqlv(gen_part):
                     phi = (list_lepton_candidate[0]+list_lepton_candidate[1]).phi,
                     mass = (list_lepton_candidate[0]+list_lepton_candidate[1]).mass
                 )
-            H_candi = vector.obj(px = 0., py = 0., pz = 0., E = 0.)
-            H_candi = H_candi + W1_candi + W2_candi
+        
+        H_candi = vector.obj(px = 0., py = 0., pz = 0., E = 0.) # IMPORTANT NOTE: you need to initialize this to an empty vector first. Otherwise, you will get ZeroDivisionError exceptions for like 1 out of a million events (seemingly only with numba). 
+        H_candi = H_candi + W1_candi + W2_candi
         W1_content.append([
             W1_candi.pt,
             W1_candi.eta,
@@ -636,7 +637,8 @@ def select_ww_to_qqlv(gen_part):
             H_candi.phi,
             H_candi.mass,
         ])
-    return W1_content, W2_content, H_content
+
+    return W1_content,W2_content,H_content
 
 
 
