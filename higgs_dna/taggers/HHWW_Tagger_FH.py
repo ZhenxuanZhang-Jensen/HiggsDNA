@@ -269,7 +269,6 @@ class HHWW_Preselection_FH(Tagger):
         # Preselection
         n_electrons = awkward.num(electrons)
         n_muons = awkward.num(muons)
-        n_photons = awkward.num(events.Photon)
         n_leptons = n_electrons + n_muons
         # n_diphotons = awkward.num(events.Diphoton)
         # logger.debug(" the N_diphoton : %f" % (n_diphotons))
@@ -292,7 +291,7 @@ class HHWW_Preselection_FH(Tagger):
         # Hadronic presel
         # use priority to mark different category
         category_p3 = (n_jets>=4)
-        category_p2 = (n_fatjets_W>=1) & (n_jets>=2)
+        category_p2 = (n_fatjets_W>=1) & (n_jets>=1)
         category_p1 = (n_fatjets_H>=1)
         flatten_n_jets = awkward.num(jets.pt)
         category = awkward.zeros_like(flatten_n_jets)

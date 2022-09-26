@@ -37,12 +37,15 @@
     "samples": {
         "catalog": "metadata/samples/hhww_UL_local.json",
         "sample_list": [
+            "GluGluToRadionToHHTo2G2WTo2G4Q_M-300",
             "GluGluToRadionToHHTo2G2WTo2G4Q_M-500",
             "GluGluToRadionToHHTo2G2WTo2G4Q_M-700",
             "GluGluToRadionToHHTo2G2WTo2G4Q_M-1000",
+            "GluGluToRadionToHHTo2G2WTo2G4Q_M-1500",
             "GluGluToRadionToHHTo2G2WTo2G4Q_M-2000",
             "GluGluToRadionToHHTo2G2WTo2G4Q_M-2600",
             "GluGluToRadionToHHTo2G2WTo2G4Q_M-3000",
+
             "GluGluToRadionToHHTo2G4Q_M250",
             "GluGluToRadionToHHTo2G4Q_M260",
             "GluGluToRadionToHHTo2G4Q_M270",
