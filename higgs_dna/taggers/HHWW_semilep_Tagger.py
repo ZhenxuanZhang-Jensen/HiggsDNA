@@ -18,16 +18,17 @@ DUMMY_VALUE = -999.
 
 DEFAULT_OPTIONS = {
     "electrons": {
-        "pt": 20.0,
+        "pt": 10.0,
         "dr_photons": 0.2
     },
     "muons": {
-        "pt": 21.0,
+        "pt": 10.0,
+        "eta":2.7,
         "dr_photons": 0.2
     },
     "jets": {
-        "pt": 20.0, # attention this is the one exact same as old framework, make this 20 GeV(loose) for further analysis, we all know the higgs-like ak4 jets pt can be very small
-        "eta": 2.4,
+        "pt": 25.0, # attention this is the one exact same as old framework, make this 20 GeV(loose) for further analysis, we all know the higgs-like ak4 jets pt can be very small
+        "eta": 2.5,
         "dr_photons": 0.4,
         "dr_electrons": 0.4,
         "dr_muons": 0.4,
@@ -95,6 +96,8 @@ class HHWW_Preselection(Tagger):
             name="SelectedElectron",
             data=events.Electron[electron_cut]
         )
+        iso_cut = electrons["Electron_mvaFall17V2Iso_WPL"][electrons["Electron_mvaFall17V2Iso_WPL"]==True]
+        electrons=electrons[iso_cut]
 
         # Muons
         muon_cut = lepton_selections.select_muons(
@@ -290,19 +293,19 @@ class HHWW_Preselection(Tagger):
 
         # Hadronic presel
         # use priority to mark different category
-        category_p3 = (n_jets>=4)
-        category_p2 = (n_fatjets_W>=1) & (n_jets>=2)
-        category_p1 = (n_fatjets_H>=1)
+        category_p3 = (n_jets>=2)
+        category_p2 = (n_fatjets_W>=1) & (n_jets>=0)
+        #category_p1 = (n_fatjets_H>=1)
         flatten_n_jets = awkward.num(jets.pt)
         category = awkward.zeros_like(flatten_n_jets)
         category = awkward.fill_none(category, 0)
         category = awkward.where(category_p3, awkward.ones_like(category)*3, category)
         category = awkward.where(category_p2, awkward.ones_like(category)*2, category)
-        category = awkward.where(category_p1, awkward.ones_like(category)*1, category)
+       # category = awkward.where(category_p1, awkward.ones_like(category)*1, category)
         awkward_utils.add_field(events, "category", category) 
         category_cut = category >= 0 # attention category equal to 0 mean don't pass any selection 
         # OnlyFourJet_category = (n_leptons == 0) & (n_jets >= 4)
-        Lepton_Selection = (n_leptons==0) 
+        Lepton_Selection = (n_leptons==1)&(n_jets >=2)
 
         # Semi-Leptonic presel
         # Semileptonic = (n_leptons == 1) & (n_jets >= 2)
@@ -312,7 +315,7 @@ class HHWW_Preselection(Tagger):
 
         # presel_cut = (hadronic | Semileptonic | FulllyLeptonic)  & photon_id_cut
         # presel_FourJet_category = 
-        presel_cut = (photon_id_cut) & (n_leptons==0) & (category_cut)
+        presel_cut = (photon_id_cut) & (n_leptons==1) & (category_cut)
 
         self.register_cuts(
             names=["Photon Selection","Lepton Selection"],

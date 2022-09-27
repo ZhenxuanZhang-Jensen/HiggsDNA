@@ -492,30 +492,30 @@ def gen_Hww_2q2l(events):
     dummy_value=-999
     )
     logger.debug("import select_ww_qqlv W1,W2,Hcandi")
-    W1_candi,W2_candi,H_candi = select_ww_to_qqlv(gen_part)
-    logger.debug("W1 Candi%s, num%s"%(W1_candi,len(W1_candi)))
+    W1_candidate,W2_candidate,H_candidate = select_ww_to_qqlv(gen_part)
+    logger.debug("W1 Candi%s, num%s"%(W1_candidate,len(W1_candidate)))
     W1_candi4D = awkward.zip(
     {
-    "pt": numpy.array(W1_candi)[:,0],
-    "eta": numpy.array(W1_candi)[:,1],
-    "phi": numpy.array(W1_candi)[:,2],
-    "mass": numpy.array(W1_candi)[:,3],
+    "pt": numpy.array(W1_candidate)[:,0],
+    "eta": numpy.array(W1_candidate)[:,1],
+    "phi": numpy.array(W1_candidate)[:,2],
+    "mass": numpy.array(W1_candidate)[:,3],
     }, 
     with_name="Momentum4D")
     W2_candi4D = awkward.zip(
     {
-    "pt": numpy.array(W2_candi)[:,0],
-    "eta": numpy.array(W2_candi)[:,1],
-    "phi": numpy.array(W2_candi)[:,2],
-    "mass": numpy.array(W2_candi)[:,3],
+    "pt": numpy.array(W2_candidate)[:,0],
+    "eta": numpy.array(W2_candidate)[:,1],
+    "phi": numpy.array(W2_candidate)[:,2],
+    "mass": numpy.array(W2_candidate)[:,3],
     }, 
     with_name="Momentum4D")
     H_candi4D = awkward.zip(
     {
-    "pt": numpy.array(H_candi)[:,0],
-    "eta": numpy.array(H_candi)[:,1],
-    "phi": numpy.array(H_candi)[:,2],
-    "mass": numpy.array(H_candi)[:,3],
+    "pt": numpy.array(H_candidate)[:,0],
+    "eta": numpy.array(H_candidate)[:,1],
+    "phi": numpy.array(H_candidate)[:,2],
+    "mass": numpy.array(H_candidate)[:,3],
     }, 
     with_name="Momentum4D")
     unflatten_W1_candi4D = awkward.unflatten(W1_candi4D,1)
@@ -586,51 +586,55 @@ def select_ww_to_qqlv(gen_part):
                 list_quark_candidate.append(gen_part[i][j])
             if(cut_W2):
                 list_lepton_candidate.append(gen_part[i][j])
-
+        Wll_candi=vector.obj(pt=0,eta=0,phi=0,mass=0)
+        Wqq_candi=vector.obj(pt=0,eta=0,phi=0,mass=0)
         if len(list_lepton_candidate)!=2:
-            W1_candi = vector.obj(
+ 
+            Wll_candi = vector.obj(
                 pt = -999,
                 eta = -999,
                 phi = -999,
                 mass = -999
             ) 
-        if len(list_quark_candidate)!=2:   
-            W1_candi = vector.obj(
+            logger.debug("len(list_lepton_candidate)!=2")
+        if len(list_quark_candidate)!=2:
+            logger.debug("list_quark_candidate%s"%list_quark_candidate)   
+            Wqq_candi = vector.obj(
                 pt = -999,
                 eta = -999,
                 phi = -999,
                 mass = -999
             )    
 
-        else:
-            W1_candi = list_quark_candidate[0]+list_quark_candidate[1]
-            W1_candi = vector.obj(
+        if len(list_quark_candidate)==2:
+            Wqq_candi = list_quark_candidate[0]+list_quark_candidate[1]
+            Wqq_candi = vector.obj(
                     pt = (list_quark_candidate[0]+list_quark_candidate[1]).pt,
                     eta = (list_quark_candidate[0]+list_quark_candidate[1]).eta,
                     phi = (list_quark_candidate[0]+list_quark_candidate[1]).phi,
                     mass = (list_quark_candidate[0]+list_quark_candidate[1]).mass
                 )
-
-            W2_candi = list_lepton_candidate[0]+list_lepton_candidate[1]
-            W2_candi = vector.obj(
+        if len(list_lepton_candidate)==2:
+            Wll_candi = list_lepton_candidate[0]+list_lepton_candidate[1]
+            Wll_candi = vector.obj(
                     pt = (list_lepton_candidate[0]+list_lepton_candidate[1]).pt,
                     eta = (list_lepton_candidate[0]+list_lepton_candidate[1]).eta,
                     phi = (list_lepton_candidate[0]+list_lepton_candidate[1]).phi,
                     mass = (list_lepton_candidate[0]+list_lepton_candidate[1]).mass
                 )
-            H_candi = vector.obj(px = 0., py = 0., pz = 0., E = 0.)
-            H_candi = H_candi + W1_candi + W2_candi
+        H_candi = vector.obj(px = 0., py = 0., pz = 0., E = 0.) # IMPORTANT NOTE: you need to initialize this to an empty vector first. Otherwise, you will get ZeroDivisionError exceptions for like 1 out of a million events (seemingly only with numba). 
+        H_candi = H_candi + Wqq_candi + Wll_candi
         W1_content.append([
-            W1_candi.pt,
-            W1_candi.eta,
-            W1_candi.phi,
-            W1_candi.mass,
+            Wqq_candi.pt,
+            Wqq_candi.eta,
+            Wqq_candi.phi,
+            Wqq_candi.mass,
         ])
         W2_content.append([
-            W2_candi.pt,
-            W2_candi.eta,
-            W2_candi.phi,
-            W2_candi.mass,
+            Wll_candi.pt,
+            Wll_candi.eta,
+            Wll_candi.phi,
+            Wll_candi.mass,
         ])
         H_content.append([
             H_candi.pt,
