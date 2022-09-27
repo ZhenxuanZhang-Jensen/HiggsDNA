@@ -98,6 +98,7 @@ class HHWW_Preselection(Tagger):
         )
         iso_cut = electrons["Electron_mvaFall17V2Iso_WPL"][electrons["Electron_mvaFall17V2Iso_WPL"]==True]
         electrons=electrons[iso_cut]
+        ######################################
 
         # Muons
         muon_cut = lepton_selections.select_muons(
