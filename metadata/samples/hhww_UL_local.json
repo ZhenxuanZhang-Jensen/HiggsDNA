@@ -1,4 +1,36 @@
 {
+   "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300":{
+    "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+    [
+        "root://cms-xrd-global.cern.ch//store/mc/RunIISummer20UL17NanoAODv9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000_TuneCP5_PSWeights_narrow_13TeV-madgraph-pythia8/NANOAODSIM/106X_mc2017_realistic_v9-v1/50000/3774D122-ECBC-EE4B-8B34-ABB2EA4E1A16.root\n",
+        "root://cms-xrd-global.cern.ch//store/mc/RunIISummer20UL17NanoAODv9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000_TuneCP5_PSWeights_narrow_13TeV-madgraph-pythia8/NANOAODSIM/106X_mc2017_realistic_v9-v1/2530000/AA794647-8B3A-7343-B048-AE3CC0BB1787.root\n"
+    ]
+    }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500":{
+        "xs":0.001,
+        "bf":1.0,
+        "files":{
+        "2017":
+        [
+            "root://cms-xrd-global.cern.ch//store/mc/RunIISummer20UL17NanoAODv9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500_TuneCP5_PSWeights_narrow_13TeV-madgraph-pythia8/NANOAODSIM/106X_mc2017_realistic_v9-v1/40000/4F6361BF-8895-A046-897C-238419FACE6E.root"
+        ]
+        }
+    },
+   "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700":{
+    "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+    [
+        "root://cms-xrd-global.cern.ch//store/mc/RunIISummer20UL17NanoAODv9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700_TuneCP5_PSWeights_narrow_13TeV-madgraph-pythia8/NANOAODSIM/106X_mc2017_realistic_v9-v1/50000/52C239F1-6C13-574F-8E75-7794F3ECD20C.root\n",
+        "root://cms-xrd-global.cern.ch//store/mc/RunIISummer20UL17NanoAODv9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700_TuneCP5_PSWeights_narrow_13TeV-madgraph-pythia8/NANOAODSIM/106X_mc2017_realistic_v9-v1/2430000/03C28A91-4A48-8647-9C05-7E71175F798E.root\n"
+    ]
+    }
+    },
    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000":{
     "xs":0.001,
     "bf":1.0,
@@ -10,14 +42,18 @@
     ]
     }
     },
-   "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500":{
+
+   "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500":{
     "xs":0.001,
     "bf":1.0,
     "files":{
     "2017":
     [
-        "root://cms-xrd-global.cern.ch//store/mc/RunIISummer20UL17NanoAODv9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500_TuneCP5_PSWeights_narrow_13TeV-madgraph-pythia8/NANOAODSIM/106X_mc2017_realistic_v9-v1/40000/4F6361BF-8895-A046-897C-238419FACE6E.root"
-    ]
+
+        "root://cms-xrd-global.cern.ch//store/mc/RunIISummer20UL17NanoAODv9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500_TuneCP5_PSWeights_narrow_13TeV-madgraph-pythia8/NANOAODSIM/106X_mc2017_realistic_v9-v1/30000/F9A11D53-1AE2-C849-A4AA-0DB7C92EE05D.root\n",
+        "root://cms-xrd-global.cern.ch//store/mc/RunIISummer20UL17NanoAODv9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500_TuneCP5_PSWeights_narrow_13TeV-madgraph-pythia8/NANOAODSIM/106X_mc2017_realistic_v9-v1/50000/05D70DCB-D115-CE40-B999-864882536A61.root\n",
+        "root://cms-xrd-global.cern.ch//store/mc/RunIISummer20UL17NanoAODv9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500_TuneCP5_PSWeights_narrow_13TeV-madgraph-pythia8/NANOAODSIM/106X_mc2017_realistic_v9-v1/50000/1B15DBDB-7D76-BE47-94E3-89C525E7AC79.root\n"
+        ]
     }
     },
    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000":{
@@ -27,6 +63,17 @@
     "2017":
     [
         "root://cms-xrd-global.cern.ch//store/mc/RunIISummer20UL17NanoAODv9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000_TuneCP5_PSWeights_narrow_13TeV-madgraph-pythia8/NANOAODSIM/106X_mc2017_realistic_v9-v1/50000/B48B1F1B-C7A1-4348-8490-2DAE7EDE9B3E.root"
+    ]
+    }
+    },
+   "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600":{
+    "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+    [
+        "root://cms-xrd-global.cern.ch//store/mc/RunIISummer20UL17NanoAODv9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600_TuneCP5_PSWeights_narrow_13TeV-madgraph-pythia8/NANOAODSIM/106X_mc2017_realistic_v9-v1/40000/AC7DC7E4-8F18-3E47-BDDD-45FFAF95BA84.root\n"
+
     ]
     }
     },
@@ -1139,7 +1186,7 @@
         }
     },
     "DoubleEG_Run2017B" : {
-        "fpo" : 5,
+        "fpo" : 2,
         "files" : {
             "2017" : [
 "/eos/cms/store/group/phys_higgs/cmshgg/zhenxuan/DoubleEG_Run2017B/9CA5A3D8-32BA-3A44-9E47-BF2275892547.root",
@@ -1202,7 +1249,7 @@
         }
     },
     "DoubleEG_Run2017C" : {
-        "fpo" : 5,
+        "fpo" : 2,
         "files" : {
             "2017" : [
 "/eos/cms/store/group/phys_higgs/cmshgg/zhenxuan/DoubleEG_Run2017C/6CF050D9-7403-D743-880A-94E3BC84BB7B.root",
@@ -1277,7 +1324,7 @@
         }
     },
     "DoubleEG_Run2017D" : {
-        "fpo" : 5,
+        "fpo" : 2,
         "files" : {
             "2017" : [
                 "/eos/cms/store/group/phys_higgs/cmshgg/zhenxuan/DoubleEG_Run2017D/6683FC99-A5D5-0941-858B-C78EBB5DEDDE.root",
@@ -1308,7 +1355,7 @@
         }
     },
     "DoubleEG_Run2017E" : {
-        "fpo" : 5,
+        "fpo" : 2,
         "files" : {
             "2017" : [
                 "/eos/cms/store/group/phys_higgs/cmshgg/zhenxuan/DoubleEG_Run2017E/1586A878-1E2F-674E-8084-C8289269B42B.root",
