@@ -561,7 +561,7 @@ def gen_Hww_2q2l(events):
     return gen_l1_p4, gen_q1_p4,gen_q2_p4
 
 @numba.njit
-def test(gen_qq,gen_lv):    
+def select_ww_to_qqlv(gen_qq,gen_lv):    
     W1_content = []
     W2_content = []
     H_content = []
