@@ -382,7 +382,7 @@ def gen_Hww_2q2l(events):
     gen_gg = gen_gg.mask[gen_lvcut]
    # gen_part = gen_part.mask[gen_lvcut]
     #gen_part = gen_part[gen_lvcut]
-    dummy = awkward.zeros_like(gen_qq[0])
+    dummy = awkward.full_like(gen_qq[0],99)
    # gen_part=awkward.fill_none(gen_part,dummy,axis=0)
     gen_qq = awkward.fill_none(gen_qq,dummy,axis=0)
     gen_gg = awkward.fill_none(gen_gg,dummy,axis=0)
@@ -486,7 +486,7 @@ def gen_Hww_2q2l(events):
     )
     logger.debug("import select_ww_qqlv W1,W2,Hcandi")
     Wqq_candi,Wll_candi,H_candi = select_ww_to_qqlv(gen_qq,gen_lv)
-    logger.debug("W1 Candi%s, num%s"%(Wqq_candi,len(Wqq_candi)))
+
     W1_candi4D = awkward.zip(
     {
     "pt": numpy.array(Wqq_candi)[:,0],
@@ -519,8 +519,6 @@ def gen_Hww_2q2l(events):
    # logger.debug("W1_candi%s"%W1_candi)
  #   W1_candi = awkward.pad_none(W1_candi,len(events),axis=0)
 
-    logger.debug("num(W1_candi)=%s"%len(W1_candi4D))
-    logger.debug("(W1_candi)=%s"% W1_candi4D)
 
     genW1_qq = awkward_utils.add_field(
     events=events,
@@ -588,7 +586,7 @@ def select_ww_to_qqlv(gen_qq,gen_lv):
         #H_candi = vector.obj(px = 0., py = 0., pz = 0., E = 0.)
         zero=numpy.array([0.,0.,0.,0.])
         zero=zero.astype(numpy.float32)
-        H_candi = vector.obj(pt = zero[0], eta =zero[0], phi = zero[0], mass = zero[0])
+        H_candi = vector.obj(pt = zero[0], eta =zero[1], phi = zero[2], mass = zero[3])
         ##H_candi = vector.obj(pt = 0., eta = 0., phi = 0., E = 0.)
         H_candi = H_candi + W1_candi + W2_candi
         W1_content.append([
