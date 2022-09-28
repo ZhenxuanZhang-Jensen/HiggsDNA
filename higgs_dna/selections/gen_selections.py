@@ -369,7 +369,8 @@ def gen_Hww_2q2l(events):
     # --------- gen level 2 signal quarks and 2 signal photons and 2 leptons and the Higgs from gg -------- #
     gen_qq = gen_part[(abs(gen_part.pdgId)<= 6) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24) ]
     gen_gg = gen_part[(abs(gen_part.pdgId) == 22) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 25) ]
-    gen_lv = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24)&((abs(gen_part.pdgId)>=11)&(abs(gen_part.pdgId)<=14))]  
+    gen_lv = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24)&((abs(gen_part.pdgId)>=11)&(abs(gen_part.pdgId)<=14))]
+    
     ngen_lv=awkward.num(gen_lv,axis=-1)
     gen_lvcut=(ngen_lv!=4)&(ngen_lv!=0)
     #no4lep_lv type:bool
@@ -381,19 +382,9 @@ def gen_Hww_2q2l(events):
     gen_gg = gen_gg.mask[gen_lvcut]
    # gen_part = gen_part.mask[gen_lvcut]
     #gen_part = gen_part[gen_lvcut]
-    dummy = awkward.Array({
-    'eta':[-999,-999],
-     'phi':[-999,-999],
-     'pt':[-999,-999],
-    'mass':[-99,-999],
-     'genPartIdxMother':[-999,-999],
-     'pdgId':[-999,-999],
-     'status':[-999,-999],
-     'statusFlags':[-999,-999],
-    }
-    )
+    dummy = awkward.zeros_like(gen_qq[0])
    # gen_part=awkward.fill_none(gen_part,dummy,axis=0)
-    gen_qq = awkward.fill_none(gen_part,dummy,axis=0)
+    gen_qq = awkward.fill_none(gen_qq,dummy,axis=0)
     gen_gg = awkward.fill_none(gen_gg,dummy,axis=0)
     gen_lv = awkward.fill_none(gen_lv,dummy,axis=0)
     unflatten_gen_q1 = awkward.unflatten(gen_qq[:,0],1)
@@ -401,6 +392,8 @@ def gen_Hww_2q2l(events):
     unflatten_gen_l1 = awkward.unflatten(gen_lv[:,0],1)
     unflatten_gen_v1 = awkward.unflatten(gen_lv[:,1],1)
     # the four quarks Momentum4D
+    print(gen_qq)
+    print(gen_lv)
     gen_W1_p4 = vector.awk(
         {
             "pt" : unflatten_gen_q1["pt"]+unflatten_gen_q2["pt"],
@@ -492,30 +485,30 @@ def gen_Hww_2q2l(events):
     dummy_value=-999
     )
     logger.debug("import select_ww_qqlv W1,W2,Hcandi")
-    W1_candidate,W2_candidate,H_candidate = select_ww_to_qqlv(gen_part)
-    logger.debug("W1 Candi%s, num%s"%(W1_candidate,len(W1_candidate)))
+    Wqq_candi,Wll_candi,H_candi = select_ww_to_qqlv(gen_qq,gen_lv)
+    logger.debug("W1 Candi%s, num%s"%(Wqq_candi,len(Wqq_candi)))
     W1_candi4D = awkward.zip(
     {
-    "pt": numpy.array(W1_candidate)[:,0],
-    "eta": numpy.array(W1_candidate)[:,1],
-    "phi": numpy.array(W1_candidate)[:,2],
-    "mass": numpy.array(W1_candidate)[:,3],
+    "pt": numpy.array(Wqq_candi)[:,0],
+    "eta": numpy.array(Wqq_candi)[:,1],
+    "phi": numpy.array(Wqq_candi)[:,2],
+    "mass": numpy.array(Wqq_candi)[:,3],
     }, 
     with_name="Momentum4D")
     W2_candi4D = awkward.zip(
     {
-    "pt": numpy.array(W2_candidate)[:,0],
-    "eta": numpy.array(W2_candidate)[:,1],
-    "phi": numpy.array(W2_candidate)[:,2],
-    "mass": numpy.array(W2_candidate)[:,3],
+    "pt": numpy.array(Wll_candi)[:,0],
+    "eta": numpy.array(Wll_candi)[:,1],
+    "phi": numpy.array(Wll_candi)[:,2],
+    "mass": numpy.array(Wll_candi)[:,3],
     }, 
     with_name="Momentum4D")
     H_candi4D = awkward.zip(
     {
-    "pt": numpy.array(H_candidate)[:,0],
-    "eta": numpy.array(H_candidate)[:,1],
-    "phi": numpy.array(H_candidate)[:,2],
-    "mass": numpy.array(H_candidate)[:,3],
+    "pt": numpy.array(H_candi)[:,0],
+    "eta": numpy.array(H_candi)[:,1],
+    "phi": numpy.array(H_candi)[:,2],
+    "mass": numpy.array(H_candi)[:,3],
     }, 
     with_name="Momentum4D")
     unflatten_W1_candi4D = awkward.unflatten(W1_candi4D,1)
@@ -567,74 +560,48 @@ def gen_Hww_2q2l(events):
     )   
     return gen_l1_p4, gen_q1_p4,gen_q2_p4
 
-
-#@numba.njit
-def select_ww_to_qqlv(gen_part):
+@numba.njit
+def test(gen_qq,gen_lv):    
     W1_content = []
     W2_content = []
     H_content = []
-    for i in range(len(gen_part)):
-    # for i in range(1):
+    for i in range(1):
         list_quark_candidate = []
         list_lepton_candidate = []
-        #object loop
-        for j in range(len(gen_part[i])):
-            cut_W2 = (abs(gen_part.pdgId[i][j] <= 14) and abs(gen_part.pdgId[i][j]>=11) and (abs(gen_part.pdgId[i][gen_part.genPartIdxMother[i][j]])==24))
-            cut_W1 = (abs(gen_part.pdgId[i][j]) <= 6 )and (abs(gen_part.pdgId[i][gen_part.genPartIdxMother[i][j]]) == 24)
-            if(cut_W1):
-                # a = 1
-                list_quark_candidate.append(gen_part[i][j])
-            if(cut_W2):
-                list_lepton_candidate.append(gen_part[i][j])
-        Wll_candi=vector.obj(pt=0,eta=0,phi=0,mass=0)
-        Wqq_candi=vector.obj(pt=0,eta=0,phi=0,mass=0)
-        if len(list_lepton_candidate)!=2:
- 
-            Wll_candi = vector.obj(
-                pt = -999,
-                eta = -999,
-                phi = -999,
-                mass = -999
-            ) 
-            logger.debug("len(list_lepton_candidate)!=2")
-        if len(list_quark_candidate)!=2:
-            logger.debug("list_quark_candidate%s"%list_quark_candidate)   
-            Wqq_candi = vector.obj(
-                pt = -999,
-                eta = -999,
-                phi = -999,
-                mass = -999
-            )    
+        for j in range(len(gen_qq[i])):
+            list_quark_candidate.append(gen_qq[i][j])
+            list_lepton_candidate.append(gen_lv[i][j])
+        W1_candi = list_quark_candidate[0]+list_quark_candidate[1]
 
-        if len(list_quark_candidate)==2:
-            Wqq_candi = list_quark_candidate[0]+list_quark_candidate[1]
-            Wqq_candi = vector.obj(
-                    pt = (list_quark_candidate[0]+list_quark_candidate[1]).pt,
-                    eta = (list_quark_candidate[0]+list_quark_candidate[1]).eta,
-                    phi = (list_quark_candidate[0]+list_quark_candidate[1]).phi,
-                    mass = (list_quark_candidate[0]+list_quark_candidate[1]).mass
-                )
-        if len(list_lepton_candidate)==2:
-            Wll_candi = list_lepton_candidate[0]+list_lepton_candidate[1]
-            Wll_candi = vector.obj(
-                    pt = (list_lepton_candidate[0]+list_lepton_candidate[1]).pt,
-                    eta = (list_lepton_candidate[0]+list_lepton_candidate[1]).eta,
-                    phi = (list_lepton_candidate[0]+list_lepton_candidate[1]).phi,
-                    mass = (list_lepton_candidate[0]+list_lepton_candidate[1]).mass
-                )
-        H_candi = vector.obj(px = 0., py = 0., pz = 0., E = 0.) # IMPORTANT NOTE: you need to initialize this to an empty vector first. Otherwise, you will get ZeroDivisionError exceptions for like 1 out of a million events (seemingly only with numba). 
-        H_candi = H_candi + Wqq_candi + Wll_candi
+        W2_candi = list_lepton_candidate[0]+list_lepton_candidate[1]
+
+        W1_candi = vector.obj(
+                pt = (list_quark_candidate[0]).pt,
+                eta = (list_quark_candidate[0]).eta,
+                phi = (list_quark_candidate[0]).phi,
+                mass = (list_quark_candidate[0]).mass)
+        W2_candi = vector.obj(
+                pt = (list_lepton_candidate[0]).pt,
+                eta = (list_lepton_candidate[0]).eta,
+                phi = (list_lepton_candidate[0]).phi,
+                mass = (list_lepton_candidate[0]).mass)
+        #H_candi = vector.obj(px = 0., py = 0., pz = 0., E = 0.)
+        zero=numpy.array([0.,0.,0.,0.])
+        zero=zero.astype(numpy.float32)
+        H_candi = vector.obj(pt = zero[0], eta =zero[0], phi = zero[0], mass = zero[0])
+        ##H_candi = vector.obj(pt = 0., eta = 0., phi = 0., E = 0.)
+        H_candi = H_candi + W1_candi + W2_candi
         W1_content.append([
-            Wqq_candi.pt,
-            Wqq_candi.eta,
-            Wqq_candi.phi,
-            Wqq_candi.mass,
+            W1_candi.pt,
+            W1_candi.eta,
+            W1_candi.phi,
+            W1_candi.mass,
         ])
         W2_content.append([
-            Wll_candi.pt,
-            Wll_candi.eta,
-            Wll_candi.phi,
-            Wll_candi.mass,
+            W2_candi.pt,
+            W2_candi.eta,
+            W2_candi.phi,
+            W2_candi.mass,
         ])
         H_content.append([
             H_candi.pt,
@@ -642,13 +609,4 @@ def select_ww_to_qqlv(gen_part):
             H_candi.phi,
             H_candi.mass,
         ])
-    logger.debug("W1_content%s"%W1_content)
-    return W1_content, W2_content, H_content
-
-
-
-
-
-
-
-
+    return W1_content, W2_content,H_content

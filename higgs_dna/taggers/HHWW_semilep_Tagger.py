@@ -96,8 +96,8 @@ class HHWW_Preselection(Tagger):
             name="SelectedElectron",
             data=events.Electron[electron_cut]
         )
-        iso_cut = electrons["Electron_mvaFall17V2Iso_WPL"][electrons["Electron_mvaFall17V2Iso_WPL"]==True]
-        electrons=electrons[iso_cut]
+       # iso_cut = electrons["Electron_mvaFall17V2Iso_WPL"][electrons["Electron_mvaFall17V2Iso_WPL"]==True]
+        #electrons=electrons[iso_cut]
         ######################################
 
         # Muons
