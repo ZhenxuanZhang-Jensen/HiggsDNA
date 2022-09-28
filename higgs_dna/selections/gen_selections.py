@@ -565,7 +565,7 @@ def test(gen_qq,gen_lv):
     W1_content = []
     W2_content = []
     H_content = []
-    for i in range(len(gen_qq)):
+    for i in range(len(gen_lv)):
         list_quark_candidate = []
         list_lepton_candidate = []
         for j in range(len(gen_lv[i])):
