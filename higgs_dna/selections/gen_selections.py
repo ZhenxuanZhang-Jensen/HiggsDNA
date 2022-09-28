@@ -565,10 +565,10 @@ def test(gen_qq,gen_lv):
     W1_content = []
     W2_content = []
     H_content = []
-    for i in range(1):
+    for i in range(len(gen_qq)):
         list_quark_candidate = []
         list_lepton_candidate = []
-        for j in range(len(gen_qq[i])):
+        for j in range(len(gen_lv[i])):
             list_quark_candidate.append(gen_qq[i][j])
             list_lepton_candidate.append(gen_lv[i][j])
         W1_candi = list_quark_candidate[0]+list_quark_candidate[1]
