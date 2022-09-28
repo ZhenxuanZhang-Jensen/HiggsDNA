@@ -20,7 +20,7 @@ def select_fatjets(fatjets, options, clean, name = "none", tagger = None):
     standard_cuts = object_selections.select_objects(fatjets, options, clean, name, tagger)
     # can apply some additional cut
     # if options["tau2_tau1"] != 0:
-    #     tau2_tau1_cut = ((fatjets.tau2 / fatjets.tau1) < options["tau2_tau1"])
+        # tau2_tau1_cut = ((fatjets.tau2 / fatjets.tau1) < options["tau2_tau1"])
     # else:
     #     tau2_tau1_cut = fatjets.pt > 0
     # print("tau2_tau1", options["tau2_tau1"])

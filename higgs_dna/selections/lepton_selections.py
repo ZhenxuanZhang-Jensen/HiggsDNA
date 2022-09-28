@@ -11,7 +11,7 @@ DEFAULT_ELECTRONS = {
         "eta" : 2.4,
         "dxy" : 0.045,
         "dz" : 0.2,
-        "id" : "WP90",
+        "id" : "WPL",
         "dr_photons" : 0.2,
         "veto_transition" : True
 }
@@ -28,7 +28,8 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
     tagger_name = "none" if tagger is None else tagger.name
 
     standard_cuts = object_selections.select_objects(electrons, options, clean, name, tagger)
-
+    if options["id"] == "WPL":
+        id_cut = ((electrons.mvaFall17V2Iso_WPL == True))
     if options["id"] == "WP90":
         id_cut = (electrons.mvaFall17V2Iso_WP90 == True) | ((electrons.mvaFall17V2noIso_WP90 == True) & (electrons.pfRelIso03_all < 0.3)) 
     elif not options["id"] or options["id"].lower() == "none":
