@@ -314,9 +314,12 @@ class HHWW_Preselection_FH(Tagger):
         # presel_cut = (hadronic | Semileptonic | FulllyLeptonic)  & photon_id_cut
         # presel_FourJet_category = 
         presel_cut = (photon_id_cut) & (n_leptons==0)
+        cat_4jets_cut = (n_jets>=4)
+        cat_2jets_3jets_cut = (n_fatjets_W>=1) & (n_jets>=1)
+        cat_1jet_cut = (n_fatjets_H>=1)
 
         self.register_cuts(
-            names=["Photon Selection","Lepton Selection"],
+            names=["Photon id Selection","Lepton Selection",""],
             results=[photon_id_cut,Lepton_Selection]
         )
         return presel_cut, events
