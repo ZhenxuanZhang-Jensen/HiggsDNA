@@ -21,18 +21,18 @@ DUMMY_VALUE = -999.
 DEFAULT_OPTIONS = {
     "electrons": {
         "pt": 10.0,
-        "dr_photons": 0.2
+        "dr_photons": 0.4
     },
     "muons": {
         "pt": 10.0,
-        "eta":2.7,
+        "eta":2.5,
         "dr_photons": 0.4
     },
     "jets": {
         "pt": 25.0, # attention this is the one exact same as old framework, make this 20 GeV(loose) for further analysis, we all know the higgs-like ak4 jets pt can be very small
         "eta": 2.5,
         "dr_photons": 0.4,
-        "dr_electrons": 0.2,
+        "dr_electrons": 0.4,
         "dr_muons": 0.4,
         "dr_jets": 0.4,
     },
@@ -130,8 +130,6 @@ class HHWW_Preselection_SL(Tagger):
         n_objects=1,
         dummy_value=-999
         )
-        # add a lepton object to calculate dR with jets
-        np.where(muons!=0,muons,electrons)
         # --------------------- if fatjet branches are not empty --------------------- #
         # if len(events.FatJet.pt > 0 ):
         # Fat jets
@@ -153,20 +151,6 @@ class HHWW_Preselection_SL(Tagger):
             data = events.FatJet[fatjet_cut]
         )   
 
-        
-    if not isinstance(objects1, vector.Vector4D):
-        objects1 = awkward.Array(objects1, with_name = "Momentum4D")
-    if not isinstance(objects2, vector.Vector4D):
-        objects2 = awkward.Array(objects2, with_name = "Momentum4D")
-
-    obj1 = awkward.unflatten(objects1, counts = 1, axis = -1) # shape [n_events, n_obj, 1]
-    obj2 = awkward.unflatten(objects2, counts = 1, axis = 0) # shape [n_events, 1, n_obj]
-
-    dR = obj1.deltaR(obj2) # shape [n_events, n_obj1, n_obj2]
-
-    selection = awkward.all(dR >= min_dr, axis = -1)
-
-    selection = awkward.all(dR >= min_dr, axis = -1)
         # In SL channel, there are no H fatjet, only have W fatjet
         fatjet_W_cut = (fatjets.deepTagMD_WvsQCD>0.4) & (fatjets.pt>200)
 
@@ -278,8 +262,7 @@ class HHWW_Preselection_SL(Tagger):
         n_fatjets_W = awkward.num(fatjets_W)
         awkward_utils.add_field(events,"nGoodAK4jets",n_jets)
 
-        photon_id_cut = (events.LeadPhoton.mvaID > self.options["photon_id"]) & (
-            events.SubleadPhoton.mvaID > self.options["photon_id"])
+        photon_id_cut = (events.LeadPhoton.mvaID > self.options["photon_id"]) & (events.SubleadPhoton.mvaID > self.options["photon_id"])
 
         # Semi leptonic cat
         # use priority to mark different category
@@ -303,4 +286,4 @@ class HHWW_Preselection_SL(Tagger):
         )
 
 
-        return presel_cut, events 
+        return presel_cut, events

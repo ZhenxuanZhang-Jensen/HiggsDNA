@@ -174,6 +174,7 @@ class DiphotonTagger(Tagger):
         lead_pt_mgg_cut = (diphotons.LeadPhoton.pt / diphotons.Diphoton.mass) >= options["lead_pt_mgg"]
         sublead_pt_mgg_cut = (diphotons.SubleadPhoton.pt / diphotons.Diphoton.mass) >= options["sublead_pt_mgg"]
         mass_cut = (diphotons.Diphoton.mass >= options["mass"][0]) & (diphotons.Diphoton.mass <= options["mass"][1])
+        # attention: we need to add the efficiency check for creating the cut-flow
         all_cuts = lead_pt_cut & lead_pt_mgg_cut & sublead_pt_mgg_cut & mass_cut
 
         self.register_cuts(
@@ -370,7 +371,7 @@ class DiphotonTagger(Tagger):
         hlt_cut = hlt_cut | (photons_eb_low_r9 & eb_low_r9_track_pt_cut & eb_low_r9_sigma_ieie_cut & eb_low_r9_pho_iso_cut)
         hlt_cut = hlt_cut | photons_ee_high_r9
         hlt_cut = hlt_cut | (photons_ee_low_r9 & ee_low_r9_track_pt_cut & ee_low_r9_sigma_ieie_cut & ee_low_r9_pho_iso_cut)
-        hlt_cut = hlt_cut | (photons.pt > 0) # attention: only for debug, all true
+        # hlt_cut = hlt_cut | (photons.pt > 0) # attention: only for debug, all true
         all_cuts = pt_cut & eta_cut & e_veto_cut & pixelSeed_cut & r9_iso_cut & hoe_cut & hlt_cut
 
         self.register_cuts(
