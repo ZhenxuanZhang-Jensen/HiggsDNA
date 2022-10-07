@@ -191,8 +191,7 @@ class TagSequence():
         for tag_set in self.tag_list: 
             for tagger in tag_set:
                 self.summary[tagger.name]["summary"] = tagger.get_summary()
-
-        file_name = "summary%s.json" % self.ext
-        with open("output/" + file_name, "w") as f_out:
-            json.dump(self.summary, f_out, indent=4)
         return self.summary
+        # file_name = "summary%s.json" % self.ext
+        # with open("output/" + file_name, "w") as f_out:
+        #     json.dump(self.summary, f_out, indent=4)
