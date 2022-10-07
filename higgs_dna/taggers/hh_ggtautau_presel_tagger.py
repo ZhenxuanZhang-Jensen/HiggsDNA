@@ -44,7 +44,7 @@ DEFAULT_OPTIONS = {
     },
     "iso_tracks" : {
         "pt" : 5.0,
-        "eta" : 5.0,
+        "eta" : 2.5
         "dxy" : 0.2,
         "dz" : 0.1,
         "dr_photons" : 0.2,
@@ -528,10 +528,18 @@ class HHggTauTauPreselTagger(Tagger):
             events["weight"] = awkward.ones_like(events.ditau_pt)
         gen_weight_cut = events.weight != GEN_WEIGHT_BAD_VAL
 
-        presel_cut = category_cut & z_veto & pho_id & m_llg_veto & gen_weight_cut
+        #Add MET filters
+        METfilters_cut = gen_weight_cut
+        if self.is_data and '2016' in self.year:
+            METfilters_cut = events.Flag_goodVertices & events.Flag_globalSuperTightHalo2016Filter & events.Flag_HBHENoiseFilter & events.Flag_HBHENoiseIsoFilter & events.Flag_EcalDeadCellTriggerPrimitiveFilter & events.Flag_BadPFMuonFilter & events.Flag_BadPFMuonDzFilter & events.Flag_eeBadScFilter 
+        elif self.is_data and ( '2017' in self.year or '2018' in self.year ):
+            METfilters_cut = events.Flag_goodVertices & events.Flag_globalSuperTightHalo2016Filter & events.Flag_HBHENoiseFilter & events.Flag_HBHENoiseIsoFilter & events.Flag_EcalDeadCellTriggerPrimitiveFilter & events.Flag_BadPFMuonFilter & events.Flag_BadPFMuonDzFilter & events.Flag_eeBadScFilter & events.Flag_ecalBadCalibFilter 
+
+        presel_cut = category_cut & z_veto & pho_id & m_llg_veto & gen_weight_cut & METfilters_cut
+
         self.register_cuts(
-            names = ["category", "z_veto", "photon ID MVA", "m_llg veto", "gen weight cut", "all cuts"],
-            results = [category_cut, z_veto, pho_id, m_llg_veto, gen_weight_cut, presel_cut]
+            names = ["category", "z_veto", "photon ID MVA", "m_llg veto", "gen weight cut", "MET filter", "all cuts"],
+            results = [category_cut, z_veto, pho_id, m_llg_veto, gen_weight_cut, METfilters_cut, presel_cut]
         )
 
         return presel_cut, events 
