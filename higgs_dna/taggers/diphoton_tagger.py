@@ -361,7 +361,7 @@ class DiphotonTagger(Tagger):
             ee_low_r9_pho_iso_high_eta_cut = ~low_eta & (photons.photonIso - rho * options["hlt"]["high_eta_rho_corr"] < options["hlt"]["ee_low_r9"]["pho_iso"]) 
         else: # FIXME: to be deleted once Photon.photonIso is added to central nanoAOD
             ee_low_r9_pho_iso_low_eta_cut = low_eta & ((photons.pfRelIso03_all * photons.pt * options["hlt"]["low_eta_rho_corr"]) < options["hlt"]["ee_low_r9"]["pho_iso"])
-            ee_low_r9_pho_iso_high_eta_cut = ~low_eta & ((photons.pfRelIso03_all * photons.pt * options["hlt"]["high_eta_rho_corr"]) < options["hlt"]["ee_low_r9"]["pho_iso"])
+            ee_low_r9_pho_iso_high_eta_cut = low_eta & ((photons.pfRelIso03_all * photons.pt * options["hlt"]["high_eta_rho_corr"]) < options["hlt"]["ee_low_r9"]["pho_iso"])
     
         ee_low_r9_pho_iso_cut = ee_low_r9_pho_iso_low_eta_cut | ee_low_r9_pho_iso_high_eta_cut
 
@@ -370,7 +370,7 @@ class DiphotonTagger(Tagger):
         hlt_cut = hlt_cut | (photons_eb_low_r9 & eb_low_r9_track_pt_cut & eb_low_r9_sigma_ieie_cut & eb_low_r9_pho_iso_cut)
         hlt_cut = hlt_cut | photons_ee_high_r9
         hlt_cut = hlt_cut | (photons_ee_low_r9 & ee_low_r9_track_pt_cut & ee_low_r9_sigma_ieie_cut & ee_low_r9_pho_iso_cut)
-        hlt_cut = hlt_cut | (photons.pt > 0) # attention: only for debug, all true
+        # hlt_cut = hlt_cut | (photons.pt > 0) # attention: only for debug, all true
         all_cuts = pt_cut & eta_cut & e_veto_cut & pixelSeed_cut & r9_iso_cut & hoe_cut & hlt_cut
 
         self.register_cuts(
