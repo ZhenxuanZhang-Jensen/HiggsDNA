@@ -8,6 +8,7 @@ eos_logs/
 *.sh
 *analysis_jupyter/
 *output/
+*.cc
 # Mac/OSX
 .DS_Stor
 *tutorial_tth*
