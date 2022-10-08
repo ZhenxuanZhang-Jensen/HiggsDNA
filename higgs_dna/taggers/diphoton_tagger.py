@@ -22,7 +22,6 @@ DEFAULT_OPTIONS = {
             [1.566, 2.5]
         ],
         "e_veto" : 1,
-        "pixelSeed" : 0,
         "hoe" : 0.08,
         "r9" : 0.8,
         "charged_iso" : 20.0,
@@ -174,7 +173,6 @@ class DiphotonTagger(Tagger):
         lead_pt_mgg_cut = (diphotons.LeadPhoton.pt / diphotons.Diphoton.mass) >= options["lead_pt_mgg"]
         sublead_pt_mgg_cut = (diphotons.SubleadPhoton.pt / diphotons.Diphoton.mass) >= options["sublead_pt_mgg"]
         mass_cut = (diphotons.Diphoton.mass >= options["mass"][0]) & (diphotons.Diphoton.mass <= options["mass"][1])
-        # attention: we need to add the efficiency check for creating the cut-flow
         all_cuts = lead_pt_cut & lead_pt_mgg_cut & sublead_pt_mgg_cut & mass_cut
 
         self.register_cuts(
@@ -310,8 +308,6 @@ class DiphotonTagger(Tagger):
         e_veto_cut = photons.electronVeto == options["e_veto"]
 
         use_central_nano = options["use_central_nano"] # indicates whether we are using central nanoAOD (with some branches that are necessary for full diphoton preselection missing) or custom nanoAOD (with these branches added)
-        # pixelSeed cut
-        pixelSeed_cut = photons.pixelSeed == options["pixelSeed"]
         # r9/isolation cut
         r9_cut = photons.r9 > options["r9"]
 
@@ -362,7 +358,7 @@ class DiphotonTagger(Tagger):
             ee_low_r9_pho_iso_high_eta_cut = ~low_eta & (photons.photonIso - rho * options["hlt"]["high_eta_rho_corr"] < options["hlt"]["ee_low_r9"]["pho_iso"]) 
         else: # FIXME: to be deleted once Photon.photonIso is added to central nanoAOD
             ee_low_r9_pho_iso_low_eta_cut = low_eta & ((photons.pfRelIso03_all * photons.pt * options["hlt"]["low_eta_rho_corr"]) < options["hlt"]["ee_low_r9"]["pho_iso"])
-            ee_low_r9_pho_iso_high_eta_cut = ~low_eta & ((photons.pfRelIso03_all * photons.pt * options["hlt"]["high_eta_rho_corr"]) < options["hlt"]["ee_low_r9"]["pho_iso"])
+            ee_low_r9_pho_iso_high_eta_cut = low_eta & ((photons.pfRelIso03_all * photons.pt * options["hlt"]["high_eta_rho_corr"]) < options["hlt"]["ee_low_r9"]["pho_iso"])
     
         ee_low_r9_pho_iso_cut = ee_low_r9_pho_iso_low_eta_cut | ee_low_r9_pho_iso_high_eta_cut
 
@@ -372,7 +368,7 @@ class DiphotonTagger(Tagger):
         hlt_cut = hlt_cut | photons_ee_high_r9
         hlt_cut = hlt_cut | (photons_ee_low_r9 & ee_low_r9_track_pt_cut & ee_low_r9_sigma_ieie_cut & ee_low_r9_pho_iso_cut)
         # hlt_cut = hlt_cut | (photons.pt > 0) # attention: only for debug, all true
-        all_cuts = pt_cut & eta_cut & e_veto_cut & pixelSeed_cut & r9_iso_cut & hoe_cut & hlt_cut
+        all_cuts = pt_cut & eta_cut & e_veto_cut & r9_iso_cut & hoe_cut & hlt_cut
 
         self.register_cuts(
                 names = ["pt", "eta", "e_veto", "r9", "hoe", "hlt", "all"],
