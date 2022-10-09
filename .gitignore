@@ -9,6 +9,7 @@ eos_logs/
 *analysis_jupyter/
 *output/
 *.cc
+x509up_u134033
 # Mac/OSX
 .DS_Stor
 *tutorial_tth*
