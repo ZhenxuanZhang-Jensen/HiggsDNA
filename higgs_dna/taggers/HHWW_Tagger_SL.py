@@ -37,9 +37,11 @@ DEFAULT_OPTIONS = {
         "dr_jets": 0.4,
     },
     "fatjets": {
-        "pt": 200.0,
-        "eta": 2.4,
-        "dr_photons": 0.8,# attention cancel dr with electron and muon to keep the fatjet cat for SL channel
+    "pt": 200.0,
+    "eta": 2.4,
+    "dr_photons": 0.8,
+    "dr_electrons": 0.8,
+    "dr_muons": 0.8
     },
     "photon_id": -0.9,
     "btag_wp": {
@@ -141,6 +143,14 @@ class HHWW_Preselection_SL(Tagger):
                     "objects" : events.Diphoton.Photon,
                     "min_dr" : self.options["jets"]["dr_photons"]
                 },
+                "electrons" : {
+                    "objects" : events.SelectedElectron,
+                    "min_dr" : self.options["fatjets"]["dr_electrons"]
+                },
+                "muons" : {
+                    "objects" : events.SelectedMuon,
+                    "min_dr" : self.options["fatjets"]["dr_muons"]
+                    },
                 },
             name = "SelectedFatJet",
             tagger = self
