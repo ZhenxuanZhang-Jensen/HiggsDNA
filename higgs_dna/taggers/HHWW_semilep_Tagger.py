@@ -82,10 +82,10 @@ class HHWW_Preselection(Tagger):
             electrons=events.Electron,
             options=self.options["electrons"],
             clean={
-                "photons": {
-                    "objects": events.Diphoton.Photon,
-                    "min_dr": self.options["electrons"]["dr_photons"]
-                }
+            "photons": {
+                "objects": events.Diphoton.Photon,
+                "min_dr": self.options["electrons"]["dr_photons"]
+            }
             },
             name="SelectedElectron",
             tagger=self
@@ -96,8 +96,8 @@ class HHWW_Preselection(Tagger):
             name="SelectedElectron",
             data=events.Electron[electron_cut]
         )
-       # iso_cut = electrons["Electron_mvaFall17V2Iso_WPL"][electrons["Electron_mvaFall17V2Iso_WPL"]==True]
-        #electrons=electrons[iso_cut]
+   #     iso_cut = electrons["Electron_mvaFall17V2Iso_WPL"][electrons["Electron_mvaFall17V2Iso_WPL"]==True]
+ #       electrons=electrons[iso_cut]
         ######################################
 
         # Muons
@@ -126,18 +126,18 @@ class HHWW_Preselection(Tagger):
             fatjets = events.FatJet,
             options = self.options["fatjets"],
             clean = {
-                "photons" : {
-                    "objects" : events.Diphoton.Photon,
-                    "min_dr" : self.options["jets"]["dr_photons"]
-                },
-                "electrons" : {
-                    "objects" : events.SelectedElectron,
-                    "min_dr" : self.options["jets"]["dr_electrons"]
-                },
-                "muons" : {
-                    "objects" : events.SelectedMuon,
-                    "min_dr" : self.options["jets"]["dr_muons"]
-                    }
+            "photons" : {
+                "objects" : events.Diphoton.Photon,
+                "min_dr" : self.options["jets"]["dr_photons"]
+            },
+            "electrons" : {
+                "objects" : events.SelectedElectron,
+                "min_dr" : self.options["jets"]["dr_electrons"]
+            },
+            "muons" : {
+                "objects" : events.SelectedMuon,
+                "min_dr" : self.options["jets"]["dr_muons"]
+                }
                 },
             name = "SelectedFatJet",
             tagger = self
@@ -148,7 +148,7 @@ class HHWW_Preselection(Tagger):
             data = events.FatJet[fatjet_cut]
         )   
 
-        fatjet_H_cut = (fatjets.deepTagMD_HbbvsQCD<0.6) & (fatjets.deepTagMD_H4qvsQCD>0.4) & (fatjets.pt>300)
+        fatjet_H_cut = ((fatjets.deepTagMD_HbbvsQCD<0.6) & (fatjets.deepTagMD_H4qvsQCD>0.4) & (fatjets.pt>300))|(fatjets.pt>0)
 
         fatjets_H = awkward_utils.add_field(
             events = events,
@@ -165,7 +165,7 @@ class HHWW_Preselection(Tagger):
         dummy_value=-999
         ) # apply the inverse bb cuts
 
-        fatjet_W_cut = (fatjets.deepTagMD_HbbvsQCD<0.6) & (fatjets.deepTagMD_WvsQCD>0.4) & (fatjets.pt>200)
+        fatjet_W_cut = ((fatjets.deepTagMD_HbbvsQCD<0.6) & (fatjets.deepTagMD_WvsQCD>0.4) & (fatjets.pt>200))|(fatjets.pt>0)
 
         fatjets_W = awkward_utils.add_field(
             events = events,
@@ -189,19 +189,19 @@ class HHWW_Preselection(Tagger):
         jet_cut = jet_selections.select_jets(
             jets=events.Jet,
             options=self.options["jets"],
- #           clean = {},
+
             clean={
                 "photons": {
                 "objects": events.Diphoton.Photon,
                 "min_dr": self.options["jets"]["dr_photons"]
                        },
                        "electrons": {
-                           "objects": events.SelectedElectron,
-                           "min_dr": self.options["jets"]["dr_electrons"]
+                       "objects": events.SelectedElectron,
+                       "min_dr": self.options["jets"]["dr_electrons"]
                        },
                        "muons": {
-                          "objects": events.SelectedMuon,
-                           "min_dr": self.options["jets"]["dr_muons"]
+                      "objects": events.SelectedMuon,
+                       "min_dr": self.options["jets"]["dr_muons"]
                        }
                    }, #close for QCD samples
             name = "SelectedJet",
@@ -294,15 +294,15 @@ class HHWW_Preselection(Tagger):
 
         # Hadronic presel
         # use priority to mark different category
-        category_p3 = (n_jets>=2)
-        category_p2 = (n_fatjets_W>=1) & (n_jets>=0)
+        category_p2 = (n_jets==2)
+        category_p1 = (n_fatjets_W==1) & (n_jets==0)
         #category_p1 = (n_fatjets_H>=1)
         flatten_n_jets = awkward.num(jets.pt)
         category = awkward.zeros_like(flatten_n_jets)
         category = awkward.fill_none(category, 0)
-        category = awkward.where(category_p3, awkward.ones_like(category)*3, category)
+        #category = awkward.where(category_p3, awkward.ones_like(category)*3, category)
         category = awkward.where(category_p2, awkward.ones_like(category)*2, category)
-       # category = awkward.where(category_p1, awkward.ones_like(category)*1, category)
+        category = awkward.where(category_p1, awkward.ones_like(category)*1, category)
         awkward_utils.add_field(events, "category", category) 
         category_cut = category >= 0 # attention category equal to 0 mean don't pass any selection 
         # OnlyFourJet_category = (n_leptons == 0) & (n_jets >= 4)
@@ -316,7 +316,8 @@ class HHWW_Preselection(Tagger):
 
         # presel_cut = (hadronic | Semileptonic | FulllyLeptonic)  & photon_id_cut
         # presel_FourJet_category = 
-        presel_cut = (photon_id_cut) & (n_leptons==1) & (category_cut)
+        dummy_cut= events.LeadPhoton.pt>0
+        presel_cut = ((photon_id_cut) & (n_leptons==1) & (category_cut))|dummy_cut
 
         self.register_cuts(
             names=["Photon Selection","Lepton Selection"],

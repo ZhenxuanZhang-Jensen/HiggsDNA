@@ -123,6 +123,8 @@
         "GEN_q2_pt", "GEN_q2_eta", "GEN_q2_phi", "GEN_q2_mass","GEN_q2_deltaR_l1",
         "GEN_l1_pt", "GEN_l1_eta", "GEN_l1_phi", "GEN_l1_mass","GEN_l1_deltaR_Wqq",
         "GEN_v1_pt", "GEN_v1_eta", "GEN_v1_phi", "GEN_v1_mass",
+        "GEN_pho1_pt", "GEN_pho1_eta", "GEN_pho1_phi", "GEN_pho1_mass",
+        "GEN_pho2_pt", "GEN_pho2_eta", "GEN_pho2_phi", "GEN_pho2_mass",
         "GENW1_qq_pt", "GENW1_qq_eta", "GENW1_qq_phi", "GENW1_qq_mass",
         "GENW2_qq_pt", "GENW2_qq_eta", "GENW2_qq_phi", "GENW2_qq_mass",
         "GENHWW_qqlv_pt", "GENHWW_qqlv_eta", "GENHWW_qqlv_phi", "GENHWW_qqlv_mass",        

@@ -370,9 +370,11 @@ def gen_Hww_2q2l(events):
     gen_qq = gen_part[(abs(gen_part.pdgId)<= 6) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24) ]
     gen_gg = gen_part[(abs(gen_part.pdgId) == 22) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 25) ]
     gen_lv = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24)&((abs(gen_part.pdgId)>=11)&(abs(gen_part.pdgId)<=14))]
-    
+    dummy = awkward.full_like(gen_gg[0],99)
     ngen_lv=awkward.num(gen_lv,axis=-1)
-    gen_lvcut=(ngen_lv!=4)&(ngen_lv!=0)
+    gen_lvcut=(ngen_lv==2)
+
+   # gen_lvcut=(ngen_lv!=4)&(ngen_lv!=0)
     #no4lep_lv type:bool
     # -------There are some events which contains 4 leptons at genlevel, 2 e+e- and 2 leptons ---------#
     # -------Some events contain which contain 0 lepton at genlevel----------#
@@ -380,9 +382,7 @@ def gen_Hww_2q2l(events):
     gen_lv = gen_lv.mask[gen_lvcut]
     gen_qq = gen_qq.mask[gen_lvcut]
     gen_gg = gen_gg.mask[gen_lvcut]
-   # gen_part = gen_part.mask[gen_lvcut]
-    #gen_part = gen_part[gen_lvcut]
-    dummy = awkward.full_like(gen_qq[0],99)
+
    # gen_part=awkward.fill_none(gen_part,dummy,axis=0)
     gen_qq = awkward.fill_none(gen_qq,dummy,axis=0)
     gen_gg = awkward.fill_none(gen_gg,dummy,axis=0)
@@ -391,9 +391,10 @@ def gen_Hww_2q2l(events):
     unflatten_gen_q2 = awkward.unflatten(gen_qq[:,1],1)
     unflatten_gen_l1 = awkward.unflatten(gen_lv[:,0],1)
     unflatten_gen_v1 = awkward.unflatten(gen_lv[:,1],1)
+    unflatten_gen_pho1 = awkward.unflatten(gen_gg[:,0],1)
+    unflatten_gen_pho2 = awkward.unflatten(gen_gg[:,1],1)
     # the four quarks Momentum4D
-    print(gen_qq)
-    print(gen_lv)
+
     gen_W1_p4 = vector.awk(
         {
             "pt" : unflatten_gen_q1["pt"]+unflatten_gen_q2["pt"],
@@ -430,7 +431,25 @@ def gen_Hww_2q2l(events):
         },
         with_name = "Momentum4D"
     )
-    
+    gen_pho1_p4 = vector.awk(
+        {
+            "pt" : unflatten_gen_pho1["pt"],
+            "eta" : unflatten_gen_pho1["eta"],
+            "phi" : unflatten_gen_pho1["phi"],
+            "mass" : unflatten_gen_pho1["mass"]
+        },
+        with_name = "Momentum4D"
+    )
+    gen_pho2_p4 = vector.awk(
+        {
+            "pt" : unflatten_gen_pho2["pt"],
+            "eta" : unflatten_gen_pho2["eta"],
+            "phi" : unflatten_gen_pho2["phi"],
+            "mass" : unflatten_gen_pho2["mass"]
+        },
+        with_name = "Momentum4D"
+    )
+
     gen_l1 = awkward_utils.add_field(
     events = events,
     name = "gen_l1",
@@ -514,10 +533,7 @@ def gen_Hww_2q2l(events):
     unflatten_W1_candi4D = awkward.unflatten(W1_candi4D,1)
     unflatten_W2_candi4D = awkward.unflatten(W2_candi4D,1)
     unflatten_H_candi4D = awkward.unflatten(H_candi4D,1)
-   # logger.debug("num(W1_candi)=%s"%len(W1_candi))
-   # logger.debug("num(W2_candi)=%s"%len(W2_candi))
-   # logger.debug("W1_candi%s"%W1_candi)
- #   W1_candi = awkward.pad_none(W1_candi,len(events),axis=0)
+
 
 
     genW1_qq = awkward_utils.add_field(
@@ -574,19 +590,19 @@ def select_ww_to_qqlv(gen_qq,gen_lv):
         W2_candi = list_lepton_candidate[0]+list_lepton_candidate[1]
 
         W1_candi = vector.obj(
-                pt = (list_quark_candidate[0]).pt,
-                eta = (list_quark_candidate[0]).eta,
-                phi = (list_quark_candidate[0]).phi,
-                mass = (list_quark_candidate[0]).mass)
+                pt = (list_quark_candidate[0]+list_quark_candidate[1]).pt,
+                eta = (list_quark_candidate[0]+list_quark_candidate[1]).eta,
+                phi = (list_quark_candidate[0]+list_quark_candidate[1]).phi,
+                mass = (list_quark_candidate[0]+list_quark_candidate[1]).mass)
         W2_candi = vector.obj(
-                pt = (list_lepton_candidate[0]).pt,
-                eta = (list_lepton_candidate[0]).eta,
-                phi = (list_lepton_candidate[0]).phi,
-                mass = (list_lepton_candidate[0]).mass)
-        #H_candi = vector.obj(px = 0., py = 0., pz = 0., E = 0.)
-        zero=numpy.array([0.,0.,0.,0.])
-        zero=zero.astype(numpy.float32)
-        H_candi = vector.obj(pt = zero[0], eta =zero[1], phi = zero[2], mass = zero[3])
+                pt = (list_lepton_candidate[0]+list_lepton_candidate[1]).pt,
+                eta = (list_lepton_candidate[0]+list_lepton_candidate[1]).eta,
+                phi = (list_lepton_candidate[0]+list_lepton_candidate[1]).phi,
+                mass = (list_lepton_candidate[0]+list_lepton_candidate[1]).mass)         
+        H_candi = vector.obj(px = 0., py = 0., pz = 0., E = 0.)
+        #zero=numpy.array([0.,0.,0.,0.])
+        #zero=zero.astype(numpy.float32)
+        #H_candi = vector.obj(pt = zero[0], eta =zero[1], phi = zero[2], mass = zero[3])
         ##H_candi = vector.obj(pt = 0., eta = 0., phi = 0., E = 0.)
         H_candi = H_candi + W1_candi + W2_candi
         W1_content.append([
