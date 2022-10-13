@@ -19,12 +19,14 @@ DUMMY_VALUE = -999.
 DEFAULT_OPTIONS = {
     "electrons": {
         "pt": 10.0,
-        "dr_photons": 0.2
+        "dr_photons": 0.4,
+        "dr_jets": 0.4
     },
     "muons": {
         "pt": 10.0,
         "eta":2.7,
-        "dr_photons": 0.2
+        "dr_photons": 0.4,
+        "dr_jets": 0.4
     },
     "jets": {
         "pt": 25.0, # attention this is the one exact same as old framework, make this 20 GeV(loose) for further analysis, we all know the higgs-like ak4 jets pt can be very small
@@ -85,6 +87,10 @@ class HHWW_Preselection(Tagger):
             "photons": {
                 "objects": events.Diphoton.Photon,
                 "min_dr": self.options["electrons"]["dr_photons"]
+            },
+            "jets": {
+                "objects": events.Jet,
+                "min_dr": self.options["electrons"]["dr_jets"]
             }
             },
             name="SelectedElectron",
@@ -108,7 +114,11 @@ class HHWW_Preselection(Tagger):
                 "photons": {
                     "objects": events.Diphoton.Photon,
                     "min_dr": self.options["muons"]["dr_photons"]
-                }
+                },
+                "jets": {
+                "objects": events.Jet,
+                "min_dr": self.options["electrons"]["dr_jets"]
+            }
             },
             name="SelectedMuon",
             tagger=self
@@ -316,8 +326,7 @@ class HHWW_Preselection(Tagger):
 
         # presel_cut = (hadronic | Semileptonic | FulllyLeptonic)  & photon_id_cut
         # presel_FourJet_category = 
-        dummy_cut= events.LeadPhoton.pt>0
-        presel_cut = ((photon_id_cut) & (n_leptons==1) & (category_cut))|dummy_cut
+        presel_cut = ((photon_id_cut) & (n_leptons==1) & (category_cut))
 
         self.register_cuts(
             names=["Photon Selection","Lepton Selection"],

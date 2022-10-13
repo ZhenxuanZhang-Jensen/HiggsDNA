@@ -8,7 +8,7 @@ from higgs_dna.utils import misc_utils
 
 DEFAULT_JETS = {
     "pt" : 25.0,
-    "eta" : 2.4
+    "eta" : 2.5
 }
 
 def select_jets(jets, options, clean, name = "none", tagger = None):
