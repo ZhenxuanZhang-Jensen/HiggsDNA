@@ -574,6 +574,7 @@ def gen_Hww_2q2l(events):
     )   
     return gen_l1_p4, gen_q1_p4,gen_q2_p4
 
+
 @numba.njit
 def select_ww_to_qqlv(gen_qq,gen_lv):    
     W1_content = []
@@ -604,6 +605,7 @@ def select_ww_to_qqlv(gen_qq,gen_lv):
         #zero=zero.astype(numpy.float32)
         #H_candi = vector.obj(pt = zero[0], eta =zero[1], phi = zero[2], mass = zero[3])
         ##H_candi = vector.obj(pt = 0., eta = 0., phi = 0., E = 0.)
+
         H_candi = H_candi + W1_candi + W2_candi
         W1_content.append([
             W1_candi.pt,
@@ -624,3 +626,7 @@ def select_ww_to_qqlv(gen_qq,gen_lv):
             H_candi.mass,
         ])
     return W1_content, W2_content,H_content
+
+
+
+
