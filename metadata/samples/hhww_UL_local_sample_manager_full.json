@@ -42,9 +42,9 @@
         "bf": 1.0,
         "files": {
             "2017": [
-                "/eos/user/s/shsong/bkgfiles/F9A11D53-1AE2-C849-A4AA-0DB7C92EE05D.root",
                 "/eos/user/s/shsong/bkgfiles/05D70DCB-D115-CE40-B999-864882536A61.root",
-                "/eos/user/s/shsong/bkgfiles/1B15DBDB-7D76-BE47-94E3-89C525E7AC79.root"
+                "/eos/user/s/shsong/bkgfiles/1B15DBDB-7D76-BE47-94E3-89C525E7AC79.root",
+                "/eos/user/s/shsong/bkgfiles/F9A11D53-1AE2-C849-A4AA-0DB7C92EE05D.root"
             ]
         }
     },

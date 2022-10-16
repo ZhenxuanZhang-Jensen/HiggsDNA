@@ -87,11 +87,7 @@ class HHWW_Preselection(Tagger):
             "photons": {
                 "objects": events.Diphoton.Photon,
                 "min_dr": self.options["electrons"]["dr_photons"]
-            },
-            "jets": {
-                "objects": events.Jet,
-                "min_dr": self.options["electrons"]["dr_jets"]
-            }
+                }
             },
             name="SelectedElectron",
             tagger=self
@@ -114,11 +110,7 @@ class HHWW_Preselection(Tagger):
                 "photons": {
                     "objects": events.Diphoton.Photon,
                     "min_dr": self.options["muons"]["dr_photons"]
-                },
-                "jets": {
-                "objects": events.Jet,
-                "min_dr": self.options["electrons"]["dr_jets"]
-            }
+                }
             },
             name="SelectedMuon",
             tagger=self
@@ -138,15 +130,15 @@ class HHWW_Preselection(Tagger):
             clean = {
             "photons" : {
                 "objects" : events.Diphoton.Photon,
-                "min_dr" : self.options["jets"]["dr_photons"]
+                "min_dr" : self.options["fatjets"]["dr_photons"]
             },
             "electrons" : {
                 "objects" : events.SelectedElectron,
-                "min_dr" : self.options["jets"]["dr_electrons"]
+                "min_dr" : self.options["fatjets"]["dr_electrons"]
             },
             "muons" : {
                 "objects" : events.SelectedMuon,
-                "min_dr" : self.options["jets"]["dr_muons"]
+                "min_dr" : self.options["fatjets"]["dr_muons"]
                 }
                 },
             name = "SelectedFatJet",
@@ -304,8 +296,8 @@ class HHWW_Preselection(Tagger):
 
         # Hadronic presel
         # use priority to mark different category
-        category_p2 = (n_jets==2)
-        category_p1 = (n_fatjets_W==1) & (n_jets==0)
+        category_p2 = (n_jets>=2) & (n_leptons==1)
+        category_p1 = (n_fatjets_W>=1) & (n_leptons==1)
         #category_p1 = (n_fatjets_H>=1)
         flatten_n_jets = awkward.num(jets.pt)
         category = awkward.zeros_like(flatten_n_jets)
@@ -316,7 +308,7 @@ class HHWW_Preselection(Tagger):
         awkward_utils.add_field(events, "category", category) 
         category_cut = category >= 0 # attention category equal to 0 mean don't pass any selection 
         # OnlyFourJet_category = (n_leptons == 0) & (n_jets >= 4)
-        Lepton_Selection = (n_leptons==1)&(n_jets >=2)
+        Lepton_Selection = (n_leptons==1)#&(n_jets >=2)
 
         # Semi-Leptonic presel
         # Semileptonic = (n_leptons == 1) & (n_jets >= 2)
