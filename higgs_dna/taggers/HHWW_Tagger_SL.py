@@ -141,7 +141,7 @@ class HHWW_Preselection_SL(Tagger):
             clean = {
                 "photons" : {
                     "objects" : events.Diphoton.Photon,
-                    "min_dr" : self.options["jets"]["dr_photons"]
+                    "min_dr" : self.options["fatjets"]["dr_photons"]
                 },
                 "electrons" : {
                     "objects" : events.SelectedElectron,
