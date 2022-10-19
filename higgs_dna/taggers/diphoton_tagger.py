@@ -22,7 +22,6 @@ DEFAULT_OPTIONS = {
             [1.566, 2.5]
         ],
         "e_veto" : 1,
-        "pixelSeed" : 0,
         "hoe" : 0.08,
         "r9" : 0.8,
         "charged_iso" : 20.0,
@@ -178,12 +177,12 @@ class DiphotonTagger(Tagger):
         diphoton_pt_cut = diphotons.Diphoton.pt >= options["pt"]
         #all_cuts = (lead_pt_cut & lead_pt_mgg_cut & sublead_pt_mgg_cut & mass_cut) | ( diphotons.LeadPhoton.pt > 0)
         # close for QCD samples
-        #all_cuts = lead_pt_cut & lead_pt_mgg_cut & sublead_pt_mgg_cut & mass_cut
+        # all_cuts = lead_pt_cut & lead_pt_mgg_cut & sublead_pt_mgg_cut & mass_cut
         all_cuts = lead_pt_cut & lead_pt_mgg_cut & sublead_pt_mgg_cut & mass_cut & diphoton_pt_cut 
         # for mass>400GeV
 
         self.register_cuts(
-            names = ["lead pt cut", "lead pt mgg cut", "sublead pt mgg cut", "mass cut", "diphoton_pt_cut" , "all cuts"],
+            names = ["lead pt cut", "lead pt mgg cut", "sublead pt mgg cut", "mass cut" , "diphoton_pt_cut" "all cuts"],
             results = [lead_pt_cut, lead_pt_mgg_cut, sublead_pt_mgg_cut, mass_cut, diphoton_pt_cut , all_cuts],
             cut_type = "diphoton"
         )
@@ -315,8 +314,7 @@ class DiphotonTagger(Tagger):
         e_veto_cut = photons.electronVeto == options["e_veto"]
 
         use_central_nano = options["use_central_nano"] # indicates whether we are using central nanoAOD (with some branches that are necessary for full diphoton preselection missing) or custom nanoAOD (with these branches added)
-        # pixelSeed cut
-        pixelSeed_cut = photons.pixelSeed == options["pixelSeed"]
+
         # r9/isolation cut
         r9_cut = photons.r9 > options["r9"]
 
@@ -377,7 +375,7 @@ class DiphotonTagger(Tagger):
         hlt_cut = hlt_cut | photons_ee_high_r9
         hlt_cut = hlt_cut | (photons_ee_low_r9 & ee_low_r9_track_pt_cut & ee_low_r9_sigma_ieie_cut & ee_low_r9_pho_iso_cut)
         hlt_cut = hlt_cut | (photons.pt > 0) # attention: only for debug, all true
-        all_cuts = pt_cut & eta_cut & e_veto_cut & pixelSeed_cut & r9_iso_cut & hoe_cut & hlt_cut 
+        all_cuts = pt_cut & eta_cut & e_veto_cut & r9_iso_cut & hoe_cut & hlt_cut 
         #all_cuts = (pt_cut & eta_cut & e_veto_cut & pixelSeed_cut & r9_iso_cut & hoe_cut & hlt_cut) | (photons.pt > 0)
         # close for QCD samples
         self.register_cuts(

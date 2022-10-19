@@ -1,4 +1,5 @@
 import awkward
+import numpy
 import vector
 import json
 import logging
@@ -158,18 +159,47 @@ class Tagger():
         if not isinstance(results, list):
             results = [results]
 
+#nameeff = []
+#nameeff.append("This is a cut flow txt file \n")
+        iter = 0
         for name, result in zip(names, results):
+            iter += 1
             if awkward.count(result) > 0:
                 individual_eff = float(awkward.sum(result)) / float(awkward.count(result))
             else:
                 individual_eff = 0.
             self.cut_summary[cut_type][name] = {
-                    "individual_eff" : float(individual_eff) 
+                    "individual_eff" : float(individual_eff)
                     #TODO: add eff as N-1 cut
             }
-
-            logger.debug("[Tagger] : %s, syst variation : %s, cut type : %s, cut : %s, efficiency : %.4f"
-                    % (self.name, self.current_syst, cut_type, name, individual_eff))
+            logger.debug("[Tagger] : %s, syst variation : %s, cut type : %s, cut : %s, indiviual efficiency : %.4f"% (self.name, self.current_syst, cut_type, name, individual_eff))
+            # get the combined cuts and names
+            if(iter==1):
+                _tmp_cut = result
+                _tmp_name = name
+            else:
+                _tmp_cut = numpy.logical_and(_tmp_cut, result)
+                _tmp_name += " & " + name
+            if awkward.count(_tmp_cut) > 0:
+                combined_eff = float(awkward.sum(_tmp_cut)) / float(awkward.count(_tmp_cut))
+            else:
+                combined_eff = 0.
+            self.cut_summary[cut_type][_tmp_name]={
+                "combined eff": float(combined_eff)
+            }
+            # logger.debug("[Tagger] : %s, syst variation : %s, cut type : %s, cut : %s, combined efficiency : %.4f"% (self.name, self.current_syst, cut_type, _tmp_name, combined_eff))
+            logger.debug("[Tagger] :  \nc_cut : %s\neff : %.4f"% (_tmp_name, combined_eff))
+#    nameeff.append(cut_type+" "+_tmp_name+" "+str(combined_eff)+"\n")
+#logger.debug("iter = %s"%iter)
+#f = open("/eos/user/s/shsong/"+self.name+"efficiency.txt","w+")
+#f.writelines(nameeff)
+#line = f.readline()
+#eff = []
+#while line:
+#    line = f.readline()
+#    a = line.split()
+#    eff.append(a)
+#f.close()
 
 
     def get_summary(self):
