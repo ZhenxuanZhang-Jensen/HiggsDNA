@@ -626,7 +626,32 @@ def select_ww_to_qqlv(gen_qq,gen_lv):
             H_candi.mass,
         ])
     return W1_content, W2_content,H_content
+def gen_3categories(events):
+    gen_part = awkward.Array(events.GenPart,with_name="Momentum4D")
+    gen_lv = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24)&((abs(gen_part.pdgId)>=11)&(abs(gen_part.pdgId)<=16))]
+    print(type(gen_lv))
+    nlep = awkward.num(gen_lv, axis = -1)
+    #nofourlep_cut = (nlep!=4)
+    gen_part=gen_part[nlep!=4]
+    events = events[nlep!=4]
+    # remove four lepton events (~200 events)
+    # --------- gen level 2 signal quarks and 2 signal photons and 2 leptons and the Higgs from gg -------- #
+    gen_qq = gen_part[(abs(gen_part.pdgId)<= 6) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24) ]
+    gen_gg = gen_part[(abs(gen_part.pdgId) == 22) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 25) ]
+    gen_lv = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24)&((abs(gen_part.pdgId)>=11)&(abs(gen_part.pdgId)<=16))]
+    gen_μv = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24)&((abs(gen_part.pdgId)>=13)&(abs(gen_part.pdgId)<=14))]
+    gen_ev = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24)&((abs(gen_part.pdgId)>=11)&(abs(gen_part.pdgId)<=12))]
+    gen_τv = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24)&((abs(gen_part.pdgId)>=15)&(abs(gen_part.pdgId)<=16))]
 
+    # record the initial events num of three categories: muon, electron, tau
+    n_muon_event = len(gen_μv[awkward.num(gen_μv)==2])
+    n_electron_event = len(gen_ev[awkward.num(gen_ev)==2])
+    n_tau_event = len(gen_τv[awkward.num(gen_τv)==2])
+    e_events = events[awkward.num(gen_ev,axis=-1)!=0]
+    μ_events = events[awkward.num(gen_μv,axis=-1)!=0]
+    τ_events = events[awkward.num(gen_τv,axis=-1)!=0]
+    logger.debug("At the beginning, there are %s muon lepton candidates, %s electron lepton candidates, %s tau lepton candidates events"%(n_muon_event, n_electron_event,n_tau_event))    
+    return events, n_muon_event, n_electron_event, n_tau_event, e_events, μ_events, τ_events
 
 
 

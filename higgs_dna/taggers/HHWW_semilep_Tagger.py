@@ -77,8 +77,11 @@ class HHWW_Preselection(Tagger):
         # data will not select gen level infos 
         # need to comment when run bkgs
         logger.debug("Is Signal: %s" %self.options["gen_info"]["is_Signal"])
-        if not self.is_data and self.options["gen_info"]["is_Signal"]:    
-            gen_selections.gen_Hww_2q2l(events)
+        logger.debug("events num before 4 lepton remove: %s"%len(events))
+        events,n_muon_event,n_electron_event,n_tau_event,e_events, μ_events, τ_events = gen_selections.gen_3categories(events)
+        logger.debug("events num change to %s"%len(events))
+        #if not self.is_data and self.options["gen_info"]["is_Signal"]:    
+            #gen_selections.gen_Hww_2q2l(events)
         # Electrons
         electron_cut = lepton_selections.select_electrons(
             electrons=events.Electron,
@@ -89,13 +92,13 @@ class HHWW_Preselection(Tagger):
                 "min_dr": self.options["electrons"]["dr_photons"]
                 }
             },
-            name="SelectedElectron",
+            name="SelectedElectron_from_event",
             tagger=self
         )
 
         electrons = awkward_utils.add_field(
             events=events,
-            name="SelectedElectron",
+            name="SelectedElectron_from_event",
             data=events.Electron[electron_cut]
         )
    #     iso_cut = electrons["Electron_mvaFall17V2Iso_WPL"][electrons["Electron_mvaFall17V2Iso_WPL"]==True]
@@ -112,13 +115,13 @@ class HHWW_Preselection(Tagger):
                     "min_dr": self.options["muons"]["dr_photons"]
                 }
             },
-            name="SelectedMuon",
+            name="SelectedMuon_from_event",
             tagger=self
         )
 
         muons = awkward_utils.add_field(
             events=events,
-            name="SelectedMuon",
+            name="SelectedMuon_from_event",
             data=events.Muon[muon_cut]
         )
         # --------------------- if fatjet branches are not empty --------------------- #
@@ -133,20 +136,20 @@ class HHWW_Preselection(Tagger):
                 "min_dr" : self.options["fatjets"]["dr_photons"]
             },
             "electrons" : {
-                "objects" : events.SelectedElectron,
+                "objects" : events.SelectedElectron_from_event,
                 "min_dr" : self.options["fatjets"]["dr_electrons"]
             },
             "muons" : {
-                "objects" : events.SelectedMuon,
+                "objects" : events.SelectedMuon_from_event,
                 "min_dr" : self.options["fatjets"]["dr_muons"]
                 }
                 },
-            name = "SelectedFatJet",
+            name = "SelectedFatJet_from_event",
             tagger = self
         )
         fatjets = awkward_utils.add_field(
             events = events,
-            name = "SelectedFatJet",
+            name = "SelectedFatJet_from_event",
             data = events.FatJet[fatjet_cut]
         )   
 
@@ -154,7 +157,7 @@ class HHWW_Preselection(Tagger):
 
         fatjets_H = awkward_utils.add_field(
             events = events,
-            name = "SelectedFatJet_H",
+            name = "SelectedFatJet_H_from_event",
             data = fatjets[fatjet_H_cut]
         )   
 
@@ -171,7 +174,7 @@ class HHWW_Preselection(Tagger):
 
         fatjets_W = awkward_utils.add_field(
             events = events,
-            name = "SelectedFatJet_W",
+            name = "SelectedFatJet_W_from_event",
             data = fatjets[fatjet_W_cut]
         )   
         awkward_utils.add_object_fields(
@@ -198,20 +201,20 @@ class HHWW_Preselection(Tagger):
                 "min_dr": self.options["jets"]["dr_photons"]
                        },
                        "electrons": {
-                       "objects": events.SelectedElectron,
+                       "objects": events.SelectedElectron_from_event,
                        "min_dr": self.options["jets"]["dr_electrons"]
                        },
                        "muons": {
-                      "objects": events.SelectedMuon,
+                      "objects": events.SelectedMuon_from_event,
                        "min_dr": self.options["jets"]["dr_muons"]
                        }
                    }, #close for QCD samples
-            name = "SelectedJet",
+            name = "SelectedJet_from_event",
             tagger=self
         )
         jets = awkward_utils.add_field(
             events=events,
-            name="SelectedJet",
+            name="SelectedJet_from_event",
             data=events.Jet[jet_cut]
         )
     
@@ -220,7 +223,7 @@ class HHWW_Preselection(Tagger):
         #              TODO try to add order with WinvM jets in output.parquet              #
         # ---------------------------------------------------------------------------- #
       
-        gen_l1_p4,gen_q1_p4,gen_q2_p4=gen_selections.gen_Hww_2q2l(events)
+        #gen_l1_p4,gen_q1_p4,gen_q2_p4=gen_selections.gen_Hww_2q2l(events)
         jet_p4 = vector.awk(
             {
                 "pt" : jets["pt"],
@@ -249,8 +252,8 @@ class HHWW_Preselection(Tagger):
             with_name = "Momentum4D"
         )
 
-        jets["deltaR_q1"] = jet_p4.deltaR(gen_q1_p4)
-        jets["deltaR_q2"] = jet_p4.deltaR(gen_q2_p4)
+        #jets["deltaR_q1"] = jet_p4.deltaR(gen_q1_p4)
+        # jets["deltaR_q2"] = jet_p4.deltaR(gen_q2_p4)
 
         jets["deltaR_pho1"] = jet_p4.deltaR(lead_photon_vec)
         jets["deltaR_pho2"] = jet_p4.deltaR(sublead_photon_vec)
@@ -262,6 +265,171 @@ class HHWW_Preselection(Tagger):
             n_objects=7,
             dummy_value=-999
         )
+# genmatched electron events
+        electron_cut_for_electron = lepton_selections.select_electrons(
+            electrons = e_events.Electron,
+            options=self.options["electrons"],
+            clean={
+            "photons": {
+                "objects": e_events.Diphoton.Photon,
+                "min_dr": self.options["electrons"]["dr_photons"]
+                }
+            },
+            name="SelectedElectron_from_electron",
+            tagger=self
+        )
+        electrons_from_genelematched = awkward_utils.add_field(
+            events=e_events,
+            name="SelectedElectron_from_electron",
+            data=e_events.Electron[electron_cut_for_electron]
+        )
+
+        awkward_utils.add_object_fields(
+            events=e_events,
+            name="electron_from_genelematched",
+            objects=electrons_from_genelematched,
+            n_objects=7,
+            dummy_value=-999
+        )
+        muon_cut_for_electron = lepton_selections.select_muons(
+            muons = e_events.Muon,
+            options=self.options["muons"],
+            clean={
+            "photons": {
+                "objects": e_events.Diphoton.Photon,
+                "min_dr": self.options["muons"]["dr_photons"]
+                }
+            # "electrons": {
+            #     "objects":
+            # }
+            },
+            name="SelectedMuon_from_electron",
+            tagger=self
+        )
+        muons_from_genelematched = awkward_utils.add_field(
+            events=e_events,
+            name="SelectedMuon_from_electron",
+            data=e_events.Muon[muon_cut_for_electron]
+        )
+
+        awkward_utils.add_object_fields(
+            events=e_events,
+            name="muon_from_genelematched",
+            objects=muons_from_genelematched,
+            n_objects=7,
+            dummy_value=-999
+        )
+# genmatched muon events
+        muon_cut_for_muon = lepton_selections.select_muons(
+            muons = μ_events.Muon,
+            options=self.options["muons"],
+            clean={
+            "photons": {
+                "objects": μ_events.Diphoton.Photon,
+                "min_dr": self.options["muons"]["dr_photons"]
+                }
+            },
+            name="SelectedMuon_from_muon",
+            tagger=self
+        )
+        muons_from_genmuonmatched = awkward_utils.add_field(
+            events=μ_events,
+            name="SelectedMuon_from_muon",
+            data=μ_events.Muon[muon_cut_for_muon]
+        )
+
+        awkward_utils.add_object_fields(
+            events=μ_events,
+            name="muon_from_genmuonmatched",
+            objects=muons_from_genmuonmatched,
+            n_objects=7,
+            dummy_value=-999
+        )
+        
+
+        electron_cut_for_muon = lepton_selections.select_electrons(
+            electrons = μ_events.Electron,
+            options=self.options["electrons"],
+            clean={
+            "photons": {
+                "objects": μ_events.Diphoton.Photon,
+                "min_dr": self.options["electrons"]["dr_photons"]
+                }
+            },
+            name="SelectedElectron_from_muon",
+            tagger=self
+        )
+        electrons_from_genmuonmatched = awkward_utils.add_field(
+            events=μ_events,
+            name="SelectedElectron_from_muon",
+            data=μ_events.Electron[electron_cut_for_muon]
+        )
+
+        awkward_utils.add_object_fields(
+            events=μ_events,
+            name="electron_from_genmuonmatched",
+            objects=electrons_from_genmuonmatched,
+            n_objects=7,
+            dummy_value=-999
+        )
+        
+
+        muon_cut_for_tau = lepton_selections.select_muons(
+            muons = τ_events.Muon,
+            options=self.options["muons"],
+            clean={
+            "photons": {
+                "objects": τ_events.Diphoton.Photon,
+                "min_dr": self.options["muons"]["dr_photons"]
+                }
+            },
+            name="Selectedmuon_from_tau",
+            tagger=self
+        )
+
+        muons_from_gentaumatched = awkward_utils.add_field(
+            events=τ_events,
+            name="Selectedmuon_from_tau",
+            data=τ_events.Muon[muon_cut_for_tau]
+        )
+
+        awkward_utils.add_object_fields(
+            events=τ_events,
+            name="muon_from_gentaumatched",
+            objects=muons_from_gentaumatched,
+            n_objects=7,
+            dummy_value=-999
+        )
+
+
+        electron_cut_for_tau = lepton_selections.select_electrons(
+            electrons = τ_events.Electron,
+            options=self.options["electrons"],
+            clean={
+            "photons": {
+                "objects": τ_events.Diphoton.Photon,
+                "min_dr": self.options["electrons"]["dr_photons"]
+                }
+            },
+            name="Selectedelectron_from_tau",
+            tagger=self
+        )
+
+        electrons_from_gentaumatched = awkward_utils.add_field(
+            events=τ_events,
+            name="Selectedelectron_from_tau",
+            data=τ_events.Electron[electron_cut_for_tau]
+        )
+
+        awkward_utils.add_object_fields(
+            events=τ_events,
+            name="electron_from_gentaumatched",
+            objects=electrons_from_gentaumatched,
+            n_objects=7,
+            dummy_value=-999
+        )
+
+  
         # bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis=1, ascending=False)]
         # bjets = bjets[bjets.btagDeepFlavB > self.options["btag_wp"][self.year]]
  #       awkward_utils.add_fields(

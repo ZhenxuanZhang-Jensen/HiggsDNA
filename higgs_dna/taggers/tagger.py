@@ -159,8 +159,6 @@ class Tagger():
         if not isinstance(results, list):
             results = [results]
 
-#nameeff = []
-#nameeff.append("This is a cut flow txt file \n")
         iter = 0
         for name, result in zip(names, results):
             iter += 1
@@ -172,7 +170,7 @@ class Tagger():
                     "individual_eff" : float(individual_eff)
                     #TODO: add eff as N-1 cut
             }
-            logger.debug("[Tagger] : %s, syst variation : %s, cut type : %s, cut : %s, indiviual efficiency : %.4f"% (self.name, self.current_syst, cut_type, name, individual_eff))
+            # logger.debug("[Tagger] : %s, syst variation : %s, cut type : %s, cut : %s, indiviual efficiency : %.4f"% (self.name, self.current_syst, cut_type, name, individual_eff))
             # get the combined cuts and names
             if(iter==1):
                 _tmp_cut = result
@@ -181,7 +179,14 @@ class Tagger():
                 _tmp_cut = numpy.logical_and(_tmp_cut, result)
                 _tmp_name += " & " + name
             if awkward.count(_tmp_cut) > 0:
-                combined_eff = float(awkward.sum(_tmp_cut)) / float(awkward.count(_tmp_cut))
+                ncandi_per_event = awkward.num(_tmp_cut[_tmp_cut==True],axis=-1)
+                candi_event=_tmp_cut[ncandi_per_event!=0]
+                if type(candi_event) == bool:
+                    combined_eff = float(ncandi_per_event) / float(len(_tmp_cut))
+                else:
+                    n_candi_event = len(candi_event)
+                    combined_eff = float(n_candi_event) / float(len(_tmp_cut))
+                # combined_eff = float(awkward.sum(_tmp_cut)) / float(awkward.count(_tmp_cut))
             else:
                 combined_eff = 0.
             self.cut_summary[cut_type][_tmp_name]={
