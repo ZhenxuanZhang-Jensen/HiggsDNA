@@ -170,7 +170,7 @@ class Tagger():
                     "individual_eff" : float(individual_eff)
                     #TODO: add eff as N-1 cut
             }
-            # logger.debug("[Tagger] : %s, syst variation : %s, cut type : %s, cut : %s, indiviual efficiency : %.4f"% (self.name, self.current_syst, cut_type, name, individual_eff))
+            logger.debug("[Tagger] : %s, syst variation : %s, cut type : %s, cut : %s, indiviual efficiency : %.4f"% (self.name, self.current_syst, cut_type, name, individual_eff))
             # get the combined cuts and names
             if(iter==1):
                 _tmp_cut = result
@@ -179,32 +179,27 @@ class Tagger():
                 _tmp_cut = numpy.logical_and(_tmp_cut, result)
                 _tmp_name += " & " + name
             if awkward.count(_tmp_cut) > 0:
-                ncandi_per_event = awkward.num(_tmp_cut[_tmp_cut==True],axis=-1)
-                candi_event=_tmp_cut[ncandi_per_event!=0]
-                if type(candi_event) == bool:
-                    combined_eff = float(ncandi_per_event) / float(len(_tmp_cut))
-                else:
-                    n_candi_event = len(candi_event)
-                    combined_eff = float(n_candi_event) / float(len(_tmp_cut))
-                # combined_eff = float(awkward.sum(_tmp_cut)) / float(awkward.count(_tmp_cut))
+                ncandi_per_event = awkward.num(_tmp_cut[_tmp_cut==True],axis=-1) != 0
+                print(ncandi_per_event)
+                combined_eff=float(awkward.sum(ncandi_per_event)) / float(awkward.count(_tmp_cut))
+                
+                # candi_event=_tmp_cut[ncandi_per_event!=0]
+                # if type(candi_event) == bool:
+                #     combined_eff = float(ncandi_per_event) / float(len(_tmp_cut))
+                # else:
+                # print(_tmp_cut)
+                # print(candi_event)
+                # n_candi_event = len(candi_event)
+                # combined_eff = float(len(list(ncandi_per_event))) / float(len(_tmp_cut))
+                    # combined_candieff = float(awkward.sum(_tmp_cut)) / float(awkward.count(_tmp_cut))
             else:
                 combined_eff = 0.
             self.cut_summary[cut_type][_tmp_name]={
                 "combined eff": float(combined_eff)
             }
-            # logger.debug("[Tagger] : %s, syst variation : %s, cut type : %s, cut : %s, combined efficiency : %.4f"% (self.name, self.current_syst, cut_type, _tmp_name, combined_eff))
+            # logger.debug("[Tagger] : %s, syst variation : %s, cut type : %s, cut : %s, combined candi/sum_candi efficiency : %.4f"% (self.name, self.current_syst, cut_type, _tmp_name, combined_candieff))
             logger.debug("[Tagger] :  \nc_cut : %s\neff : %.4f"% (_tmp_name, combined_eff))
-#    nameeff.append(cut_type+" "+_tmp_name+" "+str(combined_eff)+"\n")
-#logger.debug("iter = %s"%iter)
-#f = open("/eos/user/s/shsong/"+self.name+"efficiency.txt","w+")
-#f.writelines(nameeff)
-#line = f.readline()
-#eff = []
-#while line:
-#    line = f.readline()
-#    a = line.split()
-#    eff.append(a)
-#f.close()
+
 
 
     def get_summary(self):
