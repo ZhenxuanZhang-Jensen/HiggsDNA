@@ -179,18 +179,15 @@ class Tagger():
                 _tmp_cut = numpy.logical_and(_tmp_cut, result)
                 _tmp_name += " & " + name
             if awkward.count(_tmp_cut) > 0:
-                ncandi_per_event = awkward.num(_tmp_cut[_tmp_cut==True],axis=-1) != 0
-                print(ncandi_per_event)
-                combined_eff=float(awkward.sum(ncandi_per_event)) / float(awkward.count(_tmp_cut))
-                
-                # candi_event=_tmp_cut[ncandi_per_event!=0]
-                # if type(candi_event) == bool:
-                #     combined_eff = float(ncandi_per_event) / float(len(_tmp_cut))
-                # else:
-                # print(_tmp_cut)
-                # print(candi_event)
-                # n_candi_event = len(candi_event)
-                # combined_eff = float(len(list(ncandi_per_event))) / float(len(_tmp_cut))
+                ncandi_per_event = awkward.num(_tmp_cut[_tmp_cut==True],axis=-1) 
+                candi_event=_tmp_cut[ncandi_per_event!=0]
+                if type(candi_event) == bool:
+                    print(_tmp_cut)
+                # for event selection level, like "at least one diphoton pair", _tmp_cut is 1D array, ncandi_per_event is the number of the events which contians at least one diphoton pair
+                    combined_eff = float(ncandi_per_event) / float(len(_tmp_cut))
+                else:
+                    n_candi_event = len(candi_event)
+                    combined_eff = float(n_candi_event) / float(len(_tmp_cut))
                     # combined_candieff = float(awkward.sum(_tmp_cut)) / float(awkward.count(_tmp_cut))
             else:
                 combined_eff = 0.
