@@ -177,15 +177,15 @@ class DiphotonTagger(Tagger):
         diphoton_pt_cut = diphotons.Diphoton.pt >= options["pt"]
         #all_cuts = (lead_pt_cut & lead_pt_mgg_cut & sublead_pt_mgg_cut & mass_cut) | ( diphotons.LeadPhoton.pt > 0)
         # close for QCD samples
-        # all_cuts = lead_pt_cut & lead_pt_mgg_cut & sublead_pt_mgg_cut & mass_cut
-        all_cuts = lead_pt_cut & lead_pt_mgg_cut & sublead_pt_mgg_cut & mass_cut & diphoton_pt_cut 
+        all_cuts = lead_pt_cut & lead_pt_mgg_cut & sublead_pt_mgg_cut & mass_cut
+        # all_cuts = lead_pt_cut & lead_pt_mgg_cut & sublead_pt_mgg_cut & mass_cut & diphoton_pt_cut 
         # for mass>400GeV
 
         self.register_cuts(
-            # names = ["lead pt cut", "lead pt mgg cut", "sublead pt mgg cut", "mass cut" ,  "all cuts"],
-            # results = [lead_pt_cut, lead_pt_mgg_cut, sublead_pt_mgg_cut, mass_cut, all_cuts],
-            names = ["lead pt cut", "lead pt mgg cut", "sublead pt mgg cut", "mass cut" , "diphoton_pt_cut", "all cuts"],
-            results = [lead_pt_cut, lead_pt_mgg_cut, sublead_pt_mgg_cut, mass_cut, diphoton_pt_cut , all_cuts],
+            names = ["lead pt cut", "lead pt mgg cut", "sublead pt mgg cut", "mass cut" ,  "all cuts"],
+            results = [lead_pt_cut, lead_pt_mgg_cut, sublead_pt_mgg_cut, mass_cut, all_cuts],
+            # names = ["lead pt cut", "lead pt mgg cut", "sublead pt mgg cut", "mass cut" , "diphoton_pt_cut", "all cuts"],
+            # results = [lead_pt_cut, lead_pt_mgg_cut, sublead_pt_mgg_cut, mass_cut, diphoton_pt_cut , all_cuts],
             cut_type = "diphoton"
         )
 

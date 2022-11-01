@@ -1,3 +1,7 @@
+
+
+
+
 import logging
 
 import awkward
@@ -24,7 +28,7 @@ DEFAULT_OPTIONS = {
     },
     "muons": {
         "pt": 10.0,
-        "eta":2.7,
+        "eta":2.5,
         "dr_photons": 0.4,
         "dr_jets": 0.4
     },
@@ -78,10 +82,11 @@ class HHWW_Preselection(Tagger):
         # need to comment when run bkgs
         logger.debug("Is Signal: %s" %self.options["gen_info"]["is_Signal"])
         logger.debug("events num before 4 lepton remove: %s"%len(events))
+        # divide events into 3 case(muon, electron, tau lepton events) using genlevel information
         events,n_muon_event,n_electron_event,n_tau_event,e_events, μ_events, τ_events = gen_selections.gen_3categories(events)
         logger.debug("events num change to %s"%len(events))
-        if not self.is_data and self.options["gen_info"]["is_Signal"]:    
-            gen_selections.gen_Hww_2q2l(events)
+        # if not self.is_data and self.options["gen_info"]["is_Signal"]:    
+            # gen_selections.gen_Hww_2q2l(events)
         # Electrons
         electron_cut = lepton_selections.select_electrons(
             electrons=events.Electron,
@@ -109,8 +114,6 @@ class HHWW_Preselection(Tagger):
             dummy_value = -999
         )
 
-   #     iso_cut = electrons["Electron_mvaFall17V2Iso_WPL"][electrons["Electron_mvaFall17V2Iso_WPL"]==True]
- #       electrons=electrons[iso_cut]
         ######################################
 
         # Muons
@@ -239,7 +242,7 @@ class HHWW_Preselection(Tagger):
         #              TODO try to add order with WinvM jets in output.parquet              #
         # ---------------------------------------------------------------------------- #
       
-        #gen_l1_p4,gen_q1_p4,gen_q2_p4=gen_selections.gen_Hww_2q2l(events)
+
         jet_p4 = vector.awk(
             {
                 "pt" : jets["pt"],
@@ -469,15 +472,16 @@ class HHWW_Preselection(Tagger):
         # n_bjets = awkward.num(bjets)
 
         photon_id_cut = (events.LeadPhoton.mvaID > self.options["photon_id"]) & (events.SubleadPhoton.mvaID > self.options["photon_id"])
-        # diphoton_pt_cut = (events.LeadPhoton.pt > self.options["photon_id"]) & (
-        #     events.SubleadPhoton.pt > self.options["photon_id"])
-        # photon_pixelseed_cut = (events.Photon.pixelSeed==0)
-
-        category_p2 = (n_leptons==1) & (n_jets >=2)
-        category_p1 = (n_leptons==1) & (n_fatjets_W>=1)
+        diphoton_pt_cut = events.Diphoton["pt"] > 100
+        category_p4 = (n_leptons == 1) & (n_fatjets_W >= 1) & (~diphoton_pt_cut)
+        category_p3 = (n_leptons == 1) & (n_jets >= 2) & (~diphoton_pt_cut)
+        category_p2 = (n_leptons == 1) & (n_jets >= 2) & (diphoton_pt_cut)
+        category_p1 = (n_leptons == 1) & (n_fatjets_W >= 1) & (diphoton_pt_cut)
         flatten_n_jets = awkward.num(jets.pt)
         category = awkward.zeros_like(flatten_n_jets)
         category = awkward.fill_none(category, 0)
+        category = awkward.where(category_p4, awkward.ones_like(category)*4, category)
+        category = awkward.where(category_p3, awkward.ones_like(category)*3, category)
         category = awkward.where(category_p2, awkward.ones_like(category)*2, category)
         category = awkward.where(category_p1, awkward.ones_like(category)*1, category)
         awkward_utils.add_field(events, "category", category) 
@@ -486,6 +490,7 @@ class HHWW_Preselection(Tagger):
         Lepton_Selection = (n_leptons==1)
 
         presel_cut = (photon_id_cut) & (n_leptons==1) & (category_cut)
+
 
         self.register_cuts(
             names=["Photon Selection","Lepton Selection"],
