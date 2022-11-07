@@ -493,7 +493,7 @@ class HHWW_Preselection(Tagger):
 
 
         self.register_cuts(
-            names=["Photon Selection","Lepton Selection"],
+            names=["Photon id Selection","Lepton Selection"],
             results=[photon_id_cut,Lepton_Selection]
         )
 
