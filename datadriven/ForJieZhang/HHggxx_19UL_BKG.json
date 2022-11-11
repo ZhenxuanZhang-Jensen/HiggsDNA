@@ -1,0 +1,200 @@
+{
+	"GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8": {
+		"files": {
+			"2016preVFP": [
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/50000/AA66E5FD-73A1-1B46-B59A-63BB1CA7EE5E.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/40000/F6A67664-A20D-614D-8638-00924C5EB033.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/6672D5D6-2403-0B4B-9641-134A3500E6A9.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/0A3FE85C-9389-C04A-9B4E-60E6F2C38C01.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/B3975D68-0360-DC45-A322-C6E76D3F346B.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/9400B9B0-E690-6540-B8FC-C484BAC2DB4E.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/F281732D-38CC-EF42-8A65-C27E849D5DEE.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/280000/D7C7DAA0-EBBF-684D-9473-B2D7ADE5F532.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/280000/EC1A68C5-2536-4242-8555-822E8D99F708.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/280000/592323E6-BB45-564D-96BF-7A4DDC237F86.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/280000/475848CD-7D30-6042-BFD9-22C9BAA77444.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/280000/F800F23A-C31D-244B-9F05-FD3BC3688E5A.root"
+			],
+			"2017": [
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/280000/81038AEF-3043-1C49-A1CA-B3D1B0CC9925.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/280000/253582DD-737D-6043-9C0D-FA47EAF8C6C6.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/280000/430A35DE-0A5E-D34D-819A-A46DCDEF0B30.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/280000/33556C94-84EB-9146-AD8E-F828113F91FE.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/280000/C2F41E6B-8907-D94F-AB6E-FE1274607134.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/280000/640C8617-5901-C649-B799-FBCAFDC1E07F.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/280000/3A5E7A03-1B14-B040-B3D2-8815E9245776.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/280000/A3BA2CD0-03E7-8A4B-BCF3-8246B8980F4A.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/270000/43BB332E-1CC8-6E42-ADA7-62DB87F59C3E.root"
+			],
+			"2016postVFP": [
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/270000/5E9B990A-B82B-A34C-A9C9-7CAB9858CE44.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/BC9BDD25-6010-4F44-808F-8DB7C12814FF.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/F886862E-81B0-D74D-9FCF-068093E12662.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/1A69D99F-A6EF-1C40-A7E2-3098D5259CF6.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/3ACD5BF0-18EA-E94C-93DF-F56252663A29.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/64C30163-1BDE-524B-9936-C08A2F038596.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/5FDFDB30-7398-344F-BAD9-EEC8EFFCF835.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/50000/4D15A4FC-415D-154A-91B9-B7F58BACD498.root"
+			],
+			"2018": [
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/40000/8787B127-8BC5-8441-B24E-6B9E1B23D3B4.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/40000/CFEF0407-DBF0-3E4A-BDDA-7C961F98C668.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/788BDA74-92AB-FC46-80AE-DA3C8A34B715.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/387DA8CD-059A-3748-A402-F4855761FD0B.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/35F318C1-3136-FE42-9A62-F8C72FCAF997.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/196A632F-F052-3A4E-AFDF-4D2A9A458575.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/0B415E92-5FD9-FF47-994E-31B98FB7BB64.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/4BF42925-A037-9445-B3BE-83A035320E09.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/E4BF9B85-314D-E14E-9C3B-249ACAB2BCEF.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/50000/DF112D3C-77D4-5D49-A014-67276054FBF0.root"
+			]
+		},
+		"xs": 872.1,
+		"br": 1.0
+	},
+	"GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8": {
+		"files": {
+			"2016preVFP": [
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/40000/74842705-3628-8B41-A291-63E89F7495AB.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/40000/8E44DC1D-AD0B-A341-A1B3-8CBDA1288F51.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/C202F802-30D8-AF41-870F-FD37FEC6A31F.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/68E25929-5886-A649-B5D4-5B9662773EBB.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/4F84F222-EF0B-BB49-9936-C3FBC91E775D.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/72508D63-2322-1C43-8674-A3936A2DFE3C.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/43B88630-205C-4442-8ED2-D2B9069759AE.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/5E0C5C25-0D42-194E-9EDC-56132E68462E.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/780B71DB-22B4-3D43-87B5-2B5F9E3FD0E9.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/CEE4B48E-77FF-CE49-8F3D-D05D5571405F.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/9C20AADB-E8DD-B148-A045-EE10E42DC289.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/589973D8-BA8E-1448-9052-670B2470BCB0.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/22EA59CF-60E8-B44F-B63C-D88E6907EED6.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/280000/F111EDB6-E611-F842-A45F-ADACC184EB17.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/280000/E8586DC7-969F-C74A-ABA2-FF91833A8BFB.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/280000/9DDA31A2-99E1-7E44-A88A-028993B7C7EE.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/280000/E53120AB-A738-8349-BA58-5CD734DC8BD7.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/280000/FD5C2263-EEB6-AA45-B503-A212046428B9.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/280000/70899067-3979-E349-B485-521F7774DFD5.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/50000/260C1AED-D85E-D64C-9F83-27E5963EA82B.root"
+			],
+			"2017": [
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/280000/C828B778-4502-8F4B-AA2D-4EDD0A1039CD.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/280000/3D9A65A8-611F-D046-A68B-A6F0FB960DE1.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/280000/32585E23-3455-474A-ACB7-B9DB0B4EEE81.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/280000/8C38369D-D5EB-C84E-9407-EEBD2B5978DF.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/280000/614AF7A8-DDF4-D844-86C3-9194403BDC87.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/40000/DB727564-A795-BB44-A5A3-0569736811D1.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/250000/4F0CEBE5-3122-D44B-BDF4-86B51AA2FA30.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/250000/480E1FD6-F800-5C45-95DB-C0E8506C05EF.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/250000/AFFB27EE-6301-2540-AD17-2937637020AB.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/250000/769CA4EC-49C8-BA43-9BCB-26867742E04F.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/250000/D3E2E1DC-1A94-8D47-B387-B468BDC47A5B.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/250000/3B63F5FE-F23D-1C49-8C2F-8CAC8E5AAFFE.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/250000/A8AFD2B4-D7DC-E545-A589-036DCC53E485.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/250000/252944F7-44C1-E54A-A44E-3643FE93C8E1.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/270000/C0C8B512-6DE8-ED4A-894E-3E4B6BF52F2A.root"
+			],
+			"2016postVFP": [
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/270000/957A19B1-9658-7B46-A5AE-C015F94B8AFA.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/270000/CA12F117-723A-7047-AEF2-866967276FB5.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/270000/3C771600-B19B-BD4D-86F0-48C3F2701F60.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/40000/0B60118C-269B-904A-BE0D-9DDDAC1AAF54.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/40000/4D8896FC-C804-6E44-8851-D2A11CFB222F.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/270000/CFC0E69E-A954-5445-9388-9534DAF3797A.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/270000/C0083EAA-16B2-C143-93A4-4C49F6F83D06.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/270000/7D6CC466-1F4B-3944-8899-DDB1447C543F.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/270000/B2E1C755-C3E0-9343-B9E2-BA5360B37A7D.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/822B7FAC-574E-A54D-8B0C-750CED812821.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/C9A1C3A1-91FE-4E46-AEDB-3C89367F2122.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/4D02E9CC-E534-3846-81A1-D73F075E6931.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/89310CF3-7DC8-CA42-B454-28F8BF52D7B3.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/C6EF5BB9-4040-F042-86C4-D8E48DC294DE.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/B682FE16-30F0-8740-A272-FB6358602E90.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/95D4261E-61AD-DD43-9BA0-EAE3AE0A8E9B.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/525A271A-63A5-5C43-AE7D-03ECA785E88B.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/50000/27503AFF-0849-204D-AE94-E2F04D7CA547.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/50000/D70D5D48-C676-AA41-8BF3-8053F325C240.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/50000/B939140C-6150-334A-B079-186BFE43CE4E.root"
+			],
+			"2018": [
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/6D211478-E532-A041-BA0C-C3D8246F1BBF.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/AD93CADD-3877-8442-A833-72D9442B9DCE.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/9CD3871D-386E-2A40-8F00-31D298AFD6F6.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/66EFDCDF-3A00-8143-B6FD-03D46C91DCB1.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/93B7B3D9-A862-8B4E-ACB0-252CAFFDE981.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/3077DC3A-4F8D-AF4F-A021-33721CE25D2B.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/2D653C51-0B5D-0547-9006-D15F45EC93F1.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/31E67BA3-AF91-D644-967B-45D7490F49FC.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/80D5CFE8-1162-964E-AAF7-BA564A308AA4.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/73C493D0-8A01-9F45-A8B5-0C03F4E6971A.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/6108D78F-E03B-C749-8BAA-D65DD4990D55.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/040BF056-2D6F-804B-837C-0DEB0619B0A8.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/50000/5320EB42-140C-B146-B795-3F2050467358.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/40000/6DB7A87D-1C5C-5F48-B4BB-6461333E24D6.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/40000/49AF7786-CB9A-DC4D-9A30-C9B68B1F2F49.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/40000/7C4824D3-AD7D-DD45-9941-BE5E99BE84B9.root"
+			]
+		},
+		"xs": 232.8,
+		"br": 1.0
+	},
+	"GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8": {
+		"files": {
+			"2016preVFP": [
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/40000/21A5012E-D384-764E-A0EF-500CAD395992.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/40000/5EAF123E-C37D-6847-B88B-59C464A39EF5.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/280000/E0009F12-0898-8647-A6FF-CBCD5EC0CFC8.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/280000/C85D7E9B-48A6-BF43-BD12-84E506DA2353.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/50000/93D49B5B-95DC-BA41-ABF0-51EF7C89A6BA.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/50000/C8D6A5B4-7D77-594B-B192-0223D50B4D26.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/57FF3831-FCD0-FD4C-9946-5A1E1C183FC7.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/B5892543-2BB0-F84B-9B4F-276B0D29A97F.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/E9D517CF-318C-D346-8D6B-3EB00DEA94FA.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/D00D8BE0-6C91-154F-AEDA-856FA417FE44.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/B87BFE74-211D-5741-B1BF-D132DD54FC64.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODAPVv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_preVFP_v9-v1/270000/FE910B4A-8794-9F44-872B-53B32A071A8A.root"
+			],
+			"2017": [
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/280000/49AD9268-E6C2-144E-A539-65ED09299B91.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/20000/530D4222-7E0F-3444-A694-7189D1DEA901.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/280000/D3D0781C-0FD8-404C-AA7A-DBC7FC0943EE.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/40000/A1AFA161-4355-8342-929E-952722064660.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/270000/4697D591-E29A-DF44-803B-AC40A03EDF4E.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/270000/7DC01FCF-503D-FD46-9014-1A48A7AD339D.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/270000/6D807DD0-5D40-8245-8D7D-44DB0C9D897B.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/270000/8D9B065F-E001-0146-95DA-768598C0DF49.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/270000/FF4A0867-590F-B644-8248-1BF0674EFEDC.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/50000/3A71AAB6-86DB-3447-92DC-96484609F834.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL17NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mc2017_realistic_v8-v1/50000/C58CB561-909B-F044-B054-E56CF08213C4.root"
+			],
+			"2016postVFP": [
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/270000/A7B74007-6B72-8449-BDEA-1D85700EE4B5.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/270000/4D6408B5-3A00-D448-A936-7B31B6028505.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/270000/C1483232-2466-2543-898F-820981165BF2.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/50000/8A3F0F89-3AF4-484A-AD3F-AFD2257FCF16.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/50000/2774364B-3248-9D47-8C78-2EACD17F8D3D.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/98DCDFA5-591B-9C47-AF72-42837EBEFDE9.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/808E051F-639F-E54B-AFD8-E931835186A2.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/B8E05B63-9844-8647-A06D-E442ED331B3A.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/859E9E8D-8EB1-6E46-A202-A15082741E69.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/280000/7AECB90E-2D1D-2E46-8A63-BBC1792E0FF5.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/40000/485BBE10-BB86-BA45-9C28-818812FB2133.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL16NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v15-v1/40000/291FBBE5-544B-BF42-A3FE-446544632285.root"
+			],
+			"2018": [
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/50000/5AAABEB8-D540-214A-9105-CCC5E906D577.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/B995D51D-0929-3646-8FEB-6CF02B0BBAE5.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/2B1DC35C-4802-2E42-8AD9-78D5DB19D168.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/7AABF52D-7911-1747-99B1-586FA9F9ABA7.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/3C74AD09-79D3-8B43-8A58-6D674225939C.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/EB05A735-3474-0548-B34C-A699E76F17C5.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/C298866B-BE6B-604D-B5C7-111A14423A4F.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/280000/E3DA500D-05C8-7342-841C-598FB3B7ED51.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/40000/A182AC18-F7D4-7F43-AE49-A4819A131275.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/40000/17A90281-37F8-8748-80DF-A4F39A669C9F.root",
+				"root://cms-xrd-global.cern.ch///store/mc/RunIISummer19UL18NanoAODv2/GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8/NANOAODSIM/106X_upgrade2018_realistic_v15_L1v1-v1/40000/A1E484AE-C5B5-0B43-B24D-98B2554CA8CB.root"
+			]
+		},
+		"xs": 3164.0,
+		"br": 1.0
+	}
+}

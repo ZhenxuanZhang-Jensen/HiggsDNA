@@ -172,25 +172,8 @@ class HHWW_Preselection(Tagger):
             data = events.FatJet[fatjet_cut]
         )   
 
-        fatjet_H_cut = ((fatjets.deepTagMD_HbbvsQCD<0.6) & (fatjets.deepTagMD_H4qvsQCD>0.4) & (fatjets.pt>300))|(fatjets.pt>0)
-
-        fatjets_H = awkward_utils.add_field(
-            events = events,
-            name = "SelectedFatJet_H_from_event",
-            data = fatjets[fatjet_H_cut]
-        )   
-
-
-        awkward_utils.add_object_fields(
-        events=events,
-        name="fatjet_H",
-        objects=fatjets[fatjet_H_cut][awkward.argsort(fatjets[fatjet_H_cut].deepTagMD_H4qvsQCD, ascending=False, axis=1)],
-        n_objects=1,
-        dummy_value=-999
-        ) # apply the inverse bb cuts
-
-        fatjet_W_cut = ((fatjets.deepTagMD_HbbvsQCD<0.6) & (fatjets.deepTagMD_WvsQCD>0.4) & (fatjets.pt>200))|(fatjets.pt>0)
-
+        # fatjet_W_cut = ((fatjets.deepTagMD_HbbvsQCD<0.6) & (fatjets.deepTagMD_WvsQCD>0.4) & (fatjets.pt>200))|(fatjets.pt>0)
+        fatjet_W_cut = (fatjets.pt>200) & (fatjets.deepTagMD_WvsQCD>0.4)
         fatjets_W = awkward_utils.add_field(
             events = events,
             name = "SelectedFatJet_W_from_event",
@@ -199,7 +182,8 @@ class HHWW_Preselection(Tagger):
         awkward_utils.add_object_fields(
         events=events,
         name="fatjet_W",
-        objects=fatjets[fatjet_W_cut][awkward.argsort(fatjets[fatjet_W_cut].deepTagMD_WvsQCD, ascending=False, axis=1)],
+        objects=fatjets_W[awkward.argsort(fatjets[fatjet_W_cut].deepTagMD_WvsQCD, ascending=False, axis=-1)],
+        # objects=fatjets[fatjet_W_cut][awkward.argsort(fatjets[fatjet_W_cut].deepTagMD_WvsQCD, ascending=False, axis=1)],
         n_objects=1,
         dummy_value=-999
         ) # apply the inverse bb cuts
