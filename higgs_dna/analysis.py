@@ -70,6 +70,7 @@ def run_analysis(config):
         sample = sample
     )
     events = systematics_producer.produce(events)
+    logger.debug("events fields: %s"%events.keys())
     t_elapsed_syst = time.time() - t_start_syst
 
     ### 4. Apply tag sequence ###

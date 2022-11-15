@@ -164,7 +164,6 @@
         "jet_1_deltaR_2","jet_2_deltaR_2","jet_3_deltaR_2","jet_4_deltaR_2","jet_5_deltaR_2","jet_6_deltaR_2","jet_7_deltaR_2",
         "jet_1_deltaR_3","jet_2_deltaR_3","jet_3_deltaR_3","jet_4_deltaR_3","jet_5_deltaR_3","jet_6_deltaR_3","jet_7_deltaR_3",
         "jet_1_deltaR_4","jet_2_deltaR_4","jet_3_deltaR_4","jet_4_deltaR_4","jet_5_deltaR_4","jet_6_deltaR_4","jet_7_deltaR_4",
-
         "muon_pt", "muon_eta", "muon_phi", "muon_mass", "muon_charge", "muon_pfRelIso03_all", "muon_dxy", "muon_dz", "muon_tightId", "muon_isGlobal", "muon_mediumId",
         "electron_pt", "electron_eta", "electron_phi", "electron_mass", "electron_charge", "electron_mvaFall17V2Iso_WP90", "electron_mvaFall17V2noIso_WP90", "electron_pfRelIso03_all", "electron_dxy", "electron_dz", "electron_mvaFall17V2Iso_WP80",
         "nGoodAK4jets",

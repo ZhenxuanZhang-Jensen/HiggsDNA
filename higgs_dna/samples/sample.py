@@ -3,6 +3,8 @@ import awkward
 from higgs_dna.samples.file import File
 from higgs_dna.utils import awkward_utils
 from higgs_dna.constants import CENTRAL_WEIGHT, LUMI
+import logging
+logger = logging.getLogger(__name__)
 
 # FIXME need to add option for specifying campaign (e.g. Prompt, UL, etc)
 
@@ -58,5 +60,5 @@ class Sample():
             )
 
         self.is_prepped = True
-
+        logger.debug(events[CENTRAL_WEIGHT])
         return events

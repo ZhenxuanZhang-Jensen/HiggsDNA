@@ -34,9 +34,15 @@ class File():
             if "genEventCount" in runs.keys() and "genEventSumw" in runs.keys():
                 self.n_events = int(numpy.sum(runs["genEventCount"].array()))
                 self.sum_weights = numpy.sum(runs["genEventSumw"].array())
+                logger.debug("using genEventCount to check generator level eventNum")
+                logger.debug("using genEventSumw to calculate Nanoaod events number")
             elif "genEventCount_" in runs.keys() and "genEventSumw_" in runs.keys():
                 self.n_events = int(numpy.sum(runs["genEventCount_"].array()))
                 self.sum_weights = numpy.sum(runs["genEventSumw_"].array())
+                logger.debug("using genEventCount_ to check generator level eventNum")
+                logger.debug("using genEventSumw_ to calculate Nanoaod events number")
             else: 
                 self.n_events = 0
                 self.sum_weights = 0 
+        logger.debug("MC generate n_events =  %s"%self.n_events)
+        logger.debug("NanoAod files N events = %s"%self.sum_weights)

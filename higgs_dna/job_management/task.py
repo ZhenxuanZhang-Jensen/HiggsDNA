@@ -275,16 +275,19 @@ class Task():
                 except:
                     os.system("sleep 1s")
 
+            logger.debug("self.phys_summary['n_event_initial']=%s"%(self.phys_summary["n_events_initial"]))
             self.phys_summary["n_events_initial"] += job_info["n_events"]
             if not self.config["sample"]["is_data"]:
                 self.phys_summary["sum_weights"] += job_info["sum_weights"]
-
+                logger.debug("sumweight=%s"%self.phys_summary["sum_weights"])
             for syst_tag, n_events in job_info["n_events_selected"].items():
                 if syst_tag not in self.phys_summary["n_events_selected"].keys():
+                    logger.debug("syst_tag not in n_events_selected keys")
                     self.phys_summary["n_events_selected"][syst_tag] = n_events
+                    logger.debug("phys_summary['n_events_selected'][syst_tag] = n_events:%s"%n_events)
                 else:
                     self.phys_summary["n_events_selected"][syst_tag] += n_events
-
+                    logger.debug("phys_summary['n_events_selected'][syst_tag] += n_events:%s"%(self.phys_summary["n_events_selected"][syst_tag]))
             for syst_tag, output in job_info["outputs"].items():
                 if syst_tag not in self.outputs.keys():
                     self.outputs[syst_tag] = []

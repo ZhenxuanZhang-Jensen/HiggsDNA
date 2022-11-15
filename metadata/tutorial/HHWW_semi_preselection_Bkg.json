@@ -12,19 +12,19 @@
                 "name": "diphoton_tagger",
                 "options": {
                     "gen_info": {
-                        "calculate": true
+                        "calculate": false
                     }
                 }
             }
         },
         {
-            "module_name": "higgs_dna.taggers.HHWW_semilep_Tagger_sig",
+            "module_name": "higgs_dna.taggers.HHWW_semilep_Tagger_bkg",
             "tagger": "HHWW_Preselection",
             "kwargs": {
                 "name": "HHWW_tagger",
                 "options": {
                     "gen_info": {
-                        "is_Signal": true
+                        "is_Signal": false
                     }
                 }
             }
@@ -68,6 +68,7 @@
             "GluGluToRadionToHHTo2G4Q_M3000",
             "GluGluHtoGG",
             "VHtoGG",
+            "test",
             "ttHJettoGG",
             "VBFHtoGG_local",
             "VBFHtoGG",

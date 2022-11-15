@@ -64,7 +64,7 @@ const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)";
 //const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.) && fabs(leadeta)<1.5 && fabs(subleadeta)<1.5";
 //const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.) && (fabs(leadeta)>1.5 || fabs(subleadeta)>1.5)";
 // const string MCWeight = "weight";
-const string MCWeight = "1";// "weight*41.5"; // add a new weight to scale diphoton bdt score >-0.85
+const string MCWeight = "weight";// "weight*41.5"; // add a new weight to scale diphoton bdt score >-0.85
 
 // */
 //====================
@@ -544,8 +544,8 @@ void DrawDataMCPlots_new(){
   // string PreselectionsMVA99=Preselections + " && diphoMVA>0.99";
   // DrawMyPlots("DiphotonMVA_self", Preselections, "New Diphoton BDT score", "GeV", "NewDiphotonBDT", 40, -1., 1., 1, 0);
   // return;
-  // DrawMyPlots("CMS_hgg_mass", Preselections, "m_{#gamma#gamma} (GeV)", "GeV", "DiphotonMass", 50, 100., 180., 0, 0);
-  DrawMyPlots("sclaed_subleadphoton_pt", Preselections, "sclaed_subleadphoton_pt (GeV)", "GeV", "sclaed_subleadphoton_pt", 50, 0., 2., 0, 0);
+  DrawMyPlots("CMS_hgg_mass", Preselections, "m_{#gamma#gamma} (GeV)", "GeV", "DiphotonMass", 50, 100., 180., 0, 0);
+  // DrawMyPlots("sclaed_subleadphoton_pt", Preselections, "sclaed_subleadphoton_pt (GeV)", "GeV", "sclaed_subleadphoton_pt", 50, 0., 2., 0, 0);
 
   // DrawMyPlots("diphoMVA", Preselections, "Diphoton BDT score", "GeV", "TransformedDiphotonBDT", 40, -1., 1., 1, 0);
   // return;

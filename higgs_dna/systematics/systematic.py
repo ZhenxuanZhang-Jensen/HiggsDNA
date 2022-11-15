@@ -341,6 +341,7 @@ class WeightSystematic(Systematic):
                     data = events[CENTRAL_WEIGHT] * weight_masked,
                     overwrite = True
             )
+            logger.debug("event.central_weight%s"%events[CENTRAL_WEIGHT])
 
             self.summary[syst_tag]["central"]["after"] = awkward.mean(events[CENTRAL_WEIGHT])
 
@@ -427,10 +428,10 @@ class ObjectWeightSystematic(WeightSystematic):
                 target_branch = (self.target_collection,) + branch[1:]
 
             weights[variation] = awkward.prod(events[target_branch], axis = 1)
-
+   
             name = "weight_" + self.name + "_" + variation
             awkward_utils.add_field(events, name, weights[variation], overwrite = True)
-
+        logger.debug("add variation weight: %s"%weights)
         return weights
 
     def apply(self, events, syst_tag = NOMINAL_TAG, central_only = False, mask = None, add_fields = True):
