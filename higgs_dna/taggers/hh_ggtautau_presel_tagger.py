@@ -24,12 +24,13 @@ DEFAULT_OPTIONS = {
     },
     "muons" : {
         "pt" : 15.0,
-        "eta" : 2.4,
+        "eta" : 2.5,
         "dxy" : 0.045,
         "dz" : 0.2,
         "id" : "medium",
         "pfRelIso03_all" : 0.3,
-        "dr_photons" : 0.2
+        "dr_photons" : 0.2,
+        "global" : True
     },
     "taus" : {
         "pt" : 20.0,
@@ -38,13 +39,13 @@ DEFAULT_OPTIONS = {
         "deep_tau_vs_ele" : 1,
         "deep_tau_vs_mu" : 0,
         "deep_tau_vs_jet" : 7,
-        "dr_photons" : 0.2,
-        "dr_electrons" : 0.2,
-        "dr_muons" : 0.2
+        "dr_photons" : 0.5,
+        "dr_electrons" : 0.5,
+        "dr_muons" : 0.5
     },
     "iso_tracks" : {
         "pt" : 5.0,
-        "eta" : 2.5
+        "eta" : 2.5,
         "dxy" : 0.2,
         "dz" : 0.1,
         "dr_photons" : 0.2,
@@ -243,6 +244,14 @@ class HHggTauTauPreselTagger(Tagger):
                 events = events,
                 name = "SelectedJet",
                 data = events.Jet[jet_cut]
+        )
+        awkward_utils.add_object_fields(
+                events = events,
+                name = "jet",
+                objects = jets,
+                n_objects = 2,
+                fields = ["puId"],
+                dummy_value = DUMMY_VALUE
         )
 
         bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis = 1, ascending = False)]
