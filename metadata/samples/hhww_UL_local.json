@@ -2625,7 +2625,7 @@
             },
          "TTJets":{
             "fpo" : 5,
-            "xs":491,
+            "xs":833.9,
             "bf":1.0,
             "files":{
             "2016":["root://cms-xrd-global.cern.ch//store/mc/RunIISummer20UL16NanoAODv9/TTJets_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v17-v1/2430000/9D1AE370-8D2A-5A4C-9107-EA179DD8228F.root",
@@ -3672,11 +3672,55 @@
             ]
             }
             } ,
-            "test":{
+            "WGToLNuG":{
                 "fpo" : 5,
-                "xs":84.4,
-                "bf":1.0,
+                "xs":463.9,
                 "files":{
-                "2017":["/eos/user/s/shsong/bkgfiles/1512EB1B-33D8-1D45-B5A9-12B46550264B.root"]
+                "2017":["/eos/cms/store/group/phys_higgs/cmshgg/shsong/806EDE67-0739-1B48-82DC-33BF08CB4A59.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/B2882EFC-7AC3-FF4E-8984-04BA9BAB0B16.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/D9B12858-ACB6-A143-9A3A-E1EE474AD203.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/091EF33F-D312-6A42-9511-B3BFF40E6110.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/B3238545-D132-EB4F-88D9-AC6B0A840F15.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/724A57E3-6459-7442-8FF4-06EC144FF8B3.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/16E27B58-74EF-4A4B-914C-512E71F77117.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/1B5C9A11-C54D-3D46-8559-20CCBDF2B4D1.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/244DB84D-D236-7844-812D-7BF7B8CF3F3B.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/15B569B4-35AD-4546-ADC9-76EAD202FA44.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/CFF51B4F-5788-E741-8888-659ABAFEA754.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/A85B5CD0-1BD6-BB4A-9BA1-18421D6C2111.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/60E295DC-76DF-9440-A327-447B95EA02E4.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/5C789EF7-C20D-AF4B-8E27-0602DCAC793E.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/C33A0D64-94ED-4D40-A288-5B8EFD1C9B07.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/7E2CE840-B36D-7742-82F0-E1DF33A8B924.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/92AAA83D-9158-774C-BB06-C8C9D3027AF8.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/635CDA65-14E2-F846-8AC3-831B3ACB10C4.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/2DF32158-81B9-114E-A65B-D08910990BFF.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/92F6DEA2-8DF8-F24A-968B-E7C76E57B3CC.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/022C552F-7FE0-B841-94C1-5A160AAC6823.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/B66085C3-9131-1145-A1B2-0ED344C667A1.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/700B76C9-1639-CD41-9E50-8A243309A6BF.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/46AA42F9-7241-2D4D-B5DF-6725328F1AB3.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/F9A0FA95-281C-FE4C-A800-646381E7C265.root",
+                "/eos/cms/store/group/phys_higgs/cmshgg/shsong/8EDEB57B-1E5F-9040-87F9-23E107E65181.root"]
+ }},
+             "WGJJToLNu_EWKnotop_QCD_TuneCP5_13TeV-madgraph-pythia8":{
+                "fpo" : 2,
+                "xs":5.05,
+                "files":{
+                "2017":["/eos/user/s/shsong/bkgfiles/006C005C-CA85-CC44-9B9C-2EA0E4CBF538.root",
+                "/eos/user/s/shsong/bkgfiles/BFF7B8B5-926F-794C-B012-331E9EEBF82C.root",
+                "/eos/user/s/shsong/bkgfiles/11502DFF-CCDA-544F-A5AC-3C88D7AC14C5.root",
+                "/eos/user/s/shsong/bkgfiles/2F9143A0-7CF6-A840-AC2F-3AF033A77542.root",
+                "/eos/user/s/shsong/bkgfiles/A05F7633-D120-7D47-9C24-B20C3F57D9BD.root",
+                "/eos/user/s/shsong/bkgfiles/C6E837AF-90A4-9242-A3B5-6CF5BF45A751.root",
+                "/eos/user/s/shsong/bkgfiles/7AFCA1ED-5059-8B44-BCAD-B45412E58D5A.root"
+                ]
+ }},
+              "WGGJet":{
+                "fpo" : 2,
+                "xs":1.693,
+                "files":{
+                "2017":["/eos/user/s/shsong/bkgfiles/A8B67D5E-BA43-E811-86FA-A4BF01125538.root"
+                ]
  }}
                 }

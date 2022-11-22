@@ -29,7 +29,7 @@ const int debug=1;
 // const TString TreeNameSig = "Sig125";
 // const TString InputDataFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/New_UL2017data/MassUL2018_ETSS.root";
 // const TString InputDataFile = "/eos/user/s/shsong/hhwwggSL_root/data/2017data.root";
-const TString InputDataFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/data/2017data.root";
+const TString InputDataFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/data/2017data_electron.root";
 
 // const TString InputDataFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/NewDiphotonBDT_UL2018data_lessoverfitting.root";
 // const TString InputDataFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/NewDiphotonBDT_UL2018data_lessoverfitting.root";
@@ -37,51 +37,51 @@ const TString TreeNameData = "Data_13TeV_2017";
 //---
 // const TString InputPPFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/New_pp.root";
 // const TString InputPPFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/XGboost_diphoMVA_UL18_newSig.root";
-const TString Inputgg40to80File = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/DiPhotonJetsBoxM40_80_2017.root";
+const TString Inputgg40to80File = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/DiPhotonJetsBoxM40_80_2017_e.root";
 const TString TreeNamegg40to80 = "DiPhotonJetsBox";
-// const TString Inputgg80toInfFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/Diphotonjetsbox_M80_Inf_2017.root";
-const TString Inputgg80toInfFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/Diphotonjetsbox_M80_Inf_2017.root";
+// const TString Inputgg80toInfFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/Diphotonjetsbox_M80_Inf_2017_e.root";
+const TString Inputgg80toInfFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/Diphotonjetsbox_M80_Inf_2017_e.root";
 const TString TreeNamegg80toInf = "DiphotonJetsbox";
-// const TString InputGjet_Pt20_40File = "/eos/user/s/shsong/hhwwggSL_root/bkg/Gjet_Pt20_40_2017.root";
-const TString InputGjet_Pt20_40File = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/Gjet_Pt20_40_2017.root";
+// const TString InputGjet_Pt20_40File = "/eos/user/s/shsong/hhwwggSL_root/bkg/Gjet_Pt20_40_2017_e.root";
+const TString InputGjet_Pt20_40File = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/Gjet_Pt20_40_2017_e.root";
 const TString TreeNameGjet_Pt20_40 = "Gjet";
-// const TString InputGjet_Pt40_InfFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/Gjet_Pt40_Inf_2017.root";
-const TString InputGjet_Pt40_InfFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/Gjet_Pt40_Inf_2017.root";
+// const TString InputGjet_Pt40_InfFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/Gjet_Pt40_Inf_2017_e.root";
+const TString InputGjet_Pt40_InfFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/Gjet_Pt40_Inf_2017_e.root";
 const TString TreeNameGjet_Pt40_Inf = "Gjet";
-// const TString InputW1JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W1JetsToLNu_2017.root";
-const TString InputW1JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W1JetsToLNu_2017.root";
+// const TString InputW1JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W1JetsToLNu_2017_e.root";
+const TString InputW1JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W1JetsToLNu_2017_e.root";
 // const TString TreeNameW1Jets = "WJetsToLNu";
 const TString TreeNameW1Jets = "WGJets";
-// const TString InputW2JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W2JetsToLNu_2017.root";
-const TString InputW2JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W2JetsToLNu_2017.root";
+// const TString InputW2JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W2JetsToLNu_2017_e.root";
+const TString InputW2JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W2JetsToLNu_2017_e.root";
 // const TString TreeNameW2Jets = "WJetsToLNu";
 const TString TreeNameW2Jets = "WGJets";
-// const TString InputW3JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W3JetsToLNu_2017.root";
-const TString InputW3JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W3JetsToLNu_2017.root";
+// const TString InputW3JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W3JetsToLNu_2017_e.root";
+const TString InputW3JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W3JetsToLNu_2017_e.root";
 // const TString TreeNameW3Jets = "WJetsToLNu";
 const TString TreeNameW3Jets = "WGJets";
-// const TString InputW4JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W4JetsToLNu_2017.root";
-const TString InputW4JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W4JetsToLNu_2017.root";
+// const TString InputW4JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W4JetsToLNu_2017_e.root";
+const TString InputW4JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W4JetsToLNu_2017_e.root";
 // const TString TreeNameW4Jets = "WJetsToLNu";
 const TString TreeNameW4Jets = "WGJets";
-// const TString InputTTGJetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/TTGJets_2017.root";
-const TString InputTTGJetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/TTGJets_2017.root";
+// const TString InputTTGJetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/TTGJets_2017_e.root";
+const TString InputTTGJetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/TTGJets_2017_e.root";
 // const TString TreeNameTTGJets = "TT";
 const TString TreeNameTTGJets = "TTG";
-// const TString InputTTGG0JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/TTGG0Jets_2017.root";
-const TString InputTTGG0JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/TTGG0Jets_2017.root";
+// const TString InputTTGG0JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/TTGG0Jets_2017_e.root";
+const TString InputTTGG0JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/TTGG0Jets_2017_e.root";
 // const TString TreeNameTTGG0Jets = "TT";
 const TString TreeNameTTGG0Jets = "TTG";
-// const TString InputWGJJToLNuFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/WGJJToLNu_2017.root";
-const TString InputWGJJToLNuFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/WGJJToLNu_2017.root";
+// const TString InputWGJJToLNuFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/WGJJToLNu_2017_e.root";
+const TString InputWGJJToLNuFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/WGJJToLNu_2017_e.root";
 // const TString TreeNameWGJJToLNu = "WGJJToLNu";
 const TString TreeNameWGJJToLNu = "WGJets";
-// const TString InputttWFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/ttW_2017.root";
-const TString InputttWFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/ttW_2017.root";
+// const TString InputttWFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/ttW_2017_e.root";
+const TString InputttWFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/ttW_2017_e.root";
 // const TString TreeNamettW = "ttW";
 const TString TreeNamettW = "TTG";
-// const TString InputTTJetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/TTJets_2017.root";
-const TString InputTTJetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/TTJets_2017.root";
+// const TString InputTTJetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/TTJets_2017_e.root";
+const TString InputTTJetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/TTJets_2017_e.root";
 // const TString TreeNameTTJets = "TTJets";
 const TString TreeNameTTJets = "TTG";
 // const TString InputPPFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/XGboost_diphoMVA_UL18_newSig_newModel.root";
@@ -90,15 +90,16 @@ const TString TreeNameTTJets = "TTG";
 // const TString InputQCDFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/XGboost_diphoMVA_UL18_newSig_newModel.root";//SF + sigmaE/E weights + Tao 2D pT weights
 // onst TString TreeNameQCD = "DataDriven_QCD";
 // const string OutputPlotDir = "DataMCComparisonPlots_mvaCuts";
-const string OutputPlotDir = "/eos/user/s/shsong/DataMCComparisonPlots_new";
+const string OutputPlotDir = "/eos/user/s/shsong/DataMCComparisonPlots_newmu";
 // const string OutputPlotDir = "DataMCComparisonPlots_old";
 //const string OutputPlotDir = "DataMCComparisonPlotsBothEB";
 //const string OutputPlotDir = "DataMCComparisonPlotsNotEBEB";
 
 // const string Preselections="";
-const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&category==1";
+// const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)";
+// const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&category==1";
 // const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&category==2";
-// const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&(category==2 ||category==1)";
+const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&(category==2 ||category==1)";
 // const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&(category==3 ||category==4)";
 //const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.) && fabs(leadeta)<1.5 && fabs(subleadeta)<1.5";
 //const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.) && (fabs(leadeta)>1.5 || fabs(subleadeta)>1.5)";
@@ -307,13 +308,13 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
 
   // h_MCW1Jets->SetLineColor(5);
   // h_MCW1Jets->SetFillColor(5);
-  //hpf->SetFillStyle(3005);
+  // // hpf->SetFillStyle(3005);
   // h_MCW1Jets->SetLineStyle(1);
   // h_MCW1Jets->SetLineWidth(2);
 
   h_MCW2Jets->SetLineColor(6);
   h_MCW2Jets->SetFillColor(6);
-  //hpf->SetFillStyle(3005);
+  // hpf->SetFillStyle(3005);
   h_MCW2Jets->SetLineStyle(1);
   h_MCW2Jets->SetLineWidth(2);
 
@@ -401,7 +402,7 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
   hs->Add(h_MCgg80toInf);
   hs->Add(h_MCGjet_Pt20_40);
   hs->Add(h_MCGjet_Pt40_Inf);
-  hs->Add(h_MCW1Jets);
+  // hs->Add(h_MCW1Jets);
   hs->Add(h_MCW2Jets);
   hs->Add(h_MCW3Jets);
   hs->Add(h_MCW4Jets);
@@ -686,7 +687,7 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
 }
 
 
-void DrawDataMCPlots_new(){
+void DrawDataMCPlots_newe(){
 
   gROOT->ProcessLine(".x hggPaperStyle.C");
   gStyle->SetOptStat(0);

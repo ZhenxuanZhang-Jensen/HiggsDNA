@@ -1,14 +1,10 @@
-
-
-
-
 import logging
 
 import awkward
 import vector
 import numpy
 from higgs_dna.selections import (fatjet_selections, jet_selections,
-                                  lepton_selections,gen_selections,object_selections)
+                                  lepton_selections,object_selections)
 
 from higgs_dna.taggers.tagger import NOMINAL_TAG, Tagger
 from higgs_dna.taggers import diphoton_tagger
@@ -63,6 +59,7 @@ DEFAULT_OPTIONS = {
     }  
 }
 
+
 class HHWW_Preselection(Tagger):
     """
     HHWW Preselection tagger for tutorial
@@ -85,9 +82,6 @@ class HHWW_Preselection(Tagger):
         # need to comment when run bkgs
         logger.debug("Is Signal: %s" %self.options["gen_info"]["is_Signal"])
 
-
-        # if not self.is_data and self.options["gen_info"]["is_Signal"]:    
-            # gen_selections.gen_Hww_2q2l(events)
         # Electrons
         electron_cut = lepton_selections.select_electrons(
             electrons=events.Electron,
@@ -114,6 +108,7 @@ class HHWW_Preselection(Tagger):
             n_objects = 1,
             dummy_value = -999
         )
+
 
         ######################################
 
@@ -172,9 +167,17 @@ class HHWW_Preselection(Tagger):
             name = "SelectedFatJet_from_event",
             data = events.FatJet[fatjet_cut]
         )   
+        awkward_utils.add_object_fields(
+        events=events,
+        name="fatjet",
+        objects=fatjets[awkward.argsort(fatjets.pt, ascending=False, axis=-1)],
+        n_objects=3,
+        dummy_value=-999
+        )
 
-        # fatjet_W_cut = ((fatjets.deepTagMD_HbbvsQCD<0.6) & (fatjets.deepTagMD_WvsQCD>0.4) & (fatjets.pt>200))|(fatjets.pt>0)
-        fatjet_W_cut = (fatjets.pt>200) & (fatjets.deepTagMD_WvsQCD>0.4)
+
+        fatjet_W_cut = (fatjets.deepTagMD_WvsQCD>0.4) & (fatjets.pt>200)
+
         fatjets_W = awkward_utils.add_field(
             events = events,
             name = "SelectedFatJet_W_from_event",
@@ -184,7 +187,6 @@ class HHWW_Preselection(Tagger):
         events=events,
         name="fatjet_W",
         objects=fatjets_W[awkward.argsort(fatjets[fatjet_W_cut].deepTagMD_WvsQCD, ascending=False, axis=-1)],
-        # objects=fatjets[fatjet_W_cut][awkward.argsort(fatjets[fatjet_W_cut].deepTagMD_WvsQCD, ascending=False, axis=1)],
         n_objects=1,
         dummy_value=-999
         ) # apply the inverse bb cuts
@@ -227,7 +229,7 @@ class HHWW_Preselection(Tagger):
         #              TODO try to add order with WinvM jets in output.parquet              #
         # ---------------------------------------------------------------------------- #
       
-
+    
         jet_p4 = vector.awk(
             {
                 "pt" : jets["pt"],
@@ -255,9 +257,6 @@ class HHWW_Preselection(Tagger):
             },
             with_name = "Momentum4D"
         )
-        #if not self.is_data and self.options["gen_info"]["is_Signal"]: 
-        #   jets["deltaR_q1"] = jet_p4.deltaR(gen_q1_p4)
-        #   jets["deltaR_q2"] = jet_p4.deltaR(gen_q2_p4)
 
         jets["deltaR_pho1"] = jet_p4.deltaR(lead_photon_vec)
         jets["deltaR_pho2"] = jet_p4.deltaR(sublead_photon_vec)
@@ -269,33 +268,6 @@ class HHWW_Preselection(Tagger):
             n_objects=7,
             dummy_value=-999
         )
-        logger.debug("events num before event_selec: %s"%len(events))
-        # --------------------- sort lead pt jet and sublead pt jet --------------------- #
-        # jets_zip=awkward.Array(numpy.array(awkward.to_list(awkward.zip([events.jet_1_pt,events.jet_2_pt,events.jet_3_pt,events.jet_4_pt,events.jet_5_pt,events.jet_6_pt,events.jet_7_pt]))))
-        # jets_sort=awkward.sort(jets_zip,ascending=False)
-        # leadjet = awkward_utils.add_field(
-        #     events=events,
-        #     name="lead_jet",
-        #     data=jets_sort[:,0]
-        # )
-        # awkward_utils.add_object_fields(
-        # events=events,
-        # name="leadjet",
-        # objects=leadjet,
-        # n_objects=1,
-        # dummy_value=-999)  
-        # subleadjet = awkward_utils.add_field(
-        #     events=events,
-        #     name="sublead_jet",
-        #     data=jets_sort[:,1]
-        # )
-        # awkward_utils.add_object_fields(
-        # events=events,
-        # name="subleadjet",
-        # objects=subleadjet,
-        # n_objects=1,
-        # dummy_value=-999)      
-  
         # bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis=1, ascending=False)]
         # bjets = bjets[bjets.btagDeepFlavB > self.options["btag_wp"][self.year]]
  #       awkward_utils.add_fields(
@@ -304,8 +276,6 @@ class HHWW_Preselection(Tagger):
     #        data = selectedjet
        # )
         # Register as `vector.Momentum4D` objects so we can do four-vector operations with them
-        electrons = awkward.Array(electrons, with_name="Momentum4D")
-        muons = awkward.Array(muons, with_name="Momentum4D")
         electrons = awkward.Array(electrons, with_name="Momentum4D")
         muons = awkward.Array(muons, with_name="Momentum4D")
         e_4p = vector.obj(
@@ -351,8 +321,11 @@ class HHWW_Preselection(Tagger):
         category = awkward.where(category_p1, awkward.ones_like(category)*1, category)
         awkward_utils.add_field(events, "category", category) 
         category_cut = category >= 0 # attention category equal to 0 mean don't pass any selection 
+
         Lepton_Selection = (n_leptons==1)
+
         presel_cut = (photon_id_cut) & (n_leptons==1) & (category_cut)
+
         self.register_cuts(
             names=["Photon Selection","Lepton Selection","Z veto Selection"],
             results=[photon_id_cut,Lepton_Selection,Z_veto_cut]

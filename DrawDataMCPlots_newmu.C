@@ -29,7 +29,7 @@ const int debug=1;
 // const TString TreeNameSig = "Sig125";
 // const TString InputDataFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/New_UL2017data/MassUL2018_ETSS.root";
 // const TString InputDataFile = "/eos/user/s/shsong/hhwwggSL_root/data/2017data.root";
-const TString InputDataFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/data/2017data.root";
+const TString InputDataFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/data/2017data_muon.root";
 
 // const TString InputDataFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/NewDiphotonBDT_UL2018data_lessoverfitting.root";
 // const TString InputDataFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/NewDiphotonBDT_UL2018data_lessoverfitting.root";
@@ -37,51 +37,51 @@ const TString TreeNameData = "Data_13TeV_2017";
 //---
 // const TString InputPPFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/New_pp.root";
 // const TString InputPPFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/XGboost_diphoMVA_UL18_newSig.root";
-const TString Inputgg40to80File = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/DiPhotonJetsBoxM40_80_2017.root";
+const TString Inputgg40to80File = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/DiPhotonJetsBoxM40_80_2017_mu.root";
 const TString TreeNamegg40to80 = "DiPhotonJetsBox";
-// const TString Inputgg80toInfFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/Diphotonjetsbox_M80_Inf_2017.root";
-const TString Inputgg80toInfFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/Diphotonjetsbox_M80_Inf_2017.root";
+// const TString Inputgg80toInfFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/Diphotonjetsbox_M80_Inf_2017_mu.root";
+const TString Inputgg80toInfFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/Diphotonjetsbox_M80_Inf_2017_mu.root";
 const TString TreeNamegg80toInf = "DiphotonJetsbox";
-// const TString InputGjet_Pt20_40File = "/eos/user/s/shsong/hhwwggSL_root/bkg/Gjet_Pt20_40_2017.root";
-const TString InputGjet_Pt20_40File = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/Gjet_Pt20_40_2017.root";
+// const TString InputGjet_Pt20_40File = "/eos/user/s/shsong/hhwwggSL_root/bkg/Gjet_Pt20_40_2017_mu.root";
+const TString InputGjet_Pt20_40File = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/Gjet_Pt20_40_2017_mu.root";
 const TString TreeNameGjet_Pt20_40 = "Gjet";
-// const TString InputGjet_Pt40_InfFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/Gjet_Pt40_Inf_2017.root";
-const TString InputGjet_Pt40_InfFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/Gjet_Pt40_Inf_2017.root";
+// const TString InputGjet_Pt40_InfFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/Gjet_Pt40_Inf_2017_mu.root";
+const TString InputGjet_Pt40_InfFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/Gjet_Pt40_Inf_2017_mu.root";
 const TString TreeNameGjet_Pt40_Inf = "Gjet";
-// const TString InputW1JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W1JetsToLNu_2017.root";
-const TString InputW1JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W1JetsToLNu_2017.root";
+// const TString InputW1JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W1JetsToLNu_2017_mu.root";
+const TString InputW1JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W1JetsToLNu_2017_mu.root";
 // const TString TreeNameW1Jets = "WJetsToLNu";
 const TString TreeNameW1Jets = "WGJets";
-// const TString InputW2JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W2JetsToLNu_2017.root";
-const TString InputW2JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W2JetsToLNu_2017.root";
+// const TString InputW2JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W2JetsToLNu_2017_mu.root";
+const TString InputW2JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W2JetsToLNu_2017_mu.root";
 // const TString TreeNameW2Jets = "WJetsToLNu";
 const TString TreeNameW2Jets = "WGJets";
-// const TString InputW3JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W3JetsToLNu_2017.root";
-const TString InputW3JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W3JetsToLNu_2017.root";
+// const TString InputW3JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W3JetsToLNu_2017_mu.root";
+const TString InputW3JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W3JetsToLNu_2017_mu.root";
 // const TString TreeNameW3Jets = "WJetsToLNu";
 const TString TreeNameW3Jets = "WGJets";
-// const TString InputW4JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W4JetsToLNu_2017.root";
-const TString InputW4JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W4JetsToLNu_2017.root";
+// const TString InputW4JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W4JetsToLNu_2017_mu.root";
+const TString InputW4JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/W4JetsToLNu_2017_mu.root";
 // const TString TreeNameW4Jets = "WJetsToLNu";
 const TString TreeNameW4Jets = "WGJets";
-// const TString InputTTGJetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/TTGJets_2017.root";
-const TString InputTTGJetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/TTGJets_2017.root";
+// const TString InputTTGJetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/TTGJets_2017_mu.root";
+const TString InputTTGJetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/TTGJets_2017_mu.root";
 // const TString TreeNameTTGJets = "TT";
 const TString TreeNameTTGJets = "TTG";
-// const TString InputTTGG0JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/TTGG0Jets_2017.root";
-const TString InputTTGG0JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/TTGG0Jets_2017.root";
+// const TString InputTTGG0JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/TTGG0Jets_2017_mu.root";
+const TString InputTTGG0JetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/TTGG0Jets_2017_mu.root";
 // const TString TreeNameTTGG0Jets = "TT";
 const TString TreeNameTTGG0Jets = "TTG";
-// const TString InputWGJJToLNuFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/WGJJToLNu_2017.root";
-const TString InputWGJJToLNuFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/WGJJToLNu_2017.root";
+// const TString InputWGJJToLNuFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/WGJJToLNu_2017_mu.root";
+const TString InputWGJJToLNuFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/WGJJToLNu_2017_mu.root";
 // const TString TreeNameWGJJToLNu = "WGJJToLNu";
 const TString TreeNameWGJJToLNu = "WGJets";
-// const TString InputttWFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/ttW_2017.root";
-const TString InputttWFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/ttW_2017.root";
+// const TString InputttWFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/ttW_2017_mu.root";
+const TString InputttWFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/ttW_2017_mu.root";
 // const TString TreeNamettW = "ttW";
 const TString TreeNamettW = "TTG";
-// const TString InputTTJetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/TTJets_2017.root";
-const TString InputTTJetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/TTJets_2017.root";
+// const TString InputTTJetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/TTJets_2017_mu.root";
+const TString InputTTJetsFile = "/eos/user/s/shsong/hhwwggSL_root/resonant/bkg/TTJets_2017_mu.root";
 // const TString TreeNameTTJets = "TTJets";
 const TString TreeNameTTJets = "TTG";
 // const TString InputPPFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/XGboost_diphoMVA_UL18_newSig_newModel.root";
@@ -90,15 +90,16 @@ const TString TreeNameTTJets = "TTG";
 // const TString InputQCDFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/XGboost_diphoMVA_UL18_newSig_newModel.root";//SF + sigmaE/E weights + Tao 2D pT weights
 // onst TString TreeNameQCD = "DataDriven_QCD";
 // const string OutputPlotDir = "DataMCComparisonPlots_mvaCuts";
-const string OutputPlotDir = "/eos/user/s/shsong/DataMCComparisonPlots_new";
+const string OutputPlotDir = "/eos/user/s/shsong/DataMCComparisonPlots_newmu";
 // const string OutputPlotDir = "DataMCComparisonPlots_old";
 //const string OutputPlotDir = "DataMCComparisonPlotsBothEB";
 //const string OutputPlotDir = "DataMCComparisonPlotsNotEBEB";
 
 // const string Preselections="";
-const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&category==1";
+// const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)";
+// const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&category==1";
 // const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&category==2";
-// const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&(category==2 ||category==1)";
+const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&(category==2 ||category==1)";
 // const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&(category==3 ||category==4)";
 //const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.) && fabs(leadeta)<1.5 && fabs(subleadeta)<1.5";
 //const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.) && (fabs(leadeta)>1.5 || fabs(subleadeta)>1.5)";
@@ -273,12 +274,12 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
   std::cout << "MCGjet_Pt20_40 entries=" << h_MCGjet_Pt20_40->Integral() << std::endl;
   std::cout << "MCGjet_Pt40_Inf entries=" << h_MCGjet_Pt40_Inf->Integral() << std::endl;
   // std::cout << "MCW1Jets entries=" << h_MCW1Jets->Integral() << std::endl;
-  std::cout << "MCW2Jets entries=" << h_MCW2Jets->Integral() << std::endl;
+  // std::cout << "MCW2Jets entries=" << h_MCW2Jets->Integral() << std::endl;
   std::cout << "MCW3Jets entries=" << h_MCW3Jets->Integral() << std::endl;
   std::cout << "MCW4Jets entries=" << h_MCW4Jets->Integral() << std::endl;
   std::cout << "MCTTGJets entries=" << h_MCTTGJets->Integral() << std::endl;
   std::cout << "MCTTGG0Jets entries=" << h_MCTTGG0Jets->Integral() << std::endl;
-  std::cout << "MCWGJJToLNu entries=" << h_MCWGJJToLNu->Integral() << std::endl;
+  // std::cout << "MCWGJJToLNu entries=" << h_MCWGJJToLNu->Integral() << std::endl;
   std::cout << "MCttW entries=" << h_MCttW->Integral() << std::endl;
   std::cout << "MCTTJets entries=" << h_MCTTJets->Integral() << std::endl;
   h_MCgg40to80->SetLineColor(42);
@@ -311,11 +312,11 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
   // h_MCW1Jets->SetLineStyle(1);
   // h_MCW1Jets->SetLineWidth(2);
 
-  h_MCW2Jets->SetLineColor(6);
-  h_MCW2Jets->SetFillColor(6);
+  // h_MCW2Jets->SetLineColor(6);
+  // h_MCW2Jets->SetFillColor(6);
   //hpf->SetFillStyle(3005);
-  h_MCW2Jets->SetLineStyle(1);
-  h_MCW2Jets->SetLineWidth(2);
+  // h_MCW2Jets->SetLineStyle(1);
+  // h_MCW2Jets->SetLineWidth(2);
 
   h_MCW3Jets->SetLineColor(11);
   h_MCW3Jets->SetFillColor(11);
@@ -341,11 +342,11 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
   h_MCTTGG0Jets->SetLineStyle(1);
   h_MCTTGG0Jets->SetLineWidth(2);  
 
-  h_MCWGJJToLNu->SetLineColor(46);
-  h_MCWGJJToLNu->SetFillColor(46);
-  //hpf->SetFillStyle(3005);
-  h_MCWGJJToLNu->SetLineStyle(1);
-  h_MCWGJJToLNu->SetLineWidth(2);
+  // h_MCWGJJToLNu->SetLineColor(46);
+  // h_MCWGJJToLNu->SetFillColor(46);
+  // //hpf->SetFillStyle(3005);
+  // h_MCWGJJToLNu->SetLineStyle(1);
+  // h_MCWGJJToLNu->SetLineWidth(2);
 
   h_MCttW->SetLineColor(38);
   h_MCttW->SetFillColor(38);
@@ -368,12 +369,12 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
   h_MC->Add(h_MCGjet_Pt20_40,1.0);
   h_MC->Add(h_MCGjet_Pt40_Inf,1.0);
   // h_MC->Add(h_MCW1Jets,1.0);
-  h_MC->Add(h_MCW2Jets,1.0);
+  // h_MC->Add(h_MCW2Jets,1.0);
   h_MC->Add(h_MCW3Jets,1.0);
   h_MC->Add(h_MCW4Jets,1.0);
   h_MC->Add(h_MCTTGJets,1.0);
   h_MC->Add(h_MCTTGG0Jets,1.0);
-  h_MC->Add(h_MCWGJJToLNu,1.0);
+  // h_MC->Add(h_MCWGJJToLNu,1.0);
   h_MC->Add(h_MCttW,1.0);
   h_MC->Add(h_MCTTJets,1.0);
   double Ntot_MC=h_MC->Integral();
@@ -388,12 +389,12 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
   h_MCGjet_Pt20_40->Scale(scale_MC);  
   h_MCGjet_Pt40_Inf->Scale(scale_MC);  
   // h_MCW1Jets->Scale(scale_MC);  
-  h_MCW2Jets->Scale(scale_MC); 
+  // h_MCW2Jets->Scale(scale_MC); 
   h_MCW3Jets->Scale(scale_MC);  
   h_MCW4Jets->Scale(scale_MC);  
   h_MCTTGJets->Scale(scale_MC);
   h_MCTTGG0Jets->Scale(scale_MC);  
-  h_MCWGJJToLNu->Scale(scale_MC);  
+  // h_MCWGJJToLNu->Scale(scale_MC);  
   h_MCttW->Scale(scale_MC); 
   h_MCTTJets->Scale(scale_MC); 
   THStack *hs = new THStack("hs","");
@@ -686,7 +687,7 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
 }
 
 
-void DrawDataMCPlots_new(){
+void DrawDataMCPlots_newmu(){
 
   gROOT->ProcessLine(".x hggPaperStyle.C");
   gStyle->SetOptStat(0);

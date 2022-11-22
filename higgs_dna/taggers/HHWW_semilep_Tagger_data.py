@@ -19,18 +19,22 @@ DUMMY_VALUE = -999.
 DEFAULT_OPTIONS = {
     "electrons": {
         "pt": 10.0,
+        "dz" : 0.1,
         "dr_photons": 0.4,
         "dr_jets": 0.4
     },
     "muons": {
         "pt": 10.0,
-        "eta":2.5,
+        "eta":2.4,
+        "dz" : 0.1,
+        "id" : "tight",
         "dr_photons": 0.4,
-        "dr_jets": 0.4
+        "dr_jets": 0.4,
+        "pfRelIso04_all" : 0.15
     },
     "jets": {
         "pt": 25.0, # attention this is the one exact same as old framework, make this 20 GeV(loose) for further analysis, we all know the higgs-like ak4 jets pt can be very small
-        "eta": 2.5,
+        "eta": 2.4,
         "dr_photons": 0.4,
         "dr_electrons": 0.4,
         "dr_muons": 0.4,
@@ -77,7 +81,6 @@ class HHWW_Preselection(Tagger):
         # data will not select gen level infos 
         # need to comment when run bkgs
         logger.debug("Is Signal: %s" %self.options["gen_info"]["is_Signal"])
-        logger.debug("events num before 4 lepton remove: %s"%len(events))
 
         # Electrons
         electron_cut = lepton_selections.select_electrons(
@@ -275,7 +278,22 @@ class HHWW_Preselection(Tagger):
         # Register as `vector.Momentum4D` objects so we can do four-vector operations with them
         electrons = awkward.Array(electrons, with_name="Momentum4D")
         muons = awkward.Array(muons, with_name="Momentum4D")
-
+        electrons = awkward.Array(electrons, with_name="Momentum4D")
+        muons = awkward.Array(muons, with_name="Momentum4D")
+        e_4p = vector.obj(
+            pt=events.electron_pt,
+            eta=events.electron_eta,
+            phi=events.electron_phi,
+            mass=events.electron_mass
+        )
+        leadpho_4p = vector.obj(
+            pt=events.LeadPhoton.pt,
+            eta=events.LeadPhoton.eta,
+            phi=events.LeadPhoton.phi,
+            mass=events.LeadPhoton.mass
+        )
+        e_leadphoton=e_4p+leadpho_4p
+        Z_veto_cut = abs(e_leadphoton.mass-91.5)>5
         # Preselection
         n_electrons = awkward.num(electrons)
         n_muons = awkward.num(muons)
@@ -311,8 +329,8 @@ class HHWW_Preselection(Tagger):
         presel_cut = (photon_id_cut) & (n_leptons==1) & (category_cut)
 
         self.register_cuts(
-            names=["Photon Selection","Lepton Selection"],
-            results=[photon_id_cut,Lepton_Selection]
+            names=["Photon Selection","Lepton Selection","Z veto Selection"],
+            results=[photon_id_cut,Lepton_Selection,Z_veto_cut]
         )
 
 

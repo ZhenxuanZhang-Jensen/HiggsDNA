@@ -304,8 +304,7 @@ class HHWW_Preselection(Tagger):
     #        data = selectedjet
        # )
         # Register as `vector.Momentum4D` objects so we can do four-vector operations with them
-        electrons = awkward.Array(electrons, with_name="Momentum4D")
-        muons = awkward.Array(muons, with_name="Momentum4D")
+
         electrons = awkward.Array(electrons, with_name="Momentum4D")
         muons = awkward.Array(muons, with_name="Momentum4D")
         e_4p = vector.obj(
@@ -357,6 +356,20 @@ class HHWW_Preselection(Tagger):
             names=["Photon Selection","Lepton Selection","Z veto Selection"],
             results=[photon_id_cut,Lepton_Selection,Z_veto_cut]
         )
-
+        electrons = awkward.Array(electrons, with_name="Momentum4D")
+        muons = awkward.Array(muons, with_name="Momentum4D")
+        lepton = awkward.concatenate([electrons,muons],axis=0)
+        leptons = awkward_utils.add_field(
+            events=events,
+            name="Lepton",
+            data=lepton
+        )
+        awkward_utils.add_object_fields(
+            events=events,
+            name="lepton",
+            objects=leptons,
+            n_object=1,
+            dummy_value=-999
+        )
 
         return presel_cut, events

@@ -24,61 +24,68 @@
 const int debug=1;
 
 //signal only shape for comparison
-const TString InputSignalFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/XGboost_diphoMVA_UL18_newSig_newModel.root";
+// const TString InputSignalFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/XGboost_diphoMVA_UL18_newSig_newModel.root";
 // const TString InputSignalFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/output_sig125_IncludeLumi.root";
-const TString TreeNameSig = "Sig125";
+// const TString TreeNameSig = "Sig125";
 // const TString InputDataFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/New_UL2017data/MassUL2018_ETSS.root";
-const TString InputDataFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/NewDiphotonBDT_UL2018data.root";
+const TString InputDataFile = "/eos/user/s/shsong/hhwwggSL_root/data/2017data.root";
+
+
 // const TString InputDataFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/NewDiphotonBDT_UL2018data_lessoverfitting.root";
 // const TString InputDataFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/NewDiphotonBDT_UL2018data_lessoverfitting.root";
-const TString TreeNameData = "Data_13TeV_UntaggedTag";
+const TString TreeNameData = "Data_13TeV_2017";
 //---
 // const TString InputPPFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/New_pp.root";
 // const TString InputPPFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/XGboost_diphoMVA_UL18_newSig.root";
-const TString InputPPFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/XGboost_diphoMVA_UL18_newSig_newModel.root";
+const TString Inputgg40to80File = "/eos/user/s/shsong/hhwwggSL_root/bkg/DiPhotonJetsBoxM40_80_2017.root";
+const TString TreeNamegg40to80 = "DiPhotonJetsBox";
+const TString Inputgg80toInfFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/Diphotonjetsbox_M80_Inf_2017.root";
+const TString TreeNamegg80toInf = "DiphotonJetsbox";
+const TString InputGjet_Pt20_40File = "/eos/user/s/shsong/hhwwggSL_root/bkg/Gjet_Pt20_40_2017.root";
+const TString TreeNameGjet_Pt20_40 = "Gjet";
+const TString InputGjet_Pt40_InfFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/Gjet_Pt40_Inf_2017.root";
+const TString TreeNameGjet_Pt40_Inf = "Gjet";
+const TString InputW1JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W1JetsToLNu_2017.root";
+const TString TreeNameW1Jets = "WJetsToLNu";
+const TString InputW2JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W2JetsToLNu_2017.root";
+const TString TreeNameW2Jets = "WJetsToLNu";
+const TString InputW3JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W3JetsToLNu_2017.root";
+const TString TreeNameW3Jets = "WJetsToLNu";
+const TString InputW4JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/W4JetsToLNu_2017.root";
+const TString TreeNameW4Jets = "WJetsToLNu";
+const TString InputTTGJetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/TTGJets_2017.root";
+const TString TreeNameTTGJets = "TT";
+const TString InputTTGG0JetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/TTGG0Jets_2017.root";
+const TString TreeNameTTGG0Jets = "TT";
+const TString InputWGJJToLNuFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/WGJJToLNu_2017.root";
+const TString TreeNameWGJJToLNu = "WGJJToLNu";
+const TString InputttWFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/ttW_2017.root";
+const TString TreeNamettW = "ttW";
+const TString InputTTJetsFile = "/eos/user/s/shsong/hhwwggSL_root/bkg/TTJets_2017.root";
+const TString TreeNameTTJets = "TTJets";
+
+// const TString InputPPFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/XGboost_diphoMVA_UL18_newSig_newModel.root";
 // const TString InputPPFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/.root";
-const TString TreeNamePP = "pp";
-
-//const TString InputQCDFile = "New_DataDriven_QCD.root"; //wo min ID photon sigmaE/E reweighting
-//const TString InputQCDFile = "New_DataDriven_QCD_sEoEWgt.root"; //SF + EC pT Weights + sigmaE/E weights
-//const TString InputQCDFile = "New_DataDriven_QCD_OnlySF.root"; //SF
-//const TString InputQCDFile = "New_DataDriven_QCD_NoPTWgt_sEoEWgt.root";//SF +  sigmaE/E weights
-//const TString InputQCDFile = "New_DataDriven_QCD_2DpTWgt.root"; //SF + Tao 2D pT weights
-//const TString InputQCDFile = "New_DataDriven_QCD_SF_2DpTWgt_sEoEWgt.root"; //SF + Tao 2D pT weights + sigmaE/E weights
-// const TString InputQCDFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/New_DataDriven_QCD_SFs_sEoEWgt_2DpTWgt.root";//SF + sigmaE/E weights + Tao 2D pT weights
-// const TString InputQCDFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/XGboost_diphoMVA_UL18_newSig.root";//SF + sigmaE/E weights + Tao 2D pT weights
-const TString InputQCDFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/XGboost_diphoMVA_UL18_newSig_newModel.root";//SF + sigmaE/E weights + Tao 2D pT weights
-const TString TreeNameQCD = "DataDriven_QCD";
-
+// const TString TreeNamePP = "pp";
+// const TString InputQCDFile = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2018/MassUL2018_ETSS/XGboost_diphoMVA_UL18_newSig_newModel.root";//SF + sigmaE/E weights + Tao 2D pT weights
+// onst TString TreeNameQCD = "DataDriven_QCD";
 // const string OutputPlotDir = "DataMCComparisonPlots_mvaCuts";
-const string OutputPlotDir = "DataMCComparisonPlots_weightedDiphoBDT";
+const string OutputPlotDir = "/eos/user/s/shsong/DataMCComparisonPlots";
 // const string OutputPlotDir = "DataMCComparisonPlots_old";
 //const string OutputPlotDir = "DataMCComparisonPlotsBothEB";
 //const string OutputPlotDir = "DataMCComparisonPlotsNotEBEB";
 
 // const string Preselections="";
-const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)";
+// const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)";
+// const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&category==1";
+// const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&category==2";
+const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&(category==2 ||category==1)";
+// const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.)&&(category==3 ||category==4)";
 //const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.) && fabs(leadeta)<1.5 && fabs(subleadeta)<1.5";
 //const string Preselections="(CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.) && (fabs(leadeta)>1.5 || fabs(subleadeta)>1.5)";
 // const string MCWeight = "weight";
-const string MCWeight = "weight*Norm_SFs"; // add a new weight to scale diphoton bdt score >-0.85
+const string MCWeight = "weight";// "weight*41.5"; // add a new weight to scale diphoton bdt score >-0.85
 
-//VBF
-///*
-// const TString InputDataFile = "/eos/cms/store/user/jtao/MassInterference/CMSSW_10_6_8/VBFMiniTree/data2017_VBFMiniTree.root";
-// const TString TreeNameData = "tagsDumper/trees/Data_13TeV_VBFTag";
-
-// //const TString InputPPFile = "/eos/cms/store/user/jtao/MassInterference/CMSSW_10_6_8/VBFMiniTree/New_DiPhotonJetsBox_VBFMiniTree_WithSF.root";
-// const TString InputPPFile = "/eos/cms/store/user/jtao/MassInterference/CMSSW_10_6_8/VBFMiniTree/New_DiPhotonJetsBox_VBFMiniTree_SFandVars.root";
-// const TString TreeNamePP = "DiPhotonJetsBox_VBFMiniTree";
-
-// //const TString InputQCDFile = "/eos/cms/store/user/jtao/MassInterference/CMSSW_10_6_8/VBFMiniTree/New_DataDrivenQCD_UL2017_VBFTag_WithSF.root";
-// const TString InputQCDFile = "/eos/cms/store/user/jtao/MassInterference/CMSSW_10_6_8/VBFMiniTree/New_DataDrivenQCD_UL2017_VBFTag_SFandVars_sEoEWgt_2DpTWgt.root";
-// const TString TreeNameQCD = "DataDrivenQCD_UL2017_VBFTag";
-
-// //const string OutputPlotDir = "VBFDataMCComparisonPlots";
-// //const string OutputPlotDir = "VBFDataMCComparisonPlotsBothEB";
-// const string OutputPlotDir = "VBFDataMCComparisonPlotsNotEBEB";
 // */
 //====================
 
@@ -107,22 +114,44 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
 
   //====add root file
   TChain *Data_Tree=new TChain(TreeNameData);
-  TChain *MCpp_Tree=new TChain(TreeNamePP);
-  TChain *MCqcd_Tree=new TChain(TreeNameQCD);
-  TChain *MCsig_Tree =new TChain(TreeNameSig);
+  TChain *MCgg40to80_Tree=new TChain(TreeNamegg40to80);
+  TChain *MCgg80toInf_Tree=new TChain(TreeNamegg80toInf);
+  TChain *MCGjet_Pt20_40_Tree=new TChain(TreeNameGjet_Pt20_40);
+  TChain *MCGjet_Pt40_Inf_Tree=new TChain(TreeNameGjet_Pt40_Inf);
+  TChain *MCW1Jets_Tree=new TChain(TreeNameW1Jets);
+  TChain *MCW2Jets_Tree=new TChain(TreeNameW2Jets);
+  TChain *MCW3Jets_Tree=new TChain(TreeNameW3Jets);
+  TChain *MCW4Jets_Tree=new TChain(TreeNameW4Jets);
+  TChain *MCTTGJets_Tree=new TChain(TreeNameTTGJets);
+  TChain *MCTTGG0Jets_Tree=new TChain(TreeNameTTGG0Jets);
+  TChain *MCWGJJToLNu_Tree=new TChain(TreeNameWGJJToLNu);
+  TChain *MCttW_Tree=new TChain(TreeNamettW);  
+  TChain *MCTTJets_Tree=new TChain(TreeNameTTJets);  
+
 
   //====================
   Data_Tree->Add(InputDataFile);
-  MCpp_Tree->Add(InputPPFile);
-  MCqcd_Tree->Add(InputQCDFile);
-  MCsig_Tree->Add(InputSignalFile);
+  MCgg80toInf_Tree->Add(Inputgg80toInfFile);
+  MCgg40to80_Tree->Add(Inputgg40to80File);
+  MCGjet_Pt20_40_Tree->Add(InputGjet_Pt20_40File);
+  MCGjet_Pt40_Inf_Tree->Add(InputGjet_Pt40_InfFile);
+  MCW1Jets_Tree->Add(InputW1JetsFile);
+  MCW2Jets_Tree->Add(InputW2JetsFile);
+  MCW3Jets_Tree->Add(InputW3JetsFile);
+  MCW4Jets_Tree->Add(InputW4JetsFile);
+  MCTTGJets_Tree->Add(InputTTGJetsFile);
+  MCTTGG0Jets_Tree->Add(InputTTGG0JetsFile);
+  MCWGJJToLNu_Tree->Add(InputWGJJToLNuFile);
+  MCttW_Tree->Add(InputttWFile);
+  MCTTJets_Tree->Add(InputTTJetsFile);
+
 
   //=========entries================
   int entries_Data = Data_Tree->GetEntries();
-  if(debug==1) cout <<"JTao: nEntries_Data = "<<entries_Data<<endl;
+  if(debug==1) cout <<" nEntries_Data = "<<entries_Data<<endl;
 
   //int entries_MC = MC_Tree->GetEntries();
-  //if(debug==1) cout <<"JTao: nEntries_MC = "<<entries_MC<<endl;
+  //if(debug==1) cout <<" nEntries_MC = "<<entries_MC<<endl;
 
   c1->cd();
 
@@ -131,7 +160,7 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
   sprintf(myLimits,"(%d,%f,%f)",BinTotal,BinXLow,BinXHig);
   TString Taolimits(myLimits);
 
-  cout<<"JTao : selections -- "<<Selections<<endl;
+  cout<<"selections -- "<<Selections<<endl;
   //====data=======
   TString variable_Data = Object + ">>Histo_Data_temp" + Taolimits;
   Data_Tree->Draw(variable_Data, Selections.c_str());
@@ -140,7 +169,7 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
   c1->Clear();
 
   double Ntot_Data=h_data->Integral();
-  if( debug==1 ) cout<<"JTao: N_Data= "<<Ntot_Data<<endl;
+  if( debug==1 ) cout<<" N_Data= "<<Ntot_Data<<endl;
 
   Double_t scale_Data = 1.0/Ntot_Data;
   h_data->Sumw2();
@@ -148,67 +177,220 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
 
   //---MC---
   string MCSelections = MCWeight + "*(" + Selections + ")";
+  std::cout << "MCSelections"<<MCSelections<< std::endl;
   const string Sig_weight = "weight"; // add a new weight to scale diphoton bdt score >-0.85
-  cout<<"JTao : MC selections -- "<<MCSelections<<endl;
-
-  TString variable_MCpp = Object + ">>Histo_MCpp_temp" + Taolimits;
-  MCpp_Tree->Draw(variable_MCpp,MCSelections.c_str());
-  TH1D *h_MCpp = (TH1D*)gDirectory->Get("Histo_MCpp_temp");
+  cout<<"MC selections -- "<<MCSelections<<endl;
+  TString variable_MCgg40to80 = Object + ">>Histo_MCgg40to80_temp" + Taolimits;
+  MCgg40to80_Tree->Draw(variable_MCgg40to80,MCSelections.c_str());
+  TH1D *h_MCgg40to80 = (TH1D*)gDirectory->Get("Histo_MCgg40to80_temp");
   c1->Clear();
+  TString variable_MCgg80toInf = Object + ">>Histo_MCgg80toInf_temp" + Taolimits;
+  MCgg80toInf_Tree->Draw(variable_MCgg80toInf,MCSelections.c_str());
+  TH1D *h_MCgg80toInf = (TH1D*)gDirectory->Get("Histo_MCgg80toInf_temp");
+  c1->Clear();
+  TString variable_MCGjet_Pt20_40 = Object + ">>Histo_MCGjet_Pt20_40_temp" + Taolimits;
+  MCGjet_Pt20_40_Tree->Draw(variable_MCGjet_Pt20_40,MCSelections.c_str());
+  TH1D *h_MCGjet_Pt20_40 = (TH1D*)gDirectory->Get("Histo_MCGjet_Pt20_40_temp");
+  c1->Clear();
+  TString variable_MCGjet_Pt40_Inf = Object + ">>Histo_MCGjet_Pt40_Inf_temp" + Taolimits;
+  MCGjet_Pt40_Inf_Tree->Draw(variable_MCGjet_Pt40_Inf,MCSelections.c_str());
+  TH1D *h_MCGjet_Pt40_Inf = (TH1D*)gDirectory->Get("Histo_MCGjet_Pt40_Inf_temp");
+  c1->Clear();
+  TString variable_MCW1Jets = Object + ">>Histo_MCW1Jets_temp" + Taolimits;
+  MCW1Jets_Tree->Draw(variable_MCW1Jets,MCSelections.c_str());
+  TH1D *h_MCW1Jets = (TH1D*)gDirectory->Get("Histo_MCW1Jets_temp");
+  c1->Clear();
+  TString variable_MCW2Jets = Object + ">>Histo_MCW2Jets_temp" + Taolimits;
+  MCW2Jets_Tree->Draw(variable_MCW2Jets,MCSelections.c_str());
+  TH1D *h_MCW2Jets = (TH1D*)gDirectory->Get("Histo_MCW2Jets_temp");
+  c1->Clear();
+  TString variable_MCW3Jets = Object + ">>Histo_MCW3Jets_temp" + Taolimits;
+  MCW3Jets_Tree->Draw(variable_MCW3Jets,MCSelections.c_str());
+  TH1D *h_MCW3Jets = (TH1D*)gDirectory->Get("Histo_MCW3Jets_temp");
+  c1->Clear();
+  TString variable_MCW4Jets = Object + ">>Histo_MCW4Jets_temp" + Taolimits;
+  MCW4Jets_Tree->Draw(variable_MCW4Jets,MCSelections.c_str());
+  TH1D *h_MCW4Jets = (TH1D*)gDirectory->Get("Histo_MCW4Jets_temp");
+  c1->Clear();
+  TString variable_MCTTGJets = Object + ">>Histo_MCTTGJets_temp" + Taolimits;
+  MCTTGJets_Tree->Draw(variable_MCTTGJets,MCSelections.c_str());
+  TH1D *h_MCTTGJets = (TH1D*)gDirectory->Get("Histo_MCTTGJets_temp");
+  c1->Clear();
+  TString variable_MCTTGG0Jets = Object + ">>Histo_MCTTGG0Jets_temp" + Taolimits;
+  MCTTGG0Jets_Tree->Draw(variable_MCTTGG0Jets,MCSelections.c_str());
+  TH1D *h_MCTTGG0Jets = (TH1D*)gDirectory->Get("Histo_MCTTGG0Jets_temp");
+  c1->Clear();
+  TString variable_MCWGJJToLNu = Object + ">>Histo_MCWGJJToLNu_temp" + Taolimits;
+  MCWGJJToLNu_Tree->Draw(variable_MCWGJJToLNu,MCSelections.c_str());
+  TH1D *h_MCWGJJToLNu = (TH1D*)gDirectory->Get("Histo_MCWGJJToLNu_temp");
+  c1->Clear();
+  TString variable_MCttW = Object + ">>Histo_MCttW_temp" + Taolimits;
+  MCttW_Tree->Draw(variable_MCttW,MCSelections.c_str());
+  TH1D *h_MCttW = (TH1D*)gDirectory->Get("Histo_MCttW_temp");
+  c1->Clear();
+  TString variable_MCTTJets = Object + ">>Histo_MCTTJets_temp" + Taolimits;
+  MCTTJets_Tree->Draw(variable_MCTTJets,MCSelections.c_str());
+  TH1D *h_MCTTJets = (TH1D*)gDirectory->Get("Histo_MCTTJets_temp");
+  c1->Clear();
+  // TString variable_MCpp = Object + ">>Histo_MCpp_temp" + Taolimits;
+  // MCpp_Tree->Draw(variable_MCpp,MCSelections.c_str());
+  // TH1D *h_MCpp = (TH1D*)gDirectory->Get("Histo_MCpp_temp");
+  
   // signal shape only for comparsion:
-  TString variable_MCsig = Object + ">>Histo_MCsig_temp" + Taolimits;
-  MCsig_Tree->Draw(variable_MCsig, Sig_weight.c_str());
-  TH1D *h_MCsig = (TH1D*)gDirectory->Get("Histo_MCsig_temp");
-  h_MCsig->Scale(1000);
-  std::cout << "MCsig entries=" << h_MCsig->Integral() << std::endl;
-  c1->Clear();
+//  TString variable_MCsig = Object + ">>Histo_MCsig_temp" + Taolimits;
+  // MCsig_Tree->Draw(variable_MCsig, Sig_weight.c_str());
+  // TH1D *h_MCsig = (TH1D*)gDirectory->Get("Histo_MCsig_temp");
+  // h_MCsig->Scale(1000);
+  // std::cout << "MCsig entries=" << h_MCsig->Integral() << std::endl;
+  // c1->Clear();
 
 
-  TString variable_MCqcd = Object + ">>Histo_MCqcd_temp" + Taolimits;
-  MCqcd_Tree->Draw(variable_MCqcd, MCSelections.c_str());
-  TH1D *h_MCqcd = (TH1D*)gDirectory->Get("Histo_MCqcd_temp");
-  c1->Clear();
-  std::cout << "MCpp entries=" << h_MCpp->Integral() << std::endl;
-  std::cout << "MCqcd entries=" << h_MCqcd->Integral() << std::endl;
-  h_MCsig->SetLineColor(23);
-  h_MCsig->SetFillColor(23);
-  h_MCsig->SetFillStyle(3004);
-  h_MCsig->SetLineStyle(1);
-  h_MCsig->SetLineWidth(2);
+  // TString variable_MCqcd = Object + ">>Histo_MCqcd_temp" + Taolimits;
+  // MCqcd_Tree->Draw(variable_MCqcd, MCSelections.c_str());
+  // TH1D *h_MCqcd = (TH1D*)gDirectory->Get("Histo_MCqcd_temp");
+  // c1->Clear();
+  std::cout << "MCgg40to80 entries=" << h_MCgg40to80->Integral()<< std::endl;
+  std::cout << "MCgg80toInf entries=" << h_MCgg80toInf->Integral() << std::endl;
+  std::cout << "MCGjet_Pt20_40 entries=" << h_MCGjet_Pt20_40->Integral() << std::endl;
+  std::cout << "MCGjet_Pt40_Inf entries=" << h_MCGjet_Pt40_Inf->Integral() << std::endl;
+  std::cout << "MCW1Jets entries=" << h_MCW1Jets->Integral() << std::endl;
+  std::cout << "MCW2Jets entries=" << h_MCW2Jets->Integral() << std::endl;
+  std::cout << "MCW3Jets entries=" << h_MCW3Jets->Integral() << std::endl;
+  std::cout << "MCW4Jets entries=" << h_MCW4Jets->Integral() << std::endl;
+  std::cout << "MCTTGJets entries=" << h_MCTTGJets->Integral() << std::endl;
+  std::cout << "MCTTGG0Jets entries=" << h_MCTTGG0Jets->Integral() << std::endl;
+  std::cout << "MCWGJJToLNu entries=" << h_MCWGJJToLNu->Integral() << std::endl;
+  std::cout << "MCttW entries=" << h_MCttW->Integral() << std::endl;
+  std::cout << "MCTTJets entries=" << h_MCTTJets->Integral() << std::endl;
+  h_MCgg40to80->SetLineColor(42);
+  h_MCgg40to80->SetFillColor(42);
+  // h_MCgg40to80->SetFillStyle(3004);
+  h_MCgg40to80->SetLineStyle(1);
+  h_MCgg40to80->SetLineWidth(2);
 
-  h_MCpp->SetLineColor(38);
-  h_MCpp->SetFillColor(38);
-  //h_MCpp->SetFillStyle(3004);
-  h_MCpp->SetLineStyle(1);
-  h_MCpp->SetLineWidth(2);
+  h_MCgg80toInf->SetLineColor(7);
+  h_MCgg80toInf->SetFillColor(7);
+  // h_MCgg80toInf->SetFillStyle(3004);
+  h_MCgg80toInf->SetLineStyle(1);
+  h_MCgg80toInf->SetLineWidth(2);
 
-  h_MCqcd->SetLineColor(30);
-  h_MCqcd->SetFillColor(30);
+  h_MCGjet_Pt20_40->SetLineColor(3);
+  h_MCGjet_Pt20_40->SetFillColor(3);
+  //h_MCGjet_Pt20_40->SetFillStyle(3004);
+  h_MCGjet_Pt20_40->SetLineStyle(1);
+  h_MCGjet_Pt20_40->SetLineWidth(2);
+
+  h_MCGjet_Pt40_Inf->SetLineColor(4);
+  h_MCGjet_Pt40_Inf->SetFillColor(4);
+  //h_MCGjet_Pt40_Inf->SetFillStyle(3004);
+  h_MCGjet_Pt40_Inf->SetLineStyle(1);
+  h_MCGjet_Pt40_Inf->SetLineWidth(2);
+
+  h_MCW1Jets->SetLineColor(5);
+  h_MCW1Jets->SetFillColor(5);
+  // hpf->SetFillStyle(3005);
+  h_MCW1Jets->SetLineStyle(1);
+  h_MCW1Jets->SetLineWidth(2);
+
+  h_MCW2Jets->SetLineColor(6);
+  h_MCW2Jets->SetFillColor(6);
   //hpf->SetFillStyle(3005);
-  h_MCqcd->SetLineStyle(1);
-  h_MCqcd->SetLineWidth(2);
+  h_MCW2Jets->SetLineStyle(1);
+  h_MCW2Jets->SetLineWidth(2);
 
+  h_MCW3Jets->SetLineColor(11);
+  h_MCW3Jets->SetFillColor(11);
+  //hpf->SetFillStyle(3005);
+  h_MCW3Jets->SetLineStyle(1);
+  h_MCW3Jets->SetLineWidth(2);
 
- 
+  h_MCW4Jets->SetLineColor(8);
+  h_MCW4Jets->SetFillColor(8);
+  //hpf->SetFillStyle(3005);
+  h_MCW4Jets->SetLineStyle(1);
+  h_MCW4Jets->SetLineWidth(2);
 
+  h_MCTTGJets->SetLineColor(9);
+  h_MCTTGJets->SetFillColor(9);
+  //hpf->SetFillStyle(3005);
+  h_MCTTGJets->SetLineStyle(1);
+  h_MCTTGJets->SetLineWidth(2);
+
+  h_MCTTGG0Jets->SetLineColor(1);
+  h_MCTTGG0Jets->SetFillColor(1);
+  //hpf->SetFillStyle(3005);
+  h_MCTTGG0Jets->SetLineStyle(1);
+  h_MCTTGG0Jets->SetLineWidth(2);  
+
+  h_MCWGJJToLNu->SetLineColor(46);
+  h_MCWGJJToLNu->SetFillColor(46);
+  //hpf->SetFillStyle(3005);
+  h_MCWGJJToLNu->SetLineStyle(1);
+  h_MCWGJJToLNu->SetLineWidth(2);
+
+  h_MCttW->SetLineColor(38);
+  h_MCttW->SetFillColor(38);
+  //hpf->SetFillStyle(3005);
+  h_MCttW->SetLineStyle(1);
+  h_MCttW->SetLineWidth(2);
+
+  h_MCTTJets->SetLineColor(20);
+  h_MCTTJets->SetFillColor(20);
+  //hpf->SetFillStyle(3005);
+  h_MCTTJets->SetLineStyle(1);
+  h_MCTTJets->SetLineWidth(2);
   // cout << "scale factor:" << scale_MC << endl;
   // hs->Scale(scale_MC);
   //h_MC->Scale(MCXSweight);
   TH1D *h_MC=new TH1D("h_MC","",BinTotal,BinXLow,BinXHig);
   h_MC->Sumw2();
-  h_MC->Add(h_MCpp,1.0);
-  h_MC->Add(h_MCqcd,1.0);
+  h_MC->Add(h_MCgg40to80,1.0);
+  h_MC->Add(h_MCgg80toInf,1.0);
+  h_MC->Add(h_MCGjet_Pt20_40,1.0);
+  h_MC->Add(h_MCGjet_Pt40_Inf,1.0);
+  h_MC->Add(h_MCW1Jets,1.0);
+  h_MC->Add(h_MCW2Jets,1.0);
+  h_MC->Add(h_MCW3Jets,1.0);
+  h_MC->Add(h_MCW4Jets,1.0);
+  h_MC->Add(h_MCTTGJets,1.0);
+  h_MC->Add(h_MCTTGG0Jets,1.0);
+  h_MC->Add(h_MCWGJJToLNu,1.0);
+  h_MC->Add(h_MCttW,1.0);
+  h_MC->Add(h_MCTTJets,1.0);
   double Ntot_MC=h_MC->Integral();
-  if( debug==1 ) cout<<"JTao: N_MC= "<<Ntot_MC<<endl;
+  if( debug==1 ) cout<<" N_MC= "<<Ntot_MC<<endl;
   Double_t scale_MC = Ntot_Data*1.0/Ntot_MC;
+  cout << "nomalization scale factor = " <<scale_MC<<endl;
+  scale_MC = 1;  
   h_MC->Sumw2();
   h_MC->Scale(scale_MC);  
-  h_MCpp->Scale(scale_MC);  
-  h_MCqcd->Scale(scale_MC);  
-
+  h_MCgg40to80->Scale(scale_MC);  
+  h_MCgg80toInf->Scale(scale_MC);
+  h_MCGjet_Pt20_40->Scale(scale_MC);  
+  h_MCGjet_Pt40_Inf->Scale(scale_MC);  
+  h_MCW1Jets->Scale(scale_MC);  
+  h_MCW2Jets->Scale(scale_MC); 
+  h_MCW3Jets->Scale(scale_MC);  
+  h_MCW4Jets->Scale(scale_MC);  
+  h_MCTTGJets->Scale(scale_MC);
+  h_MCTTGG0Jets->Scale(scale_MC);  
+  h_MCWGJJToLNu->Scale(scale_MC);  
+  h_MCttW->Scale(scale_MC); 
+  h_MCTTJets->Scale(scale_MC); 
   THStack *hs = new THStack("hs","");
-  hs->Add(h_MCpp);
-  hs->Add(h_MCqcd);
+  hs->Add(h_MCgg40to80);
+  hs->Add(h_MCgg80toInf);
+  hs->Add(h_MCGjet_Pt20_40);
+  hs->Add(h_MCGjet_Pt40_Inf);
+  hs->Add(h_MCW1Jets);
+  hs->Add(h_MCW2Jets);
+  hs->Add(h_MCW3Jets);
+  hs->Add(h_MCW4Jets);
+  hs->Add(h_MCTTGJets);
+  hs->Add(h_MCTTGG0Jets);
+  hs->Add(h_MCWGJJToLNu);
+  hs->Add(h_MCttW);
+  hs->Add(h_MCTTJets);
 
   double Chi2=0.;
   for(int ibin=0; ibin<BinTotal; ibin++){
@@ -219,7 +401,7 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
     Chi2 += fabs(NmErr)>1e-9?(Nm-Nd)*(Nm-Nd)*1.0/(NmErr*NmErr):0.0;
   }
 
-  cout<<"JTao: chi2 = "<<Chi2<<endl;
+  cout<<" chi2 = "<<Chi2<<endl;
 
   //Stat Err
   TH1D *htot=new TH1D("htot","",BinTotal,BinXLow,BinXHig);
@@ -284,10 +466,23 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
 
   //legend->AddEntry(h_data,"data","pe");
   //legend->AddEntry(h_MC,"MC","f");
+
   legend->AddEntry(h_data,"Data","pe");
-  legend->AddEntry(h_MCpp,"#gamma#gamma","f");
-  legend->AddEntry(h_MCsig,"Sig #times 1000","f");
-  legend->AddEntry(h_MCqcd,"Data-driven QCD","f");
+  legend->AddEntry(h_MCgg40to80,"gg40to80","f");
+  legend->AddEntry(h_MCgg80toInf,"#gg80toInf","f");
+  legend->AddEntry(h_MCGjet_Pt20_40,"Gjet_Pt20_40","f");
+  legend->AddEntry(h_MCGjet_Pt40_Inf,"Gjet_Pt40_Inf","f");
+  legend->AddEntry(h_MCW1Jets,"W1Jets","f");
+  legend->AddEntry(h_MCW2Jets,"W2Jets","f");
+  legend->AddEntry(h_MCW3Jets,"W3Jets","f");
+  legend->AddEntry(h_MCW4Jets,"W4Jets","f");
+  legend->AddEntry(h_MCTTGJets,"TTGJets","f");
+  legend->AddEntry(h_MCTTGG0Jets,"TTGG0Jets","f");
+  legend->AddEntry(h_MCWGJJToLNu,"WGJJToLNu","f");
+  legend->AddEntry(h_MCttW,"ttW","f");
+  legend->AddEntry(h_MCTTJets,"TTJets","f");
+  legend -> SetTextSize(0.016);
+
   // if(IfStatErr==1) 
   legend->AddEntry(htot_Norm, " MC Stat. Err.","f");
 
@@ -355,7 +550,7 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
   h_data->Draw("PE1");
   legend->Draw("same");
   hs->Draw("hist,same");
-  h_MCsig->Draw("hist,same");
+  // h_MCsig->Draw("hist,same");
   //h_MC->Draw("hist,same");
   // if(IfStatErr==1){
   // }
@@ -363,7 +558,7 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
   h_data->Draw("samePE1");
   h_data->Draw("Axissame");
   // check different bin content
-  cout << "JTao:  1 bin:" << h_MC->GetBinContent(1) << endl;
+  cout << "  1 bin:" << h_MC->GetBinContent(1) << endl;
 
   /*
     TLatex a;
@@ -372,7 +567,7 @@ void DrawMyPlots(string Object, string Selections,  string XTitle, string YUnit,
     a.DrawLatex(0.2,0.94, PrintInfor);
   */
   const TString PrintInfor1="#bf{CMS} #it{} #it{Preliminary}";
-  const TString PrintInfor2="59.8 fb^{-1} (13TeV)"; 
+  const TString PrintInfor2="41.5 fb^{-1} (13TeV)"; 
   //tex = new TLatex(0.129,0.93, PrintInfor1);
   //TLatex *tex1 = new TLatex(0.16,0.94, PrintInfor1);
   TLatex *tex1 = new TLatex(0.25,0.94,PrintInfor1);
@@ -480,18 +675,21 @@ void DrawDataMCPlots(){
 
   
   //All
-  string Preselections="((CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.))";
+  // string Preselections="((CMS_hgg_mass <= 115. || CMS_hgg_mass >= 135.))";
   // string Preselections="(CMS_hgg_mass >= -100000.)";
 
-  string PreselectionsMVA0=Preselections + " && diphoMVA>0.";
-  string PreselectionsMVA05=Preselections + " && diphoMVA>0.5";
-  string PreselectionsMVA08=Preselections + " && diphoMVA>0.8";
-  string PreselectionsMVA95=Preselections + " && diphoMVA>0.95";
-  string PreselectionsMVA99=Preselections + " && diphoMVA>0.99";
-  DrawMyPlots("DiphotonMVA_self", Preselections, "New Diphoton BDT score", "GeV", "NewDiphotonBDT", 40, -1., 1., 1, 0);
-  return;
-  DrawMyPlots("CMS_hgg_mass", Preselections, "m_{#gamma#gamma} (GeV)", "GeV", "DiphotonMass", 80, 100., 180., 0, 0);
-  DrawMyPlots("diphoMVA", Preselections, "Diphoton BDT score", "GeV", "TransformedDiphotonBDT", 40, -1., 1., 1, 0);
+  // string PreselectionsMVA0=Preselections + " && diphoMVA>0.";
+  // string PreselectionsMVA05=Preselections + " && diphoMVA>0.5";
+  // string PreselectionsMVA08=Preselections + " && diphoMVA>0.8";
+  // string PreselectionsMVA95=Preselections + " && diphoMVA>0.95";
+  // string PreselectionsMVA99=Preselections + " && diphoMVA>0.99";
+  // DrawMyPlots("DiphotonMVA_self", Preselections, "New Diphoton BDT score", "GeV", "NewDiphotonBDT", 40, -1., 1., 1, 0);
+  // return;
+  // DrawMyPlots("CMS_hgg_mass", Preselections, "m_{#gamma#gamma} (GeV)", "GeV", "DiphotonMass", 50, 100., 180., 0, 0);
+  DrawMyPlots("sclaed_subleadphoton_pt", Preselections, "sclaed_subleadphoton_pt (GeV)", "GeV", "sclaed_subleadphoton_pt", 50, 0., 2., 0, 0);
+  // DrawMyPlots("sclaed_leadphoton_pt", Preselections, "sclaed_leadphoton_pt (GeV)", "GeV", "sclaed_leadphoton_pt", 50, 0., 2., 0, 0);
+
+  // DrawMyPlots("diphoMVA", Preselections, "Diphoton BDT score", "GeV", "TransformedDiphotonBDT", 40, -1., 1., 1, 0);
   // return;
   // DrawMyPlots("1. / (1. + exp(0.5 * log(2./(DiphotonMVA_self + 1.)-1.)))", Preselections, "Transformed new Diphoton BDT score", "GeV", "Transformed_New_Diphoton_BDT_score", 50, 0., 1., 1, 0);
   // return;
@@ -510,21 +708,21 @@ void DrawDataMCPlots(){
     // DrawMyPlots("leadR9", Preselections, "Leading #gamma R_{9}", "", "leadR9", 40, 0.4, 1.2, 1, 0);
     // DrawMyPlots("subleadR9", Preselections, "Subleading #gamma R_{9}", "", "subleadR9", 40, 0.4, 1.2, 1, 0);
 
-    DrawMyPlots("leadptom", Preselections, "p^{leading #gamma}_{T}/m_{#gamma#gamma}", "", "leadptom", 100, 0., 2., 0, 0);
-    DrawMyPlots("subleadptom", Preselections, "p^{subleading #gamma}_{T}/m_{#gamma#gamma}", "", "subleadptom", 100, 0., 1., 0, 0);
-    DrawMyPlots("leadmva", Preselections, "Leading #gamma ID scores", "", "leadmva", 40, -1.0, 1.0, 1, 0);
-    DrawMyPlots("subleadmva", Preselections, "Subleading #gamma ID scores", "", "subleadmva", 40, -1.0, 1.0, 1, 0);
+    // DrawMyPlots("leadptom", Preselections, "p^{leading #gamma}_{T}/m_{#gamma#gamma}", "", "leadptom", 100, 0., 2., 0, 0);
+    // DrawMyPlots("subleadptom", Preselections, "p^{subleading #gamma}_{T}/m_{#gamma#gamma}", "", "subleadptom", 100, 0., 1., 0, 0);
+    // DrawMyPlots("leadmva", Preselections, "Leading #gamma ID scores", "", "leadmva", 40, -1.0, 1.0, 1, 0);
+    // DrawMyPlots("subleadmva", Preselections, "Subleading #gamma ID scores", "", "subleadmva", 40, -1.0, 1.0, 1, 0);
     // DrawMyPlots("min(leadmva,subleadmva)", Preselections, "Min. #gamma ID scores", "", "minmva", 40, -1.0, 1.0, 1, 0);
     // DrawMyPlots("max(leadmva,subleadmva)", Preselections, "Max. #gamma ID scores", "", "maxmva", 40, -1.0, 1.0, 1, 0);
 
-  DrawMyPlots("leadeta", Preselections, "Leading #gamma #eta_{SC}", "", "leadeta", 50, -2.5, 2.5, 0, 0);
-  DrawMyPlots("subleadeta", Preselections, "Subleading #gamma #eta_{SC}", "", "subleadeta", 50, -2.5, 2.5, 0, 0);
-  DrawMyPlots("sigmarv", Preselections, "#sigma_{rv}", "", "sigmarv", 50, 0., 0.05, 0, 0);
-  DrawMyPlots("sigmawv", Preselections, "#sigma_{wv}", "", "sigmawv", 50, 0., 0.05, 0, 0);
+  // DrawMyPlots("leadeta", Preselections, "Leading #gamma #eta_{SC}", "", "leadeta", 50, -2.5, 2.5, 0, 0);
+  // DrawMyPlots("subleadeta", Preselections, "Subleading #gamma #eta_{SC}", "", "subleadeta", 50, -2.5, 2.5, 0, 0);
+  // DrawMyPlots("sigmarv", Preselections, "#sigma_{rv}", "", "sigmarv", 50, 0., 0.05, 0, 0);
+  // DrawMyPlots("sigmawv", Preselections, "#sigma_{wv}", "", "sigmawv", 50, 0., 0.05, 0, 0);
   // DrawMyPlots("sigmarvDecorr", Preselections, "#sigma_{rv}", "", "sigmarvDecorr", 50, 0., 0.05, 0, 0);
 
-  DrawMyPlots("CosPhi", Preselections, "cos#phi_{#gamma#gamma}", "", "CosPhi", 50, -1., 1., 0, 0);
-  DrawMyPlots("vtxprob", Preselections, "Vertex probability", "", "vtxprob", 50, 0., 1., 0, 0);
+  // DrawMyPlots("CosPhi", Preselections, "cos#phi_{#gamma#gamma}", "", "CosPhi", 50, -1., 1., 0, 0);
+  // DrawMyPlots("vtxprob", Preselections, "Vertex probability", "", "vtxprob", 50, 0., 1., 0, 0);
   return;
 
   // DrawMyPlots("pt", Preselections, "p_{T}^{#gamma#gamma} (GeV)", "GeV", "pt", 50, 0., 500., 0, 0);
