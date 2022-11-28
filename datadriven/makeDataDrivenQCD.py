@@ -1,18 +1,26 @@
 import ROOT
 from array import array
-GJets=ROOT.TFile.Open("Gjet_fake.root")
-GJets_tree=GJets.Get("tree")
-cuts="(Diphoton_lead_pt_mgg>0.35)*(Diphoton_sublead_pt_mgg>0.25)*(CMS_hgg_mass<115 || CMS_hgg_mass>135)"
+import awkward 
+
+# import sys
+# sys.path.append("/usr/lib64/python3.6/site-packages")
+GJets1=ROOT.TFile.Open("/eos/user/s/shsong/hhwwggFH_root/Datadriven/GJet_40_Inf.root")
+GJets1_tree=GJets1.Get("GJet")
+# GJets2=ROOT.TFile.Open("/eos/user/s/shsong/hhwwggFH_root/Datadriven/GJet_40_Inf.root")
+# GJets2_tree=GJets2_tree.Get("GJet")
+cuts="(CMS_hgg_mass<115 || CMS_hgg_mass>135)*(minID_genPartFlav!=1)"
+# cuts="(Diphoton_lead_pt_mgg>0.35)*(Diphoton_sublead_pt_mgg>0.25)*(CMS_hgg_mass<115 || CMS_hgg_mass>135)"
 h_minphotonID=ROOT.TH1F("h_minphotonID_gjet","h_minphotonID_gjet",19,-0.9,1);
-GJets_tree.Project("h_minphotonID_gjet","minID","weight*41.5*"+cuts)
+GJets1_tree.Project("h_minphotonID_gjet","minID","weight*41.5*"+cuts)
+# GJets_tree.Project("h_minphotonID_gjet","minID","weight*41.5*"+cuts)
 photonIDPDF_fake=ROOT.TF1("photonIDPDF_fake","pol7",-0.9,1.)
 h_minphotonID.Fit(photonIDPDF_fake,"R")
 c1=ROOT.TCanvas("c1","c1",600,800)
 h_minphotonID.Draw("E1")
 c1.SaveAs("test.png")
 
-Data=ROOT.TFile.Open("Data.root")
-Data_tree=Data.Get("tree")
+Data=ROOT.TFile.Open("/eos/user/s/shsong/hhwwggFH_root/Datadriven/Data.root")
+Data_tree=Data.Get("Data")
 nevents=Data_tree.GetEntries()
 # new_weight = array('f', [0])
 # print(new_weight)
@@ -68,6 +76,13 @@ print(sum(weights))
 d={"new_weight":weights,"minID":minID,"maxID":maxID,"originalminID":originalminID,"hasMaxLead":hasMaxLead}
 import pandas
 dataframe=pandas.DataFrame(d) 
-print(dataframe)
-print(dataframe.shape[0])
-dataframe.to_csv("data_weight.csv")
+# print(dataframe)
+# print(dataframe.shape[0])
+# dataframe.to_parquet("/eos/user/s/shsong/hhwwggFH_parquet/Datadriven/data_reweight.parquet")
+DataFile=awkward.from_parquet("/eos/user/s/shsong/hhwwggFH_parquet/hhwwgg_data/merged_nominal_new_2017.parquet")
+DataFile["maxID"]=dataframe.maxID
+DataFile["minID"]=dataframe.minID
+DataFile["originalminID"]=dataframe.originalminID
+DataFile["weight"]=dataframe.new_weight
+awkward.to_parquet(DataFile,"/eos/user/s/shsong/hhwwggFH_parquet/Datadriven/QCD.parquet")
+# dataframe("data_weight.csv")

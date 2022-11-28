@@ -35,8 +35,8 @@ def select_objects(objects, cuts = {}, clean = {}, name = "none", tagger = None)
         if cut == "pt":
             cut_ = objects.pt > value
             cut_names.append("pt > %.4f" % value)
-        # if cut in ["eta", "dxy", "dz"]:
-        if cut in ["eta","dz"]:
+        if cut in ["eta", "dxy", "dz"]:
+        # if cut in ["eta","dz"]:
             cut_ = abs(objects[cut]) < value
             cut_names.append("|%s| < %.4f" % (cut, value))
         if cut in ["pfRelIso04_all", "pfRelIso03_chg","pfRelIso03_all"]:

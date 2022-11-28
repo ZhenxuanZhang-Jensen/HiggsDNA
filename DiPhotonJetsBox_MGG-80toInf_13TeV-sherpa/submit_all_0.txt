@@ -1,0 +1,128 @@
+should_transfer_files = Yes
+transfer_input_files    = /afs/cern.ch/user/s/shsong/HiggsDNA/x509up_u138391
+executable = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_1/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017_executable_job1.sh
+output = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_1/$(Cluster).$(Process).out
+error = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_1/$(Cluster).$(Process).err
+log = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_1/$(Cluster).$(Process).log
+
+RequestMemory = 4096
+RequestDisk = 10000
+RequestCpus = 1
+
+JobBatchName = DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017
++JobFlavour = "longlunch"
++OnExitHold   = ExitStatus != 0
+getenv        = True
+queue 1
+should_transfer_files = Yes
+transfer_input_files    = /afs/cern.ch/user/s/shsong/HiggsDNA/x509up_u138391
+executable = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_2/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017_executable_job2.sh
+output = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_2/$(Cluster).$(Process).out
+error = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_2/$(Cluster).$(Process).err
+log = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_2/$(Cluster).$(Process).log
+
+RequestMemory = 4096
+RequestDisk = 10000
+RequestCpus = 1
+
+JobBatchName = DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017
++JobFlavour = "longlunch"
++OnExitHold   = ExitStatus != 0
+getenv        = True
+queue 1
+should_transfer_files = Yes
+transfer_input_files    = /afs/cern.ch/user/s/shsong/HiggsDNA/x509up_u138391
+executable = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_3/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017_executable_job3.sh
+output = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_3/$(Cluster).$(Process).out
+error = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_3/$(Cluster).$(Process).err
+log = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_3/$(Cluster).$(Process).log
+
+RequestMemory = 4096
+RequestDisk = 10000
+RequestCpus = 1
+
+JobBatchName = DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017
++JobFlavour = "longlunch"
++OnExitHold   = ExitStatus != 0
+getenv        = True
+queue 1
+should_transfer_files = Yes
+transfer_input_files    = /afs/cern.ch/user/s/shsong/HiggsDNA/x509up_u138391
+executable = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_4/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017_executable_job4.sh
+output = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_4/$(Cluster).$(Process).out
+error = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_4/$(Cluster).$(Process).err
+log = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_4/$(Cluster).$(Process).log
+
+RequestMemory = 4096
+RequestDisk = 10000
+RequestCpus = 1
+
+JobBatchName = DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017
++JobFlavour = "longlunch"
++OnExitHold   = ExitStatus != 0
+getenv        = True
+queue 1
+should_transfer_files = Yes
+transfer_input_files    = /afs/cern.ch/user/s/shsong/HiggsDNA/x509up_u138391
+executable = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_5/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017_executable_job5.sh
+output = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_5/$(Cluster).$(Process).out
+error = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_5/$(Cluster).$(Process).err
+log = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_5/$(Cluster).$(Process).log
+
+RequestMemory = 4096
+RequestDisk = 10000
+RequestCpus = 1
+
+JobBatchName = DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017
++JobFlavour = "longlunch"
++OnExitHold   = ExitStatus != 0
+getenv        = True
+queue 1
+should_transfer_files = Yes
+transfer_input_files    = /afs/cern.ch/user/s/shsong/HiggsDNA/x509up_u138391
+executable = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_6/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017_executable_job6.sh
+output = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_6/$(Cluster).$(Process).out
+error = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_6/$(Cluster).$(Process).err
+log = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_6/$(Cluster).$(Process).log
+
+RequestMemory = 4096
+RequestDisk = 10000
+RequestCpus = 1
+
+JobBatchName = DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017
++JobFlavour = "longlunch"
++OnExitHold   = ExitStatus != 0
+getenv        = True
+queue 1
+should_transfer_files = Yes
+transfer_input_files    = /afs/cern.ch/user/s/shsong/HiggsDNA/x509up_u138391
+executable = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_7/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017_executable_job7.sh
+output = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_7/$(Cluster).$(Process).out
+error = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_7/$(Cluster).$(Process).err
+log = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_7/$(Cluster).$(Process).log
+
+RequestMemory = 4096
+RequestDisk = 10000
+RequestCpus = 1
+
+JobBatchName = DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017
++JobFlavour = "longlunch"
++OnExitHold   = ExitStatus != 0
+getenv        = True
+queue 1
+should_transfer_files = Yes
+transfer_input_files    = /afs/cern.ch/user/s/shsong/HiggsDNA/x509up_u138391
+executable = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_8/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017_executable_job8.sh
+output = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_8/$(Cluster).$(Process).out
+error = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_8/$(Cluster).$(Process).err
+log = /afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017/job_8/$(Cluster).$(Process).log
+
+RequestMemory = 4096
+RequestDisk = 10000
+RequestCpus = 1
+
+JobBatchName = DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa_2017
++JobFlavour = "longlunch"
++OnExitHold   = ExitStatus != 0
+getenv        = True
+queue 1

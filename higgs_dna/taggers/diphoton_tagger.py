@@ -175,7 +175,6 @@ class DiphotonTagger(Tagger):
         sublead_pt_mgg_cut = (diphotons.SubleadPhoton.pt / diphotons.Diphoton.mass) >= options["sublead_pt_mgg"]
         mass_cut = (diphotons.Diphoton.mass >= options["mass"][0]) & (diphotons.Diphoton.mass <= options["mass"][1])
         # diphoton_pt_cut = diphotons.Diphoton.pt >= options["pt"]
-        #all_cuts = (lead_pt_cut & lead_pt_mgg_cut & sublead_pt_mgg_cut & mass_cut) | ( diphotons.LeadPhoton.pt > 0)
         # close for QCD samples
         all_cuts = lead_pt_cut & lead_pt_mgg_cut & sublead_pt_mgg_cut & mass_cut
         # all_cuts = lead_pt_cut & lead_pt_mgg_cut & sublead_pt_mgg_cut & mass_cut & diphoton_pt_cut 

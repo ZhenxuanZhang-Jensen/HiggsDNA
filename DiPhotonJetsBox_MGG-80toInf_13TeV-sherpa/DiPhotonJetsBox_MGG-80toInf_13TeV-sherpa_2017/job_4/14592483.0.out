@@ -1,0 +1,1111 @@
+DEBUG    [AnalysisManager : load_events] Loaded 27000 events     analysis.py:490
+         from file                                                              
+         '/eos/user/s/shsong/bkgfiles/7708036C-C3E7-D048-B646-F5                
+         286CDE67D6.root'.                                                      
+DEBUG    [AnalysisManager : load_events] Loaded 639996 events    analysis.py:490
+         from file                                                              
+         '/eos/user/s/shsong/bkgfiles/78A28A57-3DC9-D54D-BFDB-0C                
+         4E37BEBD64.root'.                                                      
+DEBUG    [AnalysisManager : load_events] Loaded 1759989 events   analysis.py:490
+         from file                                                              
+         '/eos/user/s/shsong/bkgfiles/7AB58912-AFDD-6B4F-9E48-94                
+         D0D5C06077.root'.                                                      
+DEBUG    [AnalysisManager : load_events] Loaded 639995 events    analysis.py:490
+         from file                                                              
+         '/eos/user/s/shsong/bkgfiles/81B2732D-9A6C-AB4A-A6CB-20                
+         5F94408B11.root'.                                                      
+DEBUG    [AnalysisManager : load_events] Loaded 159998 events    analysis.py:490
+         from file                                                              
+         '/eos/user/s/shsong/bkgfiles/8380B131-86E5-A140-92AD-DD                
+         C3C4E7DA22.root'.                                                      
+DEBUG    [0.2, 1, 0.1, 0.1, 0.5, 0.1, 1, 0.2, 0.1, ... 0.1, 1, 0.2, sample.py:63
+         0.2, 0.5, 0.1, 0.5, 1]                                                 
+DEBUG    events fields: dict_keys(['nominal'])                    analysis.py:73
+INFO     [TagSequence : __init__] Creating tag sequence with  tag_sequence.py:37
+         the following tags and priority:                                       
+INFO     [TagSequence : __init__] The 0-th tag set has        tag_sequence.py:59
+         taggers ['diphoton_tagger'] (listed in order                           
+         priority will be given).                                               
+INFO     [TagSequence : __init__] The 1-th tag set has        tag_sequence.py:59
+         taggers ['HHWW_tagger'] (listed in order priority                      
+         will be given).                                                        
+INFO     For all tags, performing selection on the following  tag_sequence.py:94
+         sets of events, each corresponding to a separate                       
+         independent collection.                                                
+INFO             nominal                                      tag_sequence.py:96
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:173
+         type : photon, cut : pt, indiviual efficiency : 0.9990                 
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt                                                             
+         eff : 0.9417                                                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:173
+         type : photon, cut : eta, indiviual efficiency : 0.8652                
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt & eta                                                       
+         eff : 0.8853                                                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:173
+         type : photon, cut : e_veto, indiviual efficiency :                    
+         0.9135                                                                 
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt & eta & e_veto                                              
+         eff : 0.8598                                                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:173
+         type : photon, cut : r9, indiviual efficiency : 0.9689                 
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt & eta & e_veto & r9                                         
+         eff : 0.8558                                                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:173
+         type : photon, cut : hoe, indiviual efficiency : 0.8198                
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt & eta & e_veto & r9 & hoe                                   
+         eff : 0.8154                                                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:173
+         type : photon, cut : hlt, indiviual efficiency : 0.7387                
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt & eta & e_veto & r9 & hoe & hlt                             
+         eff : 0.7909                                                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:173
+         type : photon, cut : all, indiviual efficiency : 0.6263                
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt & eta & e_veto & r9 & hoe & hlt & all                       
+         eff : 0.7909                                                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:173
+         type : diphoton, cut : lead pt cut, indiviual efficiency               
+         : 0.8921                                                               
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : lead pt cut                                                    
+         eff : 0.2993                                                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:173
+         type : diphoton, cut : lead pt mgg cut, indiviual                      
+         efficiency : 0.9066                                                    
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : lead pt cut & lead pt mgg cut                                  
+         eff : 0.2837                                                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:173
+         type : diphoton, cut : sublead pt mgg cut, indiviual                   
+         efficiency : 0.7029                                                    
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : lead pt cut & lead pt mgg cut & sublead pt mgg                 
+         cut                                                                    
+         eff : 0.2193                                                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:173
+         type : diphoton, cut : mass cut, indiviual efficiency :                
+         0.4180                                                                 
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : lead pt cut & lead pt mgg cut & sublead pt mgg                 
+         cut & mass cut                                                         
+         eff : 0.1012                                                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:173
+         type : diphoton, cut : all cuts, indiviual efficiency :                
+         0.2761                                                                 
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : lead pt cut & lead pt mgg cut & sublead pt mgg                 
+         cut & mass cut & all cuts                                              
+         eff : 0.1012                                                           
+DEBUG    [DiphotonTagger : produce_and_select_diphotons]  diphoton_tagger.py:198
+         diphoton_tagger, selecting the highest pt_sum                          
+         diphoton pair from each event.                                         
+DEBUG    [DiphotonTagger : produce_and_select_diphotons]  diphoton_tagger.py:205
+         diphoton_tagger, syst variation : nominal.                             
+         Number of total diphoton candidates: 330158,                           
+         number of diphoton candidates after selecting                          
+         candidate with highest pt sum in each event:                           
+         326705 (1.05 percent of diphoton events                                
+         removed).                                                              
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:173
+         type : event, cut : At least 1 diphoton pair, indiviual                
+         efficiency : 0.1012                                                    
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : At least 1 diphoton pair                                       
+         eff : 0.1012                                                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:173
+         type : event, cut : HLT Trigger, indiviual efficiency :                
+         1.0000                                                                 
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : At least 1 diphoton pair & HLT Trigger                         
+         eff : 0.1012                                                           
+DEBUG    [Tagger] : diphoton_tagger, syst variation : nominal, cut tagger.py:173
+         type : event, cut : all, indiviual efficiency : 0.1012                 
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : At least 1 diphoton pair & HLT Trigger & all                   
+         eff : 0.1012                                                           
+DEBUG    [DiphotonTagger] diphoton_tagger, syst variation diphoton_tagger.py:245
+         : nominal, total time to execute                                       
+         select_diphotons: 57.184365 s                                          
+DEBUG    Is Data:  False                                  diphoton_tagger.py:109
+DEBUG    With GEN info:  False                            diphoton_tagger.py:110
+DEBUG    [Tagger] diphoton_tagger : event set : nominal : 3226978   tagger.py:69
+         (326705) events before (after) selection                               
+DEBUG    Is Signal: False                          HHWW_semilep_Tagger_bkg.py:86
+DEBUG    [select_objects] : Tagger 'HHWW_tagger',        object_selections.py:22
+         selecting objects                                                      
+         'SelectedElectron_from_event', with the                                
+         following requirements:                                                
+DEBUG             'pt' : 10.0                            object_selections.py:24
+DEBUG             'eta' : 2.4                            object_selections.py:24
+DEBUG             'dxy' : 0.045                          object_selections.py:24
+DEBUG             'dz' : 0.1                             object_selections.py:24
+DEBUG             'id' : WPL                             object_selections.py:24
+DEBUG             'dr_photons' : 0.4                     object_selections.py:24
+DEBUG             'veto_transition' : True               object_selections.py:24
+DEBUG    [select_objects] : Tagger 'HHWW_tagger',        object_selections.py:27
+         cross-cleaning objects                                                 
+         'SelectedElectron_from_event' with respect to                          
+         the following sets of objects:                                         
+DEBUG             'photons', dR > 0.40                   object_selections.py:29
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedElectron_from_event, cut : pt > 10.0000,                
+         indiviual efficiency : 0.7285                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 10.0000                                                   
+         eff : 0.3167                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedElectron_from_event, cut : |eta| < 2.4000,              
+         indiviual efficiency : 0.9616                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 10.0000 & |eta| < 2.4000                                  
+         eff : 0.3069                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedElectron_from_event, cut : |dxy| < 0.0450,              
+         indiviual efficiency : 0.7069                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 10.0000 & |eta| < 2.4000 & |dxy| < 0.0450                 
+         eff : 0.2162                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedElectron_from_event, cut : |dz| < 0.1000,               
+         indiviual efficiency : 0.6295                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 10.0000 & |eta| < 2.4000 & |dxy| < 0.0450 &               
+         |dz| < 0.1000                                                          
+         eff : 0.1842                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedElectron_from_event, cut : dR with                      
+         'photons' > 0.40, indiviual efficiency : 0.5818                        
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 10.0000 & |eta| < 2.4000 & |dxy| < 0.0450 &               
+         |dz| < 0.1000 & dR with 'photons' > 0.40                               
+         eff : 0.1172                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedElectron_from_event, cut : standard object              
+         cuts, indiviual efficiency : 0.2472                                    
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : standard object cuts                                           
+         eff : 0.1172                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedElectron_from_event, cut : id cut,                      
+         indiviual efficiency : 0.2857                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : standard object cuts & id cut                                  
+         eff : 0.0058                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedElectron_from_event, cut : ee-eb                        
+         transition, indiviual efficiency : 0.9807                              
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : standard object cuts & id cut & ee-eb transition               
+         eff : 0.0055                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedElectron_from_event, cut : all cuts,                    
+         indiviual efficiency : 0.0110                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : standard object cuts & id cut & ee-eb transition               
+         & all cuts                                                             
+         eff : 0.0055                                                           
+DEBUG    [select_objects] : Tagger 'HHWW_tagger',        object_selections.py:22
+         selecting objects 'SelectedMuon_from_event',                           
+         with the following requirements:                                       
+DEBUG             'pt' : 10.0                            object_selections.py:24
+DEBUG             'eta' : 2.4                            object_selections.py:24
+DEBUG             'dxy' : 0.045                          object_selections.py:24
+DEBUG             'dz' : 0.1                             object_selections.py:24
+DEBUG             'id' : tight                           object_selections.py:24
+DEBUG             'pfRelIso04_all' : 0.15                object_selections.py:24
+DEBUG             'dr_photons' : 0.4                     object_selections.py:24
+DEBUG             'global' : True                        object_selections.py:24
+DEBUG    [select_objects] : Tagger 'HHWW_tagger',        object_selections.py:27
+         cross-cleaning objects                                                 
+         'SelectedMuon_from_event' with respect to the                          
+         following sets of objects:                                             
+DEBUG             'photons', dR > 0.40                   object_selections.py:29
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedMuon_from_event, cut : pt > 10.0000,                    
+         indiviual efficiency : 0.3109                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 10.0000                                                   
+         eff : 0.0561                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedMuon_from_event, cut : |eta| < 2.4000,                  
+         indiviual efficiency : 0.9771                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 10.0000 & |eta| < 2.4000                                  
+         eff : 0.0545                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedMuon_from_event, cut : |dxy| < 0.0450,                  
+         indiviual efficiency : 0.8870                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 10.0000 & |eta| < 2.4000 & |dxy| < 0.0450                 
+         eff : 0.0473                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedMuon_from_event, cut : |dz| < 0.1000,                   
+         indiviual efficiency : 0.4567                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 10.0000 & |eta| < 2.4000 & |dxy| < 0.0450 &               
+         |dz| < 0.1000                                                          
+         eff : 0.0254                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedMuon_from_event, cut : pfRelIso04_all <                 
+         0.1500, indiviual efficiency : 0.2873                                  
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 10.0000 & |eta| < 2.4000 & |dxy| < 0.0450 &               
+         |dz| < 0.1000 & pfRelIso04_all < 0.1500                                
+         eff : 0.0016                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedMuon_from_event, cut : dR with 'photons' >              
+         0.40, indiviual efficiency : 0.9575                                    
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 10.0000 & |eta| < 2.4000 & |dxy| < 0.0450 &               
+         |dz| < 0.1000 & pfRelIso04_all < 0.1500 & dR with                      
+         'photons' > 0.40                                                       
+         eff : 0.0013                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedMuon_from_event, cut : standard object                  
+         cuts, indiviual efficiency : 0.0069                                    
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : standard object cuts                                           
+         eff : 0.0013                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedMuon_from_event, cut : id cut, indiviual                
+         efficiency : 0.1714                                                    
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : standard object cuts & id cut                                  
+         eff : 0.0006                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedMuon_from_event, cut : global_muon cut,                 
+         indiviual efficiency : 0.4414                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : standard object cuts & id cut & global_muon cut                
+         eff : 0.0006                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedMuon_from_event, cut : all cuts, indiviual              
+         efficiency : 0.0035                                                    
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : standard object cuts & id cut & global_muon cut &              
+         all cuts                                                               
+         eff : 0.0006                                                           
+DEBUG    [select_objects] : Tagger 'HHWW_tagger',        object_selections.py:22
+         selecting objects 'SelectedFatJet_from_event',                         
+         with the following requirements:                                       
+DEBUG             'pt' : 200.0                           object_selections.py:24
+DEBUG             'eta' : 2.4                            object_selections.py:24
+DEBUG             'tau2_tau1' : 0.55                     object_selections.py:24
+DEBUG    [select_objects] : Tagger 'HHWW_tagger',        object_selections.py:27
+         cross-cleaning objects                                                 
+         'SelectedFatJet_from_event' with respect to the                        
+         following sets of objects:                                             
+DEBUG             'photons', dR > 0.80                   object_selections.py:29
+DEBUG             'electrons', dR > 0.80                 object_selections.py:29
+DEBUG             'muons', dR > 0.80                     object_selections.py:29
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedFatJet_from_event, cut : pt > 200.0000,                 
+         indiviual efficiency : 0.6893                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 200.0000                                                  
+         eff : 0.0765                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedFatJet_from_event, cut : |eta| < 2.4000,                
+         indiviual efficiency : 0.9436                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 200.0000 & |eta| < 2.4000                                 
+         eff : 0.0741                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedFatJet_from_event, cut : dR with 'photons'              
+         > 0.80, indiviual efficiency : 0.6534                                  
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 200.0000 & |eta| < 2.4000 & dR with                       
+         'photons' > 0.80                                                       
+         eff : 0.0604                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedFatJet_from_event, cut : dR with                        
+         'electrons' > 0.80, indiviual efficiency : 0.9962                      
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 200.0000 & |eta| < 2.4000 & dR with                       
+         'photons' > 0.80 & dR with 'electrons' > 0.80                          
+         eff : 0.0601                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedFatJet_from_event, cut : dR with 'muons' >              
+         0.80, indiviual efficiency : 0.9998                                    
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 200.0000 & |eta| < 2.4000 & dR with                       
+         'photons' > 0.80 & dR with 'electrons' > 0.80 & dR with                
+         'muons' > 0.80                                                         
+         eff : 0.0601                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedFatJet_from_event, cut : all cuts,                      
+         indiviual efficiency : 0.4152                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : all cuts                                                       
+         eff : 0.0601                                                           
+DEBUG    [select_objects] : Tagger 'HHWW_tagger',        object_selections.py:22
+         selecting objects 'SelectedJet_from_event',                            
+         with the following requirements:                                       
+DEBUG             'pt' : 25.0                            object_selections.py:24
+DEBUG             'eta' : 2.4                            object_selections.py:24
+DEBUG    [select_objects] : Tagger 'HHWW_tagger',        object_selections.py:27
+         cross-cleaning objects 'SelectedJet_from_event'                        
+         with respect to the following sets of objects:                         
+DEBUG             'photons', dR > 0.40                   object_selections.py:29
+DEBUG             'electrons', dR > 0.40                 object_selections.py:29
+DEBUG             'muons', dR > 0.40                     object_selections.py:29
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedJet_from_event, cut : pt > 25.0000,                     
+         indiviual efficiency : 0.6051                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 25.0000                                                   
+         eff : 1.0000                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedJet_from_event, cut : |eta| < 2.4000,                   
+         indiviual efficiency : 0.7229                                          
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 25.0000 & |eta| < 2.4000                                  
+         eff : 0.9997                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedJet_from_event, cut : dR with 'photons' >               
+         0.40, indiviual efficiency : 0.6838                                    
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 25.0000 & |eta| < 2.4000 & dR with 'photons'              
+         > 0.40                                                                 
+         eff : 0.7472                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedJet_from_event, cut : dR with 'electrons'               
+         > 0.40, indiviual efficiency : 0.9991                                  
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 25.0000 & |eta| < 2.4000 & dR with 'photons'              
+         > 0.40 & dR with 'electrons' > 0.40                                    
+         eff : 0.7462                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedJet_from_event, cut : dR with 'muons' >                 
+         0.40, indiviual efficiency : 0.9999                                    
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : pt > 25.0000 & |eta| < 2.4000 & dR with 'photons'              
+         > 0.40 & dR with 'electrons' > 0.40 & dR with 'muons' >                
+         0.40                                                                   
+         eff : 0.7461                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : SelectedJet_from_event, cut : all cuts, indiviual               
+         efficiency : 0.2157                                                    
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : all cuts                                                       
+         eff : 0.7318                                                           
+DEBUG    events num before event_selec: 326705    HHWW_semilep_Tagger_bkg.py:272
+WARNING  [awkward_utils.py : add_field] You tried to write   awkward_utils.py:87
+         the field nGoodAK4jets, but it is already present                      
+         and overwrite option was not selected. Not                             
+         overwriting existing field.                                            
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : event, cut : Photon Selection, indiviual                        
+         efficiency : 0.9741                                                    
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : Photon Selection                                               
+         eff : 0.9741                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : event, cut : Lepton Selection, indiviual                        
+         efficiency : 0.0059                                                    
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : Photon Selection & Lepton Selection                            
+         eff : 0.0049                                                           
+DEBUG    [Tagger] : HHWW_tagger, syst variation : nominal, cut     tagger.py:173
+         type : event, cut : Z veto Selection, indiviual                        
+         efficiency : 0.0052                                                    
+DEBUG    [Tagger] :                                                tagger.py:197
+         c_cut : Photon Selection & Lepton Selection & Z veto                   
+         Selection                                                              
+         eff : 0.0043                                                           
+DEBUG    [Tagger] HHWW_tagger : event set : nominal : 326705 (1617) tagger.py:69
+         events before (after) selection                                        
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q1_pt' was analysis.py:531
+         not found in events array. This may be expected (e.g.                  
+         gen info for a data file), but please ensure this makes                
+         sense to you.                                                          
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q1_eta'    analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q1_phi'    analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q1_mass'   analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q2_pt' was analysis.py:531
+         not found in events array. This may be expected (e.g.                  
+         gen info for a data file), but please ensure this makes                
+         sense to you.                                                          
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q2_eta'    analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q2_phi'    analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q2_mass'   analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q3_pt' was analysis.py:531
+         not found in events array. This may be expected (e.g.                  
+         gen info for a data file), but please ensure this makes                
+         sense to you.                                                          
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q3_eta'    analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q3_phi'    analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q3_mass'   analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q4_pt' was analysis.py:531
+         not found in events array. This may be expected (e.g.                  
+         gen info for a data file), but please ensure this makes                
+         sense to you.                                                          
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q4_eta'    analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q4_phi'    analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GEN_q4_mass'   analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GENW1_qq_pt'   analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GENW1_qq_eta'  analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GENW1_qq_phi'  analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GENW1_qq_mass' analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GENW2_qq_pt'   analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GENW2_qq_eta'  analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GENW2_qq_phi'  analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'GENW2_qq_mass' analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GENHWW_qqqq_pt' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GENHWW_qqqq_eta' was not found in events array. This                  
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GENHWW_qqqq_phi' was not found in events array. This                  
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GENHWW_qqqq_mass' was not found in events array. This                 
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GenHggHiggs_pt' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GenHggHiggs_eta' was not found in events array. This                  
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GenHggHiggs_phi' was not found in events array. This                  
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GenHggHiggs_mass' was not found in events array. This                 
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GenHggHiggs_dR' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GenHggLeadPhoton_pt' was not found in events array.                   
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GenHggLeadPhoton_eta' was not found in events array.                  
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GenHggLeadPhoton_phi' was not found in events array.                  
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GenHggLeadPhoton_mass' was not found in events array.                 
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GenHggSubleadPhoton_pt' was not found in events array.                
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GenHggSubleadPhoton_eta' was not found in events                      
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GenHggSubleadPhoton_phi' was not found in events                      
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'GenHggSubleadPhoton_mass' was not found in events                     
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_1_btagCMVA' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_1_btagDeepC' was not found in events array. This                  
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_1_btagDeepFlavC' was not found in events array.                   
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_1_nElectrons' was not found in events array. This                 
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch 'jet_1_nMuons'  analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_2_btagCMVA' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_2_btagDeepC' was not found in events array. This                  
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_2_btagDeepFlavC' was not found in events array.                   
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_2_nElectrons' was not found in events array. This                 
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch 'jet_2_nMuons'  analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_3_btagCMVA' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_3_btagDeepC' was not found in events array. This                  
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_3_btagDeepFlavC' was not found in events array.                   
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_3_nElectrons' was not found in events array. This                 
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch 'jet_3_nMuons'  analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_4_btagCMVA' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_4_btagDeepC' was not found in events array. This                  
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_4_btagDeepFlavC' was not found in events array.                   
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_4_nElectrons' was not found in events array. This                 
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch 'jet_4_nMuons'  analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_5_btagCMVA' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_5_btagDeepC' was not found in events array. This                  
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_5_btagDeepFlavC' was not found in events array.                   
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_5_nElectrons' was not found in events array. This                 
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch 'jet_5_nMuons'  analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_6_btagCMVA' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_6_btagDeepC' was not found in events array. This                  
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_6_btagDeepFlavC' was not found in events array.                   
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_6_nElectrons' was not found in events array. This                 
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch 'jet_6_nMuons'  analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_7_btagCMVA' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_7_btagDeepC' was not found in events array. This                  
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_7_btagDeepFlavC' was not found in events array.                   
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_7_nElectrons' was not found in events array. This                 
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch 'jet_7_nMuons'  analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_1_deltaR_1' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_2_deltaR_1' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_3_deltaR_1' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_4_deltaR_1' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_5_deltaR_1' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_6_deltaR_1' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_7_deltaR_1' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_1_deltaR_2' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_2_deltaR_2' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_3_deltaR_2' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_4_deltaR_2' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_5_deltaR_2' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_6_deltaR_2' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_7_deltaR_2' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_1_deltaR_3' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_2_deltaR_3' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_3_deltaR_3' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_4_deltaR_3' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_5_deltaR_3' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_6_deltaR_3' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_7_deltaR_3' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_1_deltaR_4' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_2_deltaR_4' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_3_deltaR_4' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_4_deltaR_4' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_5_deltaR_4' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_6_deltaR_4' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'jet_7_deltaR_4' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_W_btagCMVA' was not found in events array. This                
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_W_btagDDBvL' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_W_btagDDBvL_noMD' was not found in events                      
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_W_btagDDCvB' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_W_btagDDCvB_noMD' was not found in events                      
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_W_btagDDCvL' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_W_btagDDCvL_noMD' was not found in events                      
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch 'fatjet_H_area' analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_btagCMVA' was not found in events array. This                
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_btagCSVV2' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_btagDDBvL' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_btagDDBvL_noMD' was not found in events                      
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_btagDDCvB' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_btagDDCvB_noMD' was not found in events                      
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_btagDDCvL' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_btagDDCvL_noMD' was not found in events                      
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_btagDeepB' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_btagHbb' was not found in events array. This                 
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTagMD_H4qvsQCD' was not found in events                  
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTagMD_HbbvsQCD' was not found in events                  
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTagMD_TvsQCD' was not found in events                    
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTagMD_WvsQCD' was not found in events                    
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTagMD_ZHbbvsQCD' was not found in events                 
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTagMD_ZHccvsQCD' was not found in events                 
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTagMD_ZbbvsQCD' was not found in events                  
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTagMD_ZvsQCD' was not found in events                    
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTagMD_bbvsLight' was not found in events                 
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTagMD_ccvsLight' was not found in events                 
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTag_H' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTag_QCD' was not found in events array.                  
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTag_QCDothers' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTag_TvsQCD' was not found in events                      
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTag_WvsQCD' was not found in events                      
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_deepTag_ZvsQCD' was not found in events                      
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_electronIdx3SJ' was not found in events                      
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch 'fatjet_H_eta'  analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_genJetAK8Idx' was not found in events array.                 
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_hadronFlavour' was not found in events array.                
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_jetId' was not found in events array. This                   
+         may be expected (e.g. gen info for a data file), but                   
+         please ensure this makes sense to you.                                 
+WARNING  [AnalysisManager : write_events] Branch 'fatjet_H_lsf3' analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'fatjet_H_mass' analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_msoftdrop' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_muonIdx3SJ' was not found in events array.                   
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch 'fatjet_H_n2b1' analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'fatjet_H_n3b1' analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_nBHadrons' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_nCHadrons' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_particleNetMD_QCD' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_particleNetMD_Xbb' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_particleNetMD_Xcc' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_particleNetMD_Xqq' was not found in events                   
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_particleNet_H4qvsQCD' was not found in events                
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_particleNet_HbbvsQCD' was not found in events                
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_particleNet_HccvsQCD' was not found in events                
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_particleNet_QCD' was not found in events                     
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_particleNet_TvsQCD' was not found in events                  
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_particleNet_WvsQCD' was not found in events                  
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_particleNet_ZvsQCD' was not found in events                  
+         array. This may be expected (e.g. gen info for a data                  
+         file), but please ensure this makes sense to you.                      
+WARNING  [AnalysisManager : write_events] Branch 'fatjet_H_phi'  analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'fatjet_H_pt'   analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_rawFactor' was not found in events array.                    
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_subJetIdx1' was not found in events array.                   
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch                 analysis.py:531
+         'fatjet_H_subJetIdx2' was not found in events array.                   
+         This may be expected (e.g. gen info for a data file),                  
+         but please ensure this makes sense to you.                             
+WARNING  [AnalysisManager : write_events] Branch 'fatjet_H_tau1' analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'fatjet_H_tau2' analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'fatjet_H_tau3' analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+WARNING  [AnalysisManager : write_events] Branch 'fatjet_H_tau4' analysis.py:531
+         was not found in events array. This may be expected                    
+         (e.g. gen info for a data file), but please ensure this                
+         makes sense to you.                                                    
+DEBUG    [AnalysisManager : write_events] Writing output file    analysis.py:542
+         '/afs/cern.ch/user/s/shsong/HiggsDNA/DiPhotonJetsBox_MG                
+         G-80toInf_13TeV-sherpa/DiPhotonJetsBox_MGG-80toInf_13Te                
+         V-sherpa_2017/job_4/output_job_4_nominal.parquet'.                     

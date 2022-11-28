@@ -155,7 +155,7 @@ class AnalysisManager():
             "batch_system" : "local",
             "fpo" : None, # number of input files per output file (i.e. per job)
             "n_cores" : 4, # number of cores for local running
-            "use_xrdcp" : False, # xrdcp to local or not
+            "use_xrdcp" : True, # xrdcp to local or not
             "merge_outputs" : False,
             "unretire_jobs" : False,
             "retire_jobs" : False,
@@ -468,7 +468,7 @@ class AnalysisManager():
         use_xrdcp = False
         for file in files:
             if use_xrdcp:
-                local_file_name = file.split("/")[-1]
+                local_file_name = "/eos/cms/store/group/phys_higgs/cmshgg/shsong/"+file.split("/")[-1]
                 # local_file_name = file.replace("/","_")
                 time.sleep(10)
                 logger.debug("sleep 10 secs before xrdcp")
