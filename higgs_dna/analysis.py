@@ -476,6 +476,17 @@ class AnalysisManager():
                 logger.debug("local file name: %s" %file )
                 logger.debug("cp file to local")
             with uproot.open(file, timeout = 1800) as f:
+                #attention new block to read lumi and save in the txt file to read whold data lumi to make sure we have enough lumi
+                lumi = f['LuminosityBlocks'].arrays(['run','luminosityBlock'])
+                Runs = f['Runs'].arrays(['run'])
+                import itertools
+                for i in range(len(Runs.run)):
+                    list_lumi = lumi.luminosityBlock[lumi.run == Runs.run[i]].to_list()
+                    range_list = [[t[0][1], t[-1][1]] for t in (tuple(g[1]) for g in itertools.groupby(enumerate(list_lumi), lambda list_lumi: list_lumi[1]-list_lumi[0]))]
+                    with open("/eos/user/z/zhenxuan/brilws/lumi_cal.txt","a") as ftxt:
+                        ftxt.write('\n "' + str(Runs.run[i]) + '"' + ":" + str(range_list) + ',')
+
+                ##################################
                 runs = f["Runs"]
                 if "genEventCount" in runs.keys() and "genEventSumw" in runs.keys():
                     sum_weights += numpy.sum(runs["genEventSumw"].array())

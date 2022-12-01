@@ -128,7 +128,7 @@ class SampleManager():
                                 logger.exception("[CondorManager : prepare_inputs] We were not able to find grid proxy or proxy was found to be expired. Since you are accessing files through dasgoclient, a valid proxy is necessary.")
                                 raise RuntimeError()
                             files_dir = self.get_files_from_dasgoclient(path, is_data)
-
+                        # print(files_dir)
                         files += files_dir
                     grabbed_files = True
 

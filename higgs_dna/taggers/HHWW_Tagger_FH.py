@@ -35,6 +35,15 @@ DEFAULT_OPTIONS = {
     "fatjets": {
         "pt": 200.0,
         "eta": 2.4,
+        "inclParTMDV1_HWW4q3qvsQCD": -999,
+        "dr_photons": 0.8,
+        "dr_electrons": 0.8,
+        "dr_muons": 0.8
+    },
+    "fatjets_H": {
+        "pt": 300.0,
+        "eta": 2.4,
+        "inclParTMDV1_HWW4q3qvsQCD" :0.2,
         "dr_photons": 0.8,
         "dr_electrons": 0.8,
         "dr_muons": 0.8
@@ -74,6 +83,8 @@ class HHWW_Preselection_FH(Tagger):
         logger.debug("Is Signal: %s" %self.options["gen_info"]["is_Signal"])
         if not self.is_data and self.options["gen_info"]["is_Signal"]:    
            gen_selections.gen_Hww_4q(events)
+        
+        logger.debug("event fields: %s" %events.fields)
         # Electrons
         electron_cut = lepton_selections.select_electrons(
             electrons=events.Electron,
@@ -179,41 +190,58 @@ class HHWW_Preselection_FH(Tagger):
         n_objects=3,
         dummy_value=-999
         )
-
-        fatjet_H_cut =  (fatjets.pt>300) & (fatjets.deepTagMD_H4qvsQCD>0.4)
-
+        fatjet_H_cut = fatjet_selections.select_fatjets(
+            fatjets = events.FatJet,
+            options = self.options["fatjets_H"],
+            clean = {
+                "photons" : {
+                    "objects" : events.Diphoton.Photon,
+                    "min_dr" : self.options["fatjets_H"]["dr_photons"]
+                },
+                "electrons" : {
+                    "objects" : events.SelectedElectron,
+                    "min_dr" : self.options["fatjets_H"]["dr_electrons"]
+                },
+                "muons" : {
+                    "objects" : events.SelectedMuon,
+                    "min_dr" : self.options["fatjets_H"]["dr_muons"]
+                    },
+                },
+            name = "SelectedFatJet_H",
+            tagger = self
+        )
         fatjets_H = awkward_utils.add_field(
             events = events,
             name = "SelectedFatJet_H",
-            data = fatjets[fatjet_H_cut]
+            data = events.FatJet[fatjet_H_cut]
         )   
-
-
 
         awkward_utils.add_object_fields(
         events=events,
         name="fatjet_H",
-        objects=fatjets_H[awkward.argsort(fatjets_H.deepTagMD_H4qvsQCD, ascending=False, axis=-1)],
+        objects=fatjets_H[awkward.argsort(fatjets_H.inclParTMDV1_HWW4q3qvsQCD, ascending=False, axis=-1)],
         n_objects=1,
         dummy_value=-999
         ) # apply the inverse bb cuts
 
-        fatjet_W_cut = (fatjets.pt>200) & (fatjets.deepTagMD_WvsQCD>0.4)
+        # fatjet_W_cut = (fatjets.pt>200) & (fatjets.deepTagMD_WvsQCD>0.4)
         
-        fatjets_W = awkward_utils.add_field(
-            events = events,
-            name = "SelectedFatJet_W",
-            data = fatjets[fatjet_W_cut]
-        )   
-        awkward_utils.add_object_fields(
-        events=events,
-        name="fatjet_W",
-        objects=fatjets_W[awkward.argsort(fatjets[fatjet_W_cut].deepTagMD_WvsQCD, ascending=False, axis=-1)],
-        n_objects=1,
-        dummy_value=-999
-        ) # apply the inverse bb cuts
+        # fatjets_W = awkward_utils.add_field(
+        #     events = events,
+        #     name = "SelectedFatJet_W",
+        #     data = fatjets[fatjet_W_cut]
+        # )   
+        # produce the Hww3q tagger
+        # Hww3qvsQCD = (fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probHWqqWqq0c + fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probHWqqWqq1c + fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probHWqqWqq2c) / (fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probHWqqWqq0c + fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probHWqqWqq1c + fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probHWqqWqq2c + fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probQCDb+fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probQCDbb+fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probQCDc+fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probQCDcc+fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probQCDothers)
 
-        # fatjets["Tau4_Tau2"]= (fatjets["tau4"]/fatjets["tau2"])
+        # awkward_utils.add_object_fields(
+        # events=events,
+        # name="fatjet_W",
+        # objects=fatjets_W[awkward.argsort(fatjets[fatjet_W_cut].deepTagMD_WvsQCD, ascending=False, axis=-1)],
+        # n_objects=1,
+        # dummy_value=-999
+        # ) # apply the inverse bb cuts
+
         # fatjets["Tau2_Tau1"]= (fatjets["tau2"]/fatjets["tau1"])
         # fatjets = fatjets[awkward.argsort(fatjets.deepTagMD_HbbvsQCD, ascending=True, axis=1)]
 
@@ -275,10 +303,10 @@ class HHWW_Preselection_FH(Tagger):
         n_jets = awkward.num(jets)
         awkward_utils.add_field(events,"nGoodAK4jets",n_jets)
         n_fatjets = awkward.num(fatjets)
-        n_fatjets_W = awkward.num(fatjets_W)
+        # n_fatjets_W = awkward.num(fatjets_W)
         n_fatjets_H = awkward.num(fatjets_H)
         awkward_utils.add_field(events,"nGoodAK4jets",n_jets)
-        awkward_utils.add_field(events,"nGood_W_fatjets",n_fatjets_W)
+        # awkward_utils.add_field(events,"nGood_W_fatjets",n_fatjets_W)
         awkward_utils.add_field(events,"nGood_H_fatjets",n_fatjets_H)
         # n_bjets = awkward.num(bjets)
 
@@ -290,12 +318,15 @@ class HHWW_Preselection_FH(Tagger):
 
         # Hadronic presel
         # use priority to mark different category
-        category_p3 = (n_jets>=4)
-        category_p2 = (n_fatjets_W>=1) & (n_jets>=1)
-        category_p1 = (n_fatjets_H>=1)
+        diphoton_pt_cut = events.Diphoton["pt"] > 200
+        # category_p3 = (n_fatjets_W>=1) & (n_jets>=1)
+        category_p3 = (n_jets>=4) 
+        category_p2 = (n_fatjets_H>=1) & (~diphoton_pt_cut)
+        category_p1 = (n_fatjets_H>=1) & (diphoton_pt_cut)
         flatten_n_jets = awkward.num(jets.pt)
         category = awkward.zeros_like(flatten_n_jets)
         category = awkward.fill_none(category, 0)
+        # category = awkward.where(category_p4, awkward.ones_like(category)*4, category)
         category = awkward.where(category_p3, awkward.ones_like(category)*3, category)
         category = awkward.where(category_p2, awkward.ones_like(category)*2, category)
         category = awkward.where(category_p1, awkward.ones_like(category)*1, category)
@@ -312,14 +343,11 @@ class HHWW_Preselection_FH(Tagger):
         # FulllyLeptonic = (n_leptons >= 2)
 
         # presel_cut = (hadronic | Semileptonic | FulllyLeptonic)  & photon_id_cut
-        # presel_FourJet_category = 
+
         presel_cut = (photon_id_cut) & (n_leptons==0)
-        cat_4jets_cut = (n_jets>=4)
-        cat_2jets_3jets_cut = (n_fatjets_W>=1) & (n_jets>=1)
-        cat_1jet_cut = (n_fatjets_H>=1)
 
         self.register_cuts(
-            names=["Photon id Selection","Lepton Selection",""],
+            names=["Photon id Selection","Lepton Selection"],
             results=[photon_id_cut,Lepton_Selection]
         )
         return presel_cut, events

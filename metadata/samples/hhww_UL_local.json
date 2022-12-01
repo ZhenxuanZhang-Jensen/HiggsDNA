@@ -442,97 +442,50 @@
             ]
         }
     },
-    "DiPhotonJetsBox_MGG" : {
-        "xs" : 1.0,
+    "DiPhotonJetsBox_MGG-80toInf" : {
+        "xs" : 135.0,
+        "fpo" : 5,
         "bf" : 1.0,
         "files" : {
             "2017" : [
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/70000/B59CCE0B-34DB-7743-9DB5-962D64D1CF03.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/8B4DFD38-24BA-E44D-AE97-E150E4B6042E.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/DD151EAD-BD4C-194E-AD8E-541B587CC199.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/270000/33185BA4-9679-E148-A35B-854C22E0FB33.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/270000/95507600-6E02-AD47-B105-6E2D1C9D9963.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/FD8996D0-2D02-024D-B880-68E765B43F83.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/C471C5F8-7229-E747-B145-A00A13217BDB.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/FCBCE34F-D4AC-CA4C-BD8F-AA58E1461FEF.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/A2C5A70F-B4F9-2F46-A369-37BAE93B1098.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/38B2849C-D889-C844-8F7E-D126984E98E6.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/09BFDCCE-E387-B949-B213-28D3E8EB3424.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/135D36E9-604B-E947-9492-41C9DAFC8559.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/70000/9AD6EB3F-EBE6-214A-AF7C-0D8A208187B5.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/70000/DEDC1935-F2C5-A548-9E0D-BD264CB2FAD2.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/70000/23E2668F-0D9E-4A4A-8EA4-F1273ECDAA9A.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/70000/40E68733-695C-D944-B24F-035EBE0B9285.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/70000/37AD6E85-3F0B-DD49-98D8-E63B1A8FEC98.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/6A322808-9B0A-2A48-9F9D-16C67416BE96.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/70000/2D14755B-9E01-584D-9ECF-83D4184BF2E7.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/70000/323475B6-9EBD-D840-A28E-21970D92722C.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/95E5BE6D-B1BD-A240-92F3-F23E7FFAEC59.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/B487608A-B8C8-1148-871C-532FDC7556DD.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/130000/9B14C68E-324E-2842-959A-1E480F853DEF.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/130000/1B5309AF-B47B-BC46-8FCE-E2265D79A90D.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/130000/0FD2F31B-B3E2-2B42-82AA-B7213C98F0AD.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/CD4FCA4E-288B-2D4C-8FED-7C01EF17EF1F.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/9AB25123-6B15-D54D-AB29-DCF2C330130C.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/270000/2E2B3A38-6EBB-9346-A715-6E2FCEA629B7.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/130000/D52B4929-0378-654F-B8A4-1FD07CA55673.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/130000/A2E07675-465C-0946-AD76-A481C8593F68.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/270000/65E1886D-E379-8640-8BC0-F60AA3448BF4.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/270000/BFDEED76-C3DC-4D4D-8BA5-2B0299D22243.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/270000/AB8C1C81-D958-5A43-A743-C2BBB0C3CD63.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/70000/56D077BE-07BD-AB45-A026-A0F24ACADB8B.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/130000/BA34F4A2-B5CA-AE49-B704-58E1AAE92C9F.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/260000/41FCF822-A9E7-DD44-B76C-4248C2C2EB73.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/2A6BDA67-F088-074F-88BE-BEEDED3C4596.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/260000/8E7AA2D6-DC9E-064E-AD3F-C8467317FF03.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/110000/718BCCFD-15B6-CB46-BA63-61D6C26CC669.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/260000/938292CB-FD77-D34C-A0A0-C0D827699CD5.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/260000/854D3FB0-2B09-214E-B8B7-030B7CF1A582.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/260000/4B4C9794-FAAA-AD42-9F65-A49824F45073.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/AE532BD5-55A1-0F48-9040-51726BEC2D0D.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/D2F9800B-9F79-9146-BFD1-C0684F89FDC8.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/260000/5A21770E-1EF1-054A-8040-22883C608D80.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/260000/BE3BEED9-28B5-E443-9141-D580CD440126.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/260000/8B65EEF0-A641-BE43-AB1E-7FD22B8336BE.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/29CFC158-6CD0-4845-B0F2-E3C05960D02C.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/70000/FA8B3570-912B-E449-9C19-ACAE1481543E.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/260000/618D9365-33C9-3C4D-A8DC-BB70CC837C8E.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/260000/B526E7E9-8E3F-3948-94A4-045C500D498D.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/102BD7FF-80C9-A94B-9E5F-F31E61D53362.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/135FDB16-723E-D740-88A7-2A5BE6DA02BB.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/270000/CEA5D550-330D-5C46-BA6C-8D50170D3FC9.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/270000/2C4A26E3-2A4D-5D47-B2C0-E021FD6D54CF.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/8622E413-9B4E-BD4B-903C-BE831046CFC4.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/1FBC57D7-1224-C746-8272-9107EFD1462B.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/EC91FD91-EB75-8B4E-9EE4-48DDFB4CD85E.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/70000/05C327D7-AFB5-9E45-8AFE-A58B12C05BBC.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/270000/20131A9B-CB4F-694A-A315-F8564B8AA66B.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/260000/BF1790C5-88FC-9C44-8624-1FCEACDD1021.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/260000/32169CA3-62FE-3B4D-9336-A128B12E5F45.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/260000/F14BDE87-DBAF-B34F-9FAE-4277A36F0F1C.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/A264E068-0A3B-9544-8A10-2EE97EBB8355.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/61511650-A942-4A4A-A688-2FA0027FE69C.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/120000/28FA0CF6-F878-0940-9914-D1B42F6764A6.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/294A7300-C4C8-D54C-98CF-63EBE7D76CE0.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/70000/2D0744CB-91DE-5F4F-9971-FD8402F46B32.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/110000/384384D1-2FED-734E-BFD9-D07BB55249C9.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/AD325EB6-D8C8-BC46-8AD0-8E4410E35CB0.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/70000/5EF55690-FDA8-F945-AD34-E6EECF942AFB.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/110000/2BF209B3-912F-9646-88AE-B1BA59E323A0.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/130000/54C48FAC-DBFF-5C46-86D8-C0766ABB4739.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/130000/8921F1D8-5AE5-6B4A-B790-91260F7626FC.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/70000/AAEAD36A-6F85-7E41-A888-F4A0BAA4A22B.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/DEB91478-4570-FB44-9D3D-A6E27D27F49D.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/60000/9BF4456C-0879-4143-A4C3-4AB0E1A46BBD.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/FC9668C5-B7BC-4148-A507-1DAE04816A53.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/57D7ECB9-6CC1-0043-8F0E-AA85D57AF544.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/130000/7484F118-C563-0A47-BA01-18D2FE9A6B92.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/120000/717DF183-5FD8-FB4C-A088-A10AD03515AF.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/120000/8AD9EC1A-4B6D-484D-A52C-2CC984715C1D.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/120000/B1D68D99-A4D4-3E47-964D-6C74968795BE.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/120000/F4FB3736-43D9-5040-B1E0-5B9845D2F2C7.root",
-                "root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv7/DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/B2B4E705-1A70-1E4B-878C-AF83E14BE866.root"
-                
+                "/eos/user/s/shsong/bkgfiles/8AF7C476-E264-8C4D-A27E-80BCD2725793.root",
+                "/eos/user/s/shsong/bkgfiles/1512EB1B-33D8-1D45-B5A9-12B46550264B.root",
+                "/eos/user/s/shsong/bkgfiles/FEE6D2BF-68D1-3A40-BBC2-C7D405D4E0E4.root",
+                "/eos/user/s/shsong/bkgfiles/48828228-7FAA-FF48-B354-DFC1FA6CBE8E.root",
+                "/eos/user/s/shsong/bkgfiles/CF3017A5-FB00-484E-AA7B-A51382A36B71.root",
+                "/eos/user/s/shsong/bkgfiles/B245D146-A8DD-7A46-A3DA-073E8A68BA0A.root",
+                "/eos/user/s/shsong/bkgfiles/1545C77C-4C20-9641-BEB2-73675E6DC834.root",
+                "/eos/user/s/shsong/bkgfiles/1E3FB3ED-4690-6241-8672-C79CAAE713C3.root",
+                "/eos/user/s/shsong/bkgfiles/1BBA67D5-6EF1-F545-93A7-D27400E04871.root",
+                "/eos/user/s/shsong/bkgfiles/5C50B83E-E79D-7F44-A1A4-6E49AEFE0EEA.root",
+                "/eos/user/s/shsong/bkgfiles/44835419-20ED-3C42-A536-FF63202EC396.root",
+                "/eos/user/s/shsong/bkgfiles/78A28A57-3DC9-D54D-BFDB-0C4E37BEBD64.root",
+                "/eos/user/s/shsong/bkgfiles/7708036C-C3E7-D048-B646-F5286CDE67D6.root",
+                "/eos/user/s/shsong/bkgfiles/05B5F74E-A8C2-1B45-AB33-6C8E8876BCF3.root",
+                "/eos/user/s/shsong/bkgfiles/7AB58912-AFDD-6B4F-9E48-94D0D5C06077.root",
+                "/eos/user/s/shsong/bkgfiles/CF192D3C-755F-4B48-9467-903A3090C32E.root",
+                "/eos/user/s/shsong/bkgfiles/76A86207-5014-C142-B431-7AC87AACFCFF.root",
+                "/eos/user/s/shsong/bkgfiles/B9A1B871-3140-214F-8011-0695EE5E99E3.root",
+                "/eos/user/s/shsong/bkgfiles/9168CF5F-48AE-F04B-8586-90C125D5AE02.root",
+                "/eos/user/s/shsong/bkgfiles/E66E6C82-1C75-9040-9D7C-512F353CC18F.root",
+                "/eos/user/s/shsong/bkgfiles/2FD0BA4A-2EBC-6D45-8A9C-F80B02DF225F.root",
+                "/eos/user/s/shsong/bkgfiles/6CE9F8E2-EC0B-7646-A1B8-84ADC579287B.root",
+                "/eos/user/s/shsong/bkgfiles/ACDE2D85-889E-4E48-8AD6-6E5F60AD3B1A.root",
+                "/eos/user/s/shsong/bkgfiles/5A938C5D-1399-044D-84FB-9B9D486F087D.root",
+                "/eos/user/s/shsong/bkgfiles/BCE42569-DF80-C044-B053-C840BE1E670C.root",
+                "/eos/user/s/shsong/bkgfiles/81B2732D-9A6C-AB4A-A6CB-205F94408B11.root",
+                "/eos/user/s/shsong/bkgfiles/8E3C9312-B2E7-904B-99AC-4A6C3A2F0FDA.root",
+                "/eos/user/s/shsong/bkgfiles/5EB71544-DD05-0740-ADCC-ECA745C29573.root",
+                "/eos/user/s/shsong/bkgfiles/B499DE96-2938-9B47-9EDB-871EE546AB12.root",
+                "/eos/user/s/shsong/bkgfiles/89063007-F14A-0A44-BBD6-6AC12FB7D363.root",
+                "/eos/user/s/shsong/bkgfiles/8380B131-86E5-A140-92AD-DDC3C4E7DA22.root",
+                "/eos/user/s/shsong/bkgfiles/16E7978B-47D2-F840-8CFC-D54E72606F1D.root",
+                "/eos/user/s/shsong/bkgfiles/A374A906-4FC6-C048-8104-4128F5FD23CB.root",
+                "/eos/user/s/shsong/bkgfiles/87525996-239A-BD4A-9B15-71AE918C66C8.root",
+                "/eos/user/s/shsong/bkgfiles/71564E3F-C07D-5F42-B9C6-8824DBDDDB60.root",
+                "/eos/user/s/shsong/bkgfiles/A46E6559-9503-1441-90B7-FD0042C62D49.root",
+                "/eos/user/s/shsong/bkgfiles/A881CAE2-D201-BD42-A664-CA7936FBCF2F.root",
+                "/eos/user/s/shsong/bkgfiles/84FA0648-B628-4E4E-874A-AF645A46063D.root"
             ]
         }
     },
@@ -1140,7 +1093,7 @@
     },
 
     "DoubleEG_Run2017B" : {
-        "fpo" : 10,
+        "fpo" : 5,
         "files" : {
             "2017" : [
                 "/eos/cms/store/group/phys_higgs/cmshgg/zhenxuan/Data_UL/DoubleEG_Run2017B/4BC53825-C4CC-264D-B251-87375F80A49E.root",
@@ -1176,7 +1129,7 @@
         }
     },
     "DoubleEG_Run2017C" : {
-        "fpo" : 10,
+        "fpo" : 5,
         "files" : {
             "2017" : [
                     "/eos/cms/store/group/phys_higgs/cmshgg/zhenxuan/Data_UL/DoubleEG_Run2017C/7F02F6CF-39C2-B242-AAB0-8E9A2D479D44.root",
@@ -1228,7 +1181,7 @@
         }
     },
     "DoubleEG_Run2017D" : {
-        "fpo" : 10,
+        "fpo" : 5,
         "files" : {
             "2017" : [
                 "/eos/cms/store/group/phys_higgs/cmshgg/zhenxuan/Data_UL/DoubleEG_Run2017D/8E2AFC79-EFE0-5840-B0A0-B06596C3F4B8.root",
@@ -1249,7 +1202,7 @@
         }
     },
     "DoubleEG_Run2017E" : {
-        "fpo" : 10,
+        "fpo" : 5,
         "files" : {
             "2017" : [
                 "/eos/cms/store/group/phys_higgs/cmshgg/zhenxuan/Data_UL/DoubleEG_Run2017E/126A9324-E4B8-9C42-8AF2-999AAD41C348.root",
@@ -1289,7 +1242,7 @@
         }
     },
     "DoubleEG_Run2017F" : {
-        "fpo" : 10,
+        "fpo" : 5,
         "files" : {
             "2017" : [
                 "/eos/cms/store/group/phys_higgs/cmshgg/zhenxuan/Data_UL/DoubleEG_Run2017F/E0416E7B-3364-D64D-910A-E83496BCD1EF.root",
