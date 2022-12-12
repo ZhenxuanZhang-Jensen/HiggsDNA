@@ -23,6 +23,7 @@ DEFAULT_OPTIONS = {
         ],
         "e_veto" : 0.5,
         "e_veto_invert" : False,
+        "no_e_veto" : False,
         "hoe" : 0.08,
         "r9" : 0.8,
         "charged_iso" : 20.0,
@@ -242,7 +243,8 @@ class DiphotonTagger(Tagger):
         else:
             trigger_cut = awkward.num(dipho_events.Diphoton) >= 0 # dummy cut, all True
 
-        presel_cut = dipho_presel_cut & trigger_cut
+
+        presel_cut = dipho_presel_cut & trigger_cut 
 
         self.register_cuts(
             names = ["At least 1 diphoton pair", "HLT Trigger", "all"],
@@ -324,9 +326,10 @@ class DiphotonTagger(Tagger):
         eta_cut = (photons.isScEtaEB | photons.isScEtaEE)
 
         # electron veto
-        if not options["e_veto_invert"]:
+        e_veto_cut = photons.pt > 0
+        if not options["e_veto_invert"] and not options["no_e_veto"] :
             e_veto_cut = photons.electronVeto > options["e_veto"]
-        else:
+        elif options["e_veto_invert"] and not options["no_e_veto"] :
             e_veto_cut = photons.electronVeto < options["e_veto"]
 
         use_central_nano = options["use_central_nano"] # indicates whether we are using central nanoAOD (with some branches that are necessary for full diphoton preselection missing) or custom nanoAOD (with these branches added)

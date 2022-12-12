@@ -9,7 +9,8 @@ from higgs_dna.utils import misc_utils
 DEFAULT_JETS = {
     "pt" : 25.0,
     "eta" : 2.4,
-    "looseID" : True
+    "looseID" : True,
+    "PUid" : False,
 }
 
 def select_jets(jets, options, clean, name = "none", tagger = None):
@@ -31,12 +32,17 @@ def select_jets(jets, options, clean, name = "none", tagger = None):
     else:
         id_cut = jets.pt > 0
 
-    all_cuts = standard_cuts & id_cut
+    if options["PUid"]:
+        pu_cut =  ( (jets.puId > 0) & (jets.pt < 50) ) | ( jets.pt > 50 )# PUjetID stored bitwise for loose/tight/tightLepVeto
+    else:
+        pu_cut = jets.pt > 0
+
+    all_cuts = standard_cuts & id_cut & pu_cut
 
     if tagger is not None:
         tagger.register_cuts(
-            names = ["std cuts", "id cut", "all cuts"],
-            results = [standard_cuts, id_cut, all_cuts],
+            names = ["std cuts", "id cut", "all cuts", "pu_cut"],
+            results = [standard_cuts, id_cut, "pu_cut", all_cuts],
             cut_type = name
         )
 

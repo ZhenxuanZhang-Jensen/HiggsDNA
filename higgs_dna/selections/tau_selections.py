@@ -13,9 +13,9 @@ DEFAULT_TAUS = {
     "deep_tau_vs_ele" : 1,
     "deep_tau_vs_mu" : 2,
     "deep_tau_vs_jet" : 8,
-    "dr_photons" : 0.2,
-    "dr_electrons" : 0.2,
-    "dr_muons" : 0.2,
+    "dr_photons" : 0.5,
+    "dr_electrons" : 0.5,
+    "dr_muons" : 0.5,
     "decay_mode" : False 
 }
 

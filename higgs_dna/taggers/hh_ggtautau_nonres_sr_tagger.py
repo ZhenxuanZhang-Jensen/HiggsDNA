@@ -12,18 +12,24 @@ from higgs_dna.taggers.tagger import Tagger, NOMINAL_TAG
 from higgs_dna.utils import awkward_utils, misc_utils
 
 DEFAULT_OPTIONS = {
-    "bdt_file" : "data/POGsel_04May2022.xgb", # if running on condor, this file needs to be placed somewhere under higgs_dna/ so that it is included in the tar file. We probably want to think of a better long term solution for this.
+    #"bdt_file" : "data/11Nov2022_PUjetID.xgb", 
+    #"bdt_cuts" : [0.9902, 0.980286, 0.0],
+
+    #"bdt_file" : "data/04Nov2022.xgb", # if running on condor, this file needs to be placed somewhere under higgs_dna/ so that it is included in the tar file. We probably want to think of a better long term solution for this.
+    #"bdt_cuts" : [0.9920, 0.953062, 0.0], #trained on private
+
+    "bdt_file" : "data/04Nov2022_cen.xgb", # if running on condor, this file needs to be placed somewhere under higgs_dna/ so that it is included in the tar file. We probably want to think of a better long term solution for this.
+    "bdt_cuts" : [0.9913, 0.92504, 0.0],	#trained on central ggtt
     "bdt_features" : [
         "n_electrons", "n_muons", "n_taus", "n_iso_tracks", "n_jets", "n_bjets",
         "MET_pt", "diphoton_met_dPhi", "MET_ll_dPhi", "lead_lepton_met_dphi", "ditau_dphi", "ditau_deta", "ditau_dR",
-        ("LeadPhoton", "pt_mgg"), ("LeadPhoton", "eta"), ("LeadPhoton", "mvaID"), ("LeadPhoton", "pixelSeed"), ("SubleadPhoton", "pt_mgg"), ("SubleadPhoton", "eta"), ("SubleadPhoton", "mvaID"), ("SubleadPhoton", "pixelSeed"), ("Diphoton", "max_mvaID"), ("Diphoton", "min_mvaID"),
+        ("LeadPhoton", "pt_mgg"), ("LeadPhoton", "eta"), ("LeadPhoton", "pixelSeed"), ("SubleadPhoton", "pt_mgg"), ("SubleadPhoton", "eta"), ("SubleadPhoton", "pixelSeed"),
         ("Diphoton", "pt_mgg"), ("Diphoton", "eta"), ("Diphoton", "dR"), ("Diphoton", "dPhi"), ("Diphoton", "helicity"), "gg_tt_CS", "gg_tt_hel", "tt_hel",
         "lead_lepton_pt", "lead_lepton_eta", "sublead_lepton_pt", "sublead_lepton_eta",
         "category", "jet_1_pt", "jet_1_eta", "jet_1_btagDeepFlavB", "jet_2_pt", "jet_2_eta", "jet_2_btagDeepFlavB", "b_jet_1_btagDeepFlavB",
         "pt_tautau_SVFit", "eta_tautau_SVFit_bdt", "m_tautau_SVFit", "dR_tautau_SVFit", "dR_ggtautau_SVFit", "dPhi_tautau_SVFit", "dPhi_ggtautau_SVFit", "ditau_mass", "ditau_pt", "ditau_eta",
         "mX","dilep_leadpho_mass", "dilep_subleadpho_mass"
-    ],
-    "bdt_cuts" : [0.9898, 0.882222, 0.0]
+    ]
 }
 
 class HHggTauTauNonResSRTagger(Tagger):

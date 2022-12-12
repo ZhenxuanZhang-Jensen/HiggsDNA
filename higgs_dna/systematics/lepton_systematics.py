@@ -200,33 +200,32 @@ def muon_iso_sfSYS(events, year, central_only, input_collection, working_point =
 def tauJ_sf(events, year, central_only, input_collection, working_point = "none"):
     leptons = events[input_collection]
     variations = {}
-    variations["central"] = leptons.sfDeepTau2017v2p1VSjet_Loose
+    variations["central"] = leptons.sfDeepTau2017v2p1VSjet_Loose_ext
 
     if not central_only:
-        variations["up"] = leptons.sfDeepTau2017v2p1VSjet_LooseUp
-        variations["down"] = leptons.sfDeepTau2017v2p1VSjet_LooseDown
+        variations["up"] = leptons.sfDeepTau2017v2p1VSjet_LooseUp_ext
+        variations["down"] = leptons.sfDeepTau2017v2p1VSjet_LooseDown_ext
 
     return variations
 
 def tauM_sf(events, year, central_only, input_collection, working_point = "none"):
     leptons = events[input_collection]
     variations = {}
-    variations["central"] = leptons.sfDeepTau2017v2p1VSmu_VLoose
+    variations["central"] = leptons.sfDeepTau2017v2p1VSmu_VLoose_ext
 
     if not central_only:
-        variations["up"] = leptons.sfDeepTau2017v2p1VSmu_VLooseUp
-        variations["down"] = leptons.sfDeepTau2017v2p1VSmu_VLooseDown
+        variations["up"] = leptons.sfDeepTau2017v2p1VSmu_VLooseUp_ext
+        variations["down"] = leptons.sfDeepTau2017v2p1VSmu_VLooseDown_ext
 
     return variations
 
 def tauE_sf(events, year, central_only, input_collection, working_point = "none"):
     leptons = events[input_collection]
     variations = {}
-    variations["central"] = leptons.sfDeepTau2017v2p1VSe_VVLoose
+    variations["central"] = leptons.sfDeepTau2017v2p1VSe_VVLoose_ext
 
     if not central_only:
-        variations["up"] = leptons.sfDeepTau2017v2p1VSe_VVLooseUp
-        variations["down"] = leptons.sfDeepTau2017v2p1VSe_VVLooseDown #NB according to Tau POG we should be using Tight for the vsJ scale factor to be valid!! check twiki 
+        variations["up"] = leptons.sfDeepTau2017v2p1VSe_VVLooseUp_ext
+        variations["down"] = leptons.sfDeepTau2017v2p1VSe_VVLooseDown_ext #NB according to Tau POG we should be using Tight for the vsJ scale factor to be valid!! check twiki 
 
     return variations
-

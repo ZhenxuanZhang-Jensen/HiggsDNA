@@ -301,28 +301,20 @@
                     "down" : ["Jet", "pt_jesTotalDown"]
                 }
             },
-            "MET_JER" : {
-                "method" : "from_branch",
-                "branch_modified" : "MET_pt",
-                "branches" : {
-                    "up" : "MET_T1Smear_pt_jerUp",
-                    "down" : "MET_T1Smear_pt_jerDown"
-                }
-            },
             "MET_JES" : {
                 "method" : "from_branch",
                 "branch_modified" : "MET_pt",
                 "branches" : {
-                    "up" : "MET_T1Smear_pt_jesTotalUp",
-                    "down" : "MET_T1Smear_pt_jesTotalDown"
+                    "up" : "MET_T1_pt_jesTotalUp",
+                    "down" : "MET_T1_pt_jesTotalDown"
                 }
             },
             "MET_Unclustered" : {
                 "method" : "from_branch",
                 "branch_modified" : "MET_pt",
                 "branches" : {
-                    "up" : "MET_T1Smear_pt_unclustEnUp",
-                    "down" : "MET_T1Smear_pt_unclustEnDown"
+                    "up" : "MET_T1_pt_unclustEnUp",
+                    "down" : "MET_T1_pt_unclustEnDown"
                 }
             },
             "Muon_pt" : {
@@ -364,7 +356,7 @@
             "MET_covXX", "MET_covXY", "MET_covYY", 
             "Photon_pt_ScaleUp","Photon_pt_ScaleDown",
             "Jet_pt_nom", "Jet_pt_jerUp", "Jet_pt_jerDown", "Jet_pt_jesTotalUp", "Jet_pt_jesTotalDown",
-            "MET_T1Smear_pt","MET_T1Smear_pt_jerUp","MET_T1Smear_pt_jerDown","MET_T1Smear_pt_jesTotalUp","MET_T1Smear_pt_jesTotalDown","MET_T1Smear_pt_unclustEnUp","MET_T1Smear_pt_unclustEnDown",
+            "MET_T1_pt","MET_T1_pt_jerUp","MET_T1_pt_jerDown","MET_T1_pt_jesTotalUp","MET_T1_pt_jesTotalDown","MET_T1_pt_unclustEnUp","MET_T1_pt_unclustEnDown",
             "Muon_corrected_pt","Muon_correctedUp_pt","Muon_correctedDown_pt","Muon_ID_SF","Muon_ID_SFstat","Muon_ID_SFsyst","Muon_ISO_SF","Muon_ISO_SFstat","Muon_ISO_SFsyst",
             "puWeight","puWeightDown","puWeightUp",
             "PrefireWeight", "PrefireWeight_Up", "PrefireWeight_Down",
@@ -379,7 +371,7 @@
             [["Jet", "pt"], ["Jet", "pt_nom"]],
             [["Muon", "pt"], ["Muon", "corrected_pt"]],
             [["Tau", "pt"], ["Tau", "pt_corr"]],
-            ["MET_pt", "MET_T1Smear_pt"]
+            ["MET_pt", "MET_T1_pt"]
         ],
         "data" : []
     },
