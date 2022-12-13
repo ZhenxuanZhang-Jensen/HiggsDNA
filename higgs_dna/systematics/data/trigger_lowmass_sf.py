@@ -27,14 +27,14 @@ LEAD_TRIGGER_LM_SF_2016 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [35.0000,40.0000],
                        "value" : 0.692324000,
-                       "uncertainty" : 0.003986420
+                       "uncertainty" : 0.090243433
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.708503000,
-                       "uncertainty" : 0.003432880
+                       "uncertainty" : 0.068223716
                },
                {
                        "photon_r9" : [0.5000,0.5300],
@@ -55,14 +55,14 @@ LEAD_TRIGGER_LM_SF_2016 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [60.0000,70.0000],
                        "value" : 0.792566000,
-                       "uncertainty" : 0.015080600
+                       "uncertainty" : 0.060185507
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.808000000,
-                       "uncertainty" : 0.028349700
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5300],
@@ -76,63 +76,63 @@ LEAD_TRIGGER_LM_SF_2016 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,33.3333],
                        "value" : 0.880773000,
-                       "uncertainty" : 0.001000070
+                       "uncertainty" : 0.014991453
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [33.3333,35.0000],
                        "value" : 0.951792000,
-                       "uncertainty" : 0.000842411
+                       "uncertainty" : 0.035436194
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [35.0000,40.0000],
                        "value" : 0.961186000,
-                       "uncertainty" : 0.000371599
+                       "uncertainty" : 0.030955495
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.967805000,
-                       "uncertainty" : 0.000267569
+                       "uncertainty" : 0.012833155
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.971748000,
-                       "uncertainty" : 0.000303140
+                       "uncertainty" : 0.000880781
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.974850000,
-                       "uncertainty" : 0.000389931
+                       "uncertainty" : 0.005982493
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [60.0000,70.0000],
                        "value" : 0.979271000,
-                       "uncertainty" : 0.000769622
+                       "uncertainty" : 0.001583536
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.983438000,
-                       "uncertainty" : 0.001079670
+                       "uncertainty" : 0.002073623
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [90.0000,999999.0000],
                        "value" : 0.990463000,
-                       "uncertainty" : 0.001437670
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8500,0.8800],
@@ -153,42 +153,42 @@ LEAD_TRIGGER_LM_SF_2016 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [35.0000,40.0000],
                        "value" : 0.564528000,
-                       "uncertainty" : 0.002857180
+                       "uncertainty" : 0.009589529
                },
                {
                        "photon_r9" : [0.8500,0.8800],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.584602000,
-                       "uncertainty" : 0.002182620
+                       "uncertainty" : 0.004218101
                },
                {
                        "photon_r9" : [0.8500,0.8800],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.610664000,
-                       "uncertainty" : 0.002551310
+                       "uncertainty" : 0.006045770
                },
                {
                        "photon_r9" : [0.8500,0.8800],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.638541000,
-                       "uncertainty" : 0.003218980
+                       "uncertainty" : 0.010292409
                },
                {
                        "photon_r9" : [0.8500,0.8800],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [60.0000,70.0000],
                        "value" : 0.679178000,
-                       "uncertainty" : 0.006107500
+                       "uncertainty" : 0.006270226
                },
                {
                        "photon_r9" : [0.8500,0.8800],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.719895000,
-                       "uncertainty" : 0.007941300
+                       "uncertainty" : 0.012266722
                },
                {
                        "photon_r9" : [0.8500,0.8800],
@@ -202,56 +202,56 @@ LEAD_TRIGGER_LM_SF_2016 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,33.3333],
                        "value" : 0.911612000,
-                       "uncertainty" : 0.000551594
+                       "uncertainty" : 0.003011115
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [33.3333,35.0000],
                        "value" : 0.964408000,
-                       "uncertainty" : 0.000451792
+                       "uncertainty" : 0.028391722
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [35.0000,40.0000],
                        "value" : 0.973082000,
-                       "uncertainty" : 0.000187761
+                       "uncertainty" : 0.000405197
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.978494000,
-                       "uncertainty" : 0.000126388
+                       "uncertainty" : 0.000244256
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.981905000,
-                       "uncertainty" : 0.000137401
+                       "uncertainty" : 0.000325595
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.982553000,
-                       "uncertainty" : 0.000174033
+                       "uncertainty" : 0.000556455
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [60.0000,70.0000],
                        "value" : 0.983744000,
-                       "uncertainty" : 0.000329198
+                       "uncertainty" : 0.000337969
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.986766000,
-                       "uncertainty" : 0.000405361
+                       "uncertainty" : 0.000626151
                },
                {
                        "photon_r9" : [0.8800,999.0000],
@@ -286,21 +286,21 @@ LEAD_TRIGGER_LM_SF_2016 = {
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.760539000,
-                       "uncertainty" : 0.002529220
+                       "uncertainty" : 0.002945757
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.778439000,
-                       "uncertainty" : 0.003045640
+                       "uncertainty" : 0.009350770
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.791388000,
-                       "uncertainty" : 0.003802740
+                       "uncertainty" : 0.034202323
                },
                {
                        "photon_r9" : [0.9000,0.9300],
@@ -314,56 +314,56 @@ LEAD_TRIGGER_LM_SF_2016 = {
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.837738000,
-                       "uncertainty" : 0.008972370
+                       "uncertainty" : 0.011170179
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [90.0000,9999.0000],
                        "value" : 0.884554000,
-                       "uncertainty" : 0.009787100
+                       "uncertainty" : 0.012013801
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [0.0000,33.3333],
                        "value" : 0.853852000,
-                       "uncertainty" : 0.001546490
+                       "uncertainty" : 0.040502258
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [33.3333,35.0000],
                        "value" : 0.950491000,
-                       "uncertainty" : 0.001278020
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [35.0000,40.0000],
                        "value" : 0.965209000,
-                       "uncertainty" : 0.000558641
+                       "uncertainty" : 0.001416020
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.970964000,
-                       "uncertainty" : 0.000416357
+                       "uncertainty" : 0.000484927
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.973743000,
-                       "uncertainty" : 0.000499808
+                       "uncertainty" : 0.001534518
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.977689000,
-                       "uncertainty" : 0.000597825
+                       "uncertainty" : 0.005376913
                },
                {
                        "photon_r9" : [0.9300,999.0000],
@@ -377,14 +377,14 @@ LEAD_TRIGGER_LM_SF_2016 = {
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.989488000,
-                       "uncertainty" : 0.001100480
+                       "uncertainty" : 0.001370046
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [90.0000,9999.0000],
                        "value" : 0.993663000,
-                       "uncertainty" : 0.001054880
+                       "uncertainty" : 0.001294880
                },
                {
                        "photon_r9" : [0.0000,0.9000],
@@ -432,42 +432,42 @@ LEAD_TRIGGER_LM_EBhiR9OR_SF_2016 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [35.0000,40.0000],
                        "value" : 0.977014000,
-                       "uncertainty" : 0.000146821
+                       "uncertainty" : 0.000492774
                },
                {
                        "photon_r9" : [0.8500,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.980632000,
-                       "uncertainty" : 0.000100407
+                       "uncertainty" : 0.000194045
                },
                {
                        "photon_r9" : [0.8500,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.983649000,
-                       "uncertainty" : 0.000108830
+                       "uncertainty" : 0.000257891
                },
                {
                        "photon_r9" : [0.8500,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.984346000,
-                       "uncertainty" : 0.000136420
+                       "uncertainty" : 0.000436191
                },
                {
                        "photon_r9" : [0.8500,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [60.0000,70.0000],
                        "value" : 0.985730000,
-                       "uncertainty" : 0.000254647
+                       "uncertainty" : 0.000261432
                },
                {
                        "photon_r9" : [0.8500,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.989070000,
-                       "uncertainty" : 0.000308570
+                       "uncertainty" : 0.000476640
                },
                {
                        "photon_r9" : [0.8500,999.0000],
@@ -486,9 +486,8 @@ LEAD_TRIGGER_LM_EBhiR9OR_SF_2016 = {
         ]
 }
 
-
 SUBLEAD_TRIGGER_LM_SF_2016 = {
-	"variables" : ["photon_r9", "photon_eta", "photon_pt"],
+        "variables" : ["photon_r9", "photon_eta", "photon_pt"],
         "bins" : [
                {
                        "photon_r9" : [0.0000,0.5000],
@@ -502,77 +501,77 @@ SUBLEAD_TRIGGER_LM_SF_2016 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,32.0000],
                        "value" : 0.641895000,
-                       "uncertainty" : 0.005655140
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [32.0000,34.0000],
                        "value" : 0.682347000,
-                       "uncertainty" : 0.007698890
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [34.0000,36.0000],
                        "value" : 0.695856000,
-                       "uncertainty" : 0.007184140
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [36.0000,38.0000],
                        "value" : 0.695441000,
-                       "uncertainty" : 0.006825560
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [38.0000,40.0000],
                        "value" : 0.714604000,
-                       "uncertainty" : 0.006521380
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.719518000,
-                       "uncertainty" : 0.004430170
+                       "uncertainty" : 0.089910246
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.743710000,
-                       "uncertainty" : 0.005164890
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [50.0000,55.0000],
                        "value" : 0.754574000,
-                       "uncertainty" : 0.007924110
+                       "uncertainty" : 0.080806380
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [55.0000,65.0000],
                        "value" : 0.763377000,
-                       "uncertainty" : 0.010285900
+                       "uncertainty" : 0.065325540
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [65.0000,70.0000],
                        "value" : 0.796185000,
-                       "uncertainty" : 0.027643500
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.802318000,
-                       "uncertainty" : 0.027871300
+                       "uncertainty" : 0.088164955
                },
                {
                        "photon_r9" : [0.5000,0.5300],
@@ -586,105 +585,105 @@ SUBLEAD_TRIGGER_LM_SF_2016 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,32.0000],
                        "value" : 0.963248000,
-                       "uncertainty" : 0.005819560
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [32.0000,34.0000],
                        "value" : 0.970865000,
-                       "uncertainty" : 0.004565600
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [34.0000,36.0000],
                        "value" : 0.973962000,
-                       "uncertainty" : 0.004128940
+                       "uncertainty" : 0.063736988
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [36.0000,38.0000],
                        "value" : 0.975698000,
-                       "uncertainty" : 0.004075500
+                       "uncertainty" : 0.076031849
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [38.0000,40.0000],
                        "value" : 0.976490000,
-                       "uncertainty" : 0.004026880
+                       "uncertainty" : 0.036349525
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.978155000,
-                       "uncertainty" : 0.004048440
+                       "uncertainty" : 0.055106026
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.978768000,
-                       "uncertainty" : 0.004000310
+                       "uncertainty" : 0.047974495
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [50.0000,55.0000],
                        "value" : 0.979168000,
-                       "uncertainty" : 0.003997050
+                       "uncertainty" : 0.033905520
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [55.0000,65.0000],
                        "value" : 0.979229000,
-                       "uncertainty" : 0.003999800
+                       "uncertainty" : 0.031413070
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [65.0000,70.0000],
                        "value" : 0.978977000,
-                       "uncertainty" : 0.004035520
+                       "uncertainty" : 0.017468058
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.978874000,
-                       "uncertainty" : 0.004047160
+                       "uncertainty" : 0.028704150
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [90.0000,999999.0000],
                        "value" : 0.979177000,
-                       "uncertainty" : 0.004121280
+                       "uncertainty" : 0.006321688
                },
                {
                        "photon_r9" : [0.8500,0.8800],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,32.0000],
                        "value" : 0.520538000,
-                       "uncertainty" : 0.004318930
+                       "uncertainty" : 0.018869487
                },
                {
                        "photon_r9" : [0.8500,0.8800],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [32.0000,34.0000],
                        "value" : 0.544783000,
-                       "uncertainty" : 0.006225360
+                       "uncertainty" : 0.020359626
                },
                {
                        "photon_r9" : [0.8500,0.8800],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [34.0000,36.0000],
                        "value" : 0.552613000,
-                       "uncertainty" : 0.005689080
+                       "uncertainty" : 0.011643327
                },
                {
                        "photon_r9" : [0.8500,0.8800],
@@ -754,21 +753,21 @@ SUBLEAD_TRIGGER_LM_SF_2016 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,32.0000],
                        "value" : 0.957582000,
-                       "uncertainty" : 0.004087330
+                       "uncertainty" : 0.017890734
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [32.0000,34.0000],
                        "value" : 0.969330000,
-                       "uncertainty" : 0.003986260
+                       "uncertainty" : 0.013115444
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [34.0000,36.0000],
                        "value" : 0.971038000,
-                       "uncertainty" : 0.003953990
+                       "uncertainty" : 0.007627106
                },
                {
                        "photon_r9" : [0.8800,999.0000],
@@ -838,35 +837,35 @@ SUBLEAD_TRIGGER_LM_SF_2016 = {
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [0.0000,32.0000],
                        "value" : 0.685109000,
-                       "uncertainty" : 0.014049000
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [32.0000,34.0000],
                        "value" : 0.697586000,
-                       "uncertainty" : 0.015049100
+                       "uncertainty" : 0.022715646
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [34.0000,36.0000],
                        "value" : 0.708077000,
-                       "uncertainty" : 0.015013700
+                       "uncertainty" : 0.023373667
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [36.0000,38.0000],
                        "value" : 0.714550000,
-                       "uncertainty" : 0.014968400
+                       "uncertainty" : 0.015579555
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [38.0000,40.0000],
                        "value" : 0.728204000,
-                       "uncertainty" : 0.015043100
+                       "uncertainty" : 0.015657305
                },
                {
                        "photon_r9" : [0.9000,0.9300],
@@ -887,21 +886,21 @@ SUBLEAD_TRIGGER_LM_SF_2016 = {
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [50.0000,55.0000],
                        "value" : 0.769585000,
-                       "uncertainty" : 0.015741700
+                       "uncertainty" : 0.036309679
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [55.0000,65.0000],
                        "value" : 0.784002000,
-                       "uncertainty" : 0.016251100
+                       "uncertainty" : 0.029879528
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [65.0000,70.0000],
                        "value" : 0.796937000,
-                       "uncertainty" : 0.019829800
+                       "uncertainty" : 0.028210603
                },
                {
                        "photon_r9" : [0.9000,0.9300],
@@ -922,35 +921,35 @@ SUBLEAD_TRIGGER_LM_SF_2016 = {
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [0.0000,32.0000],
                        "value" : 0.952053000,
-                       "uncertainty" : 0.018743300
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [32.0000,34.0000],
                        "value" : 0.960736000,
-                       "uncertainty" : 0.018768800
+                       "uncertainty" : 0.033215725
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [34.0000,36.0000],
                        "value" : 0.963011000,
-                       "uncertainty" : 0.018795100
+                       "uncertainty" : 0.030252251
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [36.0000,38.0000],
                        "value" : 0.962529000,
-                       "uncertainty" : 0.018784900
+                       "uncertainty" : 0.019551882
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [38.0000,40.0000],
                        "value" : 0.965013000,
-                       "uncertainty" : 0.018830500
+                       "uncertainty" : 0.019599344
                },
                {
                        "photon_r9" : [0.9300,999.0000],
@@ -971,21 +970,21 @@ SUBLEAD_TRIGGER_LM_SF_2016 = {
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [50.0000,55.0000],
                        "value" : 0.965761000,
-                       "uncertainty" : 0.018845200
+                       "uncertainty" : 0.043468187
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [55.0000,65.0000],
                        "value" : 0.966527000,
-                       "uncertainty" : 0.018861900
+                       "uncertainty" : 0.035228878
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [65.0000,70.0000],
                        "value" : 0.964668000,
-                       "uncertainty" : 0.018870900
+                       "uncertainty" : 0.026846437
                },
                {
                        "photon_r9" : [0.9300,999.0000],
@@ -1015,11 +1014,11 @@ SUBLEAD_TRIGGER_LM_SF_2016 = {
                        "value" : 1.000000000,
                        "uncertainty" : 0.000000000
                }
-	]
+        ]
 }
 
 SUBLEAD_TRIGGER_LM_EBhiR9OR_SF_2016 = {
-	"variables" : ["photon_r9", "photon_eta", "photon_pt"],
+        "variables" : ["photon_r9", "photon_eta", "photon_pt"],
         "bins" : [
                {
                        "photon_r9" : [0.0000,0.8500],
@@ -1033,21 +1032,21 @@ SUBLEAD_TRIGGER_LM_EBhiR9OR_SF_2016 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,32.0000],
                        "value" : 0.973687000,
-                       "uncertainty" : 0.005079770
+                       "uncertainty" : 0.022193611
                },
                {
                        "photon_r9" : [0.8500,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [32.0000,34.0000],
                        "value" : 0.978161000,
-                       "uncertainty" : 0.004996890
+                       "uncertainty" : 0.016341996
                },
                {
                        "photon_r9" : [0.8500,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [34.0000,36.0000],
                        "value" : 0.979632000,
-                       "uncertainty" : 0.004981490
+                       "uncertainty" : 0.010195166
                },
                {
                        "photon_r9" : [0.8500,999.0000],
@@ -1119,13 +1118,12 @@ SUBLEAD_TRIGGER_LM_EBhiR9OR_SF_2016 = {
                        "value" : 1.000000000,
                        "uncertainty" : 0.000000000
                }
-	]
+        ]
 }
 
-
 LEAD_TRIGGER_LM_SF_2017 = {
-	"variables" : ["photon_r9", "photon_eta", "photon_pt"],
-	"bins" : [
+        "variables" : ["photon_r9", "photon_eta", "photon_pt"],
+        "bins" : [
                {
                        "photon_r9" : [0.0000,0.8500],
                        "photon_eta" : [0.0000,1.5000],
@@ -1152,21 +1150,21 @@ LEAD_TRIGGER_LM_SF_2017 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [35.0000,37.0000],
                        "value" : 0.894138000,
-                       "uncertainty" : 0.001007880
+                       "uncertainty" : 0.007729383
                },
                {
                        "photon_r9" : [0.8500,0.8800],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [37.0000,40.0000],
                        "value" : 0.902827000,
-                       "uncertainty" : 0.001008490
+                       "uncertainty" : 0.005671817
                },
                {
                        "photon_r9" : [0.8500,0.8800],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.912114000,
-                       "uncertainty" : 0.001009140
+                       "uncertainty" : 0.002776428
                },
                {
                        "photon_r9" : [0.8500,0.8800],
@@ -1180,63 +1178,63 @@ LEAD_TRIGGER_LM_SF_2017 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.920406000,
-                       "uncertainty" : 0.001009720
+                       "uncertainty" : 0.003066113
                },
                {
                        "photon_r9" : [0.8500,0.8800],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [60.0000,70.0000],
                        "value" : 0.924396000,
-                       "uncertainty" : 0.001339350
+                       "uncertainty" : 0.007902141
                },
                {
                        "photon_r9" : [0.8500,0.8800],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.928790000,
-                       "uncertainty" : 0.001556060
+                       "uncertainty" : 0.006582161
                },
                {
                        "photon_r9" : [0.8500,0.8800],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [90.0000,999999.0000],
                        "value" : 0.939501000,
-                       "uncertainty" : 0.001672750
+                       "uncertainty" : 0.006206932
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,33.0000],
                        "value" : 0.764902000,
-                       "uncertainty" : 0.000999564
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [33.0000,35.0000],
                        "value" : 0.930524000,
-                       "uncertainty" : 0.001010450
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [35.0000,37.0000],
                        "value" : 0.938207000,
-                       "uncertainty" : 0.001011000
+                       "uncertainty" : 0.007753310
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [37.0000,40.0000],
                        "value" : 0.943564000,
-                       "uncertainty" : 0.001011390
+                       "uncertainty" : 0.005688127
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.947708000,
-                       "uncertainty" : 0.001011690
+                       "uncertainty" : 0.002783444
                },
                {
                        "photon_r9" : [0.8800,999.0000],
@@ -1250,28 +1248,28 @@ LEAD_TRIGGER_LM_SF_2017 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.949001000,
-                       "uncertainty" : 0.001011780
+                       "uncertainty" : 0.003072369
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [60.0000,70.0000],
                        "value" : 0.950820000,
-                       "uncertainty" : 0.001011920
+                       "uncertainty" : 0.005970310
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.957201000,
-                       "uncertainty" : 0.001012390
+                       "uncertainty" : 0.004282427
                },
                {
                        "photon_r9" : [0.8800,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [90.0000,999999.0000],
                        "value" : 0.963203000,
-                       "uncertainty" : 0.001012830
+                       "uncertainty" : 0.003758223
                },
                {
                        "photon_r9" : [0.0000,0.9000],
@@ -1313,112 +1311,112 @@ LEAD_TRIGGER_LM_SF_2017 = {
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.901054000,
-                       "uncertainty" : 0.001052390
+                       "uncertainty" : 0.002600458
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.914075000,
-                       "uncertainty" : 0.001054380
+                       "uncertainty" : 0.003223661
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.921084000,
-                       "uncertainty" : 0.001055460
+                       "uncertainty" : 0.002436737
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [60.0000,70.0000],
                        "value" : 0.933343000,
-                       "uncertainty" : 0.001613840
+                       "uncertainty" : 0.004676837
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.943441000,
-                       "uncertainty" : 0.001773070
+                       "uncertainty" : 0.005965788
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [90.0000,9999.0000],
                        "value" : 0.958013000,
-                       "uncertainty" : 0.001830420
+                       "uncertainty" : 0.005915561
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [0.0000,33.0000],
                        "value" : 0.587245000,
-                       "uncertainty" : 0.001296540
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [33.0000,35.0000],
                        "value" : 0.860594000,
-                       "uncertainty" : 0.001047770
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [35.0000,37.0000],
                        "value" : 0.904747000,
-                       "uncertainty" : 0.001052960
+                       "uncertainty" : 0.012839999
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [37.0000,40.0000],
                        "value" : 0.926744000,
-                       "uncertainty" : 0.001056340
+                       "uncertainty" : 0.004878040
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.942814000,
-                       "uncertainty" : 0.001058860
+                       "uncertainty" : 0.002616445
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.951324000,
-                       "uncertainty" : 0.001060210
+                       "uncertainty" : 0.003241486
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.953806000,
-                       "uncertainty" : 0.001060600
+                       "uncertainty" : 0.002448603
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [60.0000,70.0000],
                        "value" : 0.958042000,
-                       "uncertainty" : 0.001068090
+                       "uncertainty" : 0.003095277
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.964110000,
-                       "uncertainty" : 0.001083310
+                       "uncertainty" : 0.003644976
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [90.0000,9999.0000],
                        "value" : 0.966957000,
-                       "uncertainty" : 0.001232760
+                       "uncertainty" : 0.003984040
                },
                {
                        "photon_r9" : [0.0000,999.0000],
@@ -1427,12 +1425,12 @@ LEAD_TRIGGER_LM_SF_2017 = {
                        "value" : 1.000000000,
                        "uncertainty" : 0.000000000
                }
-	]
+        ]
 }
 
 SUBLEAD_TRIGGER_LM_SF_2017 = {
-	"variables" : ["photon_r9", "photon_eta", "photon_pt"],
-	"bins" : [
+        "variables" : ["photon_r9", "photon_eta", "photon_pt"],
+        "bins" : [
                {
                        "photon_r9" : [0.0000,0.5000],
                        "photon_eta" : [0.0000,1.5000],
@@ -1445,112 +1443,112 @@ SUBLEAD_TRIGGER_LM_SF_2017 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,25.0000],
                        "value" : 0.762829000,
-                       "uncertainty" : 0.027059500
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [25.0000,28.0000],
                        "value" : 0.881282000,
-                       "uncertainty" : 0.043552900
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [28.0000,31.0000],
                        "value" : 0.926675000,
-                       "uncertainty" : 0.041405600
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [31.0000,40.0000],
                        "value" : 0.902538000,
-                       "uncertainty" : 0.022605200
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [40.0000,70.0000],
                        "value" : 0.881184000,
-                       "uncertainty" : 0.025446900
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5300],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [70.0000,999999.0000],
                        "value" : 0.821656000,
-                       "uncertainty" : 0.178344000
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,25.0000],
                        "value" : 0.841898000,
-                       "uncertainty" : 0.011523100
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [25.0000,28.0000],
                        "value" : 0.925735000,
-                       "uncertainty" : 0.014695000
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [28.0000,31.0000],
                        "value" : 0.929883000,
-                       "uncertainty" : 0.013892700
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [31.0000,40.0000],
                        "value" : 0.935106000,
-                       "uncertainty" : 0.011281100
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [40.0000,70.0000],
                        "value" : 0.940301000,
-                       "uncertainty" : 0.011331300
+                       "uncertainty" : 0.068104098
                },
                {
                        "photon_r9" : [0.5300,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [70.0000,999999.0000],
                        "value" : 0.938715000,
-                       "uncertainty" : 0.025564900
+                       "uncertainty" : 0.092133528
                },
                {
                        "photon_r9" : [0.8500,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,25.0000],
                        "value" : 0.931975000,
-                       "uncertainty" : 0.015274700
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8500,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [25.0000,28.0000],
                        "value" : 0.959115000,
-                       "uncertainty" : 0.017123400
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8500,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [28.0000,31.0000],
                        "value" : 0.968810000,
-                       "uncertainty" : 0.012925400
+                       "uncertainty" : 0.031946030
                },
                {
                        "photon_r9" : [0.8500,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [31.0000,40.0000],
                        "value" : 0.975143000,
-                       "uncertainty" : 0.011415200
+                       "uncertainty" : 0.017359786
                },
                {
                        "photon_r9" : [0.8500,999.0000],
@@ -1578,112 +1576,112 @@ SUBLEAD_TRIGGER_LM_SF_2017 = {
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [0.0000,25.0000],
                        "value" : 0.709933000,
-                       "uncertainty" : 0.030332300
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8000,0.8300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [25.0000,28.0000],
                        "value" : 0.815994000,
-                       "uncertainty" : 0.045079200
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8000,0.8300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [28.0000,31.0000],
                        "value" : 0.832926000,
-                       "uncertainty" : 0.038794700
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8000,0.8300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [31.0000,40.0000],
                        "value" : 0.850107000,
-                       "uncertainty" : 0.021142000
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8000,0.8300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [40.0000,70.0000],
                        "value" : 0.882189000,
-                       "uncertainty" : 0.024057300
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8000,0.8300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [70.0000,999999.0000],
                        "value" : 0.695921000,
-                       "uncertainty" : 0.086399500
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8300,0.9000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [0.0000,25.0000],
                        "value" : 0.803149000,
-                       "uncertainty" : 0.018451300
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8300,0.9000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [25.0000,28.0000],
                        "value" : 0.934628000,
-                       "uncertainty" : 0.024966200
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8300,0.9000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [28.0000,31.0000],
                        "value" : 0.932669000,
-                       "uncertainty" : 0.022900700
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8300,0.9000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [31.0000,40.0000],
                        "value" : 0.939581000,
-                       "uncertainty" : 0.014787700
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8300,0.9000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [40.0000,70.0000],
                        "value" : 0.933654000,
-                       "uncertainty" : 0.014820300
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.8300,0.9000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [70.0000,999999.0000],
                        "value" : 0.965191000,
-                       "uncertainty" : 0.034809000
+                       "uncertainty" : 0.091979574
                },
                {
                        "photon_r9" : [0.9000,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [0.0000,25.0000],
                        "value" : 0.842708000,
-                       "uncertainty" : 0.017774600
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.9000,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [25.0000,28.0000],
                        "value" : 0.945462000,
-                       "uncertainty" : 0.023360200
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.9000,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [28.0000,31.0000],
                        "value" : 0.962701000,
-                       "uncertainty" : 0.018884600
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.9000,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [31.0000,40.0000],
                        "value" : 0.965889000,
-                       "uncertainty" : 0.013939300
+                       "uncertainty" : 0.035126912
                },
                {
                        "photon_r9" : [0.9000,999.0000],
@@ -1706,13 +1704,12 @@ SUBLEAD_TRIGGER_LM_SF_2017 = {
                        "value" : 1.000000000,
                        "uncertainty" : 0.000000000
                }
-	]
+        ]
 }
 
-
 LEAD_TRIGGER_LM_SF_2018 = {
-	"variables" : ["photon_r9", "photon_eta", "photon_pt"],
-	"bins" : [
+        "variables" : ["photon_r9", "photon_eta", "photon_pt"],
+        "bins" : [
                {
                        "photon_r9" : [0.0000,0.5000],
                        "photon_eta" : [0.0000,1.5000],
@@ -1732,21 +1729,21 @@ LEAD_TRIGGER_LM_SF_2018 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [35.0000,37.0000],
                        "value" : 0.919135282,
-                       "uncertainty" : 0.003581765
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5400],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [37.0000,40.0000],
                        "value" : 0.930928443,
-                       "uncertainty" : 0.004336357
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5400],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.928327221,
-                       "uncertainty" : 0.002356278
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5400],
@@ -1760,70 +1757,70 @@ LEAD_TRIGGER_LM_SF_2018 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.944861906,
-                       "uncertainty" : 0.015164412
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5400],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [60.0000,70.0000],
                        "value" : 0.947722049,
-                       "uncertainty" : 0.025845703
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5400],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.945577779,
-                       "uncertainty" : 0.013170956
+                       "uncertainty" : 0.077303066
                },
                {
                        "photon_r9" : [0.5000,0.5400],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [90.0000,999999.0000],
                        "value" : 0.928267404,
-                       "uncertainty" : 0.035055827
+                       "uncertainty" : 0.082773681
                },
                {
                        "photon_r9" : [0.5400,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,35.0000],
                        "value" : 0.820914293,
-                       "uncertainty" : 0.001011564
+                       "uncertainty" : 0.055393334
                },
                {
                        "photon_r9" : [0.5400,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [35.0000,37.0000],
                        "value" : 0.947347227,
-                       "uncertainty" : 0.001568624
+                       "uncertainty" : 0.054084888
                },
                {
                        "photon_r9" : [0.5400,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [37.0000,40.0000],
                        "value" : 0.954592064,
-                       "uncertainty" : 0.003151450
+                       "uncertainty" : 0.086489598
                },
                {
                        "photon_r9" : [0.5400,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.956382009,
-                       "uncertainty" : 0.001001644
+                       "uncertainty" : 0.017147124
                },
                {
                        "photon_r9" : [0.5400,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.959609780,
-                       "uncertainty" : 0.001166888
+                       "uncertainty" : 0.001644020
                },
                {
                        "photon_r9" : [0.5400,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.961361418,
-                       "uncertainty" : 0.002349434
+                       "uncertainty" : 0.018184784
                },
                {
                        "photon_r9" : [0.5400,0.8500],
@@ -1851,7 +1848,7 @@ LEAD_TRIGGER_LM_SF_2018 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,35.0000],
                        "value" : 0.861269899,
-                       "uncertainty" : 0.003239360
+                       "uncertainty" : 0.094282039
                },
                {
                        "photon_r9" : [0.8500,999.0000],
@@ -1879,21 +1876,21 @@ LEAD_TRIGGER_LM_SF_2018 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.976606940,
-                       "uncertainty" : 0.001059896
+                       "uncertainty" : 0.002242037
                },
                {
                        "photon_r9" : [0.8500,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.978579373,
-                       "uncertainty" : 0.001928226
+                       "uncertainty" : 0.008042991
                },
                {
                        "photon_r9" : [0.8500,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [60.0000,70.0000],
                        "value" : 0.978487233,
-                       "uncertainty" : 0.003315547
+                       "uncertainty" : 0.004004861
                },
                {
                        "photon_r9" : [0.8500,999.0000],
@@ -1942,35 +1939,35 @@ LEAD_TRIGGER_LM_SF_2018 = {
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.967334793,
-                       "uncertainty" : 0.001016837
+                       "uncertainty" : 0.001616745
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.973084597,
-                       "uncertainty" : 0.001212774
+                       "uncertainty" : 0.003222402
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.970071362,
-                       "uncertainty" : 0.001893430
+                       "uncertainty" : 0.013471250
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [60.0000,70.0000],
                        "value" : 0.975354118,
-                       "uncertainty" : 0.002494532
+                       "uncertainty" : 0.012542682
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.977838111,
-                       "uncertainty" : 0.002707403
+                       "uncertainty" : 0.005194689
                },
                {
                        "photon_r9" : [0.9000,0.9300],
@@ -1984,56 +1981,56 @@ LEAD_TRIGGER_LM_SF_2018 = {
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [0.0000,35.0000],
                        "value" : 0.845371172,
-                       "uncertainty" : 0.002063441
+                       "uncertainty" : 0.080636431
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [35.0000,37.0000],
                        "value" : 0.971218700,
-                       "uncertainty" : 0.001102060
+                       "uncertainty" : 0.005620132
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [37.0000,40.0000],
                        "value" : 0.976836001,
-                       "uncertainty" : 0.001190716
+                       "uncertainty" : 0.002084285
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.980361970,
-                       "uncertainty" : 0.001222205
+                       "uncertainty" : 0.001943275
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.983873247,
-                       "uncertainty" : 0.004337875
+                       "uncertainty" : 0.011525955
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.984967520,
-                       "uncertainty" : 0.009859004
+                       "uncertainty" : 0.070144187
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [60.0000,70.0000],
                        "value" : 0.990564194,
-                       "uncertainty" : 0.002968815
+                       "uncertainty" : 0.014927411
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.989140823,
-                       "uncertainty" : 0.003954124
+                       "uncertainty" : 0.007586771
                },
                {
                        "photon_r9" : [0.9300,999.0000],
@@ -2049,12 +2046,12 @@ LEAD_TRIGGER_LM_SF_2018 = {
                        "value" : 1.000000000,
                        "uncertainty" : 0.000000000
                }
-	]
+        ]
 }
 
 SUBLEAD_TRIGGER_LM_SF_2018 = {
-	"variables" : ["photon_r9", "photon_eta", "photon_pt"],
-	"bins" : [
+        "variables" : ["photon_r9", "photon_eta", "photon_pt"],
+        "bins" : [
                {
                        "photon_r9" : [0.0000,0.5000],
                        "photon_eta" : [0.0000,1.5000],
@@ -2067,133 +2064,133 @@ SUBLEAD_TRIGGER_LM_SF_2018 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,25.0000],
                        "value" : 0.913884494,
-                       "uncertainty" : 0.009517289
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5400],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [25.0000,28.0000],
                        "value" : 0.939115197,
-                       "uncertainty" : 0.009146070
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5400],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [28.0000,31.0000],
                        "value" : 0.947174456,
-                       "uncertainty" : 0.009407467
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5400],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [31.0000,35.0000],
                        "value" : 0.965752087,
-                       "uncertainty" : 0.003902668
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5400],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [35.0000,40.0000],
                        "value" : 0.972694647,
-                       "uncertainty" : 0.004627728
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5400],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.973594440,
-                       "uncertainty" : 0.001845442
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5400],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.973623474,
-                       "uncertainty" : 0.001954076
+                       "uncertainty" : 0.095197574
                },
                {
                        "photon_r9" : [0.5000,0.5400],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.978601841,
-                       "uncertainty" : 0.014369003
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5400],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [60.0000,70.0000],
                        "value" : 0.970405929,
-                       "uncertainty" : 0.018451648
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5400],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [70.0000,90.0000],
                        "value" : 0.966664489,
-                       "uncertainty" : 0.017007281
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5000,0.5400],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [90.0000,999999.0000],
                        "value" : 0.947327704,
-                       "uncertainty" : 0.047975961
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5400,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,25.0000],
                        "value" : 0.943798395,
-                       "uncertainty" : 0.003316689
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5400,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [25.0000,28.0000],
                        "value" : 0.975876626,
-                       "uncertainty" : 0.003744328
+                       "uncertainty" : 0.100000000
                },
                {
                        "photon_r9" : [0.5400,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [28.0000,31.0000],
                        "value" : 0.982889507,
-                       "uncertainty" : 0.001468185
+                       "uncertainty" : 0.022850275
                },
                {
                        "photon_r9" : [0.5400,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [31.0000,35.0000],
                        "value" : 0.987609719,
-                       "uncertainty" : 0.001825274
+                       "uncertainty" : 0.011481846
                },
                {
                        "photon_r9" : [0.5400,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [35.0000,40.0000],
                        "value" : 0.989295959,
-                       "uncertainty" : 0.001088810
+                       "uncertainty" : 0.004791616
                },
                {
                        "photon_r9" : [0.5400,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [40.0000,45.0000],
                        "value" : 0.989700703,
-                       "uncertainty" : 0.001093196
+                       "uncertainty" : 0.004669893
                },
                {
                        "photon_r9" : [0.5400,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [45.0000,50.0000],
                        "value" : 0.988282541,
-                       "uncertainty" : 0.001045119
+                       "uncertainty" : 0.002976957
                },
                {
                        "photon_r9" : [0.5400,0.8500],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [50.0000,60.0000],
                        "value" : 0.987912109,
-                       "uncertainty" : 0.001058935
+                       "uncertainty" : 0.002807549
                },
                {
                        "photon_r9" : [0.5400,0.8500],
@@ -2221,14 +2218,14 @@ SUBLEAD_TRIGGER_LM_SF_2018 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [0.0000,25.0000],
                        "value" : 0.967229704,
-                       "uncertainty" : 0.001583783
+                       "uncertainty" : 0.034698270
                },
                {
                        "photon_r9" : [0.8500,999.0000],
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [25.0000,28.0000],
                        "value" : 0.980568240,
-                       "uncertainty" : 0.003240185
+                       "uncertainty" : 0.070987511
                },
                {
                        "photon_r9" : [0.8500,999.0000],
@@ -2242,7 +2239,7 @@ SUBLEAD_TRIGGER_LM_SF_2018 = {
                        "photon_eta" : [0.0000,1.5000],
                        "photon_pt" : [31.0000,35.0000],
                        "value" : 0.989965533,
-                       "uncertainty" : 0.001430515
+                       "uncertainty" : 0.002046869
                },
                {
                        "photon_r9" : [0.8500,999.0000],
@@ -2305,28 +2302,28 @@ SUBLEAD_TRIGGER_LM_SF_2018 = {
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [0.0000,25.0000],
                        "value" : 0.912117162,
-                       "uncertainty" : 0.002233670
+                       "uncertainty" : 0.017482138
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [25.0000,28.0000],
                        "value" : 0.954305588,
-                       "uncertainty" : 0.006573312
+                       "uncertainty" : 0.051446966
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [28.0000,31.0000],
                        "value" : 0.958487902,
-                       "uncertainty" : 0.003897311
+                       "uncertainty" : 0.010200418
                },
                {
                        "photon_r9" : [0.9000,0.9300],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [31.0000,35.0000],
                        "value" : 0.966529284,
-                       "uncertainty" : 0.001350754
+                       "uncertainty" : 0.001857498
                },
                {
                        "photon_r9" : [0.9000,0.9300],
@@ -2382,28 +2379,28 @@ SUBLEAD_TRIGGER_LM_SF_2018 = {
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [0.0000,25.0000],
                        "value" : 0.943331900,
-                       "uncertainty" : 0.003617830
+                       "uncertainty" : 0.028315464
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [25.0000,28.0000],
                        "value" : 0.983648649,
-                       "uncertainty" : 0.002260656
+                       "uncertainty" : 0.017693348
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [28.0000,31.0000],
                        "value" : 0.984981002,
-                       "uncertainty" : 0.003790529
+                       "uncertainty" : 0.009920938
                },
                {
                        "photon_r9" : [0.9300,999.0000],
                        "photon_eta" : [1.5000,3.0000],
                        "photon_pt" : [31.0000,35.0000],
                        "value" : 0.989851679,
-                       "uncertainty" : 0.001246198
+                       "uncertainty" : 0.001713717
                },
                {
                        "photon_r9" : [0.9300,999.0000],
@@ -2461,6 +2458,6 @@ SUBLEAD_TRIGGER_LM_SF_2018 = {
                        "value" : 1.000000000,
                        "uncertainty" : 0.000000000
                }
-	]
+        ]
 }
 
