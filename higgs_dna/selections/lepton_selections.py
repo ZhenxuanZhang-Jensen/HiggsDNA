@@ -11,7 +11,7 @@ DEFAULT_ELECTRONS = {
         "eta" : 2.4,
         "dxy" : 0.045,
         "dz" : 0.2,
-        "id" : "WP90",
+        "id" : "WPL",
         "dr_photons" : 0.2,
         "veto_transition" : True
 }
@@ -31,6 +31,8 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
 
     if options["id"] == "WP90":
         id_cut = (electrons.mvaFall17V2Iso_WP90 == True) | ((electrons.mvaFall17V2noIso_WP90 == True) & (electrons.pfRelIso03_all < 0.3)) 
+    elif options["id"] == "WPL":
+        id_cut = (electrons.mvaFall17V2Iso_WPL == True) | ((electrons.mvaFall17V2Iso_WPL == True) & (electrons.pfRelIso03_all < 0.3))
     elif not options["id"] or options["id"].lower() == "none":
         id_cut = electrons.pt > 0.
     else:
@@ -54,12 +56,13 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
 
 
 DEFAULT_MUONS = {
-        "pt" : 5.0,
+        "pt" : 10.0,
         "eta" : 2.5,
         "dxy" : 0.045,
         "dz" : 0.2,
         "id" : "medium",       
         "pfRelIso03_all" : 0.3,
+        "pfRelIso04_all" : 0.15,
         "dr_photons" : 0.2,
         "global" : True
 }

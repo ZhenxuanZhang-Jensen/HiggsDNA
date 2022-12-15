@@ -27,7 +27,8 @@ json_file_template_2 = '''
 '''
 #########read dir files info
 import subprocess
-with open('/afs/cern.ch/user/z/zhenxuan/CMSSW_10_6_25/src/das_samples_UL17_R_gghh.json') as f:
+# with open('/afs/cern.ch/user/z/zhenxuan/CMSSW_10_6_25/src/das_samples_UL17_R_gghh.json') as f:
+with open('/afs/cern.ch/user/z/zhenxuan/CMSSW_10_6_25/src/das_samples_UL17_R_gghh_resubmit.json') as f:
 # with open('/afs/cern.ch/user/z/zhenxuan/CMSSW_10_6_25/src/das_samples_UL17_data.json') as f:
 	data = json.load(f)
 json_file_name = "hhww_cusNANO_local"

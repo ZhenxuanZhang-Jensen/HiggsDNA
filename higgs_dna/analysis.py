@@ -484,8 +484,11 @@ class AnalysisManager():
                     list_lumi = lumi.luminosityBlock[lumi.run == Runs.run[i]].to_list()
                     range_list = [[t[0][1], t[-1][1]] for t in (tuple(g[1]) for g in itertools.groupby(enumerate(list_lumi), lambda list_lumi: list_lumi[1]-list_lumi[0]))]
                     with open("/eos/user/z/zhenxuan/brilws/lumi_cal.txt","a") as ftxt:
-                        ftxt.write('\n "' + str(Runs.run[i]) + '"' + ":" + str(range_list) + ',')
-
+                        ftxt.write("\n")
+                        ftxt.write('"'+ str(Runs.run[i]) + '"')
+                        ftxt.write(":")
+                        ftxt.write(str(range_list))
+                        ftxt.write(",")
                 ##################################
                 runs = f["Runs"]
                 if "genEventCount" in runs.keys() and "genEventSumw" in runs.keys():
