@@ -35,7 +35,7 @@ DEFAULT_OPTIONS = {
     "fatjets": {
         "pt": 200.0,
         "eta": 2.4,
-        "inclParTMDV1_HWW4q3qvsQCD": -999,
+        "Hqqqq_qqlv_vsQCDTop": -999,
         "dr_photons": 0.8,
         "dr_electrons": 0.8,
         "dr_muons": 0.8
@@ -43,7 +43,7 @@ DEFAULT_OPTIONS = {
     "fatjets_H": {
         "pt": 300.0,
         "eta": 2.4,
-        "inclParTMDV1_HWW4q3qvsQCD" :0.2,
+        "Hqqqq_qqlv_vsQCDTop" :0.2,
         "dr_photons": 0.8,
         "dr_electrons": 0.8,
         "dr_muons": 0.8
@@ -80,9 +80,9 @@ class HHWW_Preselection_FHSL(Tagger):
         # Gen selection
         # data will not select gen level infos 
         # need to comment when run bkgs
-        logger.debug("Is Signal: %s" %self.options["gen_info"]["is_Signal"])
-        if not self.is_data and self.options["gen_info"]["is_Signal"]:    
-           gen_selections.gen_Hww_4q(events)
+        # logger.debug("Is Signal: %s" %self.options["gen_info"]["is_Signal"])
+        # if not self.is_data and self.options["gen_info"]["is_Signal"]:    
+        #    gen_selections.gen_Hww_4q(events)
         
         logger.debug("event fields: %s" %events.fields)
         # Electrons
@@ -155,8 +155,17 @@ class HHWW_Preselection_FHSL(Tagger):
         )
 
         # --------------------- if fatjet branches are not empty --------------------- #
-        # if len(events.FatJet.pt > 0 ):
         # Fat jets
+
+        # add the H jet tagger for SL&FH channel((H3q+H4q+Hlvqq)/(H3q+H4q+Hlvqq+QCD+Top))
+        PN_sigs = events.FatJet.inclParTMDV1_probHWqqWev0c+events.FatJet.inclParTMDV1_probHWqqWev1c+events.FatJet.inclParTMDV1_probHWqqWmv0c+events.FatJet.inclParTMDV1_probHWqqWmv1c+events.FatJet.inclParTMDV1_probHWqqWq0c+events.FatJet.inclParTMDV1_probHWqqWq1c+events.FatJet.inclParTMDV1_probHWqqWq2c+events.FatJet.inclParTMDV1_probHWqqWqq0c+events.FatJet.inclParTMDV1_probHWqqWqq1c+events.FatJet.inclParTMDV1_probHWqqWqq2c+events.FatJet.inclParTMDV1_probHWqqWtauev0c+events.FatJet.inclParTMDV1_probHWqqWtauev1c+events.FatJet.inclParTMDV1_probHWqqWtauhv0c+events.FatJet.inclParTMDV1_probHWqqWtauhv1c+events.FatJet.inclParTMDV1_probHWqqWtaumv0c+events.FatJet.inclParTMDV1_probHWqqWtaumv1c
+        PN_bkgs = events.FatJet.inclParTMDV1_probQCDb+events.FatJet.inclParTMDV1_probQCDbb+events.FatJet.inclParTMDV1_probQCDc+events.FatJet.inclParTMDV1_probQCDcc+events.FatJet.inclParTMDV1_probQCDothers+events.FatJet.inclParTMDV1_probTopbWev+events.FatJet.inclParTMDV1_probTopbWmv+events.FatJet.inclParTMDV1_probTopbWq0c+events.FatJet.inclParTMDV1_probTopbWq1c+events.FatJet.inclParTMDV1_probTopbWqq0c+events.FatJet.inclParTMDV1_probTopbWqq1c+events.FatJet.inclParTMDV1_probTopbWtauev+events.FatJet.inclParTMDV1_probTopbWtauhv+events.FatJet.inclParTMDV1_probTopbWtaumv
+        fatjet_tmp = events.FatJet
+        fatjet_tmp['Hqqqq_qqlv_vsQCDTop'] = PN_sigs / (PN_bkgs + PN_sigs)
+        events.FatJet = fatjet_tmp
+        print("events.FatJet exsiting field:\n",dir(events.FatJet))
+        print("events.FatJet tyep is: \n", type(events.FatJet))
+        # ------------------------------------- - ------------------------------------ #
         fatjet_cut = fatjet_selections.select_fatjets(
             fatjets = events.FatJet,
             options = self.options["fatjets"],
@@ -182,6 +191,7 @@ class HHWW_Preselection_FHSL(Tagger):
             name = "SelectedFatJet",
             data = events.FatJet[fatjet_cut]
         )   
+
 
         awkward_utils.add_object_fields(
         events=events,
@@ -219,7 +229,7 @@ class HHWW_Preselection_FHSL(Tagger):
         awkward_utils.add_object_fields(
         events=events,
         name="fatjet_H",
-        objects=fatjets_H[awkward.argsort(fatjets_H.inclParTMDV1_HWW4q3qvsQCD, ascending=False, axis=-1)],
+        objects=fatjets_H[awkward.argsort(fatjets_H.Hqqqq_qqlv_vsQCDTop, ascending=False, axis=-1)],
         n_objects=1,
         dummy_value=-999
         ) 
@@ -229,24 +239,24 @@ class HHWW_Preselection_FHSL(Tagger):
 
 
 
-      
-        if not self.is_data and self.options["gen_info"]["is_Signal"]:    
-            gen_q1_p4,gen_q2_p4,gen_q3_p4,gen_q4_p4=gen_selections.gen_Hww_4q(events)
-        jet_p4 = vector.awk(
-            {
-                "pt" : jets["pt"],
-                "eta" : jets["eta"],
-                "phi" : jets["phi"],
-                "mass" : jets["mass"]
-            },
-            with_name = "Momentum4D"
-        )
+        # gen 4q deltaR with j1,j2,j3,j4
+        # if not self.is_data and self.options["gen_info"]["is_Signal"]:    
+        #     gen_q1_p4,gen_q2_p4,gen_q3_p4,gen_q4_p4=gen_selections.gen_Hww_4q(events)
+        # jet_p4 = vector.awk(
+        #     {
+        #         "pt" : jets["pt"],
+        #         "eta" : jets["eta"],
+        #         "phi" : jets["phi"],
+        #         "mass" : jets["mass"]
+        #     },
+        #     with_name = "Momentum4D"
+        # )
 
-        if not self.is_data and self.options["gen_info"]["is_Signal"]:    
-            jets["deltaR_q1"] = jet_p4.deltaR(gen_q1_p4)
-            jets["deltaR_q2"] = jet_p4.deltaR(gen_q2_p4)
-            jets["deltaR_q3"] = jet_p4.deltaR(gen_q3_p4)
-            jets["deltaR_q4"] = jet_p4.deltaR(gen_q4_p4)
+        # if not self.is_data and self.options["gen_info"]["is_Signal"]:    
+        #     jets["deltaR_q1"] = jet_p4.deltaR(gen_q1_p4)
+        #     jets["deltaR_q2"] = jet_p4.deltaR(gen_q2_p4)
+        #     jets["deltaR_q3"] = jet_p4.deltaR(gen_q3_p4)
+        #     jets["deltaR_q4"] = jet_p4.deltaR(gen_q4_p4)
 
 
         awkward_utils.add_object_fields(

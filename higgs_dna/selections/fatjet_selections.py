@@ -6,7 +6,7 @@ from higgs_dna.utils import misc_utils
 DEFAULT_FATJETS = {
         "pt" : 150.,
         "eta" : 2.4,
-        "inclParTMDV1_HWW4q3qvsQCD": -999
+        "Hqqqq_qqlv_vsQCDTop": -999
 }
 
 def select_fatjets(fatjets, options, clean, name = "none", tagger = None): 
@@ -20,8 +20,9 @@ def select_fatjets(fatjets, options, clean, name = "none", tagger = None):
     print("option is !!!!!!!!!!!!!", options)
     standard_cuts = object_selections.select_objects(fatjets, options, clean, name, tagger)
     # can apply some additional cut
-    H_jet_cut = fatjets.inclParTMDV1_HWW4q3qvsQCD > options["inclParTMDV1_HWW4q3qvsQCD"]
-    print("inclParTMDV1_HWW4q3qvsQCD cut value is : ",options["inclParTMDV1_HWW4q3qvsQCD"])
+    # add the H jet tagger for SL&FH channel((H3q+H4q+Hlvqq)/(H3q+H4q+Hlvqq+QCD+Top))
+    H_jet_cut = fatjets.Hqqqq_qqlv_vsQCDTop > options["Hqqqq_qqlv_vsQCDTop"]
+    print("Hqqqq_qqlv_vsQCDTop cut value is : ",options["Hqqqq_qqlv_vsQCDTop"])
     # if options["tau2_tau1"] != 0:
     #     tau2_tau1_cut = ((fatjets.tau2 / fatjets.tau1) < options["tau2_tau1"])
     # else:
