@@ -292,7 +292,7 @@ class HHWW_Preselection_FHSL(Tagger):
             events.SubleadPhoton.mvaID > self.options["photon_id"])
 
         # If isolated lepton
-        SL_cat1 = (n_leptons == 1) & (n_fatjets_H >=1) # boosted 1 jet for SL channel wo isolated lep
+        SL_cat1 = (n_leptons == 1) & (n_jets >=2) # fully resovled 2 jets for SL channel with isolated lep
 
         # if no isolated lepton
         SL_FH_cat1 = (n_leptons == 0) & (n_fatjets_H >=1) # boosted 1 jet for FH and SL channel wo isolated lep
