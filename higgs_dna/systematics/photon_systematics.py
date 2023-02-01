@@ -475,3 +475,37 @@ def photon_presel_sf(events, central_only, year):
 
     return variations
 
+
+
+from higgs_dna.systematics.data.presel_sf_lowmass import PHOTON_PRESEL_SF_2016preVFP_LM, PHOTON_PRESEL_SF_2016postVFP_LM, PHOTON_PRESEL_SF_2017_LM, PHOTON_PRESEL_SF_2018_LM
+ 
+photon_preselection_sf_bins_lm = {
+    "2016UL_preVFP" 	: PHOTON_PRESEL_SF_2016preVFP_LM,
+    "2016UL_postVFP" : PHOTON_PRESEL_SF_2016postVFP_LM,
+    "2017" 									: PHOTON_PRESEL_SF_2017_LM,
+    "2018" 									: PHOTON_PRESEL_SF_2018_LM
+}
+
+def photon_presel_sf_lowmass(events, central_only, year):
+    required_fields = [
+        ("Photon", "eta"), ("Photon", "r9")
+    ]
+
+    missing_fields = awkward_utils.missing_fields(events, required_fields)
+
+    if missing_fields:
+        message = "[photon_systematics : photon_preselection_sf] The events array is missing the following fields: %s which are needed as inputs." % (str(missing_fields))
+        logger.exception(message)
+        raise ValueError(message)
+
+    variations = systematic_from_bins(
+        bins = photon_preselection_sf_bins_lm[year], 
+        variables = {
+            "photon_eta" : abs(events.Photon.eta),
+            "photon_r9" : events.Photon.r9
+        },
+        central_only = central_only
+    )
+
+    return variations
+
