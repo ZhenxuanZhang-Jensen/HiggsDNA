@@ -24,6 +24,8 @@ from higgs_dna.utils.misc_utils import load_config, update_dict, is_json_seriali
 from higgs_dna.constants import NOMINAL_TAG, CENTRAL_WEIGHT, BRANCHES
 from higgs_dna.utils.metis_utils import do_cmd
 
+condor=True
+#condor=False
 
 def run_analysis(config):
     """
@@ -164,8 +166,11 @@ def run_analysis(config):
     job_summary["successful"] = True
 
     # Dump json summary
-    #with open(config["summary_file"], "w") as f_out:
-    with open(config["summary_file"].split("/")[-1], "w") as f_out:
+    if condor:
+      with open(config["summary_file"].split("/")[-1], "w") as f_out:
+        json.dump(job_summary, f_out, sort_keys = True, indent = 4)
+    else:
+      with open(config["summary_file"], "w") as f_out:
         json.dump(job_summary, f_out, sort_keys = True, indent = 4)
     return job_summary
 
@@ -604,6 +609,8 @@ class AnalysisManager():
         events = awkward.zip(save_map, depth_limit=1)
 
         logger.debug("[AnalysisManager : write_events] Writing output file '%s'." % (out_name))
-        #awkward.to_parquet(events, out_name,list_to32=True) 
-        awkward.to_parquet(events, out_name.split("/")[-1],list_to32=True) 
+        if condor:
+       	  awkward.to_parquet(events, out_name.split("/")[-1],list_to32=True) 
+        else:
+          awkward.to_parquet(events, out_name,list_to32=True) 
         return out_name

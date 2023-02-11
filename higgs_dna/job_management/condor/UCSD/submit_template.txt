@@ -6,7 +6,7 @@ transfer_input_files    = PYTHON_FILE, CONFIG_FILE, HIGGS_DNA_BASE/setup.py, HIG
 transfer_output_files   = ""
 executable              = EXECUTABLE 
 
-+DESIRED_Sites="T2_US_UCSD,T2_US_CALTECH,T2_US_WISCONSIN,T2_US_Nebraska,T2_US_Purdue,T2_US_Vanderbilt,T2_US_Florida"
++DESIRED_Sites="T2_US_UCSD,T2_US_CALTECH,T2_US_WISCONSIN,T2_US_Purdue,T2_US_Vanderbilt,T2_US_Florida"
 
 output                  = OUTPUT
 error                   = ERROR
@@ -14,8 +14,9 @@ log                     = LOG
 
 +project_Name = "cmssurfandturf"
 use_x509userproxy = True
-Requirements = (HAS_SINGULARITY=?=True)
+Requirements = (HAS_SINGULARITY=?=True) && (TARGET.K8SNamespace =!= "abc")
 +SingularityImage="/cvmfs/singularity.opensciencegrid.org/cmssw/cms:rhel7-m202006"
++RequestK8SNamespace="cms-ucsd-t2"
 
 RequestMemory = REQ_MEMORY
 RequestDisk = REQ_DISK

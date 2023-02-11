@@ -307,8 +307,8 @@ class CondorJob(Job):
         self.hdna_base = get_HiggsDNA_base()
         self.hdna_conda = get_HiggsDNA_conda()
 
-        self.condor_exe_template = self.hdna_base + "/higgs_dna/job_management/condor/%s/exe_template.sh" % self.host
-        self.condor_sub_template = self.hdna_base + "/higgs_dna/job_management/condor/%s/submit_template.txt" % self.host
+        self.condor_exe_template = "/home/users/fsetti/HHggTauTau/HiggsDNA_ggtt/higgs_dna/job_management/condor/%s/exe_template.sh" % self.host
+        self.condor_sub_template = "/home/users/fsetti/HHggTauTau/HiggsDNA_ggtt/higgs_dna/job_management/condor/%s/submit_template.txt" % self.host
         
         self.write_condor_executable_file()
         self.write_condor_submit_file()
@@ -350,8 +350,8 @@ class CondorJob(Job):
 
         # update xrdcp placeholders for copying tar files into job
         if self.host_params["needs_tar"] and "xrd_redirector" in self.host_params.keys():
-            replacement_map["XRD_CONDA_TARFILE"] = self.xrd_conda_tarfile
-            replacement_map["XRD_ANALYSIS_TARFILE"] = self.xrd_analysis_tarfile
+            replacement_map["XRD_CONDA_TARFILE"] = self.xrd_conda_tarfile.replace("/ceph/cms","davs://redirector.t2.ucsd.edu:1095/")
+            replacement_map["XRD_ANALYSIS_TARFILE"] = self.xrd_analysis_tarfile.replace("/ceph/cms","davs://redirector.t2.ucsd.edu:1095/")
 
         # update gfal-copy placeholders
         if "gfal_redirector" in self.host_params.keys():
