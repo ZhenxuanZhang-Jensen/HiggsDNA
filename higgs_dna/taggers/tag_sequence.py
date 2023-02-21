@@ -28,7 +28,7 @@ class TagSequence():
     def __init__(self, tag_list, name = "default", sample = None):
         self.name = name
         self.sample = sample
-        # self.ext = "_eff"
+        self.ext = "_eff"
         self.tag_list = []
         self.selections = {}
         self.summary = {}
@@ -191,10 +191,8 @@ class TagSequence():
         for tag_set in self.tag_list: 
             for tagger in tag_set:
                 self.summary[tagger.name]["summary"] = tagger.get_summary()
-
         return self.summary
 
-        file_name = "summary%s.json" % self.ext
+        file_name = "%s_summary%s.json" % (self.sample,self.ext)
         with open("output/" + file_name, "w") as f_out:
             json.dump(self.summary, f_out, indent=4)
-        # return self.summary

@@ -30,14 +30,15 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
     standard_cuts = object_selections.select_objects(electrons, options, clean, name, tagger)
 
     if options["id"] == "WP90":
-        id_cut = (electrons.mvaFall17V2Iso_WP90 == True) | ((electrons.mvaFall17V2noIso_WP90 == True) & (electrons.pfRelIso03_all < 0.3))
-    if options["id"] == "WPL":
+        id_cut = (electrons.mvaFall17V2Iso_WP90 == True) | ((electrons.mvaFall17V2noIso_WP90 == True) & (electrons.pfRelIso03_all < 0.3)) 
+    elif options["id"] == "WPL":
         id_cut = (electrons.mvaFall17V2Iso_WPL == True) | ((electrons.mvaFall17V2Iso_WPL == True) & (electrons.pfRelIso03_all < 0.3))
     elif not options["id"] or options["id"].lower() == "none":
         id_cut = electrons.pt > 0.
     else:
         logger.warning("[select_electrons] : Tagger '%s', id cut '%s' not recognized, not applying an ID cut." % (str(tagger), options["id"]))
         id_cut = electrons.pt > 0. 
+
     if options["veto_transition"]:
         transition_cut = (abs(electrons.eta) < 1.4442) | (abs(electrons.eta) > 1.566)
 
@@ -60,6 +61,7 @@ DEFAULT_MUONS = {
         "dxy" : 0.045,
         "dz" : 0.2,
         "id" : "medium",       
+        "pfRelIso03_all" : 0.3,
         "pfRelIso04_all" : 0.15,
         "dr_photons" : 0.2,
         "global" : True
@@ -78,12 +80,8 @@ def select_muons(muons, options, clean, name = "none", tagger = None):
 
     standard_cuts = object_selections.select_objects(muons, options, clean, name, tagger)
 
-    if options["id"] == "loose":
-        id_cut = muons.looseId == True
     if options["id"] == "medium":
         id_cut = muons.mediumId == True
-    if options["id"] == "tight":
-        id_cut = muons.tightId == True
     elif not options["id"] or options["id"].lower() == "none":
         id_cut = muons.pt > 0.
     else:
@@ -99,8 +97,6 @@ def select_muons(muons, options, clean, name = "none", tagger = None):
 
     if tagger is not None:
         tagger.register_cuts(
-                # names = ["standard object cuts", "id cut", "all cuts"],
-                # results = [standard_cuts, id_cut, all_cuts],
                 names = ["standard object cuts", "id cut", "global_muon cut", "all cuts"],
                 results = [standard_cuts, id_cut, global_cut, all_cuts],
                 cut_type = name

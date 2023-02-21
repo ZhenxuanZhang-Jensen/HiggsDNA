@@ -1,0 +1,1184 @@
+
+"UL17_R_gghh_SL_M-1200":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_459E53BD40F0_625034_0.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_4FFB5882E0FF_625034_1.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_BDE5A582F286_625034_2.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_7F819E98F47A_625034_3.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_C73C4A54F3DA_625034_4.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_B0DE559044B3_625034_5.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_8B766C93A5EB_625034_6.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_1D3583560585_625034_7.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_FD0324139D06_625034_8.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_6949BD7BB0D0_625034_9.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_7EE801D041B6_625034_10.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_1D39CFF0F5EC_625034_11.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_DE89DC7A228C_625034_12.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_74A9E1AD4653_625034_13.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_8350A02F82B0_625034_14.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_3DBB4832B883_625034_15.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_391B0B0CEC1E_625034_16.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_A67B4E42BE0E_625034_17.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_B9853CDDA905_625034_18.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_3EB01467BD9F_625034_19.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_1B071EB7B4C1_625034_20.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_BF1C3AE2B364_625034_21.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_6853302A4886_625034_22.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_A9EE81FD1362_625034_23.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1200/out_UL17_R_gghh_SL_M-1200_5C45487FD889_625034_24.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-2400":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_AE83EE2D7D27_625034_96.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_EC567F696214_625034_97.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_2D0918D6D3F5_625034_98.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_0CDCD774CE96_625034_99.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_9E0D78BDCA06_625034_100.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_40E28FDEFD29_625034_101.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_059CEEE0A1F1_625034_102.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_746278D6EBBB_625034_103.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_531354A27249_625034_104.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_CC9EBDBD8B89_625034_105.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_173420E65F07_625034_106.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_5DFADA14E1CC_625034_107.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_93FB33739F68_625034_108.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_D8369EB67166_625034_109.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_FAACB3C7A12A_625034_110.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_82F91977E578_625034_111.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_2F1AF123588C_625034_112.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_EFD370F179A0_625034_113.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_3AE74E9DF8B9_625034_114.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_80A939635D25_625034_115.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_3B9F74BDF860_625034_116.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_D9F5D14C01CE_625034_117.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_594EEC10D971_625034_118.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_4AAEA5F69C07_625034_119.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_242AFF856872_625034_120.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_028734B543D0_625034_121.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_CF3B9F94597B_625034_122.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_4C729EF21252_625034_123.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_05CA0D6B7BA4_625034_124.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_BBE604C625E2_625034_125.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_84951D44E2FB_625034_126.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_316691132FCC_625034_127.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_8C5620EA1E6D_625034_128.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_49A825C193DE_625034_129.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_33659FEF09AE_625034_130.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_3A5481E338C8_625034_131.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_EC76D6836C4B_625034_132.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_DFB6D98A5185_625034_133.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_E2034D45B69F_625034_134.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_95753344A047_625034_135.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_E4D1F37F0AF2_625034_136.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_C43639093C3A_625034_137.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_F480D2D818E6_625034_138.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2400/out_UL17_R_gghh_SL_M-2400_8B8FE2D377C9_625034_139.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-400":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-400/out_UL17_R_gghh_SL_M-400_47AC09C242CF_625034_40.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-400/out_UL17_R_gghh_SL_M-400_F437D2B39F82_625034_41.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-400/out_UL17_R_gghh_SL_M-400_860695C0F33E_625034_42.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-400/out_UL17_R_gghh_SL_M-400_551BBA522179_625034_43.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-400/out_UL17_R_gghh_SL_M-400_3FF1C1F0837F_625034_44.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-400/out_UL17_R_gghh_SL_M-400_A460163BAA71_625034_45.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-400/out_UL17_R_gghh_SL_M-400_E36979B3CCC4_625034_46.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-400/out_UL17_R_gghh_SL_M-400_EFADBA18F353_625034_47.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-400/out_UL17_R_gghh_SL_M-400_8E6CA9DD7F15_625034_48.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-400/out_UL17_R_gghh_SL_M-400_95CF5922FAD7_625034_49.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-400/out_UL17_R_gghh_SL_M-400_5EEDF3790468_625034_50.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-400/out_UL17_R_gghh_SL_M-400_C7C18B6B8F47_625034_51.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-400/out_UL17_R_gghh_SL_M-400_2681727D6F76_625034_52.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-400/out_UL17_R_gghh_SL_M-400_B04B66C62F1A_625034_53.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-400/out_UL17_R_gghh_SL_M-400_F6B7E2F8FEA6_625034_54.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-2600":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_8198EB8E3BF0_625034_55.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_310B776F04DA_625034_56.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_CE03EDB7650B_625034_57.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_A42FC4BBB46D_625034_58.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_520CA5B6E12B_625034_59.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_48ACC31C2765_625034_60.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_0BE986BEE3B8_625034_61.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_5E90F12AE146_625034_62.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_78106A79F07E_625034_63.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_5AD57D00A198_625034_64.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_D9005826553E_625034_65.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_C7DBA71640C5_625034_66.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_22F3D312411C_625034_67.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_E2E1F3E8AC82_625034_68.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_35BE1DC7270A_625034_69.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_097B10549D36_625034_70.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_0EEABDD3D108_625034_71.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2600/out_UL17_R_gghh_SL_M-2600_D04E4F03B894_625034_72.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-3000":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_A8CA7BA59C15_625034_73.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_E3EFA193B6A3_625034_74.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_EC18FD00ABF3_625034_75.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_B018A325781E_625034_76.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_B98D7B8092D8_625034_77.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_347FBBCFFA6B_625034_78.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_9809773C9F74_625034_79.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_561C8AFC1D70_625034_80.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_E1E9D17F2192_625034_81.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_5D3A913823BB_625034_82.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_09377936ECF1_625034_83.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_8DFE679E073E_625034_84.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_7CF2670BBDCE_625034_85.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_EDA3989BDEE7_625034_86.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_BCC2D9E84F85_625034_87.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_5693825B21FF_625034_88.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_3C680E93101E_625034_89.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_D1AC514F0FAC_625034_90.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_3567B2875CF2_625034_91.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_8C8F90EBCBC3_625034_92.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_1D7A9D17820E_625034_93.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_16EA8E1C20A3_625034_94.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-3000/out_UL17_R_gghh_SL_M-3000_9956728822E2_625034_95.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-700":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-700/out_UL17_R_gghh_SL_M-700_1B5DD16871BA_625034_25.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-700/out_UL17_R_gghh_SL_M-700_851DD91CAF47_625034_26.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-700/out_UL17_R_gghh_SL_M-700_2CF8C9944C0B_625034_27.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-700/out_UL17_R_gghh_SL_M-700_3F49155D948E_625034_28.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-700/out_UL17_R_gghh_SL_M-700_4EF722846F0F_625034_29.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-700/out_UL17_R_gghh_SL_M-700_329CB8CC0F0D_625034_30.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-700/out_UL17_R_gghh_SL_M-700_5F000DE94E0D_625034_31.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-700/out_UL17_R_gghh_SL_M-700_FE111B47FB57_625034_32.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-700/out_UL17_R_gghh_SL_M-700_4FB95A89805F_625034_33.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-700/out_UL17_R_gghh_SL_M-700_B5D077F09DAF_625034_34.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-700/out_UL17_R_gghh_SL_M-700_48164C3406A5_625034_35.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-700/out_UL17_R_gghh_SL_M-700_EF569978A433_625034_36.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-700/out_UL17_R_gghh_SL_M-700_3F9F99C8C459_625034_37.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-700/out_UL17_R_gghh_SL_M-700_DB41D1F69FF0_625034_38.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-700/out_UL17_R_gghh_SL_M-700_EA25D2A529F7_625034_39.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-1900":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_A98F263B837D_625034_140.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_B75A36794A59_625034_141.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_0BD41E70DB37_625034_142.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_DCDE15E48835_625034_143.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_70D110570371_625034_144.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_02D4300A2C0C_625034_145.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_C1282C2122D9_625034_146.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_3F860280EA2C_625034_147.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_D97B3834D549_625034_148.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_E226D877FC5C_625034_149.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_5F2BB3F154BB_625034_150.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_45A3FDFBF1FC_625034_151.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_B79069F847CF_625034_152.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_F44BB8DF4DBD_625034_153.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_9899C7FDA688_625034_154.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_24EDC00616DD_625034_155.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_6513825A1C9F_625034_156.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_5FEE471BEB27_625034_157.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_A302A46DC65D_625034_158.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_9CBB0513D631_625034_159.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_4BC812F1EFF1_625034_160.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_FF0FD141C9B3_625034_161.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_5DF32034C0F4_625034_162.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_13C07F03AFAB_625034_163.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_8DDF5FDD2982_625034_164.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_4166EB100856_625034_165.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_4A9E906E45CF_625034_166.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_51B4038B1054_625034_168.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_6FFD17FE3DEF_625034_169.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_3E1AE71FBCAB_625034_170.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_27AD5C2AFCD9_625034_171.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_0E1B76E72461_625034_172.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_4C2A0850E394_625034_173.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_64C1FD67C106_625034_174.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_DF848DF7A6D7_625034_175.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_C83B3332AF53_625034_176.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_217876C4285E_625034_177.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_B2185AF558BC_625034_178.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_B5DCFF07F2DC_625034_179.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_C963DD25FFE1_625034_180.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_1F0FCEF8EB63_625034_181.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_252AFFDDA489_625034_182.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_6CD1CB99FD87_625034_183.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_B4C9AF7DE65A_625034_184.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_02CB78055761_625034_185.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_CE209CC11654_625034_186.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1900/out_UL17_R_gghh_SL_M-1900_D9682CCC5A4D_625034_187.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-800":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-800/out_UL17_R_gghh_SL_M-800_045EE31B3D85_625034_188.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-800/out_UL17_R_gghh_SL_M-800_C6F6144EAA81_625034_189.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-800/out_UL17_R_gghh_SL_M-800_7C1484A1A00A_625034_190.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-800/out_UL17_R_gghh_SL_M-800_8E384534F0C8_625034_191.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-800/out_UL17_R_gghh_SL_M-800_DD54B2276E9A_625034_192.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-800/out_UL17_R_gghh_SL_M-800_F59FF34291C2_625034_193.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-800/out_UL17_R_gghh_SL_M-800_BC03CC147C19_625034_194.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-800/out_UL17_R_gghh_SL_M-800_32C187809D53_625034_195.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-800/out_UL17_R_gghh_SL_M-800_03C5570A4120_625034_196.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-800/out_UL17_R_gghh_SL_M-800_23EE3903DE9B_625034_197.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-800/out_UL17_R_gghh_SL_M-800_6C6D9078933F_625034_198.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-800/out_UL17_R_gghh_SL_M-800_3699F4429432_625034_199.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-800/out_UL17_R_gghh_SL_M-800_895860A1C59A_625034_200.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-800/out_UL17_R_gghh_SL_M-800_F39C5D38DB71_625034_201.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-800/out_UL17_R_gghh_SL_M-800_02EF0C533906_625034_202.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-1600":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_E57FF31FEF03_625034_203.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_3AA33B8EBBAD_625034_204.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_0332E982C1BD_625034_205.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_11FF17C27724_625034_206.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_6E42114C4DD9_625034_207.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_9FB928B13178_625034_208.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_EFBB9E0D61D9_625034_209.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_D35D599E55FF_625034_210.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_9760B8AE7B7C_625034_211.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_6014333B0952_625034_212.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_20CCE3402451_625034_213.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_FBE1BD973F4E_625034_214.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_43480FF97A75_625034_215.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_817C8BC3C240_625034_216.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_52A314EF6173_625034_217.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_1A77709B1FE1_625034_218.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_54D22E97C462_625034_219.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_3B798B64B3D7_625034_220.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_981A9F05962A_625034_221.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_0C716BA01906_625034_222.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_73E65EFE7CCA_625034_223.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_BB505AC49F17_625034_224.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_630AB5CDDFBB_625034_225.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_538CA763BF92_625034_226.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_07520867971F_625034_227.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_72D4AAD298C2_625034_228.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_AE5614C74082_625034_229.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_998D32232846_625034_230.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_2796BE8276ED_625034_231.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_76367B64ED78_625034_232.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_311644C66FBE_625034_233.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_8199BD6221FC_625034_234.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_257A1D2EE0F5_625034_235.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_4C19372C27C3_625034_236.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_7CFF1C5C8F81_625034_237.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_272FCF98EB36_625034_238.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_1B3A34E40C99_625034_239.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_F7C9C0B2D3DE_625034_240.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_316F5F53C35A_625034_241.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_19579B2F5804_625034_242.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_5983F200184A_625034_243.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_76E24926B95C_625034_244.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_20323717D36A_625034_245.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1600/out_UL17_R_gghh_SL_M-1600_ACEE75107E7E_625034_246.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-1800":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_25D2820C6B72_625034_247.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_ADFAF1F0E4A0_625034_248.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_C1A6842F6807_625034_249.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_EC4C993DCE14_625034_250.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_A52A1552CB44_625034_251.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_B378370E56B8_625034_252.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_17C6CFF7136C_625034_253.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_08579B63265C_625034_254.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_B92A1A0E776F_625034_255.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_939C8F7D4D06_625034_256.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_36D22C1C8017_625034_257.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_D0265978F55A_625034_258.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_8B3C2075BBCF_625034_259.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_E7B641DF3AA9_625034_260.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_3F051F16BD24_625034_261.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_1C403320075C_625034_262.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_44120F67A620_625034_263.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_FD3EAAC6D782_625034_264.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_81988807FE25_625034_265.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_86845F35553A_625034_266.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_93EFDD4C637D_625034_267.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_15172E7BEF02_625034_268.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_1DAC133D7B2F_625034_269.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_97F2A6EF2823_625034_270.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_755B8165D42E_625034_271.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_6C251954F51C_625034_272.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_8C52C2AD124B_625034_273.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_6C6E1428495D_625034_274.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_D15AF000717F_625034_275.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_0D10EE322118_625034_276.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_61CE7859E42C_625034_277.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_08611176106A_625034_278.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_14A2592AB312_625034_279.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_812B4FAC2AB4_625034_280.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_4EA081F3619A_625034_281.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_3F6128BAC8B4_625034_282.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_FFD437BBF64B_625034_283.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_7A106223BEB6_625034_284.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_37EFE37B75B8_625034_285.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_CA8080CE7B3C_625034_286.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_4B423EEA50F5_625034_287.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_BC36E40B47D7_625034_288.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_F781983C2994_625034_289.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_D9DA4438E21B_625034_290.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_A590E25D6566_625034_291.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_EFE015BF4170_625034_292.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_F6FD68F5E531_625034_293.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_92D008328DDE_625034_294.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1800/out_UL17_R_gghh_SL_M-1800_F1957490FF29_625034_295.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-1100":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_C3379D28B77F_625034_296.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_D14DBF7480BD_625034_297.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_40B4145066D8_625034_298.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_E8362CAC7750_625034_299.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_872A024D2943_625034_300.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_5DCEDD108103_625034_301.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_C221BD621F1C_625034_302.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_5F44B86B8A3D_625034_303.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_A90B0B565DE2_625034_304.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_3D03B30E3F51_625034_305.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_B069D0D9A739_625034_306.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_34389A7024AC_625034_307.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_0212D4B546B2_625034_308.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_933F89D66C94_625034_309.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_4711848310FC_625034_310.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_FA134370758B_625034_311.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_33A3086C08CB_625034_312.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_2AC58F18727C_625034_313.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_A904CB0FD688_625034_314.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_C542DE59A79E_625034_315.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_F3E4C0719B3D_625034_316.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_51F11464C7DE_625034_317.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_14C1E6C48E31_625034_318.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_7BBD391AB98B_625034_319.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_8B5EE3647F7A_625034_320.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_50AE0E57F9DC_625034_321.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_0CABC3EFEEED_625034_322.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_CE564F4D1F61_625034_323.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_70496491AF91_625034_324.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_9B3B9C1ECB45_625034_325.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_507C1D434FCC_625034_326.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_3697855E3683_625034_327.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_17C20B0E9BC9_625034_328.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_B85557032C44_625034_329.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_57ED7DC83D58_625034_330.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_EC378B1E17BE_625034_331.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_EBDF4F227FC0_625034_332.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_ECEF33180A53_625034_333.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_8909F19EA3A7_625034_334.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1100/out_UL17_R_gghh_SL_M-1100_60A063C1F76C_625034_335.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-900":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_658CB7F097D2_625034_336.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_E085E886D85A_625034_337.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_4E994D9C0452_625034_338.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_A333E79336C3_625034_339.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_02186A700D9C_625034_340.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_C56706250271_625034_341.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_F80320E9D680_625034_342.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_39E3E24B47FA_625034_343.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_9E265C6A617B_625034_344.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_AC6D923CA1C3_625034_345.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_FF32496D3729_625034_346.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_72790E10E605_625034_347.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_AAA4E9B94C6C_625034_348.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_078B6BC95FDF_625034_349.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_765D3A0A7151_625034_350.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_2A8233E68B29_625034_351.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-900/out_UL17_R_gghh_SL_M-900_6B4E1E3B047D_625034_352.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-1000":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_CDFE0F7557ED_625034_353.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_14440FDCFD52_625034_354.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_BBD7E16E0E24_625034_355.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_C4849D8FC30C_625034_356.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_D3EE302C4CF4_625034_357.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_85D513C68470_625034_358.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_184C5DCAA0E2_625034_359.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_AF639F79785D_625034_360.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_641281A4CFAD_625034_361.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_B367B975C8B1_625034_362.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_594C5EAF04E6_625034_363.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_C70FF50E3150_625034_364.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_780C7BCF0602_625034_365.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_ACDD1AC1BC8E_625034_366.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_2722D4B59584_625034_367.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_9AE1D65F0620_625034_368.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1000/out_UL17_R_gghh_SL_M-1000_0D939672B30C_625034_369.root",
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-350":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-350/out_UL17_R_gghh_SL_M-350_EE3D2F62BD0E_625034_371.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-350/out_UL17_R_gghh_SL_M-350_AFDCD0DC5CB6_625034_372.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-350/out_UL17_R_gghh_SL_M-350_BC501DE41613_625034_373.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-350/out_UL17_R_gghh_SL_M-350_F01833FF7878_625034_374.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-350/out_UL17_R_gghh_SL_M-350_EDBBBEE17AF2_625034_375.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-350/out_UL17_R_gghh_SL_M-350_5A04C6AE6F9C_625034_376.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-350/out_UL17_R_gghh_SL_M-350_12E4807BF2CD_625034_377.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-350/out_UL17_R_gghh_SL_M-350_7B7C634AB4B4_625034_378.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-350/out_UL17_R_gghh_SL_M-350_7F593D62125A_625034_379.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-350/out_UL17_R_gghh_SL_M-350_C9369D1D7F8E_625034_380.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-350/out_UL17_R_gghh_SL_M-350_4E43A83C7D1A_625034_381.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-350/out_UL17_R_gghh_SL_M-350_BD46E79F223B_625034_382.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-350/out_UL17_R_gghh_SL_M-350_3C3AC3BF1351_625034_383.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-350/out_UL17_R_gghh_SL_M-350_A96D40C6E4D4_625034_384.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-350/out_UL17_R_gghh_SL_M-350_658B4DDD793F_625034_385.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-250":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-250/out_UL17_R_gghh_SL_M-250_4EC55FC9EE9A_625034_386.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-250/out_UL17_R_gghh_SL_M-250_F04068E5D902_625034_387.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-250/out_UL17_R_gghh_SL_M-250_BA436A64E01F_625034_388.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-250/out_UL17_R_gghh_SL_M-250_85BF07AF1434_625034_389.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-250/out_UL17_R_gghh_SL_M-250_E7504ECFA11A_625034_390.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-250/out_UL17_R_gghh_SL_M-250_2768F2B77492_625034_391.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-250/out_UL17_R_gghh_SL_M-250_5E5B9ED214A3_625034_392.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-250/out_UL17_R_gghh_SL_M-250_A407A5079F2E_625034_393.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-250/out_UL17_R_gghh_SL_M-250_F44A343B6AED_625034_394.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-250/out_UL17_R_gghh_SL_M-250_0CCABCE6DCC9_625034_395.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-250/out_UL17_R_gghh_SL_M-250_36016E39E752_625034_396.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-250/out_UL17_R_gghh_SL_M-250_9BCAD90242D4_625034_397.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-250/out_UL17_R_gghh_SL_M-250_08A96E0C72DD_625034_398.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-250/out_UL17_R_gghh_SL_M-250_EAA51EE239A3_625034_399.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-550":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-550/out_UL17_R_gghh_SL_M-550_86EC07D6A825_625034_400.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-550/out_UL17_R_gghh_SL_M-550_1735317B9889_625034_401.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-550/out_UL17_R_gghh_SL_M-550_F83EDFFA139E_625034_402.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-550/out_UL17_R_gghh_SL_M-550_40B604F19B10_625034_403.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-550/out_UL17_R_gghh_SL_M-550_0086F33ED348_625034_404.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-550/out_UL17_R_gghh_SL_M-550_130F8C7F41E1_625034_405.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-550/out_UL17_R_gghh_SL_M-550_BEDEBF8DF8E1_625034_406.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-550/out_UL17_R_gghh_SL_M-550_4C3F78D034E6_625034_407.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-550/out_UL17_R_gghh_SL_M-550_4DCD8F14C075_625034_408.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-550/out_UL17_R_gghh_SL_M-550_4D539B483A33_625034_409.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-550/out_UL17_R_gghh_SL_M-550_FEDE7C84901A_625034_410.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-550/out_UL17_R_gghh_SL_M-550_5BC1C3E5B634_625034_411.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-550/out_UL17_R_gghh_SL_M-550_7BAB098ED772_625034_412.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-550/out_UL17_R_gghh_SL_M-550_CB46CB7C865B_625034_413.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-1300":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_128A2D3E024E_625034_414.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_C59FB9D139A2_625034_415.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_7BF21BD19AA8_625034_416.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_AD8C1C7B1486_625034_417.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_DAA93486A862_625034_419.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_A7C930AB3E7F_625034_420.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_EB21C1861363_625034_421.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_BB59646ACDDA_625034_422.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_648A25E8F4A3_625034_423.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_2D2751B14194_625034_425.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_99D1DE5E9211_625034_426.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_38631C690171_625034_428.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_AB089164A767_625034_429.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_5B37FDA95769_625034_432.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_3AD2BB0BA9A2_625034_433.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1300/out_UL17_R_gghh_SL_M-1300_CE5BAE47C371_625034_434.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-600":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-600/out_UL17_R_gghh_SL_M-600_8E1F96181E9F_625034_435.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-600/out_UL17_R_gghh_SL_M-600_5B360BD2749B_625034_436.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-600/out_UL17_R_gghh_SL_M-600_EE26AEA8E388_625034_437.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-600/out_UL17_R_gghh_SL_M-600_971A3E015CF8_625034_438.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-600/out_UL17_R_gghh_SL_M-600_690521B14E41_625034_439.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-600/out_UL17_R_gghh_SL_M-600_489F11E0B6A3_625034_440.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-600/out_UL17_R_gghh_SL_M-600_9D202F5CA8E5_625034_441.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-600/out_UL17_R_gghh_SL_M-600_6D31E9B6B8AB_625034_442.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-600/out_UL17_R_gghh_SL_M-600_2BDBC6EB76CB_625034_443.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-600/out_UL17_R_gghh_SL_M-600_14179DB67D64_625034_444.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-600/out_UL17_R_gghh_SL_M-600_10FD331F1D4E_625034_445.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-600/out_UL17_R_gghh_SL_M-600_A7E44AC55A65_625034_446.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-600/out_UL17_R_gghh_SL_M-600_423E2B7472A5_625034_447.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-600/out_UL17_R_gghh_SL_M-600_80AEC2AF67A9_625034_448.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-600/out_UL17_R_gghh_SL_M-600_B9CC38C7CE54_625034_449.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-270":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-270/out_UL17_R_gghh_SL_M-270_F0718A0EA36C_625034_450.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-270/out_UL17_R_gghh_SL_M-270_5B71797E0409_625034_451.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-270/out_UL17_R_gghh_SL_M-270_0907DB974202_625034_452.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-270/out_UL17_R_gghh_SL_M-270_73F1044D9855_625034_453.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-270/out_UL17_R_gghh_SL_M-270_DC59676D761C_625034_454.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-270/out_UL17_R_gghh_SL_M-270_0836DA4204D7_625034_455.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-270/out_UL17_R_gghh_SL_M-270_59B9E432FD89_625034_456.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-270/out_UL17_R_gghh_SL_M-270_B307034E9B28_625034_457.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-270/out_UL17_R_gghh_SL_M-270_D624D7DF54A8_625034_458.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-270/out_UL17_R_gghh_SL_M-270_C1D54EFDFCB5_625034_459.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-270/out_UL17_R_gghh_SL_M-270_F035AD9C146B_625034_460.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-270/out_UL17_R_gghh_SL_M-270_FE2763DF3646_625034_461.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-270/out_UL17_R_gghh_SL_M-270_71D60FC91E05_625034_462.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-270/out_UL17_R_gghh_SL_M-270_69D91E8C6417_625034_463.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-270/out_UL17_R_gghh_SL_M-270_2C6844C91C7A_625034_464.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-300":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-300/out_UL17_R_gghh_SL_M-300_CA01D41EBBEA_625034_465.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-300/out_UL17_R_gghh_SL_M-300_CEAE57266D71_625034_466.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-300/out_UL17_R_gghh_SL_M-300_976BAA78B429_625034_467.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-300/out_UL17_R_gghh_SL_M-300_9CC750516741_625034_468.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-300/out_UL17_R_gghh_SL_M-300_1D6565DA5C2F_625034_469.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-300/out_UL17_R_gghh_SL_M-300_C8D9426E3A66_625034_470.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-300/out_UL17_R_gghh_SL_M-300_3172E8FD5FB3_625034_471.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-300/out_UL17_R_gghh_SL_M-300_6459BA69685B_625034_472.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-300/out_UL17_R_gghh_SL_M-300_590387E6EF80_625034_473.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-300/out_UL17_R_gghh_SL_M-300_FE3B61A1E938_625034_474.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-300/out_UL17_R_gghh_SL_M-300_4029E887A184_625034_475.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-300/out_UL17_R_gghh_SL_M-300_504285A8E29E_625034_476.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-300/out_UL17_R_gghh_SL_M-300_314B51C6CA91_625034_477.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-300/out_UL17_R_gghh_SL_M-300_941EB497177E_625034_478.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-650":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-650/out_UL17_R_gghh_SL_M-650_A13BBE7C34E2_625034_479.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-650/out_UL17_R_gghh_SL_M-650_65B9161F1CBB_625034_480.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-650/out_UL17_R_gghh_SL_M-650_EB07CAD512F0_625034_481.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-650/out_UL17_R_gghh_SL_M-650_1759446AC802_625034_482.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-650/out_UL17_R_gghh_SL_M-650_5C5808AC23D1_625034_483.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-650/out_UL17_R_gghh_SL_M-650_ABA135AFDE98_625034_484.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-650/out_UL17_R_gghh_SL_M-650_C8A77E4C30D0_625034_485.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-650/out_UL17_R_gghh_SL_M-650_913907666624_625034_486.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-650/out_UL17_R_gghh_SL_M-650_C825DDF2B3E0_625034_487.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-650/out_UL17_R_gghh_SL_M-650_3917A3C627A4_625034_488.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-650/out_UL17_R_gghh_SL_M-650_DC1D2B0811FA_625034_489.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-650/out_UL17_R_gghh_SL_M-650_7A46483FD9C9_625034_490.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-650/out_UL17_R_gghh_SL_M-650_6C75C917182C_625034_491.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-650/out_UL17_R_gghh_SL_M-650_8286A665F210_625034_492.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-650/out_UL17_R_gghh_SL_M-650_A5208B05B7ED_625034_493.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-450":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_012798D408B5_625034_494.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_8EA45A94846E_625034_496.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_19670A5EC26F_625034_497.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_B29FA14F96C6_625034_498.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_18B6756085AD_625034_499.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_586F2B978802_625034_500.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_7DBF7D8BA727_625034_501.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_51861BD300B1_625034_502.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_01B9BD7C2CBF_625034_503.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_C6AF8E0804BF_625034_504.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_26B8F0B0C4B6_625034_505.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_36151BA01C8B_625034_506.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_0FC9501F7473_625034_507.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_55BA4042E1F2_625034_508.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_80D5BE365684_625034_509.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_EEFD9FEB638E_625034_510.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_55D0B38DC16B_625034_511.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_238E7AF596AF_625034_512.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_1AFD2FD0A02E_625034_513.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_90BEADB149BD_625034_514.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_E6AE5EA29019_625034_515.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_F48B24BEE020_625034_516.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_4DD1DA3CEE2C_625034_517.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_B6948572D1BF_625034_518.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_24B635228035_625034_519.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_47A25CDC6046_625034_520.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_C35E3289D8C4_625034_521.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_A20E9C10E51F_625034_522.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_C2C227BA1A0C_625034_523.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_26D8C2590CE9_625034_524.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_61F0B3FB2AB6_625034_525.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_7ADFFBE780A0_625034_526.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_AB2A256C14D3_625034_527.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_8F1215CA0AAB_625034_528.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_F30DF9EE31C2_625034_529.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_75B87124917A_625034_530.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_45420B69D1EC_625034_531.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_48C5D617A93F_625034_532.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_3372AB01F355_625034_533.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_A5E2DC76E09B_625034_534.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_5027A42321CD_625034_535.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_8595AACA21EC_625034_536.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_BF7FD74CE71A_625034_537.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_527FBC5D4160_625034_538.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_17016F742C61_625034_539.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_663232F6AB63_625034_540.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_1B326A4418D2_625034_541.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_5EE3A5B4EE71_625034_542.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_6FAC9C30EB60_625034_543.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_A4E131C18AF4_625034_544.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_645E36F3F112_625034_545.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_93CF3577B971_625034_546.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_795FED1B5CFB_625034_547.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_B628890610DA_625034_548.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_F419DE3AF066_625034_549.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_260C7EC1C492_625034_550.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_362E2C3C2587_625034_551.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_31C91ABDC22B_625034_552.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_AFF1BB7DBB35_625034_553.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_48FC31262107_625034_554.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_7DA829019C7E_625034_555.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_E1D2EFE480A9_625034_556.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_2B7F3DCF186C_625034_557.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_37B32ED42075_625034_558.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_ED968C5A27C0_625034_559.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_CE76EF69BC29_625034_560.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_F8B3787FAFC5_625034_561.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_F8D80C8DDF85_625034_562.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_4B933F9F5857_625034_563.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_8157F17B07DB_625034_564.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_C6844CA29683_625034_565.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_8AE3A96222D0_625034_566.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_8B1AB497D355_625034_567.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_C3FDC8226A68_625034_568.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_D693E68AAD7B_625034_569.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_423DA13E55B6_625034_570.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_FDC3E818E5FD_625034_571.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_E2E5E5339F8A_625034_572.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_520F26A517A3_625034_573.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_199BF67850AA_625034_574.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_EFFFCF0A12DA_625034_575.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_61501B51B798_625034_576.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_5F835E08F08C_625034_577.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_D68D15790E5F_625034_578.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_9EFE83765B8A_625034_579.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_F9C205DDDF25_625034_580.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_067B95E465EE_625034_581.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_0EA76D53692E_625034_582.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_8AB7D7D42887_625034_583.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-450/out_UL17_R_gghh_SL_M-450_FB0043137593_625034_584.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-750":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_B99DC542F853_625034_585.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_9B640FB354AA_625034_586.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_D452E162DF04_625034_587.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_E64199711C05_625034_588.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_502407CA1A01_625034_589.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_27D72E18C3E0_625034_590.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_573C5BD418A9_625034_591.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_EB84A63A7CFC_625034_592.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_B402B98AF77F_625034_593.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_C7692083504E_625034_594.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_DEB6F1CBC0BE_625034_595.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_EADAC4DD71F2_625034_596.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_66AC60686084_625034_597.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_1D20363EB170_625034_598.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_6663124019A9_625034_599.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_7F46D0DDE0CD_625034_600.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_B62DA98D112E_625034_601.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_C011EBEEEA02_625034_602.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_62F9B5D48E18_625034_603.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-750/out_UL17_R_gghh_SL_M-750_AD0C59DC6169_625034_604.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-280":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-280/out_UL17_R_gghh_SL_M-280_5E91EED04EEB_625034_605.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-280/out_UL17_R_gghh_SL_M-280_0ED866AA619B_625034_606.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-280/out_UL17_R_gghh_SL_M-280_6C7ABBC81D97_625034_607.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-280/out_UL17_R_gghh_SL_M-280_71F4FF6B5C18_625034_608.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-280/out_UL17_R_gghh_SL_M-280_A796474B1E5F_625034_609.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-280/out_UL17_R_gghh_SL_M-280_250DCBC163E1_625034_610.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-280/out_UL17_R_gghh_SL_M-280_8168CF6DCC2F_625034_611.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-280/out_UL17_R_gghh_SL_M-280_87801C507E85_625034_612.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-280/out_UL17_R_gghh_SL_M-280_387E2D671727_625034_613.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-280/out_UL17_R_gghh_SL_M-280_39BBD4F56C2B_625034_614.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-280/out_UL17_R_gghh_SL_M-280_5A3CADFA3C9F_625034_615.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-280/out_UL17_R_gghh_SL_M-280_2B46652BE2A4_625034_616.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-280/out_UL17_R_gghh_SL_M-280_5AF285447673_625034_617.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-2200":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_F0E022498A7D_625034_618.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_3946431E8B0D_625034_619.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_9B5EB40900BE_625034_620.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_4F5BD8D8E4A8_625034_621.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_925BF7253BB8_625034_622.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_6C24DCBC50BF_625034_623.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_923E718A05D5_625034_624.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_B560D1842408_625034_625.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_E7727E620A96_625034_626.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_A01921EF5858_625034_627.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_EB492C84CA54_625034_628.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_801281255568_625034_629.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_DA2E072E703C_625034_630.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_4819715F8953_625034_631.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_C9C0B396F601_625034_632.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_F25C1D60F703_625034_633.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_DD62B184A4E8_625034_634.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_8280C1E4874A_625034_635.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_1329E1703338_625034_636.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_D7139DAAB179_625034_638.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_680A34455D61_625034_639.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_41891288004B_625034_640.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_118E8685B6FC_625034_641.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_CB8894B5C130_625034_642.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_7C749ED92A8D_625034_643.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_3698AD972E4D_625034_644.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_736DEFEB74D8_625034_645.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_3450C2A30ACF_625034_646.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_A07C12C10E34_625034_647.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_40F264D0C11C_625034_648.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_627DE773DE40_625034_649.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_E72846EA26AF_625034_650.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_5403EF170915_625034_651.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_5407FD94FD09_625034_652.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_A06C26A1FED1_625034_653.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_F689487EDCFE_625034_654.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_DEFF3E5ABA5B_625034_655.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_F73B40825CFE_625034_656.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_C966DA6540DF_625034_657.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_DE859C1E44CB_625034_658.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_AEE20078DE0A_625034_659.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_D2E5C41BDE40_625034_660.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_468EF3E368CD_625034_661.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_064038942676_625034_662.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_742A18BACF04_625034_663.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_E7502C6E0021_625034_664.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2200/out_UL17_R_gghh_SL_M-2200_70BE39B43472_625034_665.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-2000":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_C61E3A61739A_625034_666.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_A8158B035F4B_625034_667.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_47102F8F3899_625034_668.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_3D1772B88CC8_625034_669.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_3E6AD703895A_625034_670.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_931F96D5F436_625034_671.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_49F8FC40FED8_625034_672.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_B92A7B726299_625034_673.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_B520619D2FF9_625034_674.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_8EED37A814CB_625034_675.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_375794E5891F_625034_676.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_7D64EEE63D94_625034_677.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_57CD7E37F68A_625034_678.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_7BFEDEC92B45_625034_679.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_10143E23636A_625034_680.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_33EFB3B42D94_625034_681.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_AE52892CC0D8_625034_682.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_48288A4A9DA2_625034_683.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_C8DFF9C9B6C3_625034_684.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_BC715B905859_625034_685.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_D974A908592B_625034_686.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_6153EE16EFCE_625034_687.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_9FCE5633520B_625034_688.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_9073EECBEBFC_625034_689.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_32C209E88486_625034_690.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_21A8E75F6831_625034_691.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_0A4C815DFC49_625034_692.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_E35936CA91AE_625034_693.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_5F0AC8DBD366_625034_694.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_F9B199A2B584_625034_695.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_B5180D7B526B_625034_696.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_BDA6224FEEE7_625034_697.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_9D5B5F7D6596_625034_698.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_615E2160F9F5_625034_699.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_6AC912BC04DC_625034_700.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_DE985C121D8C_625034_701.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_B99F505B3AFD_625034_702.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_FBC9450C1B67_625034_705.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_60C11B64C7C3_625034_706.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_38013643FADC_625034_707.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_FD0E1B4973C4_625034_708.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_9759B7707B7E_625034_709.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_FE8506B51F64_625034_710.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_904AD3270EB9_625034_711.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_918A4521C596_625034_712.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2000/out_UL17_R_gghh_SL_M-2000_C2E3D70D89D4_625034_713.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-2800":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_256272E47144_625034_714.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_B832880753F3_625034_715.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_054E199B6A1D_625034_716.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_699721008C61_625034_717.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_B2D13349FFF4_625034_718.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_FB667757FF50_625034_719.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_E5032AC17DB4_625034_720.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_C9AC06E550BD_625034_721.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_91746B946C6B_625034_722.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_DBBB1EF08EEA_625034_723.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_00CE0E278176_625034_724.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_0282264279C3_625034_725.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_B5A69FF8D6B5_625034_726.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_34142440208A_625034_727.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_449621606353_625034_728.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_F1958F886FC6_625034_729.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_34AB4D0820A4_625034_730.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_122492382792_625034_731.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_6262821EADF5_625034_732.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_E888C28BDDF2_625034_733.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_4250CF22C7BB_625034_734.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_9A0751A1D0FA_625034_735.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_AC6F2EB3C91B_625034_736.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_AA4216866350_625034_737.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-2800/out_UL17_R_gghh_SL_M-2800_603BA3489A08_625034_738.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-1500":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_F367010C8FF4_625034_739.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_1879DE975478_625034_740.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_ECDF6DA53646_625034_741.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_EE45ED5B2BA4_625034_742.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_34F5688EF439_625034_743.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_BAA5AC5892CC_625034_744.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_C97AE77DC674_625034_745.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_7C219595E6AD_625034_746.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_2DFE73E35B0A_625034_747.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_084DE0A8FB77_625034_748.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_BB444CDAACD6_625034_749.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_94E96A6BAE01_625034_750.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_CE4166EEE298_625034_751.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_B46451A4A051_625034_752.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_4705C7423CD1_625034_753.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_88AB7A3BFBDA_625034_754.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_BB1666A258E7_625034_755.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_F585583391D3_625034_756.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_3C08DBE6008D_625034_757.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_029018C6CBD2_625034_758.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_1010B1FC03EF_625034_759.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_180BC86A71FB_625034_760.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_D5B61BAF6CA0_625034_761.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_8133C830939A_625034_762.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_245337F80276_625034_763.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_8FB2A0742E88_625034_764.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_444C49585B1D_625034_765.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_2DFE73B43054_625034_766.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_0339C025B379_625034_767.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1500/out_UL17_R_gghh_SL_M-1500_62D9C645F57A_625034_768.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-850":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-850/out_UL17_R_gghh_SL_M-850_ADE3490D70EB_625034_769.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-850/out_UL17_R_gghh_SL_M-850_283C4A82A499_625034_770.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-850/out_UL17_R_gghh_SL_M-850_3FB29029E0E5_625034_771.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-850/out_UL17_R_gghh_SL_M-850_8D19C01C06B9_625034_772.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-850/out_UL17_R_gghh_SL_M-850_F82EEF5C9D7D_625034_773.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-850/out_UL17_R_gghh_SL_M-850_10967494C7CC_625034_774.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-850/out_UL17_R_gghh_SL_M-850_079FB561B93B_625034_775.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-850/out_UL17_R_gghh_SL_M-850_7BA092ADD3B0_625034_776.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-850/out_UL17_R_gghh_SL_M-850_A3BFA9F54A49_625034_777.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-850/out_UL17_R_gghh_SL_M-850_CCE114DDABD4_625034_778.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-850/out_UL17_R_gghh_SL_M-850_E88804F4F9DD_625034_779.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-850/out_UL17_R_gghh_SL_M-850_209C7700D993_625034_780.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-850/out_UL17_R_gghh_SL_M-850_7E994B44D96A_625034_781.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-850/out_UL17_R_gghh_SL_M-850_320F77EA4988_625034_782.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-850/out_UL17_R_gghh_SL_M-850_28100A9CC600_625034_783.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-260":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-260/out_UL17_R_gghh_SL_M-260_BDCB32A7603A_625034_784.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-260/out_UL17_R_gghh_SL_M-260_53D40A324535_625034_785.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-260/out_UL17_R_gghh_SL_M-260_EC273CCD11FD_625034_786.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-260/out_UL17_R_gghh_SL_M-260_9E592AA814B9_625034_787.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-260/out_UL17_R_gghh_SL_M-260_68937C485AD5_625034_788.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-260/out_UL17_R_gghh_SL_M-260_48F66AC18D4C_625034_789.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-260/out_UL17_R_gghh_SL_M-260_627EBEB3BEF1_625034_790.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-260/out_UL17_R_gghh_SL_M-260_3882497EF2AD_625034_791.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-260/out_UL17_R_gghh_SL_M-260_60AEB954C773_625034_792.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-260/out_UL17_R_gghh_SL_M-260_FD10BEE85001_625034_793.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-260/out_UL17_R_gghh_SL_M-260_0E7DC8CBE770_625034_794.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-260/out_UL17_R_gghh_SL_M-260_5E6F4469E5DC_625034_795.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-260/out_UL17_R_gghh_SL_M-260_1526881215C0_625034_796.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-1400":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_8DA94A087E46_625034_797.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_59540AD89E59_625034_798.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_0E5606BBD1C1_625034_799.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_DDBC2D20C7B2_625034_800.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_38ACCDCB5258_625034_801.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_660FC9D671DD_625034_802.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_8B5BF85818BF_625034_803.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_3D62A78CDDDB_625034_804.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_D9AD498F20BF_625034_805.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_C72CD4C6148F_625034_806.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_249DD0ADF998_625034_807.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_30589B74BA74_625034_808.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_D116C7434B92_625034_809.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_B0192E7A9124_625034_810.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_9ACDA0ECF19C_625034_811.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_F3014D1A0156_625034_812.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_5EB8135B1CE8_625034_813.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_A5AF942B129F_625034_814.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1400/out_UL17_R_gghh_SL_M-1400_F7110174A31B_625034_815.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-500":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-500/out_UL17_R_gghh_SL_M-500_026E36AAF5C1_625034_816.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-500/out_UL17_R_gghh_SL_M-500_4625895F663C_625034_817.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-500/out_UL17_R_gghh_SL_M-500_69BCA6EC42F6_625034_818.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-500/out_UL17_R_gghh_SL_M-500_10E0BC51A704_625034_819.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-500/out_UL17_R_gghh_SL_M-500_F90BA324FC57_625034_820.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-500/out_UL17_R_gghh_SL_M-500_A43543F4CF4C_625034_821.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-500/out_UL17_R_gghh_SL_M-500_7CB197A24AB0_625034_822.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-500/out_UL17_R_gghh_SL_M-500_DB97A69A9814_625034_823.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-500/out_UL17_R_gghh_SL_M-500_14F2670B4876_625034_824.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-500/out_UL17_R_gghh_SL_M-500_DE9E664BF99A_625034_825.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-500/out_UL17_R_gghh_SL_M-500_82F773965989_625034_826.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-500/out_UL17_R_gghh_SL_M-500_3F35E62BC064_625034_827.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-500/out_UL17_R_gghh_SL_M-500_693C481C07CF_625034_828.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-500/out_UL17_R_gghh_SL_M-500_6275BAE2B7E8_625034_829.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-500/out_UL17_R_gghh_SL_M-500_B87D065F4E60_625034_830.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-320":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_1CEE886D18AB_625034_831.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_59928CBFD4C2_625034_832.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_FD509D6931F9_625034_833.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_9622E87D852E_625034_834.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_8A5E26016F64_625034_835.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_740D3660A15E_625034_836.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_1E06CE49870C_625034_837.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_D98128FAE011_625034_838.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_5165C12D15E2_625034_839.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_93F3C0273ED9_625034_840.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_761173785E29_625034_841.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_1D69784540A1_625034_842.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_087BF61AA5E5_625034_843.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_2A751C3E9764_625034_844.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_0BEE746AA836_625034_845.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-320/out_UL17_R_gghh_SL_M-320_0C93D96E9FFF_625034_846.root"
+]
+    }
+    },
+
+"UL17_R_gghh_SL_M-1700":
+    { "xs":0.001,
+    "bf":1.0,
+    "files":{
+    "2017":
+     ["/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_ECCB92D88F84_625034_847.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_994855A2B9E2_625034_848.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_4ED49B51D7D6_625034_849.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_003FF40AB157_625034_851.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_0AEF475B6ACA_625034_852.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_FD77626C34E2_625034_856.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_13833B9DA14C_625034_857.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_9F0C044BFE50_625034_858.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_8FA22C0763FD_625034_859.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_B374B7A273F0_625034_860.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_7BBA85AFA7C3_625034_861.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_A80C1B9857BF_625034_862.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_34F91105C678_625034_863.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_51DB16257358_625034_864.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_A9673CE4C729_625034_865.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_4627CAF66DAC_625034_866.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_B3BF46086ADC_625034_867.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_9DEC04852CB9_625034_868.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_A67BB01F8EBA_625034_869.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_30E1AF9F4533_625034_870.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_E7C272865EA7_625034_871.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_383FA6AE8081_625034_872.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_611E24FA32E0_625034_873.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_978CA5655691_625034_874.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_2F7117812F2E_625034_875.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_2A7294CD53D2_625034_876.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_AF0DD1B5A4A6_625034_877.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_EA532905C028_625034_878.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_E2AB522338C7_625034_879.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_4E0A66BDD426_625034_880.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_87051BA07527_625034_881.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_F4A84AB9DC26_625034_882.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_27BF585ECB39_625034_883.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_0AE7E3D79109_625034_884.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_AA4868FD4C54_625034_885.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_1B9CCE57E296_625034_886.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_56898CB83A43_625034_887.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_3E04F0426C3C_625034_888.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_CECD455CEB05_625034_889.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_D6E1457D6621_625034_890.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_19F26669A828_625034_891.root",
+"/eos/user/z/zhenxuan/customized_NanoAOD/UL17/UL17_R_gghh_SL_M-1700/out_UL17_R_gghh_SL_M-1700_91089CC6C23E_625034_892.root"
+]
+    }
+    },

@@ -10,7 +10,7 @@ RequestDisk = REQ_DISK
 RequestCpus = REQ_NCPUS
 
 JobBatchName = BATCH_NAME
-+JobFlavour = "longlunch"
++JobFlavour = "workday"
 +OnExitHold   = ExitStatus != 0
 getenv        = True
 queue 1

@@ -36,10 +36,9 @@ def select_objects(objects, cuts = {}, clean = {}, name = "none", tagger = None)
             cut_ = objects.pt > value
             cut_names.append("pt > %.4f" % value)
         if cut in ["eta", "dxy", "dz"]:
-        # if cut in ["eta","dz"]:
             cut_ = abs(objects[cut]) < value
             cut_names.append("|%s| < %.4f" % (cut, value))
-        if cut in ["pfRelIso04_all", "pfRelIso03_chg","pfRelIso03_all"]:
+        if cut in ["pfRelIso03_all", "pfRelIso03_chg"]:
             cut_ = objects[cut] < value
             cut_names.append("%s < %.4f" % (cut, value))
 
@@ -109,9 +108,13 @@ def delta_R(objects1, objects2, min_dr):
     :return: boolean array of objects in objects1 which pass delta_R requirement
     :rtype: awkward.highlevel.Array
     """
-
-    if awkward.count(objects1) == 0 or awkward.count(objects2) == 0:
+    #obj1:jet obj2:muon     
+    # if awkward.count(objects1) == 0 or awkward.count(objects2) == 0:
+    #     return objects1.pt < 0. 
+    if awkward.count(objects1) == 0: 
         return objects1.pt < 0. 
+    if awkward.count(objects2) == 0:
+        return objects1.pt > 0.
 
     if not isinstance(objects1, vector.Vector4D):
         objects1 = awkward.Array(objects1, with_name = "Momentum4D")

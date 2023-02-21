@@ -246,6 +246,7 @@ class SystematicsProducer():
         """
         
         events_with_syst = {}
+ 
         for name, weight_systs in self.weights.items():
             logger.debug("[SystematicsProducer : produce] Producing weights for weight variation: %s" % name)
            

@@ -182,6 +182,7 @@ class Tagger():
                 ncandi_per_event = awkward.num(_tmp_cut[_tmp_cut==True],axis=-1) 
                 candi_event=_tmp_cut[ncandi_per_event!=0]
                 if type(candi_event) == bool:
+                    # print(_tmp_cut)
                 # for event selection level, like "at least one diphoton pair", _tmp_cut is 1D array, ncandi_per_event is the number of the events which contians at least one diphoton pair
                     combined_eff = float(ncandi_per_event) / float(len(_tmp_cut))
                 else:
@@ -194,7 +195,7 @@ class Tagger():
                 "combined eff": float(combined_eff)
             }
             # logger.debug("[Tagger] : %s, syst variation : %s, cut type : %s, cut : %s, combined candi/sum_candi efficiency : %.4f"% (self.name, self.current_syst, cut_type, _tmp_name, combined_candieff))
-            logger.debug("[Tagger] :  \nc_cut : %s\neff : %.4f"% (_tmp_name, combined_eff))
+            logger.debug("[Tagger] :  \n c_cut : %s \n combined_eff : %.4f"% (_tmp_name, combined_eff))
 
 
 

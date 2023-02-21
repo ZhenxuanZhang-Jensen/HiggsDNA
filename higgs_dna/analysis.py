@@ -70,7 +70,6 @@ def run_analysis(config):
         sample = sample
     )
     events = systematics_producer.produce(events)
-    logger.debug("events fields: %s"%events.keys())
     t_elapsed_syst = time.time() - t_start_syst
 
     ### 4. Apply tag sequence ###
@@ -155,7 +154,7 @@ class AnalysisManager():
             "batch_system" : "local",
             "fpo" : None, # number of input files per output file (i.e. per job)
             "n_cores" : 4, # number of cores for local running
-            "use_xrdcp" : True, # xrdcp to local or not
+            "use_xrdcp" : False, # xrdcp to local or not
             "merge_outputs" : False,
             "unretire_jobs" : False,
             "retire_jobs" : False,
@@ -468,7 +467,7 @@ class AnalysisManager():
         use_xrdcp = False
         for file in files:
             if use_xrdcp:
-                local_file_name = "/eos/cms/store/group/phys_higgs/cmshgg/shsong/"+file.split("/")[-1]
+                local_file_name = file.split("/")[-1]
                 # local_file_name = file.replace("/","_")
                 time.sleep(10)
                 logger.debug("sleep 10 secs before xrdcp")
@@ -477,6 +476,20 @@ class AnalysisManager():
                 logger.debug("local file name: %s" %file )
                 logger.debug("cp file to local")
             with uproot.open(file, timeout = 1800) as f:
+                #attention new block to read lumi and save in the txt file to read whold data lumi to make sure we have enough lumi
+                lumi = f['LuminosityBlocks'].arrays(['run','luminosityBlock'])
+                Runs = f['Runs'].arrays(['run'])
+                import itertools
+                for i in range(len(Runs.run)):
+                    list_lumi = lumi.luminosityBlock[lumi.run == Runs.run[i]].to_list()
+                    range_list = [[t[0][1], t[-1][1]] for t in (tuple(g[1]) for g in itertools.groupby(enumerate(list_lumi), lambda list_lumi: list_lumi[1]-list_lumi[0]))]
+                    # with open("/eos/user/z/zhenxuan/brilws/lumi_cal.txt","a") as ftxt:
+                    #     ftxt.write("\n")
+                    #     ftxt.write('"'+ str(Runs.run[i]) + '"')
+                    #     ftxt.write(":")
+                    #     ftxt.write(str(range_list))
+                    #     ftxt.write(",")
+                ##################################
                 runs = f["Runs"]
                 if "genEventCount" in runs.keys() and "genEventSumw" in runs.keys():
                     sum_weights += numpy.sum(runs["genEventSumw"].array())
