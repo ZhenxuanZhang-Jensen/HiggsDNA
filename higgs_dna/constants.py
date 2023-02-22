@@ -13,6 +13,14 @@ LUMI = {
     "2018" : 59.8
 }
 
+#from  https://twiki.cern.ch/twiki/bin/view/CMS/EgHLTPathDetails#HLT_Diphoton30PV_18PV_R9Id_AND_I
+LUMI_LOWMASS = {
+    "2016UL_preVFP" : 19.71, # 2016 APV
+    "2016UL_postVFP" : 17.10, # 2016
+    "2017" : 41.54,
+    "2018" : 54.67
+}
+
 GOLDEN_JSON = {
     "2016UL_preVFP" : "metadata/golden_json/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt",
     "2016UL_postVFP" : "metadata/golden_json/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt",
