@@ -41,14 +41,14 @@ DEFAULT_OPTIONS = {
         "dr_muons": 0.8
     },
     "fatjets_H": {
-        "pt": 300.0,
+        "pt": 300.0,#300.0 fixed 0 
         "eta": 2.4,
         "Hqqqq_qqlv_vsQCDTop" :0.2,
         "dr_photons": 0.8,
         "dr_electrons": 0.8,
         "dr_muons": 0.8
     },
-    "photon_id": -0.9,
+    "photon_id": -1,
     "btag_wp": {
         "2016": 0.3093,
         "2017": 0.3040,

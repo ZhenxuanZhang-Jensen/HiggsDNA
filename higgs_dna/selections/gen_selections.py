@@ -167,7 +167,101 @@ def gen_Hww_4q(events):
     dummy_value=-999
     )
     return gen_q1_p4, gen_q2_p4, gen_q3_p4, gen_q4_p4
-
+def select_fake_photon(events,diphotons):
+    gen_part = awkward.Array(diphotons.GenPart,with_name="Momentum4D")
+    leadidx = awkward.unflatten(diphotons.LeadPhoton.genPartIdx,counts=awkward.to_list(awkward.full_like(diphotons.LeadPhoton.genPartIdx,1)),axis=-1)
+    gen_matched_leadphoton = (abs(gen_part.pdgId[leadidx])==22) & (diphotons.LeadPhoton.genPartFlav == 1)
+    gen_fake_leadphoton = ~gen_matched_leadphoton 
+    is_leadphoton = awkward.flatten(gen_matched_leadphoton)
+    fake_leadphoton = awkward.flatten(gen_fake_leadphoton)
+    diphotons[("Diphoton", "is_LeadPhoton")]=is_leadphoton
+    diphotons[("LeadPhoton", "is_LeadPhoton")]=is_leadphoton
+    test=awkward.where(diphotons.LeadPhoton.is_LeadPhoton == True, diphotons.LeadPhoton, -999)
+    print(test.fields)
+    # real_leadphoton = awkward.zip(
+    # {
+    # "pt": awkward.unflatten(awkward.where(is_leadphoton == True, diphotons, -999),1).pt,
+    # "eta": awkward.unflatten(awkward.where(is_leadphoton == True, diphotons, -999),1).eta,
+    # "phi": awkward.unflatten(awkward.where(is_leadphoton == True, diphotons, -999),1).phi,
+    # "mass": awkward.unflatten(awkward.where(is_leadphoton == True, diphotons, -999),1).mass
+    # }), 
+    prompt_leadpho = awkward_utils.add_field(
+    events = diphotons,
+    name = "real_leadphoton",
+    data = awkward.unflatten(test,1)
+    )
+    print(prompt_leadpho.fields)
+    awkward_utils.add_object_fields(
+    events=diphotons,
+    name="Prompt_leadphoton",
+    objects=prompt_leadpho,
+    n_objects=1,
+    dummy_value=-999
+    )
+    fake_leadpho = awkward_utils.add_field(
+    events = diphotons,
+    name = "Fake_leadphoton",
+    data = awkward.unflatten(awkward.where(fake_leadphoton == True, diphotons, -999),1)
+    )
+    awkward_utils.add_object_fields(
+    events=diphotons,
+    name="Fake_leadphoton",
+    objects=fake_leadpho,
+    n_objects=1,
+    dummy_value=-999
+    )
+    subleadidx = awkward.unflatten(diphotons.LeadPhoton.genPartIdx,counts=awkward.to_list(awkward.full_like(diphotons.SubleadPhoton.genPartIdx,1)),axis=-1)
+    gen_matched_subleadphoton = (abs(gen_part.pdgId[subleadidx])==22) & (diphotons.SubleadPhoton.genPartFlav == 1)
+    gen_fake_subleadphoton = ~gen_matched_subleadphoton 
+    is_subphoton = awkward.flatten(gen_matched_subleadphoton)
+    fake_subleadphoton = awkward.flatten(gen_fake_subleadphoton)
+    diphotons[("Diphoton", "is_SubleadPhoton")]=is_subphoton
+    prompt_subleadpho = awkward_utils.add_field(
+    events = diphotons,
+    name = "real_subleadphoton",
+    data = awkward.unflatten(awkward.where(is_subphoton == True, diphotons, -999),1)
+    )
+    awkward_utils.add_object_fields(
+    events=diphotons,
+    name="Prompt_subleadphoton",
+    objects=prompt_subleadpho,
+    n_objects=1,
+    )
+    print(fake_leadpho)
+    fake_subleadpho = awkward_utils.add_field(
+    events = diphotons,
+    name = "Fake_subleadphoton",
+    data = awkward.unflatten(awkward.where(fake_subleadphoton == True, diphotons, -999),1)
+    )
+    awkward_utils.add_object_fields(
+    events=diphotons,
+    name="Fake_subleadphoton",
+    objects=fake_subleadpho,
+    n_objects=1,
+    )
+    fake_pho = awkward_utils.add_field(
+    events = diphotons,
+    name = "Fake_photon",
+    data = awkward.concatenate([fake_leadpho,fake_subleadpho],axis=1)
+    )
+    # awkward_utils.add_object_fields(
+    # events=events,
+    # name="Fake_photon",
+    # objects=fake_pho,
+    # n_objects=1,
+    # )
+    prompt_pho = awkward_utils.add_field(
+    events = diphotons,
+    name = "Prompt_photon",
+    data = awkward.concatenate([prompt_leadpho,prompt_subleadpho],axis=1)
+    )
+    # awkward_utils.add_object_fields(
+    # events=events,
+    # name="Prompt_photon",
+    # objects=prompt_pho,
+    # n_objects=1,
+    # )
+    return fake_pho,prompt_pho
 def select_x_to_yz(gen_part, x_pdgId, y_pdgId, z_pdgId):
     """
     Return all x->yy decays, sorted by x_pt.
