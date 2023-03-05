@@ -188,7 +188,6 @@ class Tagger():
                 else:
                     n_candi_event = len(candi_event)
                     combined_eff = float(n_candi_event) / float(len(_tmp_cut))
-                    # combined_candieff = float(awkward.sum(_tmp_cut)) / float(awkward.count(_tmp_cut))
             else:
                 combined_eff = 0.
             self.cut_summary[cut_type][_tmp_name]={

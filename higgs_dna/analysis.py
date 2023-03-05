@@ -6,7 +6,7 @@ import json
 import pickle
 import dill
 import numpy
-
+import subprocess
 import uproot
 import awkward
 
@@ -462,7 +462,6 @@ class AnalysisManager():
         :returns: array of events, sum of weights
         :rtype: awkward.Array, float
         """
-        events = []
         sum_weights = 0
         use_xrdcp = False
         for file in files:
@@ -471,25 +470,64 @@ class AnalysisManager():
                 # local_file_name = file.replace("/","_")
                 time.sleep(10)
                 logger.debug("sleep 10 secs before xrdcp")
-                os.system("xrdcp %s %s" % (file, local_file_name))
+                try:
+                    command = "xrdcp %s %s" % (file, local_file_name)
+                    subprocess.call(command, shell=True, stdout=subprocess.PIPE)
+                    logger.debug("local file name: %s" %file )
+                    logger.debug("cp file to local")
+                except:
+                    logger.debug("can't copy file to local")
+                    
                 file = local_file_name
-                logger.debug("local file name: %s" %file )
-                logger.debug("cp file to local")
+            import json
+            f= uproot.open(file, timeout = 1800)
+            #attention slimed lumi
+            # events = f['Events']
+            # lumi = f['LuminosityBlocks'].arrays(['run','luminosityBlock'])
+            # Runs = f['Runs'].arrays(['run'])
+            # # Read the JSON file
+            # with open("/eos/user/z/zhenxuan/brilws/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.json", "r") as f:
+            #     data = json.load(f)
+            # # Define the numbers to be checked
+            # num1_list = [str(i) for i in Runs.run]
+            # num2_list = lumi['luminosityBlock']
+
+            # # Iterate through num1_list and num2_list
+            # golden_lumi = []
+            # for num1 in num1_list:
+            #     for num2 in num2_list:
+            #         # Check if num1 is a valid key
+            #         if num1 in data:
+            #             # Check if num2 is in the list of this key
+            #             for r in data[num1]:
+            #                 if num2 in range(r[0], r[1] + 1):
+            #                     golden_lumi.append(num2)
+            # #                     print(f"{num2} is in the range of {num1}")
+            #                 else:
+            #                     pass
+            #         else:
+            #             pass
+            #             # print(f"{num1} is not a valid key") # attention only for data
+            # # create the bool mask
+            # a = numpy.array(events['luminosityBlock'].array())
+            # mask = numpy.isin(a,golden_lumi)
+            #----
+            events = []
             with uproot.open(file, timeout = 1800) as f:
                 #attention new block to read lumi and save in the txt file to read whold data lumi to make sure we have enough lumi
-                lumi = f['LuminosityBlocks'].arrays(['run','luminosityBlock'])
-                Runs = f['Runs'].arrays(['run'])
-                import itertools
-                for i in range(len(Runs.run)):
-                    list_lumi = lumi.luminosityBlock[lumi.run == Runs.run[i]].to_list()
-                    range_list = [[t[0][1], t[-1][1]] for t in (tuple(g[1]) for g in itertools.groupby(enumerate(list_lumi), lambda list_lumi: list_lumi[1]-list_lumi[0]))]
-                    # with open("/eos/user/z/zhenxuan/brilws/lumi_cal.txt","a") as ftxt:
-                    #     ftxt.write("\n")
-                    #     ftxt.write('"'+ str(Runs.run[i]) + '"')
-                    #     ftxt.write(":")
-                    #     ftxt.write(str(range_list))
-                    #     ftxt.write(",")
-                ##################################
+                # lumi = f['LuminosityBlocks'].arrays(['run','luminosityBlock'])
+                # Runs = f['Runs'].arrays(['run'])
+                # import itertools
+                # for i in range(len(Runs.run)):
+                #     list_lumi = lumi.luminosityBlock[lumi.run == Runs.run[i]].to_list()
+                #     range_list = [[t[0][1], t[-1][1]] for t in (tuple(g[1]) for g in itertools.groupby(enumerate(list_lumi), lambda list_lumi: list_lumi[1]-list_lumi[0]))]
+                #     with open("/eos/user/z/zhenxuan/brilws/lumi_cal.txt","a") as ftxt:
+                #         ftxt.write("\n")
+                #         ftxt.write('"'+ str(Runs.run[i]) + '"')
+                #         ftxt.write(":")
+                #         ftxt.write(str(range_list))
+                #         ftxt.write(",")
+                # ##################################
                 runs = f["Runs"]
                 if "genEventCount" in runs.keys() and "genEventSumw" in runs.keys():
                     sum_weights += numpy.sum(runs["genEventSumw"].array())
@@ -498,12 +536,18 @@ class AnalysisManager():
                 tree = f["Events"]
                 trimmed_branches = [x for x in branches if x in tree.keys()]
                 events_file = tree.arrays(trimmed_branches, library = "ak", how = "zip")
+                # events_file = events_file[mask] # only save the golden lumi for data
                 events.append(events_file)
 
                 logger.debug("[AnalysisManager : load_events] Loaded %d events from file '%s'." % (len(events_file), file))
             if use_xrdcp:
-                os.system("rm %s" % file)
-                logger.debug("remove the local cp file: %s" %file)
+                command = "rm %s" % file
+                try:
+                    subprocess.call(command, shell=True, stdout=subprocess.PIPE)
+                    logger.debug("remove the local cp file: %s" %file)
+                except:
+                    logger.debug("can't remove file: %s" %file)
+                    
 
 
 
