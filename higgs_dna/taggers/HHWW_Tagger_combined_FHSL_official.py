@@ -323,11 +323,11 @@ class HHWW_Preselection_FHSL(Tagger):
         category = awkward.where(SL_FH_cat1, awkward.ones_like(category)*1, category)
         awkward_utils.add_field(events, "category", category) 
 
-        # cat_cut = (events.category==1)
+        cat_cut = (events.category==1)
         presel_cut = (photon_id_cut) 
 
         self.register_cuts(
             names=["Photon id Selection","Lepton Selection"],
-            results=[photon_id_cut]#,cat_cut]
+            results=[photon_id_cut,cat_cut]
         )
         return presel_cut, events

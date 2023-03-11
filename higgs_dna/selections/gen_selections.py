@@ -169,6 +169,19 @@ def gen_Hww_4q(events):
     return gen_q1_p4, gen_q2_p4, gen_q3_p4, gen_q4_p4
 def select_fake_photon(events,diphotons):
     gen_part = awkward.Array(diphotons.GenPart,with_name="Momentum4D")
+    # gen_Part = awkward_utils.add_field(
+    #     events = diphotons,
+    #     name = "genpart",
+    #     data=gen_part
+
+    # )
+    # awkward_utils.add_object_fields(
+    # events=diphotons,
+    # name="GenPart",
+    # objects=gen_Part,
+    # n_objects=1,
+    # dummy_value=-999
+    # )
     leadidx = awkward.unflatten(diphotons.LeadPhoton.genPartIdx,counts=awkward.to_list(awkward.full_like(diphotons.LeadPhoton.genPartIdx,1)),axis=-1)
     gen_matched_leadphoton = (abs(gen_part.pdgId[leadidx])==22) & (diphotons.LeadPhoton.genPartFlav == 1)
     gen_fake_leadphoton = ~gen_matched_leadphoton 
@@ -176,8 +189,16 @@ def select_fake_photon(events,diphotons):
     fake_leadphoton = awkward.flatten(gen_fake_leadphoton)
     diphotons[("Diphoton", "is_LeadPhoton")]=is_leadphoton
     diphotons[("LeadPhoton", "is_LeadPhoton")]=is_leadphoton
+    diphotons[("Diphoton","GenPart_pdgId")]=gen_part.pdgId
+    diphotons[("Diphoton","GenPart_eta")]=gen_part.eta
+    diphotons[("Diphoton","GenPart_pt")]=gen_part.pt
+    diphotons[("Diphoton","GenPart_phi")]=gen_part.phi
+    diphotons[("Diphoton","GenPart_mass")]=gen_part.mass
+    diphotons[("Diphoton","GenPart_IdxMother")]=gen_part.genPartIdxMother
+    diphotons[("Diphoton","GenPart_status")]=gen_part.status
+    diphotons[("Diphoton","GenPart_statusFlags")]=gen_part.statusFlags
     test=awkward.where(diphotons.LeadPhoton.is_LeadPhoton == True, diphotons.LeadPhoton, -999)
-    print(test.fields)
+
     # real_leadphoton = awkward.zip(
     # {
     # "pt": awkward.unflatten(awkward.where(is_leadphoton == True, diphotons, -999),1).pt,
@@ -190,7 +211,6 @@ def select_fake_photon(events,diphotons):
     name = "real_leadphoton",
     data = awkward.unflatten(test,1)
     )
-    print(prompt_leadpho.fields)
     awkward_utils.add_object_fields(
     events=diphotons,
     name="Prompt_leadphoton",

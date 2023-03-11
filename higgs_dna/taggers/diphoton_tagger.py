@@ -3,6 +3,7 @@ import time
 import numpy
 import numba
 import vector
+import pandas
 
 vector.register_awkward()
 
@@ -104,14 +105,24 @@ class DiphotonTagger(Tagger):
                 photons = events.Photon[photon_selection],
                 options = self.options["diphotons"]
         )
-        diphotons =self.match_Gjet_photon(events,diphotons)
+        diphotons =self.match_Gjet_photon(events,diphotons) #open for datadriven check
+
+        diphotons = self.calculate_min_max_ID(diphotons)
         logger.debug("Is Data:  %s" %self.is_data)
         logger.debug("With GEN info:  %s" %self.options["gen_info"]["calculate"])
         if not self.is_data and self.options["gen_info"]["calculate"]:
             diphotons = self.calculate_gen_info(diphotons, self.options["gen_info"])
 
         return diphoton_selection, diphotons 
+    def calculate_min_max_ID(self,diphotons):
+        # minID = awkward.min(diphotons.LeadPhoton.mvaID, diphotons.SubleadPhoton.mvaID)
+        # maxID = awkward.max(diphotons.LeadPhoton.mvaID, diphotons.SubleadPhoton.mvaID)
+        minID = numpy.minimum(diphotons.LeadPhoton.mvaID, diphotons.SubleadPhoton.mvaID)
+        maxID = numpy.maximum(diphotons.LeadPhoton.mvaID, diphotons.SubleadPhoton.mvaID)
 
+        diphotons[("Diphoton", "minID")] = minID
+        diphotons[("Diphoton", "maxID")] = maxID
+        return diphotons
     def match_Gjet_photon(self,events,diphotons):
         """
         Calculate gen info for Gjet MC
@@ -136,7 +147,6 @@ class DiphotonTagger(Tagger):
             n_objects = 2,
             dummy_value=-999
         )
-        print(fake_photon)
         return diphotons
 
     def produce_and_select_diphotons(self, events, photons, options):
@@ -170,8 +180,8 @@ class DiphotonTagger(Tagger):
         # Add sumPt and dR for convenience
         diphotons[("Diphoton", "sumPt")] = diphotons.LeadPhoton.pt + diphotons.SubleadPhoton.pt
         diphotons[("Diphoton", "dR")] = diphotons.LeadPhoton.deltaR(diphotons.SubleadPhoton)   
-        diphotons[("LeadPhoton","genPartFlav")] = diphotons.LeadPhoton.genPartFlav
-        diphotons[("SubleadPhoton","genPartFlav")] = diphotons.SubleadPhoton.genPartFlav
+        # diphotons[("LeadPhoton","genPartFlav")] = diphotons.LeadPhoton.genPartFlav
+        # diphotons[("SubleadPhoton","genPartFlav")] = diphotons.SubleadPhoton.genPartFlav
         # diphotons[("LeadPhoton","genPartIdx")] = diphotons.LeadPhoton.genPartIdx
         # diphotons[("SubleadPhoton","genPartIdx")] = diphotons.SubleadPhoton.genPartIdx
 
