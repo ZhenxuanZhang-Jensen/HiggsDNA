@@ -32,7 +32,7 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
     if options["id"] == "WP90":
         id_cut = (electrons.mvaFall17V2Iso_WP90 == True) | ((electrons.mvaFall17V2noIso_WP90 == True) & (electrons.pfRelIso03_all < 0.3)) 
     elif options["id"] == "WPL":
-        id_cut = (electrons.mvaFall17V2Iso_WPL == True) | ((electrons.mvaFall17V2Iso_WPL == True) & (electrons.pfRelIso03_all < 0.3))
+        id_cut = (electrons.mvaFall17V2Iso_WPL == True) | ((electrons.mvaFall17V2noIso_WPL == True) & (electrons.pfRelIso03_all < 0.3))
     elif not options["id"] or options["id"].lower() == "none":
         id_cut = electrons.pt > 0.
     else:

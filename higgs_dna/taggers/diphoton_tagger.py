@@ -105,7 +105,7 @@ class DiphotonTagger(Tagger):
                 photons = events.Photon[photon_selection],
                 options = self.options["diphotons"]
         )
-        diphotons =self.match_Gjet_photon(events,diphotons) #open for datadriven check
+        # diphotons =self.match_Gjet_photon(events,diphotons) #open for datadriven check
 
         diphotons = self.calculate_min_max_ID(diphotons)
         logger.debug("Is Data:  %s" %self.is_data)

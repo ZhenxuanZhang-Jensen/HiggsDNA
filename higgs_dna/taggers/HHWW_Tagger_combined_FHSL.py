@@ -22,7 +22,8 @@ DEFAULT_OPTIONS = {
     },
     "muons": {
         "pt": 10.0,
-        "dr_photons": 0.4
+        "dr_photons": 0.4,
+        "pfRelIso04_all" : 0.15,
     },
     "jets": {
         "pt": 20.0, # attention this is the one exact same as old framework, make this 20 GeV(loose) for further analysis, we all know the higgs-like ak4 jets pt can be very small
@@ -41,7 +42,7 @@ DEFAULT_OPTIONS = {
         "dr_muons": 0.8
     },
     "fatjets_H": {
-        "pt": 0,#300.0 fixed 0 
+        "pt": 300,#300.0 fixed 0 
         "eta": 2.4,
         "Hqqqq_qqlv_vsQCDTop" :0.2,
         "dr_photons": 0.8,
@@ -108,7 +109,7 @@ class HHWW_Preselection_FHSL(Tagger):
             events = events,
             name = "electron",
             objects = electrons,
-            n_objects = 1,
+            n_objects = 3,
             dummy_value = -999
         )
         # Muons
@@ -135,7 +136,7 @@ class HHWW_Preselection_FHSL(Tagger):
             events =events,
             name = "muon",
             objects = muons,
-            n_objects = 1,
+            n_objects = 3,
             dummy_value = -999
         )
 
@@ -279,17 +280,40 @@ class HHWW_Preselection_FHSL(Tagger):
             n_objects=7,
             dummy_value=-999
         )
+        e1=awkward.zip({"pt":awkward.unflatten(events.electron_1_pt,counts=1),"eta":awkward.unflatten(events.electron_1_eta,counts=1),"phi":awkward.unflatten(events.electron_1_phi,counts=1),"mass":awkward.unflatten(events.electron_1_mass,counts=1)})
+        e2=awkward.zip({"pt":awkward.unflatten(events.electron_2_pt,counts=1),"eta":awkward.unflatten(events.electron_2_eta,counts=1),"phi":awkward.unflatten(events.electron_2_phi,counts=1),"mass":awkward.unflatten(events.electron_2_mass,counts=1)})
+        e3=awkward.zip({"pt":awkward.unflatten(events.electron_3_pt,counts=1),"eta":awkward.unflatten(events.electron_3_eta,counts=1),"phi":awkward.unflatten(events.electron_3_phi,counts=1),"mass":awkward.unflatten(events.electron_3_mass,counts=1)})
+        electron_con=awkward.concatenate([e1,e2,e3],axis=1)
+        e_4p = vector.obj(
+            pt=electron_con.pt,
+            eta=electron_con.eta,
+            phi=electron_con.phi,
+            mass=electron_con.mass
+        )
+        pho_pt=awkward.from_numpy(numpy.repeat(awkward.to_numpy(awkward.unflatten(events.LeadPhoton.pt,counts=1)),3,axis=1))
+        pho_eta=awkward.from_numpy(numpy.repeat(awkward.to_numpy(awkward.unflatten(events.LeadPhoton.eta,counts=1)),3,axis=1))
+        pho_phi=awkward.from_numpy(numpy.repeat(awkward.to_numpy(awkward.unflatten(events.LeadPhoton.phi,counts=1)),3,axis=1))
+        pho_mass=awkward.from_numpy(numpy.repeat(awkward.to_numpy(awkward.unflatten(events.LeadPhoton.mass,counts=1)),3,axis=1))
 
+        leadpho_4p = vector.obj(
+            pt=pho_pt,
+            eta=pho_eta,
+            phi=pho_phi,
+            mass=pho_mass
+        )
+        e_leadphoton=e_4p+leadpho_4p
+        Z_veto_cut = abs(e_leadphoton.mass-91.5)>5
+        mu1=awkward.zip({"pt":awkward.unflatten(events.muon_1_pt,counts=1),"eta":awkward.unflatten(events.muon_1_eta,counts=1),"phi":awkward.unflatten(events.muon_1_phi,counts=1),"mass":awkward.unflatten(events.muon_1_mass,counts=1)})
+        mu2=awkward.zip({"pt":awkward.unflatten(events.muon_2_pt,counts=1),"eta":awkward.unflatten(events.muon_2_eta,counts=1),"phi":awkward.unflatten(events.muon_2_phi,counts=1),"mass":awkward.unflatten(events.muon_2_mass,counts=1)})
+        mu3=awkward.zip({"pt":awkward.unflatten(events.muon_3_pt,counts=1),"eta":awkward.unflatten(events.muon_3_eta,counts=1),"phi":awkward.unflatten(events.muon_3_phi,counts=1),"mass":awkward.unflatten(events.muon_3_mass,counts=1)})
+        muon_con=awkward.concatenate([mu1,mu2,mu3],axis=1)
         # bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis=1, ascending=False)]
         # bjets = bjets[bjets.btagDeepFlavB > self.options["btag_wp"][self.year]]
 
         # Register as `vector.Momentum4D` objects so we can do four-vector operations with them
-        electrons = awkward.Array(electrons, with_name="Momentum4D")
-        muons = awkward.Array(muons, with_name="Momentum4D")
-
         # Preselection
-        n_electrons = awkward.num(electrons)
-        n_muons = awkward.num(muons)
+        n_electrons = awkward.num(electron_con[electron_con.pt!=-999])
+        n_muons = awkward.num(muon_con[muon_con.pt!=-999])
         n_leptons = n_electrons + n_muons
         # n_diphotons = awkward.num(events.Diphoton)
         # logger.debug(" the N_diphoton : %f" % (n_diphotons))
@@ -306,7 +330,8 @@ class HHWW_Preselection_FHSL(Tagger):
             events.SubleadPhoton.mvaID > self.options["photon_id"])
 
         # If isolated lepton
-        SL_cat1 = (n_leptons == 1) & (n_jets >=2) # fully resovled 2 jets for SL channel with isolated lep
+        SL_cat1 = (n_leptons == 1) & (n_jets >=2) # fully resovled 2 jets for SL channel with isolated lep                     
+
 
         # if no isolated lepton
         SL_FH_cat1 = (n_leptons == 0) & (n_fatjets_H >=1) # boosted 1 jet for FH and SL channel wo isolated lep
@@ -323,11 +348,10 @@ class HHWW_Preselection_FHSL(Tagger):
         category = awkward.where(SL_FH_cat1, awkward.ones_like(category)*1, category)
         awkward_utils.add_field(events, "category", category) 
 
-        # cat_cut = (events.category==1)
         presel_cut = (photon_id_cut) 
 
         self.register_cuts(
-            names=["Photon id Selection","Lepton Selection"],
-            results=[photon_id_cut]#,cat_cut]
+            names=["Photon id Selection","Zveto"],
+            results=[photon_id_cut,Z_veto_cut]
         )
         return presel_cut, events
