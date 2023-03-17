@@ -42,7 +42,8 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
     if options["veto_transition"]:
         transition_cut = (abs(electrons.eta) < 1.4442) | (abs(electrons.eta) > 1.566)
 
-
+    # if options["Z_mass_veto"]:
+        
     all_cuts = standard_cuts & id_cut & transition_cut
 
     if tagger is not None:
