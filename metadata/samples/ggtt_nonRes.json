@@ -94,6 +94,7 @@
         "xs": 0.03105
     },
     "HHggTauTau_kl0": {
+				"process_id": -10,
         "files": {
             "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggTauTau_kl0/*2016.root",
             "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggTauTau_kl0/*2016_APV.root",
@@ -110,6 +111,7 @@
         "xs": 1.9946666666e-05
     },
     "HHggTauTau_kl2p45": {
+				"process_id": -11,
         "files": {
             "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggTauTau_kl2p45/*2016.root",
             "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggTauTau_kl2p45/*2016_APV.root",
@@ -126,6 +128,7 @@
         "xs": 3.729e-06
     },
     "HHggTauTau_kl5": {
+				"process_id": -12,
         "files": {
             "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggTauTau_kl5/*2016.root",
             "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggTauTau_kl5/*2016_APV.root",
@@ -159,6 +162,7 @@
         "xs": 3.031e-06
     },
     "HHggWW_dileptonic_kl0": {
+				"process_id": -30,
         "files": {
             "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggWW_dileptonic_kl0/*2016.root",
             "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggWW_dileptonic_kl0/*2016_APV.root",
@@ -175,6 +179,7 @@
         "xs": 6.84e-06
     },
     "HHggWW_dileptonic_kl2p45": {
+				"process_id": -31,
         "files": {
             "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggWW_dileptonic_kl2p45/*2016.root",
             "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggWW_dileptonic_kl2p45/*2016_APV.root",
@@ -191,6 +196,7 @@
         "xs": 1.2787e-06
     },
     "HHggWW_dileptonic_kl5": {
+				"process_id": -32,
         "files": {
             "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggWW_dileptonic_kl5/*2016.root",
             "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggWW_dileptonic_kl5/*2016_APV.root",
@@ -224,6 +230,7 @@
         "xs": 1.3063e-05
     },
     "HHggWW_semileptonic_kl0": {
+				"process_id": -40,
         "files": {
             "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggWW_semileptonic_kl0/*2016.root",
             "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggWW_semileptonic_kl0/*2016_APV.root",
@@ -240,6 +247,7 @@
         "xs": 2.9479e-05
     },
     "HHggWW_semileptonic_kl2p45": {
+				"process_id": -41,
         "files": {
             "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggWW_semileptonic_kl2p45/*2016.root",
             "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggWW_semileptonic_kl2p45/*2016_APV.root",
@@ -256,6 +264,7 @@
         "xs": 5.511e-06
     },
     "HHggWW_semileptonic_kl5": {
+				"process_id": -42,
         "files": {
             "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggWW_semileptonic_kl5/*2016.root",
             "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/14Mar2023_nonRes_sig/HH_ggWW_semileptonic_kl5/*2016_APV.root",
