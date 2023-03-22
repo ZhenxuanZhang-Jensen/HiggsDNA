@@ -438,5 +438,668 @@
         },
         "fpo": 10,
         "xs": 12.14
+    },
+    "HHggTauTau_EFT_1": {
+        "process_id": -101,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_1/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_1/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_1/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_1/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggTauTau_EFT_2": {
+        "process_id": -102,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_2/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_2/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_2/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_2/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggTauTau_EFT_3": {
+        "process_id": -103,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_3/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_3/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_3/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_3/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggTauTau_EFT_4": {
+        "process_id": -104,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_4/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_4/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_4/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_4/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggTauTau_EFT_5": {
+        "process_id": -105,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_5/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_5/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_5/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_5/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggTauTau_EFT_6": {
+        "process_id": -106,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_6/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_6/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_6/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_6/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggTauTau_EFT_7": {
+        "process_id": -107,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_7/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_7/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_7/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_7/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggTauTau_EFT_8a": {
+        "process_id": -113,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_8a/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_8a/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_8a/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_8a/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggTauTau_EFT_8": {
+        "process_id": -108,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_8/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_8/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_8/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_8/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggTauTau_EFT_9": {
+        "process_id": -109,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_9/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_9/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_9/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_9/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggTauTau_EFT_10": {
+        "process_id": -110,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_10/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_10/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_10/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_10/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggTauTau_EFT_11": {
+        "process_id": -111,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_11/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_11/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_11/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_11/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggTauTau_EFT_12": {
+        "process_id": -112,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_12/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_12/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_12/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggTauTau_EFT_12/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_dileptonic_EFT_1": {
+        "process_id": -301,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_1/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_1/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_1/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_1/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_dileptonic_EFT_2": {
+        "process_id": -302,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_2/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_2/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_2/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_2/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_dileptonic_EFT_3": {
+        "process_id": -303,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_3/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_3/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_3/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_3/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_dileptonic_EFT_4": {
+        "process_id": -304,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_4/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_4/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_4/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_4/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_dileptonic_EFT_5": {
+        "process_id": -305,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_5/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_5/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_5/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_5/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_dileptonic_EFT_6": {
+        "process_id": -306,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_6/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_6/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_6/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_6/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_dileptonic_EFT_7": {
+        "process_id": -307,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_7/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_7/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_7/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_7/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_dileptonic_EFT_8a": {
+        "process_id": -313,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_8a/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_8a/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_8a/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_8a/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_dileptonic_EFT_8": {
+        "process_id": -308,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_8/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_8/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_8/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_8/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_dileptonic_EFT_9": {
+        "process_id": -309,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_9/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_9/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_9/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_9/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_dileptonic_EFT_10": {
+        "process_id": -310,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_10/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_10/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_10/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_10/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_dileptonic_EFT_11": {
+        "process_id": -311,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_11/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_11/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_11/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_11/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_dileptonic_EFT_12": {
+        "process_id": -312,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_12/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_12/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_12/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_dileptonic_EFT_12/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_semileptonic_EFT_1": {
+        "process_id": -401,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_1/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_1/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_1/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_1/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_semileptonic_EFT_2": {
+        "process_id": -402,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_2/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_2/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_2/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_2/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_semileptonic_EFT_3": {
+        "process_id": -403,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_3/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_3/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_3/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_3/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_semileptonic_EFT_4": {
+        "process_id": -404,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_4/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_4/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_4/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_4/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_semileptonic_EFT_5": {
+        "process_id": -405,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_5/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_5/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_5/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_5/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_semileptonic_EFT_6": {
+        "process_id": -406,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_6/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_6/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_6/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_6/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_semileptonic_EFT_7": {
+        "process_id": -407,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_7/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_7/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_7/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_7/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_semileptonic_EFT_8a": {
+        "process_id": -413,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_8a/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_8a/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_8a/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_8a/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_semileptonic_EFT_8": {
+        "process_id": -408,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_8/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_8/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_8/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_8/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_semileptonic_EFT_9": {
+        "process_id": -409,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_9/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_9/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_9/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_9/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_semileptonic_EFT_10": {
+        "process_id": -410,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_10/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_10/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_10/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_10/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_semileptonic_EFT_11": {
+        "process_id": -411,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_11/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_11/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_11/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_11/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
+    },
+    "HHggWW_semileptonic_EFT_12": {
+        "process_id": -412,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_12/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_12/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_12/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/22Mar2023_eft/HH_ggWW_semileptonic_EFT_12/*2018.root"
+        },
+        "fpo": 10,
+        "scale1fb": {
+            "2016UL_postVFP": 1.0,
+            "2016UL_preVFP": 1.0,
+            "2017": 1.0,
+            "2018": 1.0
+        },
+        "xs": 1.0
     }
 }
