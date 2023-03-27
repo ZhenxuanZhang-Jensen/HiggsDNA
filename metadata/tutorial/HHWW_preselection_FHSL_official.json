@@ -61,7 +61,15 @@
             "UL17_WWG",
             "UL17_WWTo1L1Nu2Q_4f",
             "UL17_ttHJetToGG",
-            "UL17_ttWJets"
+            "UL17_ttWJets",
+            "UL17_DY1JetsToLL_M-10to50",
+            "UL17_DY2JetsToLL_M-10to50",
+            "UL17_DY3JetsToLL_M-10to50",
+            "UL17_DY4JetsToLL_M-10to50",
+            "UL17_DYJetsToLL_0J",
+            "UL17_DYJetsToLL_1J",
+            "UL17_DYJetsToLL_2J",
+            "UL17_DYJetsToLL_M-50"
         ],
         "years": [
             "2017"

@@ -49,7 +49,7 @@ DEFAULT_OPTIONS = {
         "dr_electrons": 0.8,
         "dr_muons": 0.8
     },
-    "photon_id": -1,
+    "photon_id": -0.9,
     "btag_wp": {
         "2016": 0.3093,
         "2017": 0.3040,
