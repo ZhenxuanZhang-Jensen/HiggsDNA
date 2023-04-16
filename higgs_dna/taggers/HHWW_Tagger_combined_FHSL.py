@@ -82,8 +82,8 @@ class HHWW_Preselection_FHSL(Tagger):
         # data will not select gen level infos 
         # need to comment when run bkgs
         # logger.debug("Is Signal: %s" %self.options["gen_info"]["is_Signal"])
-        # if not self.is_data and self.options["gen_info"]["is_Signal"]:    
-        #    gen_selections.gen_Hww_4q(events)        
+        if not self.is_data and self.options["gen_info"]["is_Signal"]:    
+           gen_selections.gen_Hww_4q(events)        
         logger.debug("event fields: %s" %events.fields)
 
         # Electrons
@@ -255,7 +255,7 @@ class HHWW_Preselection_FHSL(Tagger):
 
         # gen 4q deltaR with j1,j2,j3,j4
         # if not self.is_data and self.options["gen_info"]["is_Signal"]:    
-        #     gen_q1_p4,gen_q2_p4,gen_q3_p4,gen_q4_p4=gen_selections.gen_Hww_4q(events)
+            # gen_q1_p4,gen_q2_p4,gen_q3_p4,gen_q4_p4=gen_selections.gen_Hww_4q(events)
         # jet_p4 = vector.awk(
         #     {
         #         "pt" : jets["pt"],
@@ -341,11 +341,12 @@ class HHWW_Preselection_FHSL(Tagger):
         category = awkward.where(FH_cat2, awkward.ones_like(category)*2, category)
         category = awkward.where(SL_FH_cat1, awkward.ones_like(category)*1, category)
         awkward_utils.add_field(events, "category", category) 
-
-        presel_cut = (photon_id_cut) & Z_veto_cut
-
+       
+        cat_cut=events.category==2
+        presel_cut = (photon_id_cut) & Z_veto_cut&cat_cut
         self.register_cuts(
             names=["Photon id Selection","Zveto"],
             results=[photon_id_cut,Z_veto_cut]
         )
+
         return presel_cut, events
