@@ -18,8 +18,8 @@ DEFAULT_OPTIONS = {
     #"bdt_file" : "data/04Nov2022.xgb", # if running on condor, this file needs to be placed somewhere under higgs_dna/ so that it is included in the tar file. We probably want to think of a better long term solution for this.
     #"bdt_cuts" : [0.9920, 0.953062, 0.0], #trained on private
 
-    "bdt_file" : "data/04Nov2022_cen.xgb", # if running on condor, this file needs to be placed somewhere under higgs_dna/ so that it is included in the tar file. We probably want to think of a better long term solution for this.
-    "bdt_cuts" : [0.9913, 0.92504, 0.0],	#trained on central ggtt
+    "bdt_file" : "higgs_dna/data/HiggsDNA_01Dec2022.xgb", 
+    "bdt_cuts" : [ 0.9891, 0.973610, 0.0],	#trained on HiggsDNA preselection output
     "bdt_features" : [
         "n_electrons", "n_muons", "n_taus", "n_iso_tracks", "n_jets", "n_bjets",
         "MET_pt", "diphoton_met_dPhi", "MET_ll_dPhi", "lead_lepton_met_dphi", "ditau_dphi", "ditau_deta", "ditau_dR",
