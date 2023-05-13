@@ -13,7 +13,6 @@ logger = logging.getLogger(__name__)
 
 def select_objects(objects, cuts = {}, clean = {}, name = "none", tagger = None):
     """
-
     """
 
     tagger_name = "none" if tagger is None else tagger.name
@@ -38,7 +37,7 @@ def select_objects(objects, cuts = {}, clean = {}, name = "none", tagger = None)
         if cut in ["eta", "dxy", "dz"]:
             cut_ = abs(objects[cut]) < value
             cut_names.append("|%s| < %.4f" % (cut, value))
-        if cut in ["pfRelIso03_all", "pfRelIso03_chg"]:
+        if cut in ["pfRelIso04_all","pfRelIso03_all", "pfRelIso03_chg"]:
             cut_ = objects[cut] < value
             cut_names.append("%s < %.4f" % (cut, value))
 
@@ -68,7 +67,6 @@ def mass_veto(objects1, objects2, mass_range):
     """
     Select objects from objects1 which have invariant mass with all objects in objects2 outside `mass_range`.
     For example, `mass_veto(electrons, photons, [85., 95.])` selects all electrons which have m(e,gamma) outside the Z peak.
-
     :param objects1: objects which are required to be at least min_dr away from all objects in objects2 
     :type objects1: awkward.highlevel.Array
     :param objects2: objects which are all objects in objects1 must be at leats min_dr away from
@@ -98,7 +96,6 @@ def mass_veto(objects1, objects2, mass_range):
 def delta_R(objects1, objects2, min_dr):
     """
     Select objects from objects1 which are at least min_dr away from all objects in objects2.
-
     :param objects1: objects which are required to be at least min_dr away from all objects in objects2 
     :type objects1: awkward.highlevel.Array
     :param objects2: objects which are all objects in objects1 must be at leats min_dr away from
@@ -108,10 +105,11 @@ def delta_R(objects1, objects2, min_dr):
     :return: boolean array of objects in objects1 which pass delta_R requirement
     :rtype: awkward.highlevel.Array
     """
-
-    if awkward.count(objects1) == 0:
-        return objects1.pt < 0.
-    # if object2 don't have evnets, then don't apply any cuts on objects1
+    #obj1:jet obj2:muon     
+    # if awkward.count(objects1) == 0 or awkward.count(objects2) == 0:
+    #     return objects1.pt < 0. 
+    if awkward.count(objects1) == 0: 
+        return objects1.pt < 0. 
     if awkward.count(objects2) == 0:
         return objects1.pt > 0.
 
@@ -134,7 +132,6 @@ def delta_R(objects1, objects2, min_dr):
 def delta_R_numba(objects1, objects2, min_dr):
     """
     Select objects from objects1 which are at least min_dr away from all objects in objects2.
-
     :param objects1: objects which are required to be at least min_dr away from all objects in objects2 
     :type objects1: awkward.highlevel.Array
     :param objects2: objects which are all objects in objects1 must be at leats min_dr away from
@@ -245,4 +242,3 @@ so in the photons collection, where you don't simply want the nearest photon, bu
     base_objects["%sdR" % name] = base_objects.deltaR(base_best_target)
 
     return base_objects
-
