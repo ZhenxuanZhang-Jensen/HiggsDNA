@@ -462,6 +462,7 @@ class AnalysisManager():
         :returns: array of events, sum of weights
         :rtype: awkward.Array, float
         """
+        events = []
         sum_weights = 0
         use_xrdcp = False
         for file in files:
@@ -480,7 +481,7 @@ class AnalysisManager():
                     
                 file = local_file_name
             import json
-            f= uproot.open(file, timeout = 1800)
+            # f= uproot.open(file, timeout = 1800)
             #attention slimed lumi
             # events = f['Events']
             # lumi = f['LuminosityBlocks'].arrays(['run','luminosityBlock'])
@@ -512,7 +513,6 @@ class AnalysisManager():
             # a = numpy.array(events['luminosityBlock'].array())
             # mask = numpy.isin(a,golden_lumi)
             #----
-            events = []
             with uproot.open(file, timeout = 1800) as f:
                 #attention new block to read lumi and save in the txt file to read whold data lumi to make sure we have enough lumi
                 # lumi = f['LuminosityBlocks'].arrays(['run','luminosityBlock'])
