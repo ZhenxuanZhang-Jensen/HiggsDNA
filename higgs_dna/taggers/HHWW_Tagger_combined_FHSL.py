@@ -22,7 +22,8 @@ DEFAULT_OPTIONS = {
     },
     "muons": {
         "pt": 10.0,
-        "dr_photons": 0.4
+        "dr_photons": 0.4,
+        "pfRelIso04_all" : 0.15,
     },
     "jets": {
         "pt": 20.0, # attention this is the one exact same as old framework, make this 20 GeV(loose) for further analysis, we all know the higgs-like ak4 jets pt can be very small
@@ -41,14 +42,14 @@ DEFAULT_OPTIONS = {
         "dr_muons": 0.8
     },
     "fatjets_H": {
-        "pt": 300.0,
+        "pt": 300,#300.0 fixed 0 
         "eta": 2.4,
         "Hqqqq_qqlv_vsQCDTop" :0.2,
         "dr_photons": 0.8,
         "dr_electrons": 0.8,
         "dr_muons": 0.8
     },
-    "photon_id": -100,
+    "photon_id": -0.7,
     "btag_wp": {
         "2016": 0.3093,
         "2017": 0.3040,
@@ -82,9 +83,9 @@ class HHWW_Preselection_FHSL(Tagger):
         # need to comment when run bkgs
         # logger.debug("Is Signal: %s" %self.options["gen_info"]["is_Signal"])
         # if not self.is_data and self.options["gen_info"]["is_Signal"]:    
-        #    gen_selections.gen_Hww_4q(events)
-        
+        #    gen_selections.gen_Hww_4q(events)        
         logger.debug("event fields: %s" %events.fields)
+
         # Electrons
         electron_cut = lepton_selections.select_electrons(
             electrons=events.Electron,
@@ -104,7 +105,13 @@ class HHWW_Preselection_FHSL(Tagger):
             name="SelectedElectron",
             data=events.Electron[electron_cut]
         )
-
+        awkward_utils.add_object_fields(
+            events = events,
+            name = "electron",
+            objects = electrons,
+            n_objects = 1,
+            dummy_value = -999
+        )
         # Muons
         muon_cut = lepton_selections.select_muons(
             muons=events.Muon,
@@ -125,6 +132,13 @@ class HHWW_Preselection_FHSL(Tagger):
             data=events.Muon[muon_cut]
         )
 
+        awkward_utils.add_object_fields(
+            events =events,
+            name = "muon",
+            objects = muons,
+            n_objects = 1,
+            dummy_value = -999
+        )
 
         
         # Jets
@@ -158,10 +172,24 @@ class HHWW_Preselection_FHSL(Tagger):
         # Fat jets
 
         # add the H jet tagger for SL&FH channel((H3q+H4q+Hlvqq)/(H3q+H4q+Hlvqq+QCD+Top))
-        PN_sigs = events.FatJet.inclParTMDV1_probHWqqWev0c+events.FatJet.inclParTMDV1_probHWqqWev1c+events.FatJet.inclParTMDV1_probHWqqWmv0c+events.FatJet.inclParTMDV1_probHWqqWmv1c+events.FatJet.inclParTMDV1_probHWqqWq0c+events.FatJet.inclParTMDV1_probHWqqWq1c+events.FatJet.inclParTMDV1_probHWqqWq2c+events.FatJet.inclParTMDV1_probHWqqWqq0c+events.FatJet.inclParTMDV1_probHWqqWqq1c+events.FatJet.inclParTMDV1_probHWqqWqq2c+events.FatJet.inclParTMDV1_probHWqqWtauev0c+events.FatJet.inclParTMDV1_probHWqqWtauev1c+events.FatJet.inclParTMDV1_probHWqqWtauhv0c+events.FatJet.inclParTMDV1_probHWqqWtauhv1c+events.FatJet.inclParTMDV1_probHWqqWtaumv0c+events.FatJet.inclParTMDV1_probHWqqWtaumv1c
-        PN_bkgs = events.FatJet.inclParTMDV1_probQCDb+events.FatJet.inclParTMDV1_probQCDbb+events.FatJet.inclParTMDV1_probQCDc+events.FatJet.inclParTMDV1_probQCDcc+events.FatJet.inclParTMDV1_probQCDothers+events.FatJet.inclParTMDV1_probTopbWev+events.FatJet.inclParTMDV1_probTopbWmv+events.FatJet.inclParTMDV1_probTopbWq0c+events.FatJet.inclParTMDV1_probTopbWq1c+events.FatJet.inclParTMDV1_probTopbWqq0c+events.FatJet.inclParTMDV1_probTopbWqq1c+events.FatJet.inclParTMDV1_probTopbWtauev+events.FatJet.inclParTMDV1_probTopbWtauhv+events.FatJet.inclParTMDV1_probTopbWtaumv
+        # ----------------------------------- PN 4q ---------------------------------- #
+        PN_sigs_4q = events.FatJet.inclParTMDV1_probHWqqWq0c+events.FatJet.inclParTMDV1_probHWqqWq1c+events.FatJet.inclParTMDV1_probHWqqWq2c+events.FatJet.inclParTMDV1_probHWqqWqq0c+events.FatJet.inclParTMDV1_probHWqqWqq1c+events.FatJet.inclParTMDV1_probHWqqWqq2c
+        PN_bkgs_4q = events.FatJet.inclParTMDV1_probQCDb+events.FatJet.inclParTMDV1_probQCDbb+events.FatJet.inclParTMDV1_probQCDc+events.FatJet.inclParTMDV1_probQCDcc+events.FatJet.inclParTMDV1_probQCDothers+events.FatJet.inclParTMDV1_probTopbWq0c+events.FatJet.inclParTMDV1_probTopbWq1c+events.FatJet.inclParTMDV1_probTopbWqq0c+events.FatJet.inclParTMDV1_probTopbWqq1c
+        # ------------------------------------ -- ------------------------------------ #
+        # ---------------------------------- PN lvqq --------------------------------- #
+        PN_sigs_lvqq = events.FatJet.inclParTMDV1_probHWqqWev0c+events.FatJet.inclParTMDV1_probHWqqWev1c+events.FatJet.inclParTMDV1_probHWqqWmv0c+events.FatJet.inclParTMDV1_probHWqqWmv1c+events.FatJet.inclParTMDV1_probHWqqWtauev0c+events.FatJet.inclParTMDV1_probHWqqWtauev1c+events.FatJet.inclParTMDV1_probHWqqWtauhv0c+events.FatJet.inclParTMDV1_probHWqqWtauhv1c+events.FatJet.inclParTMDV1_probHWqqWtaumv0c+events.FatJet.inclParTMDV1_probHWqqWtaumv1c
+        PN_bkgs_lvqq = events.FatJet.inclParTMDV1_probQCDb+events.FatJet.inclParTMDV1_probQCDbb+events.FatJet.inclParTMDV1_probQCDc+events.FatJet.inclParTMDV1_probQCDcc+events.FatJet.inclParTMDV1_probQCDothers+events.FatJet.inclParTMDV1_probTopbWev+events.FatJet.inclParTMDV1_probTopbWmv+events.FatJet.inclParTMDV1_probTopbWtauev+events.FatJet.inclParTMDV1_probTopbWtauhv+events.FatJet.inclParTMDV1_probTopbWtaumv
+        # ------------------------------------ -- ------------------------------------ #
+        # -------------------------------- PN 4q lvqq -------------------------------- #
+        PN_sigs_4q_lvqq = events.FatJet.inclParTMDV1_probHWqqWev0c+events.FatJet.inclParTMDV1_probHWqqWev1c+events.FatJet.inclParTMDV1_probHWqqWmv0c+events.FatJet.inclParTMDV1_probHWqqWmv1c+events.FatJet.inclParTMDV1_probHWqqWq0c+events.FatJet.inclParTMDV1_probHWqqWq1c+events.FatJet.inclParTMDV1_probHWqqWq2c+events.FatJet.inclParTMDV1_probHWqqWqq0c+events.FatJet.inclParTMDV1_probHWqqWqq1c+events.FatJet.inclParTMDV1_probHWqqWqq2c+events.FatJet.inclParTMDV1_probHWqqWtauev0c+events.FatJet.inclParTMDV1_probHWqqWtauev1c+events.FatJet.inclParTMDV1_probHWqqWtauhv0c+events.FatJet.inclParTMDV1_probHWqqWtauhv1c+events.FatJet.inclParTMDV1_probHWqqWtaumv0c+events.FatJet.inclParTMDV1_probHWqqWtaumv1c
+        PN_bkgs_4q_lvqq = events.FatJet.inclParTMDV1_probQCDb+events.FatJet.inclParTMDV1_probQCDbb+events.FatJet.inclParTMDV1_probQCDc+events.FatJet.inclParTMDV1_probQCDcc+events.FatJet.inclParTMDV1_probQCDothers+events.FatJet.inclParTMDV1_probTopbWev+events.FatJet.inclParTMDV1_probTopbWmv+events.FatJet.inclParTMDV1_probTopbWq0c+events.FatJet.inclParTMDV1_probTopbWq1c+events.FatJet.inclParTMDV1_probTopbWqq0c+events.FatJet.inclParTMDV1_probTopbWqq1c+events.FatJet.inclParTMDV1_probTopbWtauev+events.FatJet.inclParTMDV1_probTopbWtauhv+events.FatJet.inclParTMDV1_probTopbWtaumv
+        # ------------------------------------ -- ------------------------------------ #
+        
         fatjet_tmp = events.FatJet
-        fatjet_tmp['Hqqqq_qqlv_vsQCDTop'] = PN_sigs / (PN_bkgs + PN_sigs)
+        fatjet_tmp['Hqqqq_qqlv_vsQCDTop'] = PN_sigs_4q_lvqq / (PN_bkgs_4q_lvqq + PN_sigs_4q_lvqq)
+        fatjet_tmp['Hqqqq_vsQCDTop'] = PN_sigs_4q / (PN_bkgs_4q + PN_sigs_4q)
+        fatjet_tmp['Hlvqq_vsQCDTop'] = PN_sigs_lvqq / (PN_bkgs_lvqq + PN_sigs_lvqq)
+        
         events.FatJet = fatjet_tmp
         print("events.FatJet exsiting field:\n",dir(events.FatJet))
         print("events.FatJet tyep is: \n", type(events.FatJet))
@@ -230,7 +258,7 @@ class HHWW_Preselection_FHSL(Tagger):
         events=events,
         name="fatjet_H",
         objects=fatjets_H[awkward.argsort(fatjets_H.Hqqqq_qqlv_vsQCDTop, ascending=False, axis=-1)],
-        n_objects=1,
+        n_objects=3,
         dummy_value=-999
         ) 
         
@@ -240,8 +268,9 @@ class HHWW_Preselection_FHSL(Tagger):
 
 
         # gen 4q deltaR with j1,j2,j3,j4
-        # if not self.is_data and self.options["gen_info"]["is_Signal"]:    
-        #     gen_q1_p4,gen_q2_p4,gen_q3_p4,gen_q4_p4=gen_selections.gen_Hww_4q(events)
+        if not self.is_data and self.options["gen_info"]["is_Signal"]:    
+            print("debuggg")
+            gen_q1_p4,gen_q2_p4,gen_q3_p4,gen_q4_p4=gen_selections.gen_Hww_4q(events)
         # jet_p4 = vector.awk(
         #     {
         #         "pt" : jets["pt"],
@@ -258,7 +287,6 @@ class HHWW_Preselection_FHSL(Tagger):
         #     jets["deltaR_q3"] = jet_p4.deltaR(gen_q3_p4)
         #     jets["deltaR_q4"] = jet_p4.deltaR(gen_q4_p4)
 
-
         awkward_utils.add_object_fields(
             events=events,
             name="jet",
@@ -266,17 +294,18 @@ class HHWW_Preselection_FHSL(Tagger):
             n_objects=7,
             dummy_value=-999
         )
+        electrons = awkward.Array(electrons, with_name="Momentum4D")
+        muons = awkward.Array(muons, with_name="Momentum4D")
         # bjets = jets[awkward.argsort(jets.btagDeepFlavB, axis=1, ascending=False)]
         # bjets = bjets[bjets.btagDeepFlavB > self.options["btag_wp"][self.year]]
 
         # Register as `vector.Momentum4D` objects so we can do four-vector operations with them
-        electrons = awkward.Array(electrons, with_name="Momentum4D")
-        muons = awkward.Array(muons, with_name="Momentum4D")
-
         # Preselection
+        
         n_electrons = awkward.num(electrons)
         n_muons = awkward.num(muons)
         n_leptons = n_electrons + n_muons
+
         # n_diphotons = awkward.num(events.Diphoton)
         # logger.debug(" the N_diphoton : %f" % (n_diphotons))
         n_jets = awkward.num(jets)
@@ -292,12 +321,13 @@ class HHWW_Preselection_FHSL(Tagger):
             events.SubleadPhoton.mvaID > self.options["photon_id"])
 
         # If isolated lepton
-        SL_cat1 = (n_leptons == 1) & (n_jets >=2) # fully resovled 2 jets for SL channel with isolated lep
+        SL_cat1 = (n_leptons == 1) & (n_jets >=2) # fully resovled 2 jets for SL channel with isolated lep                     
+
 
         # if no isolated lepton
-        SL_FH_cat1 = (n_leptons == 0) & (n_fatjets_H >=1) # boosted 1 jet for FH and SL channel wo isolated lep
+        # addtional_cut_cat1 = (events.Diphoton.pt > 200) & (events.Diphoton.dR < numpy.pi /2 )
+        SL_FH_cat1 = (n_leptons == 0) & (n_fatjets_H >=1)  # boosted 1 jet for FH and SL channel wo isolated lep
         FH_cat2 = (n_leptons==0) & (n_jets>=4) # 4 jets for FH 
-
 
         # Hadronic presel
         # use priority to mark different category
@@ -307,13 +337,13 @@ class HHWW_Preselection_FHSL(Tagger):
         category = awkward.where(SL_cat1, awkward.ones_like(category)*3, category)
         category = awkward.where(FH_cat2, awkward.ones_like(category)*2, category)
         category = awkward.where(SL_FH_cat1, awkward.ones_like(category)*1, category)
+        category_cut = (category == 1)
         awkward_utils.add_field(events, "category", category) 
 
-
-        presel_cut = (photon_id_cut) 
+        presel_cut = (photon_id_cut) & (category_cut)
 
         self.register_cuts(
-            names=["Photon id Selection","Lepton Selection"],
-            results=[photon_id_cut]
+            names=["Photon id Selection","category_cut"],
+            results=[photon_id_cut, category_cut]
         )
         return presel_cut, events

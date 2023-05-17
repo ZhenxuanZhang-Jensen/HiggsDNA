@@ -16,8 +16,8 @@ args = parser.parse_args()
 ##############json file template
 json_file_template_1 = '''
 "{tag_id}":
-    {{ "xs":0.01687,
-    "fpo":2,
+    {{ "xs":0.001,
+    "bf":1.0,
     "files":{{
     "2017":
      '''
@@ -28,10 +28,10 @@ json_file_template_2 = '''
 #########read dir files info
 import subprocess
 # with open('/afs/cern.ch/user/z/zhenxuan/CMSSW_10_6_25/src/das_samples_UL17_R_gghh.json') as f:
-with open('/afs/cern.ch/user/z/zhenxuan/CMSSW_10_6_25/src/das_samples_TT_jets_calibration.json') as f:
+with open('/afs/cern.ch/user/z/zhenxuan/CMSSW_10_6_25/src/das_samples_UL17_R_gghh_SL_submit.json') as f:
 # with open('/afs/cern.ch/user/z/zhenxuan/CMSSW_10_6_25/src/das_samples_UL17_data.json') as f:
 	data = json.load(f)
-json_file_name = "test"
+json_file_name = "hhww_cusNANO_local"
 with open(json_file_name + ".json","a") as fout:
     # fout.write("{")
     for i in range(len(data)):
@@ -44,7 +44,7 @@ with open(json_file_name + ".json","a") as fout:
         # print(list(data.keys())[i])
         for j in range(len(samples_find)):
             # print(samples_find[j])
-            shell_cmd = 'ls /eos/user/z/zhenxuan/customized_NanoAOD/das_samples_TT_jets_calibration/' + list(data.keys())[i] + '/*' + samples_find[j] + '*'
+            shell_cmd = 'ls /eos/user/z/zhenxuan/customized_NanoAOD/UL17/' + list(data.keys())[i] + '/*' + samples_find[j] + '*'
             # shell_cmd = 'ls /eos/cms/store/group/phys_higgs/cmshgg/zhenxuan/custom_nanoAOD/UL17/' + list(data.keys())[i] + '/*' + samples_find[j] + '*'
             return_cmd = subprocess.run(shell_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding='utf-8',shell=True)
             if return_cmd.returncode == 0:

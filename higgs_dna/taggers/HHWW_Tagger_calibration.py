@@ -42,9 +42,9 @@ DEFAULT_OPTIONS = {
         "dr_muons": 0.8
     },
     "fatjets_H": {
-        "pt": 300,#300.0 fixed 0 
+        "pt": 200,#300.0 fixed 0 
         "eta": 2.4,
-        "Hqqqq_qqlv_vsQCDTop" :0.2,
+        "Hqqqq_qqlv_vsQCDTop" :-999,
         "dr_photons": 0.8,
         "dr_electrons": 0.8,
         "dr_muons": 0.8
@@ -61,13 +61,13 @@ DEFAULT_OPTIONS = {
 }
 
 
-class HHWW_Preselection_FHSL(Tagger):
+class HHWW_Tagger_calibration(Tagger):
     """
     HHWW Preselection tagger for tutorial
     """
 
     def __init__(self, name, options={}, is_data=None, year=None):
-        super(HHWW_Preselection_FHSL, self).__init__(name, options, is_data, year)
+        super(HHWW_Tagger_calibration, self).__init__(name, options, is_data, year)
 
         if not options:
             self.options = DEFAULT_OPTIONS
@@ -224,7 +224,7 @@ class HHWW_Preselection_FHSL(Tagger):
         awkward_utils.add_object_fields(
         events=events,
         name="fatjet",
-        objects=fatjets[awkward.argsort(fatjets.particleNet_WvsQCD, ascending=False, axis=-1)], # sort by particleNet_WvsQCD
+        objects=fatjets[awkward.argsort(fatjets.pt, ascending=False, axis=-1)],
         n_objects=3,
         dummy_value=-999
         )
@@ -262,15 +262,13 @@ class HHWW_Preselection_FHSL(Tagger):
         dummy_value=-999
         ) 
         
-        # produce the Hww3q tagger
-        # Hww3qvsQCD = (fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probHWqqWqq0c + fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probHWqqWqq1c + fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probHWqqWqq2c) / (fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probHWqqWqq0c + fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probHWqqWqq1c + fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probHWqqWqq2c + fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probQCDb+fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probQCDbb+fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probQCDc+fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probQCDcc+fatjets[fatjet_W_cut].FatJet_inclParTMDV1_probQCDothers)
-
+        
 
 
         # gen 4q deltaR with j1,j2,j3,j4
-        # if not self.is_data and self.options["gen_info"]["is_Signal"]:    
-        #     print("debuggg")
-        #     gen_q1_p4,gen_q2_p4,gen_q3_p4,gen_q4_p4=gen_selections.gen_Hww_4q(events)
+        if not self.is_data and self.options["gen_info"]["is_Signal"]:    
+            print("debuggg")
+            gen_q1_p4,gen_q2_p4,gen_q3_p4,gen_q4_p4=gen_selections.gen_Hww_4q(events)
         # jet_p4 = vector.awk(
         #     {
         #         "pt" : jets["pt"],
@@ -320,50 +318,25 @@ class HHWW_Preselection_FHSL(Tagger):
         photon_id_cut = (events.LeadPhoton.mvaID > self.options["photon_id"]) & (
             events.SubleadPhoton.mvaID > self.options["photon_id"])
 
-        # ----- If isolated lepton ------------
-        # add leptonic boosted category with (>=1 AK8 jets && WvsQCD > 0.5)
-        # the the first fatjet with WvsQCD > 0.5
-        selection_fatjet_WvsQCD_SL_cat0 = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.5)]) >= 1
-        SL_cat0 = (n_leptons == 1) & (n_fatjets >=1) & (selection_fatjet_WvsQCD_SL_cat0) # boosted 1 jet for SL channel with isolated lep
-        # add Leptonic resolved category with (>=2 AK4 jets && WvsQCD < 0.5)
-        # need the first fatjets with WvsQCD < 0.5
-        selection_fatjet_WvsQCD_SL_cat1 = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.5)]) == 0
-        SL_cat1 = (n_leptons == 1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SL_cat1) # resolved 2 jets for SL channel with isolated lep
-        
-        # ----------  if no isolated lepton -------------
+        # If isolated lepton
+        SL_cat1 = (n_leptons == 1) & (n_jets >=2) # fully resovled 2 jets for SL channel with isolated lep                     
 
-        # add boosted SL+FH category with (>=1 Higgs jets && HvsQCD > 0.2)
-        # the first Higgs jet with HvsQCD > 0.2
-        selection_fatjet_HvsQCD_SL_FH_cat0 = awkward.num(fatjets_H.Hqqqq_qqlv_vsQCDTop[(fatjets_H.Hqqqq_qqlv_vsQCDTop > 0.2)]) >= 1
-        SL_FH_cat0 = (n_leptons == 0) & (n_fatjets_H >=1) & (selection_fatjet_HvsQCD_SL_FH_cat0) # boosted 1 jet for SL and FH channel wo isolated lep
 
-        # add semi-boosted FH -1 category with (>=2 AK8 jets && WvsQCD > 0.5)
-        # need the first two fatjets with WvsQCD > 0.5
-        selection_fatjet_WvsQCD_SB_2F = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.5)]) >= 2
-        FH_cat0_SB_2F = (n_leptons==0) & (n_fatjets >=2) & (selection_fatjet_WvsQCD_SB_2F) # 2 jets for FH
+        # if no isolated lepton
+        # addtional_cut_cat1 = (events.Diphoton.pt > 200) & (events.Diphoton.dR < numpy.pi /2 )
+        SL_FH_cat1 = (n_leptons == 0) & (n_fatjets_H >=1)  # boosted 1 jet for FH and SL channel wo isolated lep
+        FH_cat2 = (n_leptons==0) & (n_jets>=4) # 4 jets for FH 
 
-        # add semi-boosted FH -2 category with (==1 AK8 jets && WvsQCD > 0.5 && >=2 AK4 jets)
-        # need the first fatjet with WvsQCD > 0.5
-        selection_fatjet_WvsQCD_SB_1F = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.5)]) >= 1
-        FH_cat0_SB_1F = (n_leptons==0) & (n_fatjets ==1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SB_1F) # 1 jet for FH
-
-        # add resolved FH category with (>=4 AK4 jets )
-        FH_cat1 = (n_leptons==0) & (n_jets>=4) # 4 jets for FH
 
         # Hadronic presel
         # use priority to mark different category
         flatten_n_jets = awkward.num(jets.pt)
         category = awkward.zeros_like(flatten_n_jets)
         category = awkward.fill_none(category, 0)
-        # add the priority for each category
-        category = awkward.where(FH_cat1, awkward.ones_like(category)*6, category)
-        category = awkward.where(FH_cat0_SB_1F, awkward.ones_like(category)*5, category)
-        category = awkward.where(FH_cat0_SB_2F, awkward.ones_like(category)*4, category)
-        category = awkward.where(SL_FH_cat0, awkward.ones_like(category)*3, category)
-        category = awkward.where(SL_cat1, awkward.ones_like(category)*2, category)
-        category = awkward.where(SL_cat0, awkward.ones_like(category)*1, category)
-
-        category_cut = (category >= 0)
+        category = awkward.where(SL_cat1, awkward.ones_like(category)*3, category)
+        category = awkward.where(FH_cat2, awkward.ones_like(category)*2, category)
+        category = awkward.where(SL_FH_cat1, awkward.ones_like(category)*1, category)
+        category_cut = (category == 1)
         awkward_utils.add_field(events, "category", category) 
 
         presel_cut = (photon_id_cut) & (category_cut)

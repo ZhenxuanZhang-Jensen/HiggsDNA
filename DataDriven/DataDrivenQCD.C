@@ -25,16 +25,16 @@
 
 using namespace std;
 
-const string InputFileName = "/eos/user/z/zhenxuan/hhwwgg_root/combined_data_cat1.root";
+const string InputFileName = "/afs/cern.ch/user/z/zhenxuan/HiggsDNA/DataDriven/New_cat1.root";
 const string InputTree = "cat1";
-const string OutputFileName = "/eos/user/z/zhenxuan/hhwwgg_root/DataDriven_cat1.root";
+const string OutputFileName = "/eos/user/z/zhenxuan/wwyy/root_files/DataDriven_data_cat1.root";
 
 // const string InputFakePdfFileName = "/eos/user/s/shsong/combined_WWgg/datadriven/category2/GJet.root";
 const string InputFakePdfFileName = "/eos/user/z/zhenxuan/Hgg_mass/MiniTree/UL2016/preVFP/pf_FakeIdMvaPdf.root";
 const string FakePdfProb = "f1";
 
-const float minIDCut = -0.70; 
-const float minIDSideband = -0.9; 
+const float minIDCut = -0.9; 
+const float minIDSideband = -0.95; 
 void DataDrivenQCD(){
   //input file
   TChain *fChain=new TChain(InputTree.c_str());
@@ -72,8 +72,12 @@ void DataDrivenQCD(){
   //----
   Float_t         LeadPhoton_mvaID;
   Float_t         SubleadPhoton_mvaID;
+  Float_t         Diphoton_minID;
+  Float_t         Diphoton_maxID;
   fChain->SetBranchAddress("LeadPhoton_mvaID", &LeadPhoton_mvaID);
   fChain->SetBranchAddress("SubleadPhoton_mvaID", &SubleadPhoton_mvaID);
+  fChain->SetBranchAddress("Diphoton_minID", &Diphoton_minID);
+  fChain->SetBranchAddress("Diphoton_maxID", &Diphoton_maxID);
 
   float leadptom;
   float subleadptom;
@@ -122,7 +126,8 @@ void DataDrivenQCD(){
     leadmvaRaw = LeadPhoton_mvaID; subleadmvaRaw = SubleadPhoton_mvaID;
     LeadPhoton_mvaID = LeadPhoton_mvaID>SubleadPhoton_mvaID?LeadPhoton_mvaID:minIDmva;
     SubleadPhoton_mvaID = SubleadPhoton_mvaID>LeadPhoton_mvaID?SubleadPhoton_mvaID:minIDmva;
-
+    Diphoton_maxID = LeadPhoton_mvaID>SubleadPhoton_mvaID?LeadPhoton_mvaID:SubleadPhoton_mvaID;
+    Diphoton_minID = LeadPhoton_mvaID>SubleadPhoton_mvaID?SubleadPhoton_mvaID:LeadPhoton_mvaID;
     //==diphoton MVA===
     Diphoton_mass_=Diphoton_mass;
     leadmva_=LeadPhoton_mvaID;

@@ -3,6 +3,7 @@ import time
 import numpy
 import numba
 import vector
+import pandas
 
 vector.register_awkward()
 
@@ -104,14 +105,49 @@ class DiphotonTagger(Tagger):
                 photons = events.Photon[photon_selection],
                 options = self.options["diphotons"]
         )
+        # diphotons =self.match_Gjet_photon(events,diphotons) #open for datadriven check
 
+        diphotons = self.calculate_min_max_ID(diphotons)
         logger.debug("Is Data:  %s" %self.is_data)
         logger.debug("With GEN info:  %s" %self.options["gen_info"]["calculate"])
         if not self.is_data and self.options["gen_info"]["calculate"]:
             diphotons = self.calculate_gen_info(diphotons, self.options["gen_info"])
 
         return diphoton_selection, diphotons 
+    def calculate_min_max_ID(self,diphotons):
+        # minID = awkward.min(diphotons.LeadPhoton.mvaID, diphotons.SubleadPhoton.mvaID)
+        # maxID = awkward.max(diphotons.LeadPhoton.mvaID, diphotons.SubleadPhoton.mvaID)
+        minID = numpy.minimum(diphotons.LeadPhoton.mvaID, diphotons.SubleadPhoton.mvaID)
+        maxID = numpy.maximum(diphotons.LeadPhoton.mvaID, diphotons.SubleadPhoton.mvaID)
 
+        diphotons[("Diphoton", "minID")] = minID
+        diphotons[("Diphoton", "maxID")] = maxID
+        return diphotons
+    def match_Gjet_photon(self,events,diphotons):
+        """
+        Calculate gen info for Gjet MC
+        match fake photons and real photon 
+        fake photons are selected from G+jets MC by requiring that the photon is not truth-matched to a
+        generator-level photon.
+
+        """
+        fake_photon,real_photon = gen_selections.select_fake_photon(events,diphotons)
+
+        awkward_utils.add_object_fields(
+            events = diphotons,
+            name = "GenMatchedfakephotons",
+            objects = fake_photon,
+            n_objects = 2,
+            dummy_value=-999
+        )
+        awkward_utils.add_object_fields(
+            events = diphotons,
+            name = "GenMatchedrealphotons",
+            objects = real_photon,
+            n_objects = 2,
+            dummy_value=-999
+        )
+        return diphotons
 
     def produce_and_select_diphotons(self, events, photons, options):
         """
@@ -143,8 +179,16 @@ class DiphotonTagger(Tagger):
 
         # Add sumPt and dR for convenience
         diphotons[("Diphoton", "sumPt")] = diphotons.LeadPhoton.pt + diphotons.SubleadPhoton.pt
-        diphotons[("Diphoton", "dR")] = diphotons.LeadPhoton.deltaR(diphotons.SubleadPhoton)        
+        diphotons[("Diphoton", "dR")] = diphotons.LeadPhoton.deltaR(diphotons.SubleadPhoton)   
+        # diphotons[("LeadPhoton","genPartFlav")] = diphotons.LeadPhoton.genPartFlav
+        # diphotons[("SubleadPhoton","genPartFlav")] = diphotons.SubleadPhoton.genPartFlav
+        # diphotons[("LeadPhoton","genPartIdx")] = diphotons.LeadPhoton.genPartIdx
+        # diphotons[("SubleadPhoton","genPartIdx")] = diphotons.SubleadPhoton.genPartIdx
 
+
+        # diphotons[("Diphoton","genPartIdx")] = awkward.concatenate([diphotons[("SubleadPhoton","genPartFlav")].tolist(),diphotons[("LeadPhoton","genPartFlav")].tolist()],axis=1)
+
+        # diphotons["genPartIdx"]=awkward.concatenate([diphotons[("SubleadPhoton","genPartFlav")],diphotons[("LeadPhoton","genPartFlav")]],axis=1)
         # Add lead/sublead photons to additionally be accessible together as diphotons.Diphoton.Photon
         # This is in principle a bit redundant, but makes many systematics and selections much more convenient to implement.
         # lead/sublead photons have shape [n_events, n_diphotons_per_event], but to merge them we need to give them shape [n_events, n_diphotons_per_event, 1]
@@ -185,7 +229,13 @@ class DiphotonTagger(Tagger):
 
         # Sort by sumPt
         diphotons = diphotons[awkward.argsort(diphotons.Diphoton.sumPt, ascending=False, axis=1)]
-
+        # lead_genflav=awkward.pad_none(diphotons.LeadPhoton.genPartIdx,target=7)
+        # print(len(lead_genflav))
+        # sublead_genflav=awkward.pad_none(diphotons.SubleadPhoton.genPartIdx,target=7)
+        # print(len(sublead_genflav))
+        # lead_genflav=awkward.fill_none(lead_genflav,-999)
+        # sublead_genflav=awkward.fill_none(sublead_genflav,-999)
+        # diphotons["genPartIdx"] = awkward.concatenate([lead_genflav,sublead_genflav],axis=1)
         # Select highest pt sum diphoton
         if options["select_highest_pt_sum"]:
             logger.debug("[DiphotonTagger : produce_and_select_diphotons] %s, selecting the highest pt_sum diphoton pair from each event." % (self.name))
@@ -215,6 +265,7 @@ class DiphotonTagger(Tagger):
             dipho_events[(field, "phi")] = diphotons[field].phi
             dipho_events[(field, "mass")] = diphotons[field].mass
 
+
         dipho_presel_cut = awkward.num(dipho_events.Diphoton) == 1
         if self.is_data and self.year is not None:
             trigger_cut = awkward.num(dipho_events.Diphoton) < 0 # dummy cut, all False
@@ -240,7 +291,7 @@ class DiphotonTagger(Tagger):
         dummy_cut = dipho_events.Diphoton.pt > 0
         return dummy_cut, dipho_events 
 
-    
+
     def calculate_gen_info(self, diphotons, options):
         """
         Calculate gen info, adding the following fields to the events array:

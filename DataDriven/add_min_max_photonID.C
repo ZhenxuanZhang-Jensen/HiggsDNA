@@ -23,24 +23,18 @@ void addMinAndMaxPhotonID(const char* inputFilename, const char* outputFilename)
         return;
     }
 
+    Double_t weight_central;
     // 创建新的TTree，并复制所有原始分支
     TTree* outputTree = inputTree->CloneTree(0);
+    outputTree->SetBranchAddress("weight_central", &weight_central);
 
     // 获取原始分支
-    float LeadPhoton_mvaID, SubleadPhoton_mvaID;
-    inputTree->SetBranchAddress("LeadPhoton_mvaID", &LeadPhoton_mvaID);
-    inputTree->SetBranchAddress("SubleadPhoton_mvaID", &SubleadPhoton_mvaID);
-
-    // 创建新的分支
-    float minPhotonID, maxPhotonID;
-    TBranch* minBranch = outputTree->Branch("minphotonID", &minPhotonID, "minphotonID/F");
-    TBranch* maxBranch = outputTree->Branch("maxphotonID", &maxPhotonID, "maxphotonID/F");
+    inputTree->SetBranchAddress("weight_central", &weight_central);
 
     // 循环所有事件，计算最小值和最大值，并填充到新的分支
     for (int i = 0; i < inputTree->GetEntries(); i++) {
         inputTree->GetEntry(i);
-        minPhotonID = std::min(LeadPhoton_mvaID, SubleadPhoton_mvaID);
-        maxPhotonID = std::max(LeadPhoton_mvaID, SubleadPhoton_mvaID);
+        weight_central = weight_central * 1.22537;
         // minBranch->Fill();
         // maxBranch->Fill();
         outputTree->Fill();
@@ -59,8 +53,8 @@ void add_min_max_photonID() {
     // const char* inputFilename = "/eos/user/z/zhenxuan/hhwwgg_root/data_UL17cat1.root";
     // const char* outputFilename = "/eos/user/z/zhenxuan/hhwwgg_root/data_UL17_cat1.root";
     // addMinAndMaxPhotonID(inputFilename, outputFilename);
-    const char* inputFilename = "/eos/user/z/zhenxuan/hhwwgg_root/combined_data_cat1.root";
-    const char* outputFilename = "/eos/user/z/zhenxuan/hhwwgg_root/combined_data_cat1_minmax.root";
+    const char* inputFilename = "/eos/user/z/zhenxuan/wwyy/root_files/diphoton_jets_cat1.root";
+    const char* outputFilename = "/eos/user/z/zhenxuan/wwyy/root_files/diphoton_jets_cat1_SFs.root";
     addMinAndMaxPhotonID(inputFilename, outputFilename);
 
     return 0;

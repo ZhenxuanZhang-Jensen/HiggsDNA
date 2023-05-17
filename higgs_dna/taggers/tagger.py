@@ -3,6 +3,8 @@ import numpy
 import vector
 import json
 import logging
+import os
+from higgs_dna.utils.metis_utils import do_cmd
 logger = logging.getLogger(__name__)
 
 from higgs_dna.utils import misc_utils
@@ -195,6 +197,10 @@ class Tagger():
             }
             # logger.debug("[Tagger] : %s, syst variation : %s, cut type : %s, cut : %s, combined candi/sum_candi efficiency : %.4f"% (self.name, self.current_syst, cut_type, _tmp_name, combined_candieff))
             logger.debug("[Tagger] :  \n c_cut : %s \n combined_eff : %.4f"% (_tmp_name, combined_eff))
+            # save the local directory using os
+            pwd = os.path.abspath(do_cmd("pwd"))
+            subdirs = pwd.split("/")
+            logger.debug("[Tagger] : local directory : %s"% (subdirs))
 
 
 
