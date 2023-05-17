@@ -77,7 +77,8 @@ def run_analysis(config):
     tag_sequence = TagSequence(
         name = config["name"],
         tag_list = config["tag_sequence"],
-        sample = sample
+        sample = sample,
+        output_dir = config["output_dir"],
     )
     events, tag_idx_map = tag_sequence.run(events)
     t_elapsed_taggers = time.time() - t_start_taggers

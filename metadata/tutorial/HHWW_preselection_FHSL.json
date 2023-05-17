@@ -18,10 +18,10 @@
             }
         },
         {
-            "module_name": "higgs_dna.taggers.HHWW_Tagger_test",
+            "module_name": "higgs_dna.taggers.HHWW_Tagger_include_semi_merged",
             "tagger": "HHWW_Preselection_FHSL",
             "kwargs": {
-                "name": "HHWW_Tagger_test",
+                "name": "HHWW_Tagger_include_semi_merged",
                 "options": {
                     "gen_info": {
                         "is_Signal": true

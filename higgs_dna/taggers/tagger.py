@@ -23,16 +23,15 @@ class Tagger():
     :param year: which year this tagger is being run on
     :type year: str
     """
-    def __init__(self, name = "tagger", options = {}, is_data = None, year = None):
+    def __init__(self, name = "tagger", options = {}, is_data = None, year = None, output_dir = None):
         self.name = name
         self.options = options
         self.is_data = is_data
         self.year = year
-
+        self.output_dir = output_dir
         self.selection = {}
         self.events = {}
         self.cut_summary = {}
-
         self.options = misc_utils.load_config(options)
 
 
@@ -197,10 +196,14 @@ class Tagger():
             }
             # logger.debug("[Tagger] : %s, syst variation : %s, cut type : %s, cut : %s, combined candi/sum_candi efficiency : %.4f"% (self.name, self.current_syst, cut_type, _tmp_name, combined_candieff))
             logger.debug("[Tagger] :  \n c_cut : %s \n combined_eff : %.4f"% (_tmp_name, combined_eff))
-            # save the local directory using os
-            pwd = os.path.abspath(do_cmd("pwd"))
-            subdirs = pwd.split("/")
-            logger.debug("[Tagger] : local directory : %s"% (subdirs))
+            logger.debug('self.output_dir : %s'%self.output_dir.split('job')[0])
+            output_dir = self.output_dir.split('job')[0]
+            # save the combined_eff and _tmp_name into a json file
+            ## create a dictionary , key is cut_type+name, value is combined_eff
+            dic_eff = {name + "_" + cut_type + "_" + "individual_eff":individual_eff , + "_" + cut_type + "_" + "combined_eff":combined_eff}
+            ## save the dictionary into a json file
+            with open(output_dir+'combined_eff.json', 'a') as f:
+                json.dump(dic_eff, f, indent=4)
 
 
 
