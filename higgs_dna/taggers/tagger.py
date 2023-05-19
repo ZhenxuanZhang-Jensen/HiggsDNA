@@ -3,11 +3,17 @@ import numpy
 import vector
 import json
 import logging
+import io
+import os
+from higgs_dna.utils.metis_utils import do_cmd
+import inspect
 logger = logging.getLogger(__name__)
-
 from higgs_dna.utils import misc_utils
-
 from higgs_dna.constants import NOMINAL_TAG
+from higgs_dna.utils.misc_utils import  get_HiggsDNA_base
+from higgs_dna.utils.metis_utils import do_cmd
+
+import sys
 
 class Tagger():
     """
@@ -21,12 +27,12 @@ class Tagger():
     :param year: which year this tagger is being run on
     :type year: str
     """
-    def __init__(self, name = "tagger", options = {}, is_data = None, year = None):
+    def __init__(self, name = "tagger", options = {}, is_data = None, year = None, output_dir = None):
         self.name = name
         self.options = options
         self.is_data = is_data
         self.year = year
-
+        self.output_dir = output_dir
         self.selection = {}
         self.events = {}
         self.cut_summary = {}
@@ -81,7 +87,6 @@ class Tagger():
         """
         for name in selection.keys():
             self.selection[name] = selection[name]
-
 
     def get_selection(self, syst_tag, syst_events): 
         """
@@ -177,7 +182,7 @@ class Tagger():
                 _tmp_name = name
             else:
                 _tmp_cut = numpy.logical_and(_tmp_cut, result)
-                _tmp_name += " & " + name
+                _tmp_name += "&" + name
             if awkward.count(_tmp_cut) > 0:
                 ncandi_per_event = awkward.num(_tmp_cut[_tmp_cut==True],axis=-1) 
                 candi_event=_tmp_cut[ncandi_per_event!=0]
@@ -185,6 +190,7 @@ class Tagger():
                     # print(_tmp_cut)
                 # for event selection level, like "at least one diphoton pair", _tmp_cut is 1D array, ncandi_per_event is the number of the events which contians at least one diphoton pair
                     combined_eff = float(ncandi_per_event) / float(len(_tmp_cut))
+                    n_candi_event = ncandi_per_event
                 else:
                     n_candi_event = len(candi_event)
                     combined_eff = float(n_candi_event) / float(len(_tmp_cut))
@@ -195,7 +201,36 @@ class Tagger():
                 "combined eff": float(combined_eff)
             }
             # logger.debug("[Tagger] : %s, syst variation : %s, cut type : %s, cut : %s, combined candi/sum_candi efficiency : %.4f"% (self.name, self.current_syst, cut_type, _tmp_name, combined_candieff))
-            logger.debug("[Tagger] :  \n c_cut : %s \n combined_eff : %.4f"% (_tmp_name, combined_eff))
+            logger.debug("cut(e-level) : %s\n combined_eff : %.4f\n event_num : %.4f"% (_tmp_name, combined_eff, n_candi_event))
+            logger.debug('self.output_dir : %s'%self.output_dir)
+            # dic_eff = {'[individual_eff] '+cut_type+' - '+name+' individual efficiency':individual_eff,'[combined_eff]   '+cut_type+' - '+_tmp_name+' combined efficiency':combined_eff,'[event_number]' :n_candi_event}
+            dic_eff = {'[individual_eff] -'+cut_type+' '+name+' individual efficiency':individual_eff,'[combined_eff]   -'+cut_type+' '+_tmp_name+' combined efficiency':combined_eff,'[event_number]   -'+cut_type+' '+_tmp_name+' event number' :n_candi_event}            
+            # output_dir = self.output_dir.split('job')[0]
+            output_dir = self.output_dir
+            # Check if the file already exists
+            if os.path.exists(output_dir+'combined_eff.json'):
+                # Remove the closing bracket '}' from the existing file
+                with open(output_dir+'combined_eff.json', 'rb+') as f:
+                    f.seek(-1, os.SEEK_END)
+                    f.truncate()
+
+            # Open the file in append mode
+            with open(output_dir+'combined_eff.json', 'a') as f:
+                # Get the file size
+                file_size = os.path.getsize(output_dir+'combined_eff.json')
+
+                # Add opening bracket '[' if the file is empty
+                if file_size == 0:
+                    f.write('[')
+                # Add comma ',' if the file is not empty
+                else:
+                    f.write(',')
+
+                # Write the new JSON object
+                json.dump(dic_eff, f, indent=4)
+
+                # Add closing bracket ']' for the new object
+                f.write(']')
 
 
 

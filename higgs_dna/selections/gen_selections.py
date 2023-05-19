@@ -5,6 +5,12 @@ import numpy
 vector.register_awkward()
 
 from higgs_dna.utils import awkward_utils
+def select_t3_4(events):
+    gen_part = awkward.Array(events.GenPart,with_name="Momentum4D")
+    gen_qqqq = gen_part[(abs(gen_part.pdgId)<= 6) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24) ]
+    gen_gg = gen_part[(abs(gen_part.pdgId) == 22) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 25) ]
+    return None
+
 def gen_Hww_4q(events):
     gen_part = awkward.Array(events.GenPart,with_name="Momentum4D")
     # -------------- gen level 4 signal quarks and 2 signal photons and the Higgs from gg -------------- #

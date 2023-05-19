@@ -41,12 +41,10 @@ def run_analysis(config):
     :type config: dict or str
     """
     t_start = time.time()
-
     config = load_config(config)
     job_summary = { 
             "config" : config
     }
-
     ### 1. Load events ###
     t_start_load = time.time()
     events, sum_weights = AnalysisManager.load_events(config["files"], config["branches"])
@@ -77,7 +75,8 @@ def run_analysis(config):
     tag_sequence = TagSequence(
         name = config["name"],
         tag_list = config["tag_sequence"],
-        sample = sample
+        sample = sample,
+        output_dir=config["output_dir"]
     )
     events, tag_idx_map = tag_sequence.run(events)
     t_elapsed_taggers = time.time() - t_start_taggers

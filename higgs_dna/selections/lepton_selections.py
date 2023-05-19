@@ -30,9 +30,15 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
     standard_cuts = object_selections.select_objects(electrons, options, clean, name, tagger)
 
     if options["id"] == "WP90":
-        id_cut = (electrons.mvaFall17V2Iso_WP90 == True) | ((electrons.mvaFall17V2noIso_WP90 == True) & (electrons.pfRelIso03_all < 0.3)) 
+        # id_cut = (electrons.mvaFall17V2Iso_WP90 == True) | ((electrons.mvaFall17V2noIso_WP90 == True) & (electrons.pfRelIso03_all < 0.3)) 
+        id_cut = (electrons.mvaFall17V2Iso_WP90 == True) 
     elif options["id"] == "WPL":
-        id_cut = (electrons.mvaFall17V2Iso_WPL == True) | ((electrons.mvaFall17V2noIso_WPL == True) & (electrons.pfRelIso03_all < 0.3))
+        # id_cut = (electrons.mvaFall17V2Iso_WPL == True) | ((electrons.mvaFall17V2noIso_WPL == True) & (electrons.pfRelIso03_all < 0.3))
+        id_cut = (electrons.mvaFall17V2Iso_WPL == True) 
+    elif options["id"] == "WP80":
+        # id_cut = (electrons.mvaFall17V2Iso_WP80 == True) | ((electrons.mvaFall17V2noIso_WP80 == True) & (electrons.pfRelIso03_all < 0.3))
+        id_cut = (electrons.mvaFall17V2Iso_WP80 == True)
+    
     elif not options["id"] or options["id"].lower() == "none":
         id_cut = electrons.pt > 0.
     else:
@@ -83,6 +89,11 @@ def select_muons(muons, options, clean, name = "none", tagger = None):
 
     if options["id"] == "medium":
         id_cut = muons.mediumId == True
+    if options["id"] == "loose":
+        id_cut = muons.looseId == True
+    if options["id"] == "tight":
+        id_cut = muons.tightId == True
+    
     elif not options["id"] or options["id"].lower() == "none":
         id_cut = muons.pt > 0.
     else:

@@ -25,14 +25,14 @@ class TagSequence():
     :param ext: string to identify the output files from this :class:`higgs-dna.taggers.tag_sequence.TagSequence` object
     :type ext: str, optional
     """
-    def __init__(self, tag_list, name = "default", sample = None):
+    def __init__(self, tag_list, name = "default", sample = None, output_dir=None):
         self.name = name
         self.sample = sample
         self.ext = "_eff"
         self.tag_list = []
         self.selections = {}
         self.summary = {}
-
+        self.output_dir = output_dir
             
         logger.info("[TagSequence : __init__] Creating tag sequence with the following tags and priority:")
         for i, tag_set in enumerate(tag_list):
@@ -68,7 +68,7 @@ class TagSequence():
         if self.sample is not None:
             config["kwargs"]["is_data"] = self.sample.is_data
             config["kwargs"]["year"] = self.sample.year
-
+            config['kwargs']['output_dir']=self.output_dir
         tagger = getattr(
             module,
             config["tagger"]

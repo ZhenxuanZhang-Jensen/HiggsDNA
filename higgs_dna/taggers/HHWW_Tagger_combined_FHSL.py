@@ -18,12 +18,14 @@ DUMMY_VALUE = -999.
 DEFAULT_OPTIONS = {
     "electrons": {
         "pt": 10.0,
-        "dr_photons": 0.4
+        "dr_photons": 0.4,
+        "id":"WPL"
     },
     "muons": {
         "pt": 10.0,
         "dr_photons": 0.4,
         "pfRelIso04_all" : 0.15,
+        "id":"tight"
     },
     "jets": {
         "pt": 20.0, # attention this is the one exact same as old framework, make this 20 GeV(loose) for further analysis, we all know the higgs-like ak4 jets pt can be very small
@@ -66,8 +68,8 @@ class HHWW_Preselection_FHSL(Tagger):
     HHWW Preselection tagger for tutorial
     """
 
-    def __init__(self, name, options={}, is_data=None, year=None):
-        super(HHWW_Preselection_FHSL, self).__init__(name, options, is_data, year)
+    def __init__(self, name, options={}, is_data=None, year=None, output_dir=None):
+        super(HHWW_Preselection_FHSL, self).__init__(name, options, is_data, year,output_dir)
 
         if not options:
             self.options = DEFAULT_OPTIONS
@@ -83,8 +85,9 @@ class HHWW_Preselection_FHSL(Tagger):
         # need to comment when run bkgs
         # logger.debug("Is Signal: %s" %self.options["gen_info"]["is_Signal"])
         if not self.is_data and self.options["gen_info"]["is_Signal"]:    
-           gen_selections.gen_Hww_4q(events)        
-        logger.debug("event fields: %s" %events.fields)
+        #    gen_selections.gen_Hww_4q(events)        
+            logger.debug("event fields: %s" %events.fields)
+        # logger.debug("event fields: %s" %events.fields)
 
         # Electrons
         electron_cut = lepton_selections.select_electrons(
@@ -342,8 +345,7 @@ class HHWW_Preselection_FHSL(Tagger):
         category = awkward.where(SL_FH_cat1, awkward.ones_like(category)*1, category)
         awkward_utils.add_field(events, "category", category) 
        
-        cat_cut=events.category==2
-        presel_cut = (photon_id_cut) & Z_veto_cut&cat_cut
+        presel_cut = (photon_id_cut) & Z_veto_cut
         self.register_cuts(
             names=["Photon id Selection","Zveto"],
             results=[photon_id_cut,Z_veto_cut]

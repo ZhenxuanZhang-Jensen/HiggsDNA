@@ -115,7 +115,8 @@ class Job():
         self.summary_file = self.output_dir + "/%s_summary_job%d.json" % (self.name, self.idx)
         self.condor_executable_file = self.log_output_dir + "/%s_executable_job%d.sh" % (self.name, self.idx)
         self.condor_submit_file = self.log_output_dir + "/%s_batch_submit_job%d.txt" % (self.name, self.idx)
-        
+        self.yield_file = self.log_output_dir + "/%scutflow%d.txt" % (self.name, self.idx)
+       
 
     def write_config(self):
         """
@@ -170,6 +171,7 @@ class Job():
         lines.append("with open(config_file, 'r') as f_in:")
         lines.append("    config = json.load(f_in)")
         lines.append("")
+        lines.append("logger.debug(config_file)")
         lines.append("run_analysis(config)") # FIXME: not compatible if another function is specified
 
         if os.path.exists(self.python_executable_file):
@@ -220,7 +222,7 @@ class Job():
 
         if reconfigure or (not self.wrote_condor_files or not os.path.exists(self.condor_executable_file) or not os.path.exists(self.condor_submit_file)):
             self.write_condor_files()
-
+        
         if self.status == "retired":
             return False
 
@@ -288,6 +290,12 @@ class CondorJob(Job):
             "REQ_DISK" : 10000, # request ~10GB of disk
             "REQ_NCPUS" : 1 # just 1 CPU
     }
+    def write_yield(self):
+        self.yield_file = self.log_output_dir + "/%scutflow%d.txt" % (self.name, self.idx)
+        if self.host_params["remote_job"]:
+            self.job_yield_file = os.path.split(self.yield_file)[-1]
+        else:
+            self.job_yield_file = os.path.split(self.yield_file)[-1]
 
     def write_condor_files(self):
         """
@@ -302,7 +310,6 @@ class CondorJob(Job):
             self.job_config_file = self.config_file
             self.job_python_executable_file = self.python_executable_file
             self.job_summary_file = self.summary_file
-
         # Get proper templates according to host
         self.hdna_base = get_HiggsDNA_base()
         self.hdna_conda = get_HiggsDNA_conda()
@@ -391,6 +398,7 @@ class CondorJob(Job):
         replacement_map["OUTPUT"] = self.log_output_dir + "/$(Cluster).$(Process).out" 
         replacement_map["ERROR"] = self.log_output_dir + "/$(Cluster).$(Process).err" 
         replacement_map["LOG"] = self.log_output_dir + "/$(Cluster).$(Process).log" 
+
         replacement_map["BATCH_NAME"] = self.name
 
         # memory, disk, cpu
