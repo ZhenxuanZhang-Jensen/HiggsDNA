@@ -200,7 +200,7 @@ class Tagger():
             output_dir = self.output_dir.split('job')[0]
             # save the combined_eff and _tmp_name into a json file
             ## create a dictionary , key is cut_type+name, value is combined_eff
-            dic_eff = {name + "_" + cut_type + "_" + "individual_eff":individual_eff , + "_" + cut_type + "_" + "combined_eff":combined_eff}
+            dic_eff = {name + "_" + cut_type + "_individual_eff": individual_eff, name + "_" + cut_type + "_combined_eff": combined_eff}
             ## save the dictionary into a json file
             with open(output_dir+'combined_eff.json', 'a') as f:
                 json.dump(dic_eff, f, indent=4)

@@ -149,7 +149,6 @@ def delta_R_numba(objects1, objects2, min_dr):
             objects2, n_objects2,
             min_dr
     )
-
     selection = awkward_utils.construct_jagged_array(offsets, contents)
 
     return selection

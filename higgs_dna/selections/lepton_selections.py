@@ -61,8 +61,6 @@ DEFAULT_MUONS = {
         "dxy" : 0.045,
         "dz" : 0.2,
         "id" : "medium",       
-        "pfRelIso03_all" : 0.3,
-        "pfRelIso04_all" : 0.15,
         "dr_photons" : 0.2,
         "global" : True
 }
@@ -81,6 +79,9 @@ def select_muons(muons, options, clean, name = "none", tagger = None):
 
     if options["id"] == "medium":
         id_cut = muons.mediumId == True
+    if options["id"] == "tight":
+        id_cut = muons.tightId == True
+    
     elif not options["id"] or options["id"].lower() == "none":
         id_cut = muons.pt > 0.
     else:
@@ -92,11 +93,11 @@ def select_muons(muons, options, clean, name = "none", tagger = None):
     else:
         global_cut = muons.pt > 0
 
-    all_cuts = standard_cuts & id_cut & global_cut
+    all_cuts = standard_cuts & id_cut & global_cut 
 
     if tagger is not None:
         tagger.register_cuts(
-                names = ["standard object cuts", "id cut", "global_muon cut", "all cuts"],
+                names = ["standard object cuts", "id cut", "global_muon cut","iso cut", "all cuts"],
                 results = [standard_cuts, id_cut, global_cut, all_cuts],
                 cut_type = name
         )
