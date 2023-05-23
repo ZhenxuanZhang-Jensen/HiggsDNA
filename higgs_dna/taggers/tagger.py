@@ -187,7 +187,6 @@ class Tagger():
                 ncandi_per_event = awkward.num(_tmp_cut[_tmp_cut==True],axis=-1) 
                 candi_event=_tmp_cut[ncandi_per_event!=0]
                 if type(candi_event) == bool:
-                    # print(_tmp_cut)
                 # for event selection level, like "at least one diphoton pair", _tmp_cut is 1D array, ncandi_per_event is the number of the events which contians at least one diphoton pair
                     combined_eff = float(ncandi_per_event) / float(len(_tmp_cut))
                     n_candi_event = ncandi_per_event
@@ -200,12 +199,8 @@ class Tagger():
             self.cut_summary[cut_type][_tmp_name]={
                 "combined eff": float(combined_eff)
             }
-            # logger.debug("[Tagger] : %s, syst variation : %s, cut type : %s, cut : %s, combined candi/sum_candi efficiency : %.4f"% (self.name, self.current_syst, cut_type, _tmp_name, combined_candieff))
             logger.debug("cut(e-level) : %s\n combined_eff : %.4f\n event_num : %.4f"% (_tmp_name, combined_eff, n_candi_event))
-            logger.debug('self.output_dir : %s'%self.output_dir)
-            # dic_eff = {'[individual_eff] '+cut_type+' - '+name+' individual efficiency':individual_eff,'[combined_eff]   '+cut_type+' - '+_tmp_name+' combined efficiency':combined_eff,'[event_number]' :n_candi_event}
-            dic_eff = {'[individual_eff] -'+cut_type+' '+name+' individual efficiency':individual_eff,'[combined_eff]   -'+cut_type+' '+_tmp_name+' combined efficiency':combined_eff,'[event_number]   -'+cut_type+' '+_tmp_name+' event number' :n_candi_event}            
-            # output_dir = self.output_dir.split('job')[0]
+            dic_eff = {'[object_eff] -'+cut_type+' '+name+' object efficiency':individual_eff,'[event_eff]   -'+cut_type+' '+_tmp_name+' event efficiency':combined_eff,'[event_number]   -'+cut_type+' '+_tmp_name+' event number' :n_candi_event}            
             output_dir = self.output_dir
             # Check if the file already exists
             if os.path.exists(output_dir+'combined_eff.json'):
@@ -215,9 +210,9 @@ class Tagger():
                     f.truncate()
 
             # Open the file in append mode
-            with open(output_dir+'combined_eff.json', 'a') as f:
+            with open(output_dir+'/combined_eff.json', 'a') as f:
                 # Get the file size
-                file_size = os.path.getsize(output_dir+'combined_eff.json')
+                file_size = os.path.getsize(output_dir+'/combined_eff.json')
 
                 # Add opening bracket '[' if the file is empty
                 if file_size == 0:

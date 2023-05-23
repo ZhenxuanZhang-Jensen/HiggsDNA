@@ -1,9 +1,11 @@
 import json
 import pandas as pd
 import os
+import awkward as ak
 ###########################################################################
-folder_path = "/eos/user/s/shsong/combined_WWgg/parquet/test"
-
+folder_path = "/eos/user/s/shsong/combined_WWgg/parquet/sig_latest/test3/UL17_R_gghh_SL_M-1200_2017"
+event=ak.from_parquet(folder_path+"/merged_nominal.parquet")
+weight=event['weight_central'][0]
 # List to store the file paths
 file_paths = []
 
@@ -51,20 +53,23 @@ for file in file_list:
             if "efficiency" in key:
                 eff_field_name = key.split("-")[1]
                 eff_field_data = value
+                if eff_field_name not in eff_field_names:
+                    eff_field_names.append(eff_field_name)
+                if eff_field_name not in eff_data_dict:
+                    eff_data_dict[eff_field_name] = [eff_field_data]
             if "event number" in key:
                 field_name = key.split("-")[1]
                 field_data = value
-            if eff_field_name not in eff_field_names:
-                eff_field_names.append(eff_field_name)
-            if field_name not in field_names:
-                field_names.append(field_name)
+                if field_name not in field_names:
+                    field_names.append(field_name)
+                if field_name not in data_dict:
+                    data_dict[field_name] = [field_data]
+            
             # Add the data to the corresponding field in the dictionary
             
-            if eff_field_name not in eff_data_dict:
-                eff_data_dict[eff_field_name] = [eff_field_data]
+            
                 
-            if field_name not in data_dict:
-                data_dict[field_name] = [field_data]
+            
     dfs[f"dfeff{i}"]=pd.DataFrame(eff_data_dict)
     dfs[f"df{i}"]=pd.DataFrame(data_dict)
     i=i+1
@@ -81,7 +86,11 @@ for j in range(1, i):
     key = f"df{j}"
     if key in dfs:
         eventdf = eventdf+dfs[key]
-output="/eos/user/s/shsong/combined_WWgg/parquet/sig_latest/test/"
-
+output="/eos/user/s/shsong/combined_WWgg/parquet/sig_latest/test3/UL17_R_gghh_SL_M-1200_2017/job_1"
+eventdf=eventdf*weight
 eventdf.to_parquet(output+"event_yield.parquet")
 df_eff.to_parquet(output+"cutflow_eff.parquet")
+
+# store eventdf and df_eff to csv file
+eventdf.to_csv(output+"event_yield.csv")
+df_eff.to_csv(output+"cutflow_eff.csv")

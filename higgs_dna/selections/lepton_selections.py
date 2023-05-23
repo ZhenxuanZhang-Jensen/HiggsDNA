@@ -68,8 +68,8 @@ DEFAULT_MUONS = {
         "dxy" : 0.045,
         "dz" : 0.2,
         "id" : "medium",       
-        "pfRelIso03_all" : 0.3,
-        "pfRelIso04_all" : 0.15,
+        # "pfRelIso03_all" : 0.3,
+        # "pfRelIso04_all" : 0.15,
         "dr_photons" : 0.2,
         "global" : True
 }
