@@ -200,12 +200,12 @@ class Tagger():
                 "combined eff": float(combined_eff)
             }
             logger.debug("cut(e-level) : %s\n combined_eff : %.4f\n event_num : %.4f"% (_tmp_name, combined_eff, n_candi_event))
-            dic_eff = {'[object_eff] -'+cut_type+' '+name+' object efficiency':individual_eff,'[event_eff]   -'+cut_type+' '+_tmp_name+' event efficiency':combined_eff,'[event_number]   -'+cut_type+' '+_tmp_name+' event number' :n_candi_event}            
+            dic_eff = {'[object_eff] -'+cut_type+': '+name+' object efficiency':individual_eff,'[event_eff]   -'+cut_type+': '+_tmp_name+' event efficiency':combined_eff,'[event_number]   -'+cut_type+': '+_tmp_name+' event number' :n_candi_event}            
             output_dir = self.output_dir
             # Check if the file already exists
-            if os.path.exists(output_dir+'combined_eff.json'):
+            if os.path.exists(output_dir+'/combined_eff.json'):
                 # Remove the closing bracket '}' from the existing file
-                with open(output_dir+'combined_eff.json', 'rb+') as f:
+                with open(output_dir+'/combined_eff.json', 'rb+') as f:
                     f.seek(-1, os.SEEK_END)
                     f.truncate()
 

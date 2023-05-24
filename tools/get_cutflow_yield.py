@@ -3,7 +3,7 @@ import pandas as pd
 import os
 import awkward as ak
 ###########################################################################
-folder_path = "/eos/user/s/shsong/combined_WWgg/parquet/sig_latest/test3/UL17_R_gghh_SL_M-1200_2017"
+folder_path = "/eos/user/s/shsong/combined_WWgg/parquet/sig_latest/SLm1200/UL17_R_gghh_SL_M-1200_2017"
 event=ak.from_parquet(folder_path+"/merged_nominal.parquet")
 weight=event['weight_central'][0]
 # List to store the file paths
@@ -17,6 +17,25 @@ def search_files(directory):
                 file_path = os.path.join(root, file)
                 file_paths.append(file_path)
 
+json_paths = []
+###########################################################################
+def get_initial_event(directory):
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if "_summary_" in file:
+                json_path = os.path.join(root, file)
+                json_paths.append(json_path)
+get_initial_event(folder_path)
+json_list=[]
+for json_path in json_paths:
+    json_list.append(json_path)
+# open each json file and search for the ""n_events" key
+n_events=0
+for json_file in json_list:
+    with open(json_file, 'r') as f:
+        data = json.load(f)
+        n_events=n_events+data['n_events']
+weighted_n_events=n_events*weight
 # Call the recursive function to search for files
 search_files(folder_path)
 
@@ -24,7 +43,6 @@ search_files(folder_path)
 file_list=[]
 for file_path in file_paths:
     file_list.append(file_path)
-
 ###########################################################################
 i=1
 dfs = {}
@@ -86,11 +104,14 @@ for j in range(1, i):
     key = f"df{j}"
     if key in dfs:
         eventdf = eventdf+dfs[key]
-output="/eos/user/s/shsong/combined_WWgg/parquet/sig_latest/test3/UL17_R_gghh_SL_M-1200_2017/job_1"
+output="/eos/user/s/shsong/combined_WWgg/parquet/sig_latest/SLm1200/UL17_R_gghh_SL_M-1200_2017"
 eventdf=eventdf*weight
-eventdf.to_parquet(output+"event_yield.parquet")
-df_eff.to_parquet(output+"cutflow_eff.parquet")
+eventdf.insert(0, 'event: initial event number', weighted_n_events)
+# eventdf.insert(0, 'event initial event number', weighted_n_events)
+
+eventdf.to_parquet(output+"/event_yield.parquet")
+df_eff.to_parquet(output+"/cutflow_eff.parquet")
 
 # store eventdf and df_eff to csv file
-eventdf.to_csv(output+"event_yield.csv")
-df_eff.to_csv(output+"cutflow_eff.csv")
+eventdf.to_csv(output+"/event_yield.csv")
+df_eff.to_csv(output+"/cutflow_eff.csv")
