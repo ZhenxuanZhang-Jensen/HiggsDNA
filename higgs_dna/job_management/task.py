@@ -438,8 +438,10 @@ class Task():
                 data_list.extend(data)
 
             # Initialize empty lists to store the values
-            eff_field_names = []
-            eff_data_dict = {}
+            obj_eff_field_names = []
+            eve_eff_field_names=[]
+            obj_eff_data_dict = {}
+            eve_eff_data_dict = {}
             field_names = []
             data_dict = {}
             # Process the data
@@ -447,15 +449,22 @@ class Task():
                 # Iterate over the keys in the dictionary
                 for key, value in data.items():
                     # Extract field name and data
-                    if "efficiency" in key:
-                        eff_field_name = key.split("-")[1]
-                        eff_field_data = value
-                        if eff_field_name not in eff_field_names:
-                            eff_field_names.append(eff_field_name)
-                        if eff_field_name not in eff_data_dict:
-                            eff_data_dict[eff_field_name] = [eff_field_data]
+                    if "object efficiency" in key:
+                        obj_eff_field_name = key.split(" -")[1]
+                        obj_eff_field_data = value
+                        if obj_eff_field_name not in obj_eff_field_names:
+                            obj_eff_field_names.append(obj_eff_field_name)
+                        if obj_eff_field_name not in obj_eff_data_dict:
+                            obj_eff_data_dict[obj_eff_field_name] = [obj_eff_field_data]
+                    if "event efficiency" in key:
+                        eve_eff_field_name = key.split(" -")[1]
+                        eve_eff_field_data = value
+                        if eve_eff_field_name not in eve_eff_field_names:
+                            eve_eff_field_names.append(eve_eff_field_name)
+                        if eve_eff_field_name not in eve_eff_data_dict:
+                            eve_eff_data_dict[eve_eff_field_name] = [eve_eff_field_data]
                     if "event number" in key:
-                        field_name = key.split("-")[1]
+                        field_name = key.split(" -")[1]
                         field_data = value
                         if field_name not in field_names:
                             field_names.append(field_name)
@@ -467,17 +476,24 @@ class Task():
                     
                         
                     
-            dfs[f"dfeff{i}"]=pandas.DataFrame(eff_data_dict)
+            dfs[f"dfobjeff{i}"]=pandas.DataFrame(obj_eff_data_dict)
+            dfs[f"dfeveeff{i}"]=pandas.DataFrame(eve_eff_data_dict)
             dfs[f"df{i}"]=pandas.DataFrame(data_dict)
             i=i+1
 
         ###########################################################################
-        combined_effdf = pandas.DataFrame(0, index=dfs[f"dfeff{1}"].index, columns=dfs[f"dfeff{1}"].columns)
+        combined_objeffdf = pandas.DataFrame(0, index=dfs[f"dfobjeff{1}"].index, columns=dfs[f"dfobjeff{1}"].columns)
         for j in range(1, i):
-            key = f"dfeff{j}"
+            key = f"dfobjeff{j}"
             if key in dfs:
-                combined_effdf = combined_effdf+dfs[key]
-            df_eff=combined_effdf/(i-1)
+                combined_objeffdf = combined_objeffdf+dfs[key]
+            df_objeff=combined_objeffdf/(i-1)
+        combined_eveeffdf = pandas.DataFrame(0, index=dfs[f"dfeveeff{1}"].index, columns=dfs[f"dfeveeff{1}"].columns)
+        for j in range(1, i):
+            key = f"dfeveeff{j}"
+            if key in dfs:
+                combined_eveeffdf = combined_eveeffdf+dfs[key]
+            df_eveeff=combined_eveeffdf/(i-1)
         eventdf = pandas.DataFrame(0, index=dfs[f"df{1}"].index, columns=dfs[f"df{1}"].columns)
         for j in range(1, i):
             key = f"df{j}"
@@ -485,11 +501,25 @@ class Task():
                 eventdf = eventdf+dfs[key]
         weighted_eventdf=eventdf*weight
         weighted_eventdf.insert(0, 'event: initial event number', weighted_n_events)
-        weighted_eventdf.to_csv(folder_path+"/weighted_event_yield.csv")
+        # weighted_eventdf.to_csv(folder_path+"/weighted_event_yield.csv")
         unweighted_eventdf=eventdf
         unweighted_eventdf.insert(0, 'event: initial event number', n_events)
-        unweighted_eventdf.to_csv(folder_path+"/unweighted_event_yield.csv")
-        df_eff.to_csv(folder_path+"/cutflow_eff.csv")
+        # unweighted_eventdf.to_csv(folder_path+"/unweighted_event_yield.csv")
+        df_objeff.insert(0, 'event: initial object efficiency', 1)
+        df_eveeff.insert(0, 'event: initial event efficiency', 1)
+        # obj_columns = [col for col in df_eff.columns if 'object efficiency' in col]
+        # df_eff_obj = df_eff[obj_columns]
+        # event_columns = [col for col in df_eff.columns if 'event efficiency' in col]
+        # df_eff_event = df_eff[event_columns]
+        # df_objeff.to_csv(folder_path+"/cutflow_objeff.csv")
+        # df_eveeff.to_csv(folder_path+"/cutflow_eveeff.csv")
+        column_names = [name.replace("event number", "") for name in weighted_eventdf.columns]
+        yield_df = pandas.DataFrame(columns=column_names)
+        yield_df.loc["unweighted yield"] = unweighted_eventdf.values[0]
+        yield_df.loc["weighted yield"] = weighted_eventdf.values[0]
+        yield_df.loc["object efficiency"] = df_objeff.values[0]
+        yield_df.loc["event efficiency"] = df_eveeff.values[0]
+        yield_df.to_csv(folder_path+"/yield.csv")
 
         self.make_yield_table = True
 
