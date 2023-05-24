@@ -51,7 +51,11 @@ def parse_arguments():
         required=False,
         action="store_true",
         help="merge output files all into a single file")
-
+    parser.add_argument(
+        "--yield_table",
+        required=False,
+        action="store_true",
+        help="create yield table or not ")
     parser.add_argument(
         "--unretire_jobs",
         required=False,
@@ -110,6 +114,7 @@ def parse_arguments():
         default=False,
         type=bool,
         help="use xrdcp to copy to nanoAOD file to local or not ")
+    
 
     return parser.parse_args()
 
