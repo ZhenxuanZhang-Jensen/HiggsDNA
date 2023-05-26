@@ -77,6 +77,8 @@ def select_muons(muons, options, clean, name = "none", tagger = None):
 
     standard_cuts = object_selections.select_objects(muons, options, clean, name, tagger)
 
+    if options["id"] == "loose":
+        id_cut = muons.looseId == True
     if options["id"] == "medium":
         id_cut = muons.mediumId == True
     if options["id"] == "tight":

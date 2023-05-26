@@ -55,9 +55,9 @@ DEFAULT_OPTIONS = {
     },
     "muons": {
         "pt": 10.0,
-        "id":"tight",
+        "id":"medium",
         "dr_photons": 0.4
-    },
+        },
     "muons_iso": {
         "pt": 10.0,
         "id":"tight",
@@ -415,13 +415,13 @@ class HHWW_Preselection_FHSL(Tagger):
         # add Leptonic resolved category with (>=2 AK4 jets && WvsQCD < 0.5)
         # need the first fatjets with WvsQCD < 0.5
         selection_fatjet_WvsQCD_SL_cat1 = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.5)]) == 0
-        SL_fullyresovled_cat = (n_leptons == 1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SL_cat1) # resolved 2 jets for SL channel with isolated lep
+        SL_fullyresovled_cat = (n_leptons_iso == 1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SL_cat1) # resolved 2 jets for SL channel with isolated lep
 
 
         # If no isolated lepton
         #attention: Fully leptonic channel
 
-        # add boosted SL+FH category with (>=1 Higgs jets && HvsQCD > 0.2)
+        # add boosted FH category with (>=1 Higgs jets && HvsQCD > 0.2)
         # the first Higgs jet with HvsQCD > 0.2
         selection_fatjet_HvsQCD_FH_cat0 = awkward.num(fatjets_H.Hqqqq_vsQCDTop[(fatjets_H.Hqqqq_vsQCDTop > 0.2)]) >= 1
         FH_boosted = (n_leptons_iso == 0) & (n_fatjets_H >=1) & (selection_fatjet_HvsQCD_FH_cat0) # boosted 1 jet for SL and FH channel wo isolated lep
@@ -440,17 +440,21 @@ class HHWW_Preselection_FHSL(Tagger):
         FH_fully_resovled_cat = (n_leptons_iso==0) & (n_jets>=4) # 4 jets for FH
 
         #attention: Semi leptonic channel
-
-        # add boosted SL+FH category with (>=1 Higgs jets && HvsQCD > 0.2)
-        # the first Higgs jet with HvsQCD > 0.2
-        selection_fatjet_WvsQCD_tight_muon = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.5)]) >= 1
+        # add muon merged boosted category with (>=1 AK8 jets && WvsQCD > 0.5, and deltaR(muon, fatjet) < 0.8))
+        selection_fatjet_WvsQCD = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.5)]) >= 1
         # muon deltaR with fatjet < 0.8
         # find the largest particleNet_WvsQCD fatjets
         fatjets_leading_patricleNet_WvsQCD = fatjets[awkward.argmax(fatjets.particleNet_WvsQCD, axis=1, keepdims=True)]
         muon_fatjet_deltaR = delta_R(muons, fatjets_leading_patricleNet_WvsQCD, 0.8)
-        muon_fatjet_deltaR_selection = awkward.num(muon_fatjet_deltaR) >= 1 # at least one muon deltaR with all fatjets < 0.8
+        selection_muon_fatjet_deltaR = awkward.num(muon_fatjet_deltaR[muon_fatjet_deltaR==True]) >= 1 # at least one muon deltaR with all fatjets < 0.8
         # one non-isolated muon, zero isolated lepton
-        SL_WvsQCD_non_isolated_muon_cat = (n_leptons_iso == 0) & (n_muons == 1) & (muon_fatjet_deltaR_selection) & (selection_fatjet_WvsQCD_tight_muon) # boosted 1 jet for SL and FH channel wo isolated lep
+        SL_muon_merge_boosted_cat = (n_muons >=1) & (n_leptons_iso ==0) & (selection_muon_fatjet_deltaR) & (selection_fatjet_WvsQCD) # boosted 1 jet for SL channel with merge non-iso muon
+
+        # add muon merged fully resolved category with (>=2 AK4 jets && WvsQCD > 0.5 && deltaR(lepton, jet) < 0.4)
+        # deltaR(lepton, jet) < 0.4
+        lepton_jet_deltaR = delta_R(muons, jets, 0.4)
+        selection_lepton_jet_deltaR = awkward.num(lepton_jet_deltaR[lepton_jet_deltaR==True]) >= 1 # at least one lepton deltaR with all jets < 0.4
+        SL_muon_merge_full_resolved_cat = (n_muons >=1) & (n_leptons_iso ==0) & (n_jets >=2) & (selection_lepton_jet_deltaR)# resolved 2 jets for SL channel with merge non-iso muon
 
 
         # Hadronic presel
@@ -463,18 +467,21 @@ class HHWW_Preselection_FHSL(Tagger):
         # 2: FH_SB_1Fatjet
         # 3: FH_SB_2Fatjet
         # 4: FH_boosted
-        # 5: SL_WvsQCD_non_isolated_muon_cat
-        # 6: SL_fullyresovled_cat
-        # 7: SL_boosted_cat
+        # 5: SL_muon_merge_full_resolved_cat
+        # 6: SL_muon_merge_boosted_cat
+        # 7: SL_fullyresovled_cat
+        # 8: SL_boosted_cat
         # with no isolated lepton
         category = awkward.where(FH_fully_resovled_cat, awkward.ones_like(category)*1, category)
         category = awkward.where(FH_SB_1Fatjet, awkward.ones_like(category)*2, category)
         category = awkward.where(FH_SB_2Fatjet, awkward.ones_like(category)*3, category)
         category = awkward.where(FH_boosted, awkward.ones_like(category)*4, category)
-        category = awkward.where(SL_WvsQCD_non_isolated_muon_cat, awkward.ones_like(category)*5, category)
+        category = awkward.where(SL_muon_merge_full_resolved_cat, awkward.ones_like(category)*5, category)
+
+        category = awkward.where(SL_muon_merge_boosted_cat, awkward.ones_like(category)*6, category)
         # with isolated lepton
-        category = awkward.where(SL_fullyresovled_cat, awkward.ones_like(category)*6, category)
-        category = awkward.where(SL_boosted_cat, awkward.ones_like(category)*7, category)
+        category = awkward.where(SL_fullyresovled_cat, awkward.ones_like(category)*7, category)
+        category = awkward.where(SL_boosted_cat, awkward.ones_like(category)*8, category)
         category_cut = (category > 0) # cut the events with category == 0
         awkward_utils.add_field(events, "category", category) 
 
