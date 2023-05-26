@@ -484,35 +484,36 @@ class AnalysisManager():
             import json
             # f= uproot.open(file, timeout = 1800)
             #attention slimed lumi
+            # import json
             # events = f['Events']
             # lumi = f['LuminosityBlocks'].arrays(['run','luminosityBlock'])
             # Runs = f['Runs'].arrays(['run'])
             # # Read the JSON file
-            # with open("/eos/user/z/zhenxuan/brilws/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.json", "r") as f:
-            #     data = json.load(f)
+            # with open("/eos/user/z/zhenxuan/brilws/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.json", "r") as json_file:
+            #     data = json.load(json_file)
             # # Define the numbers to be checked
-            # num1_list = [str(i) for i in Runs.run]
-            # num2_list = lumi['luminosityBlock']
-
-            # # Iterate through num1_list and num2_list
-            # golden_lumi = []
-            # for num1 in num1_list:
-            #     for num2 in num2_list:
-            #         # Check if num1 is a valid key
-            #         if num1 in data:
-            #             # Check if num2 is in the list of this key
-            #             for r in data[num1]:
-            #                 if num2 in range(r[0], r[1] + 1):
-            #                     golden_lumi.append(num2)
-            # #                     print(f"{num2} is in the range of {num1}")
-            #                 else:
-            #                     pass
+            # runID_list = [str(i) for i in lumi['run'] ]
+            # golden_lumi = [0]*len(runID_list)
+            # # Iterate through all events runID
+            # for num in range(len(runID_list)):
+            #     # Check if num is a valid key
+            #     if runID_list[num] in data.keys():
+            #         # If it is, check if the lumiID is in the corresponding golden_lumi json
+            #         for r in data[runID_list[num]]:
+            #             # If it is, set the golden_lumi list value to 1, check each lumiID range
+            #             if lumi['luminosityBlock'][num] in range(r[0], r[1] + 1):
+            #                 golden_lumi[num] = 1
+            #                 # exit the loop if the lumiID is found, make sure every lumiID is only counted once
+            #                 break
             #         else:
-            #             pass
-            #             # print(f"{num1} is not a valid key") # attention only for data
+            #             # If it is not, set the golden_lumi list value to 0
+            #             golden_lumi[num] = 0
+
             # # create the bool mask
             # a = numpy.array(events['luminosityBlock'].array())
-            # mask = numpy.isin(a,golden_lumi)
+            # mask = golden_lumi
+            # # turn mask to bool
+            # mask = numpy.array(mask, dtype=bool)
             #----
             with uproot.open(file, timeout = 1800) as f:
                 #attention new block to read lumi and save in the txt file to read whold data lumi to make sure we have enough lumi
