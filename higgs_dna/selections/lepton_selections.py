@@ -35,6 +35,8 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
     elif options["id"] == "WPL":
         # id_cut = (electrons.mvaFall17V2Iso_WPL == True) | ((electrons.mvaFall17V2noIso_WPL == True) & (electrons.pfRelIso03_all < 0.3))
         id_cut = (electrons.mvaFall17V2Iso_WPL == True) 
+    elif options["id"] == "WPL_noniso":
+        id_cut = (electrons.mvaFall17V2Iso_WPL == False ) | (electrons.mvaFall17V2noIso_WPL == True)
     elif options["id"] == "WP80":
         # id_cut = (electrons.mvaFall17V2Iso_WP80 == True) | ((electrons.mvaFall17V2noIso_WP80 == True) & (electrons.pfRelIso03_all < 0.3))
         id_cut = (electrons.mvaFall17V2Iso_WP80 == True)
@@ -67,7 +69,9 @@ DEFAULT_MUONS = {
         "eta" : 2.5,
         "dxy" : 0.045,
         "dz" : 0.2,
-        "id" : "medium",       
+        "id" : "medium",  
+        "non_iso": None,  
+        "iso": None,   
         # "pfRelIso03_all" : 0.3,
         # "pfRelIso04_all" : 0.15,
         "dr_photons" : 0.2,
@@ -82,18 +86,24 @@ def select_muons(muons, options, clean, name = "none", tagger = None):
         original = DEFAULT_MUONS,
         new = options
     )
-    
+    logger.debug("[select_muons] : options = %s" % str(options))
     tagger_name = "none" if tagger is None else tagger.name
 
     standard_cuts = object_selections.select_objects(muons, options, clean, name, tagger)
-
+    if options["iso"] is not None:
+        iso_cut = muons.pfRelIso04_all < options["iso"]
+    else:
+        iso_cut = muons.pt > 0.
+    if options["non_iso"] is not None:
+        non_iso_cut = muons.pfRelIso04_all > options["non_iso"]
+    else:
+        non_iso_cut = muons.pt > 0.
     if options["id"] == "medium":
         id_cut = muons.mediumId == True
     if options["id"] == "loose":
         id_cut = muons.looseId == True
     if options["id"] == "tight":
         id_cut = muons.tightId == True
-    
     elif not options["id"] or options["id"].lower() == "none":
         id_cut = muons.pt > 0.
     else:
@@ -105,8 +115,7 @@ def select_muons(muons, options, clean, name = "none", tagger = None):
     else:
         global_cut = muons.pt > 0
 
-    all_cuts = standard_cuts & id_cut & global_cut
-
+    all_cuts = standard_cuts & id_cut & global_cut &iso_cut & non_iso_cut
     if tagger is not None:
         tagger.register_cuts(
                 names = ["standard object cuts", "id cut", "global_muon cut", "all cuts"],

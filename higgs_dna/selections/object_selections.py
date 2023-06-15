@@ -31,6 +31,7 @@ def select_objects(objects, cuts = {}, clean = {}, name = "none", tagger = None)
     cut_names = []
     cut_results = []
     for cut, value in cuts.items():
+        logger.debug("standard cut: Tagger '%s', applying cut '%s' with value '%s'" % (tagger_name, cut, str(value)))
         cut_ = None
         if cut == "pt":
             cut_ = objects.pt > value
@@ -41,7 +42,9 @@ def select_objects(objects, cuts = {}, clean = {}, name = "none", tagger = None)
         if cut in ["pfRelIso04_all","pfRelIso03_all", "pfRelIso03_chg"]:
             cut_ = objects[cut] < value
             cut_names.append("%s < %.4f" % (cut, value))
-
+        if value is None:
+            cut_ = objects.pt > 0
+            cut_names.append("%s, no cut" % cut)
         if cut_ is not None:
             cut_results.append(cut_)
 
