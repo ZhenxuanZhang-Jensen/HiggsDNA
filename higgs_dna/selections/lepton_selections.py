@@ -12,6 +12,8 @@ DEFAULT_ELECTRONS = {
         "dxy" : 0.045,
         "dz" : 0.2,
         "id" : "WPL",
+        "non_iso": None,
+        "iso": None,
         "dr_photons" : 0.2,
         "veto_transition" : True
 }
@@ -28,31 +30,44 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
     tagger_name = "none" if tagger is None else tagger.name
 
     standard_cuts = object_selections.select_objects(electrons, options, clean, name, tagger)
-
+    if options["id"] == "WPL":
+        id_cut = (electrons.mvaFall17V2Iso_WPL == True)
+        logger.debug("[select_electrons] : id_cut =WPLiso True")
+    elif options["id"] == "WPL_noniso":
+        id_cut = (electrons.mvaFall17V2noIso_WPL == True) & (electrons.mvaFall17V2Iso_WPL == False) 
+        # id_cut = (electrons.mvaFall17V2noIso_WPL == True)
+        logger.debug("[select_electrons] : id_cut = WPLiso false WPL noniso true")
+    if options["iso"] is not None:
+        iso_cut = electrons.miniPFRelIso_all <= options["iso"]
+    elif options["iso"] is None:
+        iso_cut = electrons.pt > 0.
+    if options["non_iso"] is not None:
+        non_iso_cut = electrons.miniPFRelIso_all > options["non_iso"]
+    elif options["non_iso"] is None:
+        non_iso_cut = electrons.pt > 0.
     if options["id"] == "WP90":
         # id_cut = (electrons.mvaFall17V2Iso_WP90 == True) | ((electrons.mvaFall17V2noIso_WP90 == True) & (electrons.pfRelIso03_all < 0.3)) 
         id_cut = (electrons.mvaFall17V2Iso_WP90 == True) 
-    elif options["id"] == "WPL":
-        # id_cut = (electrons.mvaFall17V2Iso_WPL == True) | ((electrons.mvaFall17V2noIso_WPL == True) & (electrons.pfRelIso03_all < 0.3))
-        id_cut = (electrons.mvaFall17V2Iso_WPL == True) 
-    elif options["id"] == "WPL_noniso":
-        id_cut = (electrons.mvaFall17V2Iso_WPL == False ) | (electrons.mvaFall17V2noIso_WPL == True)
     elif options["id"] == "WP80":
-        # id_cut = (electrons.mvaFall17V2Iso_WP80 == True) | ((electrons.mvaFall17V2noIso_WP80 == True) & (electrons.pfRelIso03_all < 0.3))
         id_cut = (electrons.mvaFall17V2Iso_WP80 == True)
-    
+    if options["iso"] is not None:
+        iso_cut = electrons.miniPFRelIso_all < options["iso"]
+        
+    if options["non_iso"] is not None:
+        non_iso_cut = electrons.miniPFRelIso_all > options["non_iso"]
+        
     elif not options["id"] or options["id"].lower() == "none":
         id_cut = electrons.pt > 0.
-    else:
-        logger.warning("[select_electrons] : Tagger '%s', id cut '%s' not recognized, not applying an ID cut." % (str(tagger), options["id"]))
-        id_cut = electrons.pt > 0. 
-
+    
+    # else:
+    #     logger.warning("[select_electrons] : Tagger '%s', id cut '%s' not recognized, not applying an ID cut." % (str(tagger), options["id"]))
+    #     id_cut = electrons.pt > 0. 
     if options["veto_transition"]:
         transition_cut = (abs(electrons.eta) < 1.4442) | (abs(electrons.eta) > 1.566)
 
     # if options["Z_mass_veto"]:
         
-    all_cuts = standard_cuts & id_cut & transition_cut
+    all_cuts = standard_cuts & id_cut & transition_cut & iso_cut & non_iso_cut
 
     if tagger is not None:
         tagger.register_cuts(
@@ -71,8 +86,10 @@ DEFAULT_MUONS = {
         "dz" : 0.2,
         "id" : "medium",  
         "non_iso": None,  
-        "iso": None,   
+        "iso": None, 
+        "non_pfRelIso04_all":None,  
         # "pfRelIso03_all" : 0.3,
+        "pfRelIso04_all" : None,
         # "pfRelIso04_all" : 0.15,
         "dr_photons" : 0.2,
         "global" : True
@@ -91,11 +108,13 @@ def select_muons(muons, options, clean, name = "none", tagger = None):
 
     standard_cuts = object_selections.select_objects(muons, options, clean, name, tagger)
     if options["iso"] is not None:
-        iso_cut = muons.pfRelIso04_all < options["iso"]
+        # iso_cut = muons.pfRelIso04_all < options["iso"]
+        iso_cut = muons.miniPFRelIso_all < options["iso"]
     else:
         iso_cut = muons.pt > 0.
     if options["non_iso"] is not None:
-        non_iso_cut = muons.pfRelIso04_all > options["non_iso"]
+        # non_iso_cut = muons.pfRelIso04_all > options["non_iso"]
+        non_iso_cut = muons.miniPFRelIso_all > options["non_iso"]
     else:
         non_iso_cut = muons.pt > 0.
     if options["id"] == "medium":

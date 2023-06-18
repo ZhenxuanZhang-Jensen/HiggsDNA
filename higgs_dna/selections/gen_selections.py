@@ -403,7 +403,7 @@ def gen_Hww_2q2l(events):
     gen_qq = gen_part[(abs(gen_part.pdgId)<= 6) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24) ]
     gen_gg = gen_part[(abs(gen_part.pdgId) == 22) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 25) ]
     # gen_lv = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24)&((abs(gen_part.pdgId)>=11)&(abs(gen_part.pdgId)<=14))]
-    gen_lv = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24)&((abs(gen_part.pdgId)>=11)&(abs(gen_part.pdgId)<=14))]
+    gen_lv = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24)&((abs(gen_part.pdgId)>=11)&(abs(gen_part.pdgId)<=16))]
     dummy = awkward.full_like(gen_gg[0],99)
     ngen_lv=awkward.num(gen_lv,axis=-1)
     gen_lvcut=(ngen_lv==2)

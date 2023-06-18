@@ -52,18 +52,24 @@ DEFAULT_OPTIONS = {
     "electrons": {
         "pt": 10.0,
         "dr_photons": 0.4,
-        "id": "WPL_noniso"
+        "id": "WPL_noniso",
+        # "non_iso": 0.4 This is for mini isolation
+        "non_iso": None
     },
     "electrons_iso": {
         "pt": 10.0,
         "dr_photons": 0.4,
         "id": "WPL",
+        # "iso": 0.4 This is for mini isolation
+        "iso": None
     },
     "muons": {
         "pt" : 10.0, 
         "dr_photons": 0.4,
         "id" : "tight",
-        "non_iso":0.15,
+        "non_pfRelIso04_all":0.15,
+        # "non_iso":0.4, This is for mini isolation
+        "non_iso": None,
         "global" : True
         },
     "muons_iso": {
@@ -71,7 +77,9 @@ DEFAULT_OPTIONS = {
         "dr_photons": 0.4,
         "id":"tight",
         "dr_photons": 0.4,
-        "iso" : 0.15
+        "pfRelIso04_all":0.15,
+        # "iso" : 0.4,  This is for mini isolation
+        "iso" : None,
     },
     "jets": {
         "pt": 20.0, # attention this is the one exact same as old framework, make this 20 GeV(loose) for further analysis, we all know the higgs-like ak4 jets pt can be very small
@@ -157,7 +165,7 @@ class HHWW_Preselection_FHSL(Tagger):
         )
         awkward_utils.add_object_fields(
             events = events,
-            name = "electron",
+            name = "electron_noniso",
             objects = electrons[awkward.argsort(electrons.pt, axis=-1, ascending=False)],
             n_objects = 2,
             dummy_value = -999
@@ -210,9 +218,9 @@ class HHWW_Preselection_FHSL(Tagger):
 
         awkward_utils.add_object_fields(
             events =events,
-            name = "muon",
+            name = "muon_noniso",
             objects = muons[awkward.argsort(muons.pt, ascending=False, axis=-1)],
-            n_objects = 2,
+            n_objects = 1,
             dummy_value = -999
         )
         # isolated muon where we applied pfRelIso03_all
@@ -321,14 +329,14 @@ class HHWW_Preselection_FHSL(Tagger):
                     "objects" : events.Diphoton.Photon,
                     "min_dr" : self.options["fatjets"]["dr_photons"]
                 },
-                "electrons" : {
-                    "objects" : events.SelectedElectron_iso,
-                    "min_dr" : self.options["fatjets"]["dr_electrons"]
-                },
-                "muons" : {
-                    "objects" : events.SelectedMuon_iso,
-                    "min_dr" : self.options["fatjets"]["dr_muons"]
-                    },
+                # "electrons" : {
+                #     "objects" : events.SelectedElectron_iso,
+                #     "min_dr" : self.options["fatjets"]["dr_electrons"]
+                # },
+                # "muons" : {
+                #     "objects" : events.SelectedMuon_iso,
+                #     "min_dr" : self.options["fatjets"]["dr_muons"]
+                #     },
                 },
             name = "SelectedFatJet",
             tagger = self
@@ -354,14 +362,14 @@ class HHWW_Preselection_FHSL(Tagger):
                     "objects" : events.Diphoton.Photon,
                     "min_dr" : self.options["fatjets_H"]["dr_photons"]
                 },
-                "electrons" : {
-                    "objects" : events.SelectedElectron_iso,
-                    "min_dr" : self.options["fatjets_H"]["dr_electrons"]
-                },
-                "muons" : {
-                    "objects" : events.SelectedMuon_iso,
-                    "min_dr" : self.options["fatjets_H"]["dr_muons"]
-                    },
+                # "electrons" : {
+                #     "objects" : events.SelectedElectron_iso,
+                #     "min_dr" : self.options["fatjets_H"]["dr_electrons"]
+                # },
+                # "muons" : {
+                #     "objects" : events.SelectedMuon_iso,
+                #     "min_dr" : self.options["fatjets_H"]["dr_muons"]
+                #     },
                 },
             name = "SelectedFatJet_H",
             tagger = self
@@ -428,7 +436,11 @@ class HHWW_Preselection_FHSL(Tagger):
         n_muons = awkward.num(muons)
         n_muons_iso = awkward.num(muons_iso)
         n_leptons = n_electrons + n_muons 
-        n_leptons_iso = n_electrons + n_muons_iso
+        n_leptons_iso = n_electrons_iso + n_muons_iso
+        awkward_utils.add_field(events,"nGoodnonisoelectrons",n_electrons)
+        awkward_utils.add_field(events,"nGoodisoelectrons",n_electrons_iso)
+        awkward_utils.add_field(events,"nGoodnonisomuons",n_muons)
+        awkward_utils.add_field(events,"nGoodisomuons",n_muons_iso)
         awkward_utils.add_field(events,"nGoodisoleptons",n_leptons_iso)
         awkward_utils.add_field(events,"nGoodnonisoleptons",n_leptons)
         # n_diphotons = awkward.num(events.Diphoton)

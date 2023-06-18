@@ -39,12 +39,17 @@ def select_objects(objects, cuts = {}, clean = {}, name = "none", tagger = None)
         if cut in ["eta", "dxy", "dz"]:
             cut_ = abs(objects[cut]) < value
             cut_names.append("|%s| < %.4f" % (cut, value))
-        if cut in ["pfRelIso04_all","pfRelIso03_all", "pfRelIso03_chg"]:
+        if cut in ["non_pfRelIso04_all"]and value is not None:
+            cut_ = objects.pfRelIso04_all > value
+        if cut in ["pfRelIso04_all","pfRelIso03_all", "pfRelIso03_chg"]and value is not None:
             cut_ = objects[cut] < value
             cut_names.append("%s < %.4f" % (cut, value))
-        if value is None:
-            cut_ = objects.pt > 0
-            cut_names.append("%s, no cut" % cut)
+        if cut == "iso" and value is not None:
+            cut_ = objects.miniPFRelIso_all < value
+            cut_names.append("miniPFRelIso_all < %.4f" % value)
+        if cut in ["non_iso"] and value is not None:
+            cut_ = objects.miniPFRelIso_all > value
+            cut_names.append("miniPFRelIso_all > %.4f" % value)
         if cut_ is not None:
             cut_results.append(cut_)
 
