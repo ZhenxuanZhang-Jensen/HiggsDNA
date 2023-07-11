@@ -7,7 +7,7 @@ DEFAULT_FATJETS = {
         "pt" : 150.,
         "eta" : 2.4,
         # "Hqqqq_qqlv_vsQCDTop": -999
-        "Hqqqq_vsQCDTop": -999
+        "Hqqqq_vsQCDTop": -999 
 }
 
 def select_fatjets(fatjets, options, clean, name = "none", tagger = None): 

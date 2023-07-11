@@ -52,23 +52,18 @@ DEFAULT_OPTIONS = {
     "electrons": {
         "pt": 10.0,
         "dr_photons": 0.4,
-        "id": "WPL_noniso",
-        # "non_iso": 0.4 This is for mini isolation
-        "non_iso": None
+        "id": "WP80iso_WP90noniso",
     },
     "electrons_iso": {
         "pt": 10.0,
         "dr_photons": 0.4,
-        "id": "WPL",
-        # "iso": 0.4 This is for mini isolation
-        "iso": None
+        "id": "WP90",
     },
     "muons": {
         "pt" : 10.0, 
         "dr_photons": 0.4,
         "id" : "tight",
         "non_pfRelIso04_all":0.15,
-        # "non_iso":0.4, This is for mini isolation
         "non_iso": None,
         "global" : True
         },
@@ -78,7 +73,6 @@ DEFAULT_OPTIONS = {
         "id":"tight",
         "dr_photons": 0.4,
         "pfRelIso04_all":0.15,
-        # "iso" : 0.4,  This is for mini isolation
         "iso" : None,
     },
     "jets": {
@@ -92,17 +86,16 @@ DEFAULT_OPTIONS = {
     "fatjets": {
         "pt": 200.0,
         "eta": 2.4,
-        # "Hqqqq_qqlv_vsQCDTop": -999,
-        "Hqqqq_vsQCDTop": -999,
+        "Hqqqq_vsQCDTop": 0.4,
         "dr_photons": 0.8,
         "dr_electrons": 0.8,
         "dr_muons": 0.8
     },
     "fatjets_H": {
-        "pt": 300,#300.0 fixed 0 
+        "pt": 300,
         "eta": 2.4,
         # "Hqqqq_qqlv_vsQCDTop" :0.2,
-        "Hqqqq_vsQCDTop" :0.8,
+        "Hqqqq_vsQCDTop" :0.4,
         "dr_photons": 0.8,
         "dr_electrons": 0.8,
         "dr_muons": 0.8
@@ -140,10 +133,30 @@ class HHWW_Preselection_FHSL(Tagger):
         # data will not select gen level infos 
         # need to comment when run bkgs
         # logger.debug("Is Signal: %s" %self.options["gen_info"]["is_Signal"])
-        # if not self.is_data and self.options["gen_info"]["is_Signal"]:    
-        gen_l1_p4, gen_q1_p4,gen_q2_p4 = gen_selections.gen_Hww_2q2l(events)        
+        if not self.is_data and self.options["gen_info"]["is_Signal"]:    
+            # fake_pho,prompt_pho = gen_selections.gen_Hww_4q(events)        
+            gen_l1_p4, gen_q1_p4,gen_q2_p4 = gen_selections.gen_Hww_2q2l(events)        
         logger.debug("event fields: %s" %events.fields)
-
+        original_electrons = awkward_utils.add_field(
+            events=events,
+            name="OriginalElectron",
+            data=events.Electron)
+        events["electron_pt"] = original_electrons.pt
+        events["electron_eta"] = original_electrons.eta
+        events["electron_phi"] = original_electrons.phi
+        events["electron_mass"] = original_electrons.mass
+        events["electron_dxy"] = original_electrons.dxy
+        events["electron_dz"] = original_electrons.dz
+        events["electron_mvaFall17V2Iso_WP90"] = original_electrons.mvaFall17V2Iso_WP90
+        events["electron_mvaFall17V2noIso_WP90"] = original_electrons.mvaFall17V2noIso_WP90
+        events["electron_mvaFall17V2Iso_WPL"] = original_electrons.mvaFall17V2Iso_WPL
+        events["electron_mvaFall17V2noIso_WPL"] = original_electrons.mvaFall17V2noIso_WPL
+        events["electron_mvaFall17V2Iso_WP80"] = original_electrons.mvaFall17V2Iso_WP80
+        events["electron_mvaFall17V2noIso_WP80"] = original_electrons.mvaFall17V2noIso_WP80
+        events["electron_pfRelIso03_all"] = original_electrons.pfRelIso03_all
+        events["electron_pfRelIso03_chg"] = original_electrons.pfRelIso03_chg
+        events["electron_hoe"] = original_electrons.hoe
+        
         # Electrons
         electron_cut = lepton_selections.select_electrons(
             electrons=events.Electron,
@@ -195,6 +208,22 @@ class HHWW_Preselection_FHSL(Tagger):
             n_objects = 1,
             dummy_value = -999
         )
+        original_muons = awkward_utils.add_field(
+            events=events,
+            name="OriginalMuon",
+            data=events.Muon)
+        events["muon_pt"] = original_muons.pt
+        events["muon_eta"] = original_muons.eta
+        events["muon_phi"] = original_muons.phi
+        events["muon_mass"] = original_muons.mass
+        events["muon_dxy"] = original_muons.dxy
+        events["muon_dz"] = original_muons.dz
+        events["muon_pfRelIso04_all"] = original_muons.pfRelIso04_all
+        events["muon_highPtId"] = original_muons.highPtId
+        events["muon_looseId"] = original_muons.looseId
+        events["muon_mediumId"] = original_muons.mediumId
+        events["muon_tightId"] = original_muons.tightId
+        events["muon_isGlobal"] = original_muons.isGlobal
         # Muons
         muon_cut = lepton_selections.select_muons(
             muons=events.Muon,
@@ -329,14 +358,14 @@ class HHWW_Preselection_FHSL(Tagger):
                     "objects" : events.Diphoton.Photon,
                     "min_dr" : self.options["fatjets"]["dr_photons"]
                 },
-                # "electrons" : {
-                #     "objects" : events.SelectedElectron_iso,
-                #     "min_dr" : self.options["fatjets"]["dr_electrons"]
-                # },
-                # "muons" : {
-                #     "objects" : events.SelectedMuon_iso,
-                #     "min_dr" : self.options["fatjets"]["dr_muons"]
-                #     },
+                "electrons" : {
+                    "objects" : events.SelectedElectron_iso,
+                    "min_dr" : self.options["fatjets"]["dr_electrons"]
+                },
+                "muons" : {
+                    "objects" : events.SelectedMuon_iso,
+                    "min_dr" : self.options["fatjets"]["dr_muons"]
+                    },
                 },
             name = "SelectedFatJet",
             tagger = self
@@ -346,6 +375,12 @@ class HHWW_Preselection_FHSL(Tagger):
             name = "SelectedFatJet",
             data = events.FatJet[fatjet_cut]
         )   
+        events['SlectedFatJet_pt']=fatjets.pt
+        events['SlectedFatJet_eta']=fatjets.eta
+        events['SlectedFatJet_phi']=fatjets.phi
+        events['SlectedFatJet_mass']=fatjets.mass
+        events['SlectedFatJet_Hqqqq_vsQCDTop']=fatjets.Hqqqq_vsQCDTop
+        events['SlectedFatJet_particleNet_WvsQCD']=fatjets.particleNet_WvsQCD
 
         awkward_utils.add_object_fields(
         events=events,
@@ -362,14 +397,14 @@ class HHWW_Preselection_FHSL(Tagger):
                     "objects" : events.Diphoton.Photon,
                     "min_dr" : self.options["fatjets_H"]["dr_photons"]
                 },
-                # "electrons" : {
-                #     "objects" : events.SelectedElectron_iso,
-                #     "min_dr" : self.options["fatjets_H"]["dr_electrons"]
-                # },
-                # "muons" : {
-                #     "objects" : events.SelectedMuon_iso,
-                #     "min_dr" : self.options["fatjets_H"]["dr_muons"]
-                #     },
+                "electrons" : {
+                    "objects" : events.SelectedElectron_iso,
+                    "min_dr" : self.options["fatjets_H"]["dr_electrons"]
+                },
+                "muons" : {
+                    "objects" : events.SelectedMuon_iso,
+                    "min_dr" : self.options["fatjets_H"]["dr_muons"]
+                    },
                 },
             name = "SelectedFatJet_H",
             tagger = self
@@ -459,13 +494,13 @@ class HHWW_Preselection_FHSL(Tagger):
 
         # If have isolated lepton
         #attention: Semi leptonic channel                
-        # add leptonic boosted category with (>=1 AK8 jets && WvsQCD > 0.5)
-        # the the first fatjet with WvsQCD > 0.5
-        selection_fatjet_WvsQCD_SL_cat0 = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.9)]) >= 1
+        # add leptonic boosted category with (>=1 AK8 jets && WvsQCD > 0.94)
+        # the the first fatjet with WvsQCD > 0.94
+        selection_fatjet_WvsQCD_SL_cat0 = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.94)]) >= 1
         SL_boosted_cat = (n_leptons_iso == 1) & (n_fatjets >=1) & (selection_fatjet_WvsQCD_SL_cat0) # boosted 1 jet for SL channel with isolated lep
         # add Leptonic resolved category with (>=2 AK4 jets && WvsQCD < 0.5)
         # need the first fatjets with WvsQCD < 0.5
-        selection_fatjet_WvsQCD_SL_cat1 = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.9)]) == 0
+        selection_fatjet_WvsQCD_SL_cat1 = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.94)]) == 0
         SL_fullyresovled_cat = (n_leptons_iso == 1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SL_cat1) # resolved 2 jets for SL channel with isolated lep
 
 
@@ -474,24 +509,24 @@ class HHWW_Preselection_FHSL(Tagger):
 
         # add boosted FH category with (>=1 Higgs jets && HvsQCD > 0.2)
         # the first Higgs jet with HvsQCD > 0.8
-        selection_fatjet_HvsQCD_FH_cat0 = awkward.num(fatjets_H.Hqqqq_vsQCDTop[(fatjets_H.Hqqqq_vsQCDTop > 0.8)]) >= 1
+        selection_fatjet_HvsQCD_FH_cat0 = awkward.num(fatjets_H.Hqqqq_vsQCDTop[(fatjets_H.Hqqqq_vsQCDTop > 0.4)]) >= 1
         FH_boosted = (n_leptons_iso == 0) & (n_fatjets_H >=1) & (selection_fatjet_HvsQCD_FH_cat0) # boosted 1 jet for SL and FH channel wo isolated lep
 
         # add semi-boosted FH -1 category with (>=2 AK8 jets && WvsQCD > 0.5)
         # need the first two fatjets with WvsQCD > 0.5
-        selection_fatjet_WvsQCD_SB_2F = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.9)]) >= 2
+        selection_fatjet_WvsQCD_SB_2F = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.94)]) >= 2
         FH_SB_2Fatjet = (n_leptons_iso==0) & (n_fatjets >=2) & (selection_fatjet_WvsQCD_SB_2F) # 2 jets for FH
 
         # add semi-boosted FH -2 category with (==1 AK8 jets && WvsQCD > 0.9 && >=2 AK4 jets)
         # need the first fatjet with WvsQCD > 0.5
-        selection_fatjet_WvsQCD_SB_1F = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.9)]) >= 1
+        selection_fatjet_WvsQCD_SB_1F = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.94)]) >= 1
         FH_SB_1Fatjet = (n_leptons_iso==0) & (n_fatjets ==1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SB_1F) # 1 jet for FH
         # add merged lepton boosted category with (==1 AK8 jets && WvsQCD < 0.9 && HvsQCD < 0.8 && btagDeepB < 0.4184 && pt > 300)
-        selection_fatjet_fail_WvsQCD = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD < 0.9)]) >= 1
-        selection_fatjet_fail_HvsQCD = awkward.num(fatjets.Hqqqq_vsQCDTop[(fatjets.Hqqqq_vsQCDTop < 0.8)]) >= 1
-        fatjet_b_veto=awkward.num(fatjets.btagDeepB[(fatjets.btagDeepB > 0.4184)]) == 0
+        selection_fatjet_fail_WvsQCD = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD < 0.94)]) >= 1
+        selection_fatjet_fail_HvsQCD = awkward.num(fatjets.Hqqqq_vsQCDTop[(fatjets.Hqqqq_vsQCDTop < 0.4)]) >= 1
+        # fatjet_b_veto=awkward.num(fatjets.btagDeepB[(fatjets.btagDeepB > 0.4184)]) == 0
         SL_Higgs_jet_pt=awkward.num(fatjets.pt[(fatjets.pt > 300)])
-        SL_lep_merge_boosted_cat = (n_leptons_iso==0)&(n_leptons>=0)&selection_fatjet_fail_WvsQCD & selection_fatjet_fail_HvsQCD & fatjet_b_veto & SL_Higgs_jet_pt
+        SL_lep_merge_boosted_cat = ((n_leptons_iso==0)&(n_leptons>=0))&selection_fatjet_fail_WvsQCD & selection_fatjet_fail_HvsQCD & SL_Higgs_jet_pt
         # add resolved FH category with (>=4 AK4 jets )
         FH_fully_resovled_cat = (n_leptons_iso==0) & (n_jets>=4) # 4 jets for FH
 
