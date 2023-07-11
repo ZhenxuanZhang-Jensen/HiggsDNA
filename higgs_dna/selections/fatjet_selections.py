@@ -18,7 +18,6 @@ def select_fatjets(fatjets, options, clean, name = "none", tagger = None):
         original = DEFAULT_FATJETS,
         new = options
     )
-    print("option is !!!!!!!!!!!!!", options)
     standard_cuts = object_selections.select_objects(fatjets, options, clean, name, tagger)
     # can apply some additional cut
     # add the H jet tagger for SL&FH channel((H3q+H4q+Hlvqq)/(H3q+H4q+Hlvqq+QCD+Top))

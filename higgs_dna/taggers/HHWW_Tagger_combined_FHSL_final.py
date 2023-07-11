@@ -82,7 +82,7 @@ DEFAULT_OPTIONS = {
     "fatjets": {
         "pt": 200.0,
         "eta": 2.4,
-        "Hqqqq_vsQCDTop": 0.4,
+        # "Hqqqq_vsQCDTop": 0.4,
         "dr_photons": 0.8,
         "dr_electrons": 0.8,
         "dr_muons": 0.8
@@ -130,7 +130,7 @@ class HHWW_Preselection_FHSL(Tagger):
         # need to comment when run bkgs
         # logger.debug("Is Signal: %s" %self.options["gen_info"]["is_Signal"])
         # if not self.is_data and self.options["gen_info"]["is_Signal"]:    
-            # fake_pho,prompt_pho = gen_selections.gen_Hww_4q(events)        
+        # fake_pho,prompt_pho = gen_selections.gen_Hww_4q(events)        
             # gen_l1_p4, gen_q1_p4,gen_q2_p4 = gen_selections.gen_Hww_2q2l(events)        
         logger.debug("event fields: %s" %events.fields)
         dummy_fatjet = awkward.full_like(events.FatJet[0],999)
