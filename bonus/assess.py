@@ -170,12 +170,12 @@ def infer_systematics(inputs, cuts):
 def events_with_ids(events, ids):
     cut = events["process_id"] == -999
     for id in ids:
-        cut = (cut) | (events["process_id"] == id)
+        cut = ( (cut) | (events["process_id"] == id) ) #& ( events["Diphoton_mass"] > 120 ) & ( events["Diphoton_mass"] > 130 )
     return events[cut]
 
 
 def do_cut(events, field, cut_range):
-    cut = (events[field] >= cut_range[0]) & (events[field] <= cut_range[1])
+    cut = (events[field] >= cut_range[0]) & (events[field] <= cut_range[1]) 
     return events[cut]
 
 
@@ -199,14 +199,14 @@ def get_yield_and_unc(events):
 
 
 def table_line(proc, results, n_bkg):
-    if n_bkg > 0:
+    if n_bkg > 0 and "HH" not in proc:
         bkg_frac = results["n"] / n_bkg
     else:
         bkg_frac = 0.
 
     if proc == "total_bkg":
         proc = "Total MC bkg"
-    line = "\t \t %s & %.4f & $\\pm \\text{%.4f}$  & $~^{+\\text{%.4f}}_{-\\text{%.4f}}$  & %.4f \\\\ \n" % (proc.replace("_", "-"), results["n"], results["stat_unc"], results["syst_unc_up"], results["syst_unc_down"], bkg_frac)
+    line = "\t \t %s & %.3f & $\\pm \\text{%.3f}$  & $~^{+\\text{%.3f}}_{-\\text{%.3f}}$  & %.3f \\\\ \n" % (proc.replace("_", "-"), results["n"], results["stat_unc"], results["syst_unc_up"], results["syst_unc_down"], bkg_frac)
     return line
 
 def make_tables(events, process_map, signals, bkgs = None):
@@ -321,7 +321,7 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
     title = kwargs.get("title", None)
     y_lim = kwargs.get("y_lim", None)
     x_lim = kwargs.get("x_lim", None)
-    rat_lim = kwargs.get("rat_lim", [0.0, 2.0])
+    rat_lim = kwargs.get("rat_lim", [0.0, 2.5])
     overflow = kwargs.get("overflow", False)
     log_y = kwargs.get("log_y", False)
 
@@ -371,7 +371,7 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
 
     h_sig = []
     for proc, plot_data in sig.items():
-        h = Hist1D(plot_data["array"], weights = plot_data["weights"], bins = bins, overflow = overflow, label=proc)
+        h = Hist1D(plot_data["array"], weights = plot_data["weights"], bins = bins, overflow = overflow, label = proc)
         h = h.to_poisson_errors()
         h_sig.append(h)
 
@@ -381,7 +381,8 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
     plt.grid()
     h_data.plot(ax=ax1, color = "black", errors = True)
     plt.sca(ax1)
-    hep.cms.label(" Preliminary",loc=0,data=True,lumi=137,fontsize=18)
+    hep.cms.label(" Preliminary",loc=0,data=True,lumi=138,fontsize=18)
+    #hep.cms.label(" Preliminary",loc=0,data=True,lumi=54.5,fontsize=18)
 
     stack = sorted(h_bkg, key = lambda x : x.integral)
     plot_stack(stack, ax=ax1, histtype="stepfilled")
@@ -475,8 +476,10 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
             ax2.axhspan(mc_ratio_stat_err_up[i], mc_ratio_stat_syst_err_up[i], float(i) / float(h_data.nbins), float(i+1) / float(h_data.nbins), color = "red", alpha = 0.25, linewidth = 0.)
             ax2.axhspan(mc_ratio_stat_syst_err_down[i], mc_ratio_stat_err_down[i], float(i) / float(h_data.nbins), float(i+1) / float(h_data.nbins), color = "red", alpha = 0.25, linewidth = 0.)
 
+    plt.grid()
     plt.savefig(savename)
     plt.clf()
+    plt.close()
 
 
 def make_shape_comparisons(plot_config, output_dir, events, process_map, signals):
@@ -633,7 +636,8 @@ def plot_shapes(arrays, weights, names, savename, **kwargs):
         h.plot(ax=ax1, color="C%d" % idx, errors = False, linewidth=3, label = "%s [N : %.3f, Mean : %.3f, Std : %.3f]" % (names[idx], norm[idx], mean[idx], std[idx]))
 
     plt.sca(ax1)
-    hep.cms.label(" Preliminary",loc=0,data=True,lumi=137,fontsize=18)        
+    hep.cms.label(" Preliminary",loc=0,data=True,lumi=138,fontsize=18)        
+    #hep.cms.label(" Preliminary",loc=0,data=True,lumi=54.5,fontsize=18)        
     
     if len(hists) >= 2:
         for i in range(1, len(hists)):
@@ -815,10 +819,10 @@ def main(args):
             
         make_plots(plot_config, args.output_dir, events, process_map, signals, bkgs)
         logger.debug("[HiggsDNABonusTool] Making shape comparisons (no systematics).")
-        if signals:
-            make_shape_comparisons(plot_config, args.output_dir, events, process_map, signals)
-        else:
-            make_shape_comparisons(plot_config, args.output_dir, events, process_map, bkgs + ["Data"])
+        #if signals:
+        #    make_shape_comparisons(plot_config, args.output_dir, events, process_map, signals)
+        #else:
+        #    make_shape_comparisons(plot_config, args.output_dir, events, process_map, bkgs + ["Data"])
 
     if args.assess_systematics:
         logger.debug("[HiggsDNABonusTool] Summarizing weight systematics.")

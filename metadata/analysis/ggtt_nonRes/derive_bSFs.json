@@ -114,8 +114,7 @@
                 },
                 "modify_central_weight" : true,
                 "input_collection" : "Jet",
-                "target_collections" : ["SelectedJet"],
-                "normalization_factors" : "metadata/systematics/nonRes/btag_sfs.json"
+                "target_collections" : ["SelectedJet"]
             }, 
             "trigger_sf" : {
                 "type" : "event",
@@ -434,7 +433,7 @@
     },
     "samples" : {
         "catalog" : "metadata/samples/ggtt_nonRes.json",
-        "sample_list" : ["Data", "ttH_M125","ggH_M125","VBFH_M125","VH_M125","GJets_HT-40To100","GJets_HT-100To200","GJets_HT-200To400","GJets_HT-400To600","GJets_HT-600ToInf","TTJets","TTGamma","TTGG","WGamma","ZGamma","DiPhoton", "HHggTauTau", "HHggTauTau_kl0", "HHggTauTau_kl2p45", "HHggTauTau_kl5", "HHggWW_dileptonic", "HHggWW_dileptonic_kl0", "HHggWW_dileptonic_kl2p45", "HHggWW_dileptonic_kl5", "HHggWW_semileptonic", "HHggWW_semileptonic_kl0", "HHggWW_semileptonic_kl2p45", "HHggWW_semileptonic_kl5" ],
+        "sample_list" : ["ttH_M125","ggH_M125","VBFH_M125","VH_M125","GJets_HT-40To100","GJets_HT-100To200","GJets_HT-200To400","GJets_HT-400To600","GJets_HT-600ToInf","TTJets","TTGamma","TTGG","WGamma","ZGamma","DiPhoton", "HHggTauTau", "HHggTauTau_kl0", "HHggTauTau_kl2p45", "HHggTauTau_kl5", "HHggWW_dileptonic", "HHggWW_dileptonic_kl0", "HHggWW_dileptonic_kl2p45", "HHggWW_dileptonic_kl5", "HHggWW_semileptonic", "HHggWW_semileptonic_kl0", "HHggWW_semileptonic_kl2p45", "HHggWW_semileptonic_kl5" ],
         "years" : ["2016UL_preVFP", "2016UL_postVFP", "2017", "2018"] 
     }
 }

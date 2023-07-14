@@ -1,5 +1,5 @@
 {
-    "name" : "hh_ggtautau_presel",
+    "name" : "hh_ggtautau_sr",
     "function" : { 
         "module_name" : "higgs_dna.analysis",
         "function_name" : "run_analysis"
@@ -8,7 +8,7 @@
         ["Diphoton", "mass"], ["Diphoton", "pt"], ["Diphoton", "eta"], ["Diphoton", "phi"], ["Diphoton", "helicity"], ["Diphoton", "pt_mgg"], ["Diphoton", "max_mvaID"], ["Diphoton", "min_mvaID"], ["Diphoton", "dPhi"], ["Diphoton", "dR"],
         ["LeadPhoton", "pt"], ["LeadPhoton", "eta"], ["LeadPhoton", "phi"], ["LeadPhoton", "mass"], ["LeadPhoton", "mvaID"], ["LeadPhoton", "genPartFlav"], ["LeadPhoton", "pixelSeed"], ["LeadPhoton", "pt_mgg"],
         ["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"], ["SubleadPhoton", "genPartFlav"], ["SubleadPhoton", "pixelSeed"], ["SubleadPhoton", "pt_mgg"],
-        "weight_central", 
+        "weight_central", "bdt_score",
         "n_electrons", "n_muons", "n_taus", "n_iso_tracks", "n_jets", "n_bjets",
         "MET_pt", "MET_phi", "diphoton_met_dPhi", "MET_ll_dPhi", "lead_lepton_met_dphi", "ditau_dphi", "ditau_deta", "ditau_dR",
         "gg_tt_CS", "gg_tt_hel", "tt_hel",
@@ -17,6 +17,7 @@
         "pt_tautau_SVFit", "eta_tautau_SVFit_bdt", "m_tautau_SVFit", "dR_tautau_SVFit", "dR_ggtautau_SVFit", "dPhi_tautau_SVFit", "dPhi_ggtautau_SVFit", "ditau_mass", "ditau_pt", "ditau_eta",
         "mX","dilep_leadpho_mass", "dilep_subleadpho_mass", 
         "event", "pass_sr_0", "pass_sr_1",
+				"dZ", "CMS_hgg_mass",
         "LHEScaleWeight_Zero", "LHEScaleWeight_One", "LHEScaleWeight_Three", "LHEScaleWeight_Four", "LHEScaleWeight_Five", "LHEScaleWeight_Seven", "LHEScaleWeight_Eight", 
 				"LHEPdfWeight_Unit", "LHEPdfWeight_Up", "LHEPdfWeight_Down"
     ],
@@ -78,6 +79,13 @@
                 "tagger" : "HHggTauTauPreselTagger",
                 "kwargs" : {
                     "name" : "HHggTauTauPreselectionTagger"
+                }
+            },
+            {
+                "module_name" : "higgs_dna.taggers.hh_ggtautau_nonres_sr_tagger",
+                "tagger" : "HHggTauTauNonResSRTagger",
+                "kwargs" : {
+                    "name" : "HHggTauTauNonResSignalRegionTagger"
                 }
             }
     ],
@@ -434,7 +442,7 @@
     },
     "samples" : {
         "catalog" : "metadata/samples/ggtt_nonRes.json",
-        "sample_list" : ["Data", "ttH_M125","ggH_M125","VBFH_M125","VH_M125","GJets_HT-40To100","GJets_HT-100To200","GJets_HT-200To400","GJets_HT-400To600","GJets_HT-600ToInf","TTJets","TTGamma","TTGG","WGamma","ZGamma","DiPhoton", "HHggTauTau", "HHggTauTau_kl0", "HHggTauTau_kl2p45", "HHggTauTau_kl5", "HHggWW_dileptonic", "HHggWW_dileptonic_kl0", "HHggWW_dileptonic_kl2p45", "HHggWW_dileptonic_kl5", "HHggWW_semileptonic", "HHggWW_semileptonic_kl0", "HHggWW_semileptonic_kl2p45", "HHggWW_semileptonic_kl5" ],
-        "years" : ["2016UL_preVFP", "2016UL_postVFP", "2017", "2018"] 
+        "sample_list" : ["Data", "ttH_M125","ggH_M125","VBFH_M125","VH_M125", "HHggTauTau", "HHggWW_dileptonic", "HHggWW_semileptonic" ],
+        "years" : ["2016UL_preVFP", "2016UL_postVFP", "2017", "2018"]
     }
 }

@@ -1,0 +1,12 @@
+{
+    "Data": {
+				"process_id": 0,
+        "files": {
+            "2016UL_postVFP": "/ceph/cms/store/user/fsetti/c++_looper_ul_output/invert_pho_mvaID_high_mass/Data/*2016.root",
+            "2016UL_preVFP"	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/invert_pho_mvaID_high_mass/Data/*2016_APV.root",
+            "2017"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/invert_pho_mvaID_high_mass/Data/*2017.root",
+            "2018"					: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/invert_pho_mvaID_high_mass/Data/*2018.root"
+        },
+        "fpo": 10
+    }
+}
