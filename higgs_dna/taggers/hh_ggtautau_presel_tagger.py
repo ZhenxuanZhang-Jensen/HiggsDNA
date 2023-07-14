@@ -478,6 +478,12 @@ class HHggTauTauPreselTagger(Tagger):
         events[("Diphoton", "pt_mgg")] = events.Diphoton.pt / events.Diphoton.mass
         events[("LeadPhoton", "pt_mgg")] = events.LeadPhoton.pt / events.Diphoton.mass
         events[("SubleadPhoton", "pt_mgg")] = events.SubleadPhoton.pt / events.Diphoton.mass 
+        events[("LeadPhoton", "chargedHadronIso")] = events.LeadPhoton.chargedHadronIso
+        events[("LeadPhoton", "pfRelIso03_all")] = events.LeadPhoton.pfRelIso03_all
+        events[("LeadPhoton", "pfRelIso03_chg")] = events.LeadPhoton.pfRelIso03_chg
+        events[("SubleadPhoton", "chargedHadronIso")] = events.SubleadPhoton.chargedHadronIso
+        events[("SubleadPhoton", "pfRelIso03_all")] 	= events.SubleadPhoton.pfRelIso03_all
+        events[("SubleadPhoton", "pfRelIso03_chg")] 	= events.SubleadPhoton.pfRelIso03_chg
         events[("Diphoton", "max_mvaID")] = awkward.where(
                 events.LeadPhoton.mvaID > events.SubleadPhoton.mvaID,
                 events.LeadPhoton.mvaID,

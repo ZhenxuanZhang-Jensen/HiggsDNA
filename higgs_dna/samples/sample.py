@@ -34,8 +34,8 @@ class Sample():
         if self.bf is not None:
             self.norm_factor *= self.bf
         if self.year in LUMI.keys():
-            #self.lumi = LUMI[self.year]
-            self.lumi = LUMI_LOWMASS[self.year]
+            self.lumi = LUMI[self.year]
+            #self.lumi = LUMI_LOWMASS[self.year]
 
         self.is_prepped = False
 

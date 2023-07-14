@@ -24,8 +24,8 @@ from higgs_dna.utils.misc_utils import load_config, update_dict, is_json_seriali
 from higgs_dna.constants import NOMINAL_TAG, CENTRAL_WEIGHT, BRANCHES
 from higgs_dna.utils.metis_utils import do_cmd
 
-condor=True
-#condor=False
+#condor=True
+condor=False
 
 def run_analysis(config):
     """
@@ -610,7 +610,9 @@ class AnalysisManager():
 
         logger.debug("[AnalysisManager : write_events] Writing output file '%s'." % (out_name))
         if condor:
-       	  awkward.to_parquet(events, out_name.split("/")[-1],list_to32=True) 
+       	  #awkward.to_parquet(events, out_name.split("/")[-1],list_to32=True) 
+       	  awkward.to_parquet(events, out_name.split("/")[-1]) 
         else:
-          awkward.to_parquet(events, out_name,list_to32=True) 
+          #awkward.to_parquet(events, out_name,list_to32=True) 
+          awkward.to_parquet(events, out_name) 
         return out_name

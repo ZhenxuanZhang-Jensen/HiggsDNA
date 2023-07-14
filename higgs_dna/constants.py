@@ -9,8 +9,8 @@ LUMI = {
     "2016" : 35.9,
     "2016UL_preVFP" : 19.48, # 2016 APV
     "2016UL_postVFP" : 16.76, # 2016
-    "2017" : 41.5,
-    "2018" : 59.8
+    "2017" : 41.54,
+    "2018" : 59.96
 }
 
 #from  https://twiki.cern.ch/twiki/bin/view/CMS/EgHLTPathDetails#HLT_Diphoton30PV_18PV_R9Id_AND_I

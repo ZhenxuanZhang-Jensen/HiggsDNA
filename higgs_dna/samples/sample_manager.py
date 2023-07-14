@@ -1,4 +1,5 @@
 import os
+import sys
 import glob
 import fnmatch
 import json
@@ -113,7 +114,11 @@ class SampleManager():
 
                 # Is this a list? Could be a list of hard-coded files (Option 1) or list of dirs (Option 2b) 
                 elif isinstance(info["files"][year], list):
-                    if info["files"][year][0].endswith(".root"): # Option 1
+                    if "*" in info["files"][year][0] and "*" in info["files"][year][1] : # directory with wildcards
+                        files = self.get_files_from_wildcard(info["files"][year][0], is_data) + self.get_files_from_wildcard(info["files"][year][1], is_data)
+                        grabbed_files = True
+
+                    elif info["files"][year][0].endswith(".root"): # Option 1
                         logger.debug("[SampleManager : get_samples] For sample '%s', year '%s', getting files from hard-coded list." % (sample, year))
                         files = [File(name = x, is_data = is_data) for x in info["files"][year]]
                         grabbed_files = True
@@ -195,13 +200,18 @@ class SampleManager():
                             files = files,
                             xs = xs,
                             bf = bf,
-                            process_id = s_idx,
+                            process_id = info["process_id"],
                             fpo = fpo,
                             scale1fb = scale1fb,
                             systematics = systematics
                         )
                 )
-                self.process_id_map[sample] = s_idx
+                #Check if process_id_map specified
+                if "process_id" in info.keys():
+                	self.process_id_map[sample] = info["process_id"]
+                else:
+                	logger.exception("[SampleManager : get_samples] Please specify process_id_map, otherwise it will be chaos!")
+                	raise ValueError()
 
         self.data = samples
         self.loaded_samples = True
@@ -293,6 +303,7 @@ class SampleManager():
         """
         #files_dir = glob.glob(info["files"][year] + "/*.root")
         files_dir = glob.glob(directory + "/*.root")
+        files_dir = glob.glob(directory + "/*/*/*/*.root")
         logger.debug("[SampleManager : get_files_from_local_dir] Found %d files in dir '%s'." % (len(files_dir), directory))
         files = []
         for f in files_dir:
