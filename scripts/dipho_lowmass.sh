@@ -1,0 +1,1 @@
+python scripts/run_analysis.py --config "metadata/analysis/ggtt_ygg_htt_lowmass/dipho_lowmass_prs.json" --log-level "DEBUG" --output_dir /ceph/cms/store/user/fsetti/HiggsDNA/13Feb2023_diphoton_lowmass/ --batch_system "condor"  --unretire_jobs --merge_outputs --reconfigure_jobs

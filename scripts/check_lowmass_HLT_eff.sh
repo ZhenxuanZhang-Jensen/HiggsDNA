@@ -1,0 +1,1 @@
+python scripts/run_analysis.py --config "metadata/analysis/ggtt_ygg_htt_lowmass/check_lowmass_HLT_eff.json" --log-level "DEBUG" --output_dir /ceph/cms/store/user/fsetti/HiggsDNA/21Feb2023_check_lowmass_HLT_eff/ --batch_system "condor" --unretire_jobs --merge_outputs --no_systematics

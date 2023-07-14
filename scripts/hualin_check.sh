@@ -1,0 +1,1 @@
+python scripts/run_analysis.py --config "metadata/analysis/check/hualin_check.json" --log-level "DEBUG" --output_dir /ceph/cms/store/user/fsetti/HiggsDNA/hualin_check/ --batch_system "condor"  --unretire_jobs --merge_outputs  
