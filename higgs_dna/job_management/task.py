@@ -410,11 +410,14 @@ class Task():
             json_list.append(json_path)
         # open each json file and search for the ""n_events" key
         n_events=0
+        n_positive_negative=0
+        n_yield=0
         for json_file in json_list:
             with open(json_file, 'r') as f:
                 data = json.load(f)
                 n_events=n_events+data['n_events']
-        weighted_n_events=n_events*weight
+                n_yield = n_yield+data['sum_weights']
+                n_positive_negative = n_positive_negative+data['n_p-2n_n']
         # Call the recursive function to search for files
         search_files(folder_path)
 
@@ -500,25 +503,27 @@ class Task():
             if key in dfs:
                 eventdf = eventdf+dfs[key]
         weighted_eventdf=eventdf*weight
-        weighted_eventdf.insert(0, 'event: initial event number', weighted_n_events)
-        # weighted_eventdf.to_csv(folder_path+"/weighted_event_yield.csv")
+        weighted_eventdf.insert(0, 'event: initial event number', n_yield)
         unweighted_eventdf=eventdf
         unweighted_eventdf.insert(0, 'event: initial event number', n_events)
-        # unweighted_eventdf.to_csv(folder_path+"/unweighted_event_yield.csv")
         df_objeff.insert(0, 'event: initial object efficiency', 1)
         df_eveeff.insert(0, 'event: initial event efficiency', 1)
-        # obj_columns = [col for col in df_eff.columns if 'object efficiency' in col]
-        # df_eff_obj = df_eff[obj_columns]
-        # event_columns = [col for col in df_eff.columns if 'event efficiency' in col]
-        # df_eff_event = df_eff[event_columns]
-        # df_objeff.to_csv(folder_path+"/cutflow_objeff.csv")
-        # df_eveeff.to_csv(folder_path+"/cutflow_eveeff.csv")
+        weighted_eventdf.insert(1, 'event: initial positive-2*negative event number', n_yield)
+        unweighted_eventdf.insert(1, 'event: initial positive-2*negative event number', n_positive_negative)
+        df_objeff.insert(1, 'event: initial positive-2*negative object efficiency', 1)
+        df_eveeff.insert(1, 'event: initial positive-2*negative event efficiency', 1)
+
         column_names = [name.replace("event number", "") for name in weighted_eventdf.columns]
         yield_df = pandas.DataFrame(columns=column_names)
         yield_df.loc["unweighted yield"] = unweighted_eventdf.values[0]
         yield_df.loc["weighted yield"] = weighted_eventdf.values[0]
         yield_df.loc["object efficiency"] = df_objeff.values[0]
         yield_df.loc["event efficiency"] = df_eveeff.values[0]
+        # new_row_data={'unweighted yield':yield_df['diphoton_tagger: diphoton_tagger event number']['object efficiency'],'weighted yield':yield_df['diphoton_tagger: diphoton_tagger ']['event efficiency'],'object efficiency':-999,'event efficiency':yield_df['diphoton_tagger: diphoton_tagger event number']['unweighted yield']}
+        new_column_data=[yield_df['diphoton_tagger: diphoton_tagger ']['object efficiency'],yield_df['diphoton_tagger: diphoton_tagger ']['event efficiency'],-999,yield_df['diphoton_tagger: diphoton_tagger ']['unweighted yield']]
+        yield_df=yield_df.drop('diphoton_tagger: diphoton_tagger ',axis=1)
+        yield_df.insert(loc=2, column='diphoton tagger positive-2*negative', value=new_column_data)
+
         yield_df.to_csv(folder_path+"/yield.csv")
 
         self.make_yield_table = True

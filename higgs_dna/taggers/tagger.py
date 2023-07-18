@@ -71,10 +71,40 @@ class Tagger():
             selection, syst_events_updated = self.get_selection(syst_tag, syst_events)
             self.selection[syst_tag] = selection
             self.events[syst_tag] = syst_events_updated
-
+            updated_event=syst_events_updated[self.selection[syst_tag]]
             logger.debug("[Tagger] %s : event set : %s : %d (%d) events before (after) selection" % (self.name, syst_tag, len(syst_events), len(syst_events_updated[self.selection[syst_tag]])))
+            logger.debug("[Tagger] %s : event set : %s : %d (%d) positive events num - 2 negtive events num events before (after) selection" % (self.name, syst_tag, (len(syst_events[syst_events['genWeight']>0])-2*len(syst_events[syst_events['genWeight']<0])), (len(updated_event[updated_event['genWeight']>0])-2*len(updated_event[updated_event['genWeight']<0]))))
+            self.diphoton_yield = awkward.sum(updated_event['genWeight'])
+            self.diphoton_events = len(updated_event[updated_event['genWeight']>0])-2*len(updated_event[updated_event['genWeight']<0])
+            logger.debug("[Tagger] %s : event set : %s : %d yield after selection" % (self.name, syst_tag ,awkward.sum(updated_event['genWeight'])))
+            diphoton_preselection_eff = self.diphoton_events/(len(syst_events[syst_events['genWeight']>0])-2*len(syst_events[syst_events['genWeight']<0]))
+            #objeff: after tagger selection, n(+events) = 2n(-events)
+            #eveff: after tagger selection, yield
+            #event_number: after tagger selection, eff using n(+events) = 2n(-events)
+            dic_eff = {'[object_eff] -'+self.name+': '+self.name+' object efficiency':(len(updated_event[updated_event['genWeight']>0])-2*len(updated_event[updated_event['genWeight']<0])),'[event_eff]   -'+self.name+': '+self.name+' event efficiency':self.diphoton_yield,'[event_number]   -'+self.name+': '+self.name+' event number' :diphoton_preselection_eff }   
+            file_path = self.output_dir + '/combined_eff.json' 
+            dic_eff_serializable = {key: float(value) for key, value in dic_eff.items()}
 
+            if os.path.exists(self.output_dir+'/combined_eff.json'):
+                file_path = self.output_dir + '/combined_eff.json'
 
+            with open(file_path, 'r') as file:
+                content = file.read()
+
+                content = content[:-1]
+
+            with open(file_path, 'w') as file:
+                file.write(content)
+                file.write(',')
+
+                json.dump(dic_eff_serializable, file, indent=4)
+                file.write('}')
+            with open(file_path, 'r') as file:
+                content = file.read()
+                if content.strip().endswith('}}'):
+                    content = content[:-1] + ']'
+                    with open(file_path, 'w') as file:
+                        file.write(content)
         return self.selection, self.events
 
 
@@ -226,6 +256,7 @@ class Tagger():
 
                 # Add closing bracket ']' for the new object
                 f.write(']')
+            
 
 
 

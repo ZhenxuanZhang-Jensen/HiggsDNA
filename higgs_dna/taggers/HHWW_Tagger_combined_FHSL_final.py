@@ -133,8 +133,8 @@ class HHWW_Preselection_FHSL(Tagger):
         # fake_pho,prompt_pho = gen_selections.gen_Hww_4q(events)        
             # gen_l1_p4, gen_q1_p4,gen_q2_p4 = gen_selections.gen_Hww_2q2l(events)        
         logger.debug("event fields: %s" %events.fields)
-        dummy_fatjet = awkward.full_like(events.FatJet[0],999)
-        dummy_lepton = awkward.full_like(events[awkward.num(events.Muon)==1][0],999)
+        # logger.debug('After Diphoton selection')
+
         # Noiso-Electrons
         electron_noiso_cut = lepton_selections.select_electrons(
             electrons=events.Electron,
@@ -465,10 +465,10 @@ class HHWW_Preselection_FHSL(Tagger):
         # add semi-boosted FH -2 category with (==1 AK8 jets && WvsQCD > 0.94 && >=2 AK4 jets)
         # need the first fatjet with WvsQCD > 0.5
         selection_fatjet_WvsQCD_SB_1F = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.94)&(fatjets.Hqqqq_vsQCDTop<=0.4)]) == 1
-        FH_1Wfatjet_cat = (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted)&(FH_2Wfatjet_cat)&(n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_fatjets ==1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SB_1F) # 1 jet for FH
+        FH_1Wfatjet_cat = (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted)&(~FH_2Wfatjet_cat)&(n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_fatjets >=1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SB_1F) # 1 jet for FH
         # ----------------------------------------------------------------------------------------------------#
         # add resolved FH category with (>=4 AK4 jets )
-        FH_fully_resovled_cat =(~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted)&(FH_2Wfatjet_cat)&(~FH_1Wfatjet_cat)& (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_jets>=4) & (n_fatjets == 0)# 4 jets for FH
+        FH_fully_resovled_cat =(~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted) & (~FH_2Wfatjet_cat)&(~FH_1Wfatjet_cat)& (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_jets>=4)# 4 jets for FH
 
       
         flatten_n_jets = awkward.num(jets.pt)
