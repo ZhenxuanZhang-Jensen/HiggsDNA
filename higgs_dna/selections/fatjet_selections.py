@@ -10,7 +10,7 @@ DEFAULT_FATJETS = {
         "Hqqqq_vsQCDTop": -999 
 }
 
-def select_fatjets(fatjets, options, clean, name = "none", tagger = None): 
+def select_fatjets(fatjets, subjets, options, clean, name = "none", tagger = None): 
     """
 
     """
@@ -25,18 +25,17 @@ def select_fatjets(fatjets, options, clean, name = "none", tagger = None):
     # H_jet_cut = fatjets.Hqqqq_qqlv_vsQCDTop > options["Hqqqq_qqlv_vsQCDTop"]
     # print("Hqqqq_qqlv_vsQCDTop cut value is : ",options["Hqqqq_qqlv_vsQCDTop"])
     print("Hqqqq_vsQCDTop cut value is : ",options["Hqqqq_vsQCDTop"])
-    # if options["tau2_tau1"] != 0:
-    #     tau2_tau1_cut = ((fatjets.tau2 / fatjets.tau1) < options["tau2_tau1"])
-    # else:
-    #     tau2_tau1_cut = fatjets.pt > 0
-    # print("tau2_tau1", options["tau2_tau1"])
-
-    all_cuts = standard_cuts & (H_jet_cut)
+    H_jet_cut=awkward.fill_none(awkward.pad_none(H_jet_cut,1,axis=1),False,axis=-1)
+    subjets_cut = ((awkward.fill_none(awkward.pad_none(subjets.pt,1,axis=1),-999,axis=-1)[awkward.fill_none(awkward.pad_none(fatjets.subJetIdx1,1,axis=1),0,axis=-1)]>20)==True)&((awkward.fill_none(awkward.pad_none(subjets.pt,1,axis=1),-999,axis=-1)[awkward.fill_none(awkward.pad_none(fatjets.subJetIdx2,1,axis=1),0,axis=-1)]>20)==True)
+    
+    standard_cuts=awkward.fill_none(awkward.pad_none(standard_cuts,1,axis=1),False,axis=-1)
+    all_cuts = standard_cuts & (H_jet_cut) & (subjets_cut)
+    # all_cuts = standard_cuts & (H_jet_cut)
 
     if tagger is not None:
         tagger.register_cuts(
-            names = ["standard_cuts", "H_jet_cut", "all_cuts"],
-            results = [standard_cuts, H_jet_cut, all_cuts],
+            names = ["standard_cuts", "H_jet_cut","SubJet_cut", "all_cuts"],
+            results = [standard_cuts, H_jet_cut,subjets_cut, all_cuts],
             cut_type = name
         )
 
