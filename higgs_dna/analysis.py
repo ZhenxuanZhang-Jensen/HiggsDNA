@@ -51,10 +51,15 @@ def run_analysis(config):
 
     # Record n_events and sum_weights for scale1fb calculation
     job_summary["n_events"] = len(events)
-    job_summary['n_positive_events'] = len(events[events['genWeight'] > 0])
-    job_summary['n_negative_events'] = len(events[events['genWeight'] < 0])
-    job_summary["n_p-2n_n"] = job_summary['n_positive_events']-2*job_summary['n_negative_events']
-    job_summary["sum_weights"] = sum_weights
+    logger.debug(config['sample'].keys())
+    if not config['sample']['is_data'] :    
+        job_summary['n_positive_events'] = len(events[events['genWeight'] > 0])
+        job_summary['n_negative_events'] = len(events[events['genWeight'] < 0])
+        job_summary["n_p-2n_n"] = job_summary['n_positive_events']-2*job_summary['n_negative_events']
+        job_summary["sum_weights"] = sum_weights
+    else:
+        job_summary["sum_weights"] = sum_weights
+
     t_elapsed_load = time.time() - t_start_load
 
     ### 2. Add relevant sample metadata to events ###
@@ -511,11 +516,16 @@ class AnalysisManager():
 
 
         events = awkward.concatenate(events)
-        logger.debug("[AnalysisManager : load_events] Original %d events from files." % len(events))
-        original_num = len(events[events['genWeight']>0]) - 2 * len(events[events['genWeight']<0])
-        logger.debug("[AnalysisManager : load_events] Original positive events num - 2 negtive events num %d events from files." % original_num)
-        original_yield = awkward.sum(events['genWeight'])
-        logger.debug("[AnalysisManager : load_events] Original %d yield from files." % original_yield)
+        if 'genWeight' in events:
+            logger.debug("[AnalysisManager : load_events] Original %d events from files." % len(events))
+            original_num = len(events[events['genWeight']>0]) - 2 * len(events[events['genWeight']<0])
+            logger.debug("[AnalysisManager : load_events] Original positive events num - 2 negtive events num %d events from files." % original_num)
+            original_yield = awkward.sum(events['genWeight'])
+            logger.debug("[AnalysisManager : load_events] Original %d yield from files." % original_yield)
+        else:
+            logger.debug("[AnalysisManager : load_events] Original %d events from files." % len(events))
+            original_num = len(events)    
+        
         return events, sum_weights
 
 
