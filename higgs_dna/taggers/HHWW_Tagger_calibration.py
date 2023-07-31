@@ -339,7 +339,7 @@ class HHWW_Tagger_calibration(Tagger):
         category_cut = (category == 1)
         awkward_utils.add_field(events, "category", category) 
 
-        presel_cut = (photon_id_cut) & (category_cut)
+        presel_cut = (category_cut)
 
         self.register_cuts(
             names=["Photon id Selection","category_cut"],

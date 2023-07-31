@@ -19,7 +19,7 @@ def main():
     # Apply mask
     mask = ((data["Diphoton_mass"] < 115) | (data["Diphoton_mass"] > 135))
     data_sideband = data[mask]
-    boosted_mass = ["M1000","M1100","M1200","M1300","M1400","M1500","M1600","M1700","M1800","M1900","M2000","M2200","M2400","M2600","M2800","M3000"]
+    boosted_mass = ["M1000"]
     # boosted_mass_test = ["M250","M260"]
     signal_mass_points = boosted_mass
     signal_scores_dict = {}

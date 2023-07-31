@@ -1,0 +1,1 @@
+python assess.py --input_dir "/eos/user/z/zhenxuan/hhwwgg_parquet/SL_channel/hhwwgg_test_signal_SL" --assess_systematics --output_dir "wwgg_plots"
