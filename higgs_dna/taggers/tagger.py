@@ -236,7 +236,9 @@ class Tagger():
                     combined_eff = float(n_candi_event) / float(len(_tmp_cut))
                     # combined_candieff = float(awkward.sum(_tmp_cut)) / float(awkward.count(_tmp_cut))
             else:
+                
                 combined_eff = 0.
+                n_candi_event=0.
             self.cut_summary[cut_type][_tmp_name]={
                 "combined eff": float(combined_eff)
             }
@@ -245,11 +247,13 @@ class Tagger():
             output_dir = self.output_dir
             # Check if the file already exists
             if os.path.exists(output_dir+'/combined_eff.json'):
+                file_size = os.path.getsize(output_dir+'/combined_eff.json')
+                if file_size > 0:
                 # Remove the closing bracket '}' from the existing file
-                with open(output_dir+'/combined_eff.json', 'rb+') as f:
-                    f.seek(-1, os.SEEK_END)
-                    f.truncate()
-
+                    with open(output_dir+'/combined_eff.json', 'rb+') as f:
+                        f.seek(-1, os.SEEK_END)
+                        f.truncate()
+    
             # Open the file in append mode
             with open(output_dir+'/combined_eff.json', 'a') as f:
                 # Get the file size

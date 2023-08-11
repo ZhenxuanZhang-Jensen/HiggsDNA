@@ -438,7 +438,7 @@ class Task():
                 with open(file, 'r') as f:
                         # Load the JSON data from the file
                     data = json.load(f)
-
+                    logger.debug(f)
                         # Extend the data_list with the dictionaries from each file
                     data_list.extend(data)
 
@@ -524,13 +524,15 @@ class Task():
             new_column_data=[yield_df['diphoton_tagger: diphoton_tagger ']['object efficiency'],yield_df['diphoton_tagger: diphoton_tagger ']['event efficiency'],-999,yield_df['diphoton_tagger: diphoton_tagger ']['unweighted yield']]
             yield_df=yield_df.drop('diphoton_tagger: diphoton_tagger ',axis=1)
             yield_df.insert(loc=2, column='diphoton tagger positive-2*negative', value=new_column_data)
-        else:
+        elif "data" in self.name:
+        
             n_events=0
             
             for json_file in json_list:
                 with open(json_file, 'r') as f:
                     data = json.load(f)
                     n_events=n_events+data['n_events']
+
             weighted_n_events=n_events*weight
             # Call the recursive function to search for files
             search_files(folder_path)
@@ -550,6 +552,7 @@ class Task():
                 with open(file, 'r') as f:
                         # Load the JSON data from the file
                     data = json.load(f)
+                    logger.debug(f)
 
                         # Extend the data_list with the dictionaries from each file
                     data_list.extend(data)
