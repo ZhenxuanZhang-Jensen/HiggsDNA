@@ -171,6 +171,8 @@ class Job():
         lines.append("with open(config_file, 'r') as f_in:")
         lines.append("    config = json.load(f_in)")
         lines.append("")
+        lines.append("with open('%s/combined_eff.json','w') as f:" % self.dir)
+        lines.append("    pass")
         lines.append("logger.debug(config_file)")
         lines.append("run_analysis(config)") # FIXME: not compatible if another function is specified
 
