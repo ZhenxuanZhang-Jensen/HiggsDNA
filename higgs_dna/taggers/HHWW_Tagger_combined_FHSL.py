@@ -505,7 +505,7 @@ class HHWW_Preselection_FHSL(Tagger):
         FH_1Wfatjet_cat = (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted)&(~FH_2Wfatjet_cat)&(n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_fatjets >=1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SB_1F)#&((awkward.num(selection_subjet)==True)==1) # 1 jet for FH
         # ----------------------------------------------------------------------------------------------------#
         # add resolved FH category with (>=4 AK4 jets )
-        FH_fully_resovled_cat =(~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted) & (~FH_2Wfatjet_cat)&(~FH_1Wfatjet_cat)& (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_jets>=4)# 4 jets for FH
+        FH_fully_resovled_cat =(~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted) & (~FH_2Wfatjet_cat)&(~FH_1Wfatjet_cat)& (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_jets>=2)# 4 jets for FH
 
       
         flatten_n_jets = awkward.num(jets.pt)
