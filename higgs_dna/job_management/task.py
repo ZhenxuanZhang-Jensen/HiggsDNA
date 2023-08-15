@@ -394,6 +394,7 @@ class Task():
             for root, dirs, files in os.walk(directory):
                 for file in files:
                     if "combined_eff.json" in file:
+                        
                         file_path = os.path.join(root, file)
                         file_paths.append(file_path)
 
@@ -436,11 +437,13 @@ class Task():
 
                 # File names
                 with open(file, 'r') as f:
+                    file_size = os.path.getsize(file)
+                    if file_size != 0:
                         # Load the JSON data from the file
-                    data = json.load(f)
-                    logger.debug(f)
+                        data = json.load(f)
+                        logger.debug(f)
                         # Extend the data_list with the dictionaries from each file
-                    data_list.extend(data)
+                        data_list.extend(data)
 
                 # Initialize empty lists to store the values
                 obj_eff_field_names = []

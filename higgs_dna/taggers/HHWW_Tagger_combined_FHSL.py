@@ -125,7 +125,7 @@ DEFAULT_OPTIONS = {
         "dr_electrons": 0.8,
         "dr_muons": 0.8
     },
-    "photon_id": -0.7,
+    "photon_id": -0.9,
     "btag_wp": {
         "2016": 0.3093,
         "2017": 0.3040,
@@ -483,6 +483,8 @@ class HHWW_Preselection_FHSL(Tagger):
         #attention: Semi leptonic channel                
         # add leptonic boosted category with (>=1 AK8 jets && WvsQCD > 0.94)
         # the the first fatjet with WvsQCD > 0.94
+        selection_diphoton_pt=events.Diphoton.pt>300
+
         selection_fatjet_WvsQCD_SL_cat0 = awkward.num(fatjets.particleNet_WvsQCD[(fatjets.particleNet_WvsQCD > 0.94)]) >= 1
         SL_boosted_cat = (n_leptons_iso == 1) & (selection_fatjet_WvsQCD_SL_cat0) # boosted 1 jet for SL channel with isolated lep
         # add Leptonic resolved category with (>=2 AK4 jets && WvsQCD < 0.94)
@@ -496,7 +498,7 @@ class HHWW_Preselection_FHSL(Tagger):
         selection_lepton_merged_SL_cat0 = awkward.num(fatjets.pt[((fatjets.pt > 200)&(dR_lep_fatjet))]) >= 1
         # selection_lepton_merged_SL_cat0 = awkward.num(fatjets.pt[((fatjets.pt > 200)&(fatjets.dphi_MET<1)&(dR_lep_fatjet))]) >= 1
         
-        SL_merged_boosted_cat = (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (n_leptons_noiso == 1) & (n_leptons_iso==0)  & (selection_lepton_merged_SL_cat0)  # & (awkward.num((dphi_MET_fatjet==True)>=1)) # merged boosted 1 jet for SL channel wo isolated lep
+        SL_merged_boosted_cat = (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (n_leptons_noiso == 1) & (n_leptons_iso==0)  & (selection_lepton_merged_SL_cat0)&(selection_diphoton_pt)  # & (awkward.num((dphi_MET_fatjet==True)>=1)) # merged boosted 1 jet for SL channel wo isolated lep
         # ----------------------------------------------------------------------------------------------------#
         # If no lepton
         #attention: Fully hadronic channel
@@ -505,7 +507,8 @@ class HHWW_Preselection_FHSL(Tagger):
       
         selection_fatjet_HvsQCD_FH_cat0 = awkward.num(fatjets_H.Hqqqq_vsQCDTop[(fatjets_H.Hqqqq_vsQCDTop > 0.4)]) >= 1
         # selection_fatjet_HvsQCD_FH_cat0 = awkward.num(fatjets_H.Hqqqq_vsQCDTop[(fatjets_H.Hqqqq_vsQCDTop > 0.4)&(fatjets_H.dphi_puppiMET>2)]) >= 1
-        FH_boosted = (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (n_leptons_iso == 0) & (n_leptons_noiso == 0) & (n_fatjets_H >=1) & (selection_fatjet_HvsQCD_FH_cat0)# &(awkward.num((dphi_MET_fatjet==True)==0)) # boosted 1 jet for SL and FH channel wo isolated lep
+  
+        FH_boosted = (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (n_leptons_iso == 0) & (n_leptons_noiso == 0) & (n_fatjets_H >=1) & (selection_fatjet_HvsQCD_FH_cat0)&(selection_diphoton_pt)# &(awkward.num((dphi_MET_fatjet==True)==0)) # boosted 1 jet for SL and FH channel wo isolated lep
         # ----------------------------------------------------------------------------------------------------#
         # add semi-boosted FH -1 category with (>=2 AK8 jets && WvsQCD > 0.94)
         # need the first two fatjets with WvsQCD > 0.5

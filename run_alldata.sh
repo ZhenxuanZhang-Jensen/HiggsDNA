@@ -5,7 +5,20 @@ WhichSamples=${1}
 
 if [ ${WhichSamples} -eq 0 ]
   then
-    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_data_FHSL.json" --sample_list "UL17_dataB","UL17_dataC","UL17_dataD","UL17_dataE","UL17_dataF" --output_dir "/eos/user/s/shsong/HHWWgg/parquet/data" --batch_system "condor" --merge_outputs --yield_table
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_data_FHSL.json" --sample_list "UL17_dataB","UL17_dataC","UL17_dataD","UL17_dataE","UL17_dataF" --output_dir "/eos/user/s/shsong/HH_WWgg/parquet/data" --batch_system "condor" --merge_outputs --yield_table
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HH_WWgg/parquet/bkg/DiphotonJets/" --sample_list "UL17_DiPhotonJetsBox_M40_80","UL17_DiPhotonJetsBox_MGG_80toInf" --yield_table --batch_system "condor"
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HH_WWgg/parquet/bkg/GJets/" --sample_list "UL17_GJet_Pt_20to40_DoubleEMEnriched_MGG_80toInf","UL17_GJet_Pt_20toInf_DoubleEMEnriched_MGG_40to80","UL17_GJet_Pt_40toInf_DoubleEMEnriched_MGG_80toInf" --yield_table --batch_system "condor"
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HH_WWgg/parquet/bkg/TTbar/" --sample_list "UL17_TTGJets","UL17_TTJets","UL17_TTGG_0Jets","UL17_ttWJets" --yield_table --batch_system "condor"
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HH_WWgg/parquet/bkg/singleHiggs/" --sample_list "UL17_GluGluHToGG","UL17_VBFHToGG","UL17_VHToGG","UL17_ttHJetToGG" --yield_table --batch_system "condor"
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HH_WWgg/parquet/bkg/WJets/" --sample_list "UL17_W1JetsToLNu","UL17_W2JetsToLNu","UL17_W3JetsToLNu","UL17_W4JetsToLNu","UL17_WWG","UL17_WWTo1L1Nu2Q_4f" --yield_table --batch_system "condor"
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HH_WWgg/parquet/bkg/WJetsToQQ" --sample_list "WJetsToQQ_HT-200to400","WJetsToQQ_HT-400to600","WJetsToQQ_HT-600to800","WJetsToQQ_HT-800toInf" --yield_table --batch_system "condor"
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HH_WWgg/parquet/bkg/QCD/" --sample_list "UL17_QCD_Pt-30to40_MGG-80toInf","UL17_QCD_Pt-30toInf_MGG-40to80","UL17_QCD_Pt-40ToInf_MGG-80ToInf" --yield_table --batch_system "condor"
+
+    rerunphoton mva id from -0.9
+
+
+
+
     python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_data_FHSL.json" --sample_list "UL17_dataB","UL17_dataC","UL17_dataD","UL17_dataE","UL17_dataF" --output_dir "/eos/user/s/shsong/HHWWgg/parquet/data_v2" --batch_system "condor" --merge_outputs --yield_table
     python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_data_FHSL.json" --sample_list "UL17_dataB","UL17_dataC","UL17_dataD","UL17_dataE","UL17_dataF" --output_dir "/eos/user/s/shsong/HHWWgg/parquet/data_4jets" --batch_system "condor" --merge_outputs --yield_table
     python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --sample_list "UL17_R_gghh_M-1000","UL17_R_gghh_M-2000","UL17_R_gghh_M-3000","UL17_R_gghh_SL_M-1000","UL17_R_gghh_SL_M-2000","UL17_R_gghh_SL_M-3000" --output_dir "/eos/user/s/shsong/HHWWgg/parquet/FHSLsig" --batch_system "condor" --yield_table
@@ -18,7 +31,7 @@ if [ ${WhichSamples} -eq 0 ]
     python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HHWWgg/parquet/bkg/QCD/" --sample_list "UL17_QCD_Pt-30to40_MGG-80toInf","UL17_QCD_Pt-30toInf_MGG-40to80","UL17_QCD_Pt-40ToInf_MGG-80ToInf" --yield_table --batch_system "condor"
     python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HHWWgg/parquet/bkg/WJets/" --sample_list "UL17_W1JetsToLNu","UL17_W2JetsToLNu","UL17_W3JetsToLNu","UL17_W4JetsToLNu","UL17_WGGJets","UL17_WGJJToLNu_EWK_QCD","UL17_WWG","UL17_WWTo1L1Nu2Q_4f" --yield_table --batch_system "condor"
     
-      python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HHWWgg/parquet/test" --sample_list "UL17_R_gghh_SL_M-3000" --yield_table --short
+      python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HH_WWgg/parquet/test" --sample_list "UL17_R_gghh_SL_M-3000" --yield_table --short
 
 
 
