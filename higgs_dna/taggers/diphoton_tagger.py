@@ -187,7 +187,7 @@ class DiphotonTagger(Tagger):
 
 
         # diphotons[("Diphoton","genPartIdx")] = awkward.concatenate([diphotons[("SubleadPhoton","genPartFlav")].tolist(),diphotons[("LeadPhoton","genPartFlav")].tolist()],axis=1)
-
+# 
         # diphotons["genPartIdx"]=awkward.concatenate([diphotons[("SubleadPhoton","genPartFlav")],diphotons[("LeadPhoton","genPartFlav")]],axis=1)
         # Add lead/sublead photons to additionally be accessible together as diphotons.Diphoton.Photon
         # This is in principle a bit redundant, but makes many systematics and selections much more convenient to implement.
