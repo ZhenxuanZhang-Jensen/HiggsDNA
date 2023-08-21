@@ -180,10 +180,10 @@ class DiphotonTagger(Tagger):
         # Add sumPt and dR for convenience
         diphotons[("Diphoton", "sumPt")] = diphotons.LeadPhoton.pt + diphotons.SubleadPhoton.pt
         diphotons[("Diphoton", "dR")] = diphotons.LeadPhoton.deltaR(diphotons.SubleadPhoton)   
-        # diphotons[("LeadPhoton","genPartFlav")] = diphotons.LeadPhoton.genPartFlav
-        # diphotons[("SubleadPhoton","genPartFlav")] = diphotons.SubleadPhoton.genPartFlav
-        # diphotons[("LeadPhoton","genPartIdx")] = diphotons.LeadPhoton.genPartIdx
-        # diphotons[("SubleadPhoton","genPartIdx")] = diphotons.SubleadPhoton.genPartIdx
+        diphotons[("LeadPhoton","genPartFlav")] = diphotons.LeadPhoton.genPartFlav
+        diphotons[("SubleadPhoton","genPartFlav")] = diphotons.SubleadPhoton.genPartFlav
+        diphotons[("LeadPhoton","genPartIdx")] = diphotons.LeadPhoton.genPartIdx
+        diphotons[("SubleadPhoton","genPartIdx")] = diphotons.SubleadPhoton.genPartIdx
 
 
         # diphotons[("Diphoton","genPartIdx")] = awkward.concatenate([diphotons[("SubleadPhoton","genPartFlav")].tolist(),diphotons[("LeadPhoton","genPartFlav")].tolist()],axis=1)

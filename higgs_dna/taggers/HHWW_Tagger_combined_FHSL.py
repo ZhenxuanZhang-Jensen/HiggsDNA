@@ -511,15 +511,17 @@ class HHWW_Preselection_FHSL(Tagger):
         # ----------------------------------------------------------------------------------------------------#
         # add semi-boosted FH -1 category with (>=2 AK8 jets && WvsQCD > 0.81)
         # need the first two fatjets with WvsQCD > 0.5
-        selection_fatjet_WvsQCD_SB_2F = awkward.num(fatjets.WvsQCDMD[(fatjets.WvsQCDMD > 0.58)&(fatjets.Hqqqq_vsQCDTop<=0.4)]) >= 2
+        selection_fatjet_WvsQCD_SB_2F = awkward.num(fatjets.WvsQCDMD[(fatjets.WvsQCDMD > 0.81)&(fatjets.Hqqqq_vsQCDTop<=0.4)]) >= 2
     
         FH_2Wfatjet_cat = (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted) & (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_fatjets >=2) & (selection_fatjet_WvsQCD_SB_2F)# 2 jets for FH
         # ----------------------------------------------------------------------------------------------------#
         # add semi-boosted FH -2 category with (==1 AK8 jets && WvsQCD > 0.81 && >=2 AK4 jets)
         # need the first fatjet with WvsQCD > 0.5
-        selection_fatjet_WvsQCD_SB_1F = awkward.num(fatjets.WvsQCDMD[(fatjets.WvsQCDMD > 0.58)&(fatjets.Hqqqq_vsQCDTop<=0.4)]) == 1
+
+
+        selection_fatjet_WvsQCD_SB_1F = awkward.num(fatjets.WvsQCDMD[(fatjets.WvsQCDMD > 0.81)&(fatjets.Hqqqq_vsQCDTop<=0.4)]) == 1
     
-        FH_1Wfatjet_cat = (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted)&(~FH_2Wfatjet_cat)&(n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_fatjets >=1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SB_1F)#&((awkward.num(selection_subjet)==True)==1) # 1 jet for FH
+        FH_1Wfatjet_cat = (events.Diphoton.pt>200)&(~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted)&(~FH_2Wfatjet_cat)&(n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_fatjets >=1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SB_1F)#&((awkward.num(selection_subjet)==True)==1) # 1 jet for FH
         # ----------------------------------------------------------------------------------------------------#
         # add resolved FH category with (>=4 AK4 jets )
         FH_fully_resovled_cat =(~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted) & (~FH_2Wfatjet_cat)&(~FH_1Wfatjet_cat)& (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_jets>=2)#will categorise n jets for FH resolved 
