@@ -1,0 +1,62 @@
+{
+    "DY" : {
+				"process_id": 17,
+        "xs" : 5765.4,
+        "files" : {
+            "2016UL_postVFP" 	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/DY/*2016.root",
+            "2016UL_preVFP" 	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/DY/*2016_APV.root",
+            "2017" 						: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/DY/*2017.root",
+            "2018" 						: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/DY/*2018.root"
+        },
+        "fpo" : 20
+    },
+
+    "WW" : {
+        "process_id": 14,
+        "xs" : 75.8,
+        "files" : {
+            "2016UL_postVFP" 	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/WW/*2016.root",
+            "2016UL_preVFP" 	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/WW/*2016_APV.root",
+            "2017" 						: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/WW/*2017.root",
+            "2018" 						: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/WW/*2018.root"
+        },
+        "fpo" : 10
+    },
+
+    "WZ" : {
+        "process_id": 15,
+        "xs" : 27.6  ,
+        "files" : {
+            "2016UL_postVFP" 	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/WZ/*2016.root",
+            "2016UL_preVFP" 	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/WZ/*2016_APV.root",
+            "2017" 						: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/WZ/*2017.root",
+            "2018" 						: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/WZ/*2018.root"
+        },
+        "fpo" : 10
+    },
+
+    "ZZ" : {
+        "process_id": 16,
+        "xs" : 12.14,
+        "files" : {
+            "2016UL_postVFP" 	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/ZZ/*2016.root",
+            "2016UL_preVFP" 	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/ZZ/*2016_APV.root",
+            "2017" 						: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/ZZ/*2017.root",
+            "2018" 						: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/ZZ/*2018.root"
+        },
+        "fpo" : 10
+    },
+    "Data": {
+				"process_id": 0,
+        "files": {
+            "2016UL_postVFP" 	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/Data/*2016.root",
+            "2016UL_preVFP" 	: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/Data/*2016_APV.root",
+            "2017" 						: "/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/Data/*2017.root",
+            "2018" 						: [ 
+																"/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study/Data/2018/*2018.root", 
+																"/ceph/cms/store/user/fsetti/c++_looper_ul_output/10Feb2023_relic_DY_study_part2/Data/2018/*2018.root" 
+															]
+        },
+        "fpo": 10
+    }
+}

@@ -400,7 +400,6 @@ class CondorJob(Job):
         replacement_map["OUTPUT"] = self.log_output_dir + "/$(Cluster).$(Process).out" 
         replacement_map["ERROR"] = self.log_output_dir + "/$(Cluster).$(Process).err" 
         replacement_map["LOG"] = self.log_output_dir + "/$(Cluster).$(Process).log" 
-
         replacement_map["BATCH_NAME"] = self.name
 
         # memory, disk, cpu

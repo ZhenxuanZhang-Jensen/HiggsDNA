@@ -19,10 +19,13 @@ from higgs_dna.job_management.managers import LocalManager, CondorManager
 from higgs_dna.job_management.task import Task
 from higgs_dna.systematics.systematics_producer import SystematicsProducer
 from higgs_dna.taggers.tag_sequence import TagSequence
+from higgs_dna.taggers.golden_json_tagger import GoldenJsonTagger
 from higgs_dna.utils.misc_utils import load_config, update_dict, is_json_serializable
 from higgs_dna.constants import NOMINAL_TAG, CENTRAL_WEIGHT, BRANCHES
 from higgs_dna.utils.metis_utils import do_cmd
 
+#condor=True
+condor=False
 
 def run_analysis(config):
     """
@@ -47,7 +50,7 @@ def run_analysis(config):
     }
     ### 1. Load events ###
     t_start_load = time.time()
-    events, sum_weights = AnalysisManager.load_events(config["files"], config["branches"])
+    events, sum_weights = AnalysisManager.load_events(config["files"], config["branches"], config["sample"])
 
     # Record n_events and sum_weights for scale1fb calculation
     job_summary["n_events"] = len(events)
@@ -59,6 +62,7 @@ def run_analysis(config):
         job_summary["sum_weights"] = sum_weights
     else:
         job_summary["sum_weights"] = sum_weights
+    job_summary["outputs"] = {}
 
     t_elapsed_load = time.time() - t_start_load
 
@@ -105,12 +109,95 @@ def run_analysis(config):
     # So, check if the relevant directories exist to save outputs in their full path and save them to current dir if not.
     if not os.path.exists(config["dir"]):
         output_dir = ""
-        config["summary_file"] = os.path.split(config["summary_file"])[-1] 
-    else: 
+        config["summary_file"] = os.path.split(config["summary_file"])[-1]
+    else:
         output_dir = os.path.abspath(config["dir"]) + "/"
     output_name = output_dir + config["output_name"]
-    
-    job_summary["outputs"] = AnalysisManager.write_events(events, config["variables_of_interest"], output_name) 
+
+
+
+    if events is None: # sometimes this happens when we don't have any data events passing golden json
+        job_summary["n_events"] = 0
+        job_summary["n_events_selected"][NOMINAL_TAG] = 0
+        t_elapsed_samples = 0
+        t_elapsed_syst = 0
+        t_elapsed_taggers = 0
+
+    else:
+        job_summary["n_events"] = len(events)
+        # Optional branch mapping in case you have different naming schemes, e.g. you want MET_T1smear_pt to be recast as MET_pt
+        # Can be separate for data and MC
+        if "branch_map" in config.keys():
+            if config["sample"]["is_data"]:
+                branch_map = config["branch_map"]["data"]
+            else:
+                branch_map = config["branch_map"]["mc"]
+
+            if branch_map:
+                for x in branch_map:
+                    logger.debug("[run_analysis] Replacing %s with %s." % (str(x[0]), str(x[1])))
+                    if isinstance(x[0], list):
+                        events[tuple(x[0])] = events[tuple(x[1])]
+                    else:
+                        events[x[0]] = events[x[1]]
+
+        ### 2. Add relevant sample metadata to events ###
+        t_start_samples = time.time()
+        sample = Sample(**config["sample"])
+        events = sample.prep(events)
+        t_elapsed_samples = time.time() - t_start_samples
+
+        ### 3. Produce systematics ###
+        systematics_producer = SystematicsProducer(
+            name = config["name"],
+            options = config["systematics"],
+            sample = sample
+        )
+        events = systematics_producer.produce_weights(events)
+
+        tag_sequence = TagSequence(
+            name = config["name"],
+            tag_list = config["tag_sequence"],
+            sample = sample
+        ) 
+
+        t_elapsed_syst = 0.
+        t_elapsed_taggers = 0.
+
+        # Systematics variations
+        for syst_name, ic_syst in systematics_producer.independent_collections.items():
+            if not systematics_producer.do_variations:
+                continue
+            current_time = time.time()
+            ics = ic_syst.produce(events)
+            t_elapsed_syst += time.time() - current_time        
+
+            for ic_name, events_ic in ics.items():
+                # If the IC modifies the nominal value of a branch, update this in the nominal events
+                if ic_name == "nominal":
+                    events = events_ic
+                    continue
+
+                # Otherwise, this is an up/down variation
+                syst_tag = syst_name + "_" + ic_name
+                
+                current_time = time.time()
+                events_ic, tag_idx_map = tag_sequence.run(events_ic, syst_tag)
+                t_elapsed_taggers += time.time() - current_time
+
+                current_time = time.time()
+                events_ic = systematics_producer.apply_remaining_weight_systs(events_ic, syst_tag, tag_idx_map)
+                t_elapsed_syst += time.time() - current_time
+
+                job_summary["outputs"][syst_tag] = AnalysisManager.write_events(events_ic, config["variables_of_interest"], output_name, syst_tag)       
+                job_summary["n_events_selected"][syst_tag] = len(events_ic) 
+
+        # Nominal events
+        events, tag_idx_map = tag_sequence.run(events, NOMINAL_TAG)
+        events = systematics_producer.apply_remaining_weight_systs(events, NOMINAL_TAG, tag_idx_map)
+        job_summary["outputs"][NOMINAL_TAG] = AnalysisManager.write_events(events, config["variables_of_interest"], output_name, NOMINAL_TAG)
+        job_summary["n_events_selected"][NOMINAL_TAG] = len(events)
+
     t_elapsed = time.time() - t_start
 
     # Calculate performance metrics
@@ -119,10 +206,15 @@ def run_analysis(config):
     job_summary["time_frac_samples"] = t_elapsed_samples / t_elapsed
     job_summary["time_frac_syst"] = t_elapsed_syst / t_elapsed
     job_summary["time_frac_taggers"] = t_elapsed_taggers / t_elapsed
+
     job_summary["successful"] = True
 
     # Dump json summary
-    with open(config["summary_file"], "w") as f_out:
+    if condor:
+      with open(config["summary_file"].split("/")[-1], "w") as f_out:
+        json.dump(job_summary, f_out, sort_keys = True, indent = 4)
+    else:
+      with open(config["summary_file"], "w") as f_out:
         json.dump(job_summary, f_out, sort_keys = True, indent = 4)
     return job_summary
 
@@ -239,6 +331,10 @@ class AnalysisManager():
                 self.jobs_manager = CondorManager(output_dir = self.output_dir)
             elif self.batch_system.lower() == "local":
                 self.jobs_manager = LocalManager(output_dir = self.output_dir, n_cores = self.n_cores)
+
+            # Check if --no_systematics option was given
+            if self.no_systematics:
+                self.systematics["no_systematics"] = True
 
             # Create samples manager
             self.sample_manager = SampleManager(**self.samples)
@@ -403,6 +499,8 @@ class AnalysisManager():
             else:
                 task_branches += BRANCHES["mc"][sample.year] + BRANCHES["mc"]["any"]
 
+            task_branches = list(set(task_branches))
+
             # Make Sample instance json-able so we can save it in job config files
             jsonable_sample = copy.deepcopy(sample)
             jsonable_sample.files = [x.__dict__ for x in jsonable_sample.files]
@@ -413,7 +511,10 @@ class AnalysisManager():
             }
             for x in ["systematics", "tag_sequence", "function", "variables_of_interest"]:
                 config[x] = copy.deepcopy(getattr(self, x))
-                    
+
+            if "branch_map" in self.config.keys():
+                config["branch_map"] = copy.deepcopy(self.config["branch_map"])
+
             self.jobs_manager.add_task(
                     Task(
                         name = sample.name,
@@ -421,6 +522,7 @@ class AnalysisManager():
                         files = sample.files,
                         config = config,
                         fpo = self.fpo if self.fpo is not None else sample.fpo, 
+                        scale1fb = sample.scale1fb,
                         max_jobs = 1 if self.short else -1
                     )
             )
@@ -457,7 +559,7 @@ class AnalysisManager():
 
 
     @staticmethod
-    def load_events(files, branches):
+    def load_events(files, branches, sample):
         """
         Load all branches in ``branches`` from "Events" tree from all nanoAODs in ``files`` into a single zipped ``awkward.Array``.
         Also calculates and returns the sum of weights from nanoAOD "Runs" tree.        
@@ -505,6 +607,20 @@ class AnalysisManager():
                 tree = f["Events"]
                 trimmed_branches = [x for x in branches if x in tree.keys()]
                 events_file = tree.arrays(trimmed_branches, library = "ak", how = "zip")
+
+                # Fix for 2018 low mass trigger: add missing HLT branch to events at start of 2018 run
+                for x in BRANCHES["data"][sample["year"]]: 
+                    if x not in trimmed_branches:
+                        logger.debug("[AnalysisManager : load_events] Branch %s missing in sample. Adding dummy branch (all equal False)" % x )
+                        events_file[x] = (numpy.zeros(len(events_file))==1)
+
+                if sample["is_data"] and sample["year"] is not None:
+                    golden_json_tagger = GoldenJsonTagger(is_data = sample["is_data"], year = sample["year"])
+                    events_file = golden_json_tagger.select(events_file)
+                    if not len(events_file) > 0:
+                        logger.debug("[AnalysisManager : load_events] File '%s' skipped entirely because no events are in golden json." % (file))
+                        continue
+                
                 events.append(events_file)
 
                 logger.debug("[AnalysisManager : load_events] Loaded %d events from file '%s'." % (len(events_file), file))
@@ -530,7 +646,7 @@ class AnalysisManager():
 
 
     @staticmethod
-    def write_events(events, save_branches, name):
+    def write_events(events, save_branches, name, syst_tag):
         """
         For each set of events in ``events``, saves all fields in ``save_branches`` to a .parquet file.
 
@@ -543,35 +659,74 @@ class AnalysisManager():
         :returns: dictionary of keys from ``events`` : parquet file
         :rtype: dict
         """
-        outputs = {}
+        # FIXME:  old version, check and validate which one is correct
+        # outputs = {}
 
-        for syst_tag, syst_events in events.items():
-            save_map = {}
-            for branch in save_branches:
-                if isinstance(branch, tuple) or isinstance(branch, list):
-                    save_name = "_".join(branch)
-                    if isinstance(branch, list):
-                        branch = tuple(branch)
-                else:
-                    save_name = branch
-                if isinstance(branch, tuple):
-                    present = branch[1] in syst_events[branch[0]].fields
-                else:
-                    present = branch in syst_events.fields
-                if not present:
-                    logger.warning("[AnalysisManager : write_events] Branch '%s' was not found in events array. This may be expected (e.g. gen info for a data file), but please ensure this makes sense to you." % str(branch))
-                    continue
-                save_map[save_name] = syst_events[branch]
+        # for syst_tag, syst_events in events.items():
+        #     save_map = {}
+        #     for branch in save_branches:
+        #         if isinstance(branch, tuple) or isinstance(branch, list):
+        #             save_name = "_".join(branch)
+        #             if isinstance(branch, list):
+        #                 branch = tuple(branch)
+        #         else:
+        #             save_name = branch
+        #         if isinstance(branch, tuple):
+        #             present = branch[1] in syst_events[branch[0]].fields
+        #         else:
+        #             present = branch in syst_events.fields
+        #         if not present:
+        #             logger.warning("[AnalysisManager : write_events] Branch '%s' was not found in events array. This may be expected (e.g. gen info for a data file), but please ensure this makes sense to you." % str(branch))
+        #             continue
+        #         save_map[save_name] = syst_events[branch]
 
-            for field in syst_events.fields:
-                if "weight_" in field and not field in save_map.keys():
-                    save_map[field] = syst_events[field]
+        #     for field in syst_events.fields:
+        #         if "weight_" in field and not field in save_map.keys():
+        #             save_map[field] = syst_events[field]
 
-            syst_events = awkward.zip(save_map,depth_limit=1) #attention : change depth_limit to 1
-            out_name = "%s_%s.parquet" % (name, syst_tag)
+        #     syst_events = awkward.zip(save_map,depth_limit=1) #attention : change depth_limit to 1
+        #     out_name = "%s_%s.parquet" % (name, syst_tag)
 
-            logger.debug("[AnalysisManager : write_events] Writing output file '%s'." % (out_name))
-            awkward.to_parquet(syst_events, out_name) 
-            outputs[syst_tag] = out_name
+        #     logger.debug("[AnalysisManager : write_events] Writing output file '%s'." % (out_name))
+        #     awkward.to_parquet(syst_events, out_name) 
+        #     outputs[syst_tag] = out_name
 
-        return outputs
+        # return outputs
+
+        # FIXME:  old version
+        out_name = "%s_%s.parquet" % (name, syst_tag)
+
+        if not len(events) >= 1:
+            return out_name 
+
+        save_map = {}
+        for branch in save_branches:
+            if isinstance(branch, tuple) or isinstance(branch, list):
+                save_name = "_".join(branch)
+                if isinstance(branch, list):
+                    branch = tuple(branch)
+            else:
+                save_name = branch
+            if isinstance(branch, tuple):
+                present = branch[1] in events[branch[0]].fields
+            else:
+                present = branch in events.fields
+            if not present:
+                logger.warning("[AnalysisManager : write_events] Branch '%s' was not found in events array. This may be expected (e.g. gen info for a data file), but please ensure this makes sense to you." % str(branch))
+                continue
+            save_map[save_name] = events[branch]
+
+        for field in events.fields:
+            if "weight_" in field and not field in save_map.keys():
+                save_map[field] = events[field]
+
+        events = awkward.zip(save_map, depth_limit=1)
+
+        logger.debug("[AnalysisManager : write_events] Writing output file '%s'." % (out_name))
+        if condor:
+       	  #awkward.to_parquet(events, out_name.split("/")[-1],list_to32=True) 
+       	  awkward.to_parquet(events, out_name.split("/")[-1]) 
+        else:
+          #awkward.to_parquet(events, out_name,list_to32=True) 
+          awkward.to_parquet(events, out_name) 
+        return out_name

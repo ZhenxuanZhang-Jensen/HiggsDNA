@@ -11,12 +11,16 @@ from higgs_dna.systematics.utils import systematic_from_bins
 
 ELECTRON_ID_SF_FILE = {
     "2016" : "jsonpog-integration/POG/EGM/2016postVFP_UL/electron.json",
+    "2016UL_preVFP" : "jsonpog-integration/POG/EGM/2016preVFP_UL/electron.json",
+    "2016UL_postVFP" : "jsonpog-integration/POG/EGM/2016postVFP_UL/electron.json",
     "2017" : "jsonpog-integration/POG/EGM/2017_UL/electron.json",
     "2018" : "jsonpog-integration/POG/EGM/2018_UL/electron.json"
 }
 
 ELECTRON_ID_SF = {
     "2016" : "2016postVFP",
+    "2016UL_preVFP" : "2016preVFP",
+    "2016UL_postVFP" : "2016postVFP",
     "2017" : "2017",
     "2018" : "2018"
 }
@@ -66,16 +70,20 @@ def electron_id_sf(events, year, central_only, input_collection, working_point =
     variations["central"] = awkward.unflatten(sf, n_electrons)
 
     if not central_only:
-        syst = evaluator["UL-Electron-ID-SF"].evalv(
-                ELECTRON_ID_SF[year],
-                "syst",
-                working_point,
-                ele_eta,
-                ele_pt
-        )
-        variations["up"] = variations["central"] + awkward.unflatten(syst, n_electrons)
-        variations["down"] = variations["central"] - awkward.unflatten(syst, n_electrons)
-
+        syst_vars = ["sfup", "sfdown"] 
+        for syst_var in syst_vars:
+            syst = evaluator["UL-Electron-ID-SF"].evalv(
+                    ELECTRON_ID_SF[year],
+                    syst_var,
+                    working_point,
+                    ele_eta,
+                    ele_pt
+            )
+            if "up" in syst_var:
+                syst_var_name = "up"
+            elif "down" in syst_var:
+                syst_var_name = "down"
+            variations[syst_var_name] = awkward.unflatten(syst, n_electrons)
 
     for var in variations.keys():
         # Set SFs = 1 for leptons which are not applicable
@@ -144,3 +152,80 @@ def dummy_lepton_sf(events, central_only, input_collection):
     )
 
     return variations 
+
+def muon_id_sfSTAT(events, year, central_only, input_collection, working_point = "none"):
+    leptons = events[input_collection]
+    variations = {}
+    variations["central"] = leptons.ID_SF
+
+    if not central_only:
+        variations["up"] = leptons.ID_SF+leptons.ID_SFstat
+        variations["down"] = leptons.ID_SF-leptons.ID_SFstat
+
+    return variations
+
+def muon_id_sfSYS(events, year, central_only, input_collection, working_point = "none"):
+    leptons = events[input_collection]
+    variations = {}
+    variations["central"] = leptons.ID_SF
+
+    if not central_only:
+        variations["up"] = leptons.ID_SF+leptons.ID_SFsyst
+        variations["down"] = leptons.ID_SF-leptons.ID_SFsyst
+
+    return variations
+
+def muon_iso_sfSTAT(events, year, central_only, input_collection, working_point = "none"):
+    leptons = events[input_collection]
+    variations = {}
+    variations["central"] = leptons.ISO_SF
+
+    if not central_only:
+        variations["up"] = leptons.ISO_SF+leptons.ISO_SFstat
+        variations["down"] = leptons.ISO_SF-leptons.ISO_SFstat
+
+    return variations
+
+def muon_iso_sfSYS(events, year, central_only, input_collection, working_point = "none"):
+    leptons = events[input_collection]
+    variations = {}
+    variations["central"] = leptons.ISO_SF
+
+    if not central_only:
+        variations["up"] = leptons.ISO_SF+leptons.ISO_SFsyst
+        variations["down"] = leptons.ISO_SF-leptons.ISO_SFsyst
+
+    return variations
+
+def tauJ_sf(events, year, central_only, input_collection, working_point = "none"):
+    leptons = events[input_collection]
+    variations = {}
+    variations["central"] = leptons.sfDeepTau2017v2p1VSjet_Loose_ext
+
+    if not central_only:
+        variations["up"] = leptons.sfDeepTau2017v2p1VSjet_LooseUp_ext
+        variations["down"] = leptons.sfDeepTau2017v2p1VSjet_LooseDown_ext
+
+    return variations
+
+def tauM_sf(events, year, central_only, input_collection, working_point = "none"):
+    leptons = events[input_collection]
+    variations = {}
+    variations["central"] = leptons.sfDeepTau2017v2p1VSmu_VLoose_ext
+
+    if not central_only:
+        variations["up"] = leptons.sfDeepTau2017v2p1VSmu_VLooseUp_ext
+        variations["down"] = leptons.sfDeepTau2017v2p1VSmu_VLooseDown_ext
+
+    return variations
+
+def tauE_sf(events, year, central_only, input_collection, working_point = "none"):
+    leptons = events[input_collection]
+    variations = {}
+    variations["central"] = leptons.sfDeepTau2017v2p1VSe_VVLoose_ext
+
+    if not central_only:
+        variations["up"] = leptons.sfDeepTau2017v2p1VSe_VVLooseUp_ext
+        variations["down"] = leptons.sfDeepTau2017v2p1VSe_VVLooseDown_ext #NB according to Tau POG we should be using Tight for the vsJ scale factor to be valid!! check twiki 
+
+    return variations

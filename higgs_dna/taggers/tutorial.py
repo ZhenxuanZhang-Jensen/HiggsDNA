@@ -31,6 +31,8 @@ DEFAULT_OPTIONS = {
     "photon_id" : 0.0,
     "btag_wp" : {
         "2016" : 0.3093,
+        "2016UL_preVFP" : 0.3093,
+        "2016UL_postVFP" : 0.3093,
         "2017" : 0.3040,
         "2018" : 0.2783
     }
@@ -113,7 +115,6 @@ class TTHPreselTagger(Tagger):
                 name = "SelectedJet",
                 tagger = self
         )
-        
         jets = awkward_utils.add_field(
                 events = events,
                 name = "SelectedJet",

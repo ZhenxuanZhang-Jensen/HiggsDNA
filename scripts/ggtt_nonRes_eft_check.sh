@@ -1,0 +1,1 @@
+python scripts/run_analysis.py --config "metadata/analysis/ggtt_nonRes/ggtt_eft_check.json" --log-level "DEBUG" --output_dir /ceph/cms/store/user/fsetti/HiggsDNA/28Apr2023_nonRes_EFT_check/ --n_cores 4 --short

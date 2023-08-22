@@ -61,7 +61,15 @@ class Task():
                     self.fpo = config["sample"]["fpo"]
         if self.fpo is None:
             self.fpo = 1
-  
+ 
+        self.scale1fb = config["sample"]["scale1fb"] # will be None if not hard-coded 
+        if self.scale1fb is None:
+            self.manual_scale1fb = False
+        elif isinstance(self.scale1fb, float) and self.scale1fb > 0:
+            self.manual_scale1fb = True
+            self.min_completion_frac = 1.0 # require that all jobs finish for this scale1fb to be valid
+        else:
+            logger.exception("[Task : __init] Task '%s'. It looks like a manually provided scale1fb was given, but could not interpret this as a float: type: '%s', value: '%s'." % (self.name, str(type(self.scale1fb)), str(self.scale1fb)))
 
         os.system("mkdir -p %s" % self.output_dir)
 
@@ -144,7 +152,7 @@ class Task():
         # Check status of all jobs
         for job in self.jobs:
             if job_map is not None:
-                if os.path.exists(job.summary_file):
+                if os.path.exists(job.summary_file) or os.path.exists(job.output_dir + "/" + job.summary_file):
                     job.status = "completed"
                 elif job.cluster_id in job_map.keys():
                     if job_map[job.cluster_id] is not None:
@@ -166,7 +174,6 @@ class Task():
         # Did we successfully process minimum fraction of completed jobs?
         if self.completion_frac >= self.min_completion_frac:
             logger.info("[Task : process] Task '%s' COMPLETED : %d/%d (%.2f percent) of jobs completed, which is >= the minimum job completion fraction for this task (%.2f percent)." % (self.name, self.n_completed_jobs, len(self.jobs), 100. * self.completion_frac, 100. * self.min_completion_frac))
-
             self.complete = True # Done
 
         # Otherwise, are the uncompleted jobs "retired" (meaning they failed up to the maximum number of retries)?
@@ -290,14 +297,15 @@ class Task():
             for syst_tag, output in job_info["outputs"].items():
                 if syst_tag not in self.outputs.keys():
                     self.outputs[syst_tag] = []
+                if not job_info["n_events_selected"][syst_tag] > 0: # skip empty parquet files to avoid errors
+                    continue 
                 if not os.path.exists(output):
                     if os.path.exists(job.output_dir + "/" + output):
                         output = job.output_dir + "/" + output
+                        self.outputs[syst_tag].append(output)
                     else:
                         logger.exception("[Task : summarize] Did not find output for job '%s' with dir '%s', output dir '%s', config file '%s', and summary file '%s'." % (job.name, job.dir, job.output_dir, job.config_file, job.summary_file))
                         raise RuntimeError()
-                if not job_info["n_events_selected"][syst_tag] > 0: # skip empty parquet files to avoid errors
-                    continue
                 else:
                     self.outputs[syst_tag].append(output)
 
@@ -315,7 +323,12 @@ class Task():
             else:
                 self.phys_summary["scale1fb"] = 0.
             self.lumi = self.config["sample"]["lumi"]
-            self.scale1fb = self.phys_summary["scale1fb"]
+            if not self.manual_scale1fb: # only use the on-the-fly scale1fb if a manually calculated one was not provided
+                self.scale1fb = self.phys_summary["scale1fb"] 
+            else:
+                self.phys_summary["scale1fb"] = self.scale1fb # reset this to the manually provided one for proper printouts
+                if self.complete:
+                    logger.warning("[Task : summarize] Task '%s'. It appears a manually-provided scale1fb of %.9f was provided for this sample. We will use this instead of the scale1fb as calculated by HiggsDNA. For proper normalization, please ensure that you are running over the same set of files that was used when deriving this manually provided scale1fb." % (self.name, self.scale1fb)) 
         self.summary["physics"] = self.phys_summary
         self.summary["performance"] = self.performance
         self.pbar.update(job_summary, self.performance, self.phys_summary)
@@ -349,6 +362,8 @@ class Task():
             merged_events = awkward.concatenate(merged_events)
             if not self.config["sample"]["is_data"]:
                 logger.debug("[Task : merge_outputs] Task '%s' : Applying scale1fb and lumi. Scaling central weight branch '%s' in output file '%s' by scale1fb (%.9f) times lumi (%.2f). Adding branch '%s' in output file which has no lumi scaling applied." % (self.name, CENTRAL_WEIGHT, merged_output, self.scale1fb, self.lumi, CENTRAL_WEIGHT + "_no_lumi"))
+                #logger.debug(f"[Task : sumWeight is {self.phys_summary['sum_weights']}]")
+                #logger.debug(f"[Task : typical central weight is {merged_events['weight_central']}]")
 
                 central_weight = merged_events[CENTRAL_WEIGHT] * self.scale1fb * self.lumi
                 central_weight_no_lumi = merged_events[CENTRAL_WEIGHT] * self.scale1fb
@@ -686,17 +701,19 @@ class Task():
         self.year = int(self.config["sample"]["year"])
 
         for syst_tag, merged_output in self.merged_outputs.items():
-            events = awkward.from_parquet(merged_output, lazy = True)
+            events = awkward.from_parquet(merged_output)
 
             if "year" in events.fields:
                 return
 
-            logger.debug("[Task : add_process_id] Task '%s' : adding field 'year' with value %d in output file '%s'." % (self.name, self.year, merged_output))
-            
+            logger.debug("[Task : add_process_id] Task '%s' : adding field 'year' with value '%s' in output file '%s'." % (self.name, self.year, merged_output))
+
+            year_array = numpy.empty(len(events), dtype="S10")
+            year_array[:] = self.year
             awkward_utils.add_field(
                     events = events,
                     name = "year",
-                    data = numpy.ones(len(events)) * self.year
+                    data = year_array 
             )
 
             awkward.to_parquet(events, merged_output)

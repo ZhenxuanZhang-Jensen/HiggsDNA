@@ -1,0 +1,322 @@
+{
+    "name" : "hh_ggtautau_lowmass_presel_noEveto",
+    "function" : { 
+        "module_name" : "higgs_dna.analysis",
+        "function_name" : "run_analysis"
+    },
+    "variables_of_interest" : [
+        ["Diphoton", "mass"], ["Diphoton", "pt"], ["Diphoton", "eta"], ["Diphoton", "phi"], ["Diphoton", "helicity"], ["Diphoton", "pt_mgg"], ["Diphoton", "max_mvaID"], ["Diphoton", "min_mvaID"], ["Diphoton", "dPhi"], ["Diphoton", "dR"],
+        ["LeadPhoton", "pt"], ["LeadPhoton", "eta"], ["LeadPhoton", "phi"], ["LeadPhoton", "mass"], ["LeadPhoton", "mvaID"], ["LeadPhoton", "genPartFlav"], ["LeadPhoton", "pixelSeed"], ["LeadPhoton", "pt_mgg"],
+        ["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"], ["SubleadPhoton", "genPartFlav"], ["SubleadPhoton", "pixelSeed"], ["SubleadPhoton", "pt_mgg"],
+        "weight_central", 
+        "n_electrons", "n_muons", "n_taus", "n_iso_tracks", "n_jets", "n_bjets",
+        "MET_pt", "diphoton_met_dPhi", "MET_ll_dPhi", "lead_lepton_met_dphi", "ditau_dphi", "ditau_deta", "ditau_dR",
+        "gg_tt_CS", "gg_tt_hel", "tt_hel",
+        "lead_lepton_pt", "lead_lepton_eta", "sublead_lepton_pt", "sublead_lepton_eta",
+        "category", "jet_1_pt", "jet_1_eta", "jet_1_btagDeepFlavB", "jet_2_pt", "jet_2_eta", "jet_2_btagDeepFlavB", "b_jet_1_btagDeepFlavB","jet_1_puId", "jet_2_puId",
+        "pt_tautau_SVFit", "eta_tautau_SVFit_bdt", "m_tautau_SVFit", "dR_tautau_SVFit", "dR_ggtautau_SVFit", "dPhi_tautau_SVFit", "dPhi_ggtautau_SVFit", "ditau_mass", "ditau_pt", "ditau_eta",
+        "mX","dilep_leadpho_mass", "dilep_subleadpho_mass", 
+        "event",
+        "LHEScaleWeight_Zero", "LHEScaleWeight_One", "LHEScaleWeight_Three", "LHEScaleWeight_Four", "LHEScaleWeight_Five", "LHEScaleWeight_Seven", "LHEScaleWeight_Eight", 
+				"LHEPdfWeight_Unit", "LHEPdfWeight_Up", "LHEPdfWeight_Down"
+    ],
+    "tag_sequence" : [
+            {   
+                "module_name" : "higgs_dna.taggers.diphoton_tagger",
+                "tagger" : "DiphotonTagger",
+                "kwargs" : { 
+                    "name" : "dipho_presel_tagger",
+                    "options" : { 
+                        "photons" : {
+                            "use_central_nano" : false,
+                            "pt" : 18.0,
+                            "eta" : [ 
+                                [0.0, 1.4442],
+                                [1.566, 2.5]
+                            ],
+														"no_e_veto" : true,
+                            "hoe" : 0.08,
+                            "r9" : 0.8,
+                            "charged_iso" : 20.0,
+                            "charged_rel_iso" : 0.3,
+                            "hlt" : {
+                                "eta_rho_corr" : 1.5,
+                                "low_eta_rho_corr" : 0.16544,
+                                "high_eta_rho_corr" : 0.13212,
+                                "eb_high_r9" : {
+                                    "r9" : 0.85
+                                },
+                                "eb_low_r9" : { 
+                                    "r9" : 0.5, 
+                                    "pho_iso" : 4.0, 
+                                    "track_sum_pt" : 6.0,
+                                    "sigma_ieie" : 0.015
+                                },
+                                "ee_high_r9" : {
+                                    "r9" : 0.9
+                                },
+                                "ee_low_r9" : { 
+                                    "r9" : 0.8, 
+                                    "pho_iso" : 4.0, 
+                                    "track_sum_pt" : 6.0,
+                                    "sigma_ieie" : 0.035
+                                }
+                            }
+                        },
+                        "diphotons" : {
+                            "lead_pt" : 30.0,
+                            "sublead_pt" : 18.0,
+                            "lead_pt_mgg" : 0.0,
+                            "sublead_pt_mgg" : 0.0,
+                            "mass" : [55.0, 1000.0],
+                            "select_highest_pt_sum" : true
+                        },
+                        "trigger" : {
+                            "2016":["HLT_Diphoton30PV_18PV_R9Id_AND_IsoCaloId_AND_HE_R9Id_DoublePixelVeto_Mass55","HLT_Diphoton30EB_18EB_R9Id_OR_IsoCaloId_AND_HE_R9Id_DoublePixelVeto_Mass55"],
+                            "2016UL_preVFP":["HLT_Diphoton30PV_18PV_R9Id_AND_IsoCaloId_AND_HE_R9Id_DoublePixelVeto_Mass55","HLT_Diphoton30EB_18EB_R9Id_OR_IsoCaloId_AND_HE_R9Id_DoublePixelVeto_Mass55"],
+                            "2016UL_postVFP":["HLT_Diphoton30PV_18PV_R9Id_AND_IsoCaloId_AND_HE_R9Id_DoublePixelVeto_Mass55","HLT_Diphoton30EB_18EB_R9Id_OR_IsoCaloId_AND_HE_R9Id_DoublePixelVeto_Mass55"],
+                            "2017":["HLT_Diphoton30PV_18PV_R9Id_AND_IsoCaloId_AND_HE_R9Id_PixelVeto_Mass55"],
+                            "2018":["HLT_Diphoton30_18_R9IdL_AND_HE_AND_IsoCaloId_NoPixelVeto"]
+                        }
+                    }
+                }
+            },
+            {
+                "module_name" : "higgs_dna.taggers.hh_ggtautau_presel_tagger",
+                "tagger" : "HHggTauTauPreselTagger",
+                "kwargs" : {
+                    "name" : "HHggTauTauPreselectionTagger"
+                }
+            }
+    ],
+    "systematics" : {
+        "weights" : {
+            "electron_veto_sf" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "photon_electron_veto_sf"
+                 },
+                 "modify_central_weight" : true,
+                 "input_collection" : "Photon",
+                 "target_collections" : [["Diphoton", "Photon"]]
+            },
+            "photon_presel_sf" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "photon_presel_sf_lowmass"
+                },
+                "modify_central_weight" : true,
+                "input_collection" : "Photon",
+                "target_collections" : [["Diphoton", "Photon"]] 
+            },
+            "btag_deepjet_sf" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.jet_systematics",
+                    "name" : "btag_deepjet_reshape_sf"
+                },
+                "modify_central_weight" : true,
+                "input_collection" : "Jet",
+                "target_collections" : ["SelectedJet"],
+                "normalization_factors" : "metadata/systematics/resonant_low_mass/btag_sfs.json"
+            }, 
+            "trigger_sf" : {
+                "type" : "event",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "trigger_lowmass_sf"
+                },
+                "modify_central_weight" : true,
+                "requires_branches" : ["Diphoton", "LeadPhoton", "SubleadPhoton"]
+            },
+            "electron_id_sf" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.lepton_systematics",
+                    "name" : "electron_id_sf"
+                },
+                "modify_central_weight" : true,
+                "input_collection" : "Electron",
+                "target_collections" : ["SelectedElectron"],
+                "kwargs" : {
+                    "working_point" : "wp90iso"
+                }
+            },
+            "photon_id_sf" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "photon_mva_id_sf"
+                },
+                "modify_central_weight" : true,
+                "input_collection" : "Photon",
+                "target_collections" : [["Diphoton", "Photon"]],
+                "kwargs" : {
+                    "working_point" : "wp90"
+                }
+            },
+            "muon_id_sfSTAT" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.lepton_systematics",
+                    "name" : "muon_id_sfSTAT"
+                },
+                "modify_central_weight" : true,
+                "input_collection" : "Muon",
+                "target_collections" : ["SelectedMuon"]
+            }, 
+            "muon_id_sfSYS" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.lepton_systematics",
+                    "name" : "muon_id_sfSYS"
+                },
+                "modify_central_weight" : true,
+                "input_collection" : "Muon",
+                "target_collections" : ["SelectedMuon"]
+            },
+            "muon_iso_sfSTAT" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.lepton_systematics",
+                    "name" : "muon_iso_sfSTAT"
+                },
+                "modify_central_weight" : true,
+                "input_collection" : "Muon",
+                "target_collections" : ["SelectedMuon"]
+            },
+            "muon_iso_sfSYS" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.lepton_systematics",
+                    "name" : "muon_iso_sfSYS"
+                },
+                "modify_central_weight" : true,
+                "input_collection" : "Muon",
+                "target_collections" : ["SelectedMuon"]
+            },
+            "tau_idDeepTauVSjet_sf" : {
+                "type" : "object",
+                "method" : "from_branch",
+                "branches" : {
+                    "central" : "sfDeepTau2017v2p1VSjet_Loose_ext",
+                    "up" : "sfDeepTau2017v2p1VSjet_LooseUp_ext",
+                    "down" : "sfDeepTau2017v2p1VSjet_LooseDown_ext"
+                },
+                "modify_central_weight" : true,
+                "input_collection" : "Tau",
+                "target_collections" : ["AnalysisTau"]
+            },
+            "tau_idDeepTauVSmu_sf" : {
+                "type" : "object",
+                "method" : "from_branch",
+                "branches" : {
+                    "central" : "sfDeepTau2017v2p1VSmu_VLoose_ext",
+                    "up" : "sfDeepTau2017v2p1VSmu_VLooseUp_ext",
+                    "down" : "sfDeepTau2017v2p1VSmu_VLooseDown_ext"
+                },
+                "modify_central_weight" : true,
+                "input_collection" : "Tau",
+                "target_collections" : ["AnalysisTau"]
+            },
+            "tau_idDeepTauVSe_sf" : {
+                "type" : "object",
+                "method" : "from_branch",
+                "branches" : {
+                    "central" : "sfDeepTau2017v2p1VSe_VVLoose_ext",
+                    "up" : "sfDeepTau2017v2p1VSe_VVLooseUp_ext",
+                    "down" : "sfDeepTau2017v2p1VSe_VVLooseDown_ext"
+                },
+                "modify_central_weight" : true,
+                "input_collection" : "Tau",
+                "target_collections" : ["AnalysisTau"]
+            }, 
+            "L1_prefiring_sf" : {
+                "type" : "event",
+                "method" : "from_branch",
+                "branches" : {
+                    "central" : "PrefireWeight",
+                    "up" : "PrefireWeight_Up",
+                    "down" : "PrefireWeight_Down"
+                },
+                "modify_central_weight" : true,
+                "years" : ["2016", "2017"]
+            },
+            "puWeight" : {
+                "type" : "event",
+                "method" : "from_branch",
+                "branches" : {
+                    "central" : "puWeight",
+                    "up" : "puWeightUp",
+                    "down" : "puWeightDown"
+                },
+                "modify_central_weight" : true
+            }
+        }
+        },
+    "branches" : [
+            "Photon_pt", "Photon_eta", "Photon_phi", "Photon_mass",
+            "Photon_pixelSeed", "Photon_mvaID", "Photon_electronVeto",
+            "Photon_sieie", "Photon_trkSumPtHollowConeDR03", "Photon_pfPhoIso03", "Photon_genPartFlav", "Photon_chargedHadronIso",
+            "Photon_r9", "Photon_hoe", "Photon_pfRelIso03_chg", "Photon_pfRelIso03_all",
+            "Photon_isScEtaEB", "Photon_isScEtaEE",
+            "Photon_genPartFlav",
+            "Photon_dEsigmaUp", "Photon_dEsigmaDown",
+            "Photon_mvaID_WP80", "Photon_mvaID_WP90",
+            "Tau_pt", "Tau_eta", "Tau_phi", "Tau_mass", "Tau_idDeepTau2017v2p1VSe", "Tau_idDeepTau2017v2p1VSjet", "Tau_idDeepTau2017v2p1VSmu", "Tau_charge", "Tau_dz", "Tau_idDecayModeNewDMs",
+            "Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass", "Muon_charge", "Muon_pfRelIso03_all", "Muon_dxy", "Muon_dz", "Muon_tightId", "Muon_isGlobal", "Muon_mediumId",
+            "Muon_ISO_SF", "Muon_ISO_SFstat", "Muon_ISO_SFsyst",
+            "Electron_pt", "Electron_eta", "Electron_phi", "Electron_mass", "Electron_charge", "Electron_mvaFall17V2Iso_WP90", "Electron_mvaFall17V2noIso_WP90", "Electron_pfRelIso03_all", "Electron_dxy", "Electron_dz", "Electron_mvaFall17V2Iso_WP80",
+            "Jet_pt", "Jet_eta", "Jet_phi", "Jet_mass", "Jet_btagDeepFlavB", "Jet_jetId", "Jet_hadronFlavour",
+            "IsoTrack_pt", "IsoTrack_eta", "IsoTrack_dxy", "IsoTrack_dz", "IsoTrack_phi", "IsoTrack_fromPV", "IsoTrack_isPFcand", "IsoTrack_pdgId",
+            "L1PreFiringWeight_Nom", "L1PreFiringWeight_Up", "L1PreFiringWeight_Dn",
+            "weight", "genWeight", "run", "event", "process_id", "fixedGridRhoFastjetAll",
+            "n_electrons", "n_muons", "n_taus", "n_isoTrks", "n_jets", "n_bjets",
+            "MET_pt", "MET_phi", "MET_gg_dPhi", "MET_ll_dPhi", "dPhi_MET_l", "lep12_dphi", "lep12_deta_bdt", "lep12_dr",
+            "MET_covXX", "MET_covXY", "MET_covYY", 
+            "g1_ptmgg", "g1_eta_bdt", "g1_idmva", "g1_pixVeto", "g2_ptmgg", "g2_eta_bdt", "g2_idmva", "g2_pixVeto", "max_g_ptmgg", "min_g_ptmgg", "max_g_idmva", "min_g_idmva",
+            "gg_ptmgg", "gg_eta", "gg_dR", "gg_dPhi", "gg_hel", "gg_tt_CS", "gg_tt_hel", "tt_hel",
+            "lep1_pt", "lep1_eta_bdt", "lep1_tightID", "lep2_pt", "lep2_eta_bdt", "lep2_tightID", "max_lep_pt", "min_lep_pt",
+            "Category", "jet1_pt", "jet1_eta_bdt", "jet1_bTag", "jet2_pt", "jet2_eta_bdt", "jet2_bTag", "max_bTag",
+            "pt_tautau_SVFit", "eta_tautau_SVFit_bdt", "m_tautau_SVFit", "dR_tautau_SVFit", "dR_ggtautau_SVFit", "dPhi_tautau_SVFit", "dPhi_ggtautau_SVFit", "m_tautau_vis", "pt_tautau_vis", "eta_tautau_vis_bdt",
+            "mX","m_llg_lead", "m_llg_subl",
+            "Photon_pt_ScaleUp","Photon_pt_ScaleDown",
+            "Jet_pt_nom", "Jet_pt_jerUp", "Jet_pt_jerDown", "Jet_pt_jesTotalUp", "Jet_pt_jesTotalDown", "Jet_puId",
+            "MET_T1_pt","MET_T1_pt_jerUp","MET_T1_pt_jerDown","MET_T1_pt_jesTotalUp","MET_T1_pt_jesTotalDown","MET_T1_pt_unclustEnUp","MET_T1_pt_unclustEnDown",
+            "Muon_corrected_pt","Muon_correctedUp_pt","Muon_correctedDown_pt","Muon_ID_SF","Muon_ID_SFstat","Muon_ID_SFsyst","Muon_ISO_SF","Muon_ISO_SFstat","Muon_ISO_SFsyst",
+            "puWeight","puWeightDown","puWeightUp",
+            "PrefireWeight", "PrefireWeight_Up", "PrefireWeight_Down",
+            "Tau_pt_corr","Tau_pt_corrUp","Tau_pt_corrDown",
+            "Tau_sfDeepTau2017v2p1VSjet_Loose_ext", "Tau_sfDeepTau2017v2p1VSjet_LooseUp_ext", "Tau_sfDeepTau2017v2p1VSjet_LooseDown_ext",
+            "Tau_sfDeepTau2017v2p1VSmu_VLoose_ext", "Tau_sfDeepTau2017v2p1VSmu_VLooseUp_ext", "Tau_sfDeepTau2017v2p1VSmu_VLooseDown_ext",
+            "Tau_sfDeepTau2017v2p1VSe_VVLoose_ext", "Tau_sfDeepTau2017v2p1VSe_VVLooseUp_ext", "Tau_sfDeepTau2017v2p1VSe_VVLooseDown_ext",
+						"Flag_goodVertices", "Flag_globalSuperTightHalo2016Filter", "Flag_HBHENoiseFilter", "Flag_HBHENoiseIsoFilter", "Flag_EcalDeadCellTriggerPrimitiveFilter", "Flag_BadPFMuonFilter", "Flag_BadPFMuonDzFilter", "Flag_eeBadScFilter", "Flag_ecalBadCalibFilter", 
+						"dZ", "CMS_hgg_mass"
+    ],
+    "branch_map" : {
+        "mc" : [
+            [["Jet", "pt"], ["Jet", "pt_nom"]],
+            [["Muon", "pt"], ["Muon", "corrected_pt"]],
+            [["Tau", "pt"], ["Tau", "pt_corr"]],
+            ["MET_pt", "MET_T1_pt"]
+        ],
+        "data" : []
+    },
+    "samples" : {
+        "catalog" : "metadata/samples/hhggtautau_ul_nanoaodv9_noEveto.json",
+        "sample_list" : ["DY", "WW", "WZ", "ZZ", "Data"],
+        "years" : ["2018"] 
+    }
+}

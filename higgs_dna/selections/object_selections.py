@@ -117,7 +117,7 @@ def delta_R(objects1, objects2, min_dr):
     if awkward.count(objects1) == 0: 
         return objects1.pt < 0. 
     if awkward.count(objects2) == 0:
-        return objects1.pt > 0.
+        return objects1.pt >= 0.
 
     if not isinstance(objects1, vector.Vector4D):
         objects1 = awkward.Array(objects1, with_name = "Momentum4D")
@@ -126,19 +126,15 @@ def delta_R(objects1, objects2, min_dr):
 
     obj1 = awkward.unflatten(objects1, counts = 1, axis = -1) # shape [n_events, n_obj, 1]
     obj2 = awkward.unflatten(objects2, counts = 1, axis = 0) # shape [n_events, 1, n_obj]
-
     dR = obj1.deltaR(obj2) # shape [n_events, n_obj1, n_obj2]
-
     selection = awkward.all(dR >= min_dr, axis = -1)
     return selection
-
 
 # This is the same deltaR function as above, but calculated with an explicit loop through both sets of objects (C++ style)
 # and compiled with numba. This is just to illustrate how to do things both ways.
 def delta_R_numba(objects1, objects2, min_dr):
     """
     Select objects from objects1 which are at least min_dr away from all objects in objects2.
-
     :param objects1: objects which are required to be at least min_dr away from all objects in objects2 
     :type objects1: awkward.highlevel.Array
     :param objects2: objects which are all objects in objects1 must be at leats min_dr away from

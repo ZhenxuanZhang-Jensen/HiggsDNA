@@ -1,0 +1,48 @@
+variables:
+    EOS_PATH: "/eos/user/h/hmei/www/dump/docs/"
+    CI_OUTPUT_DIR: "public"
+
+stages:
+    - build
+    - docs-gen
+    - docs-deploy 
+
+# Build the package
+python-build:
+    stage: build
+    image: continuumio/miniconda3:latest 
+    script:
+    - conda env create -f environment.yml
+    - source activate higgs-dna
+    - pip install .
+
+# Generate docs 
+docs-gen:
+    stage: docs-gen 
+    image: gitlab-registry.cern.ch/ci-tools/ci-worker:cc7
+    script:
+    - yum -y install python3 pip3 locmap
+    - pip3 install sphinx breathe sphinx_rtd_theme sphinx-argparse
+    - mkdir "$CI_OUTPUT_DIR" 
+    - cd docs
+    - make html
+    - cd -
+    - mv docs/build/html/* "$CI_OUTPUT_DIR"
+    artifacts:
+        paths:
+        # Upload as an artifact the folder where the output has been generated
+        # This will attach to the job the output. It can be browsed or downloaded
+        - "$CI_OUTPUT_DIR"
+    
+# Deploy to an EOS folder the contents generated
+deployment:
+    stage: docs-deploy
+      # Only when the master branch is pushed
+    only:
+        #- master
+        - topic_setupCI 
+    # Custom docker image providing the needed tools to deploy in EOS
+    image: gitlab-registry.cern.ch/ci-tools/ci-web-deployer:latest
+    script:
+        - deploy-eos
+

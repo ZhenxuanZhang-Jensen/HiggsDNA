@@ -1,5 +1,7 @@
 import os
+import sys
 import glob
+import fnmatch
 import json
 import copy
 from tqdm import tqdm 
@@ -39,6 +41,19 @@ class SampleManager():
             return self.data
 
         samples = []
+
+        # Expand any wildcards
+        for x in self.sample_list:
+            if "*" in x:
+                matches = fnmatch.filter(list(self.catalog.keys()), x)
+                if len(matches) > 0:
+                    self.sample_list.remove(x)
+                    self.sample_list += matches
+                    logger.info("[SampleManager : get_samples] Matched wildcard expression '%s' to %d samples." % (x, len(matches)))
+                else:
+                    logger.warning("[SampleManager : get_samples] Did not match wildcard expression '%s' to any samples." % (x))
+
+
         # Loop through each sample
         logger.info("[SampleManager : get_samples] Fetching input files for %d samples." % (len(self.sample_list)))
         for s_idx, sample in enumerate(tqdm(self.sample_list)):
@@ -84,7 +99,9 @@ class SampleManager():
 
                 self.samples[sample][year] = {}
 
-                # Three ways the user can specify files:
+
+                # Multiple ways the user can specify files:
+                #   0. Directory with wildcards
                 #   1. Hard-coded list (local or xrd format)
                 #   2a. Single directory (local or xrd format)
                 #   2b. List of directories (local or xrd format)
@@ -92,9 +109,17 @@ class SampleManager():
 
                 grabbed_files = False
 
+                if isinstance(info["files"][year], str) and "*" in info["files"][year]: # directory with wildcards
+                    files = self.get_files_from_wildcard(info["files"][year], is_data)
+                    grabbed_files = True
+
                 # Is this a list? Could be a list of hard-coded files (Option 1) or list of dirs (Option 2b) 
-                if isinstance(info["files"][year], list):
-                    if info["files"][year][0].endswith(".root"): # Option 1
+                elif isinstance(info["files"][year], list):
+                    if "*" in info["files"][year][0] and "*" in info["files"][year][1] : # directory with wildcards
+                        files = self.get_files_from_wildcard(info["files"][year][0], is_data) + self.get_files_from_wildcard(info["files"][year][1], is_data)
+                        grabbed_files = True
+
+                    elif info["files"][year][0].endswith(".root"): # Option 1
                         logger.debug("[SampleManager : get_samples] For sample '%s', year '%s', getting files from hard-coded list." % (sample, year))
                         files = [File(name = x, is_data = is_data) for x in info["files"][year]]
                         grabbed_files = True
@@ -128,7 +153,6 @@ class SampleManager():
                                 logger.exception("[CondorManager : prepare_inputs] We were not able to find grid proxy or proxy was found to be expired. Since you are accessing files through dasgoclient, a valid proxy is necessary.")
                                 raise RuntimeError()
                             files_dir = self.get_files_from_dasgoclient(path, is_data)
-                        # print(files_dir)
                         files += files_dir
                     grabbed_files = True
 
@@ -162,6 +186,12 @@ class SampleManager():
                     fpo = info["fpo"]
                 else:
                     fpo = None
+
+                # Check if scale1fb is specified
+                if "scale1fb" in info.keys():
+                    scale1fb = info["scale1fb"][year]
+                else:
+                    scale1fb = None
 
                 samples.append(
                         Sample(
@@ -232,6 +262,29 @@ class SampleManager():
                         is_data = is_data,
                         n_events = f["nevents"],
                         size_gb = round(f["size"]*1e-9,2) 
+                    )
+            )
+
+        return files
+
+
+    def get_files_from_wildcard(self, path, is_data):
+        """
+
+        """
+        files_dir = glob.glob(path)
+        logger.debug("[SampleManager : get_files_from_wildcard] Found %d files from specified wildcard '%s'." % (len(files_dir), path))
+        files = []
+        for f in files_dir:
+            if ".root" not in f:
+                logger.debug("[SampleManager : get_files_from_wildcard] File '%s' was grabbed under your specified wildcard '%s' but is not a .root file, so we are skipping it." % (f, path))
+                continue
+
+            files.append(
+                    File(
+                        name = f,
+                        is_data = is_data,
+                        size_gb = round(os.path.getsize(f)*1e-9,2)
                     )
             )
 
