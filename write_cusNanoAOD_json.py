@@ -28,7 +28,7 @@ json_file_template_2 = '''
 #########read dir files info
 import subprocess
 # with open('/afs/cern.ch/user/z/zhenxuan/CMSSW_10_6_25/src/das_samples_UL17_R_gghh.json') as f:
-with open('/afs/cern.ch/user/z/zhenxuan/CMSSW_10_6_25/src/das_samples_UL17_R_gghh_SL_submit.json') as f:
+with open('/afs/cern.ch/user/z/zhenxuan/CMSSW_10_6_25/src/das_samples_WJetsToQQ.json') as f:
 # with open('/afs/cern.ch/user/z/zhenxuan/CMSSW_10_6_25/src/das_samples_UL17_data.json') as f:
 	data = json.load(f)
 json_file_name = "hhww_cusNANO_local"
@@ -44,7 +44,7 @@ with open(json_file_name + ".json","a") as fout:
         # print(list(data.keys())[i])
         for j in range(len(samples_find)):
             # print(samples_find[j])
-            shell_cmd = 'ls /eos/user/z/zhenxuan/customized_NanoAOD/UL17/' + list(data.keys())[i] + '/*' + samples_find[j] + '*'
+            shell_cmd = 'ls /eos/cms/store/group/phys_higgs/cmshgg/zhenxuan/custom_nanoAOD/das_samples_WJetsToQQ/' + list(data.keys())[i] + '/*' + samples_find[j] + '*'
             # shell_cmd = 'ls /eos/cms/store/group/phys_higgs/cmshgg/zhenxuan/custom_nanoAOD/UL17/' + list(data.keys())[i] + '/*' + samples_find[j] + '*'
             return_cmd = subprocess.run(shell_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding='utf-8',shell=True)
             if return_cmd.returncode == 0:
