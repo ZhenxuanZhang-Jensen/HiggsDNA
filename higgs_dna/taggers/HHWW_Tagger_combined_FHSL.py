@@ -491,6 +491,7 @@ class HHWW_Preselection_FHSL(Tagger):
         # need the first fatjets with WvsQCD < 0.5
         selection_fatjet_WvsQCD_SL_cat1 = awkward.num(fatjets.WvsQCDMD[(fatjets.WvsQCDMD > 0.81)]) == 0
         SL_fullyresovled_cat = (~SL_boosted_cat)&(n_leptons_iso == 1) & (n_jets >=1) & (selection_fatjet_WvsQCD_SL_cat1) # resolved 2 jets for SL channel with isolated lep
+        
         # ----------------------------------------------------------------------------------------------------#
         # If no isolated lepton but >=1 non-isolated lepton with >=1 AK8 jets && AK8 jet with pt > 300 GeV && dR(lep, AK8) < 0.8
         #attention: Merged leptonic boosted channel
@@ -524,7 +525,8 @@ class HHWW_Preselection_FHSL(Tagger):
         FH_1Wfatjet_cat = (events.Diphoton.pt>200)&(~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted)&(~FH_2Wfatjet_cat)&(n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_fatjets >=1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SB_1F)#&((awkward.num(selection_subjet)==True)==1) # 1 jet for FH
         # ----------------------------------------------------------------------------------------------------#
         # add resolved FH category with (>=4 AK4 jets )
-        FH_fully_resovled_cat =(~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted) & (~FH_2Wfatjet_cat)&(~FH_1Wfatjet_cat)& (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_jets>=2)#will categorise n jets for FH resolved 
+        FH_fully_resovled_cat =(~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted) & (~FH_2Wfatjet_cat)&(~FH_1Wfatjet_cat)& (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_jets>=2)
+        #will categorise n jets for FH resolved 
   
 
       
@@ -540,16 +542,15 @@ class HHWW_Preselection_FHSL(Tagger):
         # 5: FH_2Wfatjet_cat
         # 6: FH_1Wfatjet_cat
         # 7: FH_fully_resovled_cat
-
-        # no lepton
-        category = awkward.where(SL_boosted_cat, awkward.ones_like(category)*1, category)
-        category = awkward.where(SL_fullyresovled_cat, awkward.ones_like(category)*2, category)
-        category = awkward.where(SL_merged_boosted_cat, awkward.ones_like(category)*3, category)
-        category = awkward.where(FH_boosted, awkward.ones_like(category)*4, category)
-        # with isolated lepton
-        category = awkward.where(FH_2Wfatjet_cat, awkward.ones_like(category)*5, category)
-        category = awkward.where(FH_1Wfatjet_cat, awkward.ones_like(category)*6, category)
+        
+    
         category = awkward.where(FH_fully_resovled_cat, awkward.ones_like(category)*7, category)
+        category = awkward.where(FH_1Wfatjet_cat, awkward.ones_like(category)*6, category)
+        category = awkward.where(FH_2Wfatjet_cat, awkward.ones_like(category)*5, category)
+        category = awkward.where(FH_boosted, awkward.ones_like(category)*4, category)
+        category = awkward.where(SL_merged_boosted_cat, awkward.ones_like(category)*3, category)
+        category = awkward.where(SL_fullyresovled_cat, awkward.ones_like(category)*2, category)
+        category = awkward.where(SL_boosted_cat, awkward.ones_like(category)*1, category)
         category_cut = (category > 0) # cut the events with category == 0
         awkward_utils.add_field(events, "category", category) 
 
