@@ -35,7 +35,12 @@ def electron_id_sf(events, year, central_only, input_collection, working_point =
     missing_fields = awkward_utils.missing_fields(events, required_fields)
 
     evaluator = _core.CorrectionSet.from_file(misc_utils.expand_path(ELECTRON_ID_SF_FILE[year]))
-
+    logger.debug(misc_utils.expand_path(ELECTRON_ID_SF_FILE[year]))
+    print(type(evaluator))
+    print(evaluator)
+    print(working_point)
+    logger.debug(evaluator["UL-Electron-ID-SF"])
+    print(ELECTRON_ID_SF[year])
     electrons = events[input_collection]
 
     # Flatten electrons then convert to numpy for compatibility with correctionlib
@@ -64,17 +69,35 @@ def electron_id_sf(events, year, central_only, input_collection, working_point =
             ele_pt
     )
     variations["central"] = awkward.unflatten(sf, n_electrons)
-
     if not central_only:
-        syst = evaluator["UL-Electron-ID-SF"].evalv(
+
+        sfup = evaluator["UL-Electron-ID-SF"].evalv(
                 ELECTRON_ID_SF[year],
-                "syst",
+                "sfup",
                 working_point,
                 ele_eta,
                 ele_pt
         )
-        variations["up"] = variations["central"] + awkward.unflatten(syst, n_electrons)
-        variations["down"] = variations["central"] - awkward.unflatten(syst, n_electrons)
+        variations["up"] = variations["central"] + awkward.unflatten(sfup, n_electrons)
+
+        sfdown = evaluator["UL-Electron-ID-SF"].evalv(
+                ELECTRON_ID_SF[year],
+                "sfdown",
+                working_point,
+                ele_eta,
+                ele_pt
+        )
+        variations["down"] = variations["central"] + awkward.unflatten(sfdown, n_electrons)
+
+    #     syst = evaluator["UL-Electron-ID-SF"].evalv(
+    #             ELECTRON_ID_SF[year],
+    #             "syst", #syst
+    #             working_point,
+    #             ele_eta,
+    #             ele_pt
+    #     )
+    #     variations["up"] = variations["central"] + awkward.unflatten(syst, n_electrons)
+    #     variations["down"] = variations["central"] - awkward.unflatten(syst, n_electrons)
 
 
     for var in variations.keys():

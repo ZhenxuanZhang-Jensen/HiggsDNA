@@ -30,9 +30,93 @@
             }
         }
     ],
-    "systematics": {
-        "weights": {},
-        "independent_collections": {}
+    "systematics" : {
+        "weights" : {
+            "electron_veto_sf" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "photon_electron_veto_sf"
+                 },
+                 "years" :  "2017",
+                 "modify_central_weight" : false,
+                 "input_collection" : "Photon",
+                 "target_collections" : [["Diphoton", "Photon"]]
+            },
+            "trigger_sf" : {
+                "type" : "event",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "trigger_sf"
+                },
+                "years" :  "2017",
+                "modify_central_weight" : false,
+                "requires_branches" : ["Diphoton", "LeadPhoton", "SubleadPhoton"]
+            },
+            "nonisoelectron_id_sf" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.lepton_systematics",
+                    "name" : "electron_id_sf"
+                },
+                "years" :  "2017",
+                "modify_central_weight" : false,
+                "input_collection" : "Electron",
+                "target_collections" : ["SelectedElectron_noiso"],
+                "kwargs" : {
+                    "working_point" : "wp90noiso"
+                }
+                
+            },
+            "isoelectron_id_sf" : {
+                "type" : "object",
+                "method" : "from_function",
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.lepton_systematics",
+                    "name" : "electron_id_sf"
+                },
+                "years" :  "2017",
+                "modify_central_weight" : false,
+                "input_collection" : "Electron",
+                "target_collections" : ["SelectedElectron_iso","SelectedElectron_noiso"],
+                "kwargs" : {
+                    "working_point" : "wp80iso"
+                }
+                
+            },
+            "L1_prefiring_sf" : {
+                "type" : "event",
+                "method" : "from_branch",
+                "branches" : {
+                    "central" : "L1PreFiringWeight_Nom",
+                    "up" : "L1PreFiringWeight_Up",
+                    "down" : "L1PreFiringWeight_Dn"
+                },
+                "modify_central_weight" : false,
+                "years" :  "2017"
+            } 
+        },
+        "independent_collections" : {
+            "fnuf" : {
+                "method" : "from_function",
+                "branch_modified" : ["Photon", "pt"],
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "fnuf_unc"
+                }
+            },
+            "material" : {
+                "method" : "from_function",
+                "branch_modified" : ["Photon", "pt"],
+                "function" : {
+                    "module_name" : "higgs_dna.systematics.photon_systematics",
+                    "name" : "material_unc"
+                }
+            }
+        }
     },
     "samples": {
         "catalog": "metadata/samples/hhww_cusNANO_local.json",

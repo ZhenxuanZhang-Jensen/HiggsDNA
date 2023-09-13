@@ -367,7 +367,7 @@ class Task():
                 )
 
             awkward.to_parquet(merged_events, merged_output)
-            self.yield_table()
+        self.yield_table()
 
 
         self.wrote_process_ids = False
@@ -384,7 +384,8 @@ class Task():
             if not outputs:
                 continue
         folder_path = self.output_dir 
-        event=awkward.from_parquet(folder_path+"/merged_nominal.parquet")
+        event=awkward.from_parquet(folder_path+"/merged_nominal.parquet") #without systematic
+        # event=awkward.from_parquet(folder_path+"/merged_fnuf_down.parquet")
         weight=event['weight_central'][0]
         # List to store the file paths
         file_paths = []

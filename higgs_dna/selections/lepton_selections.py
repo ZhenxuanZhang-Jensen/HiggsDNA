@@ -95,7 +95,8 @@ DEFAULT_MUONS = {
         "eta" : 2.5,
         "dxy" : 0.045,
         "dz" : 0.2,
-        "id" : "highptId",  
+        # "id" : "highptId",  
+        "id" : "tight",  
         "non_pfRelIso04_all":None,  
         "pfRelIso04_all" : None,
         "dr_photons" : 0.2,
@@ -119,11 +120,11 @@ def select_muons(muons, options, clean, name = "none", tagger = None):
     #     id_cut = muons.mediumId == True
     # if options["id"] == "loose":
     #     id_cut = muons.looseId == True
-    # if options["id"] == "tight":
-    #     id_cut = muons.tightId == True
-    if options["id"] == "highptId":
-        id_cut = (muons.highPtId == 2)
-        logger.debug("highptId cut: %s" % str(id_cut))
+    if options["id"] == "tight":
+        id_cut = muons.tightId == True
+    # if options["id"] == "highptId":
+    #     id_cut = (muons.highPtId == 2)
+    #     logger.debug("highptId cut: %s" % str(id_cut))
     elif not options["id"] or options["id"].lower() == "none":
         id_cut = muons.pt > 0.
         logger.warning("[select_muons] : Tagger '%s', id cut '%s' not recognized, not applying an ID cut." % (str(tagger), options["id"]))
