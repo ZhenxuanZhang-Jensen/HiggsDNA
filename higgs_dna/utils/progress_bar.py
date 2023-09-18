@@ -1,12 +1,14 @@
 class ProgressBar():
     """
     """
-    TEMPLATE = "{0:<30s} | {1:>5.1f}% | {2:15s} [Event rate : {3:>4.1f} kHz] [Efficiency : {4:8.4f}%]"
+    TEMPLATE = "{0:<40s} | {1:>5.1f}% | {2:15s} [Evt rate : {3:>4.1f} kHz] [Eff : {4:8.4f}%]"
     def __init__(self, name):
         """
 
         """
-        self.name = "[Task : %s]" % name
+        self.name = "[%s]" % name
+        if len(self.name) >= 35:
+            self.name = self.name[0:26] + "..." + self.name[-11:]
         self.bar = ""
 
 

@@ -127,6 +127,13 @@ def update_dict(original, new):
 
     updated = copy.deepcopy(original)
 
+    for key, value in new.items():
+        if key not in original.keys():
+            if isinstance(value, dict):
+                updated[key] = copy.deepcopy(value)
+            else:
+                updated[key] = value
+
     for key, value in original.items():
         if key in new.keys():
             if isinstance(value, dict):

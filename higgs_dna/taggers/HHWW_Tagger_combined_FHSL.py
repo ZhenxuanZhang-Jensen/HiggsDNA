@@ -147,8 +147,8 @@ class HHWW_Preselection_FHSL(Tagger):
     HHWW Preselection tagger for tutorial
     """
 
-    def __init__(self, name, options={}, is_data=None, year=None, output_dir=None):
-        super(HHWW_Preselection_FHSL, self).__init__(name, options, is_data, year, output_dir)
+    def __init__(self, name, options={}, is_data=None, year=None,output_dir=None):
+        super(HHWW_Preselection_FHSL, self).__init__(name, options, is_data, year,output_dir)
 
         if not options:
             self.options = DEFAULT_OPTIONS

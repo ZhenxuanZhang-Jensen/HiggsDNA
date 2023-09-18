@@ -29,10 +29,16 @@ def missing_fields(array, fields):
             field = tuple(field)
         elif isinstance(field, tuple):
             sub_array = array
+            
             for sub_field in field:
-                if sub_field not in sub_array.fields:
-                    missing_fields.append(field)
-                    break
+                if isinstance(sub_array, dict):
+                    if sub_field not in sub_array.keys():
+                        missing_fields.append(field)
+                        break
+                else:
+                    if sub_field not in sub_array.fields:
+                        missing_fields.append(field)
+                        break
                 sub_array = sub_array[sub_field]
 
         else:
@@ -132,11 +138,10 @@ def add_object_fields(events, name, objects, n_objects, dummy_value = -999., fie
     :type overwrite: bool
     """
 
-    padded_objects = awkward.pad_none(objects, n_objects, clip=True)  #attention:after pad_none it would be the array with the same len
+    padded_objects = awkward.pad_none(objects, n_objects, clip=True)
     if isinstance(fields, str):
         if fields == "all":
             fields = objects.fields
-                
     elif not isinstance(fields, list):
         message = "[awkward_utils.py : add_object_fields] argument <fields> should either be a string 'all' to save all fields in the original record, or a list of fields which is a subset of the fields in the original record, not '%s' as you have passed." % (str(type(fields)))
         logger.exception(message)
@@ -238,3 +243,29 @@ def create_four_vectors(events, offsets, contents):
 
     return objects_p4
 
+
+def unpackbits(x, num_bits):
+    if numpy.issubdtype(x.dtype, numpy.floating):
+        raise ValueError("numpy data type needs to be int-like")
+    xshape = list(x.shape)
+    x = x.reshape([-1, 1])
+    mask = 2**numpy.arange(num_bits, dtype=x.dtype).reshape([1, num_bits])
+    return (x & mask).astype(bool).astype(int).reshape(xshape + [num_bits])
+
+
+def to_bitlist(array, num_bits):
+    jagged = "var" in str(array.type)
+    if jagged:
+        n = awkward.num(array)
+        array_numpy = awkward.to_numpy(awkward.flatten(array))
+    else:
+        array_numpy = awkward.to_numpy(array)
+
+    bits_numpy = unpackbits(array_numpy,num_bits)
+
+    if jagged:
+        bits = awkward.unflatten(bits_numpy, n)
+    else:
+        bits = awkward.from_numpy(bits_numpy)
+
+    return bits

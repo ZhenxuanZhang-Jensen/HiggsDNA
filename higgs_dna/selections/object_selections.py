@@ -249,4 +249,3 @@ so in the photons collection, where you don't simply want the nearest photon, bu
     base_objects["%sdR" % name] = base_objects.deltaR(base_best_target)
 
     return base_objects
-

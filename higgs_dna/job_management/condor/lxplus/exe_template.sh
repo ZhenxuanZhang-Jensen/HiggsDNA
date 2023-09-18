@@ -17,4 +17,36 @@ else
 fi
 unset __conda_setup
 
+echo "[wrapper] hostname  = " `hostname`
+echo "[wrapper] date      = " `date`
+echo "[wrapper] linux timestamp = " `date +%s`
+
+echo "[wrapper] ls-ing files (before running)"
+ls -altrh
+
+xrdcp XRD_CONDA_TARFILE .
+xrdcp XRD_ANALYSIS_TARFILE .
+
+mkdir higgs-dna
+cd higgs-dna
+mv ../higgs-dna.tar.gz .
+tar -xzf higgs-dna.tar.gz
+cd ..
+
+echo "[wrapper] ls-ing files (after untarring)"
+ls -altrh
+ls -althr higgs-dna/
+
+# activate env
+source higgs-dna/bin/activate
+export PYTHONPATH=`pwd`:$PYTHONPATH
+export PATH=`pwd`/higgs-dna/bin:$PATH
+
+echo $PATH
+echo $PYTHONPATH
+
+# Untar analysis environment
+tar xf higgs_dna.tar.gz
+pip install -e .
+
 python PYTHON_FILE

@@ -15,6 +15,7 @@ from higgs_dna.utils.metis_utils import do_cmd
 
 import sys
 
+
 class Tagger():
     """
     Abstract base class for taggers
@@ -50,11 +51,10 @@ class Tagger():
         :rtype: awkward.Array
         """
         self.current_syst = NOMINAL_TAG
-        selection, events_updated = self.get_selection(NOMINAL_TAG, events)
+        selection, events_updated = self.calculate_selection(events)
         return events_updated[selection]
 
-
-    def run(self, events): 
+    def run(self, events, syst_tag = NOMINAL_TAG): 
         """
         Return dictionary of boolean arrays of events to be selected
         by this tagger for each systematic variation,
@@ -65,70 +65,73 @@ class Tagger():
         :return: boolean arrays of events to be selected by this tagger for each systematic variation, events dict with added fields computed by this tagger
         :rtype: dict, dict 
         """
-        logger.debug("self.is_data %s"%(self.is_data))
-        if not self.is_data:
-            for syst_tag, syst_events in events.items():
-                self.current_syst = syst_tag
-                selection, syst_events_updated = self.get_selection(syst_tag, syst_events)
-                self.selection[syst_tag] = selection
-                self.events[syst_tag] = syst_events_updated
-                updated_event=syst_events_updated[self.selection[syst_tag]]
-                logger.debug("[Tagger] %s : event set : %s : %d (%d) events before (after) selection" % (self.name, syst_tag, len(syst_events), len(syst_events_updated[self.selection[syst_tag]])))
-                logger.debug("[Tagger] %s : event set : %s : %d (%d) positive events num - 2 negtive events num events before (after) selection" % (self.name, syst_tag, (len(syst_events[syst_events['genWeight']>0])-2*len(syst_events[syst_events['genWeight']<0])), (len(updated_event[updated_event['genWeight']>0])-2*len(updated_event[updated_event['genWeight']<0]))))
-                self.diphoton_yield = awkward.sum(updated_event['genWeight'])
-                self.diphoton_events = len(updated_event[updated_event['genWeight']>0])-2*len(updated_event[updated_event['genWeight']<0])
-                logger.debug("[Tagger] %s : event set : %s : %d yield after selection" % (self.name, syst_tag ,awkward.sum(updated_event['genWeight'])))
-                diphoton_preselection_eff = self.diphoton_events/(len(syst_events[syst_events['genWeight']>0])-2*len(syst_events[syst_events['genWeight']<0]))
-                #objeff: after tagger selection, n(+events) = 2n(-events)
-                #eveff: after tagger selection, yield
-                #event_number: after tagger selection, eff using n(+events) = 2n(-events)
-                dic_eff = {'[object_eff] -'+self.name+': '+self.name+' object efficiency':(len(updated_event[updated_event['genWeight']>0])-2*len(updated_event[updated_event['genWeight']<0])),'[event_eff]   -'+self.name+': '+self.name+' event efficiency':self.diphoton_yield,'[event_number]   -'+self.name+': '+self.name+' event number' :diphoton_preselection_eff }   
-                file_path = self.output_dir + '/combined_eff.json' 
-                dic_eff_serializable = {key: float(value) for key, value in dic_eff.items()}
+        logger.debug("running......")
+        logger.debug(str(syst_tag))
+        self.current_syst = syst_tag
+   
+        if not len(events) >= 1:
+            logger.debug("[Tagger] %s : event set : %s : 0 events passed to tagger, skipping running this tagger." % (self.name, syst_tag))
+            selection = awkward.ones_like(events, dtype=bool)
+            self.selection[syst_tag] = selection
 
-                if os.path.exists(self.output_dir+'/combined_eff.json'):
-                    file_path = self.output_dir + '/combined_eff.json'
-
-                with open(file_path, 'r') as file:
-                    content = file.read()
-
-                    content = content[:-1]
-
-                with open(file_path, 'w') as file:
-                    file.write(content)
-                    file.write(',')
-
-                    json.dump(dic_eff_serializable, file, indent=4)
-                    file.write('}')
-                with open(file_path, 'r') as file:
-                    content = file.read()
-                    if content.strip().endswith('}}'):
-                        content = content[:-1] + ']'
-                        with open(file_path, 'w') as file:
-                            file.write(content)
         else:
-            for syst_tag, syst_events in events.items():
-                self.current_syst = syst_tag
-                selection, syst_events_updated = self.get_selection(syst_tag, syst_events)
-                self.selection[syst_tag] = selection
-                self.events[syst_tag] = syst_events_updated
+            selection, events = self.calculate_selection(events)
+            self.selection[syst_tag] = selection
+            logger.debug("[Tagger] %s : event set : %s : %d (%d) events before (after) selection" % (self.name, syst_tag, len(selection), awkward.sum(selection)))
 
-            logger.debug("[Tagger] %s : event set : %s : %d (%d) events before (after) selection" % (self.name, syst_tag, len(syst_events), len(syst_events_updated[self.selection[syst_tag]])))
+        return selection, events
+        # if not self.is_data:
+        #     if not len(events) >= 1:
+        #         selection = awkward.ones_like(events, dtype=bool)
+        #         self.selection[syst_tag] = selection
+        #         syst_events_updated=events
+        #     else:
+        #         selection, syst_events_updated = self.get_selection(syst_tag, events)
+        #         self.selection[syst_tag] = selection
+        #         self.events[syst_tag] = syst_events_updated
+        #     updated_event=syst_events_updated[self.selection[syst_tag]]
+        #     logger.debug("[Tagger] %s : event set : %s : %d (%d) events before (after) selection" % (self.name, syst_tag, len(events), len(syst_events_updated[self.selection[syst_tag]])))
+        #     logger.debug("[Tagger] %s : event set : %s : %d (%d) positive events num - 2 negtive events num events before (after) selection" % (self.name, syst_tag, (len(events[events['genWeight']>0])-2*len(events[events['genWeight']<0])), (len(updated_event[updated_event['genWeight']>0])-2*len(updated_event[updated_event['genWeight']<0]))))
+        #     self.diphoton_yield = awkward.sum(updated_event['genWeight'])
+        #     self.diphoton_events = len(updated_event[updated_event['genWeight']>0])-2*len(updated_event[updated_event['genWeight']<0])
+        #     logger.debug("[Tagger] %s : event set : %s : %d yield after selection" % (self.name, syst_tag ,awkward.sum(updated_event['genWeight'])))
+        #     diphoton_preselection_eff = self.diphoton_events/(len(events[events['genWeight']>0])-2*len(events[events['genWeight']<0]))
+        #     #objeff: after tagger selection, n(+events) = 2n(-events)
+        #     #eveff: after tagger selection, yield
+        #     #event_number: after tagger selection, eff using n(+events) = 2n(-events)
+        #     dic_eff = {'[object_eff] -'+self.name+': '+self.name+' object efficiency':(len(updated_event[updated_event['genWeight']>0])-2*len(updated_event[updated_event['genWeight']<0])),'[event_eff]   -'+self.name+': '+self.name+' event efficiency':self.diphoton_yield,'[event_number]   -'+self.name+': '+self.name+' event number' :diphoton_preselection_eff }   
+        #     file_path = self.output_dir + '/combined_eff.json' 
+        #     dic_eff_serializable = {key: float(value) for key, value in dic_eff.items()}
+
+        #     if os.path.exists(self.output_dir+'/combined_eff.json'):
+        #         file_path = self.output_dir + '/combined_eff.json'
+
+        #     with open(file_path, 'r') as file:
+        #         content = file.read()
+
+        #         content = content[:-1]
+
+        #     with open(file_path, 'w') as file:
+        #         file.write(content)
+        #         file.write(',')
+
+        #         json.dump(dic_eff_serializable, file, indent=4)
+        #         file.write('}')
+        #     with open(file_path, 'r') as file:
+        #         content = file.read()
+        #         if content.strip().endswith('}}'):
+        #             content = content[:-1] + ']'
+        #             with open(file_path, 'w') as file:
+        #                 file.write(content)
+        # else:
+        #     selection, syst_events_updated = self.get_selection(syst_tag, events)
+        #     self.selection[syst_tag] = selection
+        #     self.events[syst_tag] = syst_events_updated
+
+        #     logger.debug("[Tagger] %s : event set : %s : %d (%d) events before (after) selection" % (self.name, syst_tag, len(events), len(syst_events_updated[self.selection[syst_tag]])))
 
 
-        return self.selection, self.events
-
-
-    def set_selection(self, selection):
-        """
-        Update selection (TagSequence will do this to remove overlap
-        with other tags)
-        :param selection: boolean array for each set of events
-        :type selection: dict
-        """
-        for name in selection.keys():
-            self.selection[name] = selection[name]
-
+        # return selection, events
     def get_selection(self, syst_tag, syst_events): 
         """
         Return boolean array of events to be selected for a given event set.
@@ -145,8 +148,6 @@ class Tagger():
 
         else:
             return self.calculate_selection(syst_events) 
-
-        
     def calculate_selection(self, events): 
         """
         Abstract function that should be reimplemented for each tagger.
@@ -184,7 +185,6 @@ class Tagger():
                 final_cut = final_cut | cut
 
         return final_cut
-
 
     def register_cuts(self, names, results, cut_type = "event"):
         """
@@ -271,8 +271,7 @@ class Tagger():
 
                 # Add closing bracket ']' for the new object
                 f.write(']')
-            
-
+    
 
 
     def get_summary(self):

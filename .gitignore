@@ -1,16 +1,13 @@
 # Editors
 .vscode/
 .idea/
-*.parquet
+
 # Vagrant
 .vagrant/
-eos_logs/
-*analysis_jupyter/
-*output/
+
 # Mac/OSX
-.DS_Stor
-*tutorial_tth*
-*tutorial_dipho*
+.DS_Store
+
 # Windows
 Thumbs.db
 
@@ -130,40 +127,4 @@ dmypy.json
 # tagger output files
 examples/output/
 scripts/output/
-jsonpog-integration/
-shsong.cc
-x509up_u138391
-*.out
-*.exe
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+eos_logs/

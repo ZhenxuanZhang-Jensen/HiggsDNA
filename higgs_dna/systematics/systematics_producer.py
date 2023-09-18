@@ -10,7 +10,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 from higgs_dna.systematics.systematic import EventWeightSystematic, ObjectWeightSystematic, SystematicWithIndependentCollection
-from higgs_dna.systematics import photon_systematics, lepton_systematics, jet_systematics, pileup_systematics
+from higgs_dna.systematics import photon_systematics, lepton_systematics, jet_systematics, pileup_systematics, theory_systematics
 from higgs_dna.utils import awkward_utils, misc_utils
 from higgs_dna.constants import NOMINAL_TAG
 
@@ -31,7 +31,13 @@ class SystematicsProducer():
 
         self.weights = {}
         self.independent_collections = {}
+        self.do_variations = True
+        if "no_systematics" in self.options.keys():
+            if self.options["no_systematics"]: # the --no_systematics option for run_analysis.py allows user to run a SystematicsProducer that modifies the central weight for weight systematics but does not calculate up/down variations and does not run over any systematics with independent collections
+                self.do_variations = False
+
         self.add_systematics(self.options)
+        self.summary = { "weights" : {}, "independent_collections" : {} }
 
 
     def syst_is_relevant(self, syst, syst_info):
@@ -122,6 +128,10 @@ class SystematicsProducer():
                         syst_info["branches"] = None
                     elif syst_info["method"] == "from_branch":
                         syst_info["function"] = None
+
+                    if "normalization_factors" not in syst_info.keys():
+                        syst_info["normalization_factors"] = None
+
                     if "input_collection" in syst_info.keys():
                         if not "target_collections" in syst_info.keys():
                             logger.debug("[SystematicsProducer : add_systematics] No target collections specified for syst '%s', using the input collection '%s' as the target" % (syst, syst_info["input_collection"]))
@@ -145,6 +155,7 @@ class SystematicsProducer():
                                 function = syst_info["function"],
                                 input_collection = syst_info["input_collection"],
                                 target_collection = target_collection,
+                                normalization_factors = syst_info["normalization_factors"],
                                 sample = self.sample
                         )
 
@@ -187,7 +198,7 @@ class SystematicsProducer():
 
                     self.weights[syst].append(weight_syst)
 
-        if "independent_collections" in systematics.keys():
+        if "independent_collections" in systematics.keys() and self.do_variations:
             for syst, syst_info in systematics["independent_collections"].items():
                 if syst in self.independent_collections.keys(): # check if it has already been added
                     continue
@@ -230,6 +241,57 @@ class SystematicsProducer():
                         setattr(self.independent_collections[syst], kwarg, val)
 
 
+    def produce_weights(self, events):
+        """
+        Produces systematic variations *before* the tag sequence has been run:
+            1. Produce and apply weight systematics. For each weight systematic:
+                1.1 Produce: compute the variations (currently, the necessary branches for computing the initial weights are assumed to always be present in the input file. This may not always be true in the future...) 
+                1.2 Apply: if the necessary branches for applying variations are present, translate this to a per-event weight (for ObjectWeightSystematics) and modify the central weight (if specified)
+
+        :param events: events array to use for calculating systematic variations
+        :type events: awkward.highlevel.Array
+        :return: events array with additional branches for weight systematics and central weight applied (if able to apply before running taggers)
+        """
+        for name, weight_systs in self.weights.items():
+            logger.debug("[SystematicsProducer : produce] Producing weights for weight variation: %s" % name)
+           
+            # Check if the input collection is already produced (e.g. trigger SF relies on Lead/Sublead photons which are not determined until after running the diphoton tagger
+            if hasattr(weight_systs[0], "input_collection"):
+                missing_fields = awkward_utils.missing_fields(events, [weight_systs[0].input_collection])
+                if missing_fields:
+                    continue
+
+            if hasattr(weight_systs[0], "requires_branches"):
+                if weight_systs[0].requires_branches is not None:
+                    missing_fields = awkward_utils.missing_fields(events, weight_systs[0].requires_branches)
+                    if missing_fields:
+                        continue
+
+            events = weight_systs[0].produce(events)
+            for idx, weight_syst in enumerate(weight_systs):
+                weight_syst.is_produced = True
+                if idx >= 1: # need to copy over the calculated branches
+                    weight_syst.branches = weight_systs[0].branches
+
+                # Try to apply this weight syst, otherwise we wait til after the taggers
+                if hasattr(weight_syst, "modifies_taggers"):  
+                    continue
+                if not hasattr(weight_syst, "target_collection"): 
+                    events = weight_syst.apply(events)
+                elif weight_syst.target_collection is None:
+                    events = weight_syst.apply(events)
+                else:
+                    missing_fields = awkward_utils.missing_fields(events, [weight_syst.target_collection])
+                    if not missing_fields:
+                        events = weight_syst.apply(events)
+
+                if NOMINAL_TAG in weight_syst.is_applied.keys():
+                    if weight_syst.is_applied[NOMINAL_TAG]: # if we already apply the weight syst before creating ICs, mark it as applied for all ICs (to avoid double-applying later on)
+                        weight_syst.is_applied_all = True
+
+        return events  
+
+    
     def produce(self, events):
         """
         Produces systematic variations *before* the tag sequence has been run:
@@ -286,6 +348,8 @@ class SystematicsProducer():
 
 
         for name, ic_syst in self.independent_collections.items():
+            if not self.do_variations:
+                continue
             ics = ic_syst.produce(events)
             if NOMINAL_TAG in ics.keys():
                 events = ics[NOMINAL_TAG]
@@ -299,7 +363,7 @@ class SystematicsProducer():
         return events_with_syst
 
     
-    def apply_remaining_weight_systs(self, events_with_syst, tag_idx_map):
+    def apply_remaining_weight_systs(self, events, syst_tag, tag_idx_map):
         """
         Applies weight systematics which were not able to be applied before running the tag sequence.
         This should only be run *after* running a tag sequence.
@@ -310,48 +374,53 @@ class SystematicsProducer():
         :type tag_idx_map: dict of str : int
         """
         
-        for name, syst_events in events_with_syst.items():
-            for weight_name, weight_systs in self.weights.items():
-                for weight_syst in weight_systs:
-                    if weight_syst.is_applied_all:
-                        continue
-                    if name in weight_syst.is_applied.keys():
-                        if weight_syst.is_applied[name]:
-                            continue
-
-                    reset = False
-                    if not weight_syst.is_produced:
-                        reset = True
-                        syst_events = weight_syst.produce(syst_events, central_only = name != NOMINAL_TAG)
-
-                    if hasattr(weight_syst, "modifies_taggers"):
-                        mask = syst_events.tag_idx < 0 # initialize to all False
-                        for tagger_name in weight_syst.modifies_taggers:
-                            if tagger_name not in tag_idx_map.keys():
-                                message = "[SystematicsProducer : apply_remaining_weight_syst] Weight systematic: %s was specified to modify the tagger '%s', but it is not in the list of tagger names we got from TagSequence. List is %s." % (weight_name, tagger_name, str(tag_idx_map.keys()))
-                                logger.exception(message)
-                                raise ValueError(message)
-                            mask = (mask) | (syst_events.tag_idx == tag_idx_map[tagger_name])
-
-                    else:
-                        mask = None
-
-                    syst_events = weight_syst.apply(
-                            events = syst_events,
-                            syst_tag = name,
-                            central_only = name != NOMINAL_TAG,
-                            mask = mask
-                    )
-
-                    events_with_syst[name] = syst_events
-                
-                    if reset:
-                        weight_syst.is_produced = False
-
-        self.summary = { "weights" : {}, "independent_collections" : {} }
+        #for name, syst_events in events_with_syst.items():
         for weight_name, weight_systs in self.weights.items():
             for weight_syst in weight_systs:
-                for variation, info in weight_syst.summary[NOMINAL_TAG].items():
-                    self.summary["weights"][info["branch"]] = weight_syst.summary
+                if weight_syst.is_applied_all:
+                    continue
+                if syst_tag in weight_syst.is_applied.keys():
+                    if weight_syst.is_applied[syst_tag]:
+                        continue
 
-        return events_with_syst
+                reset = False
+                if syst_tag == NOMINAL_TAG:
+                    central_only = not self.do_variations
+                else:
+                    central_only = True
+                if not weight_syst.is_produced:
+                    reset = True
+                    events = weight_syst.produce(events, central_only = central_only) 
+
+                if hasattr(weight_syst, "modifies_taggers"):
+                    mask = events.tag_idx < 0 # initialize to all False
+                    for tagger_name in weight_syst.modifies_taggers:
+                        if tagger_name not in tag_idx_map.keys():
+                            message = "[SystematicsProducer : apply_remaining_weight_syst] Weight systematic: %s was specified to modify the tagger '%s', but it is not in the list of tagger names we got from TagSequence. List is %s." % (weight_name, tagger_name, str(tag_idx_map.keys()))
+                            logger.exception(message)
+                            raise ValueError(message)
+                        mask = (mask) | (events.tag_idx == tag_idx_map[tagger_name])
+
+                else:
+                    mask = None
+
+                events = weight_syst.apply(
+                        events = events,
+                        syst_tag = syst_tag,
+                        central_only = central_only, 
+                        mask = mask
+                )
+
+                #events_with_syst[name] = events
+            
+                if reset:
+                    weight_syst.is_produced = False
+
+        #self.summary = { "weights" : {}, "independent_collections" : {} }
+        if syst_tag == NOMINAL_TAG:
+            for weight_name, weight_systs in self.weights.items():
+                for weight_syst in weight_systs:
+                    for variation, info in weight_syst.summary[NOMINAL_TAG].items():
+                        self.summary["weights"][info["branch"]] = weight_syst.summary
+
+        return events

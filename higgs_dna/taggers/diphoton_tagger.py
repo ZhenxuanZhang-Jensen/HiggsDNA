@@ -76,7 +76,7 @@ DEFAULT_OPTIONS = {
 #   - https://indico.cern.ch/event/1071721/contributions/4551056/attachments/2320292/3950844/HiggsDNA_DiphotonPreselectionAndSystematics_30Sep2021.pdf
 
 class DiphotonTagger(Tagger):
-    def __init__(self, name = "default_diphoton_tagger", options = {}, is_data = None, year = None, output_dir=None):
+    def __init__(self, name = "default_diphoton_tagger", options = {}, is_data = None, year = None,output_dir=None):
         super(DiphotonTagger, self).__init__(name, options, is_data, year,output_dir)
 
         if not options:

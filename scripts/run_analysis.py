@@ -51,11 +51,7 @@ def parse_arguments():
         required=False,
         action="store_true",
         help="merge output files all into a single file")
-    parser.add_argument(
-        "--yield_table",
-        required=False,
-        action="store_true",
-        help="create yield table or not ")
+
     parser.add_argument(
         "--unretire_jobs",
         required=False,
@@ -79,7 +75,11 @@ def parse_arguments():
         required=False,
         action="store_true",
         help="just run 1 job for each sample/year to test workflow")
-
+    parser.add_argument(
+        "--yield_table",
+        required=False,
+        action="store_true",
+        help="create yield table or not ")
     parser.add_argument(
         "--years",
         required=False,
@@ -109,12 +109,10 @@ def parse_arguments():
         help="number of cores to use for running jobs in parallel. Only applicable if running locally.")
 
     parser.add_argument(
-        "--use_xrdcp",
+        "--no_systematics",
         required=False,
-        default=False,
-        type=bool,
-        help="use xrdcp to copy to nanoAOD file to local or not ")
-    
+        action="store_true",
+        help="Run without calculating systematic variations, overriding the systematics provided through the config json. Any weight systematics which modify the central event weight will still be calculated (but not their up/down variations).") 
 
     return parser.parse_args()
 
