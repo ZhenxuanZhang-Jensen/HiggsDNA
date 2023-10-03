@@ -16,12 +16,26 @@ ELECTRON_ID_SF_FILE = {
     "2017" : "jsonpog-integration/POG/EGM/2017_UL/electron.json",
     "2018" : "jsonpog-integration/POG/EGM/2018_UL/electron.json"
 }
+MUON_ID_SF_FILE = {
+    "2016" : "jsonpog-integration/POG/MUO/2016postVFP_UL/muon_Z.json",
+    "2016UL_preVFP" : "jsonpog-integration/POG/MUO/2016preVFP_UL/muon_Z.json",
+    "2016UL_postVFP" : "jsonpog-integration/POG/MUO/2016postVFP_UL/muon_Z.json",
+    "2017" : "jsonpog-integration/POG/MUO/2017_UL/muon_Z.json",
+    "2018" : "jsonpog-integration/POG/MUO/2018_UL/muon_Z.json"
+}
 
 ELECTRON_ID_SF = {
     "2016" : "2016postVFP",
     "2016UL_preVFP" : "2016preVFP",
     "2016UL_postVFP" : "2016postVFP",
     "2017" : "2017",
+    "2018" : "2018"
+}
+MUON_ID_SF = {
+    "2016" : "2016postVFP",
+    "2016UL_preVFP" : "2016preVFP",
+    "2016UL_postVFP" : "2016postVFP",
+    "2017" : "2017_UL",
     "2018" : "2018"
 }
 
@@ -93,6 +107,76 @@ def electron_id_sf(events, year, central_only, input_collection, working_point =
                 variations[var]
         )
 
+    return variations
+
+
+
+
+def muon_global_sf(events, year, central_only, input_collection, working_point = "none"):
+    """
+    See:
+        - https://cms-nanoaod-integration.web.cern.ch/commonJSONSFs/summaries/MUO_2017_UL_muon_Z.html
+    """
+
+    required_fields = [
+         (input_collection, "eta"), (input_collection, "pt")
+    ]
+
+    missing_fields = awkward_utils.missing_fields(events, required_fields)
+
+    evaluator = _core.CorrectionSet.from_file(misc_utils.expand_path(MUON_ID_SF_FILE[year]))
+
+    muon = events[input_collection]
+
+    # Flatten muon then convert to numpy for compatibility with correctionlib
+    n_muon = awkward.num(muon)
+    muon_flattened = awkward.flatten(muon)
+
+    muon_pt = numpy.clip(
+        awkward.to_numpy(muon_flattened.pt),
+        15.0, # SFs only valid for pT >= 15.0
+        None # and pT < Inf.
+    )
+    muon_eta = numpy.abs(numpy.clip(
+        awkward.to_numpy(muon_flattened.eta),
+        -2.39999,
+        2.39999 # SFs only valid up to eta 2.4
+    ))
+    # Calculate SF and syst
+    variations = {}
+
+
+
+    sf = evaluator["NUM_GlobalMuons_DEN_genTracks"].evalv(
+            MUON_ID_SF[year],
+            muon_eta,
+            muon_pt,
+            "sf"            
+    )
+    variations["central"] = awkward.unflatten(sf, n_muon)
+
+    if not central_only:
+        syst_vars = ["sfup", "sfdown"] 
+        for syst_var in syst_vars:
+            syst = evaluator["NUM_GlobalMuons_DEN_genTracks"].evalv(
+                    MUON_ID_SF[year],
+                    muon_eta,
+                    muon_pt,
+                    syst_var
+            )
+            if "up" in syst_var:
+                syst_var_name = "up"
+            elif "down" in syst_var:
+                syst_var_name = "down"
+            variations[syst_var_name] = awkward.unflatten(syst, n_muon)
+
+    for var in variations.keys():
+        # Set SFs = 1 for leptons which are not applicable
+        variations[var] = awkward.where(
+                (muon.pt < 15.0) |(abs(muon.eta) >= 2.4),
+                awkward.ones_like(variations[var]),
+                variations[var]
+        )
     return variations
 
 
