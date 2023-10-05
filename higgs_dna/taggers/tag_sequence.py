@@ -90,7 +90,7 @@ class TagSequence():
 
         for i, tag_set in enumerate(self.tag_list):
             n_taggers = len(tag_set)
-
+            print("ZZ debugging self.run_taggers events", events)
             events = self.run_taggers(events, syst_tag, tag_set)
             if n_taggers > 1:
                 events = self.orthogonalize_tags(events, syst_tag, tag_set)

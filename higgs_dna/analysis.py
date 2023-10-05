@@ -51,7 +51,7 @@ def run_analysis(config):
     ### 1. Load events ###
     t_start_load = time.time()
     events, sum_weights = AnalysisManager.load_events(config["files"], config["branches"], config["sample"])
-
+    print("ZZ debugging events1", events)
     # Record n_events and sum_weights for scale1fb calculation
     job_summary["n_events"] = len(events)
     logger.debug(config['sample'].keys())
@@ -70,6 +70,7 @@ def run_analysis(config):
     t_start_samples = time.time()
     sample = Sample(**config["sample"])
     events = sample.prep(events)
+    print("ZZ debugging sample.prep events", events)
     t_elapsed_samples = time.time() - t_start_samples
 
     ### 3. Produce systematics ###
@@ -80,6 +81,7 @@ def run_analysis(config):
         sample = sample
     )
     events = systematics_producer.produce(events)
+    print("ZZ debugging systematics_producer events", events)
     t_elapsed_syst = time.time() - t_start_syst
 
     ### 4. Apply tag sequence ###
@@ -91,6 +93,7 @@ def run_analysis(config):
         output_dir=config["output_dir"]
     )
     events, tag_idx_map = tag_sequence.run(events)
+    print("ZZ debugging tag_sequence.run events", events)
     t_elapsed_taggers = time.time() - t_start_taggers
 
     ### 5. Compute remaining systematics that rely on tagger outputs ###

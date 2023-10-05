@@ -50,6 +50,7 @@ class Tagger():
         :rtype: awkward.Array
         """
         self.current_syst = NOMINAL_TAG
+        print("debugging taggerself.calculate_selection", events)
         selection, events_updated = self.calculate_selection(events)
         return events_updated[selection]
 
@@ -74,6 +75,7 @@ class Tagger():
             self.selection[syst_tag] = selection
 
         else:
+            print("tagger self.calculate_selection events", events)
             selection, events = self.calculate_selection(events)
             self.selection[syst_tag] = selection
             logger.debug("[Tagger] %s : event set : %s : %d (%d) events before (after) selection" % (self.name, syst_tag, len(selection), awkward.sum(selection)))

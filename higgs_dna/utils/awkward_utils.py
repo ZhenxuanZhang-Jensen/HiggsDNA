@@ -132,18 +132,10 @@ def add_object_fields(events, name, objects, n_objects, dummy_value = -999., fie
     :type overwrite: bool
     """
 
-<<<<<<< HEAD
-    padded_objects = awkward.pad_none(objects, n_objects, clip=True)  #attention:after pad_none it would be the array with the same len
-    if isinstance(fields, str):
-        if fields == "all":
-            fields = objects.fields
-                
-=======
     padded_objects = awkward.pad_none(objects, n_objects, clip=True)
     if isinstance(fields, str):
         if fields == "all":
             fields = objects.fields
->>>>>>> 23b43a6c2cbcc721797ee45b77027d6f279dd24f
     elif not isinstance(fields, list):
         message = "[awkward_utils.py : add_object_fields] argument <fields> should either be a string 'all' to save all fields in the original record, or a list of fields which is a subset of the fields in the original record, not '%s' as you have passed." % (str(type(fields)))
         logger.exception(message)
@@ -245,8 +237,6 @@ def create_four_vectors(events, offsets, contents):
 
     return objects_p4
 
-<<<<<<< HEAD
-=======
 
 def unpackbits(x, num_bits):
     if numpy.issubdtype(x.dtype, numpy.floating):
@@ -273,4 +263,3 @@ def to_bitlist(array, num_bits):
         bits = awkward.from_numpy(bits_numpy)
 
     return bits
->>>>>>> 23b43a6c2cbcc721797ee45b77027d6f279dd24f

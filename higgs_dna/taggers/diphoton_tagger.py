@@ -98,7 +98,8 @@ class DiphotonTagger(Tagger):
         Add a record "Diphoton" to events array with relevant information about each diphoton pair.
         In principle, there can be more than one Diphoton pair per event.
         """
-        
+        print("debugging DiphotonTagger calculate_selection events", events) 
+        print("debugging DiphotonTagger calculate_selection events type", type(events)) 
         # Determine what type of rho variable is available in nanoAOD
         # To be deleted once a standard rho variable is added to central nanoAOD
         if not self.options["photons"]["use_central_nano"]:
@@ -113,7 +114,7 @@ class DiphotonTagger(Tagger):
                 raise RuntimeError()
         else:
             rho = awkward.ones_like(events.Photon)
-
+        # print("debug events.fields",events.fields)
         photon_selection = self.select_photons(
                 photons = events.Photon,
                 rho = rho,

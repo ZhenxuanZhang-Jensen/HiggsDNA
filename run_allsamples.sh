@@ -39,7 +39,7 @@ if [ "$flag" = "all_signal_SL" ]; then
    echo "running $flag"
    rm /eos/user/z/zhenxuan/hhwwgg_parquet/SL_channel/hhwwgg_signal_new_SL_cat -rf
    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --sample_list   "UL17_R_gghh_SL_M-1200","UL17_R_gghh_SL_M-2600","UL17_R_gghh_SL_M-3000","UL17_R_gghh_SL_M-700","UL17_R_gghh_SL_M-1900","UL17_R_gghh_SL_M-800","UL17_R_gghh_SL_M-1600","UL17_R_gghh_SL_M-1800","UL17_R_gghh_SL_M-1100","UL17_R_gghh_SL_M-900","UL17_R_gghh_SL_M-1000","UL17_R_gghh_SL_M-350","UL17_R_gghh_SL_M-250","UL17_R_gghh_SL_M-550","UL17_R_gghh_SL_M-1300","UL17_R_gghh_SL_M-600","UL17_R_gghh_SL_M-270","UL17_R_gghh_SL_M-300","UL17_R_gghh_SL_M-650","UL17_R_gghh_SL_M-450","UL17_R_gghh_SL_M-750","UL17_R_gghh_SL_M-280","UL17_R_gghh_SL_M-2200","UL17_R_gghh_SL_M-2000","UL17_R_gghh_SL_M-2800","UL17_R_gghh_SL_M-1500","UL17_R_gghh_SL_M-850","UL17_R_gghh_SL_M-260","UL17_R_gghh_SL_M-1400","UL17_R_gghh_SL_M-320","UL17_R_gghh_SL_M-1700" --output_dir "/eos/user/z/zhenxuan/hhwwgg_parquet/SL_channel/hhwwgg_signal_new_SL_cat" --batch_system "condor"
-   # "UL17_R_gghh_SL_M-1200","UL17_R_gghh_SL_M-2400","UL17_R_gghh_SL_M-400","UL17_R_gghh_SL_M-2600","UL17_R_gghh_SL_M-3000","UL17_R_gghh_SL_M-700","UL17_R_gghh_SL_M-1900","UL17_R_gghh_SL_M-800","UL17_R_gghh_SL_M-1600","UL17_R_gghh_SL_M-1800","UL17_R_gghh_SL_M-1100","UL17_R_gghh_SL_M-900","UL17_R_gghh_SL_M-1000","UL17_R_gghh_SL_M-350","UL17_R_gghh_SL_M-250","UL17_R_gghh_SL_M-550","UL17_R_gghh_SL_M-1300","UL17_R_gghh_SL_M-600","UL17_R_gghh_SL_M-270","UL17_R_gghh_SL_M-300","UL17_R_gghh_SL_M-650","UL17_R_gghh_SL_M-450","UL17_R_gghh_SL_M-750","UL17_R_gghh_SL_M-280","UL17_R_gghh_SL_M-2200","UL17_R_gghh_SL_M-2000","UL17_R_gghh_SL_M-2800","UL17_R_gghh_SL_M-1500","UL17_R_gghh_SL_M-850","UL17_R_gghh_SL_M-260","UL17_R_gghh_SL_M-1400","UL17_R_gghh_SL_M-320","UL17_R_gghh_SL_M-1700"
+   # "UL17_R_gghh_SL_M-1200","UL17_R_gghh_SL_M-2400","UL17_R_gghh_SL_M-400","UL17_R_gghh_SL_M-2600","UL17_R_gghh_SL_M-3000","UL17_R_gghh_SL_M-700","UL17_R_gghh_SL_M-1900","UL17_R_gghh_SL_M-800","UL17_R_gghh_SL_M-1600","UL17_R_gghh_SL_M-1800","UL17_R_gghh_SL_M-1100","UL17_R_gghh_SL_M-900","UL17_R_gghh_SL_M-1000","UL17_R_gghh_SL_M-350","UL17_R_gghh_SL_M-250","UL17_R_gghh_SL_M-550","UL17_R_gghht_SL_M-1300","UL17_R_gghh_SL_M-600","UL17_R_gghh_SL_M-270","UL17_R_gghh_SL_M-300","UL17_R_gghh_SL_M-650","UL17_R_gghh_SL_M-450","UL17_R_gghh_SL_M-750","UL17_R_gghh_SL_M-280","UL17_R_gghh_SL_M-2200","UL17_R_gghh_SL_M-2000","UL17_R_gghh_SL_M-2800","UL17_R_gghh_SL_M-1500","UL17_R_gghh_SL_M-850","UL17_R_gghh_SL_M-260","UL17_R_gghh_SL_M-1400","UL17_R_gghh_SL_M-320","UL17_R_gghh_SL_M-1700"
 fi
 if [ "$flag" = "test_signal_SL" ]; then
    echo "running $flag"
@@ -51,7 +51,7 @@ if [ "$flag" = "test_signal_FH" ]; then
    echo "running $flag"
    # no merge ouput and no condor
    rm /eos/user/z/zhenxuan/hhwwgg_workspace/hhwwgg_parquet/FH_channel/hhwwgg_test_signal_FH -rf
-   python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --sample_list "test_sample" --output_dir "/eos/user/z/zhenxuan/hhwwgg_workspace/hhwwgg_parquet/FH_channel/hhwwgg_test_signal_FH" --short --yield_table 
+   python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --sample_list "UL17_R_gghh_SL_M-2000" --output_dir "/eos/user/z/zhenxuan/hhwwgg_workspace/hhwwgg_parquet/FH_channel/hhwwgg_test_signal_FH" --short 
 fi
 if [ "$flag" = "all_data" ]; then
    echo "running $flag"
