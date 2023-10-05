@@ -701,6 +701,10 @@ def select_ww_to_qqlv_or_qqqq(events):
     gen_nu_fromW = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24) & ((abs(gen_part.pdgId)==12)|(abs(gen_part.pdgId)==14)|(abs(gen_part.pdgId)==16))]
     # select W from Higgs
     gen_W_fromH = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 25) & (abs(gen_part.pdgId)==24)]
+    # choose the leading pt W
+    gen_lead_W_fromH = gen_W_fromH[awkward.argsort(gen_W_fromH.pt,axis=-1)][:,1]
+    # choose the subleading pt W
+    gen_sublead_W_fromH = gen_W_fromH[awkward.argsort(gen_W_fromH.pt,axis=-1)][:,0]
     # select gg from Higgs
     gen_gg_fromH = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 25) & (abs(gen_part.pdgId)==22)]
     # choose the leading pt photon
@@ -716,5 +720,5 @@ def select_ww_to_qqlv_or_qqqq(events):
     gen_obj_2 = gen_four_object[:,1]
     gen_obj_3 = gen_four_object[:,2]
     gen_obj_4 = gen_four_object[:,3]
-    return gen_obj_1, gen_obj_2, gen_obj_3, gen_obj_4, gen_H_to_gg, gen_H_to_WW, gen_lead_g_fromH, gen_sublead_g_fromH
+    return gen_obj_1, gen_obj_2, gen_obj_3, gen_obj_4, gen_lead_W_fromH, gen_sublead_W_fromH, gen_H_to_gg, gen_H_to_WW, gen_lead_g_fromH, gen_sublead_g_fromH
     

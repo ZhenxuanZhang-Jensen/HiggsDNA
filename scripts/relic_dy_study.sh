@@ -1,1 +1,0 @@
-python scripts/run_analysis.py --config "metadata/analysis/dy_study/hh_ggtautau_resonant_lowmass_presel_noEveto.json" --log-level "DEBUG" --output_dir /ceph/cms/store/user/fsetti/HiggsDNA/11Feb2023_relic_DY_study/ --unretire_jobs --merge_outputs --no_systematics --batch_system "condor"

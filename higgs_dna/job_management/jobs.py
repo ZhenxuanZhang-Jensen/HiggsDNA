@@ -284,8 +284,8 @@ class CondorJob(Job):
 
     """
     REQUESTS = {
-            "REQ_MEMORY" : 2048, # request 2GB of memory
-            "REQ_DISK" : 5000, # request ~5GB of disk
+            "REQ_MEMORY" : 4096, # request 4GB of memory
+            "REQ_DISK" : 10000, # request ~10GB of disk
             "REQ_NCPUS" : 1 # just 1 CPU
     }
 
@@ -307,8 +307,8 @@ class CondorJob(Job):
         self.hdna_base = get_HiggsDNA_base()
         self.hdna_conda = get_HiggsDNA_conda()
 
-        self.condor_exe_template = "/home/users/fsetti/HHggTauTau/HiggsDNA_ggtt/higgs_dna/job_management/condor/%s/exe_template.sh" % self.host
-        self.condor_sub_template = "/home/users/fsetti/HHggTauTau/HiggsDNA_ggtt/higgs_dna/job_management/condor/%s/submit_template.txt" % self.host
+        self.condor_exe_template = self.hdna_base + "/higgs_dna/job_management/condor/%s/exe_template.sh" % self.host
+        self.condor_sub_template = self.hdna_base + "/higgs_dna/job_management/condor/%s/submit_template.txt" % self.host
         
         self.write_condor_executable_file()
         self.write_condor_submit_file()
@@ -350,8 +350,8 @@ class CondorJob(Job):
 
         # update xrdcp placeholders for copying tar files into job
         if self.host_params["needs_tar"] and "xrd_redirector" in self.host_params.keys():
-            replacement_map["XRD_CONDA_TARFILE"] = self.xrd_conda_tarfile.replace("/ceph/cms","davs://redirector.t2.ucsd.edu:1095/")
-            replacement_map["XRD_ANALYSIS_TARFILE"] = self.xrd_analysis_tarfile.replace("/ceph/cms","davs://redirector.t2.ucsd.edu:1095/")
+            replacement_map["XRD_CONDA_TARFILE"] = self.xrd_conda_tarfile
+            replacement_map["XRD_ANALYSIS_TARFILE"] = self.xrd_analysis_tarfile
 
         # update gfal-copy placeholders
         if "gfal_redirector" in self.host_params.keys():
@@ -359,8 +359,8 @@ class CondorJob(Job):
             replacement_map["GFAL_BATCH_OUTPUT_DIR"] = self.output_dir.replace(to_replace, replace_with)    
 
         # if not a remote job, that means we are not sending a tar of the conda env and setting it up in the node, and we need to update the python path to point to our HiggsDNA version
-        #if not self.host_params["remote_job"]:
-        #    replacement_map["python"] = "%s/bin/python" % (self.hdna_conda)
+        if not self.host_params["remote_job"]:
+            replacement_map["python"] = "%s/bin/python" % (self.hdna_conda)
 
         self.update_file(
                 old = self.condor_exe_template,

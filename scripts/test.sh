@@ -1,1 +1,0 @@
-python scripts/run_analysis.py --config "metadata/analysis/old/test.json" --log-level "DEBUG" --output_dir /ceph/cms/store/user/fsetti/HiggsDNA/test/ --batch_system "condor" --unretire_jobs --merge_outputs 

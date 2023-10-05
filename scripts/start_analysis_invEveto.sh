@@ -1,1 +1,0 @@
-python run_analysis.py --config "metadata/analysis/hh_ggtautau_resonant_lowmass_presel_invEveto.json" --log-level "DEBUG" --output_dir /ceph/cms/store/user/fsetti/HiggsDNA_output/08Nov2022_lowmass_invEveto/ --n_cores 12 --unretire_jobs --merge_outputs

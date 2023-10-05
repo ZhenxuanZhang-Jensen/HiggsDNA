@@ -53,13 +53,6 @@ def parse_arguments():
         help="csv list of signal processes (to be excluded from data/MC comparison)")
 
     parser.add_argument(
-        "--backgrounds",
-        required=False,
-        default=None,
-        type=str,
-        help="csv list of background processes (to be included in data/MC comparison)")
-
-    parser.add_argument(
         "--group_procs",
         required=False,
         default=None,
@@ -170,12 +163,12 @@ def infer_systematics(inputs, cuts):
 def events_with_ids(events, ids):
     cut = events["process_id"] == -999
     for id in ids:
-        cut = ( (cut) | (events["process_id"] == id) ) #& ( events["Diphoton_mass"] > 120 ) & ( events["Diphoton_mass"] > 130 )
+        cut = (cut) | (events["process_id"] == id)
     return events[cut]
 
 
 def do_cut(events, field, cut_range):
-    cut = (events[field] >= cut_range[0]) & (events[field] <= cut_range[1]) 
+    cut = (events[field] >= cut_range[0]) & (events[field] <= cut_range[1])
     return events[cut]
 
 
@@ -199,17 +192,17 @@ def get_yield_and_unc(events):
 
 
 def table_line(proc, results, n_bkg):
-    if n_bkg > 0 and "HH" not in proc:
+    if n_bkg > 0:
         bkg_frac = results["n"] / n_bkg
     else:
         bkg_frac = 0.
 
     if proc == "total_bkg":
         proc = "Total MC bkg"
-    line = "\t \t %s & %.3f & $\\pm \\text{%.3f}$  & $~^{+\\text{%.3f}}_{-\\text{%.3f}}$  & %.3f \\\\ \n" % (proc.replace("_", "-"), results["n"], results["stat_unc"], results["syst_unc_up"], results["syst_unc_down"], bkg_frac)
+    line = "\t \t %s & %.4f & $\\pm \\text{%.4f}$  & $~^{+\\text{%.4f}}_{-\\text{%.4f}}$  & %.4f \\\\ \n" % (proc.replace("_", "-"), results["n"], results["stat_unc"], results["syst_unc_up"], results["syst_unc_down"], bkg_frac)
     return line
 
-def make_tables(events, process_map, signals, bkgs = None):
+def make_tables(events, process_map, signals):
     yields = {}
    
     for proc, ids in process_map.items():
@@ -289,8 +282,7 @@ def make_tables(events, process_map, signals, bkgs = None):
 
     table += "\t \t \\hline \n"
     
-    if bkgs is None:
-        bkgs = [x for x in yields.keys() if (x not in signals and x not in ["Data", "total_bkg"])]
+    bkgs = [x for x in yields.keys() if (x not in signals and x not in ["Data", "total_bkg"])]
     sort_idx = awkward.argsort([yields[x]["n"] for x in bkgs], ascending = True)
     bkgs = numpy.array(bkgs)[sort_idx]
     for proc in bkgs:
@@ -317,11 +309,11 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
     normalize = kwargs.get("normalize", False)
     x_label = kwargs.get("x_label", None)
     y_label = kwargs.get("y_label", "Events" if not normalize else "Fraction of events")
-    rat_label = kwargs.get("rat_label", "Data / MC")
+    rat_label = kwargs.get("rat_label", "Data/MC")
     title = kwargs.get("title", None)
     y_lim = kwargs.get("y_lim", None)
     x_lim = kwargs.get("x_lim", None)
-    rat_lim = kwargs.get("rat_lim", [0.0, 2.5])
+    rat_lim = kwargs.get("rat_lim", [0.0, 2.0])
     overflow = kwargs.get("overflow", False)
     log_y = kwargs.get("log_y", False)
 
@@ -371,18 +363,15 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
 
     h_sig = []
     for proc, plot_data in sig.items():
-        h = Hist1D(plot_data["array"], weights = plot_data["weights"], bins = bins, overflow = overflow, label = proc)
+        h = Hist1D(plot_data["array"], weights = plot_data["weights"], bins = bins, overflow = overflow, label=proc)
         h = h.to_poisson_errors()
         h_sig.append(h)
 
     fig, (ax1,ax2) = plt.subplots(2, sharex=True, figsize=(12,9), gridspec_kw=dict(height_ratios=[3, 1]))
-    if log_y:
-        ax1.set_yscale("log") 
     plt.grid()
     h_data.plot(ax=ax1, color = "black", errors = True)
     plt.sca(ax1)
-    hep.cms.label(" Preliminary",loc=0,data=True,lumi=138,fontsize=18)
-    #hep.cms.label(" Preliminary",loc=0,data=True,lumi=54.5,fontsize=18)
+    hep.cms.label(" Preliminary",loc=0,data=True,lumi=137,fontsize=18)
 
     stack = sorted(h_bkg, key = lambda x : x.integral)
     plot_stack(stack, ax=ax1, histtype="stepfilled")
@@ -429,8 +418,6 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
     ratio.metadata["label"] = None
     ratio.plot(ax=ax2, errors=True, color="black")
 
-    
-
     if x_label is not None:
         ax2.set_xlabel(x_label)
 
@@ -446,20 +433,14 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
     if y_lim is not None:
         ax1.set_ylim(y_lim)
 
-    else:
-        y_min, y_max = ax1.get_ylim()
-        if not log_y:
-            y_min = 0.
-            y_max = y_max * (1.5 + (0.1 * len(bkg.keys()))) 
-        else:
-            y_max = y_max * 10**(2 + (0.4 * len(bkg.keys())))
-        ax1.set_ylim([y_min,y_max])
-
     if rat_lim is not None:
         ax2.set_ylim(rat_lim)
 
     if x_lim is not None:
         ax1.set_xlim(x_lim)
+
+    if log_y:
+        ax1.set_yscale("log")
 
     for i in range(h_data.nbins):
         if h_bkg_total.counts[i] == 0:
@@ -476,10 +457,8 @@ def make_data_mc_plot(data, bkg, sig, savename, **kwargs):
             ax2.axhspan(mc_ratio_stat_err_up[i], mc_ratio_stat_syst_err_up[i], float(i) / float(h_data.nbins), float(i+1) / float(h_data.nbins), color = "red", alpha = 0.25, linewidth = 0.)
             ax2.axhspan(mc_ratio_stat_syst_err_down[i], mc_ratio_stat_err_down[i], float(i) / float(h_data.nbins), float(i+1) / float(h_data.nbins), color = "red", alpha = 0.25, linewidth = 0.)
 
-    plt.grid()
     plt.savefig(savename)
     plt.clf()
-    plt.close()
 
 
 def make_shape_comparisons(plot_config, output_dir, events, process_map, signals):
@@ -541,13 +520,7 @@ def make_plots(plot_config, output_dir, events, process_map, signals, bkgs):
             weights = events_with_ids(events["ics"]["nominal"]["events"], process_map[s])["weight_central"]
             sig[s] = { "array" : array, "weights" : weights, "syst_weights" : [], "syst_arrays" : [] }
 
-        if "save_name" in info.keys():
-            field = info["save_name"]
-        info["log_y"] = True
-        make_data_mc_plot(data, bkg, sig, savename = "%s/%s_dataMC_log.pdf" % (output_dir, field), **info)
-        info["log_y"] = False
-        make_data_mc_plot(data, bkg, sig, savename = "%s/%s_dataMC_linear.pdf" % (output_dir, field), **info)
-
+        make_data_mc_plot(data, bkg, sig, savename = "%s/%s_dataMC.pdf" % (output_dir, field), **info)
 
 
 def get_quantile_range(array, ci):
@@ -636,8 +609,7 @@ def plot_shapes(arrays, weights, names, savename, **kwargs):
         h.plot(ax=ax1, color="C%d" % idx, errors = False, linewidth=3, label = "%s [N : %.3f, Mean : %.3f, Std : %.3f]" % (names[idx], norm[idx], mean[idx], std[idx]))
 
     plt.sca(ax1)
-    hep.cms.label(" Preliminary",loc=0,data=True,lumi=138,fontsize=18)        
-    #hep.cms.label(" Preliminary",loc=0,data=True,lumi=54.5,fontsize=18)        
+    hep.cms.label(" Preliminary",loc=0,data=True,lumi=137,fontsize=18)        
     
     if len(hists) >= 2:
         for i in range(1, len(hists)):
@@ -756,24 +728,17 @@ def main(args):
     process_map = regroup_processes(process_map, args.group_procs)
     bkgs = [x for x in process_map.keys() if (x not in signals and x != "Data")]
 
-    if args.backgrounds is not None:
-        backgrounds = args.backgrounds.split(",")
-        bkgs = [x for x in bkgs if x in backgrounds]
-
     logger.debug("[HiggsDNABonusTool] Grouping processes by the following proc ids: ")
     for proc, ids in process_map.items():
         if proc == "Data":
             cat = proc
         elif proc in signals:
             cat = "Signal"
-        elif proc in bkgs:
-            cat = "Background"
         else:
-            cat = "None"
+            cat = "Background"
         logger.debug("\t %s : %s (%s)" % (proc, str(ids), cat)) 
     logger.debug("[HiggsDNABonusTool] Processes marked as 'Signal' will not be included in data/MC comparisons and will be plotted as individual lines.")
     logger.debug("[HiggsDNABonusTool] Processes marked as 'Background' will be summed up to calculate the total background estimate and will be plotted in a stacked histogram in data/MC plots.")
-    logger.debug("[HiggsDNABonusTool] Processes marked as 'None' will not be included in tables or plots.")
 
     cuts = parse_cuts(args.cuts)
     events = infer_systematics(inputs, cuts)
@@ -807,7 +772,7 @@ def main(args):
 
     if args.make_tables:        
         logger.debug("[HiggsDNABonusTool] Making data/MC yield tables.")
-        table = make_tables(events, process_map, signals, bkgs)
+        table = make_tables(events, process_map, signals)
 
         with open(args.output_dir + "/data_mc_yield_table.txt", "w") as f_out:
             f_out.write(table)
@@ -819,10 +784,10 @@ def main(args):
             
         make_plots(plot_config, args.output_dir, events, process_map, signals, bkgs)
         logger.debug("[HiggsDNABonusTool] Making shape comparisons (no systematics).")
-        #if signals:
-        #    make_shape_comparisons(plot_config, args.output_dir, events, process_map, signals)
-        #else:
-        #    make_shape_comparisons(plot_config, args.output_dir, events, process_map, bkgs + ["Data"])
+        if signals:
+            make_shape_comparisons(plot_config, args.output_dir, events, process_map, signals)
+        else:
+            make_shape_comparisons(plot_config, args.output_dir, events, process_map, bkgs + ["Data"])
 
     if args.assess_systematics:
         logger.debug("[HiggsDNABonusTool] Summarizing weight systematics.")

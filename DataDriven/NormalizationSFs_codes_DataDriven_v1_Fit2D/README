@@ -1,0 +1,19 @@
+# compile the code filling the histos
+g++ -o read_minitree `root-config --cflags --ldflags --libs` main_MinitreeReader.C
+
+# run it
+source read_minitree_all.sh 
+
+# fit the templates
+rootl -l -b
+# root [0] .L plotHistos.C 
+# root [1] fitSFs("minmva")
+# root [2] .q
+
+# check the output and copy the scale factors (at the end of the output) to the plotHistos.C macro (in the beginning, the variable is sf[3])
+
+# make the plots
+# prefit
+root -l -b -q plotHistos.C'(false)'
+# postfit
+root -l -b -q plotHistos.C'(true)'

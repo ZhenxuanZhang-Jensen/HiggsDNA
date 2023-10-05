@@ -76,8 +76,8 @@ DEFAULT_OPTIONS = {
 #   - https://indico.cern.ch/event/1071721/contributions/4551056/attachments/2320292/3950844/HiggsDNA_DiphotonPreselectionAndSystematics_30Sep2021.pdf
 
 class DiphotonTagger(Tagger):
-    def __init__(self, name = "default_diphoton_tagger", options = {}, is_data = None, year = None,output_dir=None):
-        super(DiphotonTagger, self).__init__(name, options, is_data, year,output_dir)
+    def __init__(self, name = "default_diphoton_tagger", options = {}, is_data = None, year = None, output_dir = None):
+        super(DiphotonTagger, self).__init__(name, options, is_data, year, output_dir)
 
         if not options:
             self.options = DEFAULT_OPTIONS
@@ -180,15 +180,14 @@ class DiphotonTagger(Tagger):
         # Add sumPt and dR for convenience
         diphotons[("Diphoton", "sumPt")] = diphotons.LeadPhoton.pt + diphotons.SubleadPhoton.pt
         diphotons[("Diphoton", "dR")] = diphotons.LeadPhoton.deltaR(diphotons.SubleadPhoton)   
-        if not self.is_data:
-            diphotons[("LeadPhoton","genPartFlav")] = diphotons.LeadPhoton.genPartFlav
-            diphotons[("SubleadPhoton","genPartFlav")] = diphotons.SubleadPhoton.genPartFlav
-            diphotons[("LeadPhoton","genPartIdx")] = diphotons.LeadPhoton.genPartIdx
-            diphotons[("SubleadPhoton","genPartIdx")] = diphotons.SubleadPhoton.genPartIdx
+        # diphotons[("LeadPhoton","genPartFlav")] = diphotons.LeadPhoton.genPartFlav
+        # diphotons[("SubleadPhoton","genPartFlav")] = diphotons.SubleadPhoton.genPartFlav
+        # diphotons[("LeadPhoton","genPartIdx")] = diphotons.LeadPhoton.genPartIdx
+        # diphotons[("SubleadPhoton","genPartIdx")] = diphotons.SubleadPhoton.genPartIdx
 
 
         # diphotons[("Diphoton","genPartIdx")] = awkward.concatenate([diphotons[("SubleadPhoton","genPartFlav")].tolist(),diphotons[("LeadPhoton","genPartFlav")].tolist()],axis=1)
-# 
+
         # diphotons["genPartIdx"]=awkward.concatenate([diphotons[("SubleadPhoton","genPartFlav")],diphotons[("LeadPhoton","genPartFlav")]],axis=1)
         # Add lead/sublead photons to additionally be accessible together as diphotons.Diphoton.Photon
         # This is in principle a bit redundant, but makes many systematics and selections much more convenient to implement.
@@ -265,8 +264,7 @@ class DiphotonTagger(Tagger):
             dipho_events[(field, "eta")] = diphotons[field].eta
             dipho_events[(field, "phi")] = diphotons[field].phi
             dipho_events[(field, "mass")] = diphotons[field].mass
-        dipho_events[("LeadPhoton", "energyErr")] = dipho_events.LeadPhoton.energyErr
-        dipho_events[("SubleadPhoton", "energyErr")] = dipho_events.SubleadPhoton.energyErr
+
 
         dipho_presel_cut = awkward.num(dipho_events.Diphoton) == 1
         if self.is_data and self.year is not None:

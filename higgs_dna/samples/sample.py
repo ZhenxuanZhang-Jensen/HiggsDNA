@@ -2,7 +2,7 @@ import awkward
 
 from higgs_dna.samples.file import File
 from higgs_dna.utils import awkward_utils
-from higgs_dna.constants import CENTRAL_WEIGHT, LUMI, LUMI_LOWMASS
+from higgs_dna.constants import CENTRAL_WEIGHT, LUMI
 
 # FIXME need to add option for specifying campaign (e.g. Prompt, UL, etc)
 
@@ -10,7 +10,7 @@ class Sample():
     """
 
     """
-    def __init__(self, process, year, files, is_data = None, xs = None, bf = None, systematics = None, process_id = None, fpo = None, scale1fb = None,  **kwargs):
+    def __init__(self, process, year, files, is_data = None, xs = None, bf = None, systematics = None, process_id = None, fpo = None, **kwargs):
         self.process = process
         self.year = year
         self.name = process + "_" + year
@@ -20,7 +20,6 @@ class Sample():
         self.fpo = fpo
         self.systematics = systematics
         self.process_id = process_id
-        self.scale1fb = scale1fb
 
         if is_data is None:
             self.is_data = self.xs is None and self.bf is None
@@ -35,7 +34,6 @@ class Sample():
             self.norm_factor *= self.bf
         if self.year in LUMI.keys():
             self.lumi = LUMI[self.year]
-            #self.lumi = LUMI_LOWMASS[self.year]
 
         self.is_prepped = False
 
@@ -47,8 +45,7 @@ class Sample():
         awkward_utils.add_field(events, CENTRAL_WEIGHT, awkward.ones_like(events.run))
 
         if not self.is_data:
-            if "NMSSM" not in self.process :
-              awkward_utils.add_field(
+            awkward_utils.add_field(
                     events = events,
                     name = CENTRAL_WEIGHT,
                     data = events[CENTRAL_WEIGHT] * events.genWeight,

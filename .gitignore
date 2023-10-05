@@ -1,13 +1,19 @@
 # Editors
 .vscode/
 .idea/
-
+*.parquet
 # Vagrant
 .vagrant/
-
+eos_logs/
+*.sh
+*analysis_jupyter/
+*output/
+*.cc
+x509up_u134033
 # Mac/OSX
-.DS_Store
-
+.DS_Stor
+*tutorial_tth*
+*tutorial_dipho*
 # Windows
 Thumbs.db
 
@@ -127,4 +133,3 @@ dmypy.json
 # tagger output files
 examples/output/
 scripts/output/
-eos_logs/

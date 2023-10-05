@@ -10,7 +10,7 @@ import json
 import awkward
 import numpy
 from tqdm import tqdm
-import pandas
+
 import logging
 logger = logging.getLogger(__name__)
 
@@ -60,15 +60,7 @@ class Task():
                     self.fpo = config["sample"]["fpo"]
         if self.fpo is None:
             self.fpo = 1
- 
-        self.scale1fb = config["sample"]["scale1fb"] # will be None if not hard-coded 
-        if self.scale1fb is None:
-            self.manual_scale1fb = False
-        elif isinstance(self.scale1fb, float) and self.scale1fb > 0:
-            self.manual_scale1fb = True
-            self.min_completion_frac = 1.0 # require that all jobs finish for this scale1fb to be valid
-        else:
-            logger.exception("[Task : __init] Task '%s'. It looks like a manually provided scale1fb was given, but could not interpret this as a float: type: '%s', value: '%s'." % (self.name, str(type(self.scale1fb)), str(self.scale1fb)))
+  
 
         os.system("mkdir -p %s" % self.output_dir)
 
@@ -76,7 +68,6 @@ class Task():
         self.merged_output_files = False
         self.wrote_process_ids = False
         self.wrote_years = False
-        self.make_yield_table = False
         self.pbar = ProgressBar(self.name)
 
         self.phys_summary = {
@@ -151,7 +142,7 @@ class Task():
         # Check status of all jobs
         for job in self.jobs:
             if job_map is not None:
-                if os.path.exists(job.summary_file) or os.path.exists(job.output_dir + "/" + job.summary_file):
+                if os.path.exists(job.summary_file):
                     job.status = "completed"
                 elif job.cluster_id in job_map.keys():
                     if job_map[job.cluster_id] is not None:
@@ -178,13 +169,14 @@ class Task():
         # Otherwise, are the uncompleted jobs "retired" (meaning they failed up to the maximum number of retries)?
         # If so, we will mark this as done but give you a warning about the retired jobs.
         # You can resubmit these jobs with the option --unretire_jobs in run_analysis.py
-        #elif self.completion_or_retired_frac >= self.min_completion_frac:
-        #    logger.info("[Task : process] Task '%s' COMPLETED : %d/%d (%.2f percent) of jobs completed/retired which is >= the minimum job completion fraction for this task (%.2f percent)." % (self.name, self.n_completed_jobs + self.n_retired_jobs, len(self.jobs), 100. * self.completion_or_retired_frac, 100. * self.min_completion_frac))
-        #    retired_jobs = [job for job in self.jobs if job.status == "retired"]
-        #    for job in retired_jobs:
-        #        logger.warning("[Task : process] WARNING: Task '%s' had to retire job '%s' since it ran unsuccessfully for %d straight times. If this is an MC sample, this will just reduce your statistics. If this is a data job, you have processed less events than you intended!" % (self.name, job.name_full, job.n_attempts))
-        #    self.complete = True
-        ## If neither of the first three, we are not done yet
+        elif self.completion_or_retired_frac >= self.min_completion_frac:
+            logger.info("[Task : process] Task '%s' COMPLETED : %d/%d (%.2f percent) of jobs completed/retired which is >= the minimum job completion fraction for this task (%.2f percent)." % (self.name, self.n_completed_jobs + self.n_retired_jobs, len(self.jobs), 100. * self.completion_or_retired_frac, 100. * self.min_completion_frac))
+            retired_jobs = [job for job in self.jobs if job.status == "retired"]
+            for job in retired_jobs:
+                logger.warning("[Task : process] WARNING: Task '%s' had to retire job '%s' since it ran unsuccessfully for %d straight times. If this is an MC sample, this will just reduce your statistics. If this is a data job, you have processed less events than you intended!" % (self.name, job.name_full, job.n_attempts))
+            self.complete = True
+
+        # If neither of the first three, we are not done yet
         else:
             self.summarize()
             return
@@ -296,15 +288,14 @@ class Task():
             for syst_tag, output in job_info["outputs"].items():
                 if syst_tag not in self.outputs.keys():
                     self.outputs[syst_tag] = []
-                if not job_info["n_events_selected"][syst_tag] > 0: # skip empty parquet files to avoid errors
-                    continue 
                 if not os.path.exists(output):
                     if os.path.exists(job.output_dir + "/" + output):
                         output = job.output_dir + "/" + output
-                        self.outputs[syst_tag].append(output)
                     else:
                         logger.exception("[Task : summarize] Did not find output for job '%s' with dir '%s', output dir '%s', config file '%s', and summary file '%s'." % (job.name, job.dir, job.output_dir, job.config_file, job.summary_file))
                         raise RuntimeError()
+                if not job_info["n_events_selected"][syst_tag] > 0: # skip empty parquet files to avoid errors
+                    continue
                 else:
                     self.outputs[syst_tag].append(output)
 
@@ -322,12 +313,7 @@ class Task():
             else:
                 self.phys_summary["scale1fb"] = 0.
             self.lumi = self.config["sample"]["lumi"]
-            if not self.manual_scale1fb: # only use the on-the-fly scale1fb if a manually calculated one was not provided
-                self.scale1fb = self.phys_summary["scale1fb"] 
-            else:
-                self.phys_summary["scale1fb"] = self.scale1fb # reset this to the manually provided one for proper printouts
-                if self.complete:
-                    logger.warning("[Task : summarize] Task '%s'. It appears a manually-provided scale1fb of %.9f was provided for this sample. We will use this instead of the scale1fb as calculated by HiggsDNA. For proper normalization, please ensure that you are running over the same set of files that was used when deriving this manually provided scale1fb." % (self.name, self.scale1fb)) 
+            self.scale1fb = self.phys_summary["scale1fb"]
         self.summary["physics"] = self.phys_summary
         self.summary["performance"] = self.performance
         self.pbar.update(job_summary, self.performance, self.phys_summary)
@@ -361,8 +347,6 @@ class Task():
             merged_events = awkward.concatenate(merged_events)
             if not self.config["sample"]["is_data"]:
                 logger.debug("[Task : merge_outputs] Task '%s' : Applying scale1fb and lumi. Scaling central weight branch '%s' in output file '%s' by scale1fb (%.9f) times lumi (%.2f). Adding branch '%s' in output file which has no lumi scaling applied." % (self.name, CENTRAL_WEIGHT, merged_output, self.scale1fb, self.lumi, CENTRAL_WEIGHT + "_no_lumi"))
-                #logger.debug(f"[Task : sumWeight is {self.phys_summary['sum_weights']}]")
-                #logger.debug(f"[Task : typical central weight is {merged_events['weight_central']}]")
 
                 central_weight = merged_events[CENTRAL_WEIGHT] * self.scale1fb * self.lumi
                 central_weight_no_lumi = merged_events[CENTRAL_WEIGHT] * self.scale1fb
@@ -385,274 +369,6 @@ class Task():
         self.wrote_process_ids = False
         self.wrote_years = False
         self.merged_output_files = True
-
-        self.yield_table()
-    def yield_table(self):
-        """
-        Add a yield table to the csv file.
-        """
-        logger.debug("[Task : yield_table] Task '%s' : adding yield table to csv file." % (self.name))
-        self.yield_table = {}
-        for syst_tag, outputs in self.outputs.items():
-            if not outputs:
-                continue
-        folder_path = self.output_dir 
-        event=awkward.from_parquet(folder_path+"/merged_nominal.parquet") #without systematic
-        # event=awkward.from_parquet(folder_path+"/merged_fnuf_down.parquet")
-        weight=event['weight_central'][0]
-        # List to store the file paths
-        file_paths = []
-
-        # Recursive function to traverse the directory
-        def search_files(directory):
-            for root, dirs, files in os.walk(directory):
-                for file in files:
-                    if "combined_eff.json" in file:
-                        
-                        file_path = os.path.join(root, file)
-                        file_paths.append(file_path)
-
-        json_paths = []
-        ###########################################################################
-        def get_initial_event(directory):
-            for root, dirs, files in os.walk(directory):
-                for file in files:
-                    if "_summary_" in file:
-                        json_path = os.path.join(root, file)
-                        json_paths.append(json_path)
-        get_initial_event(folder_path)
-        json_list=[]
-        for json_path in json_paths:
-            json_list.append(json_path)
-        # open each json file and search for the ""n_events" key
-        if not "data" in self.name:
-            n_events=0
-            n_positive_negative=0
-            n_yield=0
-            for json_file in json_list:
-                with open(json_file, 'r') as f:
-                    data = json.load(f)
-                    n_events=n_events+data['n_events']
-                    n_yield = n_yield+data['sum_weights']
-                    n_positive_negative = n_positive_negative+data['n_p-2n_n']
-            # Call the recursive function to search for files
-            search_files(folder_path)
-
-            # Print the file paths
-            file_list=[]
-            for file_path in file_paths:
-                file_list.append(file_path)
-            ###########################################################################
-            i=1
-            dfs = {}
-            for file in file_list:
-                # List to store the dictionaries from each file
-                data_list = []
-
-                # File names
-                with open(file, 'r') as f:
-                    file_size = os.path.getsize(file)
-                    if file_size != 0:
-                        # Load the JSON data from the file
-                        data = json.load(f)
-                        logger.debug(f)
-                        # Extend the data_list with the dictionaries from each file
-                        data_list.extend(data)
-
-                # Initialize empty lists to store the values
-                obj_eff_field_names = []
-                eve_eff_field_names=[]
-                obj_eff_data_dict = {}
-                eve_eff_data_dict = {}
-                field_names = []
-                data_dict = {}
-                # Process the data
-                for data in data_list:
-                    # Iterate over the keys in the dictionary
-                    for key, value in data.items():
-
-                        # Extract field name and data
-                        if "object efficiency" in key:
-                            obj_eff_field_name = key.split(" -")[1]
-                            obj_eff_field_data = value
-                            if obj_eff_field_name not in obj_eff_field_names:
-                                obj_eff_field_names.append(obj_eff_field_name)
-                            if obj_eff_field_name not in obj_eff_data_dict:
-                                obj_eff_data_dict[obj_eff_field_name] = [obj_eff_field_data]
-                        if "event efficiency" in key:
-                            eve_eff_field_name = key.split(" -")[1]
-                            eve_eff_field_data = value
-                            if eve_eff_field_name not in eve_eff_field_names:
-                                eve_eff_field_names.append(eve_eff_field_name)
-                            if eve_eff_field_name not in eve_eff_data_dict:
-                                eve_eff_data_dict[eve_eff_field_name] = [eve_eff_field_data]
-                        if "event number" in key:
-                            field_name = key.split(" -")[1]
-                            field_data = value
-                            if field_name not in field_names:
-                                field_names.append(field_name)
-                            if field_name not in data_dict:
-                                data_dict[field_name] = [field_data]
-                        
-                        # Add the data to the corresponding field in the dictionary
-
-                dfs[f"dfobjeff{i}"]=pandas.DataFrame(obj_eff_data_dict)
-                dfs[f"dfeveeff{i}"]=pandas.DataFrame(eve_eff_data_dict)
-                dfs[f"df{i}"]=pandas.DataFrame(data_dict)
-                i=i+1
-
-            ###########################################################################
-            combined_objeffdf = pandas.DataFrame(0, index=dfs[f"dfobjeff{1}"].index, columns=dfs[f"dfobjeff{1}"].columns)
-            for j in range(1, i):
-                key = f"dfobjeff{j}"
-                if key in dfs:
-                    combined_objeffdf = combined_objeffdf+dfs[key]
-                df_objeff=combined_objeffdf/(i-1)
-            combined_eveeffdf = pandas.DataFrame(0, index=dfs[f"dfeveeff{1}"].index, columns=dfs[f"dfeveeff{1}"].columns)
-            for j in range(1, i):
-                key = f"dfeveeff{j}"
-                if key in dfs:
-                    combined_eveeffdf = combined_eveeffdf+dfs[key]
-                df_eveeff=combined_eveeffdf/(i-1)
-            eventdf = pandas.DataFrame(0, index=dfs[f"df{1}"].index, columns=dfs[f"df{1}"].columns)
-            for j in range(1, i):
-                key = f"df{j}"
-                if key in dfs:
-                    eventdf = eventdf+dfs[key]
-            weighted_eventdf=eventdf*weight
-            weighted_eventdf.insert(0, 'event: initial event number', n_yield)
-            unweighted_eventdf=eventdf
-            unweighted_eventdf.insert(0, 'event: initial event number', n_events)
-            df_objeff.insert(0, 'event: initial object efficiency', 1)
-            df_eveeff.insert(0, 'event: initial event efficiency', 1)
-            weighted_eventdf.insert(1, 'event: initial positive-2*negative event number', n_yield)
-            unweighted_eventdf.insert(1, 'event: initial positive-2*negative event number', n_positive_negative)
-            df_objeff.insert(1, 'event: initial positive-2*negative object efficiency', 1)
-            df_eveeff.insert(1, 'event: initial positive-2*negative event efficiency', 1)
-            column_names = [name.replace("event number", "") for name in weighted_eventdf.columns]
-
-            yield_df = pandas.DataFrame(columns=column_names)
-            yield_df.loc["unweighted yield"] = unweighted_eventdf.values[0]
-            yield_df.loc["weighted yield"] = weighted_eventdf.values[0]
-            yield_df.loc["object efficiency"] = df_objeff.values[0]
-            yield_df.loc["event efficiency"] = df_eveeff.values[0]
-            # new_row_data={'unweighted yield':yield_df['diphoton_tagger: diphoton_tagger event number']['object efficiency'],'weighted yield':yield_df['diphoton_tagger: diphoton_tagger ']['event efficiency'],'object efficiency':-999,'event efficiency':yield_df['diphoton_tagger: diphoton_tagger event number']['unweighted yield']}
-            # new_column_data=[yield_df['diphoton_tagger: diphoton_tagger ']['object efficiency'],yield_df['diphoton_tagger: diphoton_tagger ']['event efficiency'],-999,yield_df['diphoton_tagger: diphoton_tagger ']['unweighted yield']]
-            # yield_df=yield_df.drop('diphoton_tagger: diphoton_tagger ',axis=1)
-            # yield_df.insert(loc=2, column='diphoton tagger positive-2*negative', value=new_column_data)
-        elif "data" in self.name:
-        
-            n_events=0
-            
-            for json_file in json_list:
-                with open(json_file, 'r') as f:
-                    data = json.load(f)
-                    n_events=n_events+data['n_events']
-
-            weighted_n_events=n_events*weight
-            # Call the recursive function to search for files
-            search_files(folder_path)
-
-            # Print the file paths
-            file_list=[]
-            for file_path in file_paths:
-                file_list.append(file_path)
-            ###########################################################################
-            i=1
-            dfs = {}
-            for file in file_list:
-                # List to store the dictionaries from each file
-                data_list = []
-
-                # File names
-                with open(file, 'r') as f:
-                        # Load the JSON data from the file
-                    data = json.load(f)
-                    logger.debug(f)
-
-                        # Extend the data_list with the dictionaries from each file
-                    data_list.extend(data)
-
-                # Initialize empty lists to store the values
-                obj_eff_field_names = []
-                eve_eff_field_names=[]
-                obj_eff_data_dict = {}
-                eve_eff_data_dict = {}
-                field_names = []
-                data_dict = {}
-                # Process the data
-                for data in data_list:
-                    # Iterate over the keys in the dictionary
-                    for key, value in data.items():
-                        # Extract field name and data
-                        if "object efficiency" in key:
-                            obj_eff_field_name = key.split(" -")[1]
-                            obj_eff_field_data = value
-                            if obj_eff_field_name not in obj_eff_field_names:
-                                obj_eff_field_names.append(obj_eff_field_name)
-                            if obj_eff_field_name not in obj_eff_data_dict:
-                                obj_eff_data_dict[obj_eff_field_name] = [obj_eff_field_data]
-                        if "event efficiency" in key:
-                            eve_eff_field_name = key.split(" -")[1]
-                            eve_eff_field_data = value
-                            if eve_eff_field_name not in eve_eff_field_names:
-                                eve_eff_field_names.append(eve_eff_field_name)
-                            if eve_eff_field_name not in eve_eff_data_dict:
-                                eve_eff_data_dict[eve_eff_field_name] = [eve_eff_field_data]
-                        if "event number" in key:
-                            field_name = key.split(" -")[1]
-                            field_data = value
-                            if field_name not in field_names:
-                                field_names.append(field_name)
-                            if field_name not in data_dict:
-                                data_dict[field_name] = [field_data]
-                        
-                        # Add the data to the corresponding field in the dictionary
-                        
-                        
-                            
-                        
-                dfs[f"dfobjeff{i}"]=pandas.DataFrame(obj_eff_data_dict)
-                dfs[f"dfeveeff{i}"]=pandas.DataFrame(eve_eff_data_dict)
-                dfs[f"df{i}"]=pandas.DataFrame(data_dict)
-                i=i+1
-
-            ###########################################################################
-            combined_objeffdf = pandas.DataFrame(0, index=dfs[f"dfobjeff{1}"].index, columns=dfs[f"dfobjeff{1}"].columns)
-            for j in range(1, i):
-                key = f"dfobjeff{j}"
-                if key in dfs:
-                    combined_objeffdf = combined_objeffdf+dfs[key]
-                df_objeff=combined_objeffdf/(i-1)
-            combined_eveeffdf = pandas.DataFrame(0, index=dfs[f"dfeveeff{1}"].index, columns=dfs[f"dfeveeff{1}"].columns)
-            for j in range(1, i):
-                key = f"dfeveeff{j}"
-                if key in dfs:
-                    combined_eveeffdf = combined_eveeffdf+dfs[key]
-                df_eveeff=combined_eveeffdf/(i-1)
-            eventdf = pandas.DataFrame(0, index=dfs[f"df{1}"].index, columns=dfs[f"df{1}"].columns)
-            for j in range(1, i):
-                key = f"df{j}"
-                if key in dfs:
-                    eventdf = eventdf+dfs[key]
-            weighted_eventdf=eventdf*weight
-            weighted_eventdf.insert(0, 'event: initial event number', weighted_n_events)
-            # weighted_eventdf.to_csv(folder_path+"/weighted_event_yield.csv")
-            unweighted_eventdf=eventdf
-            unweighted_eventdf.insert(0, 'event: initial event number', n_events)
-            # unweighted_eventdf.to_csv(folder_path+"/unweighted_event_yield.csv")
-            df_objeff.insert(0, 'event: initial object efficiency', 1)
-            df_eveeff.insert(0, 'event: initial event efficiency', 1)
-            column_names = [name.replace("event number", "") for name in weighted_eventdf.columns]
-            yield_df = pandas.DataFrame(columns=column_names)
-            yield_df.loc["unweighted yield"] = unweighted_eventdf.values[0]
-            yield_df.loc["weighted yield"] = weighted_eventdf.values[0]
-            yield_df.loc["object efficiency"] = df_objeff.values[0]
-            yield_df.loc["event efficiency"] = df_eveeff.values[0]
-
-        yield_df.to_csv(folder_path+"/yield.csv")
-
-        self.make_yield_table = True
 
 
     def add_process_id(self):
@@ -697,22 +413,20 @@ class Task():
         if self.wrote_years:
             return
 
-        self.year = self.config["sample"]["year"]
+        self.year = int(self.config["sample"]["year"])
 
         for syst_tag, merged_output in self.merged_outputs.items():
-            events = awkward.from_parquet(merged_output)
+            events = awkward.from_parquet(merged_output, lazy = True)
 
             if "year" in events.fields:
                 return
 
-            logger.debug("[Task : add_process_id] Task '%s' : adding field 'year' with value '%s' in output file '%s'." % (self.name, self.year, merged_output))
-
-            year_array = numpy.empty(len(events), dtype="S10")
-            year_array[:] = self.year
+            logger.debug("[Task : add_process_id] Task '%s' : adding field 'year' with value %d in output file '%s'." % (self.name, self.year, merged_output))
+            
             awkward_utils.add_field(
                     events = events,
                     name = "year",
-                    data = year_array 
+                    data = numpy.ones(len(events)) * self.year
             )
 
             awkward.to_parquet(events, merged_output)

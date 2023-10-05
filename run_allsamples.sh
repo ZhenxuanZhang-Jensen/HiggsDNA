@@ -45,13 +45,13 @@ if [ "$flag" = "test_signal_SL" ]; then
    echo "running $flag"
    rm /eos/user/z/zhenxuan/hhwwgg_parquet/SL_channel/hhwwgg_test_signal_SL -rf
    # no merge ouput and no condor
-   python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_top_region_calibration.json" --sample_list "UL17_R_gghh_SL_M-2000" --output_dir "/eos/user/z/zhenxuan/hhwwgg_parquet/SL_channel/hhwwgg_test_signal_SL" --short
+   python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --sample_list "UL17_R_gghh_SL_M-2000" --output_dir "/eos/user/z/zhenxuan/hhwwgg_parquet/SL_channel/hhwwgg_test_signal_SL" --short
 fi
 if [ "$flag" = "test_signal_FH" ]; then
    echo "running $flag"
    # no merge ouput and no condor
    rm /eos/user/z/zhenxuan/hhwwgg_workspace/hhwwgg_parquet/FH_channel/hhwwgg_test_signal_FH -rf
-   python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --sample_list "UL17_R_gghh_SL_M-2000" --output_dir "/eos/user/z/zhenxuan/hhwwgg_workspace/hhwwgg_parquet/FH_channel/hhwwgg_test_signal_FH" --short 
+   python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --sample_list "UL17_R_gghh_M-1000" --output_dir "/eos/user/z/zhenxuan/hhwwgg_workspace/hhwwgg_parquet/FH_channel/hhwwgg_test_signal_FH" --short 
 fi
 if [ "$flag" = "all_data" ]; then
    echo "running $flag"

@@ -17,16 +17,19 @@ ge-environments.html) by running:
 ```  
 conda env create -f environment.yml  
 ```  
-the conda env can become pretty large (multiple GB), so you may want to specify an installation location before running the above step with
+the conda env can become pretty large (multiple GB), so you may want to specify an installation location in the above step with
 ```
-mkdir <some_path_where_you_have_more_disk_space>/.conda/pkgs
-chmod 755 -R <some_path_where_you_have_more_disk_space>/.conda/pkgs
-conda config --prepend pkg_dirs <some_path_where_you_have_more_disk_space>/.conda/pkgs
+conda env create -f environment.yml -p <path to install conda env>
 ```
-Then activate the environment with
+then activate the environment with
 ```
 conda activate higgs-dna
 ```
+If you specified an installation path, your activation command will instead be:
+```
+conda activate <path to install conda env>/higgs-dna
+```
+
 ** lxplus-specific notes **
 If you are running on `lxplus` you may run into permission errors, which can be fixed with:
 ```

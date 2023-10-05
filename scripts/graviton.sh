@@ -1,1 +1,0 @@
-python scripts/run_analysis.py --config "metadata/analysis/ggtt_graviton/graviton_prs.json" --log-level "DEBUG" --output_dir /ceph/cms/store/user/fsetti/HiggsDNA/22Feb2023_graviton/ --batch_system "condor" --unretire_jobs --merge_outputs

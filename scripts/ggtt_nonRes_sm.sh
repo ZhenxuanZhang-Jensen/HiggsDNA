@@ -1,1 +1,0 @@
-python scripts/run_analysis.py --config "metadata/analysis/ggtt_nonRes/ggtt_sm_final.json" --log-level "DEBUG" --output_dir /ceph/cms/store/user/fsetti/HiggsDNA/25Apr2023_nonRes_SM_final/ --batch_system "condor" --unretire_jobs

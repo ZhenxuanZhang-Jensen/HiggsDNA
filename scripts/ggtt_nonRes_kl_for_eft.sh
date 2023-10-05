@@ -1,1 +1,0 @@
-python scripts/run_analysis.py --config "metadata/analysis/ggtt_nonRes/ggtt_kl_for_eft.json" --log-level "DEBUG" --output_dir /ceph/cms/store/user/fsetti/HiggsDNA/30Apr2023_nonRes_kl_for_eft/  --n_cores 35 --unretire_jobs

@@ -1,1 +1,0 @@
-python scripts/run_analysis.py --config "metadata/analysis/validate_resonant/radion_vs_nmssm.json" --log-level "DEBUG" --output_dir /ceph/cms/store/user/fsetti/HiggsDNA/22Feb2023_check/ --batch_system "condor" --unretire_jobs --merge_outputs  --no_systematics

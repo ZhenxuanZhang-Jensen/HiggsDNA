@@ -13,7 +13,6 @@ logger = logging.getLogger(__name__)
 
 def select_objects(objects, cuts = {}, clean = {}, name = "none", tagger = None):
     """
-
     """
 
     tagger_name = "none" if tagger is None else tagger.name
@@ -31,7 +30,6 @@ def select_objects(objects, cuts = {}, clean = {}, name = "none", tagger = None)
     cut_names = []
     cut_results = []
     for cut, value in cuts.items():
-        logger.debug("standard cut: Tagger '%s', applying cut '%s' with value '%s'" % (tagger_name, cut, str(value)))
         cut_ = None
         if cut == "pt":
             cut_ = objects.pt > value
@@ -39,12 +37,10 @@ def select_objects(objects, cuts = {}, clean = {}, name = "none", tagger = None)
         if cut in ["eta", "dxy", "dz"]:
             cut_ = abs(objects[cut]) < value
             cut_names.append("|%s| < %.4f" % (cut, value))
-        if cut in ["non_pfRelIso04_all"]and value is not None:
-            cut_ = objects.pfRelIso04_all >= value
-            logger.debug("non_pfRelIso04_all cut: %s" % str(cut_))
-        if cut in ["pfRelIso04_all","pfRelIso03_all", "pfRelIso03_chg"]and value is not None:
+        if cut in ["pfRelIso04_all","pfRelIso03_all", "pfRelIso03_chg"]:
             cut_ = objects[cut] < value
             cut_names.append("%s < %.4f" % (cut, value))
+
         if cut_ is not None:
             cut_results.append(cut_)
 
@@ -71,7 +67,6 @@ def mass_veto(objects1, objects2, mass_range):
     """
     Select objects from objects1 which have invariant mass with all objects in objects2 outside `mass_range`.
     For example, `mass_veto(electrons, photons, [85., 95.])` selects all electrons which have m(e,gamma) outside the Z peak.
-
     :param objects1: objects which are required to be at least min_dr away from all objects in objects2 
     :type objects1: awkward.highlevel.Array
     :param objects2: objects which are all objects in objects1 must be at leats min_dr away from
@@ -101,7 +96,6 @@ def mass_veto(objects1, objects2, mass_range):
 def delta_R(objects1, objects2, min_dr):
     """
     Select objects from objects1 which are at least min_dr away from all objects in objects2.
-
     :param objects1: objects which are required to be at least min_dr away from all objects in objects2 
     :type objects1: awkward.highlevel.Array
     :param objects2: objects which are all objects in objects1 must be at leats min_dr away from
@@ -138,7 +132,6 @@ def delta_R(objects1, objects2, min_dr):
 def delta_R_numba(objects1, objects2, min_dr):
     """
     Select objects from objects1 which are at least min_dr away from all objects in objects2.
-
     :param objects1: objects which are required to be at least min_dr away from all objects in objects2 
     :type objects1: awkward.highlevel.Array
     :param objects2: objects which are all objects in objects1 must be at leats min_dr away from
@@ -156,7 +149,6 @@ def delta_R_numba(objects1, objects2, min_dr):
             objects2, n_objects2,
             min_dr
     )
-
     selection = awkward_utils.construct_jagged_array(offsets, contents)
 
     return selection

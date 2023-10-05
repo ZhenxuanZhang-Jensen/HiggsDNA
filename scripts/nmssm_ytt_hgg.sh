@@ -1,1 +1,0 @@
-python scripts/run_analysis.py --config "metadata/analysis/ggtt_ytt_hgg/nmssm_Ytautau_Hgg_high_prs.json" --log-level "DEBUG" --output_dir /ceph/cms/store/user/fsetti/HiggsDNA/16Mar2023_NMSSM_Y2tautau_H2gg/ --batch_system "condor" --unretire_jobs --merge_outputs 
