@@ -158,9 +158,71 @@ class HHWW_Preselection_FHSL(Tagger):
         # data will not select gen level infos 
         # need to comment when run bkgs
         # logger.debug("Is Signal: %s" %self.options["gen_info"]["is_Signal"])
-        # if not self.is_data and self.options["gen_info"]["is_Signal"]:    
+        if not self.is_data and self.options["gen_info"]["is_Signal"]:    
+            gen_obj_1, gen_obj_2, gen_obj_3, gen_obj_4, gen_H_to_gg, gen_H_to_WW, gen_lead_g_fromH, gen_sublead_g_fromH = gen_selections.select_ww_to_qqlv_or_qqqq(events)
+        # add object fields for gen objects
+        awkward_utils.add_object_fields(
+            events = events,
+            name = "gen_obj_1",
+            objects = gen_obj_1,
+            n_objects = 1,
+            dummy_value = -999
+        )
+        awkward_utils.add_object_fields(
+            events = events,
+            name = "gen_obj_2",
+            objects = gen_obj_2,
+            n_objects = 1,          
+            dummy_value = -999                      
+        )                           
+        awkward_utils.add_object_fields(                        
+            events = events,                    
+            name = "gen_obj_3",             
+            objects = gen_obj_3,                
+            n_objects = 1,                      
+            dummy_value = -999              
+        )                   
+        awkward_utils.add_object_fields(                        
+            events = events,                    
+            name = "gen_obj_4",             
+            objects = gen_obj_4,                    
+            n_objects = 1,                          
+            dummy_value = -999
+        )                                                                                                   
+        awkward_utils.add_object_fields(                            
+            events = events,                    
+            name = "gen_H_to_gg",                   
+            objects = gen_H_to_gg,          
+            n_objects = 1,
+            dummy_value = -999                          
+        )                           
+        awkward_utils.add_object_fields(                        
+            events = events,                            
+            name = "gen_H_to_WW",                       
+            objects = gen_H_to_WW,                  
+            n_objects = 1,
+            dummy_value = -999
+        )       
+        awkward_utils.add_object_fields(    
+            events = events,
+            name = "gen_lead_g_fromH",                  
+            objects = gen_lead_g_fromH,                     
+            n_objects = 1,                      
+            dummy_value = -999              
+        )                       
+        awkward_utils.add_object_fields(            
+            events = events,            
+            name = "gen_sublead_g_fromH",
+            objects = gen_sublead_g_fromH,
+            n_objects = 1,                  
+            dummy_value = -999  
+        )
+        # add object fields for gen objects
+            
+        
         # fake_pho,prompt_pho = gen_selections.gen_Hww_4q(events)        
             # gen_l1_p4, gen_q1_p4,gen_q2_p4 = gen_selections.gen_Hww_2q2l(events)        
+        
         logger.debug("event fields: %s" %events.fields)
         # logger.debug('After Diphoton selection')
         puppiMET = awkward.zip({'phi':events.PuppiMET_phi,'phiJERDown':events.PuppiMET_phiJERDown,'phiJERUp':events.PuppiMET_phiJERUp,'phiJESDown':events.PuppiMET_phiJESDown,'phiJESUp':events.PuppiMET_phiJESUp,'phiUnclusteredDown':events.PuppiMET_phiUnclusteredDown,'phiUnclusteredUp':events.PuppiMET_phiUnclusteredUp,'pt':events.PuppiMET_pt,'ptJERDown':events.PuppiMET_ptJERDown,'ptJERUp':events.PuppiMET_ptJERUp,'ptJESDown':events.PuppiMET_ptJESDown,'ptJESUp':events.PuppiMET_ptJESUp,'ptUnclusteredDown':events.PuppiMET_ptUnclusteredDown,'ptUnclusteredUp':events.PuppiMET_ptUnclusteredUp,'sumEt':events.PuppiMET_sumEt})
@@ -340,7 +402,7 @@ class HHWW_Preselection_FHSL(Tagger):
         fatjet_tmp['METoverfatjetPt'] = events.MET_pt / fatjet_tmp.pt
         fatjet_tmp['PuppiMEToverfatjetPt'] = events.PuppiMET_pt / fatjet_tmp.pt
         # fatjet_tmp['dphi_puppiMET']=(awkward.unflatten(events.PuppiMET_phi,counts=1)-fatjet_tmp.phi)
-        fatjet_tmp['Hqqqq_vsQCDTop'] = PN_sigs_4q / (PN_bkgs_4q + PN_sigs_4q)  
+        fatjet_tmp['Hqqqq_vsQCDTop'] = PN_sigs_4q / (PN_bkgs_4q + PN_sigs_4q)
         fatjet_tmp['WvsQCDMD']=(events.FatJet.particleNetMD_Xcc + events.FatJet.particleNetMD_Xqq)/(events.FatJet.particleNetMD_Xcc + events.FatJet.particleNetMD_Xqq + events.FatJet.particleNetMD_QCD)
         events.FatJet = fatjet_tmp
         print("events.FatJet exsiting field:\n",events.FatJet.fields)

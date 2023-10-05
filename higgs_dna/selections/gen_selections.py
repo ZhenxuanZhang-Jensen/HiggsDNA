@@ -688,3 +688,33 @@ def gen_3categories(events):
     τ_events = events[awkward.num(gen_τv,axis=-1)!=0]
     logger.debug("At the beginning, there are %s muon lepton candidates, %s electron lepton candidates, %s tau lepton candidates events"%(n_muon_event, n_electron_event,n_tau_event))    
     return events, n_muon_event, n_electron_event, n_tau_event, e_events, μ_events, τ_events
+
+
+def select_ww_to_qqlv_or_qqqq(events):
+    # read gen level information
+    gen_part = awkward.Array(events.GenPart,with_name="Momentum4D")
+    # select quarks from W
+    gen_q_fromW = gen_part[(abs(gen_part.pdgId)<= 6) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24) ]
+    # select lepton from W（+-11,+-13,+-15)
+    gen_l_fromW = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24) & ((abs(gen_part.pdgId)==11)|(abs(gen_part.pdgId)==13)|(abs(gen_part.pdgId)==15))]
+    # select neutrino from W
+    gen_nu_fromW = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24) & ((abs(gen_part.pdgId)==12)|(abs(gen_part.pdgId)==14)|(abs(gen_part.pdgId)==16))]
+    # select W from Higgs
+    gen_W_fromH = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 25) & (abs(gen_part.pdgId)==24)]
+    # select gg from Higgs
+    gen_gg_fromH = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 25) & (abs(gen_part.pdgId)==22)]
+    # choose the leading pt photon
+    gen_lead_g_fromH = gen_gg_fromH[awkward.argsort(gen_gg_fromH.pt,axis=-1)][:,1]
+    # choose the subleading pt photon
+    gen_sublead_g_fromH = gen_gg_fromH[awkward.argsort(gen_gg_fromH.pt,axis=-1)][:,0]
+    # select the Higgs decay to gg
+    gen_H_to_gg = gen_part[awkward.unflatten(gen_lead_g_fromH.genPartIdxMother, counts=awkward.ones_like(gen_lead_g_fromH.genPartIdxMother))]
+    # select the Higgs decay to WW
+    gen_H_to_WW = gen_part[awkward.unflatten(gen_W_fromH.genPartIdxMother[:,0], counts=awkward.ones_like(gen_W_fromH.genPartIdxMother[:,0]))]
+    gen_four_object = awkward.concatenate([gen_q_fromW,gen_l_fromW,gen_nu_fromW], axis=1)
+    gen_obj_1 = gen_four_object[:,0]
+    gen_obj_2 = gen_four_object[:,1]
+    gen_obj_3 = gen_four_object[:,2]
+    gen_obj_4 = gen_four_object[:,3]
+    return gen_obj_1, gen_obj_2, gen_obj_3, gen_obj_4, gen_H_to_gg, gen_H_to_WW, gen_lead_g_fromH, gen_sublead_g_fromH
+    
