@@ -23,7 +23,6 @@ from higgs_dna.taggers.golden_json_tagger import GoldenJsonTagger
 from higgs_dna.utils.misc_utils import load_config, update_dict, is_json_serializable
 from higgs_dna.constants import NOMINAL_TAG, CENTRAL_WEIGHT, BRANCHES
 from higgs_dna.utils.metis_utils import do_cmd
-
 #condor=True
 condor=False
 
@@ -52,7 +51,8 @@ def run_analysis(config):
 
     ### 1. Load events ###
     t_start_load = time.time()
-    events, sum_weights = AnalysisManager.load_events(config["files"], config["branches"], config["sample"])
+    
+    events, sum_weights = AnalysisManager.load_events(config["files"], config["branches"], config["sample"],config["dir"])
     
 
     # Record n_events and sum_weights for scale1fb calculation
@@ -525,7 +525,7 @@ class AnalysisManager():
 
 
     @staticmethod
-    def load_events(files, branches, sample):
+    def load_events(files, branches, sample,output_dir):
         """
         Load all branches in ``branches`` from "Events" tree from all nanoAODs in ``files`` into a single zipped ``awkward.Array``.
         Also calculates and returns the sum of weights from nanoAOD "Runs" tree.        
@@ -539,6 +539,7 @@ class AnalysisManager():
         """
         events = []
         sum_weights = 0
+
         for file in files:
             with uproot.open(file, timeout = 500) as f:
                 runs = f["Runs"]
@@ -563,8 +564,8 @@ class AnalysisManager():
                         events_file[x] = (numpy.zeros(len(events_file))==1)
 
                 if sample["is_data"] and sample["year"] is not None:
-                    golden_json_tagger = GoldenJsonTagger(is_data = sample["is_data"], year = sample["year"])
-                    events_file = golden_json_tagger.select(events_file)
+                    golden_json_tagger = GoldenJsonTagger(output_dir,is_data = sample["is_data"], year = sample["year"])
+                    events_file = golden_json_tagger.select(events_file,output_dir)
                     if not len(events_file) > 0:
                         logger.debug("[AnalysisManager : load_events] File '%s' skipped entirely because no events are in golden json." % (file))
                         continue

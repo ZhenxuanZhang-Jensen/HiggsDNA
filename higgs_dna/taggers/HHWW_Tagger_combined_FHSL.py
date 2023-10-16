@@ -130,6 +130,7 @@ DEFAULT_OPTIONS = {
         "dr_electrons": 0.8,
         "dr_muons": 0.8
     },
+    # "photon_id": -0.9,
     "photon_id": -0.9,
     "btag_wp": {
         "2016": 0.3093,
@@ -165,7 +166,145 @@ class HHWW_Preselection_FHSL(Tagger):
         # logger.debug("Is Signal: %s" %self.options["gen_info"]["is_Signal"])
         # if not self.is_data and self.options["gen_info"]["is_Signal"]:    
         # fake_pho,prompt_pho = gen_selections.gen_Hww_4q(events)        
-            # gen_l1_p4, gen_q1_p4,gen_q2_p4 = gen_selections.gen_Hww_2q2l(events)        
+            # gen_l1_p4, gen_q1_p4,gen_q2_p4 = gen_selections.gen_Hww_2q2l(events)     
+        if not self.is_data and self.options["gen_info"]["is_Signal"]:    
+            gen_obj_1, gen_obj_2, gen_obj_3, gen_obj_4, gen_lead_W_fromH, gen_sublead_W_fromH, gen_H_to_gg, gen_H_to_WW, gen_lead_g_fromH, gen_sublead_g_fromH = gen_selections.select_ww_to_qqlv_or_qqqq(events)
+        # add object fields for gen objects
+        gen_obj_1 = awkward_utils.add_field(
+            events = events,
+            name="gen_obj_1",
+            data = awkward.unflatten(gen_obj_1,counts=1)
+        )
+        awkward_utils.add_object_fields(
+            events = events,
+            name = "gen_obj_1",
+            objects = gen_obj_1,
+            n_objects = 1,
+            dummy_value = -999
+        )
+        gen_obj_2 = awkward_utils.add_field(
+            events = events,
+            name="gen_obj_2",
+            data = awkward.unflatten(gen_obj_2,counts=1)
+        )
+        awkward_utils.add_object_fields(
+            events = events,
+            name = "gen_obj_2",
+            objects = gen_obj_2,
+            n_objects = 1,          
+            dummy_value = -999                      
+        )
+        gen_obj_3 = awkward_utils.add_field(
+            events = events,
+            name="gen_obj_3",
+            data = awkward.unflatten(gen_obj_3,counts=1)
+        )                           
+        awkward_utils.add_object_fields(                        
+            events = events,                    
+            name = "gen_obj_3",             
+            objects = gen_obj_3,                
+            n_objects = 1,                      
+            dummy_value = -999              
+        )                   
+        gen_obj_4 = awkward_utils.add_field(
+            events = events,
+            name="gen_obj_4",
+            data = awkward.unflatten(gen_obj_4,counts=1)
+        )                           
+        awkward_utils.add_object_fields(                        
+            events = events,                    
+            name = "gen_obj_4",             
+            objects = gen_obj_4,                    
+            n_objects = 1,                          
+            dummy_value = -999
+        )                  
+        gen_lead_W_fromH = awkward_utils.add_field(
+            events = events,
+            name="gen_lead_W_fromH",
+            data = awkward.unflatten(gen_lead_W_fromH,counts=1)
+        )                           
+        awkward_utils.add_object_fields(                        
+            events = events,                    
+            name = "gen_lead_W_fromH",             
+            objects = gen_lead_W_fromH,                    
+            n_objects = 1,                          
+            dummy_value = -999
+        )                  
+        gen_sublead_W_fromH = awkward_utils.add_field(
+            events = events,
+            name="gen_sublead_W_fromH",
+            data = awkward.unflatten(gen_sublead_W_fromH,counts=1)
+        )                           
+        awkward_utils.add_object_fields(                        
+            events = events,                    
+            name = "gen_sublead_W_fromH",             
+            objects = gen_sublead_W_fromH,                    
+            n_objects = 1,                          
+            dummy_value = -999
+        )                  
+        gen_H_to_gg = awkward_utils.add_field(
+            events = events,
+            name="gen_H_to_gg",
+            data = awkward.unflatten(gen_H_to_gg,counts=1)
+        )                                                                                   
+        awkward_utils.add_object_fields(                            
+            events = events,                    
+            name = "gen_H_to_gg",                   
+            objects = gen_H_to_gg,          
+            n_objects = 1,
+            dummy_value = -999                          
+        )    
+        gen_H_to_gg = awkward_utils.add_field(
+            events = events,
+            name="gen_H_to_gg",
+            data = awkward.unflatten(gen_H_to_gg,counts=1)
+        )                          
+        awkward_utils.add_object_fields(                        
+            events = events,                            
+            name = "gen_H_to_gg",                       
+            objects = gen_H_to_gg,                  
+            n_objects = 1,
+            dummy_value = -999
+        )       
+        gen_lead_g_fromH = awkward_utils.add_field(
+            events = events,                        
+            name="gen_lead_g_fromH",                    
+            data = awkward.unflatten(gen_lead_g_fromH,counts=1)             
+        )                       
+        awkward_utils.add_object_fields(    
+            events = events,
+            name = "gen_lead_g_fromH",                  
+            objects = gen_lead_g_fromH,                     
+            n_objects = 1,                      
+            dummy_value = -999              
+        )                       
+        gen_sublead_g_fromH = awkward_utils.add_field(
+            events = events,                
+            name="gen_sublead_g_fromH",                         
+            data = awkward.unflatten(gen_sublead_g_fromH,counts=1)                  
+        )                   
+        awkward_utils.add_object_fields(            
+            events = events,            
+            name = "gen_sublead_g_fromH",
+            objects = gen_sublead_g_fromH,
+            n_objects = 1,                  
+            dummy_value = -999  
+        )
+        gen_H_to_WW = awkward_utils.add_field(
+            events = events,                
+            name="gen_H_to_WW",                         
+            data = awkward.unflatten(gen_H_to_WW,counts=1)                  
+        )                   
+        awkward_utils.add_object_fields(            
+            events = events,            
+            name = "gen_H_to_WW",
+            objects = gen_H_to_WW,
+            n_objects = 1,                  
+            dummy_value = -999  
+        )
+        # add object fields for gen objects
+            
+   
         logger.debug("event fields: %s" %events.fields)
         # logger.debug('After Diphoton selection')
         puppiMET = awkward.zip({'phi':events.PuppiMET_phi,'phiJERDown':events.PuppiMET_phiJERDown,'phiJERUp':events.PuppiMET_phiJERUp,'phiJESDown':events.PuppiMET_phiJESDown,'phiJESUp':events.PuppiMET_phiJESUp,'phiUnclusteredDown':events.PuppiMET_phiUnclusteredDown,'phiUnclusteredUp':events.PuppiMET_phiUnclusteredUp,'pt':events.PuppiMET_pt,'ptJERDown':events.PuppiMET_ptJERDown,'ptJERUp':events.PuppiMET_ptJERUp,'ptJESDown':events.PuppiMET_ptJESDown,'ptJESUp':events.PuppiMET_ptJESUp,'ptUnclusteredDown':events.PuppiMET_ptUnclusteredDown,'ptUnclusteredUp':events.PuppiMET_ptUnclusteredUp,'sumEt':events.PuppiMET_sumEt})
@@ -506,22 +645,23 @@ class HHWW_Preselection_FHSL(Tagger):
         
         SL_merged_boosted_cat = (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (n_leptons_noiso == 1) & (n_leptons_iso==0)  & (selection_lepton_merged_SL_cat0)
         # SL_merged_boosted_cat = (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (n_leptons_noiso == 1) & (n_leptons_iso==0)  & (selection_lepton_merged_SL_cat0)&(selection_diphoton_pt)  # & (awkward.num((dphi_MET_fatjet==True)>=1)) # merged boosted 1 jet for SL channel wo isolated lep
+        dR_lep_jet=delta_R(jets,lepton_noniso,0.4)
+        SL_merged_resolved_cat = (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (n_leptons_noiso == 1) & (n_leptons_iso==0) & (awkward.num(jets.pt[dR_lep_jet])>=1) 
         # ----------------------------------------------------------------------------------------------------#
         # If no lepton
         #attention: Fully hadronic channel
         # add boosted FH category with (>=1 Higgs jets && HvsQCD > 0.4)
         # the first Higgs jet with HvsQCD > 0.4
-      
         selection_fatjet_HvsQCD_FH_cat0 = awkward.num(fatjets_H.Hqqqq_vsQCDTop[(fatjets_H.Hqqqq_vsQCDTop > 0.4)]) >= 1
         # selection_fatjet_HvsQCD_FH_cat0 = awkward.num(fatjets_H.Hqqqq_vsQCDTop[(fatjets_H.Hqqqq_vsQCDTop > 0.4)&(fatjets_H.dphi_puppiMET>2)]) >= 1
   
-        FH_boosted = (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (n_leptons_iso == 0) & (n_leptons_noiso == 0) & (n_fatjets_H >=1) & (selection_fatjet_HvsQCD_FH_cat0)&(selection_diphoton_pt)# &(awkward.num((dphi_MET_fatjet==True)==0)) # boosted 1 jet for SL and FH channel wo isolated lep
+        FH_boosted = (~SL_merged_resolved_cat)& (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (n_leptons_iso == 0) & (n_leptons_noiso == 0) & (n_fatjets_H >=1) & (selection_fatjet_HvsQCD_FH_cat0)&(selection_diphoton_pt)# &(awkward.num((dphi_MET_fatjet==True)==0)) # boosted 1 jet for SL and FH channel wo isolated lep
         # ----------------------------------------------------------------------------------------------------#
         # add semi-boosted FH -1 category with (>=2 AK8 jets && WvsQCD > 0.81)
         # need the first two fatjets with WvsQCD > 0.5
         selection_fatjet_WvsQCD_SB_2F = awkward.num(fatjets.WvsQCDMD[(fatjets.WvsQCDMD > 0.81)&(fatjets.Hqqqq_vsQCDTop<=0.4)]) >= 2
     
-        FH_2Wfatjet_cat = (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted) & (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_fatjets >=2) & (selection_fatjet_WvsQCD_SB_2F)# 2 jets for FH
+        FH_2Wfatjet_cat =(~SL_merged_resolved_cat)&(~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted) & (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_fatjets >=2) & (selection_fatjet_WvsQCD_SB_2F)# 2 jets for FH
         # ----------------------------------------------------------------------------------------------------#
         # add semi-boosted FH -2 category with (==1 AK8 jets && WvsQCD > 0.81 && >=2 AK4 jets)
         # need the first fatjet with WvsQCD > 0.5
@@ -529,11 +669,11 @@ class HHWW_Preselection_FHSL(Tagger):
 
         selection_fatjet_WvsQCD_SB_1F = awkward.num(fatjets.WvsQCDMD[(fatjets.WvsQCDMD > 0.81)&(fatjets.Hqqqq_vsQCDTop<=0.4)]) == 1
     
-        # FH_1Wfatjet_cat = (~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted)&(~FH_2Wfatjet_cat)&(n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_fatjets >=1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SB_1F)#&((awkward.num(selection_subjet)==True)==1) # 1 jet for FH
-        FH_1Wfatjet_cat = (events.Diphoton.pt>200)&(~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted)&(~FH_2Wfatjet_cat)&(n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_fatjets >=1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SB_1F)#&((awkward.num(selection_subjet)==True)==1) # 1 jet for FH
+       # 1 jet for FH
+        FH_1Wfatjet_cat =(~SL_merged_resolved_cat)& (events.Diphoton.pt>200)&(~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted)&(~FH_2Wfatjet_cat)&(n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_fatjets >=1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SB_1F)#&((awkward.num(selection_subjet)==True)==1) # 1 jet for FH
         # ----------------------------------------------------------------------------------------------------#
         # add resolved FH category with (>=4 AK4 jets )
-        FH_fully_resovled_cat =(~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted) & (~FH_2Wfatjet_cat)&(~FH_1Wfatjet_cat)& (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_jets>=2)
+        FH_fully_resovled_cat =(~SL_merged_resolved_cat)&(~SL_boosted_cat) & (~SL_fullyresovled_cat) & (~SL_merged_boosted_cat) & (~FH_boosted) & (~FH_2Wfatjet_cat)&(~FH_1Wfatjet_cat)& (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_jets>=2)
         #will categorise n jets for FH resolved 
   
 
@@ -546,16 +686,18 @@ class HHWW_Preselection_FHSL(Tagger):
         # 1: SL_boosted_cat
         # 2: SL_fullyresovled_cat
         # 3: SL_merged_boosted_cat
-        # 4: FH_boosted
-        # 5: FH_2Wfatjet_cat
-        # 6: FH_1Wfatjet_cat
-        # 7: FH_fully_resovled_cat
+        # 4: SL_merged_resolved_cat
+        # 5: FH_boosted
+        # 6: FH_2Wfatjet_cat
+        # 7: FH_1Wfatjet_cat
+        # 8: FH_fully_resovled_cat
         
     
-        category = awkward.where(FH_fully_resovled_cat, awkward.ones_like(category)*7, category)
-        category = awkward.where(FH_1Wfatjet_cat, awkward.ones_like(category)*6, category)
-        category = awkward.where(FH_2Wfatjet_cat, awkward.ones_like(category)*5, category)
-        category = awkward.where(FH_boosted, awkward.ones_like(category)*4, category)
+        category = awkward.where(FH_fully_resovled_cat, awkward.ones_like(category)*8, category)
+        category = awkward.where(FH_1Wfatjet_cat, awkward.ones_like(category)*7, category)
+        category = awkward.where(FH_2Wfatjet_cat, awkward.ones_like(category)*6, category)
+        category = awkward.where(FH_boosted, awkward.ones_like(category)*5, category)
+        category = awkward.where(SL_merged_resolved_cat, awkward.ones_like(category)*4, category)
         category = awkward.where(SL_merged_boosted_cat, awkward.ones_like(category)*3, category)
         category = awkward.where(SL_fullyresovled_cat, awkward.ones_like(category)*2, category)
         category = awkward.where(SL_boosted_cat, awkward.ones_like(category)*1, category)

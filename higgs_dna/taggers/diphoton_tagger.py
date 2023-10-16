@@ -266,7 +266,11 @@ class DiphotonTagger(Tagger):
             dipho_events[(field, "phi")] = diphotons[field].phi
             dipho_events[(field, "mass")] = diphotons[field].mass
         dipho_events[("LeadPhoton", "energyErr")] = dipho_events.LeadPhoton.energyErr
+        dipho_events[("LeadPhoton", "mvaID_WP80")] = dipho_events.LeadPhoton.mvaID_WP80
+        dipho_events[("LeadPhoton", "mvaID_WP90")] = dipho_events.LeadPhoton.mvaID_WP90
         dipho_events[("SubleadPhoton", "energyErr")] = dipho_events.SubleadPhoton.energyErr
+        dipho_events[("SubleadPhoton", "mvaID_WP80")] = dipho_events.SubleadPhoton.mvaID_WP80
+        dipho_events[("SubleadPhoton", "mvaID_WP90")] = dipho_events.SubleadPhoton.mvaID_WP90
 
         dipho_presel_cut = awkward.num(dipho_events.Diphoton) == 1
         if self.is_data and self.year is not None:

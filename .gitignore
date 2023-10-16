@@ -128,3 +128,4 @@ dmypy.json
 examples/output/
 scripts/output/
 eos_logs/
+*.gz

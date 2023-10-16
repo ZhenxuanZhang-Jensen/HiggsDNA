@@ -307,8 +307,8 @@ class CondorJob(Job):
         self.hdna_base = get_HiggsDNA_base()
         self.hdna_conda = get_HiggsDNA_conda()
 
-        self.condor_exe_template = "/home/users/fsetti/HHggTauTau/HiggsDNA_ggtt/higgs_dna/job_management/condor/%s/exe_template.sh" % self.host
-        self.condor_sub_template = "/home/users/fsetti/HHggTauTau/HiggsDNA_ggtt/higgs_dna/job_management/condor/%s/submit_template.txt" % self.host
+        self.condor_exe_template = "/afs/cern.ch/user/s/shsong/HiggsDNA/higgs_dna/job_management/condor/%s/exe_template.sh" % self.host
+        self.condor_sub_template = "/afs/cern.ch/user/s/shsong/HiggsDNA/higgs_dna/job_management/condor/%s/submit_template.txt" % self.host
         
         self.write_condor_executable_file()
         self.write_condor_submit_file()

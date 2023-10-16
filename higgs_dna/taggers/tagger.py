@@ -41,7 +41,7 @@ class Tagger():
         self.options = misc_utils.load_config(options)
 
 
-    def select(self, events):
+    def select(self, events,output_dir = None):
         """
         Convenience function for running tagger in standalone contexts.
 
@@ -50,6 +50,7 @@ class Tagger():
         :returns: awkward array of selected events
         :rtype: awkward.Array
         """
+        self.output_dir = output_dir
         self.current_syst = NOMINAL_TAG
         selection, events_updated = self.calculate_selection(events)
         return events_updated[selection]
@@ -78,7 +79,29 @@ class Tagger():
             selection, events = self.calculate_selection(events)
             self.selection[syst_tag] = selection
             logger.debug("[Tagger] %s : event set : %s : %d (%d) events before (after) selection" % (self.name, syst_tag, len(selection), awkward.sum(selection)))
+        #     file_path = self.output_dir + '/combined_eff.json' 
+        #     dic_eff_serializable = {key: float(value) for key, value in dic_eff.items()}
 
+        #     if os.path.exists(self.output_dir+'/combined_eff.json'):
+        #         file_path = self.output_dir + '/combined_eff.json'
+
+        #     with open(file_path, 'r') as file:
+        #         content = file.read()
+
+        #         content = content[:-1]
+
+        #     with open(file_path, 'w') as file:
+        #         file.write(content)
+        #         file.write(',')
+
+        #         json.dump(dic_eff_serializable, file, indent=4)
+        #         file.write('}')
+        #     with open(file_path, 'r') as file:
+        #         content = file.read()
+        #         if content.strip().endswith('}}'):
+        #             content = content[:-1] + ']'
+        #             with open(file_path, 'w') as file:
+        #                 file.write(content)
         return selection, events
         # if not self.is_data:
         #     if not len(events) >= 1:
@@ -245,15 +268,18 @@ class Tagger():
             logger.debug("cut(e-level) : %s\n combined_eff : %.4f\n event_num : %.4f"% (_tmp_name, combined_eff, n_candi_event))
             dic_eff = {'[object_eff] -'+cut_type+': '+name+' object efficiency':individual_eff,'[event_eff]   -'+cut_type+': '+_tmp_name+' event efficiency':combined_eff,'[event_number]   -'+cut_type+': '+_tmp_name+' event number' :n_candi_event}            
             output_dir = self.output_dir
+            logger.debug("output dir is %s", output_dir)
             # Check if the file already exists
             if os.path.exists(output_dir+'/combined_eff.json'):
+                logger.debug("exist combined_eff.json")
                 file_size = os.path.getsize(output_dir+'/combined_eff.json')
                 if file_size > 0:
                 # Remove the closing bracket '}' from the existing file
                     with open(output_dir+'/combined_eff.json', 'rb+') as f:
                         f.seek(-1, os.SEEK_END)
                         f.truncate()
-    
+            else:
+                os.system("touch "+output_dir+'/combined_eff.json')
             # Open the file in append mode
             with open(output_dir+'/combined_eff.json', 'a') as f:
                 # Get the file size
