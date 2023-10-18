@@ -170,137 +170,137 @@ class HHWW_Preselection_FHSL(Tagger):
         if not self.is_data and self.options["gen_info"]["is_Signal"]:    
             gen_obj_1, gen_obj_2, gen_obj_3, gen_obj_4, gen_lead_W_fromH, gen_sublead_W_fromH, gen_H_to_gg, gen_H_to_WW, gen_lead_g_fromH, gen_sublead_g_fromH = gen_selections.select_ww_to_qqlv_or_qqqq(events)
         # add object fields for gen objects
-        gen_obj_1 = awkward_utils.add_field(
-            events = events,
-            name="gen_obj_1",
-            data = awkward.unflatten(gen_obj_1,counts=1)
-        )
-        awkward_utils.add_object_fields(
-            events = events,
-            name = "gen_obj_1",
-            objects = gen_obj_1,
-            n_objects = 1,
-            dummy_value = -999
-        )
-        gen_obj_2 = awkward_utils.add_field(
-            events = events,
-            name="gen_obj_2",
-            data = awkward.unflatten(gen_obj_2,counts=1)
-        )
-        awkward_utils.add_object_fields(
-            events = events,
-            name = "gen_obj_2",
-            objects = gen_obj_2,
-            n_objects = 1,          
-            dummy_value = -999                      
-        )
-        gen_obj_3 = awkward_utils.add_field(
-            events = events,
-            name="gen_obj_3",
-            data = awkward.unflatten(gen_obj_3,counts=1)
-        )                           
-        awkward_utils.add_object_fields(                        
-            events = events,                    
-            name = "gen_obj_3",             
-            objects = gen_obj_3,                
-            n_objects = 1,                      
-            dummy_value = -999              
-        )                   
-        gen_obj_4 = awkward_utils.add_field(
-            events = events,
-            name="gen_obj_4",
-            data = awkward.unflatten(gen_obj_4,counts=1)
-        )                           
-        awkward_utils.add_object_fields(                        
-            events = events,                    
-            name = "gen_obj_4",             
-            objects = gen_obj_4,                    
-            n_objects = 1,                          
-            dummy_value = -999
-        )                  
-        gen_lead_W_fromH = awkward_utils.add_field(
-            events = events,
-            name="gen_lead_W_fromH",
-            data = awkward.unflatten(gen_lead_W_fromH,counts=1)
-        )                           
-        awkward_utils.add_object_fields(                        
-            events = events,                    
-            name = "gen_lead_W_fromH",             
-            objects = gen_lead_W_fromH,                    
-            n_objects = 1,                          
-            dummy_value = -999
-        )                  
-        gen_sublead_W_fromH = awkward_utils.add_field(
-            events = events,
-            name="gen_sublead_W_fromH",
-            data = awkward.unflatten(gen_sublead_W_fromH,counts=1)
-        )                           
-        awkward_utils.add_object_fields(                        
-            events = events,                    
-            name = "gen_sublead_W_fromH",             
-            objects = gen_sublead_W_fromH,                    
-            n_objects = 1,                          
-            dummy_value = -999
-        )                  
-        gen_H_to_gg = awkward_utils.add_field(
-            events = events,
-            name="gen_H_to_gg",
-            data = awkward.unflatten(gen_H_to_gg,counts=1)
-        )                                                                                   
-        awkward_utils.add_object_fields(                            
-            events = events,                    
-            name = "gen_H_to_gg",                   
-            objects = gen_H_to_gg,          
-            n_objects = 1,
-            dummy_value = -999                          
-        )    
-        gen_H_to_gg = awkward_utils.add_field(
-            events = events,
-            name="gen_H_to_gg",
-            data = awkward.unflatten(gen_H_to_gg,counts=1)
-        )                          
-        awkward_utils.add_object_fields(                        
-            events = events,                            
-            name = "gen_H_to_gg",                       
-            objects = gen_H_to_gg,                  
-            n_objects = 1,
-            dummy_value = -999
-        )       
-        gen_lead_g_fromH = awkward_utils.add_field(
-            events = events,                        
-            name="gen_lead_g_fromH",                    
-            data = awkward.unflatten(gen_lead_g_fromH,counts=1)             
-        )                       
-        awkward_utils.add_object_fields(    
-            events = events,
-            name = "gen_lead_g_fromH",                  
-            objects = gen_lead_g_fromH,                     
-            n_objects = 1,                      
-            dummy_value = -999              
-        )                       
-        gen_sublead_g_fromH = awkward_utils.add_field(
-            events = events,                
-            name="gen_sublead_g_fromH",                         
-            data = awkward.unflatten(gen_sublead_g_fromH,counts=1)                  
-        )                   
-        awkward_utils.add_object_fields(            
-            events = events,            
-            name = "gen_sublead_g_fromH",
-            objects = gen_sublead_g_fromH,
-            n_objects = 1,                  
-            dummy_value = -999  
-        )
-        gen_H_to_WW = awkward_utils.add_field(
-            events = events,                
-            name="gen_H_to_WW",                         
-            data = awkward.unflatten(gen_H_to_WW,counts=1)                  
-        )                   
-        awkward_utils.add_object_fields(            
-            events = events,            
-            name = "gen_H_to_WW",
-            objects = gen_H_to_WW,
-            n_objects = 1,                  
-            dummy_value = -999  
+            gen_obj_1 = awkward_utils.add_field(
+                events = events,
+                name="gen_obj_1",
+                data = awkward.unflatten(gen_obj_1,counts=1)
+            )
+            awkward_utils.add_object_fields(
+                events = events,
+                name = "gen_obj_1",
+                objects = gen_obj_1,
+                n_objects = 1,
+                dummy_value = -999
+            )
+            gen_obj_2 = awkward_utils.add_field(
+                events = events,
+                name="gen_obj_2",
+                data = awkward.unflatten(gen_obj_2,counts=1)
+            )
+            awkward_utils.add_object_fields(
+                events = events,
+                name = "gen_obj_2",
+                objects = gen_obj_2,
+                n_objects = 1,          
+                dummy_value = -999                      
+            )
+            gen_obj_3 = awkward_utils.add_field(
+                events = events,
+                name="gen_obj_3",
+                data = awkward.unflatten(gen_obj_3,counts=1)
+            )                           
+            awkward_utils.add_object_fields(                        
+                events = events,                    
+                name = "gen_obj_3",             
+                objects = gen_obj_3,                
+                n_objects = 1,                      
+                dummy_value = -999              
+            )                   
+            gen_obj_4 = awkward_utils.add_field(
+                events = events,
+                name="gen_obj_4",
+                data = awkward.unflatten(gen_obj_4,counts=1)
+            )                           
+            awkward_utils.add_object_fields(                        
+                events = events,                    
+                name = "gen_obj_4",             
+                objects = gen_obj_4,                    
+                n_objects = 1,                          
+                dummy_value = -999
+            )                  
+            gen_lead_W_fromH = awkward_utils.add_field(
+                events = events,
+                name="gen_lead_W_fromH",
+                data = awkward.unflatten(gen_lead_W_fromH,counts=1)
+            )                           
+            awkward_utils.add_object_fields(                        
+                events = events,                    
+                name = "gen_lead_W_fromH",             
+                objects = gen_lead_W_fromH,                    
+                n_objects = 1,                          
+                dummy_value = -999
+            )                  
+            gen_sublead_W_fromH = awkward_utils.add_field(
+                events = events,
+                name="gen_sublead_W_fromH",
+                data = awkward.unflatten(gen_sublead_W_fromH,counts=1)
+            )                           
+            awkward_utils.add_object_fields(                        
+                events = events,                    
+                name = "gen_sublead_W_fromH",             
+                objects = gen_sublead_W_fromH,                    
+                n_objects = 1,                          
+                dummy_value = -999
+            )                  
+            gen_H_to_gg = awkward_utils.add_field(
+                events = events,
+                name="gen_H_to_gg",
+                data = awkward.unflatten(gen_H_to_gg,counts=1)
+            )                                                                                   
+            awkward_utils.add_object_fields(                            
+                events = events,                    
+                name = "gen_H_to_gg",                   
+                objects = gen_H_to_gg,          
+                n_objects = 1,
+                dummy_value = -999                          
+            )    
+            gen_H_to_gg = awkward_utils.add_field(
+                events = events,
+                name="gen_H_to_gg",
+                data = awkward.unflatten(gen_H_to_gg,counts=1)
+            )                          
+            awkward_utils.add_object_fields(                        
+                events = events,                            
+                name = "gen_H_to_gg",                       
+                objects = gen_H_to_gg,                  
+                n_objects = 1,
+                dummy_value = -999
+            )       
+            gen_lead_g_fromH = awkward_utils.add_field(
+                events = events,                        
+                name="gen_lead_g_fromH",                    
+                data = awkward.unflatten(gen_lead_g_fromH,counts=1)             
+            )                       
+            awkward_utils.add_object_fields(    
+                events = events,
+                name = "gen_lead_g_fromH",                  
+                objects = gen_lead_g_fromH,                     
+                n_objects = 1,                      
+                dummy_value = -999              
+            )                       
+            gen_sublead_g_fromH = awkward_utils.add_field(
+                events = events,                
+                name="gen_sublead_g_fromH",                         
+                data = awkward.unflatten(gen_sublead_g_fromH,counts=1)                  
+            )                   
+            awkward_utils.add_object_fields(            
+                events = events,            
+                name = "gen_sublead_g_fromH",
+                objects = gen_sublead_g_fromH,
+                n_objects = 1,                  
+                dummy_value = -999  
+            )
+            gen_H_to_WW = awkward_utils.add_field(
+                events = events,                
+                name="gen_H_to_WW",                         
+                data = awkward.unflatten(gen_H_to_WW,counts=1)                  
+            )                   
+            awkward_utils.add_object_fields(            
+                events = events,            
+                name = "gen_H_to_WW",
+                objects = gen_H_to_WW,
+                n_objects = 1,                  
+                dummy_value = -999  
         )
         # add object fields for gen objects
             
@@ -703,7 +703,11 @@ class HHWW_Preselection_FHSL(Tagger):
         category = awkward.where(SL_boosted_cat, awkward.ones_like(category)*1, category)
         category_cut = (category > 0) # cut the events with category == 0
         awkward_utils.add_field(events, "category", category) 
-
+        WP80=awkward.concatenate([awkward.unflatten(events.LeadPhoton.mvaID_WP80,counts=1),awkward.unflatten(events.SubleadPhoton.mvaID_WP80,counts=1)],axis=-1)
+        WP90=awkward.concatenate([awkward.unflatten(events.LeadPhoton.mvaID_WP90,counts=1),awkward.unflatten(events.SubleadPhoton.mvaID_WP90,counts=1)],axis=-1)
+        PhotonID=awkward.zip({"WP80":WP80,"WP90":WP90})
+        events['is_passPhotonMVA80']=awkward.num(PhotonID[PhotonID.WP80==True])==2
+        events['is_passPhotonMVA90']=awkward.num(PhotonID[PhotonID.WP90==True])==2
         presel_cut = (photon_id_cut) & (category_cut) & (Z_veto_cut)
 
         self.register_cuts(

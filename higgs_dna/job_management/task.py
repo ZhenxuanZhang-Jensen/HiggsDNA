@@ -178,12 +178,12 @@ class Task():
         # Otherwise, are the uncompleted jobs "retired" (meaning they failed up to the maximum number of retries)?
         # If so, we will mark this as done but give you a warning about the retired jobs.
         # You can resubmit these jobs with the option --unretire_jobs in run_analysis.py
-        #elif self.completion_or_retired_frac >= self.min_completion_frac:
-        #    logger.info("[Task : process] Task '%s' COMPLETED : %d/%d (%.2f percent) of jobs completed/retired which is >= the minimum job completion fraction for this task (%.2f percent)." % (self.name, self.n_completed_jobs + self.n_retired_jobs, len(self.jobs), 100. * self.completion_or_retired_frac, 100. * self.min_completion_frac))
-        #    retired_jobs = [job for job in self.jobs if job.status == "retired"]
-        #    for job in retired_jobs:
-        #        logger.warning("[Task : process] WARNING: Task '%s' had to retire job '%s' since it ran unsuccessfully for %d straight times. If this is an MC sample, this will just reduce your statistics. If this is a data job, you have processed less events than you intended!" % (self.name, job.name_full, job.n_attempts))
-        #    self.complete = True
+        elif self.completion_or_retired_frac >= self.min_completion_frac:
+           logger.info("[Task : process] Task '%s' COMPLETED : %d/%d (%.2f percent) of jobs completed/retired which is >= the minimum job completion fraction for this task (%.2f percent)." % (self.name, self.n_completed_jobs + self.n_retired_jobs, len(self.jobs), 100. * self.completion_or_retired_frac, 100. * self.min_completion_frac))
+           retired_jobs = [job for job in self.jobs if job.status == "retired"]
+           for job in retired_jobs:
+               logger.warning("[Task : process] WARNING: Task '%s' had to retire job '%s' since it ran unsuccessfully for %d straight times. If this is an MC sample, this will just reduce your statistics. If this is a data job, you have processed less events than you intended!" % (self.name, job.name_full, job.n_attempts))
+           self.complete = True
         ## If neither of the first three, we are not done yet
         else:
             self.summarize()

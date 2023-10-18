@@ -24,7 +24,7 @@
                 "name": "HHWW_Tagger_combined_FHSL",
                 "options": {
                     "gen_info": {
-                        "is_Signal": true
+                        "is_Signal": false
                     }
                 }
             }
