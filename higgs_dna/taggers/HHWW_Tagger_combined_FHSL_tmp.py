@@ -91,12 +91,15 @@ DEFAULT_OPTIONS = {
     "muons_noiso": {
         "pt" : 10.0, 
         "dr_photons": 0.4,
-        "id" : "highptId",
+        # "id" : "highptId",
+        "id" : "tight",
         "global":True,
+        "non_pfRelIso04_all":0.15,
          },
     "muons_iso": {
         "pt": 10.0,
         "dr_photons": 0.4,
+        # "id":"highptId",
         "global":True,
         "id":"tight",
         "dr_photons": 0.4,
@@ -299,12 +302,8 @@ class HHWW_Preselection_FHSL(Tagger):
                 n_objects = 1,                  
                 dummy_value = -999  
         )
-            events= gen_selections.get_minmaxID(events)
-
         # add object fields for gen objects
-        if not self.is_data and not self.options["gen_info"]["is_Signal"]:  
-            events= gen_selections.get_minmaxID(events)
-
+            
    
         logger.debug("event fields: %s" %events.fields)
         # logger.debug('After Diphoton selection')
@@ -699,8 +698,8 @@ class HHWW_Preselection_FHSL(Tagger):
         category = awkward.where(FH_2Wfatjet_cat, awkward.ones_like(category)*6, category)
         category = awkward.where(FH_boosted, awkward.ones_like(category)*5, category)
         category = awkward.where(SL_merged_resolved_cat, awkward.ones_like(category)*4, category)
-        category = awkward.where(SL_fullyresovled_cat, awkward.ones_like(category)*2, category)
         category = awkward.where(SL_merged_boosted_cat, awkward.ones_like(category)*3, category)
+        category = awkward.where(SL_fullyresovled_cat, awkward.ones_like(category)*2, category)
         category = awkward.where(SL_boosted_cat, awkward.ones_like(category)*1, category)
         category_cut = (category > 0) # cut the events with category == 0
         awkward_utils.add_field(events, "category", category) 

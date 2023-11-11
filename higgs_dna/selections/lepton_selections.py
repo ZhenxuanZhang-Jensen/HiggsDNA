@@ -93,7 +93,7 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
 DEFAULT_MUONS = {
         "pt" : 10.0,
         "eta" : 2.5,
-        "dxy" : 0.045,
+        "dxy" : 0.05,
         "dz" : 0.2,
         # "id" : "highptId",  
         "id" : "tight",  
@@ -122,8 +122,8 @@ def select_muons(muons, options, clean, name = "none", tagger = None):
     #     id_cut = muons.looseId == True
     if options["id"] == "tight":
         id_cut = muons.tightId == True
-    # if options["id"] == "highptId":
-    #     id_cut = (muons.highPtId == 2)
+    if options["id"] == "highptId":
+        id_cut = (muons.highPtId == 2)
     #     logger.debug("highptId cut: %s" % str(id_cut))
     elif not options["id"] or options["id"].lower() == "none":
         id_cut = muons.pt > 0.

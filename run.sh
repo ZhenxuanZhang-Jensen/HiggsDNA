@@ -1,10 +1,18 @@
+  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_data_FHSL.json" --sample_list "UL17_dataB","UL17_dataC","UL17_dataD","UL17_dataE","UL17_dataF" --output_dir "/eos/user/s/shsong/HiggsDNA/data2017_newmuon"  --merge_outputs --yield_table --batch_system "condor"
+  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_data_FHSL.json" --sample_list "UL17_dataB" --output_dir "/eos/user/s/shsong/HiggsDNA/data2017_newmuontest"  --short --yield_table 
 
+  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL_new.json" --output_dir "/eos/user/s/shsong/HiggsDNA/SL1000_new/" --sample_list "UL17_R_gghh_SL_M-1000" --yield_table --short
+  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL_new.json" --output_dir "/eos/user/s/shsong/HiggsDNA/SL1000_nnew/" --sample_list "UL17_R_gghh_SL_M-1000" --yield_table --short
+  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL_checkmuoniso.json" --output_dir "/eos/user/s/shsong/HiggsDNA/testmuoniso1000_changepriority/" --sample_list "UL17_R_gghh_SL_M-1000" --yield_table --short
+  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL_checkmuonisopre.json" --output_dir "/eos/user/s/shsong/HiggsDNA/testmuoniso/" --sample_list "UL17_R_gghh_SL_M-550" --yield_table --short
+  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL_checkmuonisodata.json" --output_dir "/eos/user/s/shsong/HiggsDNA/testmuonisodata/" --sample_list "UL17_R_gghh_SL_M-550" --yield_table --short
+  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL_checkmuonisopredata.json" --output_dir "/eos/user/s/shsong/HiggsDNA/testmuonisodatapre/" --sample_list "UL17_R_gghh_SL_M-550" --yield_table --short
   python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HHWWgg_omitdiphotonpt_tightID/parquet/testwosys/" --sample_list "UL17_R_gghh_SL_M-550" --yield_table 
   python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HHWWgg_omitdiphotonpt_tightID/parquet/testallsys/" --sample_list "UL17_R_gghh_SL_M-550" --yield_table --short
   python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HHWWgg_omitdiphotonpt_tightID/parquet/checkphotonid/" --sample_list "UL17_R_gghh_SL_M-550" --yield_table --short
   python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_data_FHSL.json" --output_dir "/eos/user/s/shsong/HHWWgg_omitdiphotonpt_tightID/parquet/checkphotoniddata/" --sample_list "UL17_dataB" --yield_table --short
   python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_data_FHSL.json" --sample_list "UL17_dataB","UL17_dataC","UL17_dataD","UL17_dataE","UL17_dataF" --output_dir "/eos/user/s/shsong/HHWWgg_omitdiphotonpt_tightID/parquet/dataphotonidcut"  --merge_outputs --yield_table --batch_system "condor"
-  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HHWWgg_omitdiphotonpt_tightID/parquet/checkeff/" --sample_list "UL17_R_gghh_SL_M-550" --yield_table --short  --batch_system "condor"
+  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HiggsDNA/test" --sample_list "UL17_R_gghh_SL_M-550" --yield_table --short  --no_systematics 
 
   python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_data_FHSL.json" --sample_list "UL17_dataB","UL17_dataC","UL17_dataD","UL17_dataE","UL17_dataF" --output_dir "/eos/user/s/shsong/HHWWgg_omitdiphotonpt_tightID/parquet/dataphotonidcut9local"  --merge_outputs --yield_table 
   python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/checkgolden_data_FHSL.json" --sample_list "UL17_dataB","UL17_dataC","UL17_dataD","UL17_dataE","UL17_dataF" --output_dir "/eos/user/s/shsong/HiggsDNA/checkgoldenjson"  --merge_outputs --yield_table   --batch_system "condor"
@@ -37,16 +45,30 @@
 
 
   python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_data_FHSL.json" --sample_list "UL17_dataB","UL17_dataC","UL17_dataD","UL17_dataE","UL17_dataF" --output_dir "/eos/user/s/shsong/HiggsDNA/data2017"  --merge_outputs --yield_table --batch_system "condor" --no_systematics 
-  
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_data_FHSL.json" --sample_list "UL17_dataB" --output_dir "/eos/user/s/shsong/HiggsDNA/test"  --merge_outputs --yield_table --short
 
-    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HHWWgg/parquet/bkg/TTbar/" --sample_list "UL17_TTGJets","UL17_TTJets","UL17_TTGG_0Jets","UL17_ttWJets" --yield_table --batch_system "condor"
-    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HHWWgg/parquet/bkg/singleHiggs/" --sample_list "UL17_GluGluHToGG","UL17_VBFHToGG","UL17_VHToGG","UL17_ttHJetToGG" --yield_table --batch_system "condor"
-    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HHWWgg/parquet/bkg/WJets/" --sample_list "UL17_W1JetsToLNu","UL17_W2JetsToLNu","UL17_W3JetsToLNu","UL17_W4JetsToLNu","UL17_WWG","UL17_WWTo1L1Nu2Q_4f","WJetsToQQ_HT-200to400","WJetsToQQ_HT-400to600","WJetsToQQ_HT-600to800","WJetsToQQ_HT-800toInf" --yield_table --batch_system "condor"
-    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HHWWgg/parquet/bkg/QCD/" --sample_list "UL17_QCD_Pt-30to40_MGG-80toInf","UL17_QCD_Pt-30toInf_MGG-40to80","UL17_QCD_Pt-40ToInf_MGG-80ToInf" --yield_table --batch_system "condor"
-    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --sample_list "UL17_DiPhotonJetsBox_M40_80","UL17_DiPhotonJetsBox_MGG_80toInf","UL17_GJet_Pt_20to40_DoubleEMEnriched_MGG_80toInf","UL17_GJet_Pt_20toInf_DoubleEMEnriched_MGG_40to80","UL17_GJet_Pt_40toInf_DoubleEMEnriched_MGG_80toInf"  --output_dir "/eos/user/s/shsong/HHWWgg/parquet/bkg/fakephoton" --yield_table
-
-    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --sample_list "UL17_DiPhotonJetsBox_M40_80" --output_dir "/eos/user/s/shsong/HiggsDNA/parquet/bkg/pptest" --yield_table --no_systematics 
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HiggsDNA/TTbar/" --sample_list "UL17_TTGJets","UL17_TTJets","UL17_TTGG_0Jets","UL17_ttWJets" --yield_table --no_systematics 
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HiggsDNA/singleHiggs/" --sample_list "UL17_GluGluHToGG","UL17_VBFHToGG","UL17_VHToGG","UL17_ttHJetToGG" --yield_table --no_systematics  
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HiggsDNA/WJets/" --sample_list "UL17_W1JetsToLNu","UL17_W2JetsToLNu","UL17_W3JetsToLNu","UL17_W4JetsToLNu","UL17_WWG","UL17_WWTo1L1Nu2Q_4f","WJetsToQQ_HT-200to400","WJetsToQQ_HT-400to600","WJetsToQQ_HT-600to800","WJetsToQQ_HT-800toInf" --yield_table --no_systematics 
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --output_dir "/eos/user/s/shsong/HiggsDNA/QCD/" --sample_list "UL17_QCD_Pt-30to40_MGG-80toInf","UL17_QCD_Pt-30toInf_MGG-40to80","UL17_QCD_Pt-40ToInf_MGG-80ToInf" --yield_table --no_systematics 
 
 
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/tutorial/HHWW_preselection_FHSL.json" --sample_list "UL17_DiPhotonJetsBox_M40_80","UL17_DiPhotonJetsBox_MGG_80toInf","UL17_GJet_Pt_20to40_DoubleEMEnriched_MGG_80toInf","UL17_GJet_Pt_20toInf_DoubleEMEnriched_MGG_40to80","UL17_GJet_Pt_40toInf_DoubleEMEnriched_MGG_80toInf"  --output_dir "/eos/user/s/shsong/HiggsDNA/fakephoton" --yield_table --no_systematics --unretire_jobs
 
+
+
+    #!/usr/bin
+
+WhichSamples=${1}
+
+if [ ${WhichSamples} -eq 0 ]
+  then
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/analysis/wwgg_nosys/HHWW_preselection_sig_FHSL.json" --output_dir "/eos/user/s/shsong/HiggsDNA/parquet/sig/FH_250to550/" --sample_list "UL17_R_gghh_M-250","UL17_R_gghh_M-260","UL17_R_gghh_M-280","UL17_R_gghh_M-300","UL17_R_gghh_M-320","UL17_R_gghh_M-350","UL17_R_gghh_M-400","UL17_R_gghh_M-450","UL17_R_gghh_M-550" --yield_table 
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/analysis/wwgg_nosys/HHWW_preselection_sig_FHSL.json" --output_dir "/eos/user/s/shsong/HiggsDNA/parquet/sig/FH_600to1000/" --sample_list "UL17_R_gghh_M-600","UL17_R_gghh_M-650","UL17_R_gghh_M-700","UL17_R_gghh_M-750","UL17_R_gghh_M-800","UL17_R_gghh_M-850","UL17_R_gghh_M-900","UL17_R_gghh_M-270","UL17_R_gghh_M-1000"  --yield_table  
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/analysis/wwgg_nosys/HHWW_preselection_sig_FHSL.json" --output_dir "/eos/user/s/shsong/HiggsDNA/parquet/sig/FH_1200to3000/" --sample_list "UL17_R_gghh_M-1100","UL17_R_gghh_M-1200","UL17_R_gghh_M-1300","UL17_R_gghh_M-1400","UL17_R_gghh_M-1500","UL17_R_gghh_M-1600","UL17_R_gghh_M-1700","UL17_R_gghh_M-1800","UL17_R_gghh_M-1900","UL17_R_gghh_M-2000","UL17_R_gghh_M-2200","UL17_R_gghh_M-2400","UL17_R_gghh_M-2600","UL17_R_gghh_M-2800","UL17_R_gghh_M-3000"  --yield_table 
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/analysis/wwgg_nosys/HHWW_preselection_sig_FHSL.json" --output_dir "/eos/user/s/shsong/HiggsDNA/parquet/sig/SL_250to500/" --sample_list "UL17_R_gghh_SL_M-250","UL17_R_gghh_SL_M-260","UL17_R_gghh_SL_M-270","UL17_R_gghh_SL_M-280","UL17_R_gghh_SL_M-300","UL17_R_gghh_SL_M-320","UL17_R_gghh_SL_M-350","UL17_R_gghh_SL_M-400","UL17_R_gghh_SL_M-450","UL17_R_gghh_SL_M-500" --yield_table 
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/analysis/wwgg_nosys/HHWW_preselection_sig_FHSL.json" --output_dir "/eos/user/s/shsong/HiggsDNA/parquet/sig/SL_500to1000/" --sample_list "UL17_R_gghh_SL_M-550","UL17_R_gghh_SL_M-600","UL17_R_gghh_SL_M-650","UL17_R_gghh_SL_M-700","UL17_R_gghh_SL_M-750","UL17_R_gghh_SL_M-800","UL17_R_gghh_SL_M-850","UL17_R_gghh_SL_M-900","UL17_R_gghh_SL_M-1000" --yield_table 
+    python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/analysis/wwgg_nosys/HHWW_preselection_sig_FHSL.json" --output_dir "/eos/user/s/shsong/HiggsDNA/parquet/sig/SL_1100to3000/" --sample_list "UL17_R_gghh_SL_M-1100","UL17_R_gghh_SL_M-1200","UL17_R_gghh_SL_M-1300","UL17_R_gghh_SL_M-1400","UL17_R_gghh_SL_M-1500","UL17_R_gghh_SL_M-1600","UL17_R_gghh_SL_M-1700","UL17_R_gghh_SL_M-1800","UL17_R_gghh_SL_M-1900","UL17_R_gghh_SL_M-2000","UL17_R_gghh_SL_M-2200","UL17_R_gghh_SL_M-2400","UL17_R_gghh_SL_M-2600","UL17_R_gghh_SL_M-2800","UL17_R_gghh_SL_M-3000" --yield_table 
+
+fi
     

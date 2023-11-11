@@ -8,6 +8,30 @@ logger = logging.getLogger(__name__)
 vector.register_awkward()
 
 from higgs_dna.utils import awkward_utils
+def get_minmaxID(event):
+    pho_pt=awkward.concatenate([awkward.unflatten(event.LeadPhoton.pt,counts=1),awkward.unflatten(event.SubleadPhoton.pt,counts=1)],axis=1)
+    pho_eta=awkward.concatenate([awkward.unflatten(event.LeadPhoton.eta,counts=1),awkward.unflatten(event.SubleadPhoton.eta,counts=1)],axis=1)
+    pho_phi=awkward.concatenate([awkward.unflatten(event.LeadPhoton.phi,counts=1),awkward.unflatten(event.SubleadPhoton.phi,counts=1)],axis=1)
+    pho_mass=awkward.concatenate([awkward.unflatten(event.LeadPhoton.mass,counts=1),awkward.unflatten(event.SubleadPhoton.mass,counts=1)],axis=1)
+    pho_ID=awkward.concatenate([awkward.unflatten(event.LeadPhoton.mvaID,counts=1),awkward.unflatten(event.SubleadPhoton.mvaID,counts=1)],axis=1)
+    pho_genPartFlav=awkward.concatenate([awkward.unflatten(event.LeadPhoton.genPartFlav,counts=1),awkward.unflatten(event.SubleadPhoton.genPartFlav,counts=1)],axis=1)
+    pho_genPartIdx=awkward.concatenate([awkward.unflatten(event.LeadPhoton.genPartIdx,counts=1),awkward.unflatten(event.SubleadPhoton.genPartIdx,counts=1)],axis=1)
+    photon = awkward.zip({"pt":pho_pt,"eta":pho_eta,"phi":pho_phi,"mass":pho_mass,"ID":pho_ID,"genPartFlav":pho_genPartFlav,"genPartIdx":pho_genPartIdx})
+    photon=photon[awkward.argsort(photon.ID,ascending=False,axis=-1)]
+    event['maxIDpt']=photon.pt[:,0]
+    event['maxIDeta']=photon.eta[:,0]
+    event['maxIDphi']=photon.phi[:,0]
+    event['maxIDmass']=photon.mass[:,0]
+    event['maxID_genPartFlav']=photon.genPartFlav[:,0]
+    event['maxID_genPartIdx']=photon.genPartIdx[:,0]
+    event['minIDpt']=photon.pt[:,1]
+    event['minIDeta']=photon.eta[:,1]
+    event['minIDphi']=photon.phi[:,1]
+    event['minIDmass']=photon.mass[:,1]
+    event['minID_genPartFlav']=photon.genPartFlav[:,1]
+    event['minID_genPartIdx']=photon.genPartIdx[:,1]
+    return event
+
 def select_t3_4(events):
     gen_part = awkward.Array(events.GenPart,with_name="Momentum4D")
     gen_qqqq = gen_part[(abs(gen_part.pdgId)<= 6) & (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24) ]
