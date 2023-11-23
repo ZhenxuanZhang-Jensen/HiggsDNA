@@ -434,7 +434,7 @@ class Task():
                     data = json.load(f)
                     n_events=n_events+data['n_events']
                     n_yield = n_yield+data['sum_weights']
-                    n_positive_negative = n_positive_negative+data['n_p-2n_n']
+                    # n_positive_negative = n_positive_negative+data['n_p-2n_n']
             # Call the recursive function to search for files
             search_files(folder_path)
 

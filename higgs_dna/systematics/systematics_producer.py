@@ -66,7 +66,6 @@ class SystematicsProducer():
         elif "years" in syst_info.keys() and "samples" in syst_info.keys():
             if self.sample.year in syst_info["years"] and self.sample.process in syst_info["samples"]:
                 return True
-
         logger.debug("[SystematicsProducer : syst_is_relevant] SystematicsProducer '%s' found that syst '%s' is not applicable for year '%s' and sample '%s'." % (self.name, syst, self.sample.year, self.sample)) 
 
         return False
@@ -100,6 +99,7 @@ class SystematicsProducer():
         """
         if "weights" in systematics.keys():
             for syst, syst_info in systematics["weights"].items():
+                logger.debug("!!!!!!!!!!!!!!")
                 """
                 A single weight systematic in the input config can in general correspond to multiple weight systematics in the output file.
                 This happens when multiple output collections are specified.
@@ -113,7 +113,7 @@ class SystematicsProducer():
                     if self.sample.is_data: # weight systs should never be applicable to data
                         continue
 
-                    if not self.syst_is_relevant(syst, syst_info): # otherwise some weight systs might only be applicable to certain MC samples
+                    if not self.syst_is_relevant(syst, syst_info): # otherwise some weight systs might only be applicable to certain MC sampl
                         continue
 
                 syst_info = self.convert_lists_to_tuples(syst_info)

@@ -56,11 +56,13 @@ def run_analysis(config):
     
 
     # Record n_events and sum_weights for scale1fb calculation
-    if not config['sample']['is_data'] :    
-        job_summary['n_positive_events'] = len(events[events['genWeight'] > 0])
-        job_summary['n_negative_events'] = len(events[events['genWeight'] < 0])
-        job_summary["n_p-2n_n"] = job_summary['n_positive_events']-2*job_summary['n_negative_events']
-        job_summary["sum_weights"] = sum_weights
+    if not config['sample']['is_data'] : 
+        #if event has genWeight branch, then we can use it to calculate scale1fb
+        if 'genWeight' in events.fields:           
+            job_summary['n_positive_events'] = len(events[events['genWeight'] > 0])
+            job_summary['n_negative_events'] = len(events[events['genWeight'] < 0])
+            job_summary["n_p-2n_n"] = job_summary['n_positive_events']-2*job_summary['n_negative_events']
+            job_summary["sum_weights"] = sum_weights
     else:
         job_summary["sum_weights"] = sum_weights
     job_summary["outputs"] = {}

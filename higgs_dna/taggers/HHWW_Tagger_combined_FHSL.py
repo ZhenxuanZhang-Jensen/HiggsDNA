@@ -7,7 +7,7 @@ from higgs_dna.selections import (fatjet_selections, jet_selections,
                                   lepton_selections,gen_selections)
 from higgs_dna.taggers.tagger import NOMINAL_TAG, Tagger
 from higgs_dna.utils import awkward_utils, misc_utils
-
+from higgs_dna.systematics.lepton_systematics import highptmuonsf
 vector.register_awkward()
 
 def delta_R(objects1, objects2, max_dr):
@@ -89,16 +89,19 @@ DEFAULT_OPTIONS = {
         "id": "WP80",
     },
     "muons_noiso": {
-        "pt" : 10.0, 
+        "Tunept" : 10.0, 
         "dr_photons": 0.4,
         "id" : "highptId",
         "global":True,
+        "eta":2.4,
+        "pt":0,
          },
     "muons_iso": {
         "pt": 10.0,
         "dr_photons": 0.4,
         "global":True,
         "id":"tight",
+        "eta":2.4,
         "dr_photons": 0.4,
         "pfRelIso04_all":0.15,
     },
@@ -375,7 +378,7 @@ class HHWW_Preselection_FHSL(Tagger):
             dummy_value = -999
         )
         # Noiso-Muons
-        muon_noiso_cut = lepton_selections.select_muons(
+        muon_noiso_cut = lepton_selections.select_nonisomuons(
             muons=events.Muon,
             options=self.options["muons_noiso"],
             clean={
@@ -393,7 +396,7 @@ class HHWW_Preselection_FHSL(Tagger):
             name="SelectedMuon_noiso",
             data=events.Muon[muon_noiso_cut]
         )
-        
+        muons_noiso['Tunept']=muons_noiso.pt * muons_noiso.tunepRelPt
 
         awkward_utils.add_object_fields(
             events =events,
@@ -704,6 +707,7 @@ class HHWW_Preselection_FHSL(Tagger):
         category = awkward.where(SL_boosted_cat, awkward.ones_like(category)*1, category)
         category_cut = (category > 0) # cut the events with category == 0
         awkward_utils.add_field(events, "category", category) 
+        events=highptmuonsf(events)
         WP80=awkward.concatenate([awkward.unflatten(events.LeadPhoton.mvaID_WP80,counts=1),awkward.unflatten(events.SubleadPhoton.mvaID_WP80,counts=1)],axis=-1)
         WP90=awkward.concatenate([awkward.unflatten(events.LeadPhoton.mvaID_WP90,counts=1),awkward.unflatten(events.SubleadPhoton.mvaID_WP90,counts=1)],axis=-1)
         PhotonID=awkward.zip({"WP80":WP80,"WP90":WP90})

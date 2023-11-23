@@ -1,0 +1,54 @@
+{
+    "test-550": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 1,
+        "files": {
+            "2016UL_preVFP": [
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/skimmed_nano_mc.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400": {
+        "process_id": 0,
+        "xs": 0.001,
+        "bf": 1.0,
+        "fpo": 1,
+        "files": {
+            "2016UL_preVFP": [
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1044_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1046_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1047_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1048_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1049_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1050_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1051_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1052_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1053_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1054_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1055_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1057_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1058_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1059_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1060_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1061_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1062_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1063_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1064_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1065_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1066_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1067_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1068_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1069_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1070_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1071_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1072_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1073_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1074_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1075_Skim.root",
+                "/eos/user/s/shsong/nanoAOD_ntuplesRun2016_v9/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_3135401_1076_Skim.root"
+            ]
+        }
+    }
+}

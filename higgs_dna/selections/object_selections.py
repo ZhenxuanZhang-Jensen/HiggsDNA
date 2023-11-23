@@ -36,6 +36,9 @@ def select_objects(objects, cuts = {}, clean = {}, name = "none", tagger = None)
         if cut == "pt":
             cut_ = objects.pt > value
             cut_names.append("pt > %.4f" % value)
+            logger.debug("noptcut")
+        if cut == "Tunept":
+            logger.debug("Tuneptcut will do outside standard cut")
         if cut in ["eta", "dxy", "dz"]:
             cut_ = abs(objects[cut]) < value
             cut_names.append("|%s| < %.4f" % (cut, value))

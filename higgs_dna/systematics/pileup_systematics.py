@@ -9,13 +9,15 @@ logger = logging.getLogger(__name__)
 from higgs_dna.utils import awkward_utils, misc_utils
 
 PU_REWEIGHTING_FILE = {
-    "2016" : "jsonpog-integration/POG/LUM/2016postVFP_UL/puWeights.json",
+    "2016UL_preVFP" : "jsonpog-integration/POG/LUM/2016preVFP_UL/puWeights.json",
+    "2016UL_postVFP" : "jsonpog-integration/POG/LUM/2016postVFP_UL/puWeights.json",
     "2017" : "jsonpog-integration/POG/LUM/2017_UL/puWeights.json",
     "2018" : "jsonpog-integration/POG/LUM/2018_UL/puWeights.json"
 }
 
 PU_CAMPAIGN = {
-    "2016" : "Collisions16_UltraLegacy_goldenJSON",
+    "2016UL_preVFP" : "Collisions16_UltraLegacy_goldenJSON",
+    "2016UL_postVFP" : "Collisions16_UltraLegacy_goldenJSON",
     "2017" : "Collisions17_UltraLegacy_goldenJSON",
     "2018" : "Collisions18_UltraLegacy_goldenJSON"
 }
