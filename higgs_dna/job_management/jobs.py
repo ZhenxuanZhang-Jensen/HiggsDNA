@@ -170,6 +170,11 @@ class Job():
         lines.append("with open(config_file, 'r') as f_in:")
         lines.append("    config = json.load(f_in)")
         lines.append("")
+        lines.append("json_file = os.path.dirname(config_file)+'/'+'combined_eff.json'")
+        lines.append("if os.path.exists(json_file):")
+        lines.append("    os.remove(json_file)")
+        lines.append("else:")
+        lines.append("    print(f'{json_file} does not exist. No need to remove.')")          
         lines.append("run_analysis(config)") # FIXME: not compatible if another function is specified
 
         if os.path.exists(self.python_executable_file):

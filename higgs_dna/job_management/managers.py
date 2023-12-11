@@ -466,8 +466,8 @@ class CondorManager(JobsManager):
             if not self.needs_conda_tarfile:
                 tar_size = os.path.getsize(self.conda_tarfile) * (1. / 1024.)**3
                 logger.warning("[CondorManager : prepare_inputs] conda pack '%s' of size %.3f GB already exists, not remaking." % (self.conda_tarfile, tar_size))
-            elif os.path.exists(expand_path(CONDA_TARFILE)):
-                self.conda_tarfile = expand_path(CONDA_TARFILE)
+            elif os.path.exists((CONDA_TARFILE)):
+                self.conda_tarfile = (CONDA_TARFILE)
                 tar_size = os.path.getsize(self.conda_tarfile) * (1. / 1024.)**3
                 logger.warning("[CondorManager : prepare_inputs] Found old conda pack '%s' of size %.3f GB, will use this one. If you have installed new packages since this was made, you should delete it and rerun (and a new one will be made automatically). If you have only modified code under HiggsDNA/ it is probably not necessary to remake." % (self.conda_tarfile, tar_size))
             else:
@@ -475,8 +475,10 @@ class CondorManager(JobsManager):
                 logger.info("[CondorManager : prepare_inputs] Making conda pack '%s' with command '%s'" % (self.conda_tarfile, conda_pack_command))
                 logger.info("Note: the ``conda pack`` command can sometimes take a long time. If you are getting annoyed with how long it takes, you can always manually copy old tar files to your ``--output_dir`` area and HiggsDNA will not remake them. This will only work if you have not installed new python packages to your conda env.")
                 os.system(conda_pack_command)
-                logger.info("Copying conda tarfile to area '%s' to be reused for future runs. If you install new packages and need to remake the tarfile, simply delete this file and a new conda tarfile will be made for the next run." % (expand_path(CONDA_TARFILE)))
-                os.system("cp %s %s" % (self.conda_tarfile, expand_path(CONDA_TARFILE)))
+                logger.info(self.conda_tarfile)
+                logger.info((CONDA_TARFILE))
+                logger.info("Copying conda tarfile to area '%s' to be reused for future runs. If you install new packages and need to remake the tarfile, simply delete this file and a new conda tarfile will be made for the next run." % ((CONDA_TARFILE)))
+                os.system("cp %s %s" % (self.conda_tarfile, (CONDA_TARFILE)))
 
 
             if not self.needs_analysis_tarfile:

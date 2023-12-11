@@ -61,6 +61,8 @@ DEFAULT_OPTIONS = {
     },
     "trigger" : {
         "2016" : ["HLT_Diphoton30_18_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"],
+        "2016UL_preVFP" : ["HLT_Diphoton30_18_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"],
+        "2016UL_postVFP" : ["HLT_Diphoton30_18_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"],
         "2017" : ["HLT_Diphoton30_22_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"],
         "2018" : ["HLT_Diphoton30_22_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90"]
     },
@@ -271,7 +273,32 @@ class DiphotonTagger(Tagger):
         dipho_events[("SubleadPhoton", "energyErr")] = dipho_events.SubleadPhoton.energyErr
         dipho_events[("SubleadPhoton", "mvaID_WP80")] = dipho_events.SubleadPhoton.mvaID_WP80
         dipho_events[("SubleadPhoton", "mvaID_WP90")] = dipho_events.SubleadPhoton.mvaID_WP90
-
+        dipho_events[("LeadPhoton","Photon_r9")] = dipho_events.LeadPhoton.r9
+        dipho_events[("LeadPhoton","Photon_s4")] = dipho_events.LeadPhoton.s4
+        dipho_events[("LeadPhoton","Photon_sieip")] = dipho_events.LeadPhoton.sieip
+        dipho_events[("LeadPhoton","Photon_sieie")] = dipho_events.LeadPhoton.sieie
+        dipho_events[("LeadPhoton","Photon_etaWidth")] = dipho_events.LeadPhoton.etaWidth
+        dipho_events[("LeadPhoton","Photon_phiWidth")] = dipho_events.LeadPhoton.phiWidth
+        dipho_events[("LeadPhoton","Photon_pfPhoIso03")] = dipho_events.LeadPhoton.pfPhoIso03
+        dipho_events[("LeadPhoton","Photon_pfChargedIsoPFPV")] = dipho_events.LeadPhoton.pfChargedIsoPFPV
+        dipho_events[("LeadPhoton","Photon_pfChargedIsoWorstVtx")] = dipho_events.LeadPhoton.pfChargedIsoWorstVtx
+        dipho_events[("LeadPhoton","Photon_energyRaw")] = dipho_events.LeadPhoton.energyRaw
+        dipho_events[("LeadPhoton","Photon_scEta")] = dipho_events.LeadPhoton.scEta
+        dipho_events[("LeadPhoton","Photon_esEnergyOverRawE")] = dipho_events.LeadPhoton.esEnergyOverRawE
+        dipho_events[("LeadPhoton","Photon_esEffSigmaRR")] = dipho_events.LeadPhoton.esEffSigmaRR
+        dipho_events[("SubleadPhoton","Photon_r9")] = dipho_events.SubleadPhoton.r9
+        dipho_events[("SubleadPhoton","Photon_s4")] = dipho_events.SubleadPhoton.s4
+        dipho_events[("SubleadPhoton","Photon_sieip")] = dipho_events.SubleadPhoton.sieip
+        dipho_events[("SubleadPhoton","Photon_sieie")] = dipho_events.SubleadPhoton.sieie
+        dipho_events[("SubleadPhoton","Photon_etaWidth")] = dipho_events.SubleadPhoton.etaWidth
+        dipho_events[("SubleadPhoton","Photon_phiWidth")] = dipho_events.SubleadPhoton.phiWidth
+        dipho_events[("SubleadPhoton","Photon_pfPhoIso03")] = dipho_events.SubleadPhoton.pfPhoIso03
+        dipho_events[("SubleadPhoton","Photon_pfChargedIsoPFPV")] = dipho_events.SubleadPhoton.pfChargedIsoPFPV
+        dipho_events[("SubleadPhoton","Photon_pfChargedIsoWorstVtx")] = dipho_events.SubleadPhoton.pfChargedIsoWorstVtx
+        dipho_events[("SubleadPhoton","Photon_energyRaw")] = dipho_events.SubleadPhoton.energyRaw
+        dipho_events[("SubleadPhoton","Photon_scEta")] = dipho_events.SubleadPhoton.scEta
+        dipho_events[("SubleadPhoton","Photon_esEnergyOverRawE")] = dipho_events.SubleadPhoton.esEnergyOverRawE
+        dipho_events[("SubleadPhoton","Photon_esEffSigmaRR")] = dipho_events.SubleadPhoton.esEffSigmaRR
         dipho_presel_cut = awkward.num(dipho_events.Diphoton) == 1
         if self.is_data and self.year is not None:
             trigger_cut = awkward.num(dipho_events.Diphoton) < 0 # dummy cut, all False

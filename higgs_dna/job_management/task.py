@@ -354,6 +354,7 @@ class Task():
 
             # FIXME : merging could be improved so that we avoid merging huge numbers of events into a single file and instead split them across multiple files
             for output in outputs:
+                print(output)
                 merged_events.append(awkward.from_parquet(output))
 
             logger.debug("[Task : merge_outputs] Task '%s' : merging %d outputs into file '%s'." % (self.name, len(outputs), merged_output))
@@ -452,6 +453,7 @@ class Task():
                 # File names
                 with open(file, 'r') as f:
                     file_size = os.path.getsize(file)
+                    logger.debug(file)
                     if file_size != 0:
                         # Load the JSON data from the file
                         data = json.load(f)

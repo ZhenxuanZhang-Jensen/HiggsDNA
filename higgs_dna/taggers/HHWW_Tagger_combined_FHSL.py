@@ -707,7 +707,8 @@ class HHWW_Preselection_FHSL(Tagger):
         category = awkward.where(SL_boosted_cat, awkward.ones_like(category)*1, category)
         category_cut = (category > 0) # cut the events with category == 0
         awkward_utils.add_field(events, "category", category) 
-        events=highptmuonsf(events)
+        if not self.is_data and self.options["gen_info"]["is_Signal"]: 
+            events=highptmuonsf(events)
         WP80=awkward.concatenate([awkward.unflatten(events.LeadPhoton.mvaID_WP80,counts=1),awkward.unflatten(events.SubleadPhoton.mvaID_WP80,counts=1)],axis=-1)
         WP90=awkward.concatenate([awkward.unflatten(events.LeadPhoton.mvaID_WP90,counts=1),awkward.unflatten(events.SubleadPhoton.mvaID_WP90,counts=1)],axis=-1)
         PhotonID=awkward.zip({"WP80":WP80,"WP90":WP90})
