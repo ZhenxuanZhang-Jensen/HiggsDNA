@@ -724,13 +724,13 @@ def select_ww_to_qqlv_or_qqqq(events):
     # select neutrino from W
     gen_nu_fromW = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 24) & ((abs(gen_part.pdgId)==12)|(abs(gen_part.pdgId)==14)|(abs(gen_part.pdgId)==16))]
     # select W from Higgs
-    gen_W_fromH = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 25) & (abs(gen_part.pdgId)==24)]
+    gen_W_fromH = gen_part[numpy.logical_or((abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 25), (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 35)) & (abs(gen_part.pdgId)==24)]
     # choose the leading pt W
     gen_lead_W_fromH = gen_W_fromH[awkward.argsort(gen_W_fromH.pt,axis=-1)][:,1]
     # choose the subleading pt W
     gen_sublead_W_fromH = gen_W_fromH[awkward.argsort(gen_W_fromH.pt,axis=-1)][:,0]
     # select gg from Higgs
-    gen_gg_fromH = gen_part[(abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 25) & (abs(gen_part.pdgId)==22)]
+    gen_gg_fromH = gen_part[numpy.logical_or((abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 25), (abs(gen_part.pdgId[gen_part.genPartIdxMother]) == 35)) & (abs(gen_part.pdgId)==22)]
     # choose the leading pt photon
     gen_lead_g_fromH = gen_gg_fromH[awkward.argsort(gen_gg_fromH.pt,axis=-1)][:,1]
     # choose the subleading pt photon

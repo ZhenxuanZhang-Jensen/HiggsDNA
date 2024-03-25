@@ -7,7 +7,7 @@ from higgs_dna.selections import object_selections
 from higgs_dna.utils import misc_utils
 
 DEFAULT_ELECTRONS = {
-        "pt" : 10.0,
+        "pt" : 0.0,
         "eta" : 2.4,
         "dxy" : 0.045,
         "dz" : 0.2,
@@ -47,8 +47,8 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
         id_cut = (electrons.mvaFall17V2noIso_WP80 == True) & (electrons.mvaFall17V2Iso_WP90 == False) 
     elif options["id"] == "WP80iso_WPLnoniso":
         id_cut = (electrons.mvaFall17V2noIso_WPL == True) & (electrons.mvaFall17V2Iso_WP80 == False) 
-    elif options["id"] == "WP80iso_WP90noniso":
-        id_cut = (electrons.mvaFall17V2noIso_WP90 == True) & (electrons.mvaFall17V2Iso_WP80 == False) 
+    elif options["id"] == "WPLnoniso":
+        id_cut = (electrons.mvaFall17V2noIso_WPL == True)
     elif options["id"] == "WP80_noniso":
         id_cut = (electrons.mvaFall17V2noIso_WP80 == True) & (electrons.mvaFall17V2Iso_WP80 == False) 
     if options["iso"] is not None:
@@ -60,7 +60,6 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
     elif options["non_iso"] is None:
         non_iso_cut = electrons.pt > 0.
     if options["id"] == "WP90":
-        # id_cut = (electrons.mvaFall17V2Iso_WP90 == True) | ((electrons.mvaFall17V2noIso_WP90 == True) & (electrons.pfRelIso03_all < 0.3)) 
         id_cut = (electrons.mvaFall17V2Iso_WP90 == True) 
     elif options["id"] == "WP80":
         id_cut = (electrons.mvaFall17V2Iso_WP80 == True)
@@ -91,7 +90,7 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
 
 
 DEFAULT_MUONS = {
-        "pt" : 10.0,
+        "pt" : 0.0,
         "eta" : 2.5,
         "id" : "tight",  
         "non_pfRelIso04_all":None,  
@@ -136,7 +135,7 @@ def select_muons(muons, options, clean, name = "none", tagger = None):
     return all_cuts
 DEFAULT_NONISMUONS = {
         "pt" : 0,
-        "Tunept" : 10.0,
+        "Tunept" : 0.0,
         "eta" : 2.5,
         "id" : "highptId",  
         "non_pfRelIso04_all":None,  
@@ -159,6 +158,8 @@ def select_nonisomuons(muons, options, clean, name = "none", tagger = None):
     standard_cuts = object_selections.select_objects(muons, options, clean, name, tagger)
     if options["id"] == "tight":
         id_cut = muons.tightId == True
+    if options["id"] == "loose":
+        id_cut = muons.looseId == True
     if options["id"] == "highptId":
         id_cut = (muons.highPtId == 2)
     elif not options["id"] or options["id"].lower() == "none":

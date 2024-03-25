@@ -372,7 +372,7 @@ class HHWW_Preselection_FHSL(Tagger):
         )
         awkward_utils.add_object_fields(
             events = events,
-            name = "electron_iso",
+            name = "electrons_iso",
             objects = electrons_iso,
             n_objects = 1,
             dummy_value = -999
@@ -533,7 +533,12 @@ class HHWW_Preselection_FHSL(Tagger):
             name = "SelectedFatJet",
             data = events.FatJet[fatjet_cut]
         )   
-        fatjets['dphi_MET']=delta_phi(fatjets,puppiMET)[delta_phi(fatjets,puppiMET)>-10]
+        print("puppiMET", puppiMET)
+        print("delta phi puppiMET", delta_phi(fatjets,puppiMET))
+        try:
+            fatjets['dphi_MET']=delta_phi(fatjets,puppiMET)[delta_phi(fatjets,puppiMET)>-10]
+        except:
+            fatjets['dphi_MET']= awkward.ones_like(fatjets.pt)*-999 # no fatjet passing the selection
         lepton_noniso=awkward.concatenate([electrons_noiso,muons_noiso],axis=1)
 
         dR_lep_fatjet=delta_R(fatjets,lepton_noniso,0.8)

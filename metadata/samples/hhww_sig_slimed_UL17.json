@@ -1,0 +1,648 @@
+{
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000_266814_0.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000_266814_1.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000_266814_10.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000_266814_11.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000_266814_12.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000_266814_13.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000_266814_14.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000_266814_15.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1000_266814_16.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100_266814_18.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100_266814_19.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100_266814_20.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100_266814_21.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100_266814_22.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100_266814_23.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100_266814_24.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100_266814_25.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1100_266814_26.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200_266814_58.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200_266814_59.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200_266814_60.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200_266814_61.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200_266814_62.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200_266814_63.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200_266814_64.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200_266814_65.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1200_266814_66.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300_266814_100.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300_266814_101.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300_266814_102.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300_266814_103.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300_266814_83.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300_266814_84.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300_266814_85.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300_266814_86.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1300_266814_87.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_266814_105.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_266814_106.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_266814_107.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_266814_108.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_266814_109.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_266814_110.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_266814_111.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_266814_112.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1400_266814_113.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500_266814_123.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500_266814_124.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500_266814_125.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500_266814_126.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500_266814_127.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500_266814_128.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500_266814_129.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500_266814_130.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1500_266814_131.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600_266814_153.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600_266814_154.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600_266814_155.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600_266814_156.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600_266814_157.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600_266814_158.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600_266814_159.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600_266814_160.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1600_266814_161.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700_266814_197.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700_266814_198.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700_266814_199.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700_266814_200.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700_266814_201.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700_266814_202.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700_266814_203.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700_266814_204.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1700_266814_205.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800_266814_243.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800_266814_244.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800_266814_245.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800_266814_246.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800_266814_247.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800_266814_248.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800_266814_249.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800_266814_250.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1800_266814_251.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900_266814_292.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900_266814_293.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900_266814_294.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900_266814_295.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900_266814_296.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900_266814_297.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900_266814_298.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900_266814_299.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-1900_266814_300.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000_266814_340.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000_266814_341.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000_266814_342.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000_266814_343.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000_266814_344.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000_266814_345.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000_266814_346.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000_266814_347.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2000_266814_348.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200_266814_388.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200_266814_389.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200_266814_390.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200_266814_391.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200_266814_392.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200_266814_393.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200_266814_394.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200_266814_395.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2200_266814_396.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400_266814_436.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400_266814_437.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400_266814_438.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400_266814_439.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400_266814_440.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400_266814_441.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400_266814_442.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400_266814_443.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2400_266814_444.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250_266814_480.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250_266814_481.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250_266814_482.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250_266814_483.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250_266814_484.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250_266814_485.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250_266814_486.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250_266814_487.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-250_266814_488.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260_266814_512.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260_266814_513.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260_266814_514.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260_266814_515.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260_266814_516.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260_266814_517.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260_266814_518.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260_266814_519.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-260_266814_520.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600_266814_494.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600_266814_495.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600_266814_496.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600_266814_497.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600_266814_498.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600_266814_499.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600_266814_500.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600_266814_501.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2600_266814_502.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270_266814_525.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270_266814_526.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270_266814_527.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270_266814_528.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270_266814_529.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270_266814_530.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270_266814_531.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270_266814_532.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-270_266814_533.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280_266814_565.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280_266814_566.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280_266814_567.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280_266814_568.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280_266814_569.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280_266814_570.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280_266814_571.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280_266814_572.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-280_266814_573.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800_266814_540.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800_266814_541.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800_266814_542.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800_266814_543.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800_266814_544.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800_266814_545.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800_266814_546.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800_266814_547.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-2800_266814_548.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300_266814_601.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300_266814_602.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300_266814_603.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300_266814_604.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300_266814_605.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300_266814_606.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300_266814_607.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300_266814_608.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-300_266814_609.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000_266814_578.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000_266814_579.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000_266814_580.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000_266814_581.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000_266814_582.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000_266814_583.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000_266814_584.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000_266814_585.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-3000_266814_586.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320_266814_615.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320_266814_616.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320_266814_617.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320_266814_618.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320_266814_619.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320_266814_620.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320_266814_621.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320_266814_622.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-320_266814_623.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350_266814_631.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350_266814_632.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350_266814_633.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350_266814_634.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350_266814_635.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350_266814_636.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350_266814_637.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350_266814_638.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-350_266814_639.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400_266814_646.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400_266814_647.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400_266814_648.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400_266814_649.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400_266814_650.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400_266814_651.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400_266814_653.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400_266814_654.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-400_266814_655.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450_266814_661.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450_266814_662.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450_266814_663.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450_266814_664.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450_266814_665.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450_266814_666.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450_266814_667.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450_266814_668.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-450_266814_669.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500_266814_752.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500_266814_753.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500_266814_754.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500_266814_755.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500_266814_756.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500_266814_757.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500_266814_758.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500_266814_759.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-500_266814_760.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550_266814_767.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550_266814_769.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550_266814_770.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550_266814_771.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550_266814_772.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550_266814_773.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550_266814_774.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550_266814_775.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-550_266814_776.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600_266814_781.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600_266814_782.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600_266814_783.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600_266814_784.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600_266814_785.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600_266814_786.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600_266814_787.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600_266814_788.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-600_266814_789.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650_266814_796.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650_266814_797.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650_266814_798.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650_266814_799.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650_266814_800.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650_266814_801.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650_266814_802.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650_266814_803.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-650_266814_804.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700_266814_811.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700_266814_812.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700_266814_813.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700_266814_814.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700_266814_815.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700_266814_816.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700_266814_817.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700_266814_818.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-700_266814_819.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750_266814_826.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750_266814_827.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750_266814_828.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750_266814_829.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750_266814_830.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750_266814_831.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750_266814_832.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750_266814_833.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-750_266814_834.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800_266814_846.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800_266814_847.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800_266814_848.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800_266814_849.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800_266814_850.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800_266814_851.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800_266814_852.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800_266814_853.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-800_266814_854.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850_266814_861.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850_266814_862.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850_266814_863.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850_266814_864.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850_266814_865.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850_266814_866.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850_266814_867.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850_266814_868.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-850_266814_869.root"
+            ]
+        }
+    },
+    "GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900": {
+        "xs": 0.001,
+        "bf": 1.0,
+        "process_id": 0,
+        "fpo": 3,
+        "files": {
+            "2017": [
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900_266814_876.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900_266814_877.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900_266814_878.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900_266814_879.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900_266814_880.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900_266814_881.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900_266814_882.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900_266814_883.root",
+                "/eos/cms/store/group/phys_b2g/zhenxuan/custom_nanoAOD/nanoAOD_24Oct2023/UL2017_signal_SL/UL2017/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900/GluGluToRadionToHHTo2G2WTo2G2Q1L1Nu_M-900_266814_884.root"
+            ]
+        }
+    }
+}

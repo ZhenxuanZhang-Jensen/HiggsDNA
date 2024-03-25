@@ -2,6 +2,8 @@ import argparse
 import json
 import contextlib
 import sys 
+import sys
+sys.path.append('/afs/cern.ch/user/z/zhenxuan/HiggsDNA/')
 
 from higgs_dna.utils.logger_utils import setup_logger
 from higgs_dna.utils.misc_utils import expand_path
