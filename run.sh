@@ -17,7 +17,7 @@ fi
 if [ ${WhichSamples} == "HH_bbgg_2017" ]
   then
   rm -rf /eos/user/z/zhenxuan/HiggsDNA/PNN_HH_bbgg_2017*
-  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/analysis/wwgg_nosys/HHWW_preselection_sig_FHSL_HH_UL17_bbgg_slimed.json" --output_dir "/eos/user/z/zhenxuan/HiggsDNA/PNN_HH_bbgg_2017" --sample_list  "GluGluToRadionToHHTo2B2G_M-1000","GluGluToRadionToHHTo2B2G_M-1100","GluGluToRadionToHHTo2B2G_M-1200","GluGluToRadionToHHTo2B2G_M-1300","GluGluToRadionToHHTo2B2G_M-1400","GluGluToRadionToHHTo2B2G_M-1500","GluGluToRadionToHHTo2B2G_M-1600","GluGluToRadionToHHTo2B2G_M-1700","GluGluToRadionToHHTo2B2G_M-1800","GluGluToRadionToHHTo2B2G_M-1900","GluGluToRadionToHHTo2B2G_M-2000","GluGluToRadionToHHTo2B2G_M-2200","GluGluToRadionToHHTo2B2G_M-2400","GluGluToRadionToHHTo2B2G_M-2600","GluGluToRadionToHHTo2B2G_M-2800","GluGluToRadionToHHTo2B2G_M-3000" --yield_table --batch_system "condor"
+  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/analysis/wwgg_nosys/HHWW_preselection_sig_FHSL_HH_UL17_bbgg_slimed.json" --output_dir "/eos/user/z/zhenxuan/HiggsDNA/PNN_HH_bbgg_2017" --sample_list  "GluGluToRadionToHHTo2B2G_M-1000","GluGluToRadionToHHTo2B2G_M-1100","GluGluToRadionToHHTo2B2G_M-1200","GluGluToRadionToHHTo2B2G_M-1300","GluGluToRadionToHHTo2B2G_M-1400","GluGluToRadionToHHTo2B2G_M-1500","GluGluToRadionToHHTo2B2G_M-1600","GluGluToRadionToHHTo2B2G_M-1700","GluGluToRadionToHHTo2B2G_M-1800","GluGluToRadionToHHTo2B2G_M-1900","GluGluToRadionToHHTo2B2G_M-2000","GluGluToRadionToHHTo2B2G_M-2200","GluGluToRadionToHHTo2B2G_M-2400","GluGluToRadionToHHTo2B2G_M-2600","GluGluToRadionToHHTo2B2G_M-2800","GluGluToRadionToHHTo2B2G_M-3000" --yield_table --short
 fi
 if [ ${WhichSamples} == "YH_bbgg_2017" ]
   then
