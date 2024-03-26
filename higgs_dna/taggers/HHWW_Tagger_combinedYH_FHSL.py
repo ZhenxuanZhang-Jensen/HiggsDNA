@@ -78,33 +78,32 @@ DUMMY_VALUE = -999.
 
 DEFAULT_OPTIONS = {
     "electrons_noiso": {
-        "pt": 5.0,
+        "pt": 10,
         "dr_photons": 0.4,
         "id": "WP80iso_WP90noniso"
     },
     "electron_iso": {
-        "pt": 5.0,
+        "pt": 10,
         "dr_photons": 0.4,
         "id": "WP80",
     },
     "electrons_all": {
-        "pt": 5.0,
+        "pt": 10,
         "dr_photons": 0.4
     },
     "muons_all": {
-        "pt": 5.0,
+        "pt": 15,
         "dr_photons": 0.4
     },
     "muons_noiso": {
-        "Tunept" : 0.0, 
+        "Tunept" : 15.0, 
         "dr_photons": 0.4,
         "id" : "highptId",
         "global":True,
-        "eta":2.4,
-        "pt":5,
+        "eta":2.4
          },
     "muons_iso": {
-        "pt": 5.0,
+        "pt": 15,
         "dr_photons": 0.4,
         "global":True,
         "id":"tight",
