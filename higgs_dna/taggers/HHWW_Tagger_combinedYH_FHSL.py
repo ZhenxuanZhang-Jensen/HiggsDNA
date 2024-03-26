@@ -78,22 +78,21 @@ DUMMY_VALUE = -999.
 
 DEFAULT_OPTIONS = {
     "electrons_noiso": {
-        "pt": 0.0,
+        "pt": 5.0,
         "dr_photons": 0.4,
-        "id": "WPLnoniso"
-        # "id": "WP80iso_WPLnoniso"
+        "id": "WP80iso_WP90noniso"
     },
     "electron_iso": {
-        "pt": 0.0,
+        "pt": 5.0,
         "dr_photons": 0.4,
-        "id": "WPL",
+        "id": "WP80",
     },
     "electrons_all": {
-        "pt": 0.0,
+        "pt": 5.0,
         "dr_photons": 0.4
     },
     "muons_all": {
-        "pt": 0.0,
+        "pt": 5.0,
         "dr_photons": 0.4
     },
     "muons_noiso": {
@@ -102,10 +101,10 @@ DEFAULT_OPTIONS = {
         "id" : "highptId",
         "global":True,
         "eta":2.4,
-        "pt":10,
+        "pt":5,
          },
     "muons_iso": {
-        "pt": 10.0,
+        "pt": 5.0,
         "dr_photons": 0.4,
         "global":True,
         "id":"tight",
@@ -633,55 +632,8 @@ class HHWW_Tagger_combinedYH_FHSL(Tagger):
         photon_id_cut = (events.LeadPhoton.mvaID > self.options["photon_id"]) & (
             events.SubleadPhoton.mvaID > self.options["photon_id"])
         # ----------------------------------------------------------------------------------------------------#
-        # If have isolated lepton
-        #attention: Semi leptonic channel                
-        # add leptonic boosted category with (>=1 AK8 jets && WvsQCD > 0.58)
-        # the the first fatjet with WvsQCD > 0.58
-        # selection_diphoton_pt=events.Diphoton.pt>300
-        selection_diphoton_pt=events.Diphoton.pt>0 #dummy cut for optimisation different mass point
-
-        selection_fatjet_WvsQCD_SL_cat0 = awkward.num(fatjets.WvsQCDMD[(fatjets.WvsQCDMD > 0.58)]) >= 1
-        SL_boosted_cat = (n_leptons_iso == 1) & (selection_fatjet_WvsQCD_SL_cat0) # boosted 1 jet for SL channel with isolated lep
-        # add Leptonic resolved category with (>=2 AK4 jets && WvsQCD < 0.58)
-        # need the first fatjets with WvsQCD < 0.5
-        selection_fatjet_WvsQCD_SL_cat1 = awkward.num(fatjets.WvsQCDMD[(fatjets.WvsQCDMD > 0.58)]) == 0
-        SL_fullyresovled_cat = (n_leptons_iso == 1) & (n_jets >=1) & (selection_fatjet_WvsQCD_SL_cat1) # resolved 2 jets for SL channel with isolated lep
-        
-        # ----------------------------------------------------------------------------------------------------#
-        # If no isolated lepton but >=1 non-isolated lepton with >=1 AK8 jets && AK8 jet with pt > 300 GeV && dR(lep, AK8) < 0.8
-        #attention: Merged leptonic boosted channel
-        # selection_lepton_merged_SL_cat0 = awkward.num(fatjets.pt[(fatjets.pt > 300)&(fatjets.dphi_puppiMET<0.2)]) >= 1
-        dR_lep_fatjet=delta_R(fatjets,lepton_noniso,0.8)
-        selection_lepton_merged_SL_cat0 = awkward.num(fatjets.pt[((fatjets.pt > 200)&(dR_lep_fatjet))]) >= 1
-        
-        SL_merged_boosted_cat = (n_leptons_noiso == 1) & (n_leptons_iso==0)  & (selection_lepton_merged_SL_cat0)
-        dR_lep_jet=delta_R(jets,lepton_noniso,0.4)
-        SL_merged_resolved_cat = (~SL_merged_boosted_cat) & (n_leptons_noiso == 1) & (n_leptons_iso==0) & (awkward.num(jets.pt[dR_lep_jet])>=1) 
-        # ----------------------------------------------------------------------------------------------------#
-        # selection_fatjet_HvsQCD_FH_cat0 = awkward.num(fatjets_H.Hqqqq_vsQCDTop[(fatjets_H.Hqqqq_vsQCDTop > 0.4)&(fatjets_H.dphi_puppiMET>2)]) >= 1
-  
-        # add semi-boosted FH -1 category with (>=2 AK8 jets && WvsQCD > 0.58)
-        # need the first two fatjets with WvsQCD > 0.5
-        selection_fatjet_WvsQCD_SB_2F = awkward.num(fatjets.WvsQCDMD[(fatjets.WvsQCDMD > 0.58)]) >= 2
-    
-        FH_2Wfatjet_cat = (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_fatjets >=2) & (selection_fatjet_WvsQCD_SB_2F)# 2 jets for FH
-
-        # ----------------------------------------------------------------------------------------------------#
-        # add semi-boosted FH -2 category with (==1 AK8 jets && WvsQCD > 0.58 && >=2 AK4 jets)
-        # need the first fatjet with WvsQCD > 0.5
-
-
-        selection_fatjet_WvsQCD_SB_1F = awkward.num(fatjets.WvsQCDMD[(fatjets.WvsQCDMD > 0.58)]) >= 1
-    
-       # 1 jet for FH
-        FH_1Wfatjet_cat =  (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_fatjets >=1) & (n_jets >=2) & (selection_fatjet_WvsQCD_SB_1F)#&((awkward.num(selection_subjet)==True)==1) # 1 jet for FH
-        # ----------------------------------------------------------------------------------------------------#
-        # add resolved FH category with (>=4 AK4 jets )
-        FH_fully_resovled_cat = (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_jets>=2)
-        #will categorise n jets for FH resolved 
   
 
-      
         # ----------------------------------------------------------------------------------------------------#
         # new YH category for PNN training
         # first category: 1 lepton(iso or noniso) + 1 Wfatjet
@@ -691,7 +643,10 @@ class HHWW_Tagger_combinedYH_FHSL(Tagger):
         # second category: 0 lepton + 1 Wfatjet or 1 Higgs fatjet
         selection_fatjet_HvsQCD = awkward.num(fatjets.Hqqqq_vsQCDTop[(fatjets.Hqqqq_vsQCDTop > 0.2)]) >= 1
         boosted_YH_FH_cat = (n_leptons_iso == 0) & (n_leptons_noiso == 0) & (n_fatjets >=1) & ( (selection_fatjet_WvsQCD)|(selection_fatjet_HvsQCD)) # boosted 1 jet for SL channel with isolated lep
-
+        # resolved case
+        FH_fully_resovled_cat = (n_leptons_iso==0) & (n_leptons_noiso == 0) & (n_jets>=2)
+        SL_fullyresovled_cat = (n_leptons_iso >= 1) & (n_jets >=1) # resolved 2 jets for SL channel with isolated lep
+      
        
        
         # ----------------------------------------------------------------------------------------------------#
@@ -721,14 +676,10 @@ class HHWW_Tagger_combinedYH_FHSL(Tagger):
         PhotonID=awkward.zip({"WP80":WP80,"WP90":WP90})
         events['is_passPhotonMVA80']=awkward.num(PhotonID[PhotonID.WP80==True])==2
         events['is_passPhotonMVA90']=awkward.num(PhotonID[PhotonID.WP90==True])==2
+        
         presel_cut = (photon_id_cut) & (category_cut) & (Z_veto_cut)
-        WP90cut=events.is_passPhotonMVA90==True
-        if not self.is_data and self.options["gen_info"]["is_Signal"]:    
-            self.register_cuts(
-                names=["Photon id Selection","category_cut", "Z_veto_cut","WP90cut"],
-                results=[photon_id_cut, category_cut, Z_veto_cut,WP90cut])
-        else:
-            self.register_cuts(
+        
+        self.register_cuts(
                 names=["Photon id Selection","category_cut", "Z_veto_cut"],
                 results=[photon_id_cut, category_cut, Z_veto_cut])
 
