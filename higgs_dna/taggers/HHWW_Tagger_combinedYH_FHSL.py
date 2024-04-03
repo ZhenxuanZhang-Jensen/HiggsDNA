@@ -7,6 +7,7 @@ from higgs_dna.selections import (fatjet_selections, jet_selections,
                                   lepton_selections,gen_selections)
 from higgs_dna.taggers.tagger import NOMINAL_TAG, Tagger
 from higgs_dna.utils import awkward_utils, misc_utils
+from higgs_dna.systematics.jet_systematics import WvsQCD_medium_jes_syst,WvsQCD_loose_jes_syst
 vector.register_awkward()
 
 def delta_R(objects1, objects2, max_dr):
@@ -636,7 +637,17 @@ class HHWW_Tagger_combinedYH_FHSL(Tagger):
         # ----------------------------------------------------------------------------------------------------#
         # new YH category for PNN training
         # first category: 1 lepton(iso or noniso) + 1 Wfatjet
-        selection_fatjet_WvsQCD = awkward.num(fatjets.WvsQCDMD[(fatjets.WvsQCDMD > 0.58)]) >= 1
+        """
+        See:
+            - https://indico.cern.ch/event/1152827/contributions/4840404/attachments/2428856/4162159/ParticleNet_SFs_ULNanoV9_JMAR_25April2022_PK.pdf
+
+        Note: Particle Net WvsQCD Nanov9 working points.
+        """
+        
+        WvsQCD_medium_workingpoints = {"2016UL_preVFP": 0.85,"2016UL_postVFP":0.84, "2017": 0.81, "2018": 0.82} #Loose working point
+        WvsQCD_loose_workingpoints = {"2016UL_preVFP": 0.64,"2016UL_postVFP":0.64, "2017": 0.58, "2018": 0.59} #Loose working point
+        Wtag=WvsQCD_loose_workingpoints[self.year]
+        selection_fatjet_WvsQCD = awkward.num(fatjets.WvsQCDMD[(fatjets.WvsQCDMD > Wtag)]) >= 1
         boosted_YH_SL_cat = (((n_leptons_iso >= 1) | (n_leptons_noiso >= 1)) & (n_fatjets >=1)) # boosted 1 jet for SL channel with isolated lep
         # boosted_YH_SL_cat_v2 = ((n_leptons_all_electrons==1) & (n_fatjets >=1) & (selection_fatjet_WvsQCD)) # boosted 1 jet for SL channel with isolated lep
         # second category: 0 lepton + 1 Wfatjet or 1 Higgs fatjet

@@ -282,12 +282,14 @@ class DiphotonTagger(Tagger):
         dipho_events[("LeadPhoton","Photon_r9")] = dipho_events.LeadPhoton.r9
         dipho_events[("SubleadPhoton","Photon_r9")] = dipho_events.SubleadPhoton.r9
         dipho_presel_cut = awkward.num(dipho_events.Diphoton) == 1
-        if self.is_data and self.year is not None:
-            trigger_cut = awkward.num(dipho_events.Diphoton) < 0 # dummy cut, all False
-            for hlt in self.options["trigger"][self.year]: # logical OR of all triggers
-                trigger_cut = (trigger_cut) | (dipho_events[hlt] == True)
-        else:
-            trigger_cut = awkward.num(dipho_events.Diphoton) >= 0 # dummy cut, all True
+        for hlt in self.options["trigger"][self.year]: # logical OR of all triggers
+            trigger_cut = dipho_events[hlt] == True
+        # if self.is_data and self.year is not None:
+        #     trigger_cut = awkward.num(dipho_events.Diphoton) < 0 # dummy cut, all False
+        #     for hlt in self.options["trigger"][self.year]: # logical OR of all triggers
+        #         trigger_cut = (trigger_cut) | (dipho_events[hlt] == True)
+        # else:
+        #     trigger_cut = awkward.num(dipho_events.Diphoton) >= 0 # dummy cut, all True
 
         presel_cut = dipho_presel_cut & trigger_cut
 
