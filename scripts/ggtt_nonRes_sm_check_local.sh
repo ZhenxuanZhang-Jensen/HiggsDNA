@@ -1,1 +1,0 @@
-python scripts/run_analysis.py --config "metadata/analysis/ggtt_nonRes/ggtt_sm_check.json" --log-level "DEBUG" --output_dir /ceph/cms/store/user/fsetti/HiggsDNA/check_local/  --n_cores 30 --unretire_jobs --merge_outputs

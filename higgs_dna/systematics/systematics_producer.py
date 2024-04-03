@@ -99,7 +99,6 @@ class SystematicsProducer():
         """
         if "weights" in systematics.keys():
             for syst, syst_info in systematics["weights"].items():
-                logger.debug("!!!!!!!!!!!!!!")
                 """
                 A single weight systematic in the input config can in general correspond to multiple weight systematics in the output file.
                 This happens when multiple output collections are specified.

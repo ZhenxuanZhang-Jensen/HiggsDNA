@@ -119,11 +119,15 @@ class DiphotonTagger(Tagger):
     def calculate_min_max_ID(self,diphotons):
         # minID = awkward.min(diphotons.LeadPhoton.mvaID, diphotons.SubleadPhoton.mvaID)
         # maxID = awkward.max(diphotons.LeadPhoton.mvaID, diphotons.SubleadPhoton.mvaID)
+        modified_minID = numpy.minimum(diphotons.LeadPhoton.mvaID_modified, diphotons.SubleadPhoton.mvaID_modified)
+        modified_maxID = numpy.maximum(diphotons.LeadPhoton.mvaID_modified, diphotons.SubleadPhoton.mvaID_modified)
         minID = numpy.minimum(diphotons.LeadPhoton.mvaID, diphotons.SubleadPhoton.mvaID)
         maxID = numpy.maximum(diphotons.LeadPhoton.mvaID, diphotons.SubleadPhoton.mvaID)
 
         diphotons[("Diphoton", "minID")] = minID
         diphotons[("Diphoton", "maxID")] = maxID
+        diphotons[("Diphoton", "minID_modified")] = modified_minID
+        diphotons[("Diphoton", "maxID_modified")] = modified_maxID
         return diphotons
     def match_Gjet_photon(self,events,diphotons):
         """
@@ -269,43 +273,23 @@ class DiphotonTagger(Tagger):
             dipho_events[(field, "mass")] = diphotons[field].mass
         dipho_events[("LeadPhoton", "energyErr")] = dipho_events.LeadPhoton.energyErr
         dipho_events[("LeadPhoton", "mvaID_WP80")] = dipho_events.LeadPhoton.mvaID_WP80
+        dipho_events[("LeadPhoton", "mvaID_modified")] = dipho_events.LeadPhoton.mvaID_modified
         dipho_events[("LeadPhoton", "mvaID_WP90")] = dipho_events.LeadPhoton.mvaID_WP90
         dipho_events[("SubleadPhoton", "energyErr")] = dipho_events.SubleadPhoton.energyErr
         dipho_events[("SubleadPhoton", "mvaID_WP80")] = dipho_events.SubleadPhoton.mvaID_WP80
+        dipho_events[("SubleadPhoton", "mvaID_modified")] = dipho_events.SubleadPhoton.mvaID_modified
         dipho_events[("SubleadPhoton", "mvaID_WP90")] = dipho_events.SubleadPhoton.mvaID_WP90
         dipho_events[("LeadPhoton","Photon_r9")] = dipho_events.LeadPhoton.r9
-        dipho_events[("LeadPhoton","Photon_s4")] = dipho_events.LeadPhoton.s4
-        dipho_events[("LeadPhoton","Photon_sieip")] = dipho_events.LeadPhoton.sieip
-        dipho_events[("LeadPhoton","Photon_sieie")] = dipho_events.LeadPhoton.sieie
-        dipho_events[("LeadPhoton","Photon_etaWidth")] = dipho_events.LeadPhoton.etaWidth
-        dipho_events[("LeadPhoton","Photon_phiWidth")] = dipho_events.LeadPhoton.phiWidth
-        dipho_events[("LeadPhoton","Photon_pfPhoIso03")] = dipho_events.LeadPhoton.pfPhoIso03
-        dipho_events[("LeadPhoton","Photon_pfChargedIsoPFPV")] = dipho_events.LeadPhoton.pfChargedIsoPFPV
-        dipho_events[("LeadPhoton","Photon_pfChargedIsoWorstVtx")] = dipho_events.LeadPhoton.pfChargedIsoWorstVtx
-        dipho_events[("LeadPhoton","Photon_energyRaw")] = dipho_events.LeadPhoton.energyRaw
-        dipho_events[("LeadPhoton","Photon_scEta")] = dipho_events.LeadPhoton.scEta
-        dipho_events[("LeadPhoton","Photon_esEnergyOverRawE")] = dipho_events.LeadPhoton.esEnergyOverRawE
-        dipho_events[("LeadPhoton","Photon_esEffSigmaRR")] = dipho_events.LeadPhoton.esEffSigmaRR
         dipho_events[("SubleadPhoton","Photon_r9")] = dipho_events.SubleadPhoton.r9
-        dipho_events[("SubleadPhoton","Photon_s4")] = dipho_events.SubleadPhoton.s4
-        dipho_events[("SubleadPhoton","Photon_sieip")] = dipho_events.SubleadPhoton.sieip
-        dipho_events[("SubleadPhoton","Photon_sieie")] = dipho_events.SubleadPhoton.sieie
-        dipho_events[("SubleadPhoton","Photon_etaWidth")] = dipho_events.SubleadPhoton.etaWidth
-        dipho_events[("SubleadPhoton","Photon_phiWidth")] = dipho_events.SubleadPhoton.phiWidth
-        dipho_events[("SubleadPhoton","Photon_pfPhoIso03")] = dipho_events.SubleadPhoton.pfPhoIso03
-        dipho_events[("SubleadPhoton","Photon_pfChargedIsoPFPV")] = dipho_events.SubleadPhoton.pfChargedIsoPFPV
-        dipho_events[("SubleadPhoton","Photon_pfChargedIsoWorstVtx")] = dipho_events.SubleadPhoton.pfChargedIsoWorstVtx
-        dipho_events[("SubleadPhoton","Photon_energyRaw")] = dipho_events.SubleadPhoton.energyRaw
-        dipho_events[("SubleadPhoton","Photon_scEta")] = dipho_events.SubleadPhoton.scEta
-        dipho_events[("SubleadPhoton","Photon_esEnergyOverRawE")] = dipho_events.SubleadPhoton.esEnergyOverRawE
-        dipho_events[("SubleadPhoton","Photon_esEffSigmaRR")] = dipho_events.SubleadPhoton.esEffSigmaRR
         dipho_presel_cut = awkward.num(dipho_events.Diphoton) == 1
-        if self.is_data and self.year is not None:
-            trigger_cut = awkward.num(dipho_events.Diphoton) < 0 # dummy cut, all False
-            for hlt in self.options["trigger"][self.year]: # logical OR of all triggers
-                trigger_cut = (trigger_cut) | (dipho_events[hlt] == True)
-        else:
-            trigger_cut = awkward.num(dipho_events.Diphoton) >= 0 # dummy cut, all True
+        for hlt in self.options["trigger"][self.year]: # logical OR of all triggers
+            trigger_cut = dipho_events[hlt] == True
+        # if self.is_data and self.year is not None:
+        #     trigger_cut = awkward.num(dipho_events.Diphoton) < 0 # dummy cut, all False
+        #     for hlt in self.options["trigger"][self.year]: # logical OR of all triggers
+        #         trigger_cut = (trigger_cut) | (dipho_events[hlt] == True)
+        # else:
+        #     trigger_cut = awkward.num(dipho_events.Diphoton) >= 0 # dummy cut, all True
 
         presel_cut = dipho_presel_cut & trigger_cut
 

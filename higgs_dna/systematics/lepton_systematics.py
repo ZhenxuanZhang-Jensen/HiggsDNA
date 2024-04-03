@@ -2,10 +2,9 @@ import awkward
 import numpy
 
 from correctionlib import _core
-
+import vector
 import logging
 logger = logging.getLogger(__name__)
-
 from higgs_dna.utils import awkward_utils, misc_utils
 from higgs_dna.systematics.utils import systematic_from_bins
 
@@ -23,6 +22,20 @@ MUON_ID_SF_FILE = {
     "2017" : "jsonpog-integration/POG/MUO/2017_UL/muon_Z.json",
     "2018" : "jsonpog-integration/POG/MUO/2018_UL/muon_Z.json"
 }
+MUON_HIGHPTID_SF_FILE = {
+    "2016" : "jsonpog-integration/POG/MUO/2016postVFP_UL/muon_Z.json",
+    "2016UL_preVFP" : "jsonpog-integration/POG/MUO/2016preVFP_UL/ScaleFactors_Muon_highPt_IDISO_2016_preVFP_schemaV2.json",
+    "2016UL_postVFP" : "jsonpog-integration/POG/MUO/2016postVFP_UL/ScaleFactors_Muon_highPt_IDISO_2016_schemaV2.json",
+    "2017" : "jsonpog-integration/POG/MUO/2017_UL/ScaleFactors_Muon_highPt_IDISO_2017_schemaV2.json",
+    "2018" : "jsonpog-integration/POG/MUO/2018_UL/ScaleFactors_Muon_highPt_IDISO_2018_schemaV2.json"
+}
+MUON_HIGHPTID_RECO_FILE = {
+    "2016" : "jsonpog-integration/POG/MUO/2016postVFP_UL/muon_Z.json",
+    "2016UL_preVFP" : "jsonpog-integration/POG/MUO/2016preVFP_UL/ScaleFactors_Muon_highPt_RECO_2016_preVFP_schemaV2.json",
+    "2016UL_postVFP" : "jsonpog-integration/POG/MUO/2016postVFP_UL/ScaleFactors_Muon_highPt_RECO_2016_schemaV2.json",
+    "2017" : "jsonpog-integration/POG/MUO/2017_UL/ScaleFactors_Muon_highPt_RECO_2017_schemaV2.json",
+    "2018" : "jsonpog-integration/POG/MUO/2018_UL/ScaleFactors_Muon_highPt_RECO_2018_schemaV2.json"
+}
 
 ELECTRON_ID_SF = {
     "2016" : "2016postVFP",
@@ -36,7 +49,7 @@ MUON_ID_SF = {
     "2016UL_preVFP" : "2016preVFP_UL",
     "2016UL_postVFP" : "2016postVFP_UL",
     "2017" : "2017_UL",
-    "2018" : "2018"
+    "2018" : "2018_UL"
 }
 
 def electron_id_sf(events, year, central_only, input_collection, working_point = "none"):
@@ -121,7 +134,6 @@ def muon_tightid_tightiso_sf(events, year, central_only, input_collection, worki
     required_fields = [
          (input_collection, "eta"), (input_collection, "pt")
     ]
-
     missing_fields = awkward_utils.missing_fields(events, required_fields)
     logger.debug(year)
     evaluator = _core.CorrectionSet.from_file(misc_utils.expand_path(MUON_ID_SF_FILE[year]))
@@ -312,106 +324,113 @@ def tauE_sf(events, year, central_only, input_collection, working_point = "none"
         variations["down"] = leptons.sfDeepTau2017v2p1VSe_VVLooseDown_ext #NB according to Tau POG we should be using Tight for the vsJ scale factor to be valid!! check twiki 
 
     return variations
-def highptmuonsf(event):
-    weight_muon_highptid_central = awkward.ones_like(event.category)
-    weight_muon_highptid_up = awkward.ones_like(event.category)
-    weight_muon_highptid_down = awkward.ones_like(event.category)
-    loweta=abs(event["muon_noniso_eta"])<1.6
-    higheta=abs(event["muon_noniso_eta"])>1.6
-    ptbin1=(event["muon_noniso_Tunept"]>50 )&( event["muon_noniso_Tunept"]<=100 )
-    ptbin2=(event["muon_noniso_Tunept"]>100 )&( event["muon_noniso_Tunept"]<=150 )
-    ptbin3=(event["muon_noniso_Tunept"]>150 )&( event["muon_noniso_Tunept"]<=200 )
-    ptbin4=(event["muon_noniso_Tunept"]>200 )&( event["muon_noniso_Tunept"]<=300 )
-    ptbin5=(event["muon_noniso_Tunept"]>300 )&( event["muon_noniso_Tunept"]<=400 )
-    ptbin6=(event["muon_noniso_Tunept"]>400 )&( event["muon_noniso_Tunept"]<=600 )
-    ptbin7=(event["muon_noniso_Tunept"]>600 )&( event["muon_noniso_Tunept"]<=1500 )
-    ptbin8=(event["muon_noniso_Tunept"]>1500 )&( event["muon_noniso_Tunept"]<=3500)
-    
-    sf_loweta_ptbin1=((event.category==3)|(event.category==4)) & loweta & ptbin1
-    sf_loweta_ptbin2=((event.category==3)|(event.category==4)) & loweta & ptbin2
-    sf_loweta_ptbin3=((event.category==3)|(event.category==4)) & loweta & ptbin3
-    sf_loweta_ptbin4=((event.category==3)|(event.category==4)) & loweta & ptbin4
-    sf_loweta_ptbin5=((event.category==3)|(event.category==4)) & loweta & ptbin5
-    sf_loweta_ptbin6=((event.category==3)|(event.category==4)) & loweta & ptbin6
-    sf_loweta_ptbin7=((event.category==3)|(event.category==4)) & loweta & ptbin7
-    sf_loweta_ptbin8=((event.category==3)|(event.category==4)) & loweta & ptbin8
-    sf_higheta_ptbin1=((event.category==3)|(event.category==4)) & higheta & ptbin1
-    sf_higheta_ptbin2=((event.category==3)|(event.category==4)) & higheta & ptbin2
-    sf_higheta_ptbin3=((event.category==3)|(event.category==4)) & higheta & ptbin3
-    sf_higheta_ptbin4=((event.category==3)|(event.category==4)) & higheta & ptbin4
-    sf_higheta_ptbin5=((event.category==3)|(event.category==4)) & higheta & ptbin5
-    sf_higheta_ptbin6=((event.category==3)|(event.category==4)) & higheta & ptbin6
-    sf_higheta_ptbin7=((event.category==3)|(event.category==4)) & higheta & ptbin7
-    sf_higheta_ptbin8=((event.category==3)|(event.category==4)) & higheta & ptbin8
-    
-    weight_muon_highptid_central = awkward.where(sf_loweta_ptbin1, awkward.ones_like(weight_muon_highptid_central)*0.9938, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_loweta_ptbin1, awkward.ones_like(weight_muon_highptid_up)*0.9946, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_loweta_ptbin1, awkward.ones_like(weight_muon_highptid_down)*0.9932, weight_muon_highptid_down)
-    
-    weight_muon_highptid_central = awkward.where(sf_loweta_ptbin2, awkward.ones_like(weight_muon_highptid_central)*0.9950, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_loweta_ptbin2, awkward.ones_like(weight_muon_highptid_up)*0.9957, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_loweta_ptbin2, awkward.ones_like(weight_muon_highptid_down)*0.9943, weight_muon_highptid_down)
-    
-    weight_muon_highptid_central = awkward.where(sf_loweta_ptbin3, awkward.ones_like(weight_muon_highptid_central)*0.996, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_loweta_ptbin3, awkward.ones_like(weight_muon_highptid_up)*0.997, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_loweta_ptbin3, awkward.ones_like(weight_muon_highptid_down)*0.995, weight_muon_highptid_down)
-    
-    weight_muon_highptid_central = awkward.where(sf_loweta_ptbin4, awkward.ones_like(weight_muon_highptid_central)*0.996, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_loweta_ptbin4, awkward.ones_like(weight_muon_highptid_up)*0.997, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_loweta_ptbin4, awkward.ones_like(weight_muon_highptid_down)*0.995, weight_muon_highptid_down)
-    
-    weight_muon_highptid_central = awkward.where(sf_loweta_ptbin5, awkward.ones_like(weight_muon_highptid_central)*0.994, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_loweta_ptbin5, awkward.ones_like(weight_muon_highptid_up)*0.995, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_loweta_ptbin5, awkward.ones_like(weight_muon_highptid_down)*0.993, weight_muon_highptid_down)
-    
-    weight_muon_highptid_central = awkward.where(sf_loweta_ptbin6, awkward.ones_like(weight_muon_highptid_central)*1.003, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_loweta_ptbin6, awkward.ones_like(weight_muon_highptid_up)*1.009, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_loweta_ptbin6, awkward.ones_like(weight_muon_highptid_down)*0.997, weight_muon_highptid_down)
-    
-    weight_muon_highptid_central = awkward.where(sf_loweta_ptbin7, awkward.ones_like(weight_muon_highptid_central)*0.987, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_loweta_ptbin7, awkward.ones_like(weight_muon_highptid_up)*0.990, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_loweta_ptbin7, awkward.ones_like(weight_muon_highptid_down)*0.984, weight_muon_highptid_down)
-    
-    weight_muon_highptid_central = awkward.where(sf_loweta_ptbin8, awkward.ones_like(weight_muon_highptid_central)*0.9, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_loweta_ptbin8, awkward.ones_like(weight_muon_highptid_up)*1.0, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_loweta_ptbin8, awkward.ones_like(weight_muon_highptid_down)*0.8, weight_muon_highptid_down)
-    
-    weight_muon_highptid_central = awkward.where(sf_higheta_ptbin1, awkward.ones_like(weight_muon_highptid_central)*1.0, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_higheta_ptbin1, awkward.ones_like(weight_muon_highptid_up)*1.0, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_higheta_ptbin1, awkward.ones_like(weight_muon_highptid_down)*1.0, weight_muon_highptid_down)
-    
-    weight_muon_highptid_central = awkward.where(sf_higheta_ptbin2, awkward.ones_like(weight_muon_highptid_central)*0.993, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_higheta_ptbin2, awkward.ones_like(weight_muon_highptid_up)*0.994, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_higheta_ptbin2, awkward.ones_like(weight_muon_highptid_down)*0.992, weight_muon_highptid_down)
-    
-    weight_muon_highptid_central = awkward.where(sf_higheta_ptbin3, awkward.ones_like(weight_muon_highptid_central)*0.989, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_higheta_ptbin3, awkward.ones_like(weight_muon_highptid_up)*0.990, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_higheta_ptbin3, awkward.ones_like(weight_muon_highptid_down)*0.988, weight_muon_highptid_down)
-    
-    weight_muon_highptid_central = awkward.where(sf_higheta_ptbin4, awkward.ones_like(weight_muon_highptid_central)*0.986, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_higheta_ptbin4, awkward.ones_like(weight_muon_highptid_up)*0.987, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_higheta_ptbin4, awkward.ones_like(weight_muon_highptid_down)*0.985, weight_muon_highptid_down)
-    
-    weight_muon_highptid_central = awkward.where(sf_higheta_ptbin5, awkward.ones_like(weight_muon_highptid_central)*0.989, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_higheta_ptbin5, awkward.ones_like(weight_muon_highptid_up)*0.990, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_higheta_ptbin5, awkward.ones_like(weight_muon_highptid_down)*0.988, weight_muon_highptid_down) 
-    
-    weight_muon_highptid_central = awkward.where(sf_higheta_ptbin6, awkward.ones_like(weight_muon_highptid_central)*0.983, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_higheta_ptbin6, awkward.ones_like(weight_muon_highptid_up)*0.986, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_higheta_ptbin6, awkward.ones_like(weight_muon_highptid_down)*0.980, weight_muon_highptid_down)
-    
-    weight_muon_highptid_central = awkward.where(sf_higheta_ptbin7, awkward.ones_like(weight_muon_highptid_central)*0.986, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_higheta_ptbin7, awkward.ones_like(weight_muon_highptid_up)*0.992, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_higheta_ptbin7, awkward.ones_like(weight_muon_highptid_down)*0.980, weight_muon_highptid_down)
-    
-    weight_muon_highptid_central = awkward.where(sf_higheta_ptbin8, awkward.ones_like(weight_muon_highptid_central)*1.01, weight_muon_highptid_central)
-    weight_muon_highptid_up = awkward.where(sf_higheta_ptbin8, awkward.ones_like(weight_muon_highptid_up)*1.02, weight_muon_highptid_up)
-    weight_muon_highptid_down = awkward.where(sf_higheta_ptbin8, awkward.ones_like(weight_muon_highptid_down)*1.00, weight_muon_highptid_down)
-    
-    event["weight_muon_highptid_up"]=weight_muon_highptid_up
-    event["weight_muon_highptid_central"]=weight_muon_highptid_central
-    event["weight_muon_highptid_down"]=weight_muon_highptid_down
-    return event
+def highptmuonid_sf(events, year, central_only, input_collection, working_point = "none"):
+    required_fields = [
+         (input_collection, "eta"), (input_collection, "pt"), (input_collection, "tunepRelPt")
+    ]
+    missing_fields = awkward_utils.missing_fields(events, required_fields)
+    logger.debug(year)
+    evaluator = _core.CorrectionSet.from_file(misc_utils.expand_path(MUON_HIGHPTID_SF_FILE[year]))
+    # evaluator = _core.CorrectionSet.from_file(misc_utils.expand_path(MUON_ID_SF_FILE["2016UL_preVFP"]))
+
+    muon = events[input_collection]
+
+    # Flatten muon then convert to numpy for compatibility with correctionlib
+    n_muon = awkward.num(muon)
+    muon_flattened = awkward.flatten(muon)
+    muon_pt = numpy.clip(
+        awkward.to_numpy(muon_flattened.pt*muon_flattened.tunepRelPt),
+        50.0, # SFs only valid for pT >= 15.0
+        1999.999 # and pT < Inf.
+    )
+    muon_eta = numpy.abs(numpy.clip(
+        awkward.to_numpy(muon_flattened.eta),
+        -2.39999,
+        2.39999 # SFs only valid up to eta 2.4
+    ))
+    # Calculate SF and syst
+    variations = {}
+
+
+    sf = evaluator["NUM_HighPtID_DEN_GlobalMuonProbes"].evalv(
+            muon_eta,
+            muon_pt,
+            "nominal",
+    )
+    variations["central"] = awkward.unflatten(sf, n_muon)
+
+    if not central_only:
+        syst = evaluator["NUM_HighPtID_DEN_GlobalMuonProbes"].evalv(
+                muon_eta,
+                muon_pt,
+                "syst"
+        )
+
+        variations_syst = awkward.unflatten(syst, n_muon)
+        variations["up"] = variations["central"] + variations_syst
+        variations["down"] = variations["central"] - variations_syst
+    for var in variations.keys():
+        variations[var] = awkward.where(
+                (muon.pt*muon.tunepRelPt >= 2000.0) | (muon.pt*muon.tunepRelPt < 50.0) |(abs(muon.eta) >= 2.4),
+                awkward.ones_like(variations[var]),
+                variations[var]
+        )
+    return variations
+
+def highptmuonreco_sf(events, year, central_only, input_collection, working_point = "none"):
+    required_fields = [
+         (input_collection, "eta"), (input_collection, "pt"), (input_collection, "tunepRelPt"), (input_collection, "phi"), (input_collection, "mass")
+    ]
+    missing_fields = awkward_utils.missing_fields(events, required_fields)
+    logger.debug(year)
+    evaluator = _core.CorrectionSet.from_file(misc_utils.expand_path(MUON_HIGHPTID_SF_FILE[year]))
+    # evaluator = _core.CorrectionSet.from_file(misc_utils.expand_path(MUON_ID_SF_FILE["2016UL_preVFP"]))
+
+    muon = events[input_collection]
+    vector.register_awkward()
+    muon_4momentum=vector.obj(pt=muon.pt*muon.tunepRelPt, eta=muon.eta, phi=muon.phi, mass=muon.mass)
+    # Flatten muon then convert to numpy for compatibility with correctionlib
+    n_muon = awkward.num(muon)
+    muon_flattened = awkward.flatten(muon)
+    muon_pt = numpy.clip(
+        awkward.to_numpy(awkward.flatten(muon_4momentum.p)),
+        50.0, # SFs only valid for pT >= 15.0
+        1999.999 # and pT < Inf.
+    )
+    muon_eta = numpy.abs(numpy.clip(
+        awkward.to_numpy(muon_flattened.eta),
+        -2.39999,
+        2.39999 # SFs only valid up to eta 2.4
+    ))
+    # Calculate SF and syst
+    variations = {}
+
+
+    sf = evaluator["NUM_HighPtID_DEN_GlobalMuonProbes"].evalv(
+            muon_eta,
+            muon_pt,
+            "nominal",
+    )
+    variations["central"] = awkward.unflatten(sf, n_muon)
+
+    if not central_only:
+        syst = evaluator["NUM_HighPtID_DEN_GlobalMuonProbes"].evalv(
+                muon_eta,
+                muon_pt,
+                "syst"
+        )
+
+        variations_syst = awkward.unflatten(syst, n_muon)
+        variations["up"] = variations["central"] + variations_syst
+        variations["down"] = variations["central"] - variations_syst
+    for var in variations.keys():
+        variations[var] = awkward.where(
+                (muon.pt*muon.tunepRelPt >= 1000.0) | (muon.pt*muon.tunepRelPt < 50.0) |(abs(muon.eta) >= 2.4),
+                awkward.ones_like(variations[var]),
+                variations[var]
+        )
+    return variations
+
 
 
     
