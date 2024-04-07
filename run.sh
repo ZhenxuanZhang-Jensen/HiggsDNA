@@ -41,7 +41,13 @@ fi
 if [ ${WhichSamples} == "Data_UL17" ]
   then
   rm -rf /eos/user/z/zhenxuan/HiggsDNA/Data_UL2017
-  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/analysis/wwgg_nosys/HHWW_preselection_data_FHSL_YH_UL17_slimed.json"  --output_dir "/eos/user/z/zhenxuan/HiggsDNA/Data_UL2017" --sample_list "DoubleEG_Run2017C","DoubleEG_Run2017B","DoubleEG_Run2017D","DoubleEG_Run2017E","DoubleEG_Run2017F" --yield_table --merge_outputs
+  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/analysis/wwgg_nosys/HHWW_preselection_data_FHSL_YH_UL17_slimed.json"  --output_dir "/eos/user/z/zhenxuan/HiggsDNA/Data_UL2017" --sample_list "DoubleEG_Run2017B","DoubleEG_Run2017C","DoubleEG_Run2017D","DoubleEG_Run2017E","DoubleEG_Run2017F" --yield_table --merge_outputs --batch_system "condor"
+fi
+
+if [ ${WhichSamples} == "Data_UL17_test" ]
+  then
+  rm -rf /eos/user/z/zhenxuan/HiggsDNA/Data_UL2017_test
+  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/analysis/wwgg_nosys/HHWW_preselection_data_FHSL_YH_UL17_slimed.json"  --output_dir "/eos/user/z/zhenxuan/HiggsDNA/Data_UL2017_test" --sample_list "DoubleEG_Run2017B" --short
 fi
 
 if [ ${WhichSamples} == "Data_UL18" ]

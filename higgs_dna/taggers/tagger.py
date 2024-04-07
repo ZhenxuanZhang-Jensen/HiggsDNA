@@ -249,10 +249,7 @@ class Tagger():
                 _tmp_name += "&" + name
             if awkward.count(_tmp_cut) > 0:
                 ncandi_per_event = awkward.num(_tmp_cut[_tmp_cut==True],axis=-1) 
-<<<<<<< HEAD
-=======
                 candi_event=_tmp_cut[ncandi_per_event!=0]
->>>>>>> dc3450649cf6b50ab4cabc0047822dc4f0ec9f0a
                 # if _tmp_cut don't have any True, then _tmp_cut is a bool value, not a array
                 if type(ncandi_per_event) == bool:
                     candi_event=_tmp_cut
