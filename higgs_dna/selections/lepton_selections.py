@@ -47,6 +47,8 @@ def select_electrons(electrons, options, clean, name = "none", tagger = None):
         id_cut = (electrons.mvaFall17V2noIso_WP80 == True) & (electrons.mvaFall17V2Iso_WP90 == False) 
     elif options["id"] == "WP80iso_WPLnoniso":
         id_cut = (electrons.mvaFall17V2noIso_WPL == True) & (electrons.mvaFall17V2Iso_WP80 == False) 
+    elif options["id"] == "WP80iso_WP90noniso":
+        id_cut = (electrons.mvaFall17V2noIso_WP90 == True) & (electrons.mvaFall17V2Iso_WP80 == False) 
     elif options["id"] == "WPLnoniso":
         id_cut = (electrons.mvaFall17V2noIso_WPL == True)
     elif options["id"] == "WP80_noniso":

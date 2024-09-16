@@ -374,7 +374,8 @@
     "variables_of_interest" : [
         "gen_obj_1_eta","gen_obj_1_mass","gen_obj_1_phi","gen_obj_1_pt","gen_obj_1_genPartIdxMother","gen_obj_1_pdgId","gen_obj_1_status","gen_obj_1_statusFlags","gen_obj_2_eta","gen_obj_2_mass","gen_obj_2_phi","gen_obj_2_pt","gen_obj_2_genPartIdxMother","gen_obj_2_pdgId","gen_obj_2_status","gen_obj_2_statusFlags","gen_obj_3_eta","gen_obj_3_mass","gen_obj_3_phi","gen_obj_3_pt","gen_obj_3_genPartIdxMother","gen_obj_3_pdgId","gen_obj_3_status","gen_obj_3_statusFlags","gen_obj_4_eta","gen_obj_4_mass","gen_obj_4_phi","gen_obj_4_pt","gen_obj_4_genPartIdxMother","gen_obj_4_pdgId","gen_obj_4_status","gen_obj_4_statusFlags",
         "PuppiMET_pt","PuppiMET_sumEt",
-        ["Diphoton", "mass"], ["Diphoton", "pt"], ["Diphoton", "eta"], ["Diphoton", "phi"], ["Diphoton", "dR"],["Diphoton","genPartFlav"],["Diphoton","is_LeadPhoton"],["Diphoton","is_SubleadPhoton"],["Diphoton","minID"],["Diphoton","maxID"],["LeadPhoton", "pt"], ["LeadPhoton", "mvaID"],["LeadPhoton", "eta"], ["LeadPhoton", "phi"], ["LeadPhoton", "mass"],["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"],
+        ["Diphoton", "mass"], ["Diphoton", "pt"], ["Diphoton", "eta"], ["Diphoton", "phi"], ["Diphoton", "dR"],["Diphoton","genPartFlav"],["Diphoton","is_LeadPhoton"],["Diphoton","is_SubleadPhoton"],["Diphoton","minID"],["Diphoton","maxID"],["LeadPhoton", "pt"], ["LeadPhoton", "eta"], ["LeadPhoton", "phi"], ["LeadPhoton", "mass"], ["LeadPhoton", "mvaID"], ["LeadPhoton", "mvaID_modified"], ["LeadPhoton", "genPartFlav"], ["LeadPhoton", "pixelSeed"],["LeadPhoton","genPartFlav"],["LeadPhoton","genPartIdx"],["LeadPhoton","energyErr"],["LeadPhoton","mvaID_WP80"],["LeadPhoton","mvaID_WP90"],["LeadPhoton","r9"],["LeadPhoton","s4"],["LeadPhoton","sieip"],["LeadPhoton","sieie"],["LeadPhoton","etaWidth"],["LeadPhoton","phiWidth"],["LeadPhoton","pfPhoIso03"],["LeadPhoton","pfChargedIsoPFPV"],["LeadPhoton","pfChargedIsoWorstVtx"],["LeadPhoton","energyRaw"],["LeadPhoton","scEta"],["LeadPhoton","esEnergyOverRawE"],["LeadPhoton","esEffSigmaRR"],["SubleadPhoton","r9"],["SubleadPhoton","s4"],["SubleadPhoton","sieip"],["SubleadPhoton","sieie"],["SubleadPhoton","etaWidth"],["SubleadPhoton","phiWidth"],["SubleadPhoton","pfPhoIso03"],["SubleadPhoton","pfChargedIsoPFPV"],["SubleadPhoton","pfChargedIsoWorstVtx"],["SubleadPhoton","energyRaw"],["SubleadPhoton","scEta"],["SubleadPhoton","esEnergyOverRawE"],["SubleadPhoton","esEffSigmaRR"],
+        ["SubleadPhoton", "pt"], ["SubleadPhoton", "eta"], ["SubleadPhoton", "phi"], ["SubleadPhoton", "mass"], ["SubleadPhoton", "mvaID"],["SubleadPhoton", "mvaID_modified"], ["SubleadPhoton", "genPartFlav"], ["SubleadPhoton", "pixelSeed"],["SubleadPhoton","genPartFlav"],["SubleadPhoton","genPartIdx"],["SubleadPhoton","energyErr"], ["SubleadPhoton","mvaID_WP80"],["SubleadPhoton","mvaID_WP90"],
         "jet_1_pt","jet_1_eta","jet_1_mass","jet_1_phi","jet_1_btagDeepFlavB",
         "jet_2_pt","jet_2_eta","jet_2_mass","jet_2_phi","jet_2_btagDeepFlavB",
         "jet_3_pt","jet_3_eta","jet_3_mass","jet_3_phi","jet_3_btagDeepFlavB",
@@ -388,18 +389,19 @@
         "muons_all_1_pt", "muons_all_1_eta", "muons_all_1_phi", "muons_all_1_mass",
         "muons_all_2_pt", "muons_all_2_eta", "muons_all_2_phi", "muons_all_2_mass",
         "muons_all_3_pt", "muons_all_3_eta", "muons_all_3_phi", "muons_all_3_mass",
-        
         "nGoodAK4jets","nGoodAK8jets","nGoodisoleptons","nGoodnonisoleptons","nGoodisoelectrons","nGoodnonisoelectrons","nGoodisomuons","nGoodnonisomuons",
         "fatjet_1_pt","fatjet_1_eta","fatjet_1_phi","fatjet_1_particleNetMD_Xbb","fatjet_1_particleNetMD_QCD","fatjet_1_Hqqqq_vsQCDTop","fatjet_1_WvsQCDMD","fatjet_1_particleNet_ZvsQCD","fatjet_1_msoftdrop","fatjet_1_subJetIdx1","fatjet_1_subJetIdx2",
         "fatjet_2_pt","fatjet_2_eta","fatjet_2_phi","fatjet_2_particleNetMD_Xbb","fatjet_2_particleNetMD_QCD","fatjet_2_Hqqqq_vsQCDTop","fatjet_2_WvsQCDMD","fatjet_2_particleNet_ZvsQCD","fatjet_2_msoftdrop","fatjet_2_subJetIdx1","fatjet_2_subJetIdx2",
         "fatjet_3_pt","fatjet_3_eta","fatjet_3_phi","fatjet_3_particleNetMD_Xbb","fatjet_3_particleNetMD_QCD","fatjet_3_Hqqqq_vsQCDTop","fatjet_3_WvsQCDMD","fatjet_3_particleNet_ZvsQCD","fatjet_3_msoftdrop","fatjet_3_subJetIdx1","fatjet_3_subJetIdx2",
+        "weight_PNet_WvsQCDW1_up","weight_PNet_WvsQCDW1_central","weight_PNet_WvsQCDW1_down",
+        "weight_PNet_WvsQCDW2_up","weight_PNet_WvsQCDW2_central","weight_PNet_WvsQCDW2_down",
         "weight_central",
         "category",
         "event"
 
     ],
     "branches": [
-        "PuppiMET_phi","PuppiMET_pt","PuppiMET_sumEt",
+        "PuppiMET_phi","PuppiMET_pt","PuppiMET_sumEt","HLT_Diphoton30_22_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90","HLT_Diphoton30_18_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass90",
         "SubJet_eta","SubJet_mass", "SubJet_phi",	"SubJet_pt",
         "Photon_pt", "Photon_eta", "Photon_phi", "Photon_mass",
         "Photon_pixelSeed", "Photon_mvaID", "Photon_electronVeto","Pileup_nTrueInt",
@@ -407,7 +409,7 @@
         "Photon_r9", "Photon_hoe", "Photon_pfRelIso03_chg", "Photon_pfRelIso03_all",
         "Photon_isScEtaEB", "Photon_isScEtaEE","Photon_r9","Photon_s4","Photon_sieip","Photon_sieie","Photon_etaWidth","Photon_phiWidth","Photon_pfPhoIso03","Photon_pfChargedIsoPFPV","Photon_pfChargedIsoWorstVtx","Photon_energyRaw","Photon_scEta","Photon_esEnergyOverRawE","Photon_esEffSigmaRR",
         "Photon_trkSumPtHollowConeDR03", "Photon_photonIso", "Photon_chargedHadronIso",
-        "Photon_genPartFlav","Photon_genPartIdx","Photon_mvaID_WP90","Photon_mvaID_WP80",
+        "Photon_genPartFlav","Photon_genPartIdx","Photon_mvaID_WP90","Photon_mvaID_WP80","Photon_mvaID_modified",
         "GenPart_eta", "GenPart_genPartIdxMother", "GenPart_mass", "GenPart_pdgId", "GenPart_phi", "GenPart_pt", "GenPart_status","GenPart_statusFlags",
         "Jet_btagCMVA","Jet_btagCSVV2","Jet_btagDeepB","Jet_btagDeepFlavB","Jet_eta","Jet_genJetIdx","Jet_jetId","Jet_mass","Jet_phi","Jet_pt","Jet_puId","Jet_qgl","Jet_rawFactor","nJet",
         "FatJet_inclParTMDV1_probHWqqWq0c","FatJet_inclParTMDV1_probHWqqWq1c","FatJet_inclParTMDV1_probHWqqWq2c","FatJet_inclParTMDV1_probHWqqWqq0c","FatJet_inclParTMDV1_probHWqqWqq1c","FatJet_inclParTMDV1_probHWqqWqq2c","FatJet_inclParTMDV1_probQCDb","FatJet_inclParTMDV1_probQCDbb","FatJet_inclParTMDV1_probQCDc","FatJet_inclParTMDV1_probQCDcc","FatJet_inclParTMDV1_probQCDothers","FatJet_inclParTMDV1_probTopbWq0c","FatJet_inclParTMDV1_probTopbWq1c","FatJet_inclParTMDV1_probTopbWqq0c","FatJet_inclParTMDV1_probTopbWqq1c","FatJet_particleNet_WvsQCD",
@@ -416,6 +418,7 @@
         "Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass", "Muon_charge", "Muon_pfRelIso03_all","Muon_highPtId","Muon_pfRelIso04_all", "Muon_dxy", "Muon_dz", "Muon_tightId", "Muon_isGlobal", "Muon_mediumId","Muon_highPtId","Muon_tunepRelPt",
         "Electron_pt", "Electron_eta", "Electron_phi", "Electron_mass", "Electron_charge",  "Electron_hoe", "Electron_mvaFall17V2Iso_WP90", "Electron_mvaFall17V2noIso_WP90", "Electron_pfRelIso03_chg","Electron_pfRelIso03_all", "Electron_dxy", "Electron_dz", "Electron_mvaFall17V2Iso_WP80","Electron_mvaFall17V2Iso_WPL","Electron_mvaFall17V2noIso_WPL","Electron_mvaFall17V2noIso_WP80","Electron_miniPFRelIso_all","Muon_miniPFRelIso_all","Muon_looseId",
         "PrefireWeight","PrefireWeight_Down","PrefireWeight_Up","L1PreFiringWeight_Nom", "L1PreFiringWeight_Up", "L1PreFiringWeight_Dn",
-        "genWeight", "run", "event", "fixedGridRhoAll","luminosityBlock"
+        "genWeight", "run", "event", "fixedGridRhoAll","luminosityBlock",
+        "FatJet_pt_jesTotalDown","FatJet_pt_jesTotalUp","FatJet_pt_jerUp","FatJet_pt_jerDown","Muon_corrected_pt","Muon_correctedUp_pt","Muon_correctedDown_pt","LHEScaleWeight_Zero","Photon_dEsigmaDown","Photon_dEsigmaUp","Photon_pt_ScaleUp","Photon_pt_ScaleDown","Jet_pt_nom", "Jet_pt_jerUp", "Jet_pt_jerDown", "Jet_pt_jesTotalUp", "Jet_pt_jesTotalDown","MET_T1_pt","MET_T1_pt_jerUp","MET_T1_pt_jerDown","MET_T1_pt_jesTotalUp","MET_T1_pt_jesTotalDown","MET_T1_pt_unclustEnUp","MET_T1_pt_unclustEnDown","Muon_corrected_pt","Muon_correctedUp_pt","Muon_correctedDown_pt"
     ]
 }

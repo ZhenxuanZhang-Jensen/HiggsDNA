@@ -40,8 +40,8 @@ fi
 
 if [ ${WhichSamples} == "Data_UL17" ]
   then
-  rm -rf /eos/user/z/zhenxuan/HiggsDNA/Data_UL2017
-  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/analysis/wwgg_nosys/HHWW_preselection_data_FHSL_YH_UL17_slimed.json"  --output_dir "/eos/user/z/zhenxuan/HiggsDNA/Data_UL2017" --sample_list "DoubleEG_Run2017B","DoubleEG_Run2017C","DoubleEG_Run2017D","DoubleEG_Run2017E","DoubleEG_Run2017F" --yield_table --merge_outputs --batch_system "condor"
+  python /eos/user/z/zhenxuan/HiggsDNA/Data_UL2017/rm_no_parquet_dir.py
+  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/analysis/wwgg_nosys/HHWW_preselection_data_FHSL_YH_UL17_slimed.json"  --output_dir "/eos/user/z/zhenxuan/HiggsDNA/Data_UL2017" --sample_list "DoubleEG_Run2017B","DoubleEG_Run2017C","DoubleEG_Run2017D","DoubleEG_Run2017E","DoubleEG_Run2017F" --yield_table --merge_outputs
 fi
 
 if [ ${WhichSamples} == "Data_UL17_test" ]
@@ -66,6 +66,12 @@ if [ ${WhichSamples} == "pp_UL17" ]
   then
   rm -rf /eos/user/z/zhenxuan/HiggsDNA/pp_UL17
   python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/analysis/wwgg_nosys/HHWW_preselection_data_FHSL_YH_UL17_slimed.json" --output_dir "/eos/user/z/zhenxuan/HiggsDNA/pp_UL17" --sample_list "DiPhotonJetsBox_M40_80-sherpa","DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa" --batch_system "condor" --yield_table
+fi
+
+if [ ${WhichSamples} == "pp_UL17_test" ]
+  then
+  rm -rf /eos/user/z/zhenxuan/HiggsDNA/pp_UL17_test
+  python scripts/run_analysis.py --log-level "DEBUG" --config "metadata/analysis/wwgg_nosys/HHWW_preselection_data_FHSL_YH_UL17_slimed.json" --output_dir "/eos/user/z/zhenxuan/HiggsDNA/pp_UL17_test" --sample_list "DiPhotonJetsBox_MGG-80toInf_13TeV-sherpa"
 fi
 
 
